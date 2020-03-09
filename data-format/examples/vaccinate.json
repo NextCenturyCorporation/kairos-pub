@@ -1,0 +1,95 @@
+{
+  "@context": {
+    "kairos": "https://tac.nist.gov/kairos/",
+    "version": "kairos:version",
+    "parent": "kairos:parent",
+    "label": "kairos:label",
+    "description": "kairos:description",
+    "argname": "kairos:argname",
+    "pattern": "kairos:pattern",
+    "rolesBlock": "kairos:rolesBlock",
+    "roles": "kairos:roles",
+    "temporal": "kairos:temporal",
+    "startDate": "kairos:startDate",
+    "endDate": "kairos:endDate",
+    "minDuration": "kairos:minDuration",
+    "maxDuration": "kairos:maxDuration",
+    "arguments": "kairos:arguments",
+    "constraints": "kairos:constraints",
+    "arg": "kairos:Primitives/Event/Vaccinate/Argument/",
+    "role": "kairos:Primitives/Event/Vaccinate/Role/"
+  },
+  "@id": "kairos:Primitives/4c8659a03ea03e6388c8f34eee6acc92",
+  "@type": "kairos:Primitives/Event/Vaccinate",
+  "parent": null,
+  "label": "Vaccinate",
+  "description": "A person is inoculated against a disease",
+  "version": "0.2",
+  "arguments": [
+    {
+      "@id": "arg:agent",
+      "argname": "agent",
+      "constraints": [
+        "kairos:Ontology/Entity/PER",
+        "kairos:Ontology/Entity/ORG",
+        "kairos:Ontology/Entity/GPE"
+      ]
+    },
+    {
+      "@id": "arg:patient",
+      "argname": "patient",
+      "constraints": [
+        "kairos:Ontology/Entity/PER"
+      ]
+    },
+    {
+      "@id": "arg:instrument",
+      "argname": "instrument"
+    },
+    {
+      "@id": "arg:place",
+      "argname": "place",
+      "constraints": [
+        "kairos:Ontology/Entity/PER",
+        "kairos:Ontology/Entity/ORG",
+        "kairos:Ontology/Entity/GPE"
+      ]
+    }
+  ],
+  "rolesBlock": {
+    "context": {},
+    "roles": [
+      {
+        "@id": "role:Agent",
+        "pattern": "?a",
+        "argname": "agent"
+      },
+      {
+        "@id": "role:Patient",
+        "pattern": "?p",
+        "argname": "patient"
+      },
+      {
+        "@id": "role:Instrument",
+        "pattern": "?i",
+        "argname": "instrument"
+      },
+      {
+        "@id": "role:Place",
+        "pattern": "?l",
+        "argname": "place"
+      }
+    ]
+  },
+  "temporal": {
+    "context": {},
+    "startDate": {
+      "@type": "xsd:date"
+    },
+    "endDate": {
+      "@type": "xsd:date"
+    },
+    "minDuration": "1 minute",
+    "maxDuration": "1 hour"
+  }
+}

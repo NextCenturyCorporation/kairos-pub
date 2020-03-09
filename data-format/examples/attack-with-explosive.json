@@ -1,0 +1,149 @@
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "kairos": "https://tac.nist.gov/kairos/",
+    "version": "kairos:version",
+    "parent": "kairos:parent",
+    "value": "kairos:value",
+    "argname": "kairos:argname",
+    "pattern": "kairos:pattern",
+    "rolesBlock": "kairos:rolesBlock",
+    "stepsBlock": "kairos:stepsBlock",
+    "steps": "kairos:steps",
+    "roles": "kairos:roles",
+    "onttypes": "kairos:ontology/types",
+
+    "sbu": "http://www.stonybrook.edu/kairos/",
+    "arguments": "sbu:arguments",
+    "required": "sbu:required",
+    "allowUnspecified": "sbu:allowUnspecified",
+    "typePredicates": "sbu:typePredicates",
+    "predicates": "sbu:predicates",
+    "components": "sbu:components",
+
+    "arg": "sbu:Schema/AttackWithExplosives/Argument/",
+    "role": "sbu:Schema/AttackWithExplosives/Role/",
+    "step": "sbu:Schema/AttackWithExplosives/Step/",
+    "compoundTypes": "sbu:Schema/Types/CompoundTypes/",
+    "openTypes": "sbu:Schema/Types/OpenTypes/",
+    "isType": "sbu:Predicates/IsType"
+  },
+  "@id": "sbu:Schemas/4c8659a03ea03e6388c8f34eee6acc92",
+  "@type": "sbu:Schema/Attack/AttackWithExplosives",
+  "parent": "sbu:Schema/Attack",
+  "version": "0.3",
+  "arguments": [
+    {
+      "@id": "arg:explosive",
+      "argname": "explosive"
+    }
+  ],
+  "rolesBlock": {
+    "context": {},
+    "roles": [
+      {
+        "@id": "role:Means",
+        "@type": "openTypes:Entity/PhysicalEntity/Substance/Explosive",
+        "pattern": "?m",
+        "required": true,
+        "argname": "explosive"
+      },
+      {
+        "@id": "role:Trigger",
+        "pattern": "?t",
+        "allowUnspecified": true
+      },
+      {
+        "@id": "role:Container",
+        "@type": "openTypes:Entity/PhysicalEntity/Container",
+        "pattern": "?c",
+        "allowUnspecified": true
+      },
+      {
+        "@id": "role:Shrapnel",
+        "@type": "compoundTypes:PhysicalPartsOf",
+        "components": [
+          {
+            "@type": "openTypes:Entity/PhysicalEntity/Substance/Explosive"
+          },
+          {
+            "@type": "openTypes:Entity/PhysicalEntity/Container"
+          }
+        ],
+        "pattern": "?s",
+        "required": false
+      }
+    ]
+  },
+  "typePredicates": {
+    "context": {},
+    "predicates": [
+      {
+        "@type": "isType",
+        "argname": "sbu:Schema/Attack/Argument/attacker",
+        "onttypes": [
+          "kairos:Ontology/Entity/PER",
+          "kairos:Ontology/Entity/ORG"
+        ]
+      },
+      {
+        "@type": "isType",
+        "argname": "sbu:Schema/Attack/Argument/victim",
+        "onttypes": [
+          "kairos:Ontology/Entity/PER",
+          "kairos:Ontology/Entity/ORG",
+          "kairos:Ontology/Entity/LOC",
+          "kairos:Ontology/Entity/Facility"
+        ]
+      },
+      {
+        "@type": "isType",
+        "argname": "arg:explosive",
+        "onttypes": [
+          "openTypes:Entity/PhysicalEntity/Substance/Explosive"
+        ]
+      }
+    ]
+  },
+  "steps": {
+    "context": {},
+    "@list": [
+      {
+        "@type": "step:SetOff",
+        "SetOff:attacker": {
+          "@type": "sbu:Schema/Attack/Role/Attacker"
+        },
+        "SetOff:means": {
+          "@type": "role:Means"
+        },
+        "SetOff:trigger": {
+          "@type": "role:Trigger"
+        }
+      },
+      {
+        "@type": "step:PressureExertedOnBy",
+        "PressureExertedOnBy:container": {
+          "@type": "role:Container"
+        },
+        "PressureExertedOnBy:means": {
+          "@type": "role:Trigger"
+        }
+      },
+      {
+        "@type": "step:Explode",
+        "Explode:means": {
+          "@type": "role:Means"
+        }
+      },
+      {
+        "@type": "step:StrikesInjured",
+        "StrikesInjured:shrapnel": {
+          "@type": "role:Shrapnel"
+        },
+        "StrikesInjured:victim": {
+          "@type": "sbu:Schema/Attack/Role/Victim"
+        }
+      }
+    ]
+  }
+}

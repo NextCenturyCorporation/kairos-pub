@@ -1,0 +1,168 @@
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "kairos": "https://tac.nist.gov/kairos/",
+    "name": "schema:name",
+    "version": "kairos:version",
+    "source": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "publishDate": {
+      "@id": "schema:uploadDate",
+      "@type": "xsd:date"
+    },
+    "parent": "kairos:parent",
+    "privateData": "kairos:privateData",
+    "value": "kairos:value",
+    "argname": "kairos:argname",
+    "pattern": "kairos:pattern",
+    "rolesBlock": "kairos:rolesBlock",
+    "stepsBlock": "kairos:stepsBlock",
+    "steps": "kairos:steps",
+    "roles": "kairos:roles",
+    "sbu": "http://www.stonybrook.edu/kairos/",
+    "cmu": "http://www.cmu.edu/kairos/",
+    "arguments": "sbu:arguments",
+    "argtype": "sbu:argtype",
+    "required": "sbu:required",
+    "typePredicates": "sbu:typePredicates",
+    "predicates": "sbu:predicates",
+    "resultsBlock": "sbu:resultsBlock",
+    "results": "sbu:results",
+    "arg": "sbu:Schema/AttackWithExplosives/Argument/",
+    "role": "sbu:Schema/AttackWithExplosives/Role/",
+    "step": "sbu:Schema/AttackWithExplosives/Step/",
+    "CausesHarmTo": "sbu:Schema/Attack/Results/CausesHarmTo"
+  },
+  "@id": "cmu:Instances/475b59a03ea03e6388c8f34eee6a9d08",
+  "@type": "sbu:Schema/Attack/AttackWithExplosives",
+  "name": "Pressure-cooker bomb used in Chelsea seen in other US attacks",
+  "source": "https://nypost.com/2016/09/19/terrorists-still-favor-pressure-cooker-used-in-chelsea-bombing/",
+  "publishDate": "2016-09-19",
+  "privateData": "s3://kairos/privateData/TA1/SBU/HC000ZKDG.html",
+  "version": "0.3",
+  "arguments": [
+    {
+      "@id": "cmu:Entities:59a09d083ea03e63475b88c8f34eee6a",
+      "@type": "sbu:Schema/Attack/Argument/attacker",
+      "argtype": "kairos:Ontology/UnknownType",
+      "value": "Unknown"
+    },
+    {
+      "@id": "cmu:Entities:9d08ee6a3ea03e6359a0475b88c8f34e",
+      "@type": "sbu:Schema/Attack/Argument/victim",
+      "argtype": "kairos:Ontology/Entity/LOC",
+      "value": "Chelsea"
+    },
+    {
+      "@id": "cmu:Entities:20e8d8228a9e4c8c20e8d8228a9e88de",
+      "@type": "sbu:Schema/AttackWithExplosives/Argument/explosive",
+      "argtype": "kairos:Ontology/Entity/Explosive",
+      "value": "Pressure-cooker bomb"
+    }
+  ],
+  "rolesBlock": {
+    "context": {},
+    "roles": [
+      {
+        "@id": "cmu:Entities:59a09d083ea03e63475b88c8f34eee6a",
+        "@type": "sbu:Schema/Attack/Role/Attacker",
+        "value": "Unknown"
+      },
+      {
+        "@id": "cmu:Entities:9d08ee6a3ea03e6359a0475b88c8f34e",
+        "@type": "sbu:Schema/Attack/Role/Victim",
+        "value": "Chelsea"
+      },
+      {
+        "@id": "cmu:Entities:20e8d8228a9e4c8c20e8d8228a9e88de",
+        "@type": "role:Means",
+        "value": "Pressure-cooker bomb"
+      },
+      {
+        "@id": "cmu:Entities:20e8d8228a9e4c8c20e8d8228a9e92f3",
+        "@type": "role:Trigger",
+        "value": "Cell-phone refers to guideline"
+      },
+      {
+        "@id": "cmu:Entities:20e8d8228a9e4c8c20e8d8228a9e2ff2",
+        "@type": "role:Container",
+        "value": "Pressure-cooker"
+      },
+      {
+        "@id": "cmu:Entities:20e8d8228a9e4c8c20e8d8228a9e89aa",
+        "@type": "role:Shrapnel",
+        "value": "Spherical shaped ones"
+      }
+    ]
+  },
+  "steps": {
+    "context": {},
+    "@list": [
+      {
+        "@type": "step:SetOff",
+        "SetOff:attacker": {
+          "@type": "sbu:Schema/Attack/Role/Attacker",
+          "value": "Unknown"
+        },
+        "SetOff:means": {
+          "@type": "role:Means",
+          "value": "Pressure-cooker bomb"
+        },
+        "SetOff:trigger": {
+          "@type": "role:Trigger",
+          "value": "Cell-phone"
+        }
+      },
+      {
+        "@type": "step:PressureExertedOnBy",
+        "PressureExertedOnBy:container": {
+          "@type": "role:Container",
+          "value": "Pressure-cooker"
+        },
+        "PressureExertedOnBy:means": {
+          "@type": "role:Trigger",
+          "value": "Unknown"
+        }
+      },
+      {
+        "@type": "step:Explode",
+        "Explode:means": {
+          "@type": "role:Means",
+          "value": "Pressure-cooker bomb"
+        }
+      },
+      {
+        "@type": "step:StrikesInjures",
+        "StrikesInjures:shrapnel": {
+          "@type": "role:Shrapnel",
+          "value": "Spherical shaped ones"
+        },
+        "StrikesInjures:victim": {
+          "@type": "sbu:Schema/Attack/Role/Victim",
+          "value": "Chelsea"
+        }
+      }
+    ]
+  },
+  "resultsBlock": {
+    "context": {},
+    "results": {
+      "@list": [
+        {
+          "CausesHarmTo": [
+            {
+              "@type": "sbu:Schema/AttackWithExplosives/Role/Attacker",
+              "value": "Unknown"
+            },
+            {
+              "@type": "sbu:Schema/AttackWithExplosives/Role/Victim",
+              "value": "Chelsea"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

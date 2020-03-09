@@ -1,0 +1,70 @@
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "kairos": "https://tac.nist.gov/kairos/",
+    "version": "kairos:version",
+    "parent": "kairos:parent",
+    "value": "kairos:value",
+    "argname": "kairos:argname",
+    "pattern": "kairos:pattern",
+    "rolesBlock": "kairos:rolesBlock",
+    "roles": "kairos:roles",
+
+    "sbu": "http://www.stonybrook.edu/kairos/",
+    "resultsBlock": "sbu:resultsBlock",
+    "results": "sbu:results",
+    "arguments": "sbu:arguments",
+    "required": "sbu:required",
+
+    "arg": "sbu:Schema/Attack/Argument/",
+    "CausesHarmTo": "sbu:Schema/Attack/Results/CausesHarmTo",
+    "role": "sbu:Schema/Attack/Role/"
+  },
+  "@id": "sbu:Schemas/475b59a03ea03e6388c8f34eee6a9d08",
+  "@type": "sbu:Schema/Attack",
+  "version": "0.3",
+  "arguments": [
+    {
+      "@id": "arg:attacker",
+      "argname": "party1"
+    },
+    {
+      "@id": "arg:victim",
+      "argname": "party2"
+    }
+  ],
+  "rolesBlock": {
+    "context": {},
+    "roles": [
+      {
+        "@id": "role:Attacker",
+        "pattern": "?a",
+        "required": true,
+        "argname": "party1"
+      },
+      {
+        "@id": "role:Victim",
+        "pattern": "?v",
+        "required": true,
+        "argname": "party2"
+      }
+    ]
+  },
+  "resultsBlock": {
+    "context": {},
+    "results": {
+      "@list": [
+        {
+          "CausesHarmTo": [
+            {
+              "@type": "role:Attacker"
+            },
+            {
+              "@type": "role:Victim"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
