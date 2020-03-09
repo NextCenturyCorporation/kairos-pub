@@ -1,0 +1,60 @@
+// a schema is a dict with an id, name, and steps
+"@namespace": { // called "context" before...
+    "jonmay": "https://jonmay.net/kairos.namespace.json",
+    // not part of mvp
+    //   "sbu": "http://www.stonybrook.edu/kairos.json",
+    //    "kairos": "https://darpa.mil/i2o/kairos.official.namespace.json",
+    
+    //   so that a file can be included instead of needing a globally accessible url
+    //    "localex": "file/relative/path/to/file.json",
+}
+
+// several schemas may be defined here
+"@schemas": [
+    // wait...this is illegal...
+    {
+    // id is a namespaced string
+    "@id": "jonmay:myschema_1",
+    "@super": "jonmay:297u3883", // could also call "parent"
+    // name is a human readable string
+    "name": "a minimal viable schema that is a valid, if vacuous, schema",
+    // steps is a dict cont
+    "steps": {
+        "events": [
+            // an event is a dict with many possible fields but only these *must exist*
+            {
+                "@type": "jonmay:nonsense",
+                "@id": "jonmay:myevent_1",
+            }
+        ]
+        "order": [
+            {
+                // Partial ordering defined here...but it's not MVP!
+                // what is the form of a partial ordering specification?
+            }
+        ]
+    }
+    }
+    ]
+
+// what is the form of a namespace json?
+
+
+
+events: url/to/hierarchy
+
+// or
+
+events:
+
+
+1 -> 13 -> 297u3883
+
+
+a -> b
+a -> c
+
+b -> d
+c -> d
+
+d = a:b:d or a:c:d?
