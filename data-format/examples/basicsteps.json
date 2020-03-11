@@ -15,7 +15,7 @@
     {
     // id is a namespaced string
     "@id": "jonmay:myschema_1",
-    "@super": "jonmay:297u3883", // could also call "parent"
+        "@super": ["jonmay:297u3883",], // could also call "parent"
     // name is a human readable string
     "name": "a minimal viable schema that is a valid, if vacuous, schema",
     // steps is a dict cont
@@ -24,7 +24,8 @@
             // an event is a dict with many possible fields but only these *must exist*
             {
                 "@type": "jonmay:nonsense", // <--this is the same as a schema's "id" if you're using a complex event. if parent with same varname is a mismatched type, a validator should complain
-                "@varname": "myevent_1",  // <--this is for relative ordering, inherited from super perhaps. the local variable. if super has it, this overrides. if not, this is additional.
+                "@varname": "myevent_1",  // <--this is for relative ordering, 
+                "@ref": ["jonnmay:297u3883.myevent_1",], // direct call to event in super. mandatory if actually overriding. otherwise presumed novel. one reference per parent. at most 1:1 mapping. semantics of multiple inheritance is currently not defined, this simply expresses how to represent it.
             }
             {
                 "@type": "jonmay:nonsense",
@@ -34,7 +35,7 @@
         ]
         "order": [
             {
-                "@precedes": ["myevent_1", "myevent_2"]
+                "@precedes": ["myevent_1", "myevent_2"] // order inherits from super; if precedes order conflicts this is a validation error. cycle is a validation error. overlaps should not throw any errors because there is no expression of "does not overlap".
 
                 //  a -> b
                 //  c -> b
