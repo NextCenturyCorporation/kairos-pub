@@ -1,0 +1,102 @@
+
+// A.	1. Went to country Afghanistan 2. Study in mosque AAA 3. Joined group BBB 4. Flew to NYC 5. Bought fertilizers 6. Bought detonators 7. Rented a van 8. Loaded van 9. Parked on 42ne st. 10. Smoke detected 11. Bomb found
+// B.	1. Traveled to Pakistan 2. Studies in mosque CCC 3. Talked to x1, x2, x3 4. Flew home to boston 5. Bought a pressure cooker 6. Bought fertilizer 7. Bought nails 8. Bought a backpack 9. Bought a detonator 10. Put pressure cooker on street during marathon 11. Explosion of pressure cooker
+// C.	1. Religious attacks on Muslims in Mumbai 2. Babri Masjid demolition 3. Group formed by Tiger Memon 4. Purchase fertilizers 5. Purchased suitcases 6. Purchased jeep 7. Bombs explode in various locations in Mumbai in 1993 8. 257 dead 1400 injured 9. Members of Memon family arrested and tried
+// D.	1. Membership in the terrorist group Lashkar-e-Taiba 2. Pakistani citizens 3. Psychological indoctrination to Islam 4. Combat preparation at camp Mansehra 5. Commando training and marine navigation 6. Bombing various sites in Mumbai in 2003 7. 10 years anniversary of the 1993 bombing 8. Multiple arrests
+// E.	1. Spend time training at Al Qaeda center in Afghanistan 2. Wire transfer from an uncle 3. Enter US illegally 4. Possess bomb making instruction 5. Contact Sheikh connected with Rabbi Kahane Murderer 6. Get financing from Sheikh 7. Train in NJ 8. Mail anti-Israel letters to newspapers 9. Rent a van 10. Drive to Manhattan 11. Park at WTC (1993) 12. Bomb explosion killing 6 people 13. Escaped to Pakistan 
+// F.	1. Training in US Army 2. Group angry about Ruby Ridge 3. Visit Ruby Ridge 4. Visit and inspect target 5. Rent a shed 6. Buy or steal bomb material 7. Purchase 9 guns 8. Buy fertilizer 9. Steal guns and cash 10. Plan bomb making 11. Attempt to buy nitromethane 12. Rent a truck under assumed name 13. Reinforce truck bottom 14. Drive to Oklahoma City 15. Bring a getaway car 16. Bomb detonated at 9:00 AM 17. Captured 90 minutes later on license and weapon charges
+
+
+
+
+@namespace: {
+    @name: jonmay
+    // @url if not local...but this is local
+    @namespaces: {
+        @namespace: {
+            @name: wordnet
+            @url: wordnetweb.princeton.edu
+        }
+        @namespace: {
+            @name: kairos
+            @url: kairos.mil
+        }
+    }
+
+    @event: {
+        @name: radicalize
+        @parent: [change,] // not included here
+        @alias: [wordnet:00535449,]
+    }
+    @event: {
+        @name: study
+        @parent: [root,] // ?
+        @alias: [wordnet:00608800,]
+    }
+    @event: {
+        @name: travel
+        @parent: [root,]
+        @alias: [wordnet:01849662,]
+    }
+    @event: {
+        @name: enlist
+        @parent: [sign_up,] // not included here
+        @alias: [wordnet:01099603,]
+    }
+    @entity: {
+        @name: mosque
+        @parent: [place_of_worship,] // not included here
+        @alias: [wordnet: 03793728,]
+    }
+
+}
+
+@schema: {
+    @id: jonmay:radicalize_formal
+    @super: jonmay:radicalize
+    @name:formal education-based radicalization 
+    @steps: {
+        @events: [
+
+            @event: {
+                @type: jonmay:travel
+                @varname: travel
+            }
+            @event: {
+                @type: jonmay:study
+                @loc: jonmay:mosque
+                @varname: study_mosque
+            }
+            @event: {
+                @type: jonmay:enlist
+                @varname: enlist
+            }
+        ]
+        @order: [
+            @precedes: [travel, study_mosque]
+            @precedes: [study_mosque, enlist]
+
+        ]
+
+    }
+}
+
+@schema: {
+    @id: jonmay:radicalize_trauma
+    @super: jonmay:radicalize
+    @name: radicalization through traumatic event
+    @steps: {
+        @events: [
+
+            @event: {
+                ...
+            }
+        ]
+        @order: [
+
+        ]
+
+    }
+
+}
+
