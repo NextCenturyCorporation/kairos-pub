@@ -1,0 +1,99 @@
+{
+  "@context": {
+    "kairos": "https://darpa.mil/i2o/kairos.official.namespace/",
+    "schemas": "kairos:schemas",
+    "super": "kairos:super",
+    "name": "kairos:name",
+    "description": "kairos:description",
+    "version": "kairos:version",
+    "steps": "kairos:steps",
+    "events": "kairos:events",
+    "ref": "kairos:ref",
+    "slots": "kairos:slots",
+    "slotName": "kairos:slotName",
+    "role": "kairos:role",
+    "constraint": "kairos:constraint",
+    "order": "kairos:order",
+    "precedes": "kairos:precedes",
+    "follows": "kairos:follows",
+    "isi": "https://isi.edu/kairos.namespace/",
+    "sbu": "http://www.stonybrook.edu/kairos.namespace/"
+  },
+  "schemas": [
+    {
+      "@id": "isi:myschema_1",
+      "super": [
+        "isi:297u3883",
+        "isi:792u8338"
+      ],
+      "name": "basic",
+      "description": "a basic schema that shows some of the features of the SDF",
+      "version": "1.0",
+      "steps": {
+        "events": [
+          {
+            "@type": "isi:nonsense",
+            "@id": "isi:myevent_1",
+            "ref": [
+              "isi:297u3883.myevent_1",
+              "isi:792u8338.myevent_1"
+            ],
+            "slots": [
+              {
+                "slotName": "sourceLocation",
+                "@id": "sbu/Slots/sourceLocation",
+                "role": "sbu:SuperAgent",
+                "constraint": [
+                  "kairos:fac"
+                ]
+              },
+              {
+                "slotName": "targetLocation",
+                "role": "kairos:Recipient",
+                "constraint": [
+                  "kairos:loc",
+                  "kairos:fac"
+                ]
+              }
+            ]
+          },
+          {
+            "@type": "isi:mystep",
+            "@id": "isi:myevent_2"
+          },
+          {
+            "@type": "isi:mystep",
+            "@id": "isi:myevent_3"
+          }
+        ],
+        "order": [
+          {
+            "precedes": "1",
+            "follows": [
+              "2",
+              "3",
+              "4"
+            ]
+          },
+          {
+            "precedes": [
+              "2",
+              "3"
+            ],
+            "follows": "4"
+          },
+          {
+            "precedes": [
+              "1",
+              "2"
+            ],
+            "follows": [
+              "3",
+              "4"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
