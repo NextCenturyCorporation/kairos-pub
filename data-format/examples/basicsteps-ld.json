@@ -12,7 +12,8 @@
     "slots": "kairos:slots",
     "slotName": "kairos:slotName",
     "role": "kairos:role",
-    "constraint": "kairos:constraint",
+    "constraints": "kairos:constraint",
+    "alias": "kairos:alias",
     "order": "kairos:order",
     "precedes": "kairos:precedes",
     "follows": "kairos:follows",
@@ -43,18 +44,20 @@
                 "slotName": "sourceLocation",
                 "@id": "sbu:Slots/sourceLocation",
                 "role": "sbu:SuperAgent",
-                "constraint": [
-                  "kairos:FAC"
-                ]
+                "constraints": "kairos:FAC"
               },
               {
                 "slotName": "targetLocation",
                 "role": "kairos:Recipient",
-                "constraint": [
+                "constraints": [
                   "kairos:LOC",
                   "kairos:FAC"
                 ]
               }
+            ],
+            "alias": [
+              "kairos:nonsensical",
+              "sbu:sbunonsense"
             ]
           },
           {

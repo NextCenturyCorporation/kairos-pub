@@ -1,28 +1,28 @@
 {
   "@context": {
     "kairos": "https://darpa.mil/i2o/kairos.official.namespace/",
-    "@schemas": "kairos:schemas",
-    "@super": "kairos:super",
-    "@name": "kairos:name",
-    "@description": "kairos:description",
-    "@vers": "kairos:version",
-    "@steps": "kairos:steps",
-    "@events": "kairos:events",
-    "@order": "kairos:order",
-    "isi": "https://isi.edu/kairos.namespace/"
+    "schemas": "kairos:schemas",
+    "super": "kairos:super",
+    "name": "kairos:name",
+    "description": "kairos:description",
+    "version": "kairos:version",
+    "steps": "kairos:steps",
+    "events": "kairos:events",
+    "order": "kairos:order",
+    "performer": "https://performer.edu/kairos.namespace/"
   },
-  "@schemas": [
+  "schemas": [
     {
-      "@id": "isi:myschema_1",
-      "@super": "isi:297u3883",
-      "@name": "mvp",
-      "@description": "a minimal viable schema that is a valid, if vacuous, schema",
-      "@vers": "1.0",
-      "@steps": {
-        "@events": [
+      "id": "performer:myschema_1",
+      "super": "performer:297u3883",
+      "name": "mvp",
+      "description": "a minimal viable schema that is a valid, if vacuous, schema",
+      "version": "1.0",
+      "steps": {
+        "events": [
           {
-            "@type": "isi:mystep",
-            "@id": "isi:myevent_1"
+            "@type": "performer:mystep",
+            "@id": "performer:myevent_1"
           }
         ]
       }
