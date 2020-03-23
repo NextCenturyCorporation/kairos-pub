@@ -8,95 +8,127 @@
 
 
 
-
-@namespace: {
-    @name: jonmay
-    // @url if not local...but this is local
-    @namespaces: {
-        @namespace: {
-            @name: wordnet
-            @url: wordnetweb.princeton.edu
+{
+    "@context": {
+         "kairos": "https://darpa.mil/i2o/kairos.official.namespace/",
+    "schemas": "kairos:schemas",
+    "super": "kairos:super",
+    "name": "kairos:name",
+    "description": "kairos:description",
+    "version": "kairos:version",
+    "steps": "kairos:steps",
+    "events": "kairos:events",
+    "ref": "kairos:ref",
+    "slots": "kairos:slots",
+    "slotName": "kairos:slotName",
+    "role": "kairos:role",
+    "constraint": "kairos:constraint",
+    "order": "kairos:order",
+    "precedes": "kairos:precedes",
+    "follows": "kairos:follows",
+        "isi": "https://isi.edu/kairos.namespace/",
+        "sbu": "http://www.stonybrook.edu/kairos.namespace/",
+        "wordnet": "https://wordnetweb.princeton.edu/kairos.namespace/",
+    },
+    "events": [
+        // TODO: map these into proper ld language
+    //     {
+    // @event: {
+    //     @name: radicalize
+    //     @parent: [change,] // not included here
+    //     @alias: [wordnet:00535449,]
+    // }
+    // @event: {
+    //     @name: study
+    //     @parent: [root,] // ?
+    //     @alias: [wordnet:00608800,]
+    // }
+    // @event: {
+    //     @name: travel
+    //     @parent: [root,]
+    //     @alias: [wordnet:01849662,]
+    // }
+    // @event: {
+    //     @name: enlist
+    //     @parent: [sign_up,] // not included here
+    //     @alias: [wordnet:01099603,]
+    // }
+    // @entity: {
+    //     @name: mosque
+    //     @parent: [place_of_worship,] // not included here
+    //     @alias: [wordnet: 03793728,]
+    // }
+    ],
+    "schemas": [
+        {
+            "@id": "isi:radicalize_formal", // I don't understand when things get @ and when they don't...does anything need an @?
+            "super": [
+                "isi:radicalize",
+            ]
+            "name": "whydoweneedthis", // the id defines what this event is, name doesn't seem necessary
+            "description": "formal education-based radicalization",
+            "version": "1.0",
+            "steps": {
+                "events": [ // why is this extra level added? what else would go under steps? should be two objects: "steps" and "order." You can rename "steps" as "events" but why nest?
+                    {
+                        "@type": "isi:travel", // why do we need this? all events other than the event this schema defines are defined elsewhere; ref should handle this.
+                        "@id": "isi:travel_1", //
+                        "ref": [
+                            "isi:travel",
+                        ]
+                    }
+                    {
+                        "@type": "isi:study", // why do we need this? see ref
+                        "ref": [ "isi:study", ],
+                        "slots": [
+                            {
+                                "slotName": "location",
+                                "@id": "notsurewhatthisis", // is this like ref? why not call it ref?
+                                "role": "kairos:patient", // are these all program level? could they be merged with @id and called ref?
+                                "constraint": [
+                                    "isi:mosque", // if a gold constraint is, e.g. kairos:FAC, and isi:mosque is a kairos:FAC, is this correct, incorrect, partially correct?
+                                ]
+                            }
+                        ]
+                        "@id": "isi:study_mosque",
+                    }
+                    {
+                        "@type": "isi:enlist", // why do we need this? see ref
+                        "ref": ["isi:enlist",],
+                        "@id": "isi:enlist_1",
+                    }
+                ],
+                "@order": [
+                    {
+                        "precedes": "1", // I strongly dislike this. It should be "precedes": "isi:travel_1"
+                        "follows": "2" // I strongly dislike this. It should be "follows": "isi:study_mosque"
+                    }
+                    {
+                        "precedes": "2", // I strongly dislike this. It should be "precedes": "isi:study_mosque"
+                        "follows": "3"   // I strongly dislike this. It should be "follows": "isi:enlist_1"
+                    }
+                ]
+            }
         }
-        @namespace: {
-            @name: kairos
-            @url: kairos.mil
+        {
+            "@id": "isi:radicalize_trauma",
+            "super": [
+                "isi:radicalize",
+            ]
+            "name": "whydoweneedthis", // the id defines what this event is, name doesn't seem necessary
+            "description": "radicalization through traumatic event",
+            "version": "1.0",
+            "steps": {
+                "events": [ // why is this extra level added? what else would go under steps? should be two objects: "steps" and "order." You can rename "steps" as "events" but why nest?
+                    { ...
+                    }
+                ]
+                "order": [
+                    { ...
+                    }
+                ]
+            }
         }
-    }
-
-    @event: {
-        @name: radicalize
-        @parent: [change,] // not included here
-        @alias: [wordnet:00535449,]
-    }
-    @event: {
-        @name: study
-        @parent: [root,] // ?
-        @alias: [wordnet:00608800,]
-    }
-    @event: {
-        @name: travel
-        @parent: [root,]
-        @alias: [wordnet:01849662,]
-    }
-    @event: {
-        @name: enlist
-        @parent: [sign_up,] // not included here
-        @alias: [wordnet:01099603,]
-    }
-    @entity: {
-        @name: mosque
-        @parent: [place_of_worship,] // not included here
-        @alias: [wordnet: 03793728,]
-    }
-
-}
-
-@schema: {
-    @id: jonmay:radicalize_formal
-    @super: jonmay:radicalize
-    @name:formal education-based radicalization 
-    @steps: {
-        @events: [
-
-            @event: {
-                @type: jonmay:travel
-                @varname: travel
-            }
-            @event: {
-                @type: jonmay:study
-                @loc: jonmay:mosque
-                @varname: study_mosque
-            }
-            @event: {
-                @type: jonmay:enlist
-                @varname: enlist
-            }
-        ]
-        @order: [
-            @precedes: [travel, study_mosque]
-            @precedes: [study_mosque, enlist]
-
-        ]
-
-    }
-}
-
-@schema: {
-    @id: jonmay:radicalize_trauma
-    @super: jonmay:radicalize
-    @name: radicalization through traumatic event
-    @steps: {
-        @events: [
-
-            @event: {
-                ...
-            }
-        ]
-        @order: [
-
-        ]
-
-    }
-
+    ] // schemas
 }
 
