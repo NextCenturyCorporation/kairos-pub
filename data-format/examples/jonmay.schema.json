@@ -86,7 +86,7 @@
                                 "@id": "notsurewhatthisis", // is this like ref? why not call it ref?
                                 "role": "kairos:patient", // are these all program level? could they be merged with @id and called ref?
                                 "constraint": [
-                                    "isi:mosque",
+                                    "isi:mosque", // if a gold constraint is, e.g. kairos:FAC, and isi:mosque is a kairos:FAC, is this correct, incorrect, partially correct?
                                 ]
                             }
                         ]
