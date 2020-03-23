@@ -41,18 +41,18 @@
             "slots": [
               {
                 "slotName": "sourceLocation",
-                "@id": "sbu/Slots/sourceLocation",
+                "@id": "sbu:Slots/sourceLocation",
                 "role": "sbu:SuperAgent",
                 "constraint": [
-                  "kairos:fac"
+                  "kairos:FAC"
                 ]
               },
               {
                 "slotName": "targetLocation",
                 "role": "kairos:Recipient",
                 "constraint": [
-                  "kairos:loc",
-                  "kairos:fac"
+                  "kairos:LOC",
+                  "kairos:FAC"
                 ]
               }
             ]
