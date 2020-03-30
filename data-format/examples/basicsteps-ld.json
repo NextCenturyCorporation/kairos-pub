@@ -7,7 +7,6 @@
     "description": "kairos:description",
     "version": "kairos:version",
     "steps": "kairos:steps",
-    "events": "kairos:events",
     "ref": "kairos:ref",
     "slots": "kairos:slots",
     "slotName": "kairos:slotName",
@@ -15,8 +14,13 @@
     "constraints": "kairos:constraint",
     "alias": "kairos:alias",
     "order": "kairos:order",
-    "precedes": "kairos:precedes",
-    "follows": "kairos:follows",
+    "before": "kairos:before",
+    "after": "kairos:after",
+    "container": "kairos:container",
+    "contained": "kairos:contained",
+    "overlaps": "kairos:overlaps",
+    "flags": "kairos:flags",
+    "wordnet": "https://wordnetweb.princeton.edu/",
     "isi": "https://isi.edu/kairos.namespace/",
     "sbu": "http://www.stonybrook.edu/kairos.namespace/"
   },
@@ -30,73 +34,89 @@
       "name": "basic",
       "description": "a basic schema that shows some of the features of the SDF",
       "version": "1.0",
-      "steps": {
-        "events": [
-          {
-            "@type": "isi:nonsense",
-            "@id": "isi:myevent_1",
-            "ref": [
-              "isi:297u3883.myevent_1",
-              "isi:792u8338.myevent_1"
-            ],
-            "slots": [
-              {
-                "slotName": "sourceLocation",
-                "@id": "sbu:Slots/sourceLocation",
-                "role": "sbu:SuperAgent",
-                "constraints": "kairos:FAC"
-              },
-              {
-                "slotName": "targetLocation",
-                "role": "kairos:Recipient",
-                "constraints": [
-                  "kairos:LOC",
-                  "kairos:FAC"
-                ]
-              }
-            ],
-            "alias": [
-              "kairos:nonsensical",
-              "sbu:sbunonsense"
-            ]
-          },
-          {
-            "@type": "isi:mystep",
-            "@id": "isi:myevent_2"
-          },
-          {
-            "@type": "isi:mystep",
-            "@id": "isi:myevent_3"
-          }
-        ],
-        "order": [
-          {
-            "precedes": "1",
-            "follows": [
-              "2",
-              "3",
-              "4"
-            ]
-          },
-          {
-            "precedes": [
-              "2",
-              "3"
-            ],
-            "follows": "4"
-          },
-          {
-            "precedes": [
-              "1",
-              "2"
-            ],
-            "follows": [
-              "3",
-              "4"
-            ]
-          }
-        ]
-      }
+      "steps": [
+        {
+          "@type": "isi:nonsense",
+          "@id": "isi:myevent_1",
+          "ref": [
+            "isi:297u3883.myevent_1",
+            "isi:792u8338.myevent_1"
+          ],
+          "slots": [
+            {
+              "slotName": "sourceLocation",
+              "@id": "sbu:Slots/sourceLocation",
+              "role": "sbu:SuperAgent",
+              "constraints": "kairos:FAC"
+            },
+            {
+              "slotName": "targetLocation",
+              "role": "kairos:Recipient",
+              "constraints": [
+                "kairos:LOC",
+                "kairos:FAC"
+              ]
+            }
+          ],
+          "alias": [
+            "kairos:nonsensical",
+            "sbu:sbunonsense",
+            "wordnet:00608800"
+          ]
+        },
+        {
+          "@type": "isi:mystep",
+          "@id": "isi:myevent_2"
+        },
+        {
+          "@type": "isi:mystep",
+          "@id": "isi:myevent_3"
+        },
+        {
+          "@type": "isi:mystep",
+          "@id": "isi:myevent_4"
+        },
+        {
+          "@type": "isi:mystep",
+          "@id": "isi:myevent_5"
+        },
+        {
+          "@type": "isi:mystep",
+          "@id": "isi:myevent_6"
+        }
+      ],
+      "order": [
+        {
+          "before": [
+            "isi:myevent_1",
+            "isi:myevent_2"
+          ],
+          "after": [
+            "isi:myevent_3",
+            "isi:myevent_4"
+          ]
+        },
+        {
+          "overlaps": [
+            "isi:myevent_5",
+            "isi:myevent_6"
+          ]
+        },
+        {
+          "container": "isi:myevent_2",
+          "contained": [
+            "isi:myevent_3",
+            "isi:myevent_4"
+          ],
+          "flags": [
+            "optional",
+            "causes",
+            "precondition",
+            "simultaneous",
+            "subevent"
+          ]
+        }
+      ]
     }
   ]
 }
