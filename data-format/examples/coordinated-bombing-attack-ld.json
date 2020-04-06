@@ -1,0 +1,470 @@
+{
+  "@context": {
+    "kairos": "https://darpa.mil/i2o/kairos.official.namespace/",
+    "schemas": "kairos:schemas",
+    "super": "kairos:super",
+    "name": "kairos:name",
+    "description": "kairos:description",
+    "version": "kairos:version",
+    "steps": "kairos:steps",
+    "ref": "kairos:ref",
+    "slots": "kairos:slots",
+    "slotName": "kairos:slotName",
+    "role": "kairos:role",
+    "constraints": "kairos:constraint",
+    "alias": "kairos:alias",
+    "order": "kairos:order",
+    "before": "kairos:before",
+    "after": "kairos:after",
+    "container": "kairos:container",
+    "contained": "kairos:contained",
+    "overlaps": "kairos:overlaps",
+    "flags": "kairos:flags",
+    "wordnet": "https://wordnetweb.princeton.edu/",
+    "schema": "https://schema.org/",
+    "caci": "https://caci.com/kairos/",
+    "comments": "caci:comments",
+    "sbu": "http://www.stonybrook.edu/kairos.namespace/"
+  },
+  "schemas": [
+    {
+      "@id": "caci:CoordinatedBombingAttack",
+      "comments": [
+        "Scenario E:",
+        "1. Spend time training at Al Qaeda center in Afghanistan",
+        "2. Wire transfer from an uncle",
+        "3. Enter US illegally",
+        "4. Possess bomb making instruction",
+        "5. Contact Sheikh connected with Rabbi Kahane Murderer",
+        "6. Get financing from Sheikh",
+        "7. Train in NJ",
+        "8. Mail anti-Israel letters to newspapers",
+        "9. Rent a van",
+        "10. Drive to Manhattan",
+        "11. Park at WTC (1993)",
+        "12. Bomb explosion killing 6 people",
+        "13. Escaped to Pakistan",
+        "",
+        "caci:CoordinatedActions is a complex event that composes several Contact/Communication events from the KAIROS ontology.",
+        "caci:BombingAttack subclasses the KAIROS Conflict:Attack event primitive.",
+        "The original thought was to have caci:CoordinatedBombingAttack subclass both of the above, but I don't think that's what's happening here at the moment."
+      ],
+      "super": [
+        "caci:CoordinatedActions",
+        "caci:BombingAttack"
+      ],
+      "name": "Coordinated Bombing Attack",
+      "description": "A coordinated effort by mulitple parties that results in a bombing attack",
+      "version": "1.0",
+      "steps": [
+        {
+          "@id": "caci:CoordinatedBombingAttack/Steps/training_1",
+          "comment": [
+            "\"Spend time training at Al Qaeda center in Afghanistan\"",
+            "Do we need cardinality to specify 1+ training events?"
+          ],
+          "@type": "caci:Training",
+          "slots": [
+            {
+              "slotName": "trainer",
+              "@id": "caci:CoordinatedBombingAttack/Slots/training_1/trainer",
+              "role": "caci:Training/Roles/Trainer",
+              "constraints": [
+                "kairos:LOC",
+                "kairos:ORG"
+              ]
+            },
+            {
+              "slotName": "trainee",
+              "@id": "caci:CoordinatedBombingAttack/Slots/training_1/trainee",
+              "role": "caci:Training/Roles/Trainee",
+              "constraints": [
+                "kairos:LOC",
+                "kairos:ORG"
+              ]
+            },
+            {
+              "slotName": "location",
+              "@id": "caci:CoordinatedBombingAttack/Slots/training_1/location",
+              "role": "caci:Training/Roles/Location",
+              "constraints": [
+                "kairos:LOC",
+                "kairos:FAC",
+                "kairos:GPE"
+              ]
+            },
+            {
+              "slotName": "subject_matter",
+              "@id": "caci:CoordinatedBombingAttack/Slots/training_1/subject_matter",
+              "role": "caci:Training/Roles/SubjectMatter"
+            }
+          ],
+          "alias": [
+            "sbu:training",
+            "wordnet:perl/webwn?s=training"
+          ]
+        },
+        {
+          "@id": "caci:CoordinatedBombingAttack/Steps/wire_transfer",
+          "@type": "caci:Transaction/WireTransfer",
+          "comment": [
+            "\"Wire transfer from an uncle\"",
+            "subclasses kairos:Transaction.Exchange (or AIDA's Transaction.TransferMoney)"
+          ],
+          "slots": [
+            {
+              "slotName": "sender",
+              "@id": "caci:CoordinatedBombingAttack/Slots/wire_transfer/sender",
+              "role": "caci:Transaction/WireTransfer/Roles/Sender",
+              "constraints": [
+                "kairos:PER",
+                "kairos:ORG",
+                "kairos:GPE"
+              ],
+              "ref": "kairos:Transaction.Exchange/Roles/GiverOrGranterOrSource"
+            },
+            {
+              "slotName": "recipient",
+              "@id": "caci:CoordinatedBombingAttack/Slots/wire_transfer/recipient",
+              "role": "caci:Transaction/WireTransfer/Roles/Recipient",
+              "constraints": [
+                "kairos:PER",
+                "kairos:ORG",
+                "kairos:GPE"
+              ],
+              "ref": "kairos:Transaction.Exchange/Roles/GiverOrGranterOrSource"
+            },
+            {
+              "slotName": "amount",
+              "@id": "caci:CoordinatedBombingAttack/Slots/wire_transfer/amount",
+              "role": "caci:Transaction/WireTransfer/Roles/Amount",
+              "constraints": [
+                "kairos:MON"
+              ],
+              "ref": "kairos:Transaction.Exchange/Roles/ProvidedMoney"
+            }
+          ],
+          "alias": [
+            "schema:MoneyTransfer"
+          ]
+        },
+        {
+          "@id": "caci:CoordinatedBombingAttack/Steps/move_illegally",
+          "@type": "kairos:Movement.TransportationIllegal",
+          "comment": [
+            "\"Enter US illegally\"",
+            "Using a kairos event primitive directly"
+          ],
+          "slots": [
+            {
+              "slotName": "sourcePlace",
+              "@id": "caci:CoordinatedBombingAttack/Slots/move_illegally/sourcePlace",
+              "role": "kairos:Movement.TransportationIllegal/Roles/sourcePlace",
+              "constraints": [
+                "kairos:LOC",
+                "kairos:FAC",
+                "kairos:GPE"
+              ]
+            },
+            {
+              "slotName": "destinationPlace",
+              "@id": "kairos:Movement.TransportationIllegal/Slots/move_illegally/destinationPlace",
+              "role": "kairos:Movement.TransportationIllegal/Roles/destinationPlace",
+              "constraints": [
+                "kairos:LOC",
+                "kairos:FAC",
+                "kairos:GPE"
+              ]
+            },
+            {
+              "slotName": "thingsMoved",
+              "@id": "kairos:Movement.TransportationIllegal/Slots/move_illegally/thingsMoved",
+              "role": "kairos:Movement.TransportationIllegal/Roles/thingsMoved",
+              "constraints": [
+                "kairos:PER"
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "caci:CoordinatedBombingAttack/Steps/get_bombmaking_howto",
+          "@type": "kairos:Transaction.Exchange",
+          "comment": [
+            "\"Possess bomb making instruction\"",
+            "Seems a little specific to be in the schema, esp. considering the training events, but basically it's an exchange of an object (the bomb-making instructions)"
+          ],
+          "slots": [
+            {
+              "slotName": "acquiredEntity",
+              "@id": "caci:CoordinatedBombingAttack/Slots/get_bombmaking_howto/AcquiredEntity",
+              "role": "kairos:Transaction.Exchange/Roles/AcquiredEntity",
+              "constraints": [
+                "kairos:COM"
+              ],
+              "comment": "Don't need a ref here (unlike wire_transfer) because we're using a primitive directly"
+            }
+          ]
+        },
+        {
+          "@id": "caci:CoordinatedBombingAttack/Steps/make_contact",
+          "@type": "kairos:Contact.Contact",
+          "comment": [
+            "\"Contact Sheikh connected with Rabbi Kahane Murderer\"",
+            "Since we're not saying anything in particular here other than that Contact.Contact happens, do we need to list slots?",
+            "Also, it seems like you'd need to be able to specify there can be any number of Contact events"
+          ],
+          "alias": [
+            "wordnet:perl/webwn?s=contact"
+          ]
+        },
+        {
+          "@id": "caci:CoordinatedBombingAttack/Steps/obtain_financing",
+          "@type": "kairos:Transaction.Exchange",
+          "comment": [
+            "\"Get financing from Sheikh\"",
+            "TODO: Another kairos:Transaction.Exchange event with ProvidedMoney slot role"
+          ]
+        },
+        {
+          "@id": "caci:CoordinatedBombingAttack/Steps/training_2",
+          "comment": "\"Train in NJ\"",
+          "@type": "caci:Training",
+          "slots": [
+            {
+              "slotName": "trainer",
+              "@id": "caci:CoordinatedBombingAttack/Slots/training_2/trainer",
+              "role": "caci:Training/Roles/Trainer",
+              "constraints": [
+                "kairos:LOC",
+                "kairos:ORG"
+              ]
+            },
+            {
+              "slotName": "trainee",
+              "@id": "caci:CoordinatedBombingAttack/Slots/training_2/trainee",
+              "role": "caci:Training/Roles/Trainee",
+              "constraints": [
+                "kairos:LOC",
+                "kairos:ORG"
+              ]
+            },
+            {
+              "slotName": "location",
+              "@id": "caci:CoordinatedBombingAttack/Slots/training_2/location",
+              "role": "caci:Training/Roles/Location",
+              "constraints": [
+                "kairos:LOC",
+                "kairos:FAC",
+                "kairos:GPE"
+              ]
+            },
+            {
+              "slotName": "subject_matter",
+              "@id": "caci:CoordinatedBombingAttack/Slots/training_1/subject_matter",
+              "role": "caci:Training/Roles/SubjectMatter",
+              "constraints": [
+                "kairos:LOC",
+                "kairos:GPE"
+              ]
+            }
+          ],
+          "alias": [
+            "sbu:training",
+            "wordnet:perl/webwn?s=training"
+          ]
+        },
+        {
+          "@id": "caci:CoordinatedBombingAttack/Steps/media_propaganda",
+          "comment": [
+            "\"Mail anti-Israel letters to newspapers\"",
+            "caci:Propaganda subclasses Contact.Broadcast"
+          ],
+          "@type": "caci:Propaganda",
+          "slots": [
+            {
+              "slotName": "sender",
+              "@id": "caci:CoordinatedBombingAttack/Slots/media_propaganda/sender",
+              "role": "caci:Propaganda/Roles/Sender",
+              "constraints": [
+                "kairos:PER",
+                "kairos:ORG",
+                "kairos:GPE",
+                "kairos:SID"
+              ],
+              "ref": "kairos:Contact.Broadcast/Roles/Participant"
+            },
+            {
+              "slotName": "outlet",
+              "@id": "caci:CoordinatedBombingAttack/Slots/media_propaganda/outlet",
+              "role": "caci:Propaganda/Roles/Outlet",
+              "constraints": [
+                "kairos:LOC",
+                "kairos:FAC"
+              ]
+            },
+            {
+              "slotName": "subject_matter",
+              "@id": "caci:CoordinatedBombingAttack/Slots/media_propaganda/subject_matter",
+              "role": "caci:Propaganda/Roles/SubjectMatter"
+            }
+          ],
+          "alias": [
+            "sbu:propaganda",
+            "wordnet:perl/webwn?s=propaganda"
+          ]
+        },
+        {
+          "@id": "caci:CoordinatedBombingAttack/Steps/obtain_transportation",
+          "@type": "kairos:Transaction.Exchange",
+          "comment": [
+            "\"Rent a van\"",
+            "TODO: Another kairos:Transaction.Exchange event with ProvidedEntity slot role"
+          ]
+        },
+        {
+          "@id": "caci:CoordinatedBombingAttack/Steps/move_to_general_attack_location",
+          "@type": "kairos:Movement.TransportationLegal",
+          "comment": "\"Drive to Manhattan\"",
+          "slots": [
+            {
+              "slotName": "attackLocation",
+              "@id": "kairos:Movement.TransportationLegal/Slots/move_to_general_attack_location/attackLocation",
+              "role": "kairos:Movement.TransportationLegal/Roles/destinationPlace",
+              "constraints": [
+                "kairos:LOC",
+                "kairos:FAC",
+                "kairos:GPE"
+              ]
+            },
+            {
+              "slotName": "attacker",
+              "@id": "kairos:Movement.TransportationIllegal/Slots/move_to_general_attack_location/attacker",
+              "role": "kairos:Movement.TransportationIllegal/Roles/thingsMoved",
+              "constraints": [
+                "kairos:PER",
+                "kairos:ORG"
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "caci:CoordinatedBombingAttack/Steps/move_to_specific_attack_location",
+          "@type": "kairos:Movement.TransportationLegal",
+          "comment": "\"Park at WTC (1993)\"",
+          "slots": [
+            {
+              "slotName": "attackLocation",
+              "@id": "kairos:Movement.TransportationLegal/Slots/move_to_specific_attack_location/attackLocation",
+              "role": "kairos:Movement.TransportationLegal/Roles/destinationPlace",
+              "constraints": [
+                "kairos:LOC",
+                "kairos:FAC",
+                "kairos:GPE"
+              ]
+            },
+            {
+              "slotName": "attacker",
+              "@id": "kairos:Movement.TransportationIllegal/Slots/move_to_specific_attack_location/attacker",
+              "role": "kairos:Movement.TransportationIllegal/Roles/thingsMoved",
+              "constraints": [
+                "kairos:PER",
+                "kairos:ORG"
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "caci:CoordinatedBombingAttack/Steps/bombing",
+          "@type": "caci:BombingAttack",
+          "comment": [
+            "\"Bomb explosion killing 6 people\"",
+            "I'm not sure it's valid to have a step in a schema be one of its parents..."
+          ]
+        },
+        {
+          "@id": "caci:CoordinatedBombingAttack/Steps/escape",
+          "@type": "kairos:Movement.TransportationIllegal",
+          "comment": [
+            "\"Escaped to Pakistan\"",
+            "An illegal border crossing where you're fleeing the law.  We could have created caci:Flee that subclasses Movement.TransportationIllegal and specifies the event from which you're fleeing."
+          ],
+          "slots": [
+            {
+              "slotName": "sourcePlace",
+              "@id": "caci:CoordinatedBombingAttack/Slots/escape/sourcePlace",
+              "role": "kairos:Movement.TransportationIllegal/Roles/sourcePlace",
+              "constraints": [
+                "kairos:LOC",
+                "kairos:FAC"
+              ]
+            },
+            {
+              "slotName": "destinationPlace",
+              "@id": "kairos:Movement.TransportationIllegal/Slots/escape/destinationPlace",
+              "role": "kairos:Movement.TransportationIllegal/Roles/destinationPlace",
+              "constraints": [
+                "kairos:LOC",
+                "kairos:FAC",
+                "kairos:GPE"
+              ]
+            },
+            {
+              "slotName": "thingsMoved",
+              "@id": "kairos:Movement.TransportationIllegal/Slots/escape/thingsMoved",
+              "role": "kairos:Movement.TransportationIllegal/Roles/thingsMoved",
+              "comment": "Arguably, caci:Flee could specify constraints of PER, ORG",
+              "constraints": [
+                "kairos:PER"
+              ]
+            }
+          ]
+        }
+      ],
+      "order": [
+        {
+          "before": "caci:CoordinatedBombingAttack/Steps/training_1",
+          "after": "caci:CoordinatedBombingAttack/Steps/training_2",
+          "flags": "precondition"
+        },
+        {
+          "before": "caci:CoordinatedBombingAttack/Steps/move_to_general_attack_location",
+          "after": "caci:CoordinatedBombingAttack/Steps/move_to_specific_attack_location",
+          "flags": "precondition"
+        },
+        {
+          "before": "caci:CoordinatedBombingAttack/Steps/bombing",
+          "after": "caci:CoordinatedBombingAttack/Steps/escape",
+          "flags": "precondition"
+        },
+        {
+          "before": [
+            "caci:CoordinatedBombingAttack/Steps/training_1",
+            "caci:CoordinatedBombingAttack/Steps/obtain_financing",
+            "caci:CoordinatedBombingAttack/Steps/make_contact",
+            "caci:CoordinatedBombingAttack/Steps/move_to_general_attack_location",
+            "caci:CoordinatedBombingAttack/Steps/move_to_specific_attack_location"
+          ],
+          "after": "caci:CoordinatedBombingAttack/Steps/bombing",
+          "flags": "precondition"
+        },
+        {
+          "before": [
+            "caci:CoordinatedBombingAttack/Steps/training_1",
+            "caci:CoordinatedBombingAttack/Steps/wire_transfer",
+            "caci:CoordinatedBombingAttack/Steps/move_illegally",
+            "caci:CoordinatedBombingAttack/Steps/get_bombmaking_howto",
+            "caci:CoordinatedBombingAttack/Steps/make_contact",
+            "caci:CoordinatedBombingAttack/Steps/obtain_financing",
+            "caci:CoordinatedBombingAttack/Steps/training_2",
+            "caci:CoordinatedBombingAttack/Steps/media_propaganda",
+            "caci:CoordinatedBombingAttack/Steps/obtain_transportation",
+            "caci:CoordinatedBombingAttack/Steps/move_to_general_attack_location",
+            "caci:CoordinatedBombingAttack/Steps/move_to_specific_attack_location"
+          ],
+          "after": "caci:CoordinatedBombingAttack/Steps/bombing",
+          "flags": "precondition"
+        }
+      ]
+    }
+  ]
+}
