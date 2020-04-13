@@ -288,15 +288,15 @@
             ],
             "order": [
 
-                {"before": "isi:radicalize_formal_in_afghanistan.go_to_afghanistan",      }{"after": "isi:radicalize_formal_in_afghanistan.join_group",      },      
-                {"before": "isi:radicalize_formal_in_afghanistan.join_group",             }{"after": "isi:radicalize_formal_in_afghanistan.travel_to_target",},  
-                {"before": "isi:radicalize_formal_in_afghanistan.travel_to_target",       }{"after": "isi:radicalize_formal_in_afghanistan.buy_fertilizer",  }, 
-                {"before": "isi:radicalize_formal_in_afghanistan.buy_fertilizer",         }{"after": "isi:radicalize_formal_in_afghanistan.buy_detonators",  }, 
-                {"before": "isi:radicalize_formal_in_afghanistan.buy_detonators",         }{"after": "isi:radicalize_formal_in_afghanistan.rent_van",        }, 
-                {"before": "isi:radicalize_formal_in_afghanistan.rent_van",               }{"after": "isi:radicalize_formal_in_afghanistan.load_van",        }, 
-                {"before": "isi:radicalize_formal_in_afghanistan.load_van",               }{"after": "isi:radicalize_formal_in_afghanistan.parkvan",         }, 
-                {"before": "isi:radicalize_formal_in_afghanistan.parkvan",                }{"after": "isi:radicalize_formal_in_afghanistan.detect_smoke",    }, 
-                {"before": "isi:radicalize_formal_in_afghanistan.detect_smoke",           }{"after": "isi:radicalize_formal_in_afghanistan.find_bomb",       }, 
+                {"before": "isi:radicalize_formal_in_afghanistan.go_to_afghanistan",      "after": "isi:radicalize_formal_in_afghanistan.join_group",      },      
+                {"before": "isi:radicalize_formal_in_afghanistan.join_group",             "after": "isi:radicalize_formal_in_afghanistan.travel_to_target",},  
+                {"before": "isi:radicalize_formal_in_afghanistan.travel_to_target",       "after": "isi:radicalize_formal_in_afghanistan.buy_fertilizer",  }, 
+                {"before": "isi:radicalize_formal_in_afghanistan.buy_fertilizer",         "after": "isi:radicalize_formal_in_afghanistan.buy_detonators",  }, 
+                {"before": "isi:radicalize_formal_in_afghanistan.buy_detonators",         "after": "isi:radicalize_formal_in_afghanistan.rent_van",        }, 
+                {"before": "isi:radicalize_formal_in_afghanistan.rent_van",               "after": "isi:radicalize_formal_in_afghanistan.load_van",        }, 
+                {"before": "isi:radicalize_formal_in_afghanistan.load_van",               "after": "isi:radicalize_formal_in_afghanistan.parkvan",         }, 
+                {"before": "isi:radicalize_formal_in_afghanistan.parkvan",                "after": "isi:radicalize_formal_in_afghanistan.detect_smoke",    }, 
+                {"before": "isi:radicalize_formal_in_afghanistan.detect_smoke",           "after": "isi:radicalize_formal_in_afghanistan.find_bomb",       }, 
 
             ]
         },

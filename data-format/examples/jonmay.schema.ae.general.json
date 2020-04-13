@@ -1,0 +1,49 @@
+// generalizes jonmay.schema.a (scenario A) and coordinated-bombing-attack-ld (scenario E)
+
+//  A.	1. Went to country Afghanistan 2. Study in mosque AAA 3. Joined group BBB 4. Flew to NYC 5. Bought fertilizers 6. Bought detonators 7. Rented a van 8. Loaded van 9. Parked on 42ne st. 10. Smoke detected 11. Bomb found
+
+// E:, 1. Spend time training at Al Qaeda center in Afghanistan, 2. Wire transfer from an uncle, 3. Enter US illegally, 4. Possess bomb making instruction, 5. Contact Sheikh connected with Rabbi Kahane Murderer, 6. Get financing from Sheikh, 7. Train in NJ, 8. Mail anti-Israel letters to newspapers, 9. Rent a van, 10. Drive to Manhattan, 11. Park at WTC (1993), 12. Bomb explosion killing 6 people, 13. Escaped to Pakistan
+
+{
+    "@context": {
+    // preliminary
+    },
+    "schemas": [
+        {
+
+            "description": "inspiration, collection, execution, detection"
+            "steps": [
+                {
+                    "@id": "isi:exposure_to_ideas",
+                    // A: 1/2/3
+                    // E: 1/7
+                }
+                {
+                    "@id": "isi:collection_of_material",
+                    // A: 5/6/7/8
+                    // E: 2/4/9
+                }
+                {
+                    "@id": "isi:get_bomb_to_site",
+                    // A: 4/9
+                    // E: 3/10/11
+                }
+                {
+                    "@id": "isi:detection_of_bomb",
+                    // A: 10/11
+                    // E: 12
+                }
+            ]
+            "order":[
+
+                {"before": "isi:exposure_to_ideas", 
+                 "after": {"isi:collection_of_material", "isi:get_bomb_to_site"  }},
+                {"before": {"isi:collection_of_material", "isi:get_bomb_to_site"},
+                 "after": "isi:detection_of_bomb"}
+            ]
+
+        }
+    ]
+}
+
+    
