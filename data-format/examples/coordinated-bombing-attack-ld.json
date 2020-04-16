@@ -4,6 +4,7 @@
     "schemas": "kairos:schemas",
     "super": "kairos:super",
     "name": "kairos:name",
+    "comment": "kairos:comment",
     "description": "kairos:description",
     "version": "kairos:version",
     "steps": "kairos:steps",
@@ -23,13 +24,12 @@
     "wordnet": "https://wordnetweb.princeton.edu/",
     "schema": "https://schema.org/",
     "caci": "https://caci.com/kairos/",
-    "comments": "caci:comments",
     "sbu": "http://www.stonybrook.edu/kairos.namespace/"
   },
   "schemas": [
     {
       "@id": "caci:CoordinatedBombingAttack",
-      "comments": [
+      "comment": [
         "Scenario E:",
         "1. Spend time training at Al Qaeda center in Afghanistan",
         "2. Wire transfer from an uncle",
@@ -45,8 +45,8 @@
         "12. Bomb explosion killing 6 people",
         "13. Escaped to Pakistan",
         "",
-        "caci:CoordinatedActions is a complex event that composes several Contact/Communication events from the KAIROS ontology.",
         "caci:BombingAttack subclasses the KAIROS Conflict:Attack event primitive.",
+        "caci:CoordinatedActions is a complex event that is a path-connected subgraph with 2 or more Contact/Communication events from the KAIROS ontology.",
         "The original thought was to have caci:CoordinatedBombingAttack subclass both of the above, but I don't think that's what's happening here at the moment."
       ],
       "super": [
@@ -69,10 +69,7 @@
               "slotName": "trainer",
               "@id": "caci:CoordinatedBombingAttack/Slots/training_1/trainer",
               "role": "caci:Training/Roles/Trainer",
-              "constraints": [
-                "kairos:LOC",
-                "kairos:ORG"
-              ]
+              "constraints": "https://www.wikidata.org/wiki/Q34490"
             },
             {
               "slotName": "trainee",
@@ -449,20 +446,14 @@
         },
         {
           "before": [
-            "caci:CoordinatedBombingAttack/Steps/training_1",
             "caci:CoordinatedBombingAttack/Steps/wire_transfer",
             "caci:CoordinatedBombingAttack/Steps/move_illegally",
             "caci:CoordinatedBombingAttack/Steps/get_bombmaking_howto",
-            "caci:CoordinatedBombingAttack/Steps/make_contact",
-            "caci:CoordinatedBombingAttack/Steps/obtain_financing",
             "caci:CoordinatedBombingAttack/Steps/training_2",
             "caci:CoordinatedBombingAttack/Steps/media_propaganda",
-            "caci:CoordinatedBombingAttack/Steps/obtain_transportation",
-            "caci:CoordinatedBombingAttack/Steps/move_to_general_attack_location",
-            "caci:CoordinatedBombingAttack/Steps/move_to_specific_attack_location"
+            "caci:CoordinatedBombingAttack/Steps/obtain_transportation"
           ],
-          "after": "caci:CoordinatedBombingAttack/Steps/bombing",
-          "flags": "precondition"
+          "after": "caci:CoordinatedBombingAttack/Steps/bombing"
         }
       ]
     }

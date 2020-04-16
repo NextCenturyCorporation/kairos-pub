@@ -1,0 +1,275 @@
+{
+  "@context": {
+    "kairos": "https://darpa.mil/i2o/kairos.official.namespace/",
+    "schemas": "kairos:schemas",
+    "super": "kairos:super",
+    "name": "kairos:name",
+    "comment": "kairos:comment",
+    "description": "kairos:description",
+    "version": "kairos:version",
+    "steps": "kairos:steps",
+    "ref": "kairos:ref",
+    "slots": "kairos:slots",
+    "slotName": "kairos:slotName",
+    "role": "kairos:role",
+    "constraints": "kairos:constraint",
+    "location": "kairos:location",
+    "alias": "kairos:alias",
+    "subevents": "kairos:subevents",
+    "order": "kairos:order",
+    "before": "kairos:before",
+    "after": "kairos:after",
+    "container": "kairos:container",
+    "contained": "kairos:contained",
+    "overlaps": "kairos:overlaps",
+    "flags": "kairos:flags",
+    "wordnet": "https://wordnetweb.princeton.edu/",
+    "schema": "https://schema.org/",
+    "ros": "https://rosario.com/kairos/"
+  },
+  "schemas": [
+    {
+      "@id": "ros:FullRiotScenario",
+      "comment": [
+        "Scenario E:",
+        "1. Taxi driver trying to stop a drug deal",
+        "2. Taxi driver killed",
+        "3. Riots start against foreigners in South Africa",
+        "4. Looting and destruction of foreigners’ properties and businesses",
+        "5. Hundreds arrested and at least 10 deaths",
+        "6. Mosque attacked",
+        "7. At the end 680 people were arrested",
+        "",
+        "ros:FullRiotScenario in which (A) precedes (B) precedes (C) (there may be more than one sub-event in each A, B.C)",
+        " - (A) Cause event (could be anything) --> This is a type of sub-event, or maybe the first step. Here we have 1,2",
+        " - (B) Social unrest event(s) --> There could be several of these. Do they count as 2nd step but you may have several 2nd steps??",
+        "       Here we have 3, 4 (subevent of 3?), 5, 6",
+        " - (C) Conclusion event / Legal or Social implications (last step). Event 7."
+      ],
+      "super": "kairos:Schema",
+      "name": "Full Riot Scenario",
+      "description": "Incident(s) lead to social unrest, with legal/social implication(s)",
+      "version": "4/16/2020",
+      "steps": [
+        {
+          "@id": "ros:FullRiotScenario/Steps/cause_events",
+          "@type": "kairos:Events/SuperEvent",
+          "comment": [
+            "The event(s) which caused a riot",
+            "Do we need a way to specify 1+ events?"
+          ],
+          "subevents": [
+            {
+              "@id": "ros:FullRiotScenario/Steps/cause_event1",
+              "@type": "ros:Events/PreventActionAttempt",
+              "comment": [
+                "\"1. Taxi driver trying to stop a drug deal\"",
+                "Something akin to https://tac.nist.gov/tracks/SM-KBP/2019/ontologies/EventsWithFringe#Prevent_Action",
+                "Although because the prevent action was presumably unsuccessful here, maybe it's just a Contact.Contact event"
+              ],
+              "slots": [
+                {
+                  "slotName": "preventer",
+                  "@id": "ros:FullRiotScenario/Slots/cause_event1/preventer",
+                  "role": "ros:Events/PreventActionAttempt/Roles/Preventer",
+                  "constraints": [
+                    "kairos:PER",
+                    "kairos:ORG",
+                    "kairos:GPE"
+                  ]
+                },
+                {
+                  "slotName": "prevented",
+                  "@id": "ros:FullRiotScenario/Slots/cause_event1/prevented",
+                  "role": "ros:Events/PreventActionAttempt/Roles/Prevented",
+                  "constraints": [
+                    "kairos:PER",
+                    "kairos:ORG",
+                    "kairos:GPE"
+                  ]
+                },
+                {
+                  "slotName": "topic",
+                  "@id": "ros:FullRiotScenario/Slots/cause_event1/topic",
+                  "role": "ros:Events/PreventActionAttempt/Roles/Topic",
+                  "constraints": [
+                    "kairos:Event"
+                  ]
+                }
+              ]
+            },
+            {
+              "@id": "ros:FullRiotScenario/Steps/cause_event2",
+              "@type": "kairos:Events/Life/Die",
+              "comment": [
+                "\"2. Taxi driver killed\"",
+                "Could be a Conflict.Attack subclass instead"
+              ],
+              "slots": [
+                {
+                  "slotName": "victim",
+                  "@id": "ros:FullRiotScenario/Slots/cause_event2/victim",
+                  "role": "kairos:Events/Life/Die/Roles/Victim",
+                  "constraints": [
+                    "ros:FullRiotScenario/Slots/cause_event1/preventer"
+                  ]
+                },
+                {
+                  "slotName": "place",
+                  "@id": "ros:FullRiotScenario/Slots/cause_event2/place",
+                  "role": "kairos:Events/Life/Die/Roles/Place",
+                  "constraints": {
+                    "location": "https://www.wikidata.org/wiki/Q258"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "ros:FullRiotScenario/Steps/social_unrest_events",
+          "@type": "kairos:Events/SuperEvent",
+          "comment": [
+            "Social unrest event(s) --> There could be several of these.",
+            "Do we need a way to specify 1+ events?"
+          ],
+          "subevents": [
+            {
+              "@id": "ros:FullRiotScenario/Steps/unrest_event1",
+              "@type": "ros:Events/Riot",
+              "comment": [
+                "\"3. Riots start against foreigners in South Africa\"",
+                "ros:Events/Riot probably subclasses an Attack event."
+              ],
+              "slots": [
+                {
+                  "slotName": "rioter",
+                  "@id": "ros:FullRiotScenario/Slots/unrest_event1/rioter",
+                  "role": "ros:Events/Riot/Roles/Rioter",
+                  "constraints": [
+                    "kairos:PER"
+                  ]
+                },
+                {
+                  "slotName": "target",
+                  "@id": "ros:FullRiotScenario/Slots/unrest_event1/target",
+                  "role": "ros:Events/Riot/Roles/Target",
+                  "constraints": [
+                    "kairos:PER",
+                    "kairos:FAC",
+                    {
+                      "location": "https://www.wikidata.org/wiki/Q258"
+                    }
+                  ]
+                },
+                {
+                  "slotName": "cause",
+                  "@id": "ros:FullRiotScenario/Slots/unrest_event1/cause",
+                  "role": "ros:Events/Riot/Roles/Cause",
+                  "constraints": [
+                    "ros:FullRiotScenario/Steps/cause_events"
+                  ],
+                  "comment": "Ideally we'd like to constrain to the superevent as above, but might need to specify its subevents."
+                }
+              ]
+            },
+            {
+              "@id": "ros:FullRiotScenario/Steps/unrest_event2",
+              "@type": "ros:Events/Looting",
+              "comment": [
+                "\"4. Looting and destruction of foreigners’ properties and businesses\"",
+                "Perhaps ros:Events/Looting subclasses kairos:ArtifactExistence.Destroy"
+              ],
+              "slots": [
+                {
+                  "slotName": "looter",
+                  "@id": "ros:FullRiotScenario/Slots/unrest_event2/looter",
+                  "role": "ros:Events/Looting/Roles/Looter",
+                  "constraints": [
+                    "ros:FullRiotScenario/Slots/unrest_event1/rioter"
+                  ]
+                },
+                {
+                  "slotName": "target",
+                  "@id": "ros:FullRiotScenario/Slots/cause_event2/target",
+                  "role": "ros:Events/Looting/Roles/Target",
+                  "constraints": [
+                    "kairos:FAC"
+                  ]
+                }
+              ]
+            },
+            {
+              "@id": "ros:FullRiotScenario/Steps/unrest_event3",
+              "@type": "ros:Events/Arrest",
+              "comment": [
+                "\"5. Hundreds arrested and at least 10 deaths\"",
+                "The rest of this subevent is omitted for brevity."
+              ]
+            },
+            {
+              "@id": "ros:FullRiotScenario/Steps/unrest_event4",
+              "@type": "kairos:Conflict.Attack",
+              "comment": [
+                "\"6. Mosque attacked\"",
+                "Not sure if this means the building or the people inside it...likely both.",
+                "The rest of this subevent is omitted for brevity."
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "ros:FullRiotScenario/Steps/conclusion_event",
+          "@type": "ros:Events/Arrest",
+          "comment": [
+            "\"7. At the end 680 people were arrested\"",
+            "Should this be in a subevent block because there could be more than 1?",
+            "The rest of this subevent is omitted for brevity."
+          ]
+        }
+      ],
+      "order": [
+        {
+          "comment": "\"1 precedes 2\"",
+          "before": "ros:FullRiotScenario/Steps/cause_event1",
+          "after": "ros:FullRiotScenario/Steps/cause_event2"
+        },
+        {
+          "comment": [
+            "\"(1,2) precedes/causes 3\"",
+            "notice that the 'before' is the superevent containing cause_events 1 and 2"
+          ],
+          "before": "ros:FullRiotScenario/Steps/cause_events",
+          "after": "ros:FullRiotScenario/Steps/unrest_event1",
+          "flags": "causal"
+        },
+        {
+          "comment": "\"3 has SUB-SCHEMA 4\"",
+          "container": "ros:FullRiotScenario/Steps/unrest_event1",
+          "contained": "ros:FullRiotScenario/Steps/unrest_event2",
+          "flags": "subevent"
+        },
+        {
+          "comment": "\"(3,4) precedes (5, 6)\"",
+          "before": [
+            "ros:FullRiotScenario/Steps/unrest_event1",
+            "ros:FullRiotScenario/Steps/unrest_event2"
+          ],
+          "after": [
+            "ros:FullRiotScenario/Steps/unrest_event3",
+            "ros:FullRiotScenario/Steps/unrest_event4"
+          ]
+        },
+        {
+          "comment": "\"7 follows (2, 5, 6)\"",
+          "before": [
+            "ros:FullRiotScenario/Steps/cause_event2",
+            "ros:FullRiotScenario/Steps/unrest_event3",
+            "ros:FullRiotScenario/Steps/unrest_event4"
+          ],
+          "after": "ros:FullRiotScenario/Steps/conclusion_event"
+        }
+      ]
+    }
+  ]
+}
