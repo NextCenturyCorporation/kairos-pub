@@ -129,7 +129,7 @@
                 "kairos:ORG",
                 "kairos:GPE"
               ],
-              "ref": "kairos:Transaction.Exchange/Roles/GiverOrGranterOrSource"
+              "ref": "kairos:Transaction.Exchange/Roles/AcquirerOrRecipient"
             },
             {
               "slotName": "amount",
