@@ -8,10 +8,9 @@
     "description": "kairos:description",
     "version": "kairos:version",
     "sdf_version": "kairos:sdf_version",
-    "properties_map": "kairos:properties_map",
+    "privateData": "kairos:privateData",
     "steps": "kairos:steps",
     "slots": "kairos:slots",
-    "slotName": "kairos:slotName",
     "role": "kairos:role",
     "constraints": "kairos:constraint",
     "aka": "kairos:aka",
@@ -49,12 +48,12 @@
       "super": "caci:BombingAttack",
       "name": "Coordinated Bombing Attack",
       "description": "A coordinated effort by mulitple parties that results in a bombing attack",
-      "version": "4/22/2020",
-      "sdf_version": "0.7",
-      "properties_map": {
-        "comment": "Performers can place any keys/values they wish here.  The map will be added to the graph but otherwise ignored by the system.  Properties maps can be added inside a schema, individual steps, slots, and order blocks, but not in their enclosing arrays.",
+      "version": "4/27/2020",
+      "sdf_version": "0.5",
+      "privateData": {
+        "comment": "Performers can place any keys/values they wish here.  The map will be added to the graph but otherwise ignored by the system.  Properties maps can be added inside a schema, individual steps, slots, and order blocks, but not in their enclosing arrays.  Large amounts of private data can be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum.",
         "my_name": "my value",
-        "test2": "my value 2"
+        "giant_bitstring": "s3://caci-kairos/privateData/CoordinatedBombingAttack/schema-bitstring.gz"
       },
       "steps": [
         {
@@ -68,9 +67,11 @@
             "training",
             "teaching"
           ],
+          "reference": "https://www.wikidata.org/wiki/Q918385",
+          "provenance": "Performer-specific info that tracks the origin of the event.",
           "slots": [
             {
-              "slotName": "trainer",
+              "name": "trainer",
               "@id": "caci:CoordinatedBombingAttack/Slots/training_1/trainer",
               "role": "kairos:Training/Roles/Trainer",
               "constraints": {
@@ -80,7 +81,7 @@
               }
             },
             {
-              "slotName": "trainee",
+              "name": "trainee",
               "@id": "caci:CoordinatedBombingAttack/Slots/training_1/trainee",
               "role": "kairos:Training/Roles/Learner",
               "constraints": {
@@ -92,7 +93,7 @@
               }
             },
             {
-              "slotName": "subject_matter",
+              "name": "subject_matter",
               "@id": "caci:CoordinatedBombingAttack/Slots/training_1/subject_matter",
               "role": "kairos:Training/Roles/FieldOfKnowledge",
               "constraints": {
@@ -111,7 +112,7 @@
           "aka": "telegraphic transfer",
           "slots": [
             {
-              "slotName": "sender",
+              "name": "sender",
               "@id": "caci:CoordinatedBombingAttack/Slots/wire_transfer/sender",
               "role": "caci:Transaction/WireTransfer/Roles/Sender",
               "constraints": [
@@ -122,7 +123,7 @@
               "super": "kairos:Transaction.Exchange/Roles/GiverOrGranterOrSource"
             },
             {
-              "slotName": "recipient",
+              "name": "recipient",
               "@id": "caci:CoordinatedBombingAttack/Slots/wire_transfer/recipient",
               "role": "caci:Transaction/WireTransfer/Roles/Recipient",
               "constraints": [
@@ -133,7 +134,7 @@
               "super": "kairos:Transaction.Exchange/Roles/AcquirerOrRecipient"
             },
             {
-              "slotName": "amount",
+              "name": "amount",
               "@id": "caci:CoordinatedBombingAttack/Slots/wire_transfer/amount",
               "role": "caci:Transaction/WireTransfer/Roles/Amount",
               "constraints": [
@@ -152,7 +153,7 @@
           ],
           "slots": [
             {
-              "slotName": "sourcePlace",
+              "name": "sourcePlace",
               "@id": "caci:CoordinatedBombingAttack/Slots/move_illegally/sourcePlace",
               "role": "kairos:Movement.TransportationIllegal/Roles/sourcePlace",
               "constraints": [
@@ -162,7 +163,7 @@
               ]
             },
             {
-              "slotName": "destinationPlace",
+              "name": "destinationPlace",
               "@id": "kairos:Movement.TransportationIllegal/Slots/move_illegally/destinationPlace",
               "role": "kairos:Movement.TransportationIllegal/Roles/destinationPlace",
               "constraints": [
@@ -172,7 +173,7 @@
               ]
             },
             {
-              "slotName": "thingsMoved",
+              "name": "thingsMoved",
               "@id": "kairos:Movement.TransportationIllegal/Slots/move_illegally/thingsMoved",
               "role": "kairos:Movement.TransportationIllegal/Roles/thingsMoved",
               "constraints": [
@@ -190,7 +191,7 @@
           ],
           "slots": [
             {
-              "slotName": "acquiredEntity",
+              "name": "acquiredEntity",
               "@id": "caci:CoordinatedBombingAttack/Slots/get_bombmaking_howto/AcquiredEntity",
               "role": "kairos:Transaction.Exchange/Roles/AcquiredEntity",
               "constraints": {
@@ -211,7 +212,7 @@
           "aka": "contact",
           "slots": [
             {
-              "slotName": "participant",
+              "name": "participant",
               "@id": "caci:CoordinatedBombingAttack/Slots/make_contact/Participant",
               "role": "kairos:Transaction.Exchange/Roles/AcquiredEntity",
               "constraints": "kairos:PER",
@@ -226,7 +227,7 @@
           "aka": "financing",
           "slots": [
             {
-              "slotName": "giver",
+              "name": "giver",
               "@id": "caci:CoordinatedBombingAttack/Slots/obtain_financing/giver",
               "role": "kairos:Transaction.Exchange/Roles/GiverOrGranterOrSource",
               "constraints": {
@@ -235,7 +236,7 @@
               }
             },
             {
-              "slotName": "providedMoney",
+              "name": "providedMoney",
               "@id": "caci:CoordinatedBombingAttack/Slots/obtain_financing/ProvidedMoney",
               "role": "kairos:Transaction.Exchange/Roles/ProvidedMoney",
               "constraints": [
@@ -254,7 +255,7 @@
           ],
           "slots": [
             {
-              "slotName": "trainer",
+              "name": "trainer",
               "@id": "caci:CoordinatedBombingAttack/Slots/training_2/trainer",
               "role": "kairos:Training/Roles/Trainer",
               "constraints": {
@@ -266,7 +267,7 @@
               }
             },
             {
-              "slotName": "trainee",
+              "name": "trainee",
               "@id": "caci:CoordinatedBombingAttack/Slots/training_2/trainee",
               "role": "kairos:Training/Roles/Learner",
               "constraints": {
@@ -278,7 +279,7 @@
               }
             },
             {
-              "slotName": "subject_matter",
+              "name": "subject_matter",
               "@id": "caci:CoordinatedBombingAttack/Slots/training_1/subject_matter",
               "role": "kairos:Training/Roles/FieldOfKnowledge",
               "constraints": {
@@ -296,7 +297,7 @@
           "@type": "caci:Propaganda",
           "slots": [
             {
-              "slotName": "sender",
+              "name": "sender",
               "@id": "caci:CoordinatedBombingAttack/Slots/media_propaganda/sender",
               "role": "caci:Propaganda/Roles/Sender",
               "constraints": [
@@ -308,7 +309,7 @@
               "super": "kairos:Contact.Broadcast/Roles/Participant"
             },
             {
-              "slotName": "outlet",
+              "name": "outlet",
               "@id": "caci:CoordinatedBombingAttack/Slots/media_propaganda/outlet",
               "role": "caci:Propaganda/Roles/Outlet",
               "constraints": [
@@ -317,7 +318,7 @@
               ]
             },
             {
-              "slotName": "subject_matter",
+              "name": "subject_matter",
               "@id": "caci:CoordinatedBombingAttack/Slots/media_propaganda/subject_matter",
               "role": "caci:Propaganda/Roles/SubjectMatter",
               "super": "kairos:Contact.Broadcast/Roles/Topic",
@@ -333,7 +334,7 @@
           "aka": "renting",
           "slots": [
             {
-              "slotName": "vehicle_rented",
+              "name": "vehicle_rented",
               "@id": "caci:CoordinatedBombingAttack/Slots/obtain_transportation/vehicle_rented",
               "role": "kairos:Transaction.Exchange/Roles/AcquiredEntity",
               "constraints": {
@@ -349,7 +350,7 @@
           "comment": "\"Drive to Manhattan\"",
           "slots": [
             {
-              "slotName": "attackLocation",
+              "name": "attackLocation",
               "@id": "caci:CoordinatedBombingAttack/Slots/move_to_general_attack_location/attackLocation",
               "role": "kairos:Movement.TransportationLegal/Roles/destinationPlace",
               "constraints": [
@@ -359,7 +360,7 @@
               ]
             },
             {
-              "slotName": "attacker",
+              "name": "attacker",
               "@id": "kairos:Movement.TransportationIllegal/Slots/move_to_general_attack_location/attacker",
               "role": "kairos:Movement.TransportationIllegal/Roles/thingsMoved",
               "constraints": [
@@ -368,7 +369,7 @@
               ]
             },
             {
-              "slotName": "method",
+              "name": "method",
               "@id": "kairos:Movement.TransportationIllegal/Slots/move_to_general_attack_location/method",
               "role": "kairos:Movement.TransportationIllegal/Roles/instrument",
               "constraints": "kairos:VEH"
@@ -381,7 +382,7 @@
           "comment": "\"Park at WTC (1993)\"",
           "slots": [
             {
-              "slotName": "attackLocation",
+              "name": "attackLocation",
               "@id": "kairos:Movement.TransportationLegal/Slots/move_to_specific_attack_location/attackLocation",
               "role": "kairos:Movement.TransportationLegal/Roles/destinationPlace",
               "constraints": [
@@ -390,7 +391,7 @@
               ]
             },
             {
-              "slotName": "attacker",
+              "name": "attacker",
               "@id": "kairos:Movement.TransportationIllegal/Slots/move_to_specific_attack_location/attacker",
               "role": "kairos:Movement.TransportationIllegal/Roles/thingsMoved",
               "constraints": {
@@ -418,7 +419,7 @@
           "aka": "getaway",
           "slots": [
             {
-              "slotName": "sourcePlace",
+              "name": "sourcePlace",
               "@id": "caci:CoordinatedBombingAttack/Slots/escape/sourcePlace",
               "role": "kairos:Movement.TransportationIllegal/Roles/sourcePlace",
               "constraints": [
@@ -427,7 +428,7 @@
               ]
             },
             {
-              "slotName": "destinationPlace",
+              "name": "destinationPlace",
               "@id": "kairos:Movement.TransportationIllegal/Slots/escape/destinationPlace",
               "role": "kairos:Movement.TransportationIllegal/Roles/destinationPlace",
               "constraints": [
@@ -437,7 +438,7 @@
               ]
             },
             {
-              "slotName": "thingsMoved",
+              "name": "thingsMoved",
               "@id": "kairos:Movement.TransportationIllegal/Slots/escape/thingsMoved",
               "role": "kairos:Movement.TransportationIllegal/Roles/thingsMoved",
               "comment": "Arguably, caci:Flee could specify constraints of PER, ORG",

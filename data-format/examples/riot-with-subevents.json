@@ -8,11 +8,10 @@
     "description": "kairos:description",
     "version": "kairos:version",
     "sdf_version": "kairos:sdf_version",
-    "properties_map": "kairos:properties_map",
+    "privateData": "kairos:privateData",
     "steps": "kairos:steps",
     "subevent": "kairos:subevent",
     "slots": "kairos:slots",
-    "slotName": "kairos:slotName",
     "role": "kairos:role",
     "constraints": "kairos:constraint",
     "aka": "kairos:aka",
@@ -48,8 +47,8 @@
       "super": "kairos:Schema",
       "name": "Full Riot Scenario",
       "description": "Incident(s) lead to social unrest, with legal/social implication(s)",
-      "version": "4/22/2020",
-      "sdf_version": "0.7",
+      "version": "4/27/2020",
+      "sdf_version": "0.5",
       "steps": [
         {
           "@id": "ros:FullRiotScenario/Steps/cause_events",
@@ -67,9 +66,10 @@
                 "Something akin to https://tac.nist.gov/tracks/SM-KBP/2019/ontologies/EventsWithFringe#Prevent_Action",
                 "Could rework this to be a kairos:Events/Impede event."
               ],
+              "provenance": "Performer-specific info that tracks the origin of the event.",
               "slots": [
                 {
-                  "slotName": "preventer",
+                  "name": "preventer",
                   "@id": "ros:FullRiotScenario/Slots/cause_event1/preventer",
                   "role": "ros:Events/PreventActionAttempt/Roles/Preventer",
                   "constraints": [
@@ -79,7 +79,7 @@
                   ]
                 },
                 {
-                  "slotName": "prevented",
+                  "name": "prevented",
                   "@id": "ros:FullRiotScenario/Slots/cause_event1/prevented",
                   "role": "ros:Events/PreventActionAttempt/Roles/Prevented",
                   "constraints": [
@@ -89,7 +89,7 @@
                   ]
                 },
                 {
-                  "slotName": "topic",
+                  "name": "topic",
                   "@id": "ros:FullRiotScenario/Slots/cause_event1/topic",
                   "role": "ros:Events/PreventActionAttempt/Roles/Topic",
                   "constraints": [
@@ -102,13 +102,14 @@
               "@id": "ros:FullRiotScenario/Steps/cause_event2",
               "@type": "kairos:Events/Life/Die",
               "aka": "kill",
+              "reference": "https://www.wikidata.org/wiki/Q844482",
               "comment": [
                 "\"2. Taxi driver killed\"",
                 "Could be a Conflict.Attack subclass instead"
               ],
               "slots": [
                 {
-                  "slotName": "victim",
+                  "name": "victim",
                   "@id": "ros:FullRiotScenario/Slots/cause_event2/victim",
                   "role": "kairos:Events/Life/Die/Roles/Victim",
                   "constraints": [
@@ -116,7 +117,7 @@
                   ]
                 },
                 {
-                  "slotName": "place",
+                  "name": "place",
                   "@id": "ros:FullRiotScenario/Slots/cause_event2/place",
                   "role": "kairos:Events/Life/Die/Roles/Place",
                   "constraints": {
@@ -144,7 +145,7 @@
               ],
               "slots": [
                 {
-                  "slotName": "rioter",
+                  "name": "rioter",
                   "@id": "ros:FullRiotScenario/Slots/unrest_event1/rioter",
                   "role": "ros:Events/Riot/Roles/Rioter",
                   "super": "kairos:Conflict.Demonstrate/Roles/Demonstrator",
@@ -153,7 +154,7 @@
                   ]
                 },
                 {
-                  "slotName": "target",
+                  "name": "target",
                   "@id": "ros:FullRiotScenario/Slots/unrest_event1/target",
                   "role": "ros:Events/Riot/Roles/Target",
                   "constraints": {
@@ -165,7 +166,7 @@
                   }
                 },
                 {
-                  "slotName": "place",
+                  "name": "place",
                   "@id": "ros:FullRiotScenario/Slots/unrest_event1/place",
                   "role": "ros:Events/Riot/Roles/Place",
                   "super": "kairos:Conflict.Demonstrate/Roles/Place",
@@ -178,7 +179,7 @@
                   }
                 },
                 {
-                  "slotName": "cause",
+                  "name": "cause",
                   "@id": "ros:FullRiotScenario/Slots/unrest_event1/cause",
                   "role": "ros:Events/Riot/Roles/Cause",
                   "super": "kairos:Conflict.Demonstrate/Roles/Topic",
@@ -196,9 +197,10 @@
                 "\"4. Looting and destruction of foreigners’ properties and businesses\"",
                 "Perhaps ros:Events/Looting subclasses kairos:ArtifactExistence.Destroy and/or Conflict.Demonstrate"
               ],
+              "reference": "https://www.wikidata.org/wiki/Q192623",
               "slots": [
                 {
-                  "slotName": "looter",
+                  "name": "looter",
                   "@id": "ros:FullRiotScenario/Slots/unrest_event2/looter",
                   "role": "ros:Events/Looting/Roles/Looter",
                   "constraints": [
@@ -206,7 +208,7 @@
                   ]
                 },
                 {
-                  "slotName": "target",
+                  "name": "target",
                   "@id": "ros:FullRiotScenario/Slots/cause_event2/target",
                   "role": "ros:Events/Looting/Roles/Target",
                   "constraints": [
