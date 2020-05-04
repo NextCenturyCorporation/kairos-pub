@@ -9,17 +9,41 @@
     "version": "kairos:version",
     "sdfVersion": "kairos:sdfVersion",
     "privateData": "kairos:privateData",
+    "provenance": "kairos:provenance",
+    "reference": "kairos:reference",
     "steps": "kairos:steps",
     "slots": "kairos:slots",
     "role": "kairos:role",
-    "provenance": "kairos:provenance",
-    "reference": "kairos:reference",
     "constraints": "kairos:constraints",
-	"entityRelations": "kairos:entityRelations",
-	"subject": "kairos:subject",
-	"is": "kairos:is",
+    "confidence": "kairos:confidence",
+    "entityRelations": "kairos:entityRelations",
+    "relationSubject": "kairos:relationSubject",
+    "relations": "kairos:relations",
     "aka": "kairos:aka",
-    "location": "kairos:location",
+    "startTime": {
+      "@id": "kairos:startTime",
+      "@type": "xsd:dateTime"
+    },
+    "endTime": {
+      "@id": "kairos:endTime",
+      "@type": "xsd:dateTime"
+    },
+    "absoluteTime": {
+      "@id": "kairos:absoluteTime",
+      "@type": "xsd:dateTime"
+    },
+    "duration": {
+      "@id": "kairos:duration",
+      "@type": "xsd:duration"
+    },
+    "minDuration": {
+      "@id": "kairos:minDuration",
+      "@type": "xsd:duration"
+    },
+    "maxDuration": {
+      "@id": "kairos:maxDuration",
+      "@type": "xsd:duration"
+    },
     "order": "kairos:order",
     "before": "kairos:before",
     "after": "kairos:after",
@@ -53,7 +77,7 @@
       "super": "caci:BombingAttack",
       "name": "Coordinated Bombing Attack",
       "description": "A coordinated effort by mulitple parties that results in a bombing attack",
-      "version": "4/27/2020",
+      "version": "5/4/2020",
       "sdfVersion": "0.7",
       "privateData": {
         "comment": "Performers can place any keys/values they wish here.  The map will be added to the graph but otherwise ignored by the system.  Properties maps can be added inside a schema, individual steps, slots, and order blocks, but not in their enclosing arrays.  Large amounts of private data can be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum.",
@@ -63,10 +87,7 @@
       "steps": [
         {
           "@id": "caci:CoordinatedBombingAttack/Steps/training_1",
-          "comment": [
-            "\"Spend time training at Al Qaeda center in Afghanistan\"",
-            "Do we need cardinality to specify 1+ training events?"
-          ],
+          "comment": "\"Spend time training at Al Qaeda center in Afghanistan\"",
           "@type": "kairos:Training",
           "aka": [
             "training",
@@ -74,12 +95,32 @@
           ],
           "reference": "https://www.wikidata.org/wiki/Q918385",
           "provenance": "Performer-specific info that tracks the origin of the event.",
+          "startTime": null,
+          "endTime": null,
+          "absoluteTime": null,
+          "duration": {
+            "@id": "caci:CoordinatedBombingAttack/Steps/training_1/duration",
+            "privateData": "s3://foobar/hello",
+            "confidence": "1.0",
+            "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
+          },
+          "temporal": [
+            {
+              "name": "duration",
+              "@id": "caci:CoordinatedBombingAttack/Steps/training_1/duration",
+              "privateData": "s3://foobar/hello",
+              "confidence": "1.0",
+              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
+            }
+          ],
           "slots": [
             {
               "name": "trainer",
               "@id": "caci:CoordinatedBombingAttack/Slots/training_1/trainer",
               "role": "kairos:Training/Roles/Trainer",
-              "constraints": "kairos:ORG",
+              "constraints": "kairos:PER",
+              "value": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9e88de",
+              "confidence": "0.75",
               "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
             },
             {
@@ -89,6 +130,18 @@
               "constraints": [
                 "kairos:PER",
                 "kairos:ORG"
+              ],
+              "values": [
+                {
+                  "@id": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9e88de",
+                  "confidence": "0.75",
+                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
+                },
+                {
+                  "@id": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9e88de",
+                  "confidence": "0.75",
+                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
+                }
               ]
             },
             {
@@ -190,7 +243,7 @@
               "constraints": "kairos:COM",
               "comment": [
                 "Don't need a super here (unlike wire_transfer) because we're using a primitive directly",
-                "Narrowed the constraints to be only a COM"
+                "Narrowed the constraints to be only a COM."
               ]
             }
           ]
@@ -209,7 +262,7 @@
               "@id": "caci:CoordinatedBombingAttack/Slots/make_contact/Participant",
               "role": "kairos:Transaction.Exchange/Roles/AcquiredEntity",
               "constraints": "kairos:PER",
-              "comment": "or kairos:PER(affiliated_with(https://www.wikidata.org/wiki/Q2918749))"
+              "comment": "or eventually, kairos:PER(affiliated_with(https://www.wikidata.org/wiki/Q2918749))"
             }
           ]
         },
@@ -223,16 +276,15 @@
               "name": "giver",
               "@id": "caci:CoordinatedBombingAttack/Slots/obtain_financing/giver",
               "role": "kairos:Transaction.Exchange/Roles/GiverOrGranterOrSource",
-              "constraints": {
-                "comment": "This is the participant in the Contact event above",
-                "@id": "caci:CoordinatedBombingAttack/Slots/make_contact/Participant"
-              }
+              "constraints": "kairos:PER"
             },
             {
               "name": "providedMoney",
               "@id": "caci:CoordinatedBombingAttack/Slots/obtain_financing/ProvidedMoney",
               "role": "kairos:Transaction.Exchange/Roles/ProvidedMoney",
-              "constraints": "kairos:MON"
+              "constraints": [
+                "kairos:MON"
+              ]
             }
           ]
         },
@@ -320,7 +372,6 @@
               "name": "vehicle_rented",
               "@id": "caci:CoordinatedBombingAttack/Slots/obtain_transportation/vehicle_rented",
               "role": "kairos:Transaction.Exchange/Roles/AcquiredEntity",
-              "comment": "narrowed the constraints to be only a VEH.",
               "constraints": "kairos:VEH"
             }
           ]
@@ -342,7 +393,7 @@
             },
             {
               "name": "attacker",
-              "@id": "caci:CoordinatedBombingAttack/Slots/move_to_general_attack_location/attacker",
+              "@id": "kairos:Movement.TransportationIllegal/Slots/move_to_general_attack_location/attacker",
               "role": "kairos:Movement.TransportationIllegal/Roles/thingsMoved",
               "constraints": [
                 "kairos:PER",
@@ -376,7 +427,7 @@
               "@id": "caci:CoordinatedBombingAttack/Slots/move_to_specific_attack_location/attacker",
               "role": "kairos:Movement.TransportationIllegal/Roles/thingsMoved",
               "constraints": {
-                "@id": "kairos:Movement.TransportationIllegal/Slots/move_to_general_attack_location/attacker"
+                "@id": "caci:CoordinatedBombingAttack/Slots/move_to_general_attack_location/attacker"
               }
             }
           ]
@@ -471,20 +522,90 @@
       "entityRelations": [
         {
           "comment": "Trainer is Al-Qaeda. This could link to an Al-Qaeda entity in kairos.",
-          "subject": "caci:CoordinatedBombingAttack/Slots/training_1/trainer",
-          "is": "https://www.wikidata.org/wiki/Q34490"
+          "relationSubject": "caci:CoordinatedBombingAttack/Slots/training_1/trainer",
+          "kairos:Relations/isSameAs": "https://www.wikidata.org/wiki/Q34490",
+          "confidence": ".75",
+          "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
         },
         {
-          "comment": "Giver of financing is one of the participants in the make_contact event",
-          "subject": "caci:CoordinatedBombingAttack/Slots/obtain_financing/giver",
-          "is": "caci:CoordinatedBombingAttack/Slots/make_contact/Participant"
+          "comment": "Same attacker moved to specific location as moved to general location, or lives in attack location",
+          "relationSubject": "caci:CoordinatedBombingAttack/Slots/move_to_specific_attack_location/attacker",
+          "relations": [
+            {
+              "comment": "Same attacker moved to specific location as moved to general location",
+              "kairos:Relations/isSameAs": "caci:CoordinatedBombingAttack/Slots/move_to_general_attack_location/attacker",
+              "confidence": ".75",
+              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
+            },
+            {
+              "comment": "Attacker lives in attack location",
+              "kairos:Relations/residesIn": "caci:CoordinatedBombingAttack/Slots/move_to_specific_attack_location/attackLocation",
+              "confidence": ".25",
+              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000232"
+            }
+          ]
         },
         {
-          "comment": "Same attacker moved to specific location as moved to general location",
-          "subject": "caci:CoordinatedBombingAttack/Slots/move_to_specific_attack_location/attacker",
-          "is": "caci:CoordinatedBombingAttack/Slots/move_to_general_attack_location/attacker"
+          "comment": "Giver of financing is one of the participants in the make_contact event, or is affiliated with it",
+          "relationSubject": "caci:CoordinatedBombingAttack/Slots/obtain_financing/giver",
+          "relations": [
+            {
+              "comment": "Giver of financing is one of the participants in the make_contact event",
+              "kairos:Relations/isSameAs": "caci:CoordinatedBombingAttack/Slots/make_contact/Participant",
+              "confidence": ".75",
+              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
+            },
+            {
+              "comment": "Giver of financing is affiliated with one of the participants in the make_contact event",
+              "kairos:Relations/isAffiliatedWith": "caci:CoordinatedBombingAttack/Slots/make_contact/Participant",
+              "confidence": ".25",
+              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000232"
+            }
+          ]
         }
-      ]
+      ],
+      "entityRelationsAlt": {
+        "caci:CoordinatedBombingAttack/Slots/training_1/trainer": {
+          "comment": "Trainer is Al-Qaeda. This could link to an Al-Qaeda entity in kairos.",
+          "kairos:Relations/isSameAs": "https://www.wikidata.org/wiki/Q34490",
+          "confidence": ".75",
+          "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
+        },
+        "caci:CoordinatedBombingAttack/Slots/move_to_specific_attack_location/attacker": {
+          "comment": "Same attacker moved to specific location as moved to general location, or lives in attack location",
+          "relations": [
+            {
+              "comment": "Same attacker moved to specific location as moved to general location",
+              "kairos:Relations/isSameAs": "caci:CoordinatedBombingAttack/Slots/move_to_general_attack_location/attacker",
+              "confidence": ".75",
+              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
+            },
+            {
+              "comment": "Attacker lives in attack location",
+              "kairos:Relations/residesIn": "caci:CoordinatedBombingAttack/Slots/move_to_specific_attack_location/attackLocation",
+              "confidence": ".25",
+              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000232"
+            }
+          ]
+        },
+        "caci:CoordinatedBombingAttack/Slots/obtain_financing/giver": {
+          "comment": "Giver of financing is one of the participants in the make_contact event, or is affiliated with it",
+          "relations": [
+            {
+              "comment": "Giver of financing is one of the participants in the make_contact event",
+              "kairos:Relations/isSameAs": "caci:CoordinatedBombingAttack/Slots/make_contact/Participant",
+              "confidence": ".75",
+              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
+            },
+            {
+              "comment": "Giver of financing is affiliated with one of the participants in the make_contact event",
+              "kairos:Relations/isAffiliatedWith": "caci:CoordinatedBombingAttack/Slots/make_contact/Participant",
+              "confidence": ".25",
+              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000232"
+            }
+          ]
+        }
+      }
     }
   ]
 }
