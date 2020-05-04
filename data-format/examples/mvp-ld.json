@@ -6,25 +6,21 @@
     "name": "kairos:name",
     "description": "kairos:description",
     "version": "kairos:version",
+    "sdfVersion": "kairos:sdfVersion",
     "steps": "kairos:steps",
-    "events": "kairos:events",
-    "order": "kairos:order",
     "performer": "https://performer.edu/kairos.namespace/"
   },
   "schemas": [
     {
-      "id": "performer:myschema_1",
-      "super": "performer:297u3883",
+      "id": "performer:mvp",
+      "super": "performer:parentSchema",
       "name": "mvp",
       "description": "a minimal viable schema that is a valid, if vacuous, schema",
-      "version": "1.0",
+      "version": "A performer-specific internal version string",
+      "sdfVersion": "0.5",
       "steps": {
-        "events": [
-          {
-            "@type": "performer:mystep",
-            "@id": "performer:myevent_1"
-          }
-        ]
+        "@id": "performer:myevent_1",
+        "@type": "kairos:primitive1"
       }
     }
   ]
