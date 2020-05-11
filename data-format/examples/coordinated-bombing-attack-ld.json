@@ -236,9 +236,13 @@
                 "kairos:GPE"
               ],
               "super": "kairos:Primitives/Transaction.Exchange/Roles/GiverOrGranterOrSource",
-              "value": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9e88de",
-              "confidence": "0.75",
-              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
+              "values": [
+                {
+                  "@id": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9e88de",
+                  "confidence": "0.75",
+                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
+                }
+              ]
             },
             {
               "name": "recipient",
