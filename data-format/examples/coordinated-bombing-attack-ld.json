@@ -38,6 +38,10 @@
       "@type": "xsd:float"
     },
     "entityRelations": "kairos:entityRelations",
+    "relationSubject": {
+      "@id": "kairos:relationSubject",
+      "@type": "@id"
+    },
     "relations": "kairos:relations",
     "aka": "kairos:aka",
     "temporal": "kairos:temporal",
@@ -126,11 +130,13 @@
         {
           "@id": "caci:CoordinatedBombingAttack/Steps/training_1",
           "comment": "\"Spend time training at Al Qaeda center in Afghanistan\"",
-          "@type": "kairos:Training",
+          "@type": "kairos:Primitives/Teaching",
           "aka": [
             "learning",
             "teaching"
           ],
+          "minDuration": "PT10M",
+          "maxDuration": "P3M",
           "reference": "https://www.wikidata.org/wiki/Q918385",
           "provenance": "Performer-specific info that tracks the origin of the event.",
           "temporal": [
@@ -138,8 +144,6 @@
               "@id": "caci:CoordinatedBombingAttack/Steps/training_1/duration",
               "comment": "TA1 optionally sets minDuration and maxDuration; TA2 sets duration, confidence, and provenance of this object",
               "duration": "P4D",
-              "minDuration": "PT10M",
-              "maxDuration": "P3M",
               "privateData": "s3://caci_bucket/durationData",
               "confidence": "0.5",
               "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
@@ -174,16 +178,20 @@
               "name": "trainer",
               "aka": "teacher",
               "@id": "caci:CoordinatedBombingAttack/Slots/training_1/trainer",
-              "role": "kairos:Training/Roles/Trainer",
+              "role": "kairos:Primitives/Teaching/Roles/teacher",
               "constraints": "kairos:PER",
-              "values": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9eff13",
-              "confidence": "0.75",
-              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
+              "values": [
+                {
+                  "@id": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9eff13",
+                  "confidence": "0.75",
+                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
+                }
+              ]
             },
             {
               "name": "learner",
               "@id": "caci:CoordinatedBombingAttack/Slots/training_1/learner",
-              "role": "kairos:Training/Roles/Learner",
+              "role": "kairos:Primitives/Teaching/Roles/Learner",
               "constraints": [
                 "kairos:PER",
                 "kairos:ORG"
@@ -204,7 +212,7 @@
             {
               "name": "subject_matter",
               "@id": "caci:CoordinatedBombingAttack/Slots/training_1/subject_matter",
-              "role": "kairos:Training/Roles/FieldOfKnowledge",
+              "role": "kairos:Primitives/Teaching/Roles/FieldOfKnowledge",
               "constraints": "kairos:INF"
             }
           ]
@@ -214,7 +222,7 @@
           "@type": "caci:Transaction/WireTransfer",
           "comment": [
             "\"Wire transfer from an uncle\"",
-            "subclasses kairos:Transaction.Exchange (or AIDA's Transaction.TransferMoney)"
+            "subclasses kairos:Primitives/Transaction.Exchange (or AIDA's Transaction.TransferMoney)"
           ],
           "aka": "telegraphic transfer",
           "slots": [
@@ -227,8 +235,8 @@
                 "kairos:ORG",
                 "kairos:GPE"
               ],
-              "super": "kairos:Transaction.Exchange/Roles/GiverOrGranterOrSource",
-              "values": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9e88de",
+              "super": "kairos:Primitives/Transaction.Exchange/Roles/GiverOrGranterOrSource",
+              "value": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9e88de",
               "confidence": "0.75",
               "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
             },
@@ -241,7 +249,7 @@
                 "kairos:ORG",
                 "kairos:GPE"
               ],
-              "super": "kairos:Transaction.Exchange/Roles/AcquirerOrRecipient",
+              "super": "kairos:Primitives/Transaction.Exchange/Roles/AcquirerOrRecipient",
               "values": [
                 {
                   "@id": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9e88de",
@@ -260,13 +268,13 @@
               "@id": "caci:CoordinatedBombingAttack/Slots/wire_transfer/amount",
               "role": "caci:Transaction/WireTransfer/Roles/Amount",
               "constraints": "kairos:MON",
-              "super": "kairos:Transaction.Exchange/Roles/ProvidedMoney"
+              "super": "kairos:Primitives/Transaction.Exchange/Roles/ProvidedMoney"
             }
           ]
         },
         {
           "@id": "caci:CoordinatedBombingAttack/Steps/move_illegally",
-          "@type": "kairos:Movement.TransportationIllegal",
+          "@type": "kairos:Primitives/Movement.TransportationIllegal",
           "comment": [
             "\"Enter US illegally\"",
             "Using a kairos event primitive directly"
@@ -275,7 +283,7 @@
             {
               "name": "sourcePlace",
               "@id": "caci:CoordinatedBombingAttack/Slots/move_illegally/sourcePlace",
-              "role": "kairos:Movement.TransportationIllegal/Roles/sourcePlace",
+              "role": "kairos:Primitives/Movement.TransportationIllegal/Roles/sourcePlace",
               "constraints": [
                 "kairos:LOC",
                 "kairos:FAC",
@@ -284,8 +292,8 @@
             },
             {
               "name": "destinationPlace",
-              "@id": "kairos:Movement.TransportationIllegal/Slots/move_illegally/destinationPlace",
-              "role": "kairos:Movement.TransportationIllegal/Roles/destinationPlace",
+              "@id": "caci:CoordinatedBombingAttack/Slots/move_illegally/destinationPlace",
+              "role": "kairos:Primitives/Movement.TransportationIllegal/Roles/destinationPlace",
               "constraints": [
                 "kairos:LOC",
                 "kairos:FAC",
@@ -294,15 +302,15 @@
             },
             {
               "name": "thingsMoved",
-              "@id": "kairos:Movement.TransportationIllegal/Slots/move_illegally/thingsMoved",
-              "role": "kairos:Movement.TransportationIllegal/Roles/thingsMoved",
+              "@id": "caci:CoordinatedBombingAttack/Slots/move_illegally/thingsMoved",
+              "role": "kairos:Primitives/Movement.TransportationIllegal/Roles/thingsMoved",
               "constraints": "kairos:PER"
             }
           ]
         },
         {
           "@id": "caci:CoordinatedBombingAttack/Steps/get_bombmaking_howto",
-          "@type": "kairos:Transaction.Exchange",
+          "@type": "kairos:Primitives/Transaction.Exchange",
           "comment": [
             "\"Possess bomb making instruction\"",
             "Seems a little specific to be in the schema, esp. considering the training events, but basically it's an exchange of an object (the bomb-making instructions)"
@@ -311,7 +319,7 @@
             {
               "name": "acquiredEntity",
               "@id": "caci:CoordinatedBombingAttack/Slots/get_bombmaking_howto/AcquiredEntity",
-              "role": "kairos:Transaction.Exchange/Roles/AcquiredEntity",
+              "role": "kairos:Primitives/Transaction.Exchange/Roles/AcquiredEntity",
               "constraints": "kairos:COM",
               "comment": [
                 "Don't need a super here (unlike wire_transfer) because we're using a primitive directly",
@@ -332,7 +340,7 @@
             {
               "name": "participant",
               "@id": "caci:CoordinatedBombingAttack/Slots/make_contact/Participant",
-              "role": "kairos:Transaction.Exchange/Roles/AcquiredEntity",
+              "role": "kairos:Primitives/Transaction.Exchange/Roles/AcquiredEntity",
               "constraints": "kairos:PER",
               "comment": "or eventually, kairos:PER(affiliated_with(https://www.wikidata.org/wiki/Q2918749))"
             }
@@ -340,20 +348,20 @@
         },
         {
           "@id": "caci:CoordinatedBombingAttack/Steps/obtain_financing",
-          "@type": "kairos:Transaction.Exchange",
+          "@type": "kairos:Primitives/Transaction.Exchange",
           "comment": "\"Get financing from Sheikh\"",
           "aka": "financing",
           "slots": [
             {
               "name": "giver",
               "@id": "caci:CoordinatedBombingAttack/Slots/obtain_financing/giver",
-              "role": "kairos:Transaction.Exchange/Roles/GiverOrGranterOrSource",
+              "role": "kairos:Primitives/Transaction.Exchange/Roles/GiverOrGranterOrSource",
               "constraints": "kairos:PER"
             },
             {
               "name": "providedMoney",
               "@id": "caci:CoordinatedBombingAttack/Slots/obtain_financing/ProvidedMoney",
-              "role": "kairos:Transaction.Exchange/Roles/ProvidedMoney",
+              "role": "kairos:Primitives/Transaction.Exchange/Roles/ProvidedMoney",
               "constraints": [
                 "kairos:MON"
               ]
@@ -363,7 +371,7 @@
         {
           "@id": "caci:CoordinatedBombingAttack/Steps/training_2",
           "comment": "\"Train in NJ\"",
-          "@type": "kairos:Training",
+          "@type": "kairos:Primitives/Teaching",
           "aka": [
             "training",
             "teaching"
@@ -372,7 +380,7 @@
             {
               "name": "trainer",
               "@id": "caci:CoordinatedBombingAttack/Slots/training_2/trainer",
-              "role": "kairos:Training/Roles/Trainer",
+              "role": "kairos:Primitives/Teaching/Roles/teacher",
               "constraints": [
                 "kairos:PER",
                 "kairos:ORG"
@@ -381,7 +389,7 @@
             {
               "name": "learner",
               "@id": "caci:CoordinatedBombingAttack/Slots/training_2/learner",
-              "role": "kairos:Training/Roles/Learner",
+              "role": "kairos:Primitives/Teaching/Roles/Learner",
               "constraints": [
                 "kairos:PER",
                 "kairos:ORG"
@@ -390,7 +398,7 @@
             {
               "name": "subject_matter",
               "@id": "caci:CoordinatedBombingAttack/Slots/training_1/subject_matter",
-              "role": "kairos:Training/Roles/FieldOfKnowledge",
+              "role": "kairos:Primitives/Teaching/Roles/FieldOfKnowledge",
               "constraints": "kairos:INF"
             }
           ]
@@ -436,27 +444,27 @@
         },
         {
           "@id": "caci:CoordinatedBombingAttack/Steps/obtain_transportation",
-          "@type": "kairos:Transaction.Exchange",
+          "@type": "kairos:Primitives/Transaction.Exchange",
           "comment": "\"Rent a van\"",
           "aka": "renting",
           "slots": [
             {
               "name": "vehicle_rented",
               "@id": "caci:CoordinatedBombingAttack/Slots/obtain_transportation/vehicle_rented",
-              "role": "kairos:Transaction.Exchange/Roles/AcquiredEntity",
+              "role": "kairos:Primitives/Transaction.Exchange/Roles/AcquiredEntity",
               "constraints": "kairos:VEH"
             }
           ]
         },
         {
           "@id": "caci:CoordinatedBombingAttack/Steps/move_to_general_attack_location",
-          "@type": "kairos:Movement.TransportationLegal",
+          "@type": "kairos:Primitives/Movement.TransportationLegal",
           "comment": "\"Drive to Manhattan\"",
           "slots": [
             {
               "name": "attackLocation",
               "@id": "caci:CoordinatedBombingAttack/Slots/move_to_general_attack_location/attackLocation",
-              "role": "kairos:Movement.TransportationLegal/Roles/destinationPlace",
+              "role": "kairos:Primitives/Movement.TransportationLegal/Roles/destinationPlace",
               "constraints": [
                 "kairos:LOC",
                 "kairos:FAC",
@@ -465,8 +473,8 @@
             },
             {
               "name": "attacker",
-              "@id": "kairos:Movement.TransportationIllegal/Slots/move_to_general_attack_location/attacker",
-              "role": "kairos:Movement.TransportationIllegal/Roles/thingsMoved",
+              "@id": "caci:CoordinatedBombingAttack/Slots/move_to_general_attack_location/attacker",
+              "role": "kairos:Primitives/Movement.TransportationIllegal/Roles/thingsMoved",
               "constraints": [
                 "kairos:PER",
                 "kairos:ORG"
@@ -474,21 +482,21 @@
             },
             {
               "name": "method",
-              "@id": "kairos:Movement.TransportationIllegal/Slots/move_to_general_attack_location/method",
-              "role": "kairos:Movement.TransportationIllegal/Roles/instrument",
+              "@id": "caci:CoordinatedBombingAttack/Slots/move_to_general_attack_location/method",
+              "role": "kairos:Primitives/Movement.TransportationIllegal/Roles/instrument",
               "constraints": "kairos:VEH"
             }
           ]
         },
         {
           "@id": "caci:CoordinatedBombingAttack/Steps/move_to_specific_attack_location",
-          "@type": "kairos:Movement.TransportationLegal",
+          "@type": "kairos:Primitives/Movement.TransportationLegal",
           "comment": "\"Park at WTC (1993)\"",
           "slots": [
             {
               "name": "attackLocation",
               "@id": "caci:CoordinatedBombingAttack/Slots/move_to_specific_attack_location/attackLocation",
-              "role": "kairos:Movement.TransportationLegal/Roles/destinationPlace",
+              "role": "kairos:Primitives/Movement.TransportationLegal/Roles/destinationPlace",
               "constraints": [
                 "kairos:LOC",
                 "kairos:FAC"
@@ -497,7 +505,7 @@
             {
               "name": "attacker",
               "@id": "caci:CoordinatedBombingAttack/Slots/move_to_specific_attack_location/attacker",
-              "role": "kairos:Movement.TransportationIllegal/Roles/thingsMoved",
+              "role": "kairos:Primitives/Movement.TransportationIllegal/Roles/thingsMoved",
               "constraints": {
                 "@id": "caci:CoordinatedBombingAttack/Slots/move_to_general_attack_location/attacker"
               }
@@ -515,7 +523,7 @@
         },
         {
           "@id": "caci:CoordinatedBombingAttack/Steps/escape",
-          "@type": "kairos:Movement.TransportationIllegal",
+          "@type": "kairos:Primitives/Movement.TransportationIllegal",
           "comment": [
             "\"Escaped to Pakistan\"",
             "An illegal border crossing where you're fleeing the law.  We could have created caci:Flee that subclasses Movement.TransportationIllegal and specifies the event from which you're fleeing."
@@ -525,7 +533,7 @@
             {
               "name": "sourcePlace",
               "@id": "caci:CoordinatedBombingAttack/Slots/escape/sourcePlace",
-              "role": "kairos:Movement.TransportationIllegal/Roles/sourcePlace",
+              "role": "kairos:Primitives/Movement.TransportationIllegal/Roles/sourcePlace",
               "constraints": [
                 "kairos:LOC",
                 "kairos:FAC"
@@ -533,8 +541,8 @@
             },
             {
               "name": "destinationPlace",
-              "@id": "kairos:Movement.TransportationIllegal/Slots/escape/destinationPlace",
-              "role": "kairos:Movement.TransportationIllegal/Roles/destinationPlace",
+              "@id": "caci:CoordinatedBombingAttack/Slots/escape/destinationPlace",
+              "role": "kairos:Primitives/Movement.TransportationIllegal/Roles/destinationPlace",
               "constraints": [
                 "kairos:LOC",
                 "kairos:FAC",
@@ -543,8 +551,8 @@
             },
             {
               "name": "thingsMoved",
-              "@id": "kairos:Movement.TransportationIllegal/Slots/escape/thingsMoved",
-              "role": "kairos:Movement.TransportationIllegal/Roles/thingsMoved",
+              "@id": "caci:CoordinatedBombingAttack/Slots/escape/thingsMoved",
+              "role": "kairos:Primitives/Movement.TransportationIllegal/Roles/thingsMoved",
               "comment": "Arguably, caci:Flee could specify constraints of PER, ORG",
               "constraints": "kairos:PER"
             }
@@ -591,8 +599,9 @@
           "after": "caci:CoordinatedBombingAttack/Steps/bombing"
         }
       ],
-      "entityRelations": {
-        "caci:CoordinatedBombingAttack/Slots/training_1/trainer": {
+      "entityRelations": [
+        {
+          "relationSubject": "caci:CoordinatedBombingAttack/Slots/training_1/trainer",
           "comment": [
             "Trainer is Al-Qaeda. This could link to an Al-Qaeda entity in kairos.",
             "This corresponds to 'Arguments A11 and A21 are identical' from \"Structure of a schema\""
@@ -601,7 +610,8 @@
           "confidence": ".75",
           "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000500"
         },
-        "caci:CoordinatedBombingAttack/Slots/move_to_specific_attack_location/attacker": {
+        {
+          "relationSubject": "caci:CoordinatedBombingAttack/Slots/move_to_specific_attack_location/attacker",
           "comment": [
             "Same attacker moved to specific location as moved to general location, or lives in general attack location",
             "This corresponds to 'argument A32 could be identical with A21 or related to A22' from \"Structure of a schema\""
@@ -621,7 +631,8 @@
             }
           ]
         },
-        "caci:CoordinatedBombingAttack/Slots/obtain_financing/giver": {
+        {
+          "relationSubject": "caci:CoordinatedBombingAttack/Slots/obtain_financing/giver",
           "comment": [
             "Giver of financing is one of the participants in the make_contact event, or is affiliated with it",
             "This corresponds to 'Arguments A41 and A51 are either identical or related' from \"Structure of a schema\""
@@ -641,7 +652,7 @@
             }
           ]
         }
-      }
+      ]
     }
   ]
 }
