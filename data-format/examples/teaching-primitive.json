@@ -3,7 +3,7 @@
     "schema": "http://schema.org/",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "kairos": "https://darpa.mil/i2o/kairos/",
-    "schemas": "kairos:schemas",
+    "primitives": "kairos:primitives",
     "super": {
       "@id": "kairos:super",
       "@type": "@id"
@@ -16,8 +16,8 @@
       "@id": "kairos:sdfVersion",
       "@type": "xsd:float"
     },
-    "steps": "kairos:steps",
-    "roles": "kairos:roles",
+    "slots": "kairos:slots",
+    "role": "kairos:role",
     "constraints": "kairos:constraints",
     "aka": "kairos:aka",
     "minDuration": {
@@ -29,27 +29,25 @@
       "@type": "xsd:duration"
     }
   },
-  "schemas": [
+  "primitives": [
     {
       "@id": "kairos:Primitives/Teaching",
-      "comment": "This example tries to re-use the exact same format as schemas",
       "super": "kairos:Event",
       "name": "Teaching, training, learning",
       "description": "the action of teaching a person or animal a particular skill or type of behavior, there is an inherent trajectory where the Recipient does not have complete mastery of the skill until the end",
-      "version": "5/8/2020",
+      "version": "5/12/2020",
       "sdfVersion": "0.7",
       "aka": [
         "teaching",
         "training",
         "learning"
       ],
-      "steps:": [],
       "minDuration": "PT10M",
       "maxDuration": "P3M",
-      "roles": [
+      "slots": [
         {
-          "@id": "kairos:Primitives/Teaching/Roles/teacher",
-          "name": "Teacher",
+          "@id": "kairos:Primitives/Teaching/Slots/teacher",
+          "role": "Teacher",
           "aka": "trainer",
           "constraints": [
             "kairos:PER",
@@ -58,14 +56,14 @@
           ]
         },
         {
-          "@id": "kairos:Primitives/Teaching/Roles/fieldOfKnowledge",
-          "name": "Field of knowledge",
+          "@id": "kairos:Primitives/Teaching/Slots/fieldOfKnowledge",
+          "role": "Field of knowledge",
           "aka": "subjectMatter",
           "constraints": "kairos:INF"
         },
         {
-          "@id": "kairos:Primitives/Teaching/Roles/learner",
-          "name": "Learner",
+          "@id": "kairos:Primitives/Teaching/Slots/learner",
+          "role": "Learner",
           "aka": [
             "trainee",
             "learner"
@@ -77,8 +75,8 @@
           ]
         },
         {
-          "@id": "kairos:Primitives/Teaching/Roles/mnr",
-          "name": "MNR",
+          "@id": "kairos:Primitives/Teaching/Slots/mnr",
+          "role": "MNR",
           "aka": [
             "instrument",
             "means",
@@ -91,8 +89,8 @@
           ]
         },
         {
-          "@id": "kairos:Primitives/Teaching/Roles/institution",
-          "name": "Institution",
+          "@id": "kairos:Primitives/Teaching/Slots/institution",
+          "role": "Institution",
           "constraints": "kairos:ORG"
         }
       ]
