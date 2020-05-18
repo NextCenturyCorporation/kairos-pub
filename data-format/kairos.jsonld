@@ -1,0 +1,89 @@
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "schemas": "kairos:schemas",
+    "primitives": "kairos:primitives",
+    "super": {
+      "@id": "kairos:super",
+      "@type": "@id"
+    },
+    "name": "schema:name",
+    "comment": "kairos:comment",
+    "description": "schema:description",
+    "version": "schema:version",
+    "sdfVersion": "kairos:sdfVersion",
+    "privateData": "kairos:privateData",
+    "provenance": "kairos:provenance",
+    "reference": {
+      "@id": "kairos:reference",
+      "@type": "@id"
+    },
+    "steps": "kairos:steps",
+    "slots": "kairos:slots",
+    "role": {
+      "@id": "kairos:role",
+      "@type": "@id"
+    },
+    "constraints": "kairos:constraints",
+    "values": "kairos:values",
+    "confidence": {
+      "@id": "kairos:confidence",
+      "@type": "xsd:float"
+    },
+    "entityRelations": "kairos:entityRelations",
+    "relationSubject": {
+      "@id": "kairos:relationSubject",
+      "@type": "@id"
+    },
+    "relations": "kairos:relations",
+    "aka": "kairos:aka",
+    "temporal": "kairos:temporal",
+    "duration": {
+      "@id": "kairos:duration",
+      "@type": "xsd:duration"
+    },
+    "startTime": {
+      "@id": "kairos:startTime",
+      "@type": "xsd:dateTime"
+    },
+    "endTime": {
+      "@id": "kairos:endTime",
+      "@type": "xsd:dateTime"
+    },
+    "absoluteTime": {
+      "@id": "kairos:absoluteTime",
+      "@type": "xsd:dateTime"
+    },
+    "minDuration": {
+      "@id": "kairos:minDuration",
+      "@type": "xsd:duration"
+    },
+    "maxDuration": {
+      "@id": "kairos:maxDuration",
+      "@type": "xsd:duration"
+    },
+    "order": "kairos:order",
+    "before": {
+      "@id": "kairos:before",
+      "@type": "@id"
+    },
+    "after": {
+      "@id": "kairos:after",
+      "@type": "@id"
+    },
+    "container": {
+      "@id": "kairos:container",
+      "@type": "@id"
+    },
+    "contained": {
+      "@id": "kairos:contained",
+      "@type": "@id"
+    },
+    "overlaps": {
+      "@id": "kairos:overlaps",
+      "@type": "@id"
+    },
+    "flags": "kairos:flags"
+  }
+}

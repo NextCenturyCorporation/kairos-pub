@@ -12,10 +12,7 @@
     "comment": "kairos:comment",
     "description": "kairos:description",
     "version": "kairos:version",
-    "sdfVersion": {
-      "@id": "kairos:sdfVersion",
-      "@type": "xsd:float"
-    },
+    "sdfVersion": "kairos:sdfVersion",
     "slots": "kairos:slots",
     "role": "kairos:role",
     "constraints": "kairos:constraints",
@@ -29,14 +26,14 @@
       "@type": "xsd:duration"
     }
   },
+  "sdfVersion": "0.7",
   "primitives": [
     {
       "@id": "kairos:Primitives/Teaching",
       "super": "kairos:Event",
       "name": "Teaching, training, learning",
       "description": "the action of teaching a person or animal a particular skill or type of behavior, there is an inherent trajectory where the Recipient does not have complete mastery of the skill until the end",
-      "version": "5/12/2020",
-      "sdfVersion": "0.7",
+      "version": "5/15/2020",
       "aka": [
         "teaching",
         "training",

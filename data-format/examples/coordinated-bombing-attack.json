@@ -12,10 +12,7 @@
     "comment": "kairos:comment",
     "description": "kairos:description",
     "version": "kairos:version",
-    "sdfVersion": {
-      "@id": "kairos:sdfVersion",
-      "@type": "xsd:float"
-    },
+    "sdfVersion": "kairos:sdfVersion",
     "privateData": "kairos:privateData",
     "provenance": "kairos:provenance",
     "reference": {
@@ -29,10 +26,7 @@
       "@type": "@id"
     },
     "constraints": "kairos:constraints",
-    "values": {
-      "@id": "kairos:values",
-      "@type": "@id"
-    },
+    "values": "kairos:values",
     "confidence": {
       "@id": "kairos:confidence",
       "@type": "xsd:float"
@@ -58,7 +52,7 @@
       "@type": "xsd:dateTime"
     },
     "absoluteTime": {
-      "@id": "kairos:duration",
+      "@id": "kairos:absoluteTime",
       "@type": "xsd:dateTime"
     },
     "minDuration": {
@@ -95,6 +89,7 @@
     "my_name": "caci:my_name",
     "giant_bitstring": "caci:giant_bitstring"
   },
+  "sdfVersion": "0.7",
   "schemas": [
     {
       "@id": "caci:Schemas/CoordinatedBombingAttack",
@@ -119,8 +114,7 @@
       "super": "caci:Schemas/BombingAttack",
       "name": "Coordinated Bombing Attack",
       "description": "A coordinated effort by mulitple parties that results in a bombing attack",
-      "version": "5/5/2020",
-      "sdfVersion": "0.7",
+      "version": "5/15/2020",
       "privateData": {
         "comment": "Performers can place any keys/values they wish here.  The map will be added to the graph but otherwise ignored by the system.  Properties maps can be added inside a schema, individual steps, slots, and order blocks, but not in their enclosing arrays.  Large amounts of private data can be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum.",
         "my_name": "my value",
