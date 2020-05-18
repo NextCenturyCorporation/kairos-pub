@@ -36,6 +36,8 @@
       "@id": "kairos:relationSubject",
       "@type": "@id"
     },
+    "relationPredicate": "kairos:relationPredicate",
+    "relationObject": "kairos:relationObject",
     "relations": "kairos:relations",
     "aka": "kairos:aka",
     "temporal": "kairos:temporal",
@@ -606,7 +608,8 @@
           ],
           "relations": [
             {
-              "kairos:Relations/sameAs": "https://www.wikidata.org/wiki/Q34490",
+              "relationPredicate": "kairos:Relations/sameAs",
+              "relationObject": "https://www.wikidata.org/wiki/Q34490",
               "confidence": ".75",
               "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000500"
             }
@@ -627,7 +630,8 @@
             },
             {
               "comment": "Attacker lives in general attack location",
-              "kairos:Relations/residesIn": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location/attackLocation",
+              "relationPredicate": "kairos:Relations/residesIn",
+              "relationObject": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location/attackLocation",
               "confidence": ".2",
               "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
             }
@@ -642,13 +646,15 @@
           "relations": [
             {
               "comment": "Giver of financing is one of the participants in the make_contact event",
-              "kairos:Relations/sameAs": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/Participant",
+              "relationPredicate": "kairos:Relations/sameAs",
+              "relationObject": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/Participant",
               "confidence": ".75",
               "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000412"
             },
             {
               "comment": "Giver of financing is affiliated with one of the participants in the make_contact event",
-              "kairos:Relations/affiliatedWith": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/Participant",
+              "relationPredicate": "kairos:Relations/affiliatedWith",
+              "relationObject": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/Participant",
               "confidence": ".25",
               "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000722"
             }
