@@ -15,7 +15,7 @@
     "sdfVersion": "kairos:sdfVersion",
     "slots": "kairos:slots",
     "roleName": "kairos:roleName",
-    "constraints": "kairos:constraints",
+    "entityTypes": "kairos:entityTypes",
     "aka": "kairos:aka",
     "minDuration": {
       "@id": "kairos:minDuration",
@@ -46,7 +46,7 @@
           "@id": "kairos:Primitives/Teaching/Slots/teacher",
           "roleName": "Teacher",
           "aka": "trainer",
-          "constraints": [
+          "entityTypes": [
             "kairos:PER",
             "kairos:ORG",
             "kairos:AML"
@@ -56,7 +56,7 @@
           "@id": "kairos:Primitives/Teaching/Slots/fieldOfKnowledge",
           "roleName": "Field of knowledge",
           "aka": "subjectMatter",
-          "constraints": "kairos:INF"
+          "entityTypes": "kairos:INF"
         },
         {
           "@id": "kairos:Primitives/Teaching/Slots/learner",
@@ -65,7 +65,7 @@
             "trainee",
             "learner"
           ],
-          "constraints": [
+          "entityTypes": [
             "kairos:PER",
             "kairos:ORG",
             "kairos:AML"
@@ -79,7 +79,7 @@
             "means",
             "manner"
           ],
-          "constraints": [
+          "entityTypes": [
             "kairos:COM",
             "kairos:ABS",
             "kairos:INF"
@@ -88,7 +88,7 @@
         {
           "@id": "kairos:Primitives/Teaching/Slots/institution",
           "roleName": "Institution",
-          "constraints": "kairos:ORG"
+          "entityTypes": "kairos:ORG"
         }
       ]
     }
