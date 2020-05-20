@@ -117,7 +117,7 @@
       "super": "caci:Schemas/BombingAttack",
       "name": "Coordinated Bombing Attack",
       "description": "A coordinated effort by mulitple parties that results in a bombing attack",
-      "version": "5/15/2020",
+      "version": "caci-05.20.2020",
       "privateData": {
         "comment": "Performers can place any keys/values they wish here.  The map will be added to the graph but otherwise ignored by the system.  Properties maps can be added inside a schema, individual steps, slots, and order blocks, but not in their enclosing arrays.  Large amounts of private data can be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum.",
         "my_name": "my value",
@@ -647,6 +647,18 @@
       ],
       "order": [
         {
+          "comment": "Wire transfer occurs while training with Al-Qaeda.  Contrived to show a container/contained example.",
+          "container": "caci:Schemas/CoordinatedBombingAttack/Steps/training_1",
+          "contained": "caci:Schemas/CoordinatedBombingAttack/Steps/wire_transfer"
+        },
+        {
+          "comment": "Mailing anti-Israel letters to newspapers and training in NJ overlap.  Contrived to show an overlaps example.",
+          "overlaps": [
+            "caci:Schemas/CoordinatedBombingAttack/Steps/training_2",
+            "caci:Schemas/CoordinatedBombingAttack/Steps/media_propaganda"
+          ]
+        },
+        {
           "before": "caci:Schemas/CoordinatedBombingAttack/Steps/training_1",
           "after": "caci:Schemas/CoordinatedBombingAttack/Steps/training_2",
           "flags": "precondition"
@@ -662,7 +674,7 @@
           "flags": "precondition"
         },
         {
-          "comment": "Interesting to consider whether move_to_general_attack_location needs to be specified, or whether that just happens because of how you set up general being before specific above; and how does this impact validation?  Can transitivity happen automatically? Probably not in SDF v1.0.",
+          "comment": "Interesting to consider whether move_to_general_attack_location needs to be specified, or whether that just happens because of how you set up general being before specific above; and how does this impact validation?  Can transitivity happen automatically? Something to consider for SDF v1.0.",
           "before": [
             "caci:Schemas/CoordinatedBombingAttack/Steps/training_1",
             "caci:Schemas/CoordinatedBombingAttack/Steps/obtain_financing",

@@ -33,7 +33,7 @@
       "super": "kairos:Event",
       "name": "Teaching, training, learning",
       "description": "the action of teaching a person or animal a particular skill or type of behavior, there is an inherent trajectory where the Recipient does not have complete mastery of the skill until the end",
-      "version": "5/15/2020",
+      "version": "kairos-05.20.2020",
       "aka": [
         "teaching",
         "training",
