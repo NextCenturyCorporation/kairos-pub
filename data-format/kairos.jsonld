@@ -2,6 +2,7 @@
   "@context": {
     "schema": "http://schema.org/",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "kairos": "https://kairos-sdf.s3.amazonaws.com/context/kairos",
     "schemas": "kairos:schemas",
     "primitives": "kairos:primitives",
     "super": {
@@ -25,7 +26,7 @@
       "@id": "kairos:role",
       "@type": "@id"
     },
-    "constraints": "kairos:constraints",
+    "entityTypes": "kairos:entityTypes",
     "values": "kairos:values",
     "confidence": {
       "@id": "kairos:confidence",
@@ -36,6 +37,8 @@
       "@id": "kairos:relationSubject",
       "@type": "@id"
     },
+    "relationPredicate": "kairos:relationPredicate",
+    "relationObject": "kairos:relationObject",
     "relations": "kairos:relations",
     "aka": "kairos:aka",
     "temporal": "kairos:temporal",
