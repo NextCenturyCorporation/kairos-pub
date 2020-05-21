@@ -88,7 +88,7 @@
     },
     "flags": "kairos:flags",
     "caci": "https://caci.com/kairos/",
-    "my_name": "caci:my_name",
+    "my_key": "caci:my_key",
     "giant_bitstring": "caci:giant_bitstring"
   },
   "sdfVersion": "0.7",
@@ -120,7 +120,7 @@
       "version": "caci-05.20.2020",
       "privateData": {
         "comment": "Performers can place any keys/values they wish here.  The map will be added to the graph but otherwise ignored by the system.  Properties maps can be added inside a schema, individual steps, slots, and order blocks, but not in their enclosing arrays.  Large amounts of private data can be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum.",
-        "my_name": "my value",
+        "my_key": "my value",
         "giant_bitstring": "s3://caci-kairos/privateData/CoordinatedBombingAttack/schema-bitstring.gz"
       },
       "steps": [
@@ -141,7 +141,9 @@
               "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/training_1/duration",
               "comment": "TA1 optionally sets minDuration and maxDuration; TA2 sets duration, confidence, and provenance of this object",
               "duration": "P4D",
-              "privateData": "s3://caci_bucket/durationData",
+              "privateData": {
+                "my_key": "s3://caci_bucket/durationData"
+              },
               "confidence": "0.5",
               "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
             },
@@ -149,7 +151,9 @@
               "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/training_1/startTime",
               "comment": "Typically only specified by TA2.",
               "startTime": "2019-04-12T08:00:00-05:00",
-              "privateData": "s3://caci_bucket/startTimeData",
+              "privateData": {
+                "my_key": "s3://caci_bucket/startTimeData"
+              },
               "confidence": "0.5",
               "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
             },
@@ -157,7 +161,9 @@
               "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/training_1/endTime",
               "comment": "Typically only specified by TA2.",
               "endTime": "2019-04-15T17:00:00-05:00",
-              "privateData": "s3://caci_bucket/endTimeData",
+              "privateData": {
+                "my_key": "s3://caci_bucket/endTimeData"
+              },
               "confidence": "0.5",
               "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
             },
@@ -165,7 +171,9 @@
               "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/training_1/absoluteTime",
               "comment": "Typically only specified by TA2.",
               "absoluteTime": "2019-04-14T12:00:00-05:00",
-              "privateData": "s3://caci_bucket/absoluteTimeData",
+              "privateData": {
+                "my_key": "s3://caci_bucket/absoluteTimeData"
+              },
               "confidence": "0.5",
               "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
             }
@@ -743,7 +751,8 @@
           "relations": [
             {
               "comment": "Same attacker moved to specific location as moved to general location",
-              "kairos:Relations/sameAs": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location/attacker",
+              "relationPredicate": "kairos:Relations/sameAs",
+              "relationObject": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location/attacker",
               "confidence": ".9",
               "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000232"
             },
