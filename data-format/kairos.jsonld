@@ -2,7 +2,7 @@
   "@context": {
     "schema": "http://schema.org/",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
-    "kairos": "https://kairos-sdf.s3.amazonaws.com/context/kairos",
+    "kairos": "https://kairos-sdf.s3.amazonaws.com/context/kairos#",
     "schemas": "kairos:schemas",
     "primitives": "kairos:primitives",
     "super": {

@@ -1,0 +1,749 @@
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "kairos": "https://kairos-sdf.s3.amazonaws.com/context/kairos#",
+    "schemas": "kairos:schemas",
+    "super": {
+      "@id": "kairos:super",
+      "@type": "@id"
+    },
+    "name": "schema:name",
+    "comment": "kairos:comment",
+    "description": "kairos:description",
+    "version": "kairos:version",
+    "sdfVersion": "kairos:sdfVersion",
+    "privateData": "kairos:privateData",
+    "provenance": "kairos:provenance",
+    "reference": {
+      "@id": "kairos:reference",
+      "@type": "@id"
+    },
+    "steps": "kairos:steps",
+    "slots": "kairos:slots",
+    "role": {
+      "@id": "kairos:role",
+      "@type": "@id"
+    },
+    "entityTypes": "kairos:entityTypes",
+    "values": "kairos:values",
+    "confidence": {
+      "@id": "kairos:confidence",
+      "@type": "xsd:float"
+    },
+    "entityRelations": "kairos:entityRelations",
+    "relationSubject": {
+      "@id": "kairos:relationSubject",
+      "@type": "@id"
+    },
+    "relationPredicate": "kairos:relationPredicate",
+    "relationObject": "kairos:relationObject",
+    "relations": "kairos:relations",
+    "aka": "kairos:aka",
+    "temporal": "kairos:temporal",
+    "duration": {
+      "@id": "kairos:duration",
+      "@type": "xsd:duration"
+    },
+    "startTime": {
+      "@id": "kairos:startTime",
+      "@type": "xsd:dateTime"
+    },
+    "endTime": {
+      "@id": "kairos:endTime",
+      "@type": "xsd:dateTime"
+    },
+    "absoluteTime": {
+      "@id": "kairos:absoluteTime",
+      "@type": "xsd:dateTime"
+    },
+    "minDuration": {
+      "@id": "kairos:minDuration",
+      "@type": "xsd:duration"
+    },
+    "maxDuration": {
+      "@id": "kairos:maxDuration",
+      "@type": "xsd:duration"
+    },
+    "order": "kairos:order",
+    "before": {
+      "@id": "kairos:before",
+      "@type": "@id"
+    },
+    "after": {
+      "@id": "kairos:after",
+      "@type": "@id"
+    },
+    "container": {
+      "@id": "kairos:container",
+      "@type": "@id"
+    },
+    "contained": {
+      "@id": "kairos:contained",
+      "@type": "@id"
+    },
+    "overlaps": {
+      "@id": "kairos:overlaps",
+      "@type": "@id"
+    },
+    "flags": "kairos:flags",
+    "caci": "https://caci.com/kairos/",
+    "my_key": "caci:my_key",
+    "giant_bitstring": "caci:giant_bitstring"
+  },
+  "sdfVersion": "0.7",
+  "schemas": [
+    {
+      "@id": "caci:Schemas/PIeval-TA1-Schema1",
+      "comment": [
+        "TA1 schema #1:",
+        "  A(W1) B(W1,Z) C(W1, W2) D(W1) [E(W1,Y) E(W3) E (W4)] F(W1, W3, W4) H(Y) J",
+        "  Travel(arg1); Study(arg1, terrorism); Meet(arg1, arg2); Join a group(arg1);",
+        "  [Acquire(arg1, truck); Acquire(arg3); Acquire(arg4);]",
+        "  Mix(arg1, arg3, arg4); Park(truck); Explode",
+        "",
+        "NOTE: \"Each complex event should include all the applicable primitive events, their arguments, and their relations as specified by the KAIROS ontology.\""
+      ],
+      "super": "kairos:Event",
+      "name": "Phase I Eval Schema #1",
+      "description": "This is a schema with specific arguments involving terrorism and a truck",
+      "version": "caci-05.22.2020",
+      "privateData": {
+        "comment": "Performers can place any keys/values they wish here.  The map will be added to the graph but otherwise ignored by the system.  Properties maps can be added inside a schema, individual steps, slots, and order blocks, but not in their enclosing arrays.  Large amounts of private data can be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum.",
+        "my_key": "my value",
+        "giant_bitstring": "s3://caci-kairos/privateData/PIeval-TA1-Schema1/schema-bitstring.gz"
+      },
+      "steps": [
+        {
+          "@id": "caci:Schemas/PIeval-TA1-Schema1/Steps/travel",
+          "comment": "Travel(arg1)",
+          "@type": "kairos:Primitives/Movement.TransportationLegal",
+          "slots": [
+            {
+              "name": "source_place",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/travel/source_place",
+              "role": "kairos:Primitives/Movement.TransportationLegal/Slots/SourcePlace",
+              "entityTypes": [
+                "kairos:LOC",
+                "kairos:FAC",
+                "kairos:GPE"
+              ]
+            },
+            {
+              "name": "destination_place",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/travel/destination_place",
+              "role": "kairos:Primitives/Movement.TransportationLegal/Slots/DestinationPlace",
+              "entityTypes": [
+                "kairos:LOC",
+                "kairos:FAC",
+                "kairos:GPE"
+              ]
+            },
+            {
+              "name": "traveller",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/travel/traveller",
+              "role": "kairos:Primitives/Movement.TransportationLegal/Slots/agent",
+              "entityTypes": [
+                "kairos:PER",
+                "kairos:ORG",
+                "kairos:COM",
+                "kairos:AML"
+              ]
+            },
+            {
+              "name": "instrument",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/travel/instrument",
+              "role": "kairos:Primitives/Movement.TransportationLegal/Slots/instrument",
+              "entityTypes": "kairos:VEH"
+            },
+            {
+              "name": "things_moved",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/travel/things_moved",
+              "role": "kairos:Primitives/Movement.TransportationLegal/Slots/ThingsMoved",
+              "entityTypes": [
+                "kairos:PER",
+                "kairos:MON",
+                "kairos:COM",
+                "kairos:BAL",
+                "kairos:VEH",
+                "kairos:WEA"
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "caci:Schemas/PIeval-TA1-Schema1/Steps/study",
+          "comment": "Study(arg1, terrorism)",
+          "@type": "kairos:Primitives/Teaching",
+          "aka": [
+            "training",
+            "learning"
+          ],
+          "slots": [
+            {
+              "name": "teacher",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/study/teacher",
+              "role": "kairos:Primitives/Teaching/Slots/Teacher",
+              "entityTypes": [
+                "kairos:PER",
+                "kairos:ORG",
+                "kairos:AML"
+              ]
+            },
+            {
+              "name": "subject_matter",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/study/subject_matter",
+              "role": "kairos:Primitives/Teaching/Slots/FieldOfKnowledge",
+              "entityTypes": "kairos:INF",
+              "comment": "Wikidata entry for terrorism",
+              "reference": "https://www.wikidata.org/wiki/Q7283"
+            },
+            {
+              "name": "student",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/study/student",
+              "role": "kairos:Primitives/Teaching/Slots/Learner",
+              "entityTypes": [
+                "kairos:PER",
+                "kairos:ORG",
+                "kairos:COM",
+                "kairos:AML"
+              ]
+            },
+            {
+              "name": "manner",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/study/manner",
+              "role": "kairos:Primitives/Teaching/Slots/MNR",
+              "entityTypes": [
+                "kairos:ABS",
+                "kairos:INF",
+                "kairos:COM"
+              ]
+            },
+            {
+              "name": "institution",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/study/institution",
+              "role": "kairos:Primitives/Teaching/Slots/Institution",
+              "entityTypes": "kairos:ORG"
+            }
+          ]
+        },
+        {
+          "@id": "caci:Schemas/PIeval-TA1-Schema1/Steps/meet",
+          "@type": "kairos:Primitives/Contact.Meet",
+          "comment": "Meet(arg1, arg2); arg1 and arg2 are both participants.",
+          "slots": [
+            {
+              "name": "participant",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/meet/participant",
+              "role": "kairos:Primitives/Contact.Meet/Slots/Participant",
+              "entityTypes": [
+                "kairos:PER",
+                "kairos:ORG",
+                "kairos:GPE",
+                "kairos:SID"
+              ]
+            },
+            {
+              "name": "topic",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/meet/topic",
+              "role": "kairos:Primitives/Contact.Meet/Slots/Topic",
+              "entityTypes": [
+                "kairos:Entity",
+                "kairos:Event",
+                "kairos:INF"
+              ]
+            },
+            {
+              "name": "place",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/meet/place",
+              "role": "kairos:Primitives/Contact.Meet/Slots/Place",
+              "entityTypes": [
+                "kairos:LOC",
+                "kairos:GPE",
+                "kairos:FAC"
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "caci:Schemas/PIeval-TA1-Schema1/Steps/join_group",
+          "@type": "kairos:Primitives/Join",
+          "comment": "Join a group(arg1)",
+          "slots": [
+            {
+              "name": "joiner",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/join_group/joiner",
+              "role": "kairos:Primitives/Join/Slots/Agent",
+              "entityTypes": [
+                "kairos:PER",
+                "kairos:ORG",
+                "kairos:GPE",
+                "kairos:SID"
+              ]
+            },
+            {
+              "name": "organization",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/join_group/organization",
+              "role": "kairos:Primitives/Join/Slots/Organization",
+              "entityTypes": [
+                "kairos:ORG",
+                "kairos:GPE",
+                "kairos:SID"
+              ]
+            },
+            {
+              "name": "place",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/join_group/place",
+              "role": "kairos:Primitives/Join/Slots/Place",
+              "entityTypes": [
+                "kairos:LOC",
+                "kairos:FAC",
+                "kairos:GPE"
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "caci:Schemas/PIeval-TA1-Schema1/Steps/acquire_truck",
+          "@type": "kairos:Primitives/Transaction.Exchange",
+          "comment": "Acquire(arg1, truck)",
+          "slots": [
+            {
+              "name": "source",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/acquire_truck/source",
+              "role": "kairos:Primitives/Transaction.Exchange/Slots/Source",
+              "entityTypes": [
+                "kairos:PER",
+                "kairos:ORG",
+                "kairos:GPE",
+                "kairos:SID"
+              ]
+            },
+            {
+              "name": "acquirer",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/acquire_truck/acquirer",
+              "role": "kairos:Primitives/Transaction.Exchange/Slots/AcquirerOrRecipient",
+              "entityTypes": [
+                "kairos:PER",
+                "kairos:ORG",
+                "kairos:GPE",
+                "kairos:SID"
+              ]
+            },
+            {
+              "name": "truck",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/acquire_truck/truck",
+              "role": "kairos:Primitives/Transaction.Exchange/Slots/AcquiredEntity",
+              "comment": "Wikidata entry for truck",
+              "reference": "https://www.wikidata.org/wiki/Q43193",
+              "entityTypes": [
+                "kairos:BAL",
+                "kairos:COM",
+                "kairos:GPE",
+                "kairos:FAC",
+                "kairos:LOC",
+                "kairos:MON",
+                "kairos:ORG",
+                "kairos:VEH",
+                "kairos:WEA"
+              ]
+            },
+            {
+              "name": "provided_money",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/acquire_truck/provided_money",
+              "role": "kairos:Primitives/Transaction.Exchange/Slots/ProvidedMoney",
+              "entityTypes": "kairos:MON"
+            },
+            {
+              "name": "beneficiary",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/acquire_truck/beneficiary",
+              "role": "kairos:Primitives/Transaction.Exchange/Slots/Beneficiary",
+              "entityTypes": [
+                "kairos:PER",
+                "kairos:ORG",
+                "kairos:GPE",
+                "kairos:SID"
+              ]
+            },
+            {
+              "name": "place",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/acquire_truck/place",
+              "role": "kairos:Primitives/Transaction.Exchange/Slots/Place",
+              "entityTypes": [
+                "kairos:LOC",
+                "kairos:GPE",
+                "kairos:FAC"
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "caci:Schemas/PIeval-TA1-Schema1/Steps/acquire_item1",
+          "@type": "kairos:Primitives/Transaction.Exchange",
+          "comment": "Acquire(arg3)",
+          "slots": [
+            {
+              "name": "source",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/acquire_item1/source",
+              "role": "kairos:Primitives/Transaction.Exchange/Slots/Source",
+              "entityTypes": [
+                "kairos:PER",
+                "kairos:ORG",
+                "kairos:GPE",
+                "kairos:SID"
+              ]
+            },
+            {
+              "name": "acquirer",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/acquire_item1/acquirer",
+              "role": "kairos:Primitives/Transaction.Exchange/Slots/AcquirerOrRecipient",
+              "entityTypes": [
+                "kairos:PER",
+                "kairos:ORG",
+                "kairos:GPE",
+                "kairos:SID"
+              ]
+            },
+            {
+              "name": "item",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/acquire_item1/item",
+              "role": "kairos:Primitives/Transaction.Exchange/Slots/AcquiredEntity",
+              "entityTypes": [
+                "kairos:BAL",
+                "kairos:COM",
+                "kairos:GPE",
+                "kairos:FAC",
+                "kairos:LOC",
+                "kairos:MON",
+                "kairos:ORG",
+                "kairos:VEH",
+                "kairos:WEA"
+              ]
+            },
+            {
+              "name": "provided_money",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/acquire_item1/provided_money",
+              "role": "kairos:Primitives/Transaction.Exchange/Slots/ProvidedMoney",
+              "entityTypes": "kairos:MON"
+            },
+            {
+              "name": "beneficiary",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/acquire_item1/beneficiary",
+              "role": "kairos:Primitives/Transaction.Exchange/Slots/Beneficiary",
+              "entityTypes": [
+                "kairos:PER",
+                "kairos:ORG",
+                "kairos:GPE",
+                "kairos:SID"
+              ]
+            },
+            {
+              "name": "place",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/acquire_item1/place",
+              "role": "kairos:Primitives/Transaction.Exchange/Slots/Place",
+              "entityTypes": [
+                "kairos:LOC",
+                "kairos:GPE",
+                "kairos:FAC"
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "caci:Schemas/PIeval-TA1-Schema1/Steps/acquire_item2",
+          "@type": "kairos:Primitives/Transaction.Exchange",
+          "comment": "Acquire(arg4)",
+          "slots": [
+            {
+              "name": "source",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/acquire_item2/source",
+              "role": "kairos:Primitives/Transaction.Exchange/Slots/Source",
+              "entityTypes": [
+                "kairos:PER",
+                "kairos:ORG",
+                "kairos:GPE",
+                "kairos:SID"
+              ]
+            },
+            {
+              "name": "acquirer",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/acquire_item2/acquirer",
+              "role": "kairos:Primitives/Transaction.Exchange/Slots/AcquirerOrRecipient",
+              "entityTypes": [
+                "kairos:PER",
+                "kairos:ORG",
+                "kairos:GPE",
+                "kairos:SID"
+              ]
+            },
+            {
+              "name": "item",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/acquire_item2/item",
+              "role": "kairos:Primitives/Transaction.Exchange/Slots/AcquiredEntity",
+              "entityTypes": [
+                "kairos:BAL",
+                "kairos:COM",
+                "kairos:GPE",
+                "kairos:FAC",
+                "kairos:LOC",
+                "kairos:MON",
+                "kairos:ORG",
+                "kairos:VEH",
+                "kairos:WEA"
+              ]
+            },
+            {
+              "name": "provided_money",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/acquire_item2/provided_money",
+              "role": "kairos:Primitives/Transaction.Exchange/Slots/ProvidedMoney",
+              "entityTypes": "kairos:MON"
+            },
+            {
+              "name": "beneficiary",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/acquire_item2/beneficiary",
+              "role": "kairos:Primitives/Transaction.Exchange/Slots/Beneficiary",
+              "entityTypes": [
+                "kairos:PER",
+                "kairos:ORG",
+                "kairos:GPE",
+                "kairos:SID"
+              ]
+            },
+            {
+              "name": "place",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/acquire_item2/place",
+              "role": "kairos:Primitives/Transaction.Exchange/Slots/Place",
+              "entityTypes": [
+                "kairos:LOC",
+                "kairos:GPE",
+                "kairos:FAC"
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "caci:Schemas/PIeval-TA1-Schema1/Steps/mix",
+          "@type": "kairos:Assemble",
+          "comment": "Mix(arg1, arg3, arg4); arg3 and arg4 are components",
+          "slots": [
+            {
+              "name": "place",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/mix/place",
+              "role": "kairos:Primitives/Assemble/Slots/Place",
+              "entityTypes": [
+                "kairos:LOC",
+                "kairos:FAC",
+                "kairos:GPE"
+              ]
+            },
+            {
+              "name": "mixer",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/mix/mixer",
+              "role": "kairos:Primitives/Assemble/Slots/Agent",
+              "entityTypes": "kairos:PER"
+            },
+            {
+              "name": "result",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/mix/result",
+              "role": "kairos:Primitives/Assemble/Slots/Result",
+              "entityTypes": [
+                "kairos:MON",
+                "kairos:BAL",
+                "kairos:COM",
+                "kairos:VEH",
+                "kairos:WEA"
+              ]
+            },
+            {
+              "name": "components",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/mix/components",
+              "role": "kairos:Primitives/Assemble/Slots/Components",
+              "entityTypes": [
+                "kairos:BAL",
+                "kairos:COM",
+                "kairos:VEH",
+                "kairos:WEA"
+              ]
+            },
+            {
+              "name": "instrument",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/mix/instrument",
+              "role": "kairos:Primitives/Assemble/Slots/Instrument",
+              "entityTypes": "kairos:PER"
+            }
+          ]
+        },
+        {
+          "@id": "caci:Schemas/PIeval-TA1-Schema1/Steps/park_truck",
+          "@type": "kairos:Primitives/Movement.TransportationLegal",
+          "comment": "Park(Truck)",
+          "slots": [
+            {
+              "name": "source_place",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/park_truck/source_place",
+              "role": "kairos:Primitives/Movement.TransportationLegal/Slots/SourcePlace",
+              "entityTypes": [
+                "kairos:LOC",
+                "kairos:FAC",
+                "kairos:GPE"
+              ]
+            },
+            {
+              "name": "destination_place",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/park_truck/destination_place",
+              "role": "kairos:Primitives/Movement.TransportationLegal/Slots/DestinationPlace",
+              "entityTypes": [
+                "kairos:LOC",
+                "kairos:FAC",
+                "kairos:GPE"
+              ]
+            },
+            {
+              "name": "driver",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/park_truck/driver",
+              "role": "kairos:Primitives/Movement.TransportationLegal/Slots/Agent",
+              "entityTypes": "kairos:PER"
+            },
+            {
+              "name": "truck",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/park_truck/truck",
+              "role": "kairos:Primitives/Movement.TransportationLegal/Slots/Instrument",
+              "entityTypes": "kairos:VEH"
+            },
+            {
+              "name": "parked_truck",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/park_truck/parked_truck",
+              "role": "kairos:Primitives/Movement.TransportationLegal/Slots/ThingsMoved",
+              "entityTypes": [
+                "kairos:PER",
+                "kairos:MON",
+                "kairos:BAL",
+                "kairos:COM",
+                "kairos:VEH",
+                "kairos:WEA"
+              ],
+              "comment": "Wikidata entry for truck",
+              "reference": "https://www.wikidata.org/wiki/Q43193"
+            }
+          ]
+        },
+        {
+          "@id": "caci:Schemas/PIeval-TA1-Schema1/Steps/explode",
+          "@type": "kairos:Primitives/Detonate",
+          "aka": "explode",
+          "comment": "Explode",
+          "slots": [
+            {
+              "name": "agent",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/explode/agent",
+              "role": "kairos:Primitives/Detonate/Slots/SubjectAgent",
+              "entityTypes": "kairos:PER"
+            },
+            {
+              "name": "object",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/explode/object",
+              "role": "kairos:Primitives/Detonate/Slots/Object",
+              "entityTypes": [
+                "kairos:WEA",
+                "kairos:VEH",
+                "kairos:FAC",
+                "kairos:COM"
+              ]
+            },
+            {
+              "name": "instrument",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/explode/instrument",
+              "role": "kairos:Primitives/Detonate/Slots/MeansInstrument",
+              "entityTypes": [
+                "kairos:WEA",
+                "kairos:COM"
+              ]
+            },
+            {
+              "name": "place",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/explode/place",
+              "role": "kairos:Primitives/Detonate/Slots/Place",
+              "entityTypes": "kairos:LOC"
+            }
+          ]
+        }
+      ],
+      "order": [
+        {
+          "before": "caci:Schemas/PIeval-TA1-Schema1/Steps/travel",
+          "after": "caci:Schemas/PIeval-TA1-Schema1/Steps/study"
+        },
+        {
+          "before": "caci:Schemas/PIeval-TA1-Schema1/Steps/study",
+          "after": "caci:Schemas/PIeval-TA1-Schema1/Steps/meet"
+        },
+        {
+          "before": "caci:Schemas/PIeval-TA1-Schema1/Steps/meet",
+          "after": "caci:Schemas/PIeval-TA1-Schema1/Steps/join_group"
+        },
+        {
+          "before": "caci:Schemas/PIeval-TA1-Schema1/Steps/join_group",
+          "after": [
+            "caci:Schemas/PIeval-TA1-Schema1/Steps/acquire_truck",
+            "caci:Schemas/PIeval-TA1-Schema1/Steps/acquire_item1",
+            "caci:Schemas/PIeval-TA1-Schema1/Steps/acquire_item2"
+          ]
+        },
+        {
+          "before": [
+            "caci:Schemas/PIeval-TA1-Schema1/Steps/acquire_truck",
+            "caci:Schemas/PIeval-TA1-Schema1/Steps/acquire_item1",
+            "caci:Schemas/PIeval-TA1-Schema1/Steps/acquire_item2"
+          ],
+          "after": "caci:Schemas/PIeval-TA1-Schema1/Steps/mix"
+        },
+        {
+          "before": "caci:Schemas/PIeval-TA1-Schema1/Steps/mix",
+          "after": "caci:Schemas/PIeval-TA1-Schema1/Steps/park_truck"
+        },
+        {
+          "before": "caci:Schemas/PIeval-TA1-Schema1/Steps/park_truck",
+          "after": "caci:Schemas/PIeval-TA1-Schema1/Steps/explode"
+        }
+      ],
+      "entityRelations": [
+        {
+          "relationSubject": "caci:Schemas/PIeval-TA1-Schema1/Slots/travel/traveller",
+          "comment": [
+            "There is a primary actor in this schema.  He/she studies, meets, joins, acquires, and mixes.",
+            "This corresponds to 'Arguments A11 and A21 are identical' from \"Structure of a schema\""
+          ],
+          "relations": [
+            {
+              "relationPredicate": "kairos:Relations/sameAs",
+              "relationObject": [
+                "caci:Schemas/PIeval-TA1-Schema1/Slots/study/student",
+                "caci:Schemas/PIeval-TA1-Schema1/Slots/meet/participant",
+                "caci:Schemas/PIeval-TA1-Schema1/Slots/join_group/joiner",
+                "caci:Schemas/PIeval-TA1-Schema1/Slots/acquire_truck/acquirer",
+                "caci:Schemas/PIeval-TA1-Schema1/Slots/mix/mixer"
+              ],
+              "confidence": ".75",
+              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000500"
+            }
+          ]
+        },
+        {
+          "relationSubject": "caci:Schemas/PIeval-TA1-Schema1/Slots/mix/components",
+          "comment": "Mixed components were acquired in previous steps.",
+          "relations": [
+            {
+              "relationPredicate": "kairos:Relations/consistsOf",
+              "relationObject": [
+                "caci:Schemas/PIeval-TA1-Schema1/Slots/acquire_item1/item",
+                "caci:Schemas/PIeval-TA1-Schema1/Slots/acquire_item2/item"
+              ],
+              "confidence": ".75",
+              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000500"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
