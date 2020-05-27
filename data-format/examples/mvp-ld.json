@@ -3,6 +3,10 @@
     "schema": "http://schema.org/",
     "kairos": "https://kairos-sdf.s3.amazonaws.com/context/kairos#",
     "schemas": "kairos:schemas",
+    "super": {
+      "@id": "kairos:super",
+      "@type": "@id"
+    },
     "name": "schema:name",
     "comment": "kairos:comment",
     "description": "schema:description",
@@ -20,6 +24,7 @@
   "schemas": [
     {
       "@id": "performer:mvp",
+      "super": "kairos:Event",
       "name": "mvp",
       "description": "a minimal viable schema that is a valid, if vacuous, schema",
       "version": "TA1 performer-<algorithm> / TA2 performer-<algorithm>",
