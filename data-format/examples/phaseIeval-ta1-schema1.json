@@ -722,9 +722,7 @@
                 "caci:Schemas/PIeval-TA1-Schema1/Slots/join_group/joiner",
                 "caci:Schemas/PIeval-TA1-Schema1/Slots/acquire_truck/acquirer",
                 "caci:Schemas/PIeval-TA1-Schema1/Slots/mix/mixer"
-              ],
-              "confidence": ".75",
-              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000500"
+              ]
             }
           ]
         },
@@ -737,9 +735,7 @@
               "relationObject": [
                 "caci:Schemas/PIeval-TA1-Schema1/Slots/acquire_item1/item",
                 "caci:Schemas/PIeval-TA1-Schema1/Slots/acquire_item2/item"
-              ],
-              "confidence": ".75",
-              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000500"
+              ]
             }
           ]
         }
