@@ -3,29 +3,34 @@
     "schema": "http://schema.org/",
     "kairos": "https://kairos-sdf.s3.amazonaws.com/context/kairos#",
     "schemas": "kairos:schemas",
-    "super": {
-      "@id": "kairos:super",
-      "@type": "@id"
-    },
     "name": "schema:name",
     "comment": "kairos:comment",
     "description": "schema:description",
     "version": "schema:version",
     "sdfVersion": "kairos:sdfVersion",
     "steps": "kairos:steps",
+    "slots": "kairos:slots",
+    "role": {
+      "@id": "kairos:role",
+      "@type": "@id"
+    },
     "performer": "https://performer.edu/kairos.namespace/"
   },
+  "sdfVersion": "0.7",
   "schemas": [
     {
-      "id": "performer:mvp",
-      "super": "performer:parentSchema",
+      "@id": "performer:mvp",
       "name": "mvp",
       "description": "a minimal viable schema that is a valid, if vacuous, schema",
-      "version": "A performer-specific internal version string",
-      "sdfVersion": "0.7",
+      "version": "TA1 performer-<algorithm> / TA2 performer-<algorithm>",
       "steps": {
         "@id": "performer:myevent_1",
-        "@type": "kairos:primitive1"
+        "@type": "kairos:primitive1",
+        "slots": {
+          "name": "myslot_1",
+          "@id": "performer:myslot_1",
+          "role": "kairos:primitive1/Slots/slotRole"
+        }
       }
     }
   ]
