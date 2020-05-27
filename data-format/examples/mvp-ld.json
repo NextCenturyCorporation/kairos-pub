@@ -1,11 +1,16 @@
 {
   "@context": {
-    "kairos": "https://darpa.mil/i2o/kairos.official.namespace/",
+    "schema": "http://schema.org/",
+    "kairos": "https://kairos-sdf.s3.amazonaws.com/context/kairos#",
     "schemas": "kairos:schemas",
-    "super": "kairos:super",
-    "name": "kairos:name",
-    "description": "kairos:description",
-    "version": "kairos:version",
+    "super": {
+      "@id": "kairos:super",
+      "@type": "@id"
+    },
+    "name": "schema:name",
+    "comment": "kairos:comment",
+    "description": "schema:description",
+    "version": "schema:version",
     "sdfVersion": "kairos:sdfVersion",
     "steps": "kairos:steps",
     "performer": "https://performer.edu/kairos.namespace/"
@@ -17,7 +22,7 @@
       "name": "mvp",
       "description": "a minimal viable schema that is a valid, if vacuous, schema",
       "version": "A performer-specific internal version string",
-      "sdfVersion": "0.5",
+      "sdfVersion": "0.7",
       "steps": {
         "@id": "performer:myevent_1",
         "@type": "kairos:primitive1"

@@ -2,7 +2,7 @@
   "@context": {
     "schema": "http://schema.org/",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
-    "kairos": "https://darpa.mil/i2o/kairos/",
+    "kairos": "https://kairos-sdf.s3.amazonaws.com/context/kairos#",
     "primitives": "kairos:primitives",
     "super": {
       "@id": "kairos:super",
@@ -10,8 +10,8 @@
     },
     "name": "schema:name",
     "comment": "kairos:comment",
-    "description": "kairos:description",
-    "version": "kairos:version",
+    "description": "schema:description",
+    "version": "schema:version",
     "sdfVersion": "kairos:sdfVersion",
     "slots": "kairos:slots",
     "roleName": "kairos:roleName",

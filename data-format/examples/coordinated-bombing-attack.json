@@ -2,7 +2,7 @@
   "@context": {
     "schema": "http://schema.org/",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
-    "kairos": "https://darpa.mil/i2o/kairos/",
+    "kairos": "https://kairos-sdf.s3.amazonaws.com/context/kairos#",
     "schemas": "kairos:schemas",
     "super": {
       "@id": "kairos:super",
@@ -10,8 +10,8 @@
     },
     "name": "schema:name",
     "comment": "kairos:comment",
-    "description": "kairos:description",
-    "version": "kairos:version",
+    "description": "schema:description",
+    "version": "schema:version",
     "sdfVersion": "kairos:sdfVersion",
     "privateData": "kairos:privateData",
     "provenance": "kairos:provenance",
@@ -605,7 +605,15 @@
           "aka": "explode",
           "comment": [
             "\"Bomb explosion killing 6 people\"",
-            "Note that all slots are omitted here for brevity."
+            "Note that most slots are omitted here for brevity."
+          ],
+          "slots": [
+            {
+              "name": "agent",
+              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/bombing/agent",
+              "role": "kairos:Primitives/Detonate/Slots/SubjectAgent",
+              "entityTypes": "kairos:PER"
+            }
           ]
         },
         {
@@ -720,7 +728,8 @@
                 "caci:Schemas/CoordinatedBombingAttack/Slots/move_illegally/agentOfMovement",
                 "caci:Schemas/CoordinatedBombingAttack/Slots/training_2/learner",
                 "caci:Schemas/CoordinatedBombingAttack/Slots/media_propaganda/sender",
-                "caci:Schemas/CoordinatedBombingAttack/Slots/escape/thingsMoved"
+                "caci:Schemas/CoordinatedBombingAttack/Slots/escape/thingsMoved",
+                "caci:Schemas/CoordinatedBombingAttack/Slots/bombing/agent"
               ],
               "confidence": ".75",
               "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000500"
