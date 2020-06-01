@@ -140,8 +140,8 @@
               ]
             },
             {
-              "name": "traveller",
-              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/travel/traveller",
+              "name": "traveler",
+              "@id": "caci:Schemas/PIeval-TA1-Schema1/Slots/travel/traveler",
               "role": "kairos:Primitives/Movement.TransportationLegal/Slots/agent",
               "entityTypes": [
                 "kairos:PER",
@@ -708,7 +708,7 @@
       ],
       "entityRelations": [
         {
-          "relationSubject": "caci:Schemas/PIeval-TA1-Schema1/Slots/travel/traveller",
+          "relationSubject": "caci:Schemas/PIeval-TA1-Schema1/Slots/travel/traveler",
           "comment": [
             "There is a primary actor in this schema.  He/she studies, meets, joins, acquires, and mixes.",
             "This corresponds to 'Arguments A11 and A21 are identical' from \"Structure of a schema\""
