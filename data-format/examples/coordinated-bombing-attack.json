@@ -117,7 +117,7 @@
       "super": "caci:Schemas/BombingAttack",
       "name": "Coordinated Bombing Attack",
       "description": "A coordinated effort by mulitple parties that results in a bombing attack",
-      "version": "caci-05.20.2020",
+      "version": "caci-06.02.2020",
       "privateData": {
         "comment": "Performers can place any keys/values they wish here.  The map will be added to the graph but otherwise ignored by the system.  Properties maps can be added inside a schema, individual steps, slots, and order blocks, but not in their enclosing arrays.  Large amounts of private data can be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum.",
         "my_key": "my value",
@@ -383,14 +383,22 @@
           "@type": "kairos:Contact.Contact",
           "comment": [
             "\"Contact Sheikh connected with Rabbi Kahane Murderer\"",
-            "Note that some slots are omitted here for brevity."
+            "Note that TA1 has broken up the Contact primitive's Participant role into two distinct slots, so that they",
+            "can assign reference and entityRelations to both participants individually.  This could also be achieved by subclassing the primitive.",
+            "Note also that some slots are omitted here for brevity."
           ],
           "aka": "contact",
           "slots": [
             {
-              "name": "participant",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/Participant",
-              "role": "kairos:Primitives/Transaction.Exchange/Slots/Participant",
+              "name": "primary_actor",
+              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/participant/primary_actor",
+              "role": "kairos:Primitives/Contact.Contact/Slots/Participant",
+              "entityTypes": "kairos:PER"
+            },
+            {
+              "name": "sheikh",
+              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/participant/sheikh",
+              "role": "kairos:Primitives/Contact.Contact/Slots/Participant",
               "comment": "participant is a Sheikh",
               "reference": "https://www.wikidata.org/wiki/Q185166",
               "entityTypes": "kairos:PER"
@@ -723,6 +731,10 @@
           "relations": [
             {
               "relationPredicate": "kairos:Relations/sameAs",
+              "comment": [
+                "If TA2 wishes to assign a different confidence and/or provenance for each relation,",
+                "then it should separate the relationObjects array into separate objects in the relations array."
+              ],
               "relationObject": [
                 "caci:Schemas/CoordinatedBombingAttack/Slots/wire_transfer/recipient",
                 "caci:Schemas/CoordinatedBombingAttack/Slots/move_illegally/agentOfMovement",
@@ -737,7 +749,7 @@
           ]
         },
         {
-          "relationSubject": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/Participant",
+          "relationSubject": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/participant/sheikh",
           "comment": [
             "Sheikh participant from make_contact event is connected with Rabbi Kahane Murderer.",
             "This corresponds to 'Each argument may be associated with a relation which may be useful to differentiate between schema' from \"Structure of a schema\""
@@ -784,16 +796,28 @@
             {
               "comment": "Giver of financing is one of the participants in the make_contact event",
               "relationPredicate": "kairos:Relations/sameAs",
-              "relationObject": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/Participant",
+              "relationObject": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/participant/sheikh",
               "confidence": ".75",
               "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000412"
             },
             {
               "comment": "Giver of financing is affiliated with one of the participants in the make_contact event",
               "relationPredicate": "kairos:Relations/affiliatedWith",
-              "relationObject": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/Participant",
+              "relationObject": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/participant/sheikh",
               "confidence": ".25",
               "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000722"
+            }
+          ]
+        },
+        {
+          "relationSubject": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/participant/primary_actor",
+          "comment": "One participant from make_contact event is the primary actor in this schema who, among other things, trained with Al-Qaeda.",
+          "relations": [
+            {
+              "relationPredicate": "kairos:Relations/sameAs",
+              "relationObject": "caci:Schemas/CoordinatedBombingAttack/Slots/training_1/learner",
+              "confidence": "1.0",
+              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000500"
             }
           ]
         }
