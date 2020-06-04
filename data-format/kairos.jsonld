@@ -4,6 +4,10 @@
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "kairos": "https://kairos-sdf.s3.amazonaws.com/context/kairos#",
     "schemas": "kairos:schemas",
+    "ta2": {
+      "@id": "kairos:ta2",
+      "@type": "xsd:boolean"
+    },
     "primitives": "kairos:primitives",
     "super": {
       "@id": "kairos:super",
@@ -28,6 +32,12 @@
     },
     "entityTypes": "kairos:entityTypes",
     "values": "kairos:values",
+    "value": "kairos:value",
+    "valueId": {
+      "@id": "kairos:valueId",
+      "@type": "@id"
+    },
+    "mediaType": "kairos:mediaType",
     "confidence": {
       "@id": "kairos:confidence",
       "@type": "xsd:float"
