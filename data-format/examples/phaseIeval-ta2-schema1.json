@@ -119,7 +119,7 @@
       ],
       "name": "Phase I Eval Schema #1, Task 1",
       "description": "This is a schema with specific arguments involving terrorism and a truck",
-      "version": "caci-06.04.2020 / caci-06.05.2020",
+      "version": "caci-06.04.2020 / caci-06.04.2020",
       "privateData": {
         "comment": "Performers can place any keys/values they wish here.  The map will be added to the graph but otherwise ignored by the system.  Properties maps can be added inside a schema, individual steps, slots, and order blocks, but not in their enclosing arrays.  Large amounts of private data can be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum.",
         "my_key": "my value",
@@ -194,7 +194,7 @@
           "temporal": [
             {
               "@id": "caci:Schemas/PIeval-TA2-Schema1/Steps/study/duration",
-              "comment": "TA2 sets duration, confidence, and provenance of a step object",
+              "comment": "TA2 may set temporal values for a given step.  If it does, then confidence must be supplied.",
               "duration": "P4D",
               "privateData": {
                 "my_key": "s3://caci_bucket/durationData"
@@ -245,10 +245,14 @@
               "values": [
                 {
                   "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9eff13",
-                  "valueType": "text",
+                  "mediaType": "text",
                   "value": "studied terrorism",
                   "confidence": "1.0",
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.002391/4978-4995"
+                  "comment": "provenance may be an array if multiple justifications are present in the documents",
+                  "provenance": [
+                    "IC0015LNI/HC000030E/EMIC0015LNI.002391/4978-4995",
+                    "IC0015LNI/HC000030E/EMIC0015NNM.002591/32-49"
+                  ]
                 }
               ]
             },
@@ -420,12 +424,16 @@
               "values": [
                 {
                   "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9eb30e",
-                  "comment": "value is a filespec in submitted zipfile, plus bounding box",
+                  "comment": [
+                    "value in Quizlet 2 is a filespec in submitted zipfile, plus bounding box",
+                    "TA2 can specify entityTypes in values objects to express the type of the slot filler/extracted entity.  This can be as specific as the extractors can detect, and may be more specific than the entity types specified in the TA1 schema."
+                  ],
                   "value": [
                     "Quizlet2-caci/PIeval-TA2-Schema1/entities/EMIC0015LNI.000696.jpg",
                     "22,522,359,38"
                   ],
                   "mediaType": "image",
+                  "entityTypes": "kairos:VEH",
                   "confidence": "0.63",
                   "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/22,522,359,38"
                 }
@@ -718,7 +726,7 @@
               ],
               "comment": [
                 "Wikidata entry for truck",
-                "Specific argument was not found in the source documents, so indicate NA with empty list"
+                "Specific argument was not found in the source documents, so indicate NA with empty values list"
               ],
               "reference": "https://www.wikidata.org/wiki/Q43193",
               "values": []
@@ -765,8 +773,8 @@
               "values": [
                 {
                   "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9eb30e",
-                  "valueType": "sound",
-                  "comment": "value is a filespec in submitted zipfile, plus time index",
+                  "mediaType": "sound",
+                  "comment": "value in Quizlet 2 is a filespec in submitted zipfile, plus time index",
                   "value": [
                     "Quizlet2-caci/PIeval-TA2-Schema1/entities/EMIC0015NIQ.001397.wav",
                     "2.772,6.257"

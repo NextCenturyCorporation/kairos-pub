@@ -123,13 +123,12 @@
         "12. Bomb explosion killing 6 people",
         "13. Escaped to Pakistan",
         "",
-        "Conceptually, Coordinated Bombing Attack extends caci:Schemas/BombingAttack, but this is out of scope for Phase I.",
-        "Note: in this example, only the first step is instantiated by TA2."
+        "Conceptually, Coordinated Bombing Attack extends caci:Schemas/BombingAttack, but this is out of scope for Phase I."
       ],
       "super": "caci:Schemas/BombingAttack",
       "name": "Coordinated Bombing Attack",
       "description": "A coordinated effort by mulitple parties that results in a bombing attack",
-      "version": "caci-06.05.2020",
+      "version": "caci-06.04.2020",
       "privateData": {
         "comment": "Performers can place any keys/values they wish here.  The map will be added to the graph but otherwise ignored by the system.  Properties maps can be added inside a schema, individual steps, slots, and order blocks, but not in their enclosing arrays.  Large amounts of private data can be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum.",
         "my_key": "my value",
@@ -208,6 +207,8 @@
                   "value": "Al-Qaeda",
                   "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9eff13",
                   "mediaType": "text",
+                  "comment": "TA2 can specify entityTypes in values objects to express the type of the slot filler/extracted entity.  This can be as specific as the extractors can detect, and may be more specific than the entity types specified in the TA1 schema.",
+                  "entityTypes": "kairos:PER",
                   "confidence": "0.75",
                   "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/1423-1431"
                 }
@@ -228,6 +229,7 @@
                   "value": "Tamerlan Tsarvaev",
                   "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9eb30e",
                   "mediaType": "text",
+                  "entityTypes": "kairos:PER",
                   "confidence": "1.0",
                   "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/142-159"
                 },
@@ -235,6 +237,7 @@
                   "value": "Dzhokhar Tsarvaev",
                   "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9e88de",
                   "mediaType": "text",
+                  "entityTypes": "kairos:PER",
                   "confidence": "1.0",
                   "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/163-180"
                 }
@@ -244,9 +247,7 @@
               "name": "subject_matter",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training_1/subject_matter",
               "role": "kairos:Primitives/Teaching/Slots/FieldOfKnowledge",
-              "entityTypes": "kairos:INF",
-              "comment": "Values of an empty array indicates the argument is not justified in the source documents.",
-              "values": []
+              "entityTypes": "kairos:INF"
             },
             {
               "name": "manner",
@@ -261,15 +262,13 @@
                 "kairos:COM",
                 "kairos:ABS",
                 "kairos:INF"
-              ],
-              "values": []
+              ]
             },
             {
               "name": "institution",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training_1/institution",
               "role": "kairos:Primitives/Teaching/Slots/institution",
-              "entityTypes": "kairos:ORG",
-              "values": []
+              "entityTypes": "kairos:ORG"
             }
           ]
         },
@@ -390,9 +389,10 @@
               "name": "acquiredEntity",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/get_bombmaking_howto/AcquiredEntity",
               "role": "kairos:Primitives/Transaction.Exchange/Slots/AcquiredEntity",
-              "comment": "Wikidata entry for user guide",
               "reference": "https://www.wikidata.org/wiki/Q1057179",
-              "entityTypes": "kairos:COM"
+              "entityTypes": "kairos:COM",
+              "comment": "Values of an empty array indicates that the specific argument is not justified in the source documents.",
+              "values": []
             }
           ]
         },
@@ -417,9 +417,10 @@
               "name": "sheikh",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/participant/sheikh",
               "role": "kairos:Primitives/Contact.Contact/Slots/Participant",
-              "comment": "participant is a Sheikh",
               "reference": "https://www.wikidata.org/wiki/Q185166",
-              "entityTypes": "kairos:PER"
+              "entityTypes": "kairos:PER",
+              "comment": "Values of an empty array indicates that the specific argument is not justified in the source documents.",
+              "values": []
             }
           ]
         },
