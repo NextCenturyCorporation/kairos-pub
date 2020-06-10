@@ -26,7 +26,15 @@
       "@type": "@id"
     },
     "entityTypes": "kairos:entityTypes",
+    "entityTypes_AND": "kairos:entityTypes",
+    "entityTypes_OR": "kairos:entityTypes",
     "values": "kairos:values",
+    "value": "kairos:value",
+    "valueId": {
+      "@id": "kairos:valueId",
+      "@type": "@id"
+    },
+    "mediaType": "kairos:mediaType",
     "confidence": {
       "@id": "kairos:confidence",
       "@type": "xsd:float"
@@ -37,7 +45,10 @@
       "@type": "@id"
     },
     "relationPredicate": "kairos:relationPredicate",
-    "relationObject": "kairos:relationObject",
+    "relationObject": {
+      "@id": "kairos:relationObject",
+      "@type": "@id"
+    },
     "relations": "kairos:relations",
     "aka": "kairos:aka",
     "temporal": "kairos:temporal",
@@ -91,7 +102,7 @@
     "my_key": "caci:my_key",
     "giant_bitstring": "caci:giant_bitstring"
   },
-  "sdfVersion": "0.7",
+  "sdfVersion": "0.71",
   "schemas": [
     {
       "@id": "caci:Schemas/PIeval-TA1-Schema1",
@@ -105,9 +116,9 @@
         "NOTE: \"Each complex event should include all the applicable primitive events, their arguments, and their relations as specified by the KAIROS ontology.\""
       ],
       "super": "kairos:Event",
-      "name": "Phase I Eval Schema #1, Task 1",
+      "name": "Phase I Eval Schema #1, Task 1, TA1",
       "description": "This is a schema with specific arguments involving terrorism and a truck",
-      "version": "caci-06.04.2020",
+      "version": "caci-06.09.2020",
       "privateData": {
         "comment": "Performers can place any keys/values they wish here.  The map will be added to the graph but otherwise ignored by the system.  Properties maps can be added inside a schema, individual steps, slots, and order blocks, but not in their enclosing arrays.  Large amounts of private data can be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum.",
         "my_key": "my value",

@@ -31,6 +31,8 @@
       "@type": "@id"
     },
     "entityTypes": "kairos:entityTypes",
+    "entityTypes_AND": "kairos:entityTypes",
+    "entityTypes_OR": "kairos:entityTypes",
     "values": "kairos:values",
     "value": "kairos:value",
     "valueId": {
@@ -48,7 +50,10 @@
       "@type": "@id"
     },
     "relationPredicate": "kairos:relationPredicate",
-    "relationObject": "kairos:relationObject",
+    "relationObject": {
+      "@id": "kairos:relationObject",
+      "@type": "@id"
+    },
     "relations": "kairos:relations",
     "aka": "kairos:aka",
     "temporal": "kairos:temporal",
@@ -128,7 +133,7 @@
       "super": "caci:Schemas/BombingAttack",
       "name": "Coordinated Bombing Attack",
       "description": "A coordinated effort by mulitple parties that results in a bombing attack",
-      "version": "caci-06.04.2020",
+      "version": "caci-06.09.2020 / caci-06.09.2020",
       "privateData": {
         "comment": "Performers can place any keys/values they wish here.  The map will be added to the graph but otherwise ignored by the system.  Properties maps can be added inside a schema, individual steps, slots, and order blocks, but not in their enclosing arrays.  Large amounts of private data can be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum.",
         "my_key": "my value",
@@ -208,7 +213,7 @@
                   "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9eff13",
                   "mediaType": "text",
                   "comment": "TA2 can specify entityTypes in values objects to express the type of the slot filler/extracted entity.  This can be as specific as the extractors can detect, and may be more specific than the entity types specified in the TA1 schema.",
-                  "entityTypes": "kairos:PER",
+                  "entityTypes": "kairos:ORG",
                   "confidence": "0.75",
                   "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/1423-1431"
                 }
@@ -247,7 +252,9 @@
               "name": "subject_matter",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training_1/subject_matter",
               "role": "kairos:Primitives/Teaching/Slots/FieldOfKnowledge",
-              "entityTypes": "kairos:INF"
+              "entityTypes": "kairos:INF",
+              "comment": "Values of an empty array indicates that the argument is not justified in the source documents.",
+              "values": []
             },
             {
               "name": "manner",
@@ -262,13 +269,15 @@
                 "kairos:COM",
                 "kairos:ABS",
                 "kairos:INF"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "institution",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training_1/institution",
               "role": "kairos:Primitives/Teaching/Slots/institution",
-              "entityTypes": "kairos:ORG"
+              "entityTypes": "kairos:ORG",
+              "values": []
             }
           ]
         },
@@ -290,7 +299,8 @@
                 "kairos:ORG",
                 "kairos:GPE",
                 "kairos:SID"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "recipient",
@@ -301,7 +311,8 @@
                 "kairos:ORG",
                 "kairos:GPE",
                 "kairos:SID"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "beneficiary",
@@ -312,20 +323,23 @@
                 "kairos:ORG",
                 "kairos:GPE",
                 "kairos:SID"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "amount",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/wire_transfer/amount",
               "role": "caci:Transaction/WireTransfer/Slots/Amount",
               "comment": "In WireTransfer, the Amount slot fills the Donation's Item role, and restricts it to MON",
-              "entityTypes": "kairos:MON"
+              "entityTypes": "kairos:MON",
+              "values": []
             },
             {
               "name": "place",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/wire_transfer/place",
               "role": "caci:Transaction/WireTransfer/Slots/place",
-              "entityTypes": "kairos:ORG"
+              "entityTypes": "kairos:ORG",
+              "values": []
             }
           ]
         },
@@ -345,7 +359,8 @@
                 "kairos:LOC",
                 "kairos:FAC",
                 "kairos:GPE"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "destinationPlace",
@@ -355,25 +370,29 @@
                 "kairos:LOC",
                 "kairos:FAC",
                 "kairos:GPE"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "agentOfMovement",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_illegally/agentOfMovement",
               "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/agentOfMovement",
-              "entityTypes": "kairos:PER"
+              "entityTypes": "kairos:PER",
+              "values": []
             },
             {
               "name": "methodOfMovement",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_illegally/methodOfMovement",
               "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/methodOfMovement",
-              "entityTypes": "kairos:VEH"
+              "entityTypes": "kairos:VEH",
+              "values": []
             },
             {
               "name": "thingsMoved",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_illegally/thingsMoved",
               "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/thingsMoved",
-              "entityTypes": "kairos:PER"
+              "entityTypes": "kairos:PER",
+              "values": []
             }
           ]
         },
@@ -391,7 +410,6 @@
               "role": "kairos:Primitives/Transaction.Exchange/Slots/AcquiredEntity",
               "reference": "https://www.wikidata.org/wiki/Q1057179",
               "entityTypes": "kairos:COM",
-              "comment": "Values of an empty array indicates that the specific argument is not justified in the source documents.",
               "values": []
             }
           ]
@@ -411,7 +429,8 @@
               "name": "primary_actor",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/participant/primary_actor",
               "role": "kairos:Primitives/Contact.Contact/Slots/Participant",
-              "entityTypes": "kairos:PER"
+              "entityTypes": "kairos:PER",
+              "values": []
             },
             {
               "name": "sheikh",
@@ -419,7 +438,6 @@
               "role": "kairos:Primitives/Contact.Contact/Slots/Participant",
               "reference": "https://www.wikidata.org/wiki/Q185166",
               "entityTypes": "kairos:PER",
-              "comment": "Values of an empty array indicates that the specific argument is not justified in the source documents.",
               "values": []
             }
           ]
@@ -442,6 +460,23 @@
                 "kairos:ORG",
                 "kairos:GPE",
                 "kairos:SID"
+              ],
+              "values": [
+                {
+                  "value": "Sheikhs-R-Us",
+                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9effee",
+                  "mediaType": "text",
+                  "comment": [
+                    "TA2 can specify entityTypes in values objects to express the type of the slot filler/extracted entity.",
+                    "Multiple entity types are typically expressed with AND semantics."
+                  ],
+                  "entityTypes_AND": [
+                    "kairos:ORG",
+                    "kairos:PER"
+                  ],
+                  "confidence": "0.75",
+                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/1210-1221"
+                }
               ]
             },
             {
@@ -453,7 +488,8 @@
                 "kairos:ORG",
                 "kairos:GPE",
                 "kairos:SID"
-              ]
+              ],
+              "values": []
             }
           ]
         },
@@ -476,7 +512,8 @@
               "entityTypes": [
                 "kairos:PER",
                 "kairos:ORG"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "learner",
@@ -485,13 +522,15 @@
               "entityTypes": [
                 "kairos:PER",
                 "kairos:ORG"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "subject_matter",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training_1/subject_matter",
               "role": "kairos:Primitives/Teaching/Slots/FieldOfKnowledge",
-              "entityTypes": "kairos:INF"
+              "entityTypes": "kairos:INF",
+              "values": []
             }
           ]
         },
@@ -512,7 +551,8 @@
                 "kairos:ORG",
                 "kairos:GPE",
                 "kairos:SID"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "outlet",
@@ -521,13 +561,15 @@
               "entityTypes": [
                 "kairos:LOC",
                 "kairos:FAC"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "subject_matter",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/media_propaganda/subject_matter",
               "role": "caci:Propaganda/Slots/Topic",
-              "entityTypes": "kairos:INF"
+              "entityTypes": "kairos:INF",
+              "values": []
             }
           ],
           "aka": "propaganda"
@@ -554,7 +596,8 @@
                 "kairos:ORG",
                 "kairos:VEH",
                 "kairos:WEA"
-              ]
+              ],
+              "values": []
             }
           ]
         },
@@ -574,7 +617,8 @@
                 "kairos:LOC",
                 "kairos:FAC",
                 "kairos:GPE"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "attacker",
@@ -585,13 +629,15 @@
                 "kairos:COM",
                 "kairos:VEH",
                 "kairos:WEA"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "method",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location/method",
               "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/instrument",
-              "entityTypes": "kairos:VEH"
+              "entityTypes": "kairos:VEH",
+              "values": []
             }
           ]
         },
@@ -611,7 +657,8 @@
                 "kairos:LOC",
                 "kairos:FAC",
                 "kairos:GPE"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "attacker",
@@ -622,7 +669,8 @@
                 "kairos:COM",
                 "kairos:VEH",
                 "kairos:WEA"
-              ]
+              ],
+              "values": []
             }
           ]
         },
@@ -639,7 +687,8 @@
               "name": "agent",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/bombing/agent",
               "role": "kairos:Primitives/Detonate/Slots/SubjectAgent",
-              "entityTypes": "kairos:PER"
+              "entityTypes": "kairos:PER",
+              "values": []
             }
           ]
         },
@@ -660,7 +709,8 @@
                 "kairos:LOC",
                 "kairos:FAC",
                 "kairos:GPE"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "destinationPlace",
@@ -670,7 +720,8 @@
                 "kairos:LOC",
                 "kairos:FAC",
                 "kairos:GPE"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "thingsMoved",
@@ -683,7 +734,8 @@
                 "kairos:BAL",
                 "kairos:VEH",
                 "kairos:WEA"
-              ]
+              ],
+              "values": []
             }
           ]
         }
@@ -692,29 +744,39 @@
         {
           "comment": "Wire transfer occurs while training with Al-Qaeda.  Contrived to show a container/contained example.",
           "container": "caci:Schemas/CoordinatedBombingAttack/Steps/training_1",
-          "contained": "caci:Schemas/CoordinatedBombingAttack/Steps/wire_transfer"
+          "contained": "caci:Schemas/CoordinatedBombingAttack/Steps/wire_transfer",
+          "confidence": "1.0",
+          "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000500"
         },
         {
           "comment": "Mailing anti-Israel letters to newspapers and training in NJ overlap.  Contrived to show an overlaps example.",
           "overlaps": [
             "caci:Schemas/CoordinatedBombingAttack/Steps/training_2",
             "caci:Schemas/CoordinatedBombingAttack/Steps/media_propaganda"
-          ]
+          ],
+          "confidence": "0.75",
+          "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000802"
         },
         {
           "before": "caci:Schemas/CoordinatedBombingAttack/Steps/training_1",
           "after": "caci:Schemas/CoordinatedBombingAttack/Steps/training_2",
-          "flags": "precondition"
+          "flags": "precondition",
+          "confidence": "0.75",
+          "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000802"
         },
         {
           "before": "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_general_attack_location",
           "after": "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_specific_attack_location",
-          "flags": "precondition"
+          "flags": "precondition",
+          "confidence": "0.75",
+          "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000802"
         },
         {
           "before": "caci:Schemas/CoordinatedBombingAttack/Steps/bombing",
           "after": "caci:Schemas/CoordinatedBombingAttack/Steps/escape",
-          "flags": "precondition"
+          "flags": "precondition",
+          "confidence": "0.75",
+          "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000802"
         },
         {
           "comment": "Interesting to consider whether move_to_general_attack_location needs to be specified, or whether that just happens because of how you set up general being before specific above; and how does this impact validation?  Can transitivity happen automatically? Something to consider for SDF v1.0.",
@@ -726,7 +788,9 @@
             "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_specific_attack_location"
           ],
           "after": "caci:Schemas/CoordinatedBombingAttack/Steps/bombing",
-          "flags": "precondition"
+          "flags": "precondition",
+          "confidence": "0.75",
+          "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000802"
         },
         {
           "before": [
@@ -737,7 +801,9 @@
             "caci:Schemas/CoordinatedBombingAttack/Steps/media_propaganda",
             "caci:Schemas/CoordinatedBombingAttack/Steps/obtain_transportation"
           ],
-          "after": "caci:Schemas/CoordinatedBombingAttack/Steps/bombing"
+          "after": "caci:Schemas/CoordinatedBombingAttack/Steps/bombing",
+          "confidence": "0.75",
+          "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000802"
         }
       ],
       "entityRelations": [

@@ -31,6 +31,8 @@
       "@type": "@id"
     },
     "entityTypes": "kairos:entityTypes",
+    "entityTypes_AND": "kairos:entityTypes",
+    "entityTypes_OR": "kairos:entityTypes",
     "values": "kairos:values",
     "value": "kairos:value",
     "valueId": {
@@ -48,7 +50,10 @@
       "@type": "@id"
     },
     "relationPredicate": "kairos:relationPredicate",
-    "relationObject": "kairos:relationObject",
+    "relationObject": {
+      "@id": "kairos:relationObject",
+      "@type": "@id"
+    },
     "relations": "kairos:relations",
     "aka": "kairos:aka",
     "temporal": "kairos:temporal",
@@ -108,18 +113,18 @@
     {
       "@id": "caci:Schemas/PIeval-TA2-Schema1",
       "comment": [
-        "TA2 schema #1, Task 1:",
+        "TA2 schema #1, Task 1, TA2:",
         "TA1: A(W1) B(W1,Z) C(W1, W2) D(W1) [E(W1,Y) E(W3) E (W4)] F(W1, W3, W4) H(Y) J",
         "TA2: A(W1) B(W1,W2,Z) C(W1, W2) D(W1) [E(W1,Y) E(W3) E (W4)] F(W1, W3, W4) H(Y-NA) J",
         "  Travel(arg1); Study(arg1, arg2, terrorism); Meet(arg1, arg2); Join a group(arg1);",
         "  [Acquire(arg1, truck); Acquire(arg3); Acquire(arg4);]",
         "  Mix(arg1, arg3, arg4); Park(truck-NA); Explode",
         "",
-        "NOTE: \"Each complex event should include all the applicable primitive events, their arguments, and their relations as specified by the KAIROS ontology.\""
+        "NOTE: \"In TA2, each complex event should include all the applicable primitive events, their arguments, and their relations as specified by the KAIROS ontology.\""
       ],
       "name": "Phase I Eval Schema #1, Task 1",
       "description": "This is a schema with specific arguments involving terrorism and a truck",
-      "version": "caci-06.04.2020 / caci-06.04.2020",
+      "version": "caci-06.09.2020 / caci-06.09.2020",
       "privateData": {
         "comment": "Performers can place any keys/values they wish here.  The map will be added to the graph but otherwise ignored by the system.  Properties maps can be added inside a schema, individual steps, slots, and order blocks, but not in their enclosing arrays.  Large amounts of private data can be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum.",
         "my_key": "my value",
@@ -139,7 +144,8 @@
                 "kairos:LOC",
                 "kairos:FAC",
                 "kairos:GPE"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "destination_place",
@@ -149,7 +155,8 @@
                 "kairos:LOC",
                 "kairos:FAC",
                 "kairos:GPE"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "traveler",
@@ -160,13 +167,15 @@
                 "kairos:ORG",
                 "kairos:COM",
                 "kairos:AML"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "instrument",
               "@id": "caci:Schemas/PIeval-TA2-Schema1/Slots/travel/instrument",
               "role": "kairos:Primitives/Movement.TransportationLegal/Slots/instrument",
-              "entityTypes": "kairos:VEH"
+              "entityTypes": "kairos:VEH",
+              "values": []
             },
             {
               "name": "things_moved",
@@ -179,7 +188,8 @@
                 "kairos:BAL",
                 "kairos:VEH",
                 "kairos:WEA"
-              ]
+              ],
+              "values": []
             }
           ]
         },
@@ -233,7 +243,8 @@
                 "kairos:PER",
                 "kairos:ORG",
                 "kairos:AML"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "subject_matter",
@@ -265,7 +276,8 @@
                 "kairos:ORG",
                 "kairos:COM",
                 "kairos:AML"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "manner",
@@ -275,13 +287,15 @@
                 "kairos:ABS",
                 "kairos:INF",
                 "kairos:COM"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "institution",
               "@id": "caci:Schemas/PIeval-TA2-Schema1/Slots/study/institution",
               "role": "kairos:Primitives/Teaching/Slots/Institution",
-              "entityTypes": "kairos:ORG"
+              "entityTypes": "kairos:ORG",
+              "values": []
             }
           ]
         },
@@ -303,7 +317,8 @@
                 "kairos:ORG",
                 "kairos:GPE",
                 "kairos:SID"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "point of contact",
@@ -315,7 +330,8 @@
                 "kairos:ORG",
                 "kairos:GPE",
                 "kairos:SID"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "topic",
@@ -325,7 +341,8 @@
                 "kairos:Entity",
                 "kairos:Event",
                 "kairos:INF"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "place",
@@ -335,7 +352,8 @@
                 "kairos:LOC",
                 "kairos:GPE",
                 "kairos:FAC"
-              ]
+              ],
+              "values": []
             }
           ]
         },
@@ -353,7 +371,8 @@
                 "kairos:ORG",
                 "kairos:GPE",
                 "kairos:SID"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "organization",
@@ -363,7 +382,8 @@
                 "kairos:ORG",
                 "kairos:GPE",
                 "kairos:SID"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "place",
@@ -373,7 +393,8 @@
                 "kairos:LOC",
                 "kairos:FAC",
                 "kairos:GPE"
-              ]
+              ],
+              "values": []
             }
           ]
         },
@@ -391,7 +412,8 @@
                 "kairos:ORG",
                 "kairos:GPE",
                 "kairos:SID"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "acquirer",
@@ -402,7 +424,8 @@
                 "kairos:ORG",
                 "kairos:GPE",
                 "kairos:SID"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "truck",
@@ -443,7 +466,8 @@
               "name": "provided_money",
               "@id": "caci:Schemas/PIeval-TA2-Schema1/Slots/acquire_truck/provided_money",
               "role": "kairos:Primitives/Transaction.Exchange/Slots/ProvidedMoney",
-              "entityTypes": "kairos:MON"
+              "entityTypes": "kairos:MON",
+              "values": []
             },
             {
               "name": "beneficiary",
@@ -454,7 +478,8 @@
                 "kairos:ORG",
                 "kairos:GPE",
                 "kairos:SID"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "place",
@@ -464,7 +489,8 @@
                 "kairos:LOC",
                 "kairos:GPE",
                 "kairos:FAC"
-              ]
+              ],
+              "values": []
             }
           ]
         },
@@ -482,7 +508,8 @@
                 "kairos:ORG",
                 "kairos:GPE",
                 "kairos:SID"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "acquirer",
@@ -493,7 +520,8 @@
                 "kairos:ORG",
                 "kairos:GPE",
                 "kairos:SID"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "item",
@@ -509,13 +537,15 @@
                 "kairos:ORG",
                 "kairos:VEH",
                 "kairos:WEA"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "provided_money",
               "@id": "caci:Schemas/PIeval-TA2-Schema1/Slots/acquire_item1/provided_money",
               "role": "kairos:Primitives/Transaction.Exchange/Slots/ProvidedMoney",
-              "entityTypes": "kairos:MON"
+              "entityTypes": "kairos:MON",
+              "values": []
             },
             {
               "name": "beneficiary",
@@ -526,7 +556,8 @@
                 "kairos:ORG",
                 "kairos:GPE",
                 "kairos:SID"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "place",
@@ -536,7 +567,8 @@
                 "kairos:LOC",
                 "kairos:GPE",
                 "kairos:FAC"
-              ]
+              ],
+              "values": []
             }
           ]
         },
@@ -554,7 +586,8 @@
                 "kairos:ORG",
                 "kairos:GPE",
                 "kairos:SID"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "acquirer",
@@ -565,7 +598,8 @@
                 "kairos:ORG",
                 "kairos:GPE",
                 "kairos:SID"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "item",
@@ -581,13 +615,15 @@
                 "kairos:ORG",
                 "kairos:VEH",
                 "kairos:WEA"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "provided_money",
               "@id": "caci:Schemas/PIeval-TA2-Schema1/Slots/acquire_item2/provided_money",
               "role": "kairos:Primitives/Transaction.Exchange/Slots/ProvidedMoney",
-              "entityTypes": "kairos:MON"
+              "entityTypes": "kairos:MON",
+              "values": []
             },
             {
               "name": "beneficiary",
@@ -598,7 +634,8 @@
                 "kairos:ORG",
                 "kairos:GPE",
                 "kairos:SID"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "place",
@@ -608,7 +645,8 @@
                 "kairos:LOC",
                 "kairos:GPE",
                 "kairos:FAC"
-              ]
+              ],
+              "values": []
             }
           ]
         },
@@ -625,13 +663,15 @@
                 "kairos:LOC",
                 "kairos:FAC",
                 "kairos:GPE"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "mixer",
               "@id": "caci:Schemas/PIeval-TA2-Schema1/Slots/mix/mixer",
               "role": "kairos:Primitives/Assemble/Slots/Agent",
-              "entityTypes": "kairos:PER"
+              "entityTypes": "kairos:PER",
+              "values": []
             },
             {
               "name": "result",
@@ -643,7 +683,8 @@
                 "kairos:COM",
                 "kairos:VEH",
                 "kairos:WEA"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "mix-item1",
@@ -654,7 +695,8 @@
                 "kairos:COM",
                 "kairos:VEH",
                 "kairos:WEA"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "mix-item2",
@@ -665,13 +707,15 @@
                 "kairos:COM",
                 "kairos:VEH",
                 "kairos:WEA"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "instrument",
               "@id": "caci:Schemas/PIeval-TA2-Schema1/Slots/mix/instrument",
               "role": "kairos:Primitives/Assemble/Slots/Instrument",
-              "entityTypes": "kairos:PER"
+              "entityTypes": "kairos:PER",
+              "values": []
             }
           ]
         },
@@ -688,7 +732,8 @@
                 "kairos:LOC",
                 "kairos:FAC",
                 "kairos:GPE"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "destination_place",
@@ -698,19 +743,22 @@
                 "kairos:LOC",
                 "kairos:FAC",
                 "kairos:GPE"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "driver",
               "@id": "caci:Schemas/PIeval-TA2-Schema1/Slots/park_truck/driver",
               "role": "kairos:Primitives/Movement.TransportationLegal/Slots/Agent",
-              "entityTypes": "kairos:PER"
+              "entityTypes": "kairos:PER",
+              "values": []
             },
             {
               "name": "truck",
               "@id": "caci:Schemas/PIeval-TA2-Schema1/Slots/park_truck/truck",
               "role": "kairos:Primitives/Movement.TransportationLegal/Slots/Instrument",
-              "entityTypes": "kairos:VEH"
+              "entityTypes": "kairos:VEH",
+              "values": []
             },
             {
               "name": "parked_truck",
@@ -724,10 +772,7 @@
                 "kairos:VEH",
                 "kairos:WEA"
               ],
-              "comment": [
-                "Wikidata entry for truck",
-                "Specific argument was not found in the source documents, so indicate NA with empty values list"
-              ],
+              "comment": "Wikidata entry for truck",
               "reference": "https://www.wikidata.org/wiki/Q43193",
               "values": []
             }
@@ -743,7 +788,8 @@
               "name": "agent",
               "@id": "caci:Schemas/PIeval-TA2-Schema1/Slots/explode/agent",
               "role": "kairos:Primitives/Detonate/Slots/SubjectAgent",
-              "entityTypes": "kairos:PER"
+              "entityTypes": "kairos:PER",
+              "values": []
             },
             {
               "name": "object",
@@ -754,7 +800,8 @@
                 "kairos:VEH",
                 "kairos:FAC",
                 "kairos:COM"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "instrument",
@@ -763,7 +810,8 @@
               "entityTypes": [
                 "kairos:WEA",
                 "kairos:COM"
-              ]
+              ],
+              "values": []
             },
             {
               "name": "place",
@@ -790,15 +838,21 @@
       "order": [
         {
           "before": "caci:Schemas/PIeval-TA2-Schema1/Steps/travel",
-          "after": "caci:Schemas/PIeval-TA2-Schema1/Steps/study"
+          "after": "caci:Schemas/PIeval-TA2-Schema1/Steps/study",
+          "confidence": ".65",
+          "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000400"
         },
         {
           "before": "caci:Schemas/PIeval-TA2-Schema1/Steps/study",
-          "after": "caci:Schemas/PIeval-TA2-Schema1/Steps/meet"
+          "after": "caci:Schemas/PIeval-TA2-Schema1/Steps/meet",
+          "confidence": ".65",
+          "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000400"
         },
         {
           "before": "caci:Schemas/PIeval-TA2-Schema1/Steps/meet",
-          "after": "caci:Schemas/PIeval-TA2-Schema1/Steps/join_group"
+          "after": "caci:Schemas/PIeval-TA2-Schema1/Steps/join_group",
+          "confidence": ".65",
+          "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000400"
         },
         {
           "before": "caci:Schemas/PIeval-TA2-Schema1/Steps/join_group",
@@ -806,7 +860,9 @@
             "caci:Schemas/PIeval-TA2-Schema1/Steps/acquire_truck",
             "caci:Schemas/PIeval-TA2-Schema1/Steps/acquire_item1",
             "caci:Schemas/PIeval-TA2-Schema1/Steps/acquire_item2"
-          ]
+          ],
+          "confidence": ".65",
+          "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000400"
         },
         {
           "before": [
@@ -814,15 +870,21 @@
             "caci:Schemas/PIeval-TA2-Schema1/Steps/acquire_item1",
             "caci:Schemas/PIeval-TA2-Schema1/Steps/acquire_item2"
           ],
-          "after": "caci:Schemas/PIeval-TA2-Schema1/Steps/mix"
+          "after": "caci:Schemas/PIeval-TA2-Schema1/Steps/mix",
+          "confidence": ".65",
+          "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000400"
         },
         {
           "before": "caci:Schemas/PIeval-TA2-Schema1/Steps/mix",
-          "after": "caci:Schemas/PIeval-TA2-Schema1/Steps/park_truck"
+          "after": "caci:Schemas/PIeval-TA2-Schema1/Steps/park_truck",
+          "confidence": ".65",
+          "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000400"
         },
         {
           "before": "caci:Schemas/PIeval-TA2-Schema1/Steps/park_truck",
-          "after": "caci:Schemas/PIeval-TA2-Schema1/Steps/explode"
+          "after": "caci:Schemas/PIeval-TA2-Schema1/Steps/explode",
+          "confidence": ".65",
+          "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000400"
         }
       ],
       "entityRelations": [
