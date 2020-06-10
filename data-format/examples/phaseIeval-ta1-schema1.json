@@ -26,8 +26,8 @@
       "@type": "@id"
     },
     "entityTypes": "kairos:entityTypes",
-    "entityTypes_AND": "kairos:entityTypes",
-    "entityTypes_OR": "kairos:entityTypes",
+    "entityTypes_AND": "kairos:entityTypes_AND",
+    "entityTypes_OR": "kairos:entityTypes_OR",
     "values": "kairos:values",
     "value": "kairos:value",
     "valueId": {
