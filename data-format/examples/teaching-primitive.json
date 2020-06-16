@@ -17,6 +17,11 @@
     "roleName": "kairos:roleName",
     "entityTypes": "kairos:entityTypes",
     "aka": "kairos:aka",
+    "reference": {
+      "@id": "kairos:reference",
+      "@type": "@id"
+    },
+    "template" : "kairos:template",
     "minDuration": {
       "@id": "kairos:minDuration",
       "@type": "xsd:duration"
@@ -26,44 +31,30 @@
       "@type": "xsd:duration"
     }
   },
-  "sdfVersion": "0.7",
+  "sdfVersion": "0.71b",
   "primitives": [
     {
-      "@id": "kairos:Primitives/Teaching",
+      "@id": "kairos:Primitives/Events/Cognitive/Teaching",
+      "version": "kairos-06.16.2020",
       "super": "kairos:Event",
-      "name": "Teaching, training, learning",
+      "name": "TeachingTrainingLearning",
       "description": "the action of teaching a person or animal a particular skill or type of behavior, there is an inherent trajectory where the Recipient does not have complete mastery of the skill until the end",
-      "version": "kairos-05.20.2020",
       "aka": [
         "teaching",
         "training",
         "learning"
       ],
+      "reference" : "https://www.wikidata.org/wiki/Q352842",
       "minDuration": "PT10M",
       "maxDuration": "P3M",
+      "template": "<arg1> taught <arg2> to <arg3> using <arg4> at <arg5>",
       "slots": [
         {
-          "@id": "kairos:Primitives/Teaching/Slots/teacher",
-          "roleName": "Teacher",
-          "aka": "trainer",
-          "entityTypes": [
-            "kairos:PER",
-            "kairos:ORG",
-            "kairos:AML"
-          ]
-        },
-        {
-          "@id": "kairos:Primitives/Teaching/Slots/fieldOfKnowledge",
-          "roleName": "Field of knowledge",
-          "aka": "subjectMatter",
-          "entityTypes": "kairos:INF"
-        },
-        {
-          "@id": "kairos:Primitives/Teaching/Slots/learner",
-          "roleName": "Learner",
+          "@id": "kairos:Primitives/Events/Cognitive/Teaching/Slots/teacher",
+          "roleName": "Teacher/Trainer",
           "aka": [
-            "trainee",
-            "learner"
+            "teacher",
+            "trainer"
           ],
           "entityTypes": [
             "kairos:PER",
@@ -72,12 +63,30 @@
           ]
         },
         {
-          "@id": "kairos:Primitives/Teaching/Slots/mnr",
+          "@id": "kairos:Primitives/Events/Cognitive/Teaching/Slots/fieldOfKnowledge",
+          "roleName": "Field of knowledge",
+          "aka": "subjectMatter",
+          "entityTypes": "kairos:INF"
+        },
+        {
+          "@id": "kairos:Primitives/Events/Cognitive/Teaching/Slots/learner",
+          "roleName": "Learner",
+          "aka": "trainee",
+          "entityTypes": [
+            "kairos:PER",
+            "kairos:ORG",
+            "kairos:COM",
+            "kairos:AML"
+          ]
+        },
+        {
+          "@id": "kairos:Primitives/Events/Cognitive/Teaching/Slots/mnr",
           "roleName": "MNR",
           "aka": [
             "instrument",
             "means",
-            "manner"
+            "manner",
+            "Instrument/Means/Manner"
           ],
           "entityTypes": [
             "kairos:COM",
@@ -86,7 +95,7 @@
           ]
         },
         {
-          "@id": "kairos:Primitives/Teaching/Slots/institution",
+          "@id": "kairos:Primitives/Events/Cognitive/Teaching/Slots/institution",
           "roleName": "Institution",
           "entityTypes": "kairos:ORG"
         }
