@@ -4,16 +4,17 @@
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "kairos": "https://kairos-sdf.s3.amazonaws.com/context/kairos#",
     "schemas": "kairos:schemas",
+    "primitives": "kairos:primitives",
     "ta2": {
       "@id": "kairos:ta2",
       "@type": "xsd:boolean"
     },
-    "primitives": "kairos:primitives",
     "super": {
       "@id": "kairos:super",
       "@type": "@id"
     },
     "name": "schema:name",
+    "roleName": "kairos:roleName",
     "comment": "kairos:comment",
     "description": "schema:description",
     "version": "schema:version",
@@ -26,6 +27,7 @@
     },
     "steps": "kairos:steps",
     "slots": "kairos:slots",
+    "participants": "kairos:participants",
     "role": {
       "@id": "kairos:role",
       "@type": "@id"
@@ -102,6 +104,7 @@
       "@id": "kairos:overlaps",
       "@type": "@id"
     },
+    "refvar": "kairos:refvar",
     "flags": "kairos:flags"
   }
 }
