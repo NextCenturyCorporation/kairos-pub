@@ -129,7 +129,7 @@
         "12. Bomb explosion killing 6 people",
         "13. Escaped to Pakistan",
         "",
-        "Conceptually, Coordinated Bombing Attack extends caci:Schemas/BombingAttack, but this is out of scope for Phase I.",
+        "Conceptually, Coordinated Bombing Attack extends caci:Schemas/BombingAttack, but this may be out of scope for Phase I.",
         "NOTE: This is the TA1 schema"
       ],
       "super": "caci:Schemas/BombingAttack",
@@ -145,7 +145,7 @@
         {
           "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/training_1",
           "name": "Spend time training at Al Qaeda center in Afghanistan",
-          "@type": "kairos:Primitives/Teaching",
+          "@type": "kairos:Primitives/Cognitive.TeachingTrainingLearning",
           "aka": [
             "learning",
             "teaching"
@@ -158,7 +158,7 @@
               "name": "trainer",
               "aka": "teacher",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training_1/trainer",
-              "role": "kairos:Primitives/Teaching/Slots/Teacher",
+              "role": "kairos:Primitives/Cognitive.TeachingTrainingLearning/Slots/Teacher",
               "comment": "Reference specifies that the trainer is Al-Qaeda.",
               "reference": "https://www.wikidata.org/wiki/Q34490",
               "entityTypes": [
@@ -170,7 +170,7 @@
             {
               "name": "learner",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training_1/learner",
-              "role": "kairos:Primitives/Teaching/Slots/Learner",
+              "role": "kairos:Primitives/Cognitive.TeachingTrainingLearning/Slots/Learner",
               "refvar": "Agent",
               "entityTypes": [
                 "kairos:PER",
@@ -182,13 +182,13 @@
             {
               "name": "subject_matter",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training_1/subject_matter",
-              "role": "kairos:Primitives/Teaching/Slots/FieldOfKnowledge",
+              "role": "kairos:Primitives/Cognitive.TeachingTrainingLearning/Slots/FieldOfKnowledge",
               "entityTypes": "kairos:INF"
             },
             {
               "name": "manner",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training_1/manner",
-              "role": "kairos:Primitives/Teaching/Slots/MNR",
+              "role": "kairos:Primitives/Cognitive.TeachingTrainingLearning/Slots/MNR",
               "aka": [
                 "instrument",
                 "means",
@@ -203,7 +203,7 @@
             {
               "name": "institution",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training_1/institution",
-              "role": "kairos:Primitives/Teaching/Slots/Institution",
+              "role": "kairos:Primitives/Cognitive.TeachingTrainingLearning/Slots/Institution",
               "entityTypes": "kairos:ORG"
             }
           ]
@@ -229,7 +229,7 @@
             {
               "name": "recipient",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/wire_transfer/recipient",
-              "role": "Primitives/Transaction.WireTransfer/Slots/Recipient",
+              "role": "caci:Primitives/Transaction.WireTransfer/Slots/Recipient",
               "refvar": "Agent",
               "entityTypes": [
                 "kairos:PER",
@@ -308,6 +308,7 @@
               "name": "thingsMoved",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_illegally/thingsMoved",
               "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/ThingsMoved",
+              "refvar": "Agent",
               "entityTypes": "kairos:PER"
             }
           ]
@@ -391,7 +392,7 @@
         {
           "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/training_2",
           "name": "Train in NJ",
-          "@type": "kairos:Primitives/Teaching",
+          "@type": "kairos:Primitives/Cognitive.TeachingTrainingLearning",
           "aka": [
             "training",
             "teaching"
@@ -400,7 +401,7 @@
             {
               "name": "trainer",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training_2/trainer",
-              "role": "kairos:Primitives/Teaching/Slots/Teacher",
+              "role": "kairos:Primitives/Cognitive.TeachingTrainingLearning/Slots/Teacher",
               "refvar": "Point of Contact",
               "entityTypes": [
                 "kairos:PER",
@@ -410,7 +411,7 @@
             {
               "name": "learner",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training_2/learner",
-              "role": "kairos:Primitives/Teaching/Slots/Learner",
+              "role": "kairos:Primitives/Cognitive.TeachingTrainingLearning/Slots/Learner",
               "refvar": "Agent",
               "entityTypes": [
                 "kairos:PER",
@@ -420,13 +421,13 @@
             {
               "name": "subject_matter",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training_2/subject_matter",
-              "role": "kairos:Primitives/Teaching/Slots/FieldOfKnowledge",
+              "role": "kairos:Primitives/Cognitive.TeachingTrainingLearning/Slots/FieldOfKnowledge",
               "entityTypes": "kairos:INF"
             },
             {
               "name": "manner",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training_2/manner",
-              "role": "kairos:Primitives/Teaching/Slots/MNR",
+              "role": "kairos:Primitives/Cognitive.TeachingTrainingLearning/Slots/MNR",
               "aka": [
                 "instrument",
                 "means",
@@ -441,7 +442,7 @@
             {
               "name": "institution",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training_2/institution",
-              "role": "kairos:Primitives/Teaching/Slots/Institution",
+              "role": "kairos:Primitives/Cognitive.TeachingTrainingLearning/Slots/Institution",
               "entityTypes": "kairos:ORG"
             }
           ]
@@ -449,13 +450,13 @@
         {
           "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/media_propaganda",
           "name": "Mail anti-Israel letters to newspapers",
-          "comment": "caci:Primitives/Propaganda is a specialization of the Contact.Broadcast event primitive",
-          "@type": "caci:Primitives/Propaganda",
+          "comment": "caci:Primitives/Contact.Propaganda is a specialization of the Contact.Broadcast event primitive",
+          "@type": "caci:Primitives/Contact.Propaganda",
           "participants": [
             {
               "name": "sender",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/media_propaganda/sender",
-              "role": "caci:Primitives/Propaganda/Slots/Sender",
+              "role": "caci:Primitives/Contact.Propaganda/Slots/Sender",
               "refvar": "Agent",
               "entityTypes": [
                 "kairos:PER",
@@ -467,7 +468,7 @@
             {
               "name": "outlet",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/media_propaganda/outlet",
-              "role": "caci:Primitives/Propaganda/Slots/Outlet",
+              "role": "caci:Primitives/Contact.Propaganda/Slots/Outlet",
               "entityTypes": [
                 "kairos:LOC",
                 "kairos:FAC"
@@ -476,7 +477,7 @@
             {
               "name": "subject_matter",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/media_propaganda/subject_matter",
-              "role": "caci:Primitives/Propaganda/Slots/Topic",
+              "role": "caci:Primitives/Contact.Propaganda/Slots/Topic",
               "entityTypes": "kairos:INF"
             }
           ]
@@ -624,21 +625,21 @@
         },
         {
           "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/bombing",
-          "@type": "kairos:Primitives/Detonate",
+          "@type": "kairos:Primitives/Conflict.DetonateExplode",
           "aka": "explode",
           "name": "Bomb explosion killing 6 people",
           "participants": [
             {
               "name": "agent",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/bombing/agent",
-              "role": "kairos:Primitives/Detonate/Slots/SubjectAgent",
+              "role": "kairos:Primitives/Conflict.DetonateExplode/Slots/SubjectAgent",
               "refvar": "Agent",
               "entityTypes": "kairos:PER"
             },
             {
               "name": "object",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/bombing/object",
-              "role": "kairos:Primitives/Detonate/Slots/Object",
+              "role": "kairos:Primitives/Conflict.DetonateExplode/Slots/Object",
               "entityTypes": [
                 "kairos:COM",
                 "kairos:WEA",
@@ -649,7 +650,7 @@
             {
               "name": "bomb",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/bombing/bomb",
-              "role": "kairos:Primitives/Detonate/Slots/MeansInstrument",
+              "role": "kairos:Primitives/Conflict.DetonateExplode/Slots/MeansInstrument",
               "entityTypes": [
                 "kairos:COM",
                 "kairos:WEA"
@@ -658,7 +659,7 @@
             {
               "name": "place",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/bombing/place",
-              "role": "kairos:Primitives/Detonate/Slots/Place",
+              "role": "kairos:Primitives/Conflict.DetonateExplode/Slots/Place",
               "refvar": "Place",
               "entityTypes": "kairos:LOC"
             }
@@ -774,7 +775,7 @@
           ],
           "relations": [
             {
-              "relationPredicate": "kairos:Relations/affiliatedWith",
+              "relationPredicate": "kairos:Relations/PersonalSocial.Unspecified",
               "relationObject": "https://www.wikidata.org/wiki/Q2918749"
             }
           ]
@@ -788,12 +789,12 @@
           "relations": [
             {
               "comment": "Same attacker moved to specific location as moved to general location",
-              "relationPredicate": "kairos:Relations/sameAs",
+              "relationPredicate": "kairos:Relations/Physical.SameAs",
               "relationObject": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location/attacker"
             },
             {
               "comment": "Attacker lives in general attack location",
-              "relationPredicate": "kairos:Relations/residesIn",
+              "relationPredicate": "kairos:Relations/Physical.Resident",
               "relationObject": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location/attackLocation"
             }
           ]
@@ -807,12 +808,12 @@
           "relations": [
             {
               "comment": "Giver of financing is one of the participants in the make_contact event",
-              "relationPredicate": "kairos:Relations/sameAs",
+              "relationPredicate": "kairos:Relations/Physical.SameAs",
               "relationObject": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/participant/sheikh"
             },
             {
               "comment": "Giver of financing is affiliated with one of the participants in the make_contact event",
-              "relationPredicate": "kairos:Relations/affiliatedWith",
+              "relationPredicate": "kairos:Relations/PersonalSocial.Unspecified.Political",
               "relationObject": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/participant/sheikh"
             }
           ]
@@ -836,7 +837,7 @@
         {
           "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/poc",
           "roleName": "Point of Contact",
-          "refvar" : "Point of Contact",
+          "refvar": "Point of Contact",
           "aka": [
             "POC",
             "Financier",
