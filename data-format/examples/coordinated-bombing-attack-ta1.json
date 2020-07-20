@@ -15,6 +15,7 @@
       "@type": "@id"
     },
     "name": "schema:name",
+    "roleName": "kairos:roleName",
     "comment": {
       "@id": "kairos:comment",
       "@container": "@list"
@@ -556,7 +557,7 @@
           "@type": "kairos:Primitives/Movement.MovementTransportation",
           "name": "Arrive at specific location of attack",
           "requires": "arrived-at-general-location",
-          "comment": "We use generic Movement.MovementTransportation because we don't know if vehicle was stolen or",
+          "comment": "We use generic Movement.MovementTransportation because we don't know if vehicle was stolen or not",
           "participants": [
             {
               "name": "starting point",
