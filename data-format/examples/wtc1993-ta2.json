@@ -2,8 +2,9 @@
   "@context": {
     "schema": "http://schema.org/",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
-    "kairos": "https://kairos-sdf.s3.amazonaws.com/context/kairos#",
+    "kairos": "https://kairos-sdf.s3.amazonaws.com/context/kairos/",
     "schemas": "kairos:schemas",
+    "wiki": "https://www.wikidata.org/wiki/",
     "ta2": {
       "@id": "kairos:ta2",
       "@type": "xsd:boolean"
@@ -14,8 +15,14 @@
       "@type": "@id"
     },
     "name": "schema:name",
-    "comment": "kairos:comment",
-    "description": "schema:description",
+    "comment": {
+      "@id": "kairos:comment",
+      "@container": "@list"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@container": "@list"
+    },
     "version": "schema:version",
     "sdfVersion": "kairos:sdfVersion",
     "privateData": "kairos:privateData",
@@ -24,14 +31,25 @@
       "@id": "kairos:reference",
       "@type": "@id"
     },
+    "achieves": "kairos:achieves",
+    "requires": "kairos:requires",
     "steps": "kairos:steps",
-    "slots": "kairos:slots",
-    "participants": "kairos:participants",
+    "slots": {
+      "@id": "kairos:slots",
+      "@container": "@list"
+    },
+    "participants": {
+      "@id": "kairos:participants",
+      "@container": "@list"
+    },
     "role": {
       "@id": "kairos:role",
       "@type": "@id"
     },
-    "entityTypes": "kairos:entityTypes",
+    "entityTypes": {
+      "@id": "kairos:entityTypes",
+      "@container": "@list"
+    },
     "entityTypes_AND": "kairos:entityTypes_AND",
     "entityTypes_OR": "kairos:entityTypes_OR",
     "values": "kairos:values",
@@ -50,7 +68,10 @@
       "@id": "kairos:relationSubject",
       "@type": "@id"
     },
-    "relationPredicate": "kairos:relationPredicate",
+    "relationPredicate": {
+      "@id": "kairos:relationPredicate",
+      "@type": "@id"
+    },
     "relationObject": {
       "@id": "kairos:relationObject",
       "@type": "@id"
@@ -109,11 +130,12 @@
     "my_key": "caci:my_key",
     "giant_bitstring": "caci:giant_bitstring"
   },
-  "sdfVersion": "0.8a",
+  "@id": "caci:Submissions/TA2/54321",
+  "sdfVersion": "0.8b",
   "ta2": true,
   "schemas": [
     {
-      "@id": "caci:Schemas/CoordinatedBombingAttack",
+      "@id": "caci:ComplexEvent/WTC1993",
       "comment": [
         "Scenario E:",
         "1. Spend time training at Al Qaeda center in Afghanistan",
@@ -131,12 +153,12 @@
         "13. Escaped to Pakistan",
         "",
         "Conceptually, Coordinated Bombing Attack extends caci:Schemas/BombingAttack, but this may be out of scope for Phase I.",
-        "NOTE: This is the TA2 schema"
+        "NOTE: This is the TA2 complex event."
       ],
       "super": "caci:Schemas/BombingAttack",
       "name": "World Trade Center 1993 Attack",
-      "description": "Instantiates the Coordinated Bombing Attack TA1 schema",
-      "version": "caci-07.02.2020 / caci-07.13.2020",
+      "description": "A terrorist attack on the World Trade Center, carried out on 2/26/1993, when a truck bomb detonated below the North Tower",
+      "version": "caci-07.20.2020 / caci-07.20.2020",
       "privateData": {
         "comment": "Performers can place any keys/values they wish here.  The map will be added to the graph but otherwise ignored by the system.  Properties maps can be added inside a schema, individual steps, slots, and order blocks, but not in their enclosing arrays.  Large amounts of private data can be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum.",
         "my_key": "my value",
@@ -153,7 +175,7 @@
           ],
           "minDuration": "PT10M",
           "maxDuration": "P3M",
-          "reference": "https://www.wikidata.org/wiki/Q918385",
+          "reference": "wiki:Q918385",
           "provenance": "Performer-specific info that tracks the origin of the event.",
           "temporal": [
             {
@@ -186,7 +208,7 @@
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training_1/trainer",
               "role": "kairos:Primitives/Cognitive.TeachingTrainingLearning/Slots/TeacherTrainer",
               "comment": "Reference specifies that the trainer is Al-Qaeda.",
-              "reference": "https://www.wikidata.org/wiki/Q34490",
+              "reference": "wiki:Q34490",
               "entityTypes": [
                 "kairos:PER",
                 "kairos:ORG",
@@ -359,7 +381,7 @@
         },
         {
           "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/move_illegally",
-          "@type": "kairos:Primitives/Movement.TransportationIllegal",
+          "@type": "kairos:Primitives/Movement.Transportation.IllegalTransportation",
           "name": "Enter US illegally",
           "temporal": [
             {
@@ -379,7 +401,7 @@
             {
               "name": "sourcePlace",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_illegally/sourcePlace",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/SourcePlace",
+              "role": "kairos:Primitives/Movement.Transportation.IllegalTransportation/Slots/SourcePlace",
               "entityTypes": [
                 "kairos:LOC",
                 "kairos:FAC",
@@ -390,7 +412,7 @@
             {
               "name": "destinationPlace",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_illegally/destinationPlace",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/DestinationPlace",
+              "role": "kairos:Primitives/Movement.Transportation.IllegalTransportation/Slots/DestinationPlace",
               "entityTypes": [
                 "kairos:LOC",
                 "kairos:FAC",
@@ -410,7 +432,7 @@
             {
               "name": "agentOfMovement",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_illegally/agentOfMovement",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/AgentOfMovement",
+              "role": "kairos:Primitives/Movement.Transportation.IllegalTransportation/Slots/AgentOfMovement",
               "refvar": "Agent",
               "entityTypes": "kairos:PER",
               "values": []
@@ -418,14 +440,14 @@
             {
               "name": "methodOfMovement",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_illegally/methodOfMovement",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/MethodOfMovement",
+              "role": "kairos:Primitives/Movement.Transportation.IllegalTransportation/Slots/MethodOfMovement",
               "entityTypes": "kairos:VEH",
               "values": []
             },
             {
               "name": "thingsMoved",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_illegally/thingsMoved",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/ThingsMoved",
+              "role": "kairos:Primitives/Movement.Transportation.IllegalTransportation/Slots/ThingsMoved",
               "refvar": "Agent",
               "entityTypes": "kairos:PER",
               "values": [
@@ -483,7 +505,7 @@
               "name": "acquiredEntity",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/get_bombmaking_howto/AcquiredEntity",
               "role": "kairos:Primitives/Transaction.Exchange/Slots/AcquiredEntity",
-              "reference": "https://www.wikidata.org/wiki/Q1057179",
+              "reference": "wiki:Q1057179",
               "entityTypes": "kairos:COM",
               "values": []
             },
@@ -551,7 +573,7 @@
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/participant/sheikh",
               "role": "kairos:Primitives/Contact.Contact/Slots/Participant",
               "refvar": "Point of Contact",
-              "reference": "https://www.wikidata.org/wiki/Q185166",
+              "reference": "wiki:Q185166",
               "entityTypes": "kairos:PER",
               "values": [
                 {
@@ -573,16 +595,7 @@
                 "kairos:Entity",
                 "kairos:InformationObject.TopicFiller"
               ],
-              "values": [
-                {
-                  "value": "Omar Abdel-Rahman",
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9eb30e",
-                  "mediaType": "text",
-                  "entityTypes": "kairos:PER",
-                  "confidence": 1,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/142-158"
-                }
-              ]
+              "values": []
             }
           ]
         },
@@ -918,7 +931,7 @@
         },
         {
           "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_general_attack_location",
-          "@type": "kairos:Primitives/Movement.TransportationLegal",
+          "@type": "kairos:Primitives/Movement.Transportation.LegalTransportation",
           "name": "Drive to Manhattan",
           "temporal": [
             {
@@ -940,7 +953,7 @@
             {
               "name": "starting point",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location/startingPoint",
-              "role": "kairos:Primitives/Movement.TransportationLegal/Slots/SourcePlace",
+              "role": "kairos:Primitives/Movement.Transportation.LegalTransportation/Slots/SourcePlace",
               "entityTypes": [
                 "kairos:LOC",
                 "kairos:FAC",
@@ -951,7 +964,7 @@
             {
               "name": "attackLocation",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location/attackLocation",
-              "role": "kairos:Primitives/Movement.TransportationLegal/Slots/DestinationPlace",
+              "role": "kairos:Primitives/Movement.Transportation.LegalTransportation/Slots/DestinationPlace",
               "entityTypes": [
                 "kairos:LOC",
                 "kairos:FAC",
@@ -971,7 +984,7 @@
             {
               "name": "driver",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location/driver",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/AgentOfMovement",
+              "role": "kairos:Primitives/Movement.Transportation.LegalTransportation/Slots/AgentOfMovement",
               "refvar": "Agent",
               "entityTypes": [
                 "kairos:PER",
@@ -993,7 +1006,7 @@
             {
               "name": "method",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location/method",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/Instrument",
+              "role": "kairos:Primitives/Movement.Transportation.LegalTransportation/Slots/Instrument",
               "refvar": "Vehicle",
               "entityTypes": "kairos:VEH",
               "values": [
@@ -1009,7 +1022,7 @@
             {
               "name": "things moved",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location/thingsMoved",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/ThingsMoved",
+              "role": "kairos:Primitives/Movement.Transportation.LegalTransportation/Slots/ThingsMoved",
               "entityTypes": "kairos:PER",
               "values": [
                 {
@@ -1026,7 +1039,7 @@
         },
         {
           "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_specific_attack_location",
-          "@type": "kairos:Primitives/Movement.TransportationLegal",
+          "@type": "kairos:Primitives/Movement.Transportation.LegalTransportation",
           "name": "Park at WTC (1993)",
           "temporal": [
             {
@@ -1040,7 +1053,7 @@
             {
               "name": "starting point",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_specific_attack_location/startingPoint",
-              "role": "kairos:Primitives/Movement.TransportationLegal/Slots/SourcePlace",
+              "role": "kairos:Primitives/Movement.Transportation.LegalTransportation/Slots/SourcePlace",
               "entityTypes": [
                 "kairos:LOC",
                 "kairos:FAC",
@@ -1051,7 +1064,7 @@
             {
               "name": "attackLocation",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_specific_attack_location/attackLocation",
-              "role": "kairos:Primitives/Movement.TransportationLegal/Slots/DestinationPlace",
+              "role": "kairos:Primitives/Movement.Transportation.LegalTransportation/Slots/DestinationPlace",
               "entityTypes": [
                 "kairos:LOC",
                 "kairos:FAC",
@@ -1062,7 +1075,7 @@
                   "value": "parking garage beneath the World Trade Center",
                   "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d6228a9eb30e",
                   "mediaType": "text",
-                  "reference": "https://www.wikidata.org/wiki/Q11235",
+                  "reference": "wiki:Q11235",
                   "entityTypes": "kairos:WEA",
                   "confidence": 1,
                   "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/12-42"
@@ -1072,7 +1085,7 @@
             {
               "name": "driver",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_specific_attack_location/driver",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/AgentOfMovement",
+              "role": "kairos:Primitives/Movement.Transportation.LegalTransportation/Slots/AgentOfMovement",
               "entityTypes": [
                 "kairos:PER",
                 "kairos:COM",
@@ -1093,7 +1106,7 @@
             {
               "name": "method",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_specific_attack_location/method",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/Instrument",
+              "role": "kairos:Primitives/Movement.Transportation.LegalTransportation/Slots/Instrument",
               "refvar": "Vehicle",
               "entityTypes": "kairos:VEH",
               "values": [
@@ -1109,7 +1122,7 @@
             {
               "name": "things moved",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_specific_attack_location/thingsMoved",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/ThingsMoved",
+              "role": "kairos:Primitives/Movement.Transportation.LegalTransportation/Slots/ThingsMoved",
               "entityTypes": "kairos:PER",
               "values": [
                 {
@@ -1178,7 +1191,7 @@
                   "value": "World Trade Center North Tower",
                   "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d6228a9eb30e",
                   "mediaType": "text",
-                  "reference": "https://www.wikidata.org/wiki/Q11235",
+                  "reference": "wiki:Q11235",
                   "entityTypes": "kairos:WEA",
                   "confidence": 1,
                   "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/12-30"
@@ -1228,7 +1241,7 @@
         },
         {
           "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/escape",
-          "@type": "kairos:Primitives/Movement.TransportationIllegal",
+          "@type": "kairos:Primitives/Movement.Transportation.IllegalTransportation",
           "name": "Escaped to Pakistan",
           "temporal": [
             {
@@ -1242,7 +1255,7 @@
             {
               "name": "sourcePlace",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/escape/sourcePlace",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/SourcePlace",
+              "role": "kairos:Primitives/Movement.Transportation.IllegalTransportation/Slots/SourcePlace",
               "entityTypes": [
                 "kairos:LOC",
                 "kairos:FAC",
@@ -1253,7 +1266,7 @@
                   "value": "World Trade Center North Tower",
                   "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d6228a9eb30e",
                   "mediaType": "text",
-                  "reference": "https://www.wikidata.org/wiki/Q11235",
+                  "reference": "wiki:Q11235",
                   "entityTypes": "kairos:WEA",
                   "confidence": 1,
                   "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/12-30"
@@ -1263,7 +1276,7 @@
             {
               "name": "destinationPlace",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/escape/destinationPlace",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/DestinationPlace",
+              "role": "kairos:Primitives/Movement.Transportation.IllegalTransportation/Slots/DestinationPlace",
               "entityTypes": [
                 "kairos:LOC",
                 "kairos:FAC",
@@ -1283,7 +1296,7 @@
             {
               "name": "escapee",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/escape/escapee",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/AgentOfMovement",
+              "role": "kairos:Primitives/Movement.Transportation.IllegalTransportation/Slots/AgentOfMovement",
               "refvar": "Agent",
               "entityTypes": "kairos:PER",
               "values": [
@@ -1300,7 +1313,7 @@
             {
               "name": "getaway car",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/escape/getaway_car",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/Instrument",
+              "role": "kairos:Primitives/Movement.Transportation.IllegalTransportation/Slots/Instrument",
               "refvar": "Vehicle",
               "entityTypes": "kairos:VEH",
               "values": []
@@ -1308,7 +1321,7 @@
             {
               "name": "thingsMoved",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/escape/thingsMoved",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/ThingsMoved",
+              "role": "kairos:Primitives/Movement.Transportation.IllegalTransportation/Slots/ThingsMoved",
               "entityTypes": "kairos:PER",
               "values": []
             }
@@ -1409,7 +1422,7 @@
             {
               "relationPredicate": "kairos:Relations/PersonalSocial.Unspecified",
               "relationObject": "caci:Schemas/CoordinatedBombingAttack/Slots/wire_transfer/recipient",
-              "reference": "https://www.wikidata.org/wiki/Q76557",
+              "reference": "wiki:Q76557",
               "confidence": 1,
               "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000500"
             }
@@ -1424,7 +1437,7 @@
           "relations": [
             {
               "relationPredicate": "kairos:Relations/PersonalSocial.Unspecified",
-              "relationObject": "https://www.wikidata.org/wiki/Q2918749",
+              "relationObject": "wiki:Q2918749",
               "confidence": 0.75,
               "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000500"
             }
@@ -1483,13 +1496,13 @@
           "relations": [
             {
               "relationPredicate": "kairos:Relations/Information.Color",
-              "relationObject": "https://www.wikidata.org/wiki/Q943",
+              "relationObject": "wiki:Q943",
               "confidence": 1,
               "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000500"
             },
             {
               "relationPredicate": "kairos:Relations/Information.Make",
-              "relationObject": "https://www.wikidata.org/wiki/Q2178198",
+              "relationObject": "wiki:Q2178198",
               "confidence": 1,
               "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000500"
             }

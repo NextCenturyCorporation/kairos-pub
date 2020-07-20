@@ -2,21 +2,28 @@
   "@context": {
     "schema": "http://schema.org/",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
-    "kairos": "https://kairos-sdf.s3.amazonaws.com/context/kairos#",
-    "schemas": "kairos:schemas",
-    "primitives": "kairos:primitives",
+    "kairos": "https://kairos-sdf.s3.amazonaws.com/context/kairos/",
+    "wiki": "https://www.wikidata.org/wiki/",
     "ta2": {
       "@id": "kairos:ta2",
       "@type": "xsd:boolean"
     },
+    "schemas": "kairos:schemas",
+    "primitives": "kairos:primitives",
     "super": {
       "@id": "kairos:super",
       "@type": "@id"
     },
     "name": "schema:name",
     "roleName": "kairos:roleName",
-    "comment": "kairos:comment",
-    "description": "schema:description",
+    "comment": {
+      "@id": "kairos:comment",
+      "@container": "@list"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@container": "@list"
+    },
     "version": "schema:version",
     "sdfVersion": "kairos:sdfVersion",
     "privateData": "kairos:privateData",
@@ -25,14 +32,25 @@
       "@id": "kairos:reference",
       "@type": "@id"
     },
+    "achieves": "kairos:achieves",
+    "requires": "kairos:requires",
     "steps": "kairos:steps",
-    "slots": "kairos:slots",
-    "participants": "kairos:participants",
+    "slots": {
+      "@id": "kairos:slots",
+      "@container": "@list"
+    },
+    "participants": {
+      "@id": "kairos:participants",
+      "@container": "@list"
+    },
     "role": {
       "@id": "kairos:role",
       "@type": "@id"
     },
-    "entityTypes": "kairos:entityTypes",
+    "entityTypes": {
+      "@id": "kairos:entityTypes",
+      "@container": "@list"
+    },
     "entityTypes_AND": "kairos:entityTypes_AND",
     "entityTypes_OR": "kairos:entityTypes_OR",
     "values": "kairos:values",
@@ -51,7 +69,10 @@
       "@id": "kairos:relationSubject",
       "@type": "@id"
     },
-    "relationPredicate": "kairos:relationPredicate",
+    "relationPredicate": {
+      "@id": "kairos:relationPredicate",
+      "@type": "@id"
+    },
     "relationObject": {
       "@id": "kairos:relationObject",
       "@type": "@id"

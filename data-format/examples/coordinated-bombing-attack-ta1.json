@@ -2,8 +2,9 @@
   "@context": {
     "schema": "http://schema.org/",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
-    "kairos": "https://kairos-sdf.s3.amazonaws.com/context/kairos#",
+    "kairos": "https://kairos-sdf.s3.amazonaws.com/context/kairos/",
     "schemas": "kairos:schemas",
+    "wiki": "https://www.wikidata.org/wiki/",
     "ta2": {
       "@id": "kairos:ta2",
       "@type": "xsd:boolean"
@@ -14,8 +15,14 @@
       "@type": "@id"
     },
     "name": "schema:name",
-    "comment": "kairos:comment",
-    "description": "schema:description",
+    "comment": {
+      "@id": "kairos:comment",
+      "@container": "@list"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@container": "@list"
+    },
     "version": "schema:version",
     "sdfVersion": "kairos:sdfVersion",
     "privateData": "kairos:privateData",
@@ -24,14 +31,25 @@
       "@id": "kairos:reference",
       "@type": "@id"
     },
+    "achieves": "kairos:achieves",
+    "requires": "kairos:requires",
     "steps": "kairos:steps",
-    "slots": "kairos:slots",
-    "participants": "kairos:participants",
+    "slots": {
+      "@id": "kairos:slots",
+      "@container": "@list"
+    },
+    "participants": {
+      "@id": "kairos:participants",
+      "@container": "@list"
+    },
     "role": {
       "@id": "kairos:role",
       "@type": "@id"
     },
-    "entityTypes": "kairos:entityTypes",
+    "entityTypes": {
+      "@id": "kairos:entityTypes",
+      "@container": "@list"
+    },
     "entityTypes_AND": "kairos:entityTypes_AND",
     "entityTypes_OR": "kairos:entityTypes_OR",
     "values": "kairos:values",
@@ -50,7 +68,10 @@
       "@id": "kairos:relationSubject",
       "@type": "@id"
     },
-    "relationPredicate": "kairos:relationPredicate",
+    "relationPredicate": {
+      "@id": "kairos:relationPredicate",
+      "@type": "@id"
+    },
     "relationObject": {
       "@id": "kairos:relationObject",
       "@type": "@id"
@@ -109,25 +130,26 @@
     "my_key": "caci:my_key",
     "giant_bitstring": "caci:giant_bitstring"
   },
-  "sdfVersion": "0.8a",
+  "@id": "caci:Submissions/TA1/12345",
+  "sdfVersion": "0.8b",
   "schemas": [
     {
       "@id": "caci:Schemas/CoordinatedBombingAttack",
       "comment": [
-        "Scenario E:",
-        "1. Spend time training at Al Qaeda center in Afghanistan",
-        "2. Wire transfer from an uncle",
-        "3. Enter US illegally",
-        "4. Possess bomb making instruction",
-        "5. Contact Sheikh connected with Rabbi Kahane Murderer",
-        "6. Get financing from Sheikh",
-        "7. Train in NJ",
-        "8. Mail anti-Israel letters to newspapers",
-        "9. Rent a van",
-        "10. Drive to Manhattan",
-        "11. Park at WTC (1993)",
-        "12. Bomb explosion killing 6 people",
-        "13. Escaped to Pakistan",
+        "Train with Al-Qaeda",
+        "Receive wire transfer",
+        "Enter US illegally",
+        "Possess bomb making instruction",
+        "Contact funding source",
+        "Obtain financing",
+        "Receive further training",
+        "Send propaganda materials",
+        "Obtain transportation",
+        "Arrive at general location of attack (legally)",
+        "Arrive at general location of attack (illegally)",
+        "Arrive at specific location of attack",
+        "Detonate a bomb",
+        "Escape",
         "",
         "Conceptually, Coordinated Bombing Attack extends caci:Schemas/BombingAttack, but this may be out of scope for Phase I.",
         "NOTE: This is the TA1 schema"
@@ -135,7 +157,7 @@
       "super": "caci:Schemas/BombingAttack",
       "name": "Coordinated Bombing Attack",
       "description": "A coordinated effort by mulitple parties that results in a bombing attack",
-      "version": "caci-07.02.2020",
+      "version": "caci-07.20.2020",
       "privateData": {
         "comment": "Performers can place any keys/values they wish here.  The map will be added to the graph but otherwise ignored by the system.  Properties maps can be added inside a schema, individual steps, slots, and order blocks, but not in their enclosing arrays.  Large amounts of private data can be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum.",
         "my_key": "my value",
@@ -144,7 +166,7 @@
       "steps": [
         {
           "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/training_1",
-          "name": "Spend time training at Al Qaeda center in Afghanistan",
+          "name": "Train with Al-Qaeda",
           "@type": "kairos:Primitives/Cognitive.TeachingTrainingLearning",
           "aka": [
             "learning",
@@ -152,7 +174,7 @@
           ],
           "minDuration": "PT10M",
           "maxDuration": "P3M",
-          "reference": "https://www.wikidata.org/wiki/Q918385",
+          "reference": "wiki:Q918385",
           "participants": [
             {
               "name": "trainer",
@@ -160,7 +182,7 @@
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training_1/trainer",
               "role": "kairos:Primitives/Cognitive.TeachingTrainingLearning/Slots/Teacher",
               "comment": "Reference specifies that the trainer is Al-Qaeda.",
-              "reference": "https://www.wikidata.org/wiki/Q34490",
+              "reference": "wiki:Q34490",
               "entityTypes": [
                 "kairos:PER",
                 "kairos:ORG",
@@ -183,35 +205,15 @@
               "name": "subject_matter",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training_1/subject_matter",
               "role": "kairos:Primitives/Cognitive.TeachingTrainingLearning/Slots/FieldOfKnowledge",
-              "entityTypes": "kairos:INF"
-            },
-            {
-              "name": "manner",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training_1/manner",
-              "role": "kairos:Primitives/Cognitive.TeachingTrainingLearning/Slots/MNR",
-              "aka": [
-                "instrument",
-                "means",
-                "manner"
-              ],
-              "entityTypes": [
-                "kairos:COM",
-                "kairos:ABS",
-                "kairos:INF"
-              ]
-            },
-            {
-              "name": "institution",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training_1/institution",
-              "role": "kairos:Primitives/Cognitive.TeachingTrainingLearning/Slots/Institution",
-              "entityTypes": "kairos:ORG"
+              "entityTypes": "kairos:INF",
+              "reference": "wiki:Q7283"
             }
           ]
         },
         {
           "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/wire_transfer",
           "@type": "caci:Primitives/Transaction.WireTransfer",
-          "name": "Wire transfer from an uncle",
+          "name": "Receive wire transfer",
           "comment": "Transaction.WireTransfer is a specialization of kairos:Primitives/Transaction.Exchange.Donation",
           "aka": "telegraphic transfer",
           "participants": [
@@ -268,46 +270,31 @@
         },
         {
           "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/move_illegally",
-          "@type": "kairos:Primitives/Movement.TransportationIllegal",
+          "@type": "kairos:Primitives/Movement.Transportation.IllegalTransportation",
           "name": "Enter US illegally",
           "participants": [
             {
-              "name": "sourcePlace",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_illegally/sourcePlace",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/SourcePlace",
-              "entityTypes": [
-                "kairos:LOC",
-                "kairos:FAC",
-                "kairos:GPE"
-              ]
-            },
-            {
               "name": "destinationPlace",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_illegally/destinationPlace",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/destinationPlace",
+              "role": "kairos:Primitives/Movement.Transportation.IllegalTransportation/Slots/destinationPlace",
               "entityTypes": [
                 "kairos:LOC",
                 "kairos:FAC",
                 "kairos:GPE"
-              ]
+              ],
+              "reference": "wiki:Q30"
             },
             {
               "name": "agentOfMovement",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_illegally/agentOfMovement",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/agentOfMovement",
+              "role": "kairos:Primitives/Movement.Transportation.IllegalTransportation/Slots/agentOfMovement",
               "refvar": "Agent",
               "entityTypes": "kairos:PER"
             },
             {
-              "name": "methodOfMovement",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_illegally/methodOfMovement",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/MethodOfMovement",
-              "entityTypes": "kairos:VEH"
-            },
-            {
               "name": "thingsMoved",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_illegally/thingsMoved",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/ThingsMoved",
+              "role": "kairos:Primitives/Movement.Transportation.IllegalTransportation/Slots/ThingsMoved",
               "refvar": "Agent",
               "entityTypes": "kairos:PER"
             }
@@ -317,13 +304,12 @@
           "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/get_bombmaking_howto",
           "@type": "kairos:Primitives/Transaction.Exchange",
           "name": "Possess bomb making instruction",
-          "comment": "Note that some slots are omitted here for brevity.",
           "participants": [
             {
               "name": "acquiredEntity",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/get_bombmaking_howto/AcquiredEntity",
               "role": "kairos:Primitives/Transaction.Exchange/Slots/AcquiredEntity",
-              "reference": "https://www.wikidata.org/wiki/Q1057179",
+              "reference": "wiki:Q1057179",
               "entityTypes": "kairos:COM"
             }
           ]
@@ -331,11 +317,10 @@
         {
           "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/make_contact",
           "@type": "kairos:Primitives/Contact.Contact",
-          "name": "Contact Sheikh connected with Rabbi Kahane Murderer",
+          "name": "Contact funding source",
           "comment": [
             "Note that TA1 has broken up the Contact primitive's Participant role into two distinct slots, so that they",
-            "can assign reference and refvars to both participants individually.",
-            "Note also that some slots are omitted here for brevity."
+            "can assign reference and refvars to both participants individually."
           ],
           "aka": "contact",
           "participants": [
@@ -347,11 +332,11 @@
               "entityTypes": "kairos:PER"
             },
             {
-              "name": "sheikh",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/participant/sheikh",
+              "name": "poc",
+              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/participant/poc",
               "role": "kairos:Primitives/Contact.Contact/Slots/Participant",
               "refvar": "Point of Contact",
-              "reference": "https://www.wikidata.org/wiki/Q185166",
+              "reference": "wiki:Q2289279",
               "entityTypes": "kairos:PER"
             }
           ]
@@ -359,15 +344,14 @@
         {
           "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/obtain_financing",
           "@type": "kairos:Primitives/Transaction.Exchange.Donation",
-          "name": "Get financing from Sheikh",
-          "comment": "Note that some slots are omitted here for brevity.",
+          "name": "Obtain financing",
           "aka": "financing",
           "participants": [
             {
               "name": "giver",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/obtain_financing/giver",
               "role": "kairos:Primitives/Transaction.Exchange.Donation/Slots/Donor",
-              "refvar": "Point of Contact",
+              "comment": "We don't specify refvar here because we have defined an entityRelation where the giver is either the POC from the Contact event or related to it.",
               "entityTypes": [
                 "kairos:PER",
                 "kairos:ORG",
@@ -391,7 +375,7 @@
         },
         {
           "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/training_2",
-          "name": "Train in NJ",
+          "name": "Receive further training",
           "@type": "kairos:Primitives/Cognitive.TeachingTrainingLearning",
           "aka": [
             "training",
@@ -417,39 +401,12 @@
                 "kairos:PER",
                 "kairos:ORG"
               ]
-            },
-            {
-              "name": "subject_matter",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training_2/subject_matter",
-              "role": "kairos:Primitives/Cognitive.TeachingTrainingLearning/Slots/FieldOfKnowledge",
-              "entityTypes": "kairos:INF"
-            },
-            {
-              "name": "manner",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training_2/manner",
-              "role": "kairos:Primitives/Cognitive.TeachingTrainingLearning/Slots/MNR",
-              "aka": [
-                "instrument",
-                "means",
-                "manner"
-              ],
-              "entityTypes": [
-                "kairos:COM",
-                "kairos:ABS",
-                "kairos:INF"
-              ]
-            },
-            {
-              "name": "institution",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training_2/institution",
-              "role": "kairos:Primitives/Cognitive.TeachingTrainingLearning/Slots/Institution",
-              "entityTypes": "kairos:ORG"
             }
           ]
         },
         {
           "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/media_propaganda",
-          "name": "Mail anti-Israel letters to newspapers",
+          "name": "Send propaganda materials",
           "comment": "caci:Primitives/Contact.Propaganda is a specialization of the Contact.Broadcast event primitive",
           "@type": "caci:Primitives/Contact.Propaganda",
           "participants": [
@@ -469,28 +426,24 @@
               "name": "outlet",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/media_propaganda/outlet",
               "role": "caci:Primitives/Contact.Propaganda/Slots/Outlet",
+              "comment": "This fills the Contact.Broadcast Place role",
               "entityTypes": [
                 "kairos:LOC",
                 "kairos:FAC"
-              ]
-            },
-            {
-              "name": "subject_matter",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/media_propaganda/subject_matter",
-              "role": "caci:Primitives/Contact.Propaganda/Slots/Topic",
-              "entityTypes": "kairos:INF"
+              ],
+              "reference": "wiki:Q17502905"
             }
           ]
         },
         {
           "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/obtain_transportation",
           "@type": "kairos:Primitives/Transaction.Exchange",
-          "name": "Rent a van",
-          "comment": "Note that some slots are omitted here for brevity.",
+          "name": "Obtain transportation",
+          "comment": "Could be obtained via theft-- this will determine which 'move to general location' step is used.",
           "participants": [
             {
-              "name": "renter",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/obtain_transportation/renter",
+              "name": "acquirer",
+              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/obtain_transportation/acquirer",
               "role": "kairos:Primitives/Transaction.Exchange/Slots/AcquirerOrRecipient",
               "refvar": "Agent",
               "entityTypes": [
@@ -501,8 +454,8 @@
               ]
             },
             {
-              "name": "vehicle_rented",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/obtain_transportation/vehicle_rented",
+              "name": "transportation",
+              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/obtain_transportation/transportation",
               "role": "kairos:Primitives/Transaction.Exchange/Slots/AcquiredEntity",
               "comment": "This shows an example of refvar used in primitive slots, not schema slot arguments.",
               "refvar": "Vehicle",
@@ -521,24 +474,17 @@
           ]
         },
         {
-          "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_general_attack_location",
-          "@type": "kairos:Primitives/Movement.TransportationLegal",
-          "name": "Drive to Manhattan",
+          "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_general_attack_location_legally",
+          "@type": "kairos:Primitives/Movement.Transportation.LegalTransportation",
+          "name": "Arrive at general location of attack (legally)",
+          "comment": "Contrived example to show use of achieves/requires.  In this case, the vehicle was owned or rented.",
+          "achieves": "arrived-at-general-location",
           "participants": [
             {
-              "name": "starting point",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location/startingPoint",
-              "role": "kairos:Primitives/Movement.TransportationLegal/Slots/SourcePlace",
-              "entityTypes": [
-                "kairos:LOC",
-                "kairos:FAC",
-                "kairos:GPE"
-              ]
-            },
-            {
               "name": "attackLocation",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location/attackLocation",
-              "role": "kairos:Primitives/Movement.TransportationLegal/Slots/DestinationPlace",
+              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location_legally/attackLocation",
+              "role": "kairos:Primitives/Movement.Transportation.LegalTransportation/Slots/DestinationPlace",
+              "refvar": "general-attack-location",
               "entityTypes": [
                 "kairos:LOC",
                 "kairos:FAC",
@@ -547,8 +493,8 @@
             },
             {
               "name": "attacker",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location/attacker",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/AgentOfMovement",
+              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location_legally/attacker",
+              "role": "kairos:Primitives/Movement.Transportation.LegalTransportation/Slots/AgentOfMovement",
               "refvar": "Agent",
               "entityTypes": [
                 "kairos:PER",
@@ -559,28 +505,64 @@
             },
             {
               "name": "method",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location/method",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/Instrument",
+              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location_legally/method",
+              "role": "kairos:Primitives/Movement.Transportation.LegalTransportation/Slots/Instrument",
               "refvar": "Vehicle",
               "entityTypes": "kairos:VEH"
+            }
+          ]
+        },
+        {
+          "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_general_attack_location_illegally",
+          "@type": "kairos:Primitives/Movement.Transportation.IllegalTransportation",
+          "name": "Arrive at general location of attack (illegally)",
+          "comment": "Contrived example to show use of achieves/requires.  In this case, the vehicle was stolen.",
+          "achieves": "arrived-at-general-location",
+          "participants": [
+            {
+              "name": "attackLocation",
+              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location_illegally/attackLocation",
+              "role": "kairos:Primitives/Movement.Transportation.LegalTransportation/Slots/DestinationPlace",
+              "refvar": "general-attack-location",
+              "entityTypes": [
+                "kairos:LOC",
+                "kairos:FAC",
+                "kairos:GPE"
+              ]
             },
             {
-              "name": "things moved",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location/thingsMoved",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/ThingsMoved",
-              "entityTypes": "kairos:PER"
+              "name": "attacker",
+              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location_illegally/attacker",
+              "role": "kairos:Primitives/Movement.Transportation.LegalTransportation/Slots/AgentOfMovement",
+              "refvar": "Agent",
+              "entityTypes": [
+                "kairos:PER",
+                "kairos:COM",
+                "kairos:VEH",
+                "kairos:WEA"
+              ]
+            },
+            {
+              "name": "method",
+              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location_illegally/method",
+              "role": "kairos:Primitives/Movement.Transportation.LegalTransportation/Slots/Instrument",
+              "refvar": "Vehicle",
+              "entityTypes": "kairos:VEH"
             }
           ]
         },
         {
           "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_specific_attack_location",
-          "@type": "kairos:Primitives/Movement.TransportationLegal",
-          "name": "Park at WTC (1993)",
+          "@type": "kairos:Primitives/Movement.MovementTransportation",
+          "name": "Arrive at specific location of attack",
+          "requires": "arrived-at-general-location",
+          "comment": "We use generic Movement.MovementTransportation because we don't know if vehicle was stolen or",
           "participants": [
             {
               "name": "starting point",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_specific_attack_location/startingPoint",
-              "role": "kairos:Primitives/Movement.TransportationLegal/Slots/SourcePlace",
+              "role": "kairos:Primitives/Movement.MovementTransportation/Slots/SourcePlace",
+              "refvar": "general-attack-location",
               "entityTypes": [
                 "kairos:LOC",
                 "kairos:FAC",
@@ -590,36 +572,32 @@
             {
               "name": "attackLocation",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_specific_attack_location/attackLocation",
-              "role": "kairos:Primitives/Movement.TransportationLegal/Slots/DestinationPlace",
+              "role": "kairos:Primitives/Movement.MovementTransportation/Slots/DestinationPlace",
               "entityTypes": [
                 "kairos:LOC",
                 "kairos:FAC",
                 "kairos:GPE"
-              ]
+              ],
+              "refvar": "Place"
             },
             {
               "name": "attacker",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_specific_attack_location/attacker",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/AgentOfMovement",
+              "role": "kairos:Primitives/Movement.MovementTransportation/Slots/AgentOfMovement",
               "entityTypes": [
                 "kairos:PER",
                 "kairos:COM",
                 "kairos:VEH",
                 "kairos:WEA"
-              ]
+              ],
+              "comment": "We don't specify refvar here because it's not basic coref:  we have defined an entityRelation for it."
             },
             {
               "name": "method",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_specific_attack_location/method",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/Instrument",
+              "role": "kairos:Primitives/Movement.MovementTransportation/Slots/Instrument",
               "refvar": "Vehicle",
               "entityTypes": "kairos:VEH"
-            },
-            {
-              "name": "things moved",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_specific_attack_location/thingsMoved",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/ThingsMoved",
-              "entityTypes": "kairos:PER"
             }
           ]
         },
@@ -627,7 +605,7 @@
           "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/bombing",
           "@type": "kairos:Primitives/Conflict.DetonateExplode",
           "aka": "explode",
-          "name": "Bomb explosion killing 6 people",
+          "name": "Detonate a bomb",
           "participants": [
             {
               "name": "agent",
@@ -637,24 +615,14 @@
               "entityTypes": "kairos:PER"
             },
             {
-              "name": "object",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/bombing/object",
-              "role": "kairos:Primitives/Conflict.DetonateExplode/Slots/Object",
-              "entityTypes": [
-                "kairos:COM",
-                "kairos:WEA",
-                "kairos:VEH",
-                "kairos:FAC"
-              ]
-            },
-            {
               "name": "bomb",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/bombing/bomb",
               "role": "kairos:Primitives/Conflict.DetonateExplode/Slots/MeansInstrument",
               "entityTypes": [
                 "kairos:COM",
                 "kairos:WEA"
-              ]
+              ],
+              "reference": "wiki:Q127197"
             },
             {
               "name": "place",
@@ -667,23 +635,14 @@
         },
         {
           "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/escape",
-          "@type": "kairos:Primitives/Movement.TransportationIllegal",
-          "name": "Escaped to Pakistan",
+          "@type": "kairos:Primitives/Movement.Transportation.IllegalTransportation",
+          "name": "Escape",
           "participants": [
             {
               "name": "sourcePlace",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/escape/sourcePlace",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/SourcePlace",
-              "entityTypes": [
-                "kairos:LOC",
-                "kairos:FAC",
-                "kairos:GPE"
-              ]
-            },
-            {
-              "name": "destinationPlace",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/escape/destinationPlace",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/DestinationPlace",
+              "role": "kairos:Primitives/Movement.Transportation.IllegalTransportation/Slots/SourcePlace",
+              "refvar": "Place",
               "entityTypes": [
                 "kairos:LOC",
                 "kairos:FAC",
@@ -693,22 +652,16 @@
             {
               "name": "escapee",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/escape/escapee",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/AgentOfMovement",
+              "role": "kairos:Primitives/Movement.Transportation.IllegalTransportation/Slots/AgentOfMovement",
               "refvar": "Agent",
               "entityTypes": "kairos:PER"
             },
             {
               "name": "getaway car",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/escape/getaway_car",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/Instrument",
+              "role": "kairos:Primitives/Movement.Transportation.IllegalTransportation/Slots/Instrument",
               "refvar": "Vehicle",
               "entityTypes": "kairos:VEH"
-            },
-            {
-              "name": "thingsMoved",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/escape/thingsMoved",
-              "role": "kairos:Primitives/Movement.TransportationIllegal/Slots/ThingsMoved",
-              "entityTypes": "kairos:PER"
             }
           ]
         }
@@ -732,7 +685,10 @@
           "flags": "precondition"
         },
         {
-          "before": "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_general_attack_location",
+          "before": [
+            "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_general_attack_location_legally",
+            "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_general_attack_location_illegally"
+          ],
           "after": "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_specific_attack_location",
           "flags": "precondition"
         },
@@ -747,7 +703,8 @@
             "caci:Schemas/CoordinatedBombingAttack/Steps/training_1",
             "caci:Schemas/CoordinatedBombingAttack/Steps/obtain_financing",
             "caci:Schemas/CoordinatedBombingAttack/Steps/make_contact",
-            "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_general_attack_location",
+            "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_general_attack_location_legally",
+            "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_general_attack_location_illegally",
             "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_specific_attack_location"
           ],
           "after": "caci:Schemas/CoordinatedBombingAttack/Steps/bombing",
@@ -767,16 +724,15 @@
       ],
       "entityRelations": [
         {
-          "relationSubject": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/participant/sheikh",
+          "relationSubject": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/participant/poc",
           "comment": [
-            "Sheikh participant from make_contact event is connected with Rabbi Kahane Murderer.",
-            "This corresponds to 'Each argument may be associated with a relation which may be useful to differentiate between schema' from \"Structure of a schema",
-            "Could we use caci:Schemas/CoordinatedBombingAttack/Slots/poc/shiekh for the relationObject here?"
+            "POC participant from make_contact event is from a terrorist organization.",
+            "This corresponds to 'Each argument may be associated with a relation which may be useful to differentiate between schema' from \"Structure of a schema\""
           ],
           "relations": [
             {
-              "relationPredicate": "kairos:Relations/PersonalSocial.Unspecified",
-              "relationObject": "https://www.wikidata.org/wiki/Q2918749"
+              "relationPredicate": "kairos:Relations/OrganizationAffiliation.EmploymentMembership",
+              "relationObject": "wiki:Q17127659"
             }
           ]
         },
@@ -790,12 +746,18 @@
             {
               "comment": "Same attacker moved to specific location as moved to general location",
               "relationPredicate": "kairos:Relations/Physical.SameAs",
-              "relationObject": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location/attacker"
+              "relationObject": [
+                "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location_legally/attacker",
+                "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location_illegally/attacker"
+              ]
             },
             {
               "comment": "Attacker lives in general attack location",
               "relationPredicate": "kairos:Relations/Physical.Resident",
-              "relationObject": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location/attackLocation"
+              "relationObject": [
+                "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location_legally/attackLocation",
+                "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location_illegally/attackLocation"
+              ]
             }
           ]
         },
@@ -809,12 +771,12 @@
             {
               "comment": "Giver of financing is one of the participants in the make_contact event",
               "relationPredicate": "kairos:Relations/Physical.SameAs",
-              "relationObject": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/participant/sheikh"
+              "relationObject": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/participant/poc"
             },
             {
               "comment": "Giver of financing is affiliated with one of the participants in the make_contact event",
               "relationPredicate": "kairos:Relations/PersonalSocial.Unspecified.Political",
-              "relationObject": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/participant/sheikh"
+              "relationObject": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/participant/poc"
             }
           ]
         }
