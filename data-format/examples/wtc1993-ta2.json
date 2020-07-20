@@ -15,6 +15,7 @@
       "@type": "@id"
     },
     "name": "schema:name",
+    "roleName": "kairos:roleName",
     "comment": {
       "@id": "kairos:comment",
       "@container": "@list"
