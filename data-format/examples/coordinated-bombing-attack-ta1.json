@@ -49,10 +49,19 @@
     },
     "entityTypes": {
       "@id": "kairos:entityTypes",
+      "@type": "@id",
       "@container": "@list"
     },
-    "entityTypes_AND": "kairos:entityTypes_AND",
-    "entityTypes_OR": "kairos:entityTypes_OR",
+    "entityTypes_AND": {
+      "@id": "kairos:entityTypes_AND",
+      "@type": "@id",
+      "@container": "@list"
+    },
+    "entityTypes_OR": {
+      "@id": "kairos:entityTypes_OR",
+      "@type": "@id",
+      "@container": "@list"
+    },
     "values": "kairos:values",
     "value": "kairos:value",
     "valueId": {
@@ -579,7 +588,7 @@
             {
               "name": "attacker",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location_illegally/attacker",
-              "role": "Primitives/Events/Movement.Transportation.IllegalTransportation/Slots/Transporter",
+              "role": "caci:Primitives/Events/Movement.Transportation.IllegalTransportation/Slots/Transporter",
               "refvar": "Agent",
               "entityTypes": [
                 "kairos:Primitives/Entities/PER",
