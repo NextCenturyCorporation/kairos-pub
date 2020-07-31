@@ -168,7 +168,7 @@
       "super": "caci:Schemas/BombingAttack",
       "name": "Coordinated Bombing Attack",
       "description": "A coordinated effort by mulitple parties that results in a bombing attack",
-      "version": "caci-07.27.2020",
+      "version": "caci-07.30.2020",
       "privateData": {
         "comment": "Performers can place any keys/values they wish here.  The map will be added to the graph but otherwise ignored by the system.  Properties maps can be added inside a schema, individual steps, slots, and order blocks, but not in their enclosing arrays.  Large amounts of private data can be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum.",
         "my_key": "my value",
@@ -286,17 +286,6 @@
               ]
             },
             {
-              "name": "destinationPlace",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_illegally/destinationPlace",
-              "role": "kairos:Primitives/Events/Movement.Transportation.IllegalTransportation/Slots/Destination",
-              "entityTypes": [
-                "kairos:Primitives/Entities/LOC",
-                "kairos:Primitives/Entities/FAC",
-                "kairos:Primitives/Entities/GPE"
-              ],
-              "reference": "wiki:Q30"
-            },
-            {
               "name": "thingsMoved",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_illegally/thingsMoved",
               "role": "kairos:Primitives/Events/Movement.Transportation.IllegalTransportation/Slots/PassengerArtifact",
@@ -316,6 +305,17 @@
                 "kairos:Primitives/Entities/BOD",
                 "kairos:Primitives/Entities/NAT"
               ]
+            },
+            {
+              "name": "destinationPlace",
+              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_illegally/destinationPlace",
+              "role": "kairos:Primitives/Events/Movement.Transportation.IllegalTransportation/Slots/Destination",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/GPE"
+              ],
+              "reference": "wiki:Q30"
             }
           ]
         },
@@ -498,7 +498,7 @@
         },
         {
           "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/obtain_transportation",
-          "@type": "kairos:Primitives/Transaction.ExchangeBuySell.Unspecified",
+          "@type": "kairos:Primitives/Event/Transaction.ExchangeBuySell.Unspecified",
           "name": "Obtain transportation",
           "comment": "Could be obtained via theft-- this will determine which 'move to general location' step is used.",
           "participants": [
@@ -758,6 +758,15 @@
             "caci:Schemas/CoordinatedBombingAttack/Steps/training_2",
             "caci:Schemas/CoordinatedBombingAttack/Steps/media_propaganda"
           ]
+        },
+        {
+          "comment": "Must arrive at destination country before sending propagnda and obtaining transportation",
+          "before": "caci:Schemas/CoordinatedBombingAttack/Steps/move_illegally",
+          "after": [
+            "caci:Schemas/CoordinatedBombingAttack/Steps/media_propaganda",
+            "caci:Schemas/CoordinatedBombingAttack/Steps/obtain_transportation"
+          ],
+          "flags": "precondition"
         },
         {
           "before": "caci:Schemas/CoordinatedBombingAttack/Steps/training_1",
