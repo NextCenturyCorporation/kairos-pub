@@ -27,7 +27,11 @@
     "version": "schema:version",
     "sdfVersion": "kairos:sdfVersion",
     "privateData": "kairos:privateData",
-    "provenance": "kairos:provenance",
+    "provenance": {
+      "@id": "kairos:provenance",
+      "@type": "@id"
+    },
+    "provenanceData": "kairos:provenanceData",
     "reference": {
       "@id": "kairos:reference",
       "@type": "@id"
@@ -49,15 +53,46 @@
     },
     "entityTypes": {
       "@id": "kairos:entityTypes",
+      "@type": "@id",
       "@container": "@list"
     },
-    "entityTypes_AND": "kairos:entityTypes_AND",
-    "entityTypes_OR": "kairos:entityTypes_OR",
+    "entityTypes_AND": {
+      "@id": "kairos:entityTypes_AND",
+      "@type": "@id",
+      "@container": "@list"
+    },
+    "entityTypes_OR": {
+      "@id": "kairos:entityTypes_OR",
+      "@type": "@id",
+      "@container": "@list"
+    },
     "values": "kairos:values",
-    "value": "kairos:value",
-    "valueId": {
-      "@id": "kairos:valueId",
-      "@type": "@id"
+    "childID": "kairos:childID",
+    "parentIDs": "kairos:parentIDs",
+    "offset": {
+      "@id": "kairos:offset",
+      "@type": "xsd:integer"
+    },
+    "length": {
+      "@id": "kairos:length",
+      "@type": "xsd:integer"
+    },
+    "boundingBox": {
+      "@id": "boundingBox",
+      "@type": "xsd:integer",
+      "@container": "@list"
+    },
+    "keyframes": {
+      "@id": "kairos:keyframes",
+      "@type": "xsd:integer"
+    },
+    "prov_startTime": {
+      "@id": "kairos:prov_startTime",
+      "@type": "xsd:float"
+    },
+    "prov_endTime": {
+      "@id": "kairos:prov_endTime",
+      "@type": "xsd:float"
     },
     "mediaType": "kairos:mediaType",
     "confidence": {
@@ -132,7 +167,7 @@
     "giant_bitstring": "caci:giant_bitstring"
   },
   "@id": "caci:Submissions/TA2/54321",
-  "sdfVersion": "0.8b",
+  "sdfVersion": "0.8c",
   "ta2": true,
   "schemas": [
     {
@@ -159,7 +194,8 @@
       "super": "caci:Schemas/BombingAttack",
       "name": "World Trade Center 1993 Attack",
       "description": "A terrorist attack on the World Trade Center, carried out on 2/26/1993, when a truck bomb detonated below the North Tower",
-      "version": "caci-07.20.2020 / caci-07.20.2020",
+      "version": "caci-07.30.2020 / caci-07.30.2020",
+      "confidence": 0.9,
       "privateData": {
         "comment": "Performers can place any keys/values they wish here.  The map will be added to the graph but otherwise ignored by the system.  Properties maps can be added inside a schema, individual steps, slots, and order blocks, but not in their enclosing arrays.  Large amounts of private data can be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum.",
         "my_key": "my value",
@@ -177,7 +213,8 @@
           "minDuration": "PT10M",
           "maxDuration": "P3M",
           "reference": "wiki:Q918385",
-          "provenance": "Performer-specific info that tracks the origin of the event.",
+          "confidence": 0.85,
+          "provenance": "caci:ComplexEvent/WTC1993/Provenance/Event/1237",
           "temporal": [
             {
               "comment": [
@@ -186,20 +223,19 @@
               ],
               "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/training_1/duration",
               "duration": "P4D",
-              "confidence": 0.5,
-              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
+              "confidence": 0.5
             },
             {
               "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/training_1/startTime",
               "startTime": "1991-01-01T00:00:00",
-              "confidence": 0.5,
-              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
+              "endTime": "1991-03-31T00:00:00",
+              "confidence": 0.5
             },
             {
               "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/training_1/endTime",
+              "startTime": "1991-03-31T23:59:59",
               "endTime": "1991-12-31T23:59:59",
-              "confidence": 0.5,
-              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
+              "confidence": 0.5
             }
           ],
           "participants": [
@@ -217,13 +253,14 @@
               ],
               "values": [
                 {
-                  "value": "Al-Qaeda",
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9eff13",
-                  "mediaType": "text",
-                  "comment": "TA2 can and should specify entityTypes in values objects to express the type of the slot filler/extracted entity.  This can be as specific as the extractors can detect, and may be more specific than the entity types specified in the TA1 schema.",
+                  "comment": "Note: all keywords here are required.",
+                  "name": "Al-Qaeda",
                   "entityTypes": "kairos:ORG",
                   "confidence": 0.75,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/1423-1431"
+                  "provenance": [
+                    "caci:ComplexEvent/WTC1993/Provenance/Entity/1234",
+                    "caci:ComplexEvent/WTC1993/Provenance/Entity/1235"
+                  ]
                 }
               ]
             },
@@ -240,12 +277,10 @@
               ],
               "values": [
                 {
-                  "value": "Ramzi Yousef",
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9eb30e",
-                  "mediaType": "text",
+                  "name": "Ramzi Yousef",
                   "entityTypes": "kairos:PER",
                   "confidence": 1,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/142-153"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1236"
                 }
               ]
             },
@@ -287,6 +322,8 @@
           "name": "Wire transfer from an uncle",
           "comment": "Transaction.WireTransfer is a specialization of kairos:Primitives/Transaction.Exchange.Donation",
           "aka": "telegraphic transfer",
+          "confidence": 0.75,
+          "provenance": "caci:ComplexEvent/WTC1993/Provenance/Event/1237",
           "participants": [
             {
               "name": "sender",
@@ -300,12 +337,10 @@
               ],
               "values": [
                 {
-                  "value": "Khalid Shaikh Mohammed",
-                  "valueId": "caci:Entities/20e8d8228a9e1c8c20e8d8228a7eb30e",
-                  "mediaType": "text",
+                  "name": "Khalid Shaikh Mohammed",
                   "entityTypes": "kairos:PER",
                   "confidence": 1,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/590-611"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1234"
                 }
               ]
             },
@@ -322,12 +357,10 @@
               ],
               "values": [
                 {
-                  "value": "Mohammed Salameh",
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a7eb30e",
-                  "mediaType": "text",
+                  "name": "Mohammed Salameh",
                   "entityTypes": "kairos:PER",
                   "confidence": 1,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/544-559"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1235"
                 }
               ]
             },
@@ -344,12 +377,10 @@
               ],
               "values": [
                 {
-                  "value": "Mohammed Salameh",
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a7eb30e",
-                  "mediaType": "text",
+                  "name": "Mohammed Salameh",
                   "entityTypes": "kairos:PER",
                   "confidence": 1,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/544-559"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1236"
                 }
               ]
             },
@@ -361,12 +392,10 @@
               "entityTypes": "kairos:MON",
               "values": [
                 {
-                  "value": "US$660",
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9eb30e",
-                  "mediaType": "text",
-                  "entityTypes": "kairos:PER",
+                  "name": "US$660",
+                  "entityTypes": "kairos:MON",
                   "confidence": 1,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/556-61"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1234"
                 }
               ]
             },
@@ -374,7 +403,6 @@
               "name": "place",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/wire_transfer/carrier",
               "role": "caci:Primitives/Transaction.WireTransfer/Slots/Carrier",
-              "comment": "In WireTransfer, the Carrier slot fills the Donation's Place slot, and restricts it to ORG (e.g., Western Union",
               "entityTypes": "kairos:ORG",
               "values": []
             }
@@ -384,18 +412,18 @@
           "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/move_illegally",
           "@type": "kairos:Primitives/Movement.Transportation.IllegalTransportation",
           "name": "Enter US illegally",
+          "confidence": 0.8,
+          "provenance": "caci:ComplexEvent/WTC1993/Provenance/Event/1237",
           "temporal": [
             {
               "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/move_illegally/startTime",
               "startTime": "1992-09-01T00:00:00",
-              "confidence": 0.9,
-              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
+              "confidence": 0.9
             },
             {
               "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/move_illegally/endTime",
               "startTime": "1992-09-01T23:59:59",
-              "confidence": 0.9,
-              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
+              "confidence": 0.9
             }
           ],
           "participants": [
@@ -421,12 +449,10 @@
               ],
               "values": [
                 {
-                  "value": "USA",
-                  "valueId": "caci:Entities/20e8d8228a9e4c8d20e8d8228a9eff13",
-                  "mediaType": "text",
+                  "name": "USA",
                   "entityTypes": "kairos:GPE",
                   "confidence": 0.85,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/23-25"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1234"
                 }
               ]
             },
@@ -453,20 +479,16 @@
               "entityTypes": "kairos:PER",
               "values": [
                 {
-                  "value": "Ramzi Yousef",
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9eb30e",
-                  "mediaType": "text",
+                  "name": "Ramzi Yousef",
                   "entityTypes": "kairos:PER",
                   "confidence": 1,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/142-153"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1235"
                 },
                 {
-                  "value": "Ahmed Ajaj",
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9eb30e",
-                  "mediaType": "text",
+                  "name": "Ahmed Ajaj",
                   "entityTypes": "kairos:PER",
                   "confidence": 1,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/242-251"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1236"
                 }
               ]
             }
@@ -476,6 +498,8 @@
           "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/get_bombmaking_howto",
           "@type": "kairos:Primitives/Transaction.Exchange",
           "name": "Possess bomb making instruction",
+          "confidence": 0.55,
+          "provenance": "caci:ComplexEvent/WTC1993/Provenance/Event/1237",
           "participants": [
             {
               "name": "source",
@@ -551,6 +575,8 @@
             "can assign reference and refvars to both participants individually."
           ],
           "aka": "contact",
+          "confidence": 0.65,
+          "provenance": "caci:ComplexEvent/WTC1993/Provenance/Event/1237",
           "participants": [
             {
               "name": "primary_actor",
@@ -560,12 +586,10 @@
               "entityTypes": "kairos:PER",
               "values": [
                 {
-                  "value": "Ramzi Yousef",
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9eb30e",
-                  "mediaType": "text",
+                  "name": "Ramzi Yousef",
                   "entityTypes": "kairos:PER",
                   "confidence": 1,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/142-153"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1234"
                 }
               ]
             },
@@ -578,12 +602,10 @@
               "entityTypes": "kairos:PER",
               "values": [
                 {
-                  "value": "Omar Abdel-Rahman",
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9eb30e",
-                  "mediaType": "text",
+                  "name": "Omar Abdel-Rahman",
                   "entityTypes": "kairos:PER",
                   "confidence": 1,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/142-158"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1235"
                 }
               ]
             },
@@ -605,6 +627,8 @@
           "@type": "kairos:Primitives/Transaction.Exchange.Donation",
           "name": "Get financing from Sheikh",
           "aka": "financing",
+          "confidence": 0.65,
+          "provenance": "caci:ComplexEvent/WTC1993/Provenance/Event/1237",
           "participants": [
             {
               "name": "giver",
@@ -619,9 +643,7 @@
               ],
               "values": [
                 {
-                  "value": "Al-Farooq Mosque",
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9effee",
-                  "mediaType": "text",
+                  "name": "Al-Farooq Mosque",
                   "comment": [
                     "TA2 can specify entityTypes in values objects to express the type of the slot filler/extracted entity.",
                     "Multiple entity types are typically expressed with AND semantics."
@@ -631,7 +653,7 @@
                     "kairos:PER"
                   ],
                   "confidence": 0.75,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/1210-1221"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1234"
                 }
               ]
             },
@@ -688,6 +710,8 @@
             "training",
             "teaching"
           ],
+          "confidence": 0.85,
+          "provenance": "caci:ComplexEvent/WTC1993/Provenance/Event/1237",
           "participants": [
             {
               "name": "trainer",
@@ -748,6 +772,8 @@
           "name": "Mail anti-Israel letters to newspapers",
           "comment": "caci:Primitives/Contact.Propaganda is a specialization of the Contact.Broadcast event primitive",
           "@type": "caci:Primitives/Contact.Propaganda",
+          "confidence": 0.75,
+          "provenance": "caci:ComplexEvent/WTC1993/Provenance/Event/1237",
           "participants": [
             {
               "name": "sender",
@@ -762,12 +788,10 @@
               ],
               "values": [
                 {
-                  "value": "Ramzi Yousef",
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9eb30e",
-                  "mediaType": "text",
+                  "name": "Ramzi Yousef",
                   "entityTypes": "kairos:PER",
                   "confidence": 1,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/142-153"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1234"
                 }
               ]
             },
@@ -781,12 +805,10 @@
               ],
               "values": [
                 {
-                  "value": "various New York newspapers",
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8226a9eb30e",
-                  "mediaType": "text",
+                  "name": "various New York newspapers",
                   "entityTypes": "kairos:FAC",
                   "confidence": 0.8,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/355-380"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1235"
                 }
               ]
             },
@@ -814,6 +836,8 @@
           "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/obtain_transportation",
           "@type": "kairos:Primitives/Transaction.Exchange",
           "name": "Rent a van",
+          "confidence": 0.85,
+          "provenance": "caci:ComplexEvent/WTC1993/Provenance/Event/1237",
           "participants": [
             {
               "name": "source",
@@ -827,12 +851,10 @@
               ],
               "values": [
                 {
-                  "value": "Ryder",
-                  "valueId": "caci:Entities/20e8d8228b9e4c8c20e8d8228a9eb30e",
-                  "mediaType": "text",
+                  "name": "Ryder",
                   "entityTypes": "kairos:ORG",
                   "confidence": 1,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/842-846"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1234"
                 }
               ]
             },
@@ -849,20 +871,16 @@
               ],
               "values": [
                 {
-                  "value": "Ramzi Yousef",
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9eb30e",
-                  "mediaType": "text",
+                  "name": "Ramzi Yousef",
                   "entityTypes": "kairos:PER",
                   "confidence": 1,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/142-153"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1235"
                 },
                 {
-                  "value": "Eyad Ismoil",
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9eb30e",
-                  "mediaType": "text",
+                  "name": "Eyad Ismoil",
                   "entityTypes": "kairos:PER",
                   "confidence": 1,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/142-153"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1236"
                 }
               ]
             },
@@ -885,16 +903,11 @@
               ],
               "values": [
                 {
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9eb30e",
-                  "value": [
-                    "EMIC0015LNI.000696.jpg",
-                    "22,522,359,38"
-                  ],
+                  "comment": "non-text extractions still require a name/handle.",
                   "name": "Ryder van",
-                  "mediaType": "image",
                   "entityTypes": "kairos:VEH",
                   "confidence": 0.63,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/22,522,359,38"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1234"
                 }
               ]
             },
@@ -934,20 +947,20 @@
           "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_general_attack_location",
           "@type": "kairos:Primitives/Movement.Transportation.LegalTransportation",
           "name": "Drive to Manhattan",
+          "confidence": 0.85,
+          "provenance": "caci:ComplexEvent/WTC1993/Provenance/Event/1237",
           "temporal": [
             {
               "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_general_attack_location/duration",
               "description": "2 hours",
               "duration": "PT2H",
-              "confidence": 0.4,
-              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
+              "confidence": 0.4
             },
             {
               "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_general_attack_location/startTime",
               "startTime": "1993-02-26T10:00:00-05:00",
               "description": "2/26/1993 at around 10am",
-              "confidence": 0.5,
-              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
+              "confidence": 0.5
             }
           ],
           "participants": [
@@ -973,12 +986,10 @@
               ],
               "values": [
                 {
-                  "value": "Manhattan",
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8e8228a9eb30e",
-                  "mediaType": "text",
+                  "name": "Manhattan",
                   "entityTypes": "kairos:GPE",
                   "confidence": 0.8,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/142-153"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1234"
                 }
               ]
             },
@@ -995,12 +1006,10 @@
               ],
               "values": [
                 {
-                  "value": "Ramzi Yousef",
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9eb30e",
-                  "mediaType": "text",
+                  "name": "Ramzi Yousef",
                   "entityTypes": "kairos:PER",
                   "confidence": 1,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/142-153"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1235"
                 }
               ]
             },
@@ -1012,11 +1021,10 @@
               "entityTypes": "kairos:VEH",
               "values": [
                 {
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9eb30e",
-                  "value": "Ryder van",
-                  "mediaType": "text",
+                  "name": "Ryder van",
+                  "entityTypes": "kairos:VEH",
                   "confidence": 0.8,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/33-41"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1236"
                 }
               ]
             },
@@ -1027,12 +1035,10 @@
               "entityTypes": "kairos:PER",
               "values": [
                 {
-                  "value": "Eyad Ismoil",
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9eb30e",
-                  "mediaType": "text",
+                  "name": "Eyad Ismoil",
                   "entityTypes": "kairos:PER",
                   "confidence": 1,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/142-153"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1234"
                 }
               ]
             }
@@ -1042,12 +1048,14 @@
           "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_specific_attack_location",
           "@type": "kairos:Primitives/Movement.Transportation.LegalTransportation",
           "name": "Park at WTC (1993)",
+          "confidence": 0.95,
+          "provenance": "caci:ComplexEvent/WTC1993/Provenance/Event/1237",
           "temporal": [
             {
               "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_specific_attack_location/startTime",
               "startTime": "1993-02-26T12:00:00-05:00",
               "confidence": 0.6,
-              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
+              "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1234"
             }
           ],
           "participants": [
@@ -1073,13 +1081,11 @@
               ],
               "values": [
                 {
-                  "value": "parking garage beneath the World Trade Center",
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d6228a9eb30e",
-                  "mediaType": "text",
+                  "name": "parking garage beneath the World Trade Center",
                   "reference": "wiki:Q11235",
                   "entityTypes": "kairos:WEA",
                   "confidence": 1,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/12-42"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1235"
                 }
               ]
             },
@@ -1095,12 +1101,10 @@
               ],
               "values": [
                 {
-                  "value": "Ramzi Yousef",
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9eb30e",
-                  "mediaType": "text",
+                  "name": "Ramzi Yousef",
                   "entityTypes": "kairos:PER",
                   "confidence": 1,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/142-153"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1236"
                 }
               ]
             },
@@ -1112,11 +1116,10 @@
               "entityTypes": "kairos:VEH",
               "values": [
                 {
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9eb30e",
-                  "value": "Ryder van",
-                  "mediaType": "text",
+                  "name": "Ryder van",
+                  "entityTypes": "kairos:VEH",
                   "confidence": 0.9,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/33-41"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1234"
                 }
               ]
             },
@@ -1127,12 +1130,10 @@
               "entityTypes": "kairos:PER",
               "values": [
                 {
-                  "value": "Eyad Ismoil",
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9eb30e",
-                  "mediaType": "text",
+                  "name": "Eyad Ismoil",
                   "entityTypes": "kairos:PER",
                   "confidence": 1,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/142-153"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1235"
                 }
               ]
             }
@@ -1143,12 +1144,13 @@
           "@type": "kairos:Primitives/Conflict.DetonateExplode",
           "aka": "explode",
           "name": "Bomb explosion killing 6 people",
+          "confidence": 1,
+          "provenance": "caci:ComplexEvent/WTC1993/Provenance/Event/1237",
           "temporal": [
             {
               "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/bombing/absoluteTime",
               "absoluteTime": "1993-02-26T12:17:37-05:00",
-              "confidence": 1,
-              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
+              "confidence": 1
             }
           ],
           "participants": [
@@ -1160,20 +1162,16 @@
               "entityTypes": "kairos:PER",
               "values": [
                 {
-                  "value": "Ramzi Yousef",
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9eb30e",
-                  "mediaType": "text",
+                  "name": "Ramzi Yousef",
                   "entityTypes": "kairos:PER",
                   "confidence": 1,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/142-153"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1234"
                 },
                 {
-                  "value": "Eyad Ismoil",
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9eb30e",
-                  "mediaType": "text",
+                  "name": "Eyad Ismoil",
                   "entityTypes": "kairos:PER",
                   "confidence": 1,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/142-153"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1235"
                 }
               ]
             },
@@ -1189,13 +1187,11 @@
               ],
               "values": [
                 {
-                  "value": "World Trade Center North Tower",
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d6228a9eb30e",
-                  "mediaType": "text",
+                  "name": "World Trade Center North Tower",
                   "reference": "wiki:Q11235",
                   "entityTypes": "kairos:WEA",
                   "confidence": 1,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/12-30"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1236"
                 }
               ]
             },
@@ -1209,12 +1205,10 @@
               ],
               "values": [
                 {
-                  "value": "1,336 lb (606 kg) urea nitrate–hydrogen gas enhanced device",
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d6228a9eb30e",
-                  "mediaType": "text",
+                  "name": "1,336 lb (606 kg) urea nitrate–hydrogen gas enhanced device",
                   "entityTypes": "kairos:WEA",
                   "confidence": 0.8,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/25-52"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1234"
                 }
               ]
             },
@@ -1229,12 +1223,10 @@
               ],
               "values": [
                 {
-                  "value": "40.7127° N, 74.0134° W",
-                  "valueId": "caci:Entities/20e8d8228a9e3c8c20e8d6228a9eb30e",
-                  "mediaType": "text",
+                  "name": "40.7127° N, 74.0134° W",
                   "entityTypes": "kairos:LOC",
                   "confidence": 1,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/25-52"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1235"
                 }
               ]
             }
@@ -1244,12 +1236,13 @@
           "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/escape",
           "@type": "kairos:Primitives/Movement.Transportation.IllegalTransportation",
           "name": "Escaped to Pakistan",
+          "confidence": 0.8,
+          "provenance": "caci:ComplexEvent/WTC1993/Provenance/Event/1237",
           "temporal": [
             {
               "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/bombing/absoluteTime",
               "absoluteTime": "1993-02-26T12:05:00-05:00",
-              "confidence": 0.8,
-              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
+              "confidence": 0.8
             }
           ],
           "participants": [
@@ -1264,13 +1257,11 @@
               ],
               "values": [
                 {
-                  "value": "World Trade Center North Tower",
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d6228a9eb30e",
-                  "mediaType": "text",
+                  "name": "World Trade Center North Tower",
                   "reference": "wiki:Q11235",
-                  "entityTypes": "kairos:WEA",
+                  "entityTypes": "kairos:FAC",
                   "confidence": 1,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/12-30"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1234"
                 }
               ]
             },
@@ -1285,12 +1276,10 @@
               ],
               "values": [
                 {
-                  "value": "Pakistan",
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c10e8d8228a9eb30e",
-                  "mediaType": "text",
+                  "name": "Pakistan",
                   "entityTypes": "kairos:GPE",
                   "confidence": 1,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/2099-2107"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1235"
                 }
               ]
             },
@@ -1302,12 +1291,10 @@
               "entityTypes": "kairos:PER",
               "values": [
                 {
-                  "value": "Ramzi Yousef",
-                  "valueId": "caci:Entities/20e8d8228a9e4c8c20e8d8228a9eb30e",
-                  "mediaType": "text",
+                  "name": "Ramzi Yousef",
                   "entityTypes": "kairos:PER",
                   "confidence": 1,
-                  "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696/142-153"
+                  "provenance": "caci:ComplexEvent/WTC1993/Provenance/Entity/1236"
                 }
               ]
             },
@@ -1334,8 +1321,7 @@
           "comment": "Wire transfer occurs while training with Al-Qaeda.  Contrived to show a container/contained example.",
           "container": "caci:Schemas/CoordinatedBombingAttack/Steps/training_1",
           "contained": "caci:Schemas/CoordinatedBombingAttack/Steps/wire_transfer",
-          "confidence": 1,
-          "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000500"
+          "confidence": 1
         },
         {
           "comment": "Mailing anti-Israel letters to newspapers and training in NJ overlap.  Contrived to show an overlaps example.",
@@ -1343,42 +1329,45 @@
             "caci:Schemas/CoordinatedBombingAttack/Steps/training_2",
             "caci:Schemas/CoordinatedBombingAttack/Steps/media_propaganda"
           ],
-          "confidence": 0.75,
-          "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000802"
+          "confidence": 0.75
+        },
+        {
+          "comment": "Must arrive at destination country before sending propaganda and obtaining transportation",
+          "before": "caci:Schemas/CoordinatedBombingAttack/Steps/move_illegally",
+          "after": [
+            "caci:Schemas/CoordinatedBombingAttack/Steps/media_propaganda",
+            "caci:Schemas/CoordinatedBombingAttack/Steps/obtain_transportation"
+          ],
+          "confidence": 0.75
         },
         {
           "before": "caci:Schemas/CoordinatedBombingAttack/Steps/training_1",
           "after": "caci:Schemas/CoordinatedBombingAttack/Steps/training_2",
           "flags": "precondition",
-          "confidence": 0.75,
-          "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000802"
+          "confidence": 0.75
         },
         {
           "before": "caci:Schemas/CoordinatedBombingAttack/Steps/training_1",
           "after": "caci:Schemas/CoordinatedBombingAttack/Steps/move_illegally",
-          "confidence": 1,
-          "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000802"
+          "confidence": 1
         },
         {
           "before": "caci:Schemas/CoordinatedBombingAttack/Steps/move_illegally",
           "after": "caci:Schemas/CoordinatedBombingAttack/Steps/training_2",
           "flags": "precondition",
-          "confidence": 0.75,
-          "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000802"
+          "confidence": 0.75
         },
         {
           "before": "caci:Schemas/CoordinatedBombingAttack/Steps/obtain_transportation",
           "after": "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_general_attack_location",
           "flags": "precondition",
-          "confidence": 0.75,
-          "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000802"
+          "confidence": 0.75
         },
         {
           "before": "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_general_attack_location",
           "after": "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_specific_attack_location",
           "flags": "precondition",
-          "confidence": 0.75,
-          "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000802"
+          "confidence": 0.75
         },
         {
           "comment": "At some point, the system should be able to infer transitive relations.  Not sure if in Phase I.",
@@ -1391,8 +1380,7 @@
           ],
           "after": "caci:Schemas/CoordinatedBombingAttack/Steps/bombing",
           "flags": "precondition",
-          "confidence": 0.75,
-          "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000802"
+          "confidence": 0.75
         },
         {
           "before": [
@@ -1404,43 +1392,39 @@
             "caci:Schemas/CoordinatedBombingAttack/Steps/obtain_transportation"
           ],
           "after": "caci:Schemas/CoordinatedBombingAttack/Steps/bombing",
-          "confidence": 0.75,
-          "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000802"
+          "confidence": 0.75
         },
         {
           "before": "caci:Schemas/CoordinatedBombingAttack/Steps/bombing",
           "after": "caci:Schemas/CoordinatedBombingAttack/Steps/escape",
           "flags": "precondition",
-          "confidence": 0.75,
-          "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000802"
+          "confidence": 0.75
         }
       ],
       "entityRelations": [
         {
           "relationSubject": "caci:Schemas/CoordinatedBombingAttack/Slots/wire_transfer/sender",
-          "description": "Wire transfer was from recipient's uncle",
           "relations": [
             {
+              "name": "Wire transfer was from recipient's uncle",
               "relationPredicate": "kairos:Relations/PersonalSocial.Unspecified",
               "relationObject": "caci:Schemas/CoordinatedBombingAttack/Slots/wire_transfer/recipient",
               "reference": "wiki:Q76557",
               "confidence": 1,
-              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000500"
+              "provenance": "caci:ComplexEvent/WTC1993/Provenance/Relation/1238"
             }
           ]
         },
         {
           "relationSubject": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/participant/sheikh",
-          "comment": [
-            "Sheikh participant from make_contact event is connected with Rabbi Kahane Murderer.",
-            "This corresponds to 'Each argument may be associated with a relation which may be useful to differentiate between schema' from \"Structure of a schema\""
-          ],
+          "comment": "This corresponds to 'Each argument may be associated with a relation which may be useful to differentiate between schema' from \"Structure of a schema\"",
           "relations": [
             {
+              "name": "Sheikh participant from make_contact event is connected with Rabbi Kahane Murderer",
               "relationPredicate": "kairos:Relations/PersonalSocial.Unspecified",
               "relationObject": "wiki:Q2918749",
               "confidence": 0.75,
-              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000500"
+              "provenance": "caci:ComplexEvent/WTC1993/Provenance/Relation/1238"
             }
           ]
         },
@@ -1452,61 +1436,147 @@
           ],
           "relations": [
             {
-              "comment": "Same attacker moved to specific location as moved to general location",
+              "name": "Same attacker moved to specific location as moved to general location",
               "relationPredicate": "kairos:Relations/Physical.SameAs",
               "relationObject": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location/driver",
               "confidence": 0.9,
-              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000232"
+              "provenance": "caci:ComplexEvent/WTC1993/Provenance/Relation/1238"
             },
             {
-              "comment": "Attacker lives in general attack location",
+              "name": "Attacker lives in general attack location",
               "relationPredicate": "kairos:Relations/Physical.Resident",
               "relationObject": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location/attackLocation",
               "confidence": 0.2,
-              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000696"
+              "provenance": "caci:ComplexEvent/WTC1993/Provenance/Relation/1238"
             }
           ]
         },
         {
           "relationSubject": "caci:Schemas/CoordinatedBombingAttack/Slots/obtain_financing/giver",
-          "description": "Giver of financing is one of the participants in the make_contact event, or is affiliated with it",
-          "comment": "This corresponds to 'Arguments A41 and A51 are either identical or related' from \"Structure of a schema\"",
+          "comment": [
+            "Giver of financing is one of the participants in the make_contact event, or is affiliated with it",
+            "This corresponds to 'Arguments A41 and A51 are either identical or related' from \"Structure of a schema\""
+          ],
           "relations": [
             {
-              "comment": "Giver of financing is one of the participants in the make_contact event",
+              "name": "Giver of financing is one of the participants in the make_contact event",
               "relationPredicate": "kairos:Relations/Physical.SameAs",
               "relationObject": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/participant/sheikh",
               "confidence": 0.75,
-              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000412"
+              "provenance": "caci:ComplexEvent/WTC1993/Provenance/Relation/1238"
             },
             {
-              "comment": "Giver of financing is affiliated with one of the participants in the make_contact event",
+              "name": "Giver of financing is affiliated with one of the participants in the make_contact event",
               "relationPredicate": "kairos:Relations/PersonalSocial.Unspecified.Political",
               "relationObject": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/participant/sheikh",
               "confidence": 0.25,
-              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000722"
+              "provenance": "caci:ComplexEvent/WTC1993/Provenance/Relation/1238"
             }
           ]
         },
         {
           "relationSubject": "caci:Schemas/CoordinatedBombingAttack/Slots/obtain_transportation/vehicle_rented",
-          "comment": "It is recommended to add a name, description, or refvar (if relevant) to clarify intended entity-entity relations for annotators and evaluators",
-          "refvar": "Vehicle",
-          "name": "vehicle relations",
-          "description": "Rented vehicle was yellow a Yellow Ryder",
           "relations": [
             {
+              "name": "vehicle is a Ryder",
               "relationPredicate": "kairos:Relations/Information.Color",
               "relationObject": "wiki:Q943",
               "confidence": 1,
-              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000500"
+              "provenance": "caci:ComplexEvent/WTC1993/Provenance/Relation/1238"
             },
             {
+              "name": "vehicle is yellow",
               "relationPredicate": "kairos:Relations/Information.Make",
               "relationObject": "wiki:Q2178198",
               "confidence": 1,
-              "provenance": "IC0015LNI/HC000030E/EMIC0015LNI.000500"
+              "provenance": "caci:ComplexEvent/WTC1993/Provenance/Relation/1238"
             }
+          ]
+        }
+      ],
+      "provenanceData": [
+        {
+          "@id": "caci:ComplexEvent/WTC1993/Provenance/Entity/1234",
+          "comment": [
+            " *Text documents* ",
+            "'childID' is an LDC child_id. It is the ID of the document/artifact",
+            "mediaType is an IANA Media Type.",
+            "'offset' and 'length' are in characters."
+          ],
+          "childID": "K0C03N4OJ",
+          "mediaType": "text/plain",
+          "offset": 27,
+          "length": 76
+        },
+        {
+          "@id": "caci:ComplexEvent/WTC1993/Provenance/Entity/1235",
+          "comment": [
+            " *Images* ",
+            "'parentIDs' is a list of documents that are parent to 'childID.",
+            "'parentIDs' can be a list because a single image/video/etc. can be embedded in more than one parent document.",
+            "'parentIDs' is redundant since the same information is present in the LDC-provided parent_children.tab.",
+            "'boundingBox' dimensions are in pixels",
+            "For images, 'boundingBox' is required."
+          ],
+          "childID": "K0C03N4OK",
+          "parentIDs": "K0C03N4OL",
+          "mediaType": "image/png",
+          "boundingBox": [
+            100,
+            101,
+            200,
+            201
+          ]
+        },
+        {
+          "@id": "caci:ComplexEvent/WTC1993/Provenance/Entity/1236",
+          "comment": [
+            " *Audio recordings* ",
+            "'startTime' and 'endTime are in seconds."
+          ],
+          "childID": "K0C03N4OO",
+          "parentIDs": "K0C03N4OP",
+          "mediaType": "audio/wav",
+          "startTime": 2.56,
+          "endTime": 5.12
+        },
+        {
+          "@id": "caci:ComplexEvent/WTC1993/Provenance/Event/1237",
+          "comment": [
+            " *Videos -- time range* ",
+            "'startTime' and 'endTime are in seconds."
+          ],
+          "childID": "K0C03N4OM",
+          "parentIDs": "K0C03N4ON",
+          "mediaType": "video/mpeg",
+          "startTime": 2.56,
+          "endTime": 5.12,
+          "boundingBox": [
+            100,
+            101,
+            200,
+            201
+          ]
+        },
+        {
+          "@id": "caci:ComplexEvent/WTC1993/Provenance/Relation/1238",
+          "comment": [
+            " *Videos -- key frames* ",
+            "'keyFrames' is an array of LDC-supplied key frame IDs."
+          ],
+          "childID": "K0C03N4OM",
+          "parentIDs": "K0C03N4ON",
+          "mediaType": "video/mpeg",
+          "keyFrames": [
+            60,
+            61,
+            62
+          ],
+          "boundingBox": [
+            100,
+            101,
+            200,
+            201
           ]
         }
       ],
