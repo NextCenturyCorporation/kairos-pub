@@ -27,7 +27,6 @@
     "version": "schema:version",
     "sdfVersion": "kairos:sdfVersion",
     "privateData": "kairos:privateData",
-    "provenance": "kairos:provenance",
     "reference": {
       "@id": "kairos:reference",
       "@type": "@id"
@@ -62,13 +61,6 @@
       "@type": "@id",
       "@container": "@list"
     },
-    "values": "kairos:values",
-    "value": "kairos:value",
-    "valueId": {
-      "@id": "kairos:valueId",
-      "@type": "@id"
-    },
-    "mediaType": "kairos:mediaType",
     "confidence": {
       "@id": "kairos:confidence",
       "@type": "xsd:float"
@@ -88,23 +80,6 @@
     },
     "relations": "kairos:relations",
     "aka": "kairos:aka",
-    "temporal": "kairos:temporal",
-    "duration": {
-      "@id": "kairos:duration",
-      "@type": "xsd:duration"
-    },
-    "startTime": {
-      "@id": "kairos:startTime",
-      "@type": "xsd:dateTime"
-    },
-    "endTime": {
-      "@id": "kairos:endTime",
-      "@type": "xsd:dateTime"
-    },
-    "absoluteTime": {
-      "@id": "kairos:absoluteTime",
-      "@type": "xsd:dateTime"
-    },
     "minDuration": {
       "@id": "kairos:minDuration",
       "@type": "xsd:duration"
@@ -141,7 +116,7 @@
     "giant_bitstring": "caci:giant_bitstring"
   },
   "@id": "caci:Submissions/TA1/12345",
-  "sdfVersion": "0.8c",
+  "sdfVersion": "0.8",
   "schemas": [
     {
       "@id": "caci:Schemas/CoordinatedBombingAttack",
@@ -168,7 +143,7 @@
       "super": "caci:Schemas/BombingAttack",
       "name": "Coordinated Bombing Attack",
       "description": "A coordinated effort by mulitple parties that results in a bombing attack",
-      "version": "caci-07.30.2020",
+      "version": "caci-08.10.2020",
       "privateData": {
         "comment": "Performers can place any keys/values they wish here.  The map will be added to the graph but otherwise ignored by the system.  Properties maps can be added inside a schema, individual steps, slots, and order blocks, but not in their enclosing arrays.  Large amounts of private data can be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum.",
         "my_key": "my value",
@@ -498,14 +473,14 @@
         },
         {
           "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/obtain_transportation",
-          "@type": "kairos:Primitives/Event/Transaction.ExchangeBuySell.Unspecified",
+          "@type": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified",
           "name": "Obtain transportation",
           "comment": "Could be obtained via theft-- this will determine which 'move to general location' step is used.",
           "participants": [
             {
               "name": "acquirer",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/obtain_transportation/acquirer",
-              "role": "kairos:Primitives/Transaction.ExchangeBuySell.Unspecified/Slots/Recipient",
+              "role": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified/Slots/Recipient",
               "refvar": "Agent",
               "entityTypes": [
                 "kairos:Primitives/Entities/PER",
@@ -517,7 +492,7 @@
             {
               "name": "transportation",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/obtain_transportation/transportation",
-              "role": "kairos:Primitives/Transaction.ExchangeBuySell.Unspecified/Slots/AcquiredEntity",
+              "role": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified/Slots/AcquiredEntity",
               "comment": "This shows an example of refvar used in primitive slots, not schema slot arguments.",
               "refvar": "Vehicle",
               "entityTypes": [
@@ -588,7 +563,7 @@
             {
               "name": "attacker",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location_illegally/attacker",
-              "role": "caci:Primitives/Events/Movement.Transportation.IllegalTransportation/Slots/Transporter",
+              "role": "kairos:Primitives/Events/Movement.Transportation.IllegalTransportation/Slots/Transporter",
               "refvar": "Agent",
               "entityTypes": [
                 "kairos:Primitives/Entities/PER",

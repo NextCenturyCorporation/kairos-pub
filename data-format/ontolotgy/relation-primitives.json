@@ -1,0 +1,1073 @@
+[
+  {
+    "annotIndexId": "LDC_KAIROS_rel_001",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/Evaluate.Belief.CommittedBelief",
+    "name": "Evaluate.Belief.CommittedBelief",
+    "template": "<arg1> believes with certainty that <arg2> is true",
+    "description": "Explicit mention of an entity believing with certainty that an event or information object is true",
+    "argOne": "Holder",
+    "argOneOutputValue": "rel001arg01holder",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/SID"
+    ],
+    "argTwo": "BeliefTarget",
+    "argTwoOutputValue": "rel001arg02belieftarget",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/EVENT",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/INF"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_002",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/Evaluate.Belief.NonCommittedBelief",
+    "name": "Evaluate.Belief.NonCommittedBelief",
+    "template": "<arg1> believes <arg2> is possibly but not necessarily true",
+    "description": "Explicit mention of an entity believing an event or information object is possibly but not necessarily true; they do not have a strong belief in it",
+    "argOne": "Holder",
+    "argOneOutputValue": "rel002arg01holder",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/SID"
+    ],
+    "argTwo": "BeliefTarget",
+    "argTwoOutputValue": "rel002arg02belieftarget",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/EVENT",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/INF"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_003",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/Evaluate.Intent.Intent",
+    "name": "Evaluate.Intent.Intent",
+    "template": "<arg1> intends, plans for, or attempts <arg2> event",
+    "description": "Explicit mention of an entity intending a future event or planning or attempting to achieve it",
+    "argOne": "Holder",
+    "argOneOutputValue": "rel003arg01holder",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/SID"
+    ],
+    "argTwo": "IntendedEvent",
+    "argTwoOutputValue": "rel003arg02intendedevent",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/EVENT"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_004",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/Evaluate.Sentiment.Negative",
+    "name": "Evaluate.Sentiment.Negative",
+    "template": "<arg1> holds negative sentiment towards <arg2>",
+    "description": "Negative sentiment held by a person, organization, or GPE toward any knowledge element",
+    "argOne": "Holder",
+    "argOneOutputValue": "rel004arg01holder",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/SID"
+    ],
+    "argTwo": "SentimentTarget",
+    "argTwoOutputValue": "rel004arg02sentimenttarget",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/EVENT",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/SID",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LOC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/BAL",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/RES",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LAW",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/MON",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/MHI",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/AML",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ABS",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/BOD",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/NAT",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PLA",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PTH",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/COM",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VEH",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/WEA",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/SEN",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/INF"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_005",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/Evaluate.Sentiment.Positive",
+    "name": "Evaluate.Sentiment.Positive",
+    "template": "<arg1> holds positive sentiment towards <arg2>",
+    "description": "Positive sentiment held by a person, organization, or GPE toward any knowledge element",
+    "argOne": "Holder",
+    "argOneOutputValue": "rel005arg01holder",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/SID"
+    ],
+    "argTwo": "SentimentTarget",
+    "argTwoOutputValue": "rel005arg02sentimenttarget",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/EVENT",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/SID",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LOC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/BAL",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/RES",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LAW",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/MON",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/MHI",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/AML",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ABS",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/BOD",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/NAT",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PLA",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PTH",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/COM",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VEH",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/WEA",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/SEN",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/INF"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_006",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/Evaluate.Status.HoaxFraud",
+    "name": "Evaluate.Status.HoaxFraud",
+    "template": "<arg1> holds that <arg2> is a hoax or a fraud",
+    "description": "Explicit mentions asserting that an event or a thing is a hoax or fraud",
+    "argOne": "Holder",
+    "argOneOutputValue": "rel006arg01holder",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/SID"
+    ],
+    "argTwo": "HoaxFraud",
+    "argTwoOutputValue": "rel006arg02hoaxfraud",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/EVENT",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/SID",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LOC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/COM",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/BAL",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/RES",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LAW",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/MON",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/TTL",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VAL",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VEH",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/WEA",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/MHI",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/AML",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ABS",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/BOD",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/NAT",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PLA",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PTH"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_007",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/GeneralAffiliation.ArtifactPoliticalOrganizationReligiousAffiliation.ControlTerritory",
+    "name": "GeneralAffiliation.ArtifactPoliticalOrganizationReligiousAffiliation.ControlTerritory",
+    "template": "<arg1> is controlled by <arg2>",
+    "description": "A side, person, organization, location, or GPE controlling territory.  ",
+    "argOne": "Territory",
+    "argOneOutputValue": "rel007arg01territory",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LOC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC"
+    ],
+    "argTwo": "Controller",
+    "argTwoOutputValue": "rel007arg02controller",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/SID",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LOC"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_008",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/GeneralAffiliation.ArtifactPoliticalOrganizationReligiousAffiliation.NationalityCitizen",
+    "name": "GeneralAffiliation.ArtifactPoliticalOrganizationReligiousAffiliation.NationalityCitizen",
+    "template": "<arg1> is affiliated with <arg2> GPE",
+    "description": "The affiliation between an artifact (including vehicles, weapons, commodities, etc.) and a GPE.  Artifact-Political-Organization-Religious-Affiliation (APORA).",
+    "argOne": "Artifact",
+    "argOneOutputValue": "rel008arg01artifact",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/BAL",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/COM",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/MON",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VEH",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/WEA",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/NAT",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PTH",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ABS"
+    ],
+    "argTwo": "Nationality",
+    "argTwoOutputValue": "rel008arg02nationality",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_009",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/GeneralAffiliation.ArtifactPoliticalOrganizationReligiousAffiliation.OwnershipPossession",
+    "name": "GeneralAffiliation.ArtifactPoliticalOrganizationReligiousAffiliation.OwnershipPossession",
+    "template": "<arg1> is owned by <arg2>",
+    "description": "The ownership or possession of an artifact (including vehicles, weapons, commodities, etc.) by a person, group, or side.  Artifact-Political-Organization-Religious-Affiliation (APORA).",
+    "argOne": "Artifact",
+    "argOneOutputValue": "rel009arg01artifact",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/BAL",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/COM",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/MON",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VEH",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/WEA",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/NAT",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PTH",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ABS"
+    ],
+    "argTwo": "Owner",
+    "argTwoOutputValue": "rel009arg02owner",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/SID",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LOC"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_010",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/GeneralAffiliation.ArtifactPoliticalOrganizationReligiousAffiliation.Unspecified",
+    "name": "GeneralAffiliation.ArtifactPoliticalOrganizationReligiousAffiliation.Unspecified",
+    "template": "<arg1> is affiliated with <arg2>",
+    "description": "The affiliation between an artifact (including vehicles, weapons, commodities, etc.) and another entity.  Artifact-Political-Organization-Religious-Affiliation (APORA).",
+    "argOne": "Artifact",
+    "argOneOutputValue": "rel010arg01artifact",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/BAL",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/COM",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/MON",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VEH",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/WEA",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/NAT",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PTH",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ABS"
+    ],
+    "argTwo": "EntityOrFiller",
+    "argTwoOutputValue": "rel010arg02entityorfiller",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/SID",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LOC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/INF"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_011",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/GeneralAffiliation.MemberOriginReligionEthnicity.Ethnicity",
+    "name": "GeneralAffiliation.MemberOriginReligionEthnicity.Ethnicity",
+    "template": "<arg1> has <arg2> ethnicity",
+    "description": "The affiliation between a person entity and an ethnicity.  Member-Origin-Religion-Ethnicity (MORE)",
+    "argOne": "Person",
+    "argOneOutputValue": "rel011arg01person",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER"
+    ],
+    "argTwo": "Ethnicity",
+    "argTwoOutputValue": "rel011arg02ethnicity",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LOC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/SID"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_012",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/GeneralAffiliation.MemberOriginReligionEthnicity.NationalityCitizen",
+    "name": "GeneralAffiliation.MemberOriginReligionEthnicity.NationalityCitizen",
+    "template": "<arg1> is affiliated with <arg2> GPE",
+    "description": "The affiliation between a person entity and a GPE.  Member-Origin-Religion-Ethnicity (MORE)",
+    "argOne": "Citizen",
+    "argOneOutputValue": "rel012arg01citizen",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER"
+    ],
+    "argTwo": "Nationality",
+    "argTwoOutputValue": "rel012arg02nationality",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_013",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/GeneralAffiliation.MemberOriginReligionEthnicity.Unspecified",
+    "name": "GeneralAffiliation.MemberOriginReligionEthnicity.Unspecified",
+    "template": "<arg1> is affiliated with <arg2>",
+    "description": "The affiliation between a person entity and another entity.  Member-Origin-Religion-Ethnicity (MORE)",
+    "argOne": "Person",
+    "argOneOutputValue": "rel013arg01person",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER"
+    ],
+    "argTwo": "EntityOrFiller",
+    "argTwoOutputValue": "rel013arg02entityorfiller",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LOC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/SID",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/INF"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_014",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/GeneralAffiliation.OrganizationPoliticalReligiousAffiliation.NationalityCitizen",
+    "name": "GeneralAffiliation.OrganizationPoliticalReligiousAffiliation.NationalityCitizen",
+    "template": "<arg1> is affiliated with <arg2> GPE",
+    "description": "The affiliation between an organization entity and a GPE.  Organization-Political-Religious-Affiliation (OPRA)",
+    "argOne": "Organization",
+    "argOneOutputValue": "rel014arg01organization",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG"
+    ],
+    "argTwo": "Nationality",
+    "argTwoOutputValue": "rel014arg02nationality",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_015",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/GeneralAffiliation.OrganizationPoliticalReligiousAffiliation.Unspecified",
+    "name": "GeneralAffiliation.OrganizationPoliticalReligiousAffiliation.Unspecified",
+    "template": "<arg1> is affiliated with <arg2>",
+    "description": "The affiliation between an organization entity and another entity.  Organization-Political-Religious-Affiliation (OPRA)",
+    "argOne": "Organization",
+    "argOneOutputValue": "rel015arg01organization",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG"
+    ],
+    "argTwo": "EntityOrFiller",
+    "argTwoOutputValue": "rel015arg02entityorfiller",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/SID",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/INF"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_016",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/GeneralAffiliation.OrganizationWebsite.OrganizationWebsite",
+    "name": "GeneralAffiliation.OrganizationWebsite.OrganizationWebsite",
+    "template": "<arg1> has <arg2> website",
+    "description": "An official top level URL for an organization entity’s website",
+    "argOne": "Organization",
+    "argOneOutputValue": "rel016arg01organization",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG"
+    ],
+    "argTwo": "Website",
+    "argTwoOutputValue": "rel016arg02website",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VAL"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_017",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/GeneralAffiliation.Sponsorship.Unspecified",
+    "name": "GeneralAffiliation.Sponsorship.Unspecified",
+    "template": "<arg1> event is sponsored by <arg2>",
+    "description": "The sponsorship of an event by a one-step removed sponsor (or several steps removed, the man-behind-the-curtain, or more likely the country behind the curtain)",
+    "argOne": "Event",
+    "argOneOutputValue": "rel017arg01event",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/EVENT"
+    ],
+    "argTwo": "Sponsor",
+    "argTwoOutputValue": "rel017arg02sponsor",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/SID"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_018",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/Information.Color.Color",
+    "name": "Information.Color.Color",
+    "template": "<arg1> has color <arg2>",
+    "description": "The relation between an entity or thing and a color (string)",
+    "argOne": "EntityOrFiller",
+    "argOneOutputValue": "rel018arg01entityorfiller",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VEH",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/WEA",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/COM",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/BAL",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/AML",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/BOD",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/NAT",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PLA",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PTH"
+    ],
+    "argTwo": "Color",
+    "argTwoOutputValue": "rel018arg02color",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VAL"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_019",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/Information.Make.Make",
+    "name": "Information.Make.Make",
+    "template": "<arg1> has make/brand <arg2>",
+    "description": "The relation between a thing (such as an artifact, vehicle, or weapon) and its make or brand (string)",
+    "argOne": "EntityOrFiller",
+    "argOneOutputValue": "rel019arg01entityorfiller",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VEH",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/WEA",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/COM",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/BAL",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/AML",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/BOD",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/NAT",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PLA",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PTH"
+    ],
+    "argTwo": "Brand",
+    "argTwoOutputValue": "rel019arg02brand",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VAL"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_020",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/Measurement.Size.Count",
+    "name": "Measurement.Size.Count",
+    "template": "<arg1> is the count/number of <arg2>",
+    "description": "Numerical totals of a countable entity or filler",
+    "argOne": "Measurement",
+    "argOneOutputValue": "rel020arg01measurement",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VAL"
+    ],
+    "argTwo": "EntityOrFiller",
+    "argTwoOutputValue": "rel020arg02entityorfiller",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/SID",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LOC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VEH",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/WEA",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/COM",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/BAL",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/MON",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LAW",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/RES",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/MHI",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/AML",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ABS",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/BOD",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/NAT",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PLA",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PTH"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_021",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/Measurement.Size.HeightLengthWidth",
+    "name": "Measurement.Size.HeightLengthWidth",
+    "template": "<arg1> is the height/length/width of <arg2>",
+    "description": "Numerical value of a dimension of an entity or filler",
+    "argOne": "Measurement",
+    "argOneOutputValue": "rel021arg01measurement",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VAL"
+    ],
+    "argTwo": "EntityOrFiller",
+    "argTwoOutputValue": "rel021arg02entityorfiller",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LOC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VEH",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/WEA",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/COM",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/BAL",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/MON",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/MHI",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/AML",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/BOD",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/NAT",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PLA",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PTH"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_022",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/Measurement.Size.Percentage",
+    "name": "Measurement.Size.Percentage",
+    "template": "<arg1> is the percentage of <arg2>",
+    "description": "Percentage value of an entity or filler (such as results)",
+    "argOne": "Measurement",
+    "argOneOutputValue": "rel022arg01measurement",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VAL"
+    ],
+    "argTwo": "EntityOrFiller",
+    "argTwoOutputValue": "rel022arg02entityorfiller",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/SID",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LOC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VEH",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/WEA",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/COM",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/BAL",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/MON",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LAW",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/RES",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/MHI",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/AML",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ABS",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/BOD",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/NAT",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PLA",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PTH"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_023",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/Measurement.Size.Unspecified",
+    "name": "Measurement.Size.Unspecified",
+    "template": "<arg1> is the size of <arg2>",
+    "description": "Numerical value of the size of an entity or filler, not otherwise specified",
+    "argOne": "Measurement",
+    "argOneOutputValue": "rel023arg01measurement",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VAL"
+    ],
+    "argTwo": "EntityOrFiller",
+    "argTwoOutputValue": "rel023arg02entityorfiller",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LOC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VEH",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/WEA",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/COM",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/BAL",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/MHI",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/AML",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/BOD",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PLA",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PTH"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_024",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/Measurement.Size.Weight",
+    "name": "Measurement.Size.Weight",
+    "template": "<arg1> is the weight of <arg2>",
+    "description": "Numerical value of the weight of an entity or filler",
+    "argOne": "Measurement",
+    "argOneOutputValue": "rel024arg01measurement",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VAL"
+    ],
+    "argTwo": "EntityOrFiller",
+    "argTwoOutputValue": "rel024arg02entityorfiller",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LOC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VEH",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/WEA",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/COM",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/BAL",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/MON",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/AML",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/BOD",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/NAT",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PLA",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PTH"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_025",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Employment",
+    "name": "OrganizationAffiliation.EmploymentMembership.Employment",
+    "template": "<arg1> is employed by <arg2>",
+    "description": "The relationship between a person and the organization or GPE of which the agent is an employee, or with which the agent has a contractual business or service agreement",
+    "argOne": "Employee",
+    "argOneOutputValue": "rel025arg01employee",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER"
+    ],
+    "argTwo": "PlaceOfEmployment",
+    "argTwoOutputValue": "rel025arg02placeofemployment",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_026",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
+    "name": "OrganizationAffiliation.EmploymentMembership.Membership",
+    "template": "<arg1> is a member of <arg2>",
+    "description": "The relationship between a person and the organization or GPE of which the agent is an member, or with which the agent has a membership agreement",
+    "argOne": "Member",
+    "argOneOutputValue": "rel026arg01member",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER"
+    ],
+    "argTwo": "PlaceOfMembership",
+    "argTwoOutputValue": "rel026arg02placeofmembership",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_027",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Unspecified",
+    "name": "OrganizationAffiliation.EmploymentMembership.Unspecified",
+    "template": "<arg1> is a member of/employed by <arg2>",
+    "description": "The relationship between a person and the organization or GPE of which the agent is an employee or member, or with which the agent has a contractual business or service agreement, where the context does not distinguish whether the relationship is employment or membership",
+    "argOne": "EmployeeMember",
+    "argOneOutputValue": "rel027arg01employeemember",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER"
+    ],
+    "argTwo": "PlaceOfEmploymentMembership",
+    "argTwoOutputValue": "rel027arg02placeofemploymentmembership",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_028",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/OrganizationAffiliation.Founder.Founder",
+    "name": "OrganizationAffiliation.Founder.Founder",
+    "template": "<arg1> is a founder of <arg2>",
+    "description": "This relation captures a person entity and the organization founded by that person",
+    "argOne": "Founder",
+    "argOneOutputValue": "rel028arg01founder",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER"
+    ],
+    "argTwo": "Organization",
+    "argTwoOutputValue": "rel028arg02organization",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_029",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/OrganizationAffiliation.Leadership.Government",
+    "name": "OrganizationAffiliation.Leadership.Government",
+    "template": "<arg1> is a leader of <arg2>",
+    "description": "The relationship between a person and a governmental organization or GPE led by that person (who is not the head of state)",
+    "argOne": "Leader",
+    "argOneOutputValue": "rel029arg01leader",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER"
+    ],
+    "argTwo": "GovernmentBodyOrGPE",
+    "argTwoOutputValue": "rel029arg02governmentbodyorgpe",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_030",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/OrganizationAffiliation.Leadership.HeadOfState",
+    "name": "OrganizationAffiliation.Leadership.HeadOfState",
+    "template": "<arg1> is a leader of <arg2>",
+    "description": "The relationship between a person and a country GPE led by that person",
+    "argOne": "Leader",
+    "argOneOutputValue": "rel030arg01leader",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER"
+    ],
+    "argTwo": "Country",
+    "argTwoOutputValue": "rel030arg02country",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_031",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/OrganizationAffiliation.Leadership.MilitaryPolice",
+    "name": "OrganizationAffiliation.Leadership.MilitaryPolice",
+    "template": "<arg1> is a leader of <arg2>",
+    "description": "The relationship between a person and a military or police organization led by that person",
+    "argOne": "Leader",
+    "argOneOutputValue": "rel031arg01leader",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER"
+    ],
+    "argTwo": "MilitaryPoliceORG",
+    "argTwoOutputValue": "rel031arg02militarypoliceorg",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_032",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/OrganizationAffiliation.Leadership.Unspecified",
+    "name": "OrganizationAffiliation.Leadership.Unspecified",
+    "template": "<arg1> is a leader of <arg2>",
+    "description": "The relationship between a person and an organization or GPE led by that person, where the context does not distinguish the nature of the organization",
+    "argOne": "Leader",
+    "argOneOutputValue": "rel032arg01leader",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER"
+    ],
+    "argTwo": "Organization",
+    "argTwoOutputValue": "rel032arg02organization",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_033",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/PartWhole.Subsidiary.NationalityCitizen",
+    "name": "PartWhole.Subsidiary.NationalityCitizen",
+    "template": "<arg1> is a subsidiary of <arg2>",
+    "description": "The ownership, administrative, and other hierarchical relationships between organizations and GPEs, and between governmental organizations and their parent GPE",
+    "argOne": "Subsidiary",
+    "argOneOutputValue": "rel033arg01subsidiary",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG"
+    ],
+    "argTwo": "Parent",
+    "argTwoOutputValue": "rel033arg02parent",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_034",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/PartWhole.Subsidiary.OrganizationSubsidiary",
+    "name": "PartWhole.Subsidiary.OrganizationSubsidiary",
+    "template": "<arg1> is a subsidiary of <arg2>",
+    "description": "The ownership, administrative, and other hierarchical relationships between organizations, including relationships between a department within an organization and the organization itself, and between a company and its parent company",
+    "argOne": "Subsidiary",
+    "argOneOutputValue": "rel034arg01subsidiary",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG"
+    ],
+    "argTwo": "Parent",
+    "argTwoOutputValue": "rel034arg02parent",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_035",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/PartWhole.Subsidiary.Unspecified",
+    "name": "PartWhole.Subsidiary.Unspecified",
+    "template": "<arg1> is a subsidiary of <arg2>",
+    "description": "The ownership, administrative, and other hierarchical relationships between organizations and GPEs, where the context does not make it clear whether the parent in the hierarchy is an organization or a GPE",
+    "argOne": "Subsidiary",
+    "argOneOutputValue": "rel035arg01subsidiary",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG"
+    ],
+    "argTwo": "Parent",
+    "argTwoOutputValue": "rel035arg02parent",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_036",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/PersonalSocial.Relationship.Political",
+    "name": "PersonalSocial.Relationship.Political",
+    "template": "<arg1> has political relationship with <arg2>",
+    "description": "Otherwise unspecified political relationship between a person and another person",
+    "argOne": "Person",
+    "argOneOutputValue": "rel036arg01person",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER"
+    ],
+    "argTwo": "Person",
+    "argTwoOutputValue": "rel036arg02person",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_037",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/PersonalSocial.Relationship.Unspecified",
+    "name": "PersonalSocial.Relationship.Unspecified",
+    "template": "<arg1> has unspecified relationship with <arg2>",
+    "description": "Otherwise unspecified relationship between a person and another person",
+    "argOne": "Person",
+    "argOneOutputValue": "rel037arg01person",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER"
+    ],
+    "argTwo": "Person",
+    "argTwoOutputValue": "rel037arg02person",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_038",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/PersonalSocial.Role.ProfessionalRole",
+    "name": "PersonalSocial.Role.ProfessionalRole",
+    "template": "<arg1> has a job role of <arg2>",
+    "description": "The relationship between a person and their position or occupation",
+    "argOne": "Person",
+    "argOneOutputValue": "rel038arg01person",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER"
+    ],
+    "argTwo": "JobRole",
+    "argTwoOutputValue": "rel038arg02jobrole",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/TTL"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_039",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/PersonalSocial.Role.TitleFormOfAddress",
+    "name": "PersonalSocial.Role.TitleFormOfAddress",
+    "template": "<arg1> has a title of <arg2>",
+    "description": "The relationship between a person and their title or honorific",
+    "argOne": "Person",
+    "argOneOutputValue": "rel039arg01person",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER"
+    ],
+    "argTwo": "Title",
+    "argTwoOutputValue": "rel039arg02title",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/TTL"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_040",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/PersonalSocial.Role.Unspecified",
+    "name": "PersonalSocial.Role.Unspecified",
+    "template": "<arg1> has a role of <arg2>",
+    "description": "The relationship between a person and their position, occupation, title, or honorific, where the context does not make it clear whether the role is a position or an honorific",
+    "argOne": "Person",
+    "argOneOutputValue": "rel040arg01person",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER"
+    ],
+    "argTwo": "Role",
+    "argTwoOutputValue": "rel040arg02role",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/TTL"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_041",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/Physical.LocatedNear.Surround",
+    "name": "Physical.LocatedNear.Surround",
+    "template": "<arg1> is surrounded by <arg2>",
+    "description": "An entity or filler physically surrounding a place",
+    "argOne": "Place",
+    "argOneOutputValue": "rel041arg01place",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LOC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC"
+    ],
+    "argTwo": "EntityOrFiller",
+    "argTwoOutputValue": "rel041arg02entityorfiller",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/COM",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VEH",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/WEA",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/BAL",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/AML",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/BOD",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/NAT",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PLA",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PTH"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_042",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/Physical.LocatedNear.Unspecified",
+    "name": "Physical.LocatedNear.Unspecified",
+    "template": "<arg1> is located in or near <arg2>",
+    "description": "The physical location of an entity or filler",
+    "argOne": "EntityOrFiller",
+    "argOneOutputValue": "rel042arg01entityorfiller",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/COM",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VEH",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/WEA",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/BAL",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/AML",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/BOD",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/NAT",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PLA",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PTH"
+    ],
+    "argTwo": "Place",
+    "argTwoOutputValue": "rel042arg02place",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LOC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_043",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/Physical.OrganizationHeadquarters.OrganizationHeadquarters",
+    "name": "Physical.OrganizationHeadquarters.OrganizationHeadquarters",
+    "template": "<arg1> has headquarters in <arg2>",
+    "description": "The relation between the headquarters of an organization and the GPE, LOC, or FAC entity in which the headquarters are located",
+    "argOne": "Organization",
+    "argOneOutputValue": "rel043arg01organization",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG"
+    ],
+    "argTwo": "Place",
+    "argTwoOutputValue": "rel043arg02place",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LOC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_044",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/Physical.Resident.Resident",
+    "name": "Physical.Resident.Resident",
+    "template": "<arg1> is a resident of <arg2>",
+    "description": "All GPE, LOC, and FAC entities in which a person entity has lived",
+    "argOne": "Resident",
+    "argOneOutputValue": "rel044arg01resident",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER"
+    ],
+    "argTwo": "Place",
+    "argTwoOutputValue": "rel044arg02place",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LOC",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_045",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/ResponsibilityBlame.AssignBlame.AssignBlame",
+    "name": "ResponsibilityBlame.AssignBlame.AssignBlame",
+    "template": "<arg1> is blamed for <arg2>",
+    "description": "An entity blamed for an event",
+    "argOne": "EntityResponsible",
+    "argOneOutputValue": "rel045arg01entityresponsible",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/SID"
+    ],
+    "argTwo": "Event",
+    "argTwoOutputValue": "rel045arg02event",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/EVENT"
+    ]
+  },
+  {
+    "annotIndexId": "LDC_KAIROS_rel_046",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/ResponsibilityBlame.ClaimResponsibility.ClaimResponsibility",
+    "name": "ResponsibilityBlame.ClaimResponsibility.ClaimResponsibility",
+    "template": "<arg1> claims responsibility for <arg2>",
+    "description": "An entity claiming responsibility for an event",
+    "argOne": "EntityResponsible",
+    "argOneOutputValue": "rel046arg01entityresponsible",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/SID"
+    ],
+    "argTwo": "Event",
+    "argTwoOutputValue": "rel046arg02event",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/EVENT"
+    ]
+  },
+  {
+    "annotIndexId": "",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/Physical.SameAs.SameAs",
+    "name": "Physical.SameAs.SameAs",
+    "template": "<arg1> is the same as <arg2>",
+    "description": "Arguments are co-referential.  This is not annotated or assessed, but is needed for entity relation representation",
+    "argOne": "CoReferent1",
+    "argOneOutputValue": "",
+    "argOneTypeConstraints": [],
+    "argTwo": "CoReferent2",
+    "argTwoOutputValue": "",
+    "argTwoTypeConstraints": []
+  }
+]
