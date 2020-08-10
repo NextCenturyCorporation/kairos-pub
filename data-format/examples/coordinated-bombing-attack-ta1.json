@@ -1,122 +1,164 @@
 {
-  "@context": {
-    "schema": "http://schema.org/",
-    "xsd": "http://www.w3.org/2001/XMLSchema#",
-    "kairos": "https://kairos-sdf.s3.amazonaws.com/context/kairos/",
-    "schemas": "kairos:schemas",
-    "wiki": "https://www.wikidata.org/wiki/",
-    "ta2": {
-      "@id": "kairos:ta2",
-      "@type": "xsd:boolean"
-    },
-    "primitives": "kairos:primitives",
-    "super": {
-      "@id": "kairos:super",
-      "@type": "@id"
-    },
-    "name": "schema:name",
-    "roleName": "kairos:roleName",
-    "comment": {
-      "@id": "kairos:comment",
-      "@container": "@list"
-    },
-    "description": {
-      "@id": "schema:description",
-      "@container": "@list"
-    },
-    "version": "schema:version",
-    "sdfVersion": "kairos:sdfVersion",
-    "privateData": "kairos:privateData",
-    "reference": {
-      "@id": "kairos:reference",
-      "@type": "@id"
-    },
-    "achieves": "kairos:achieves",
-    "requires": "kairos:requires",
-    "steps": "kairos:steps",
-    "slots": {
-      "@id": "kairos:slots",
-      "@container": "@list"
-    },
-    "participants": {
-      "@id": "kairos:participants",
-      "@container": "@list"
-    },
-    "role": {
-      "@id": "kairos:role",
-      "@type": "@id"
-    },
-    "entityTypes": {
-      "@id": "kairos:entityTypes",
-      "@type": "@id",
-      "@container": "@list"
-    },
-    "entityTypes_AND": {
-      "@id": "kairos:entityTypes_AND",
-      "@type": "@id",
-      "@container": "@list"
-    },
-    "entityTypes_OR": {
-      "@id": "kairos:entityTypes_OR",
-      "@type": "@id",
-      "@container": "@list"
-    },
-    "confidence": {
-      "@id": "kairos:confidence",
-      "@type": "xsd:float"
-    },
-    "entityRelations": "kairos:entityRelations",
-    "relationSubject": {
-      "@id": "kairos:relationSubject",
-      "@type": "@id"
-    },
-    "relationPredicate": {
-      "@id": "kairos:relationPredicate",
-      "@type": "@id"
-    },
-    "relationObject": {
-      "@id": "kairos:relationObject",
-      "@type": "@id"
-    },
-    "relations": "kairos:relations",
-    "aka": "kairos:aka",
-    "minDuration": {
-      "@id": "kairos:minDuration",
-      "@type": "xsd:duration"
-    },
-    "maxDuration": {
-      "@id": "kairos:maxDuration",
-      "@type": "xsd:duration"
-    },
-    "order": "kairos:order",
-    "before": {
-      "@id": "kairos:before",
-      "@type": "@id"
-    },
-    "after": {
-      "@id": "kairos:after",
-      "@type": "@id"
-    },
-    "container": {
-      "@id": "kairos:container",
-      "@type": "@id"
-    },
-    "contained": {
-      "@id": "kairos:contained",
-      "@type": "@id"
-    },
-    "overlaps": {
-      "@id": "kairos:overlaps",
-      "@type": "@id"
-    },
-    "refvar": "kairos:refvar",
-    "flags": "kairos:flags",
-    "caci": "https://caci.com/kairos/",
-    "my_key": "caci:my_key",
-    "giant_bitstring": "caci:giant_bitstring"
-  },
+  "@context": [
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.8.jsonld",
+    {
+      "caci": "https://caci.com/kairos/",
+      "my_key": "caci:my_key",
+      "giant_bitstring": "caci:giant_bitstring"
+    }
+  ],
   "@id": "caci:Submissions/TA1/12345",
   "sdfVersion": "0.8",
+  "primitives": [
+    {
+      "@id": "caci:Primitives/Events/Transaction.Donation.WireTransfer",
+      "version": "caci-08.10.2020",
+      "super": "kairos:Primitives/Events/Transaction.Donation.Unspecified",
+      "name": "Transaction.Donation.WireTransfer",
+      "description": "The voluntary transfer of monetary assets via a public wire transfer carrier",
+      "aka": [
+        "wiring",
+        "EFT",
+        "electronic funds transfer"
+      ],
+      "reference": "https://www.wikidata.org/wiki/Q334501",
+      "minDuration": "PT10S",
+      "maxDuration": "PT10M",
+      "template": "<arg1> wired <arg4> to <arg2> for the benefit of <arg3> via <arg5> carrier",
+      "slots": [
+        {
+          "@id": "caci:Primitives/Events/Transaction.Donation.WireTransfer/Slots/Sender",
+          "super": "kairos:Primitives/Events/Transaction.Donation.Unspecified/Slots/Giver",
+          "roleName": "Sender",
+          "entityTypes": [
+            "kairos:Primitives/Entities/PER",
+            "kairos:Primitives/Entities/ORG",
+            "kairos:Primitives/Entities/GPE",
+            "kairos:Primitives/Entities/SID"
+          ]
+        },
+        {
+          "@id": "caci:Primitives/Events/Transaction.Donation.WireTransfer/Slots/Recipient",
+          "super": "kairos:Primitives/Events/Transaction.Donation.Unspecified/Slots/Recipient",
+          "roleName": "Recipient",
+          "entityTypes": [
+            "kairos:Primitives/Entities/PER",
+            "kairos:Primitives/Entities/ORG",
+            "kairos:Primitives/Entities/GPE",
+            "kairos:Primitives/Entities/SID"
+          ]
+        },
+        {
+          "@id": "caci:Primitives/Events/Transaction.Donation.WireTransfer/Slots/Beneficiary",
+          "super": "kairos:Primitives/Events/Transaction.Donation.Unspecified/Slots/Beneficiary",
+          "roleName": "Beneficiary",
+          "entityTypes": [
+            "kairos:Primitives/Entities/PER",
+            "kairos:Primitives/Entities/ORG",
+            "kairos:Primitives/Entities/GPE",
+            "kairos:Primitives/Entities/SID"
+          ]
+        },
+        {
+          "@id": "caci:Primitives/Events/Transaction.Donation.WireTransfer/Slots/Amount",
+          "super": "kairos:Primitives/Events/Transaction.Donation.Unspecified/Slots/ArtifactMoney",
+          "roleName": "Amount",
+          "comment": "In WireTransfer, the Amount slot fills the super's ArtifactMoney role, and restricts it to MON",
+          "entityTypes": "kairos:Primitives/Entities/MON"
+        },
+        {
+          "@id": "caci:Primitives/Events/Transaction.Donation.WireTransfer/Slots/Carrier",
+          "super": "kairos:Primitives/Events/Transaction.Donation.Unspecified/Slots/Place",
+          "roleName": "Carrier",
+          "comment": "In WireTransfer, the Carrier slot fills the super's Place slot, and restricts it to ORG (e.g., Western Union)",
+          "entityTypes": "kairos:Primitives/Entities/ORG"
+        }
+      ]
+    },
+    {
+      "@id": "caci:Primitives/Events/Contact.Contact.Propaganda",
+      "version": "caci-08.10.2020",
+      "super": "kairos:Primitives/Events/Contact.Contact.Broadcast",
+      "name": "Contact.Contact.Propaganda",
+      "description": "A one-way communication that attempts to be persuasive and may be vague about the truth",
+      "reference": "https://www.wikidata.org/wiki/Q7281",
+      "template": "<arg1> communicated ideals to <arg2> about <arg4> topic using <arg3> at <arg5> place (one-way communication)",
+      "slots": [
+        {
+          "@id": "caci:Primitives/Events/Contact.Contact.Propaganda/Slots/Sender",
+          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Communicator",
+          "roleName": "Sender",
+          "comment": "This fills the super's Communicator role",
+          "entityTypes": [
+            "kairos:Primitives/Entities/PER",
+            "kairos:Primitives/Entities/ORG",
+            "kairos:Primitives/Entities/GPE",
+            "kairos:Primitives/Entities/SID"
+          ]
+        },
+        {
+          "@id": "caci:Primitives/Events/Contact.Contact.Propaganda/Slots/Recipient",
+          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Recipient",
+          "roleName": "Recipient",
+          "entityTypes": [
+            "kairos:Primitives/Entities/PER",
+            "kairos:Primitives/Entities/ORG",
+            "kairos:Primitives/Entities/GPE",
+            "kairos:Primitives/Entities/SID"
+          ]
+        },
+        {
+          "@id": "caci:Primitives/Events/Contact.Contact.Propaganda/Slots/Instrument",
+          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Instrument",
+          "roleName": "Instrument",
+          "entityTypes": [
+            "kairos:Primitives/Entities/ABS",
+            "kairos:Primitives/Entities/COM"
+          ]
+        },
+        {
+          "@id": "caci:Primitives/Events/Contact.Contact.Propaganda/Slots/Topic",
+          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Topic",
+          "roleName": "Topic",
+          "entityTypes": [
+            "kairos:Primitives/Entities/EVENT",
+            "kairos:Primitives/Entities/PER",
+            "kairos:Primitives/Entities/ORG",
+            "kairos:Primitives/Entities/GPE",
+            "kairos:Primitives/Entities/SID",
+            "kairos:Primitives/Entities/LOC",
+            "kairos:Primitives/Entities/FAC",
+            "kairos:Primitives/Entities/VEH",
+            "kairos:Primitives/Entities/WEA",
+            "kairos:Primitives/Entities/COM",
+            "kairos:Primitives/Entities/BAL",
+            "kairos:Primitives/Entities/MON",
+            "kairos:Primitives/Entities/LAW",
+            "kairos:Primitives/Entities/RES",
+            "kairos:Primitives/Entities/VAL",
+            "kairos:Primitives/Entities/MHI",
+            "kairos:Primitives/Entities/INF",
+            "kairos:Primitives/Entities/ABS",
+            "kairos:Primitives/Entities/AML",
+            "kairos:Primitives/Entities/BOD",
+            "kairos:Primitives/Entities/NAT",
+            "kairos:Primitives/Entities/PLA",
+            "kairos:Primitives/Entities/PTH"
+          ]
+        },
+        {
+          "@id": "caci:Primitives/Events/Contact.Contact.Propaganda/Slots/Outlet",
+          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Place",
+          "roleName": "Outlet",
+          "comment": "This fills the Contact.Contact.Broadcast Place role, but narrows entity types",
+          "entityTypes": [
+            "kairos:Primitives/Entities/LOC",
+            "kairos:Primitives/Entities/FAC"
+          ]
+        }
+      ]
+    }
+  ],
   "schemas": [
     {
       "@id": "caci:Schemas/CoordinatedBombingAttack",
@@ -238,7 +280,7 @@
               "name": "place",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/wire_transfer/carrier",
               "role": "caci:Primitives/Events/Transaction.Donation.WireTransfer/Slots/Carrier",
-              "comment": "In WireTransfer, the Carrier slot fills the Donation's Place slot, and restricts it to ORG (e.g., Western Union",
+              "comment": "In WireTransfer, the Carrier slot fills the Donation's Place slot, and restricts it to ORG (e.g., Western Union)",
               "entityTypes": "kairos:Primitives/Entities/ORG"
             }
           ]

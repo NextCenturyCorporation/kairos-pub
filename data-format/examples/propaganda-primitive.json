@@ -1,0 +1,90 @@
+{
+  "@context": "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.8.jsonld",
+  "@id": "caci:Examples/TA1/primitive2",
+  "sdfVersion": "0.8",
+  "primitives": [
+    {
+      "@id": "caci:Primitives/Events/Contact.Contact.Propaganda",
+      "version": "caci-08.10.2020",
+      "super": "kairos:Primitives/Events/Contact.Contact.Broadcast",
+      "name": "Contact.Contact.Propaganda",
+      "description": "A one-way communication that attempts to be persuasive and may be vague about the truth",
+      "reference": "https://www.wikidata.org/wiki/Q7281",
+      "template": "<arg1> communicated ideals to <arg2> about <arg4> topic using <arg3> at <arg5> place (one-way communication)",
+      "slots": [
+        {
+          "@id": "caci:Primitives/Events/Contact.Contact.Propaganda/Slots/Sender",
+          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Communicator",
+          "roleName": "Sender",
+          "comment": "This fills the super's Communicator role",
+          "entityTypes": [
+            "kairos:Primitives/Entities/PER",
+            "kairos:Primitives/Entities/ORG",
+            "kairos:Primitives/Entities/GPE",
+            "kairos:Primitives/Entities/SID"
+          ]
+        },
+        {
+          "@id": "caci:Primitives/Events/Contact.Contact.Propaganda/Slots/Recipient",
+          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Recipient",
+          "roleName": "Recipient",
+          "entityTypes": [
+            "kairos:Primitives/Entities/PER",
+            "kairos:Primitives/Entities/ORG",
+            "kairos:Primitives/Entities/GPE",
+            "kairos:Primitives/Entities/SID"
+          ]
+        },
+        {
+          "@id": "caci:Primitives/Events/Contact.Contact.Propaganda/Slots/Instrument",
+          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Instrument",
+          "roleName": "Instrument",
+          "entityTypes": [
+            "kairos:Primitives/Entities/ABS",
+            "kairos:Primitives/Entities/COM"
+          ]
+        },
+        {
+          "@id": "caci:Primitives/Events/Contact.Contact.Propaganda/Slots/Topic",
+          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Topic",
+          "roleName": "Topic",
+          "entityTypes": [
+            "kairos:Primitives/Entities/EVENT",
+            "kairos:Primitives/Entities/PER",
+            "kairos:Primitives/Entities/ORG",
+            "kairos:Primitives/Entities/GPE",
+            "kairos:Primitives/Entities/SID",
+            "kairos:Primitives/Entities/LOC",
+            "kairos:Primitives/Entities/FAC",
+            "kairos:Primitives/Entities/VEH",
+            "kairos:Primitives/Entities/WEA",
+            "kairos:Primitives/Entities/COM",
+            "kairos:Primitives/Entities/BAL",
+            "kairos:Primitives/Entities/MON",
+            "kairos:Primitives/Entities/LAW",
+            "kairos:Primitives/Entities/RES",
+            "kairos:Primitives/Entities/VAL",
+            "kairos:Primitives/Entities/MHI",
+            "kairos:Primitives/Entities/INF",
+            "kairos:Primitives/Entities/ABS",
+            "kairos:Primitives/Entities/AML",
+            "kairos:Primitives/Entities/BOD",
+            "kairos:Primitives/Entities/NAT",
+            "kairos:Primitives/Entities/PLA",
+            "kairos:Primitives/Entities/PTH"
+          ]
+        },
+        {
+          "@id": "caci:Primitives/Events/Contact.Contact.Propaganda/Slots/Outlet",
+          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Place",
+          "roleName": "Outlet",
+          "comment": "This fills the Contact.Contact.Broadcast Place role, but narrows entity types",
+          "entityTypes": [
+            "kairos:Primitives/Entities/LOC",
+            "kairos:Primitives/Entities/FAC"
+          ]
+        }
+      ]
+    }
+  ]
+}
