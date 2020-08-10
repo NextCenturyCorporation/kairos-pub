@@ -27,6 +27,7 @@
     "version": "schema:version",
     "sdfVersion": "kairos:sdfVersion",
     "privateData": "kairos:privateData",
+    "provenance": "kairos:provenance",
     "reference": {
       "@id": "kairos:reference",
       "@type": "@id"
@@ -543,7 +544,7 @@
             {
               "name": "attackLocation",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location_legally/attackLocation",
-              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/DestinationPlace",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Destination",
               "refvar": "general-attack-location",
               "entityTypes": [
                 "kairos:Primitives/Entities/LOC",
@@ -621,7 +622,7 @@
             {
               "name": "starting point",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_specific_attack_location/startingPoint",
-              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/SourcePlace",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Origin",
               "refvar": "general-attack-location",
               "entityTypes": [
                 "kairos:Primitives/Entities/LOC",
@@ -632,7 +633,7 @@
             {
               "name": "attackLocation",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_specific_attack_location/attackLocation",
-              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/DestinationPlace",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Destination",
               "entityTypes": [
                 "kairos:Primitives/Entities/LOC",
                 "kairos:Primitives/Entities/FAC",
