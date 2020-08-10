@@ -3,12 +3,12 @@
     "schema": "http://schema.org/",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "kairos": "https://kairos-sdf.s3.amazonaws.com/context/kairos/",
+    "schemas": "kairos:schemas",
     "wiki": "https://www.wikidata.org/wiki/",
     "ta2": {
       "@id": "kairos:ta2",
       "@type": "xsd:boolean"
     },
-    "schemas": "kairos:schemas",
     "primitives": "kairos:primitives",
     "super": {
       "@id": "kairos:super",
@@ -27,7 +27,6 @@
     "version": "schema:version",
     "sdfVersion": "kairos:sdfVersion",
     "privateData": "kairos:privateData",
-    "provenance": "kairos:provenance",
     "reference": {
       "@id": "kairos:reference",
       "@type": "@id"
@@ -49,17 +48,19 @@
     },
     "entityTypes": {
       "@id": "kairos:entityTypes",
+      "@type": "@id",
       "@container": "@list"
     },
-    "entityTypes_AND": "kairos:entityTypes_AND",
-    "entityTypes_OR": "kairos:entityTypes_OR",
-    "values": "kairos:values",
-    "value": "kairos:value",
-    "valueId": {
-      "@id": "kairos:valueId",
-      "@type": "@id"
+    "entityTypes_AND": {
+      "@id": "kairos:entityTypes_AND",
+      "@type": "@id",
+      "@container": "@list"
     },
-    "mediaType": "kairos:mediaType",
+    "entityTypes_OR": {
+      "@id": "kairos:entityTypes_OR",
+      "@type": "@id",
+      "@container": "@list"
+    },
     "confidence": {
       "@id": "kairos:confidence",
       "@type": "xsd:float"
@@ -79,23 +80,6 @@
     },
     "relations": "kairos:relations",
     "aka": "kairos:aka",
-    "temporal": "kairos:temporal",
-    "duration": {
-      "@id": "kairos:duration",
-      "@type": "xsd:duration"
-    },
-    "startTime": {
-      "@id": "kairos:startTime",
-      "@type": "xsd:dateTime"
-    },
-    "endTime": {
-      "@id": "kairos:endTime",
-      "@type": "xsd:dateTime"
-    },
-    "absoluteTime": {
-      "@id": "kairos:absoluteTime",
-      "@type": "xsd:dateTime"
-    },
     "minDuration": {
       "@id": "kairos:minDuration",
       "@type": "xsd:duration"

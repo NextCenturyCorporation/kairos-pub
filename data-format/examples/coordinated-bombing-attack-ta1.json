@@ -27,7 +27,6 @@
     "version": "schema:version",
     "sdfVersion": "kairos:sdfVersion",
     "privateData": "kairos:privateData",
-    "provenance": "kairos:provenance",
     "reference": {
       "@id": "kairos:reference",
       "@type": "@id"
