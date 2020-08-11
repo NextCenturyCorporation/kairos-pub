@@ -1,5 +1,10 @@
 {
-  "@context": "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.8.jsonld",
+  "@context": [
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.8.jsonld",
+    {
+      "caci": "https://caci.com/kairos/"
+    }
+  ],
   "@id": "caci:Examples/TA1/primitive1",
   "sdfVersion": "0.8",
   "primitives": [
