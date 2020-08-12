@@ -3,37 +3,48 @@
     "schema": "http://schema.org/",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "kairos": "https://kairos-sdf.s3.amazonaws.com/context/kairos/",
-    "schemas": "kairos:schemas",
     "wiki": "https://www.wikidata.org/wiki/",
+    "sdfVersion": "kairos:sdfVersion",
     "ta2": {
       "@id": "kairos:ta2",
       "@type": "xsd:boolean"
     },
+    "schemas": "kairos:schemas",
     "primitives": "kairos:primitives",
     "super": {
       "@id": "kairos:super",
       "@type": "@id"
     },
+    "version": "schema:version",
     "name": "schema:name",
-    "roleName": "kairos:roleName",
-    "comment": {
-      "@id": "kairos:comment",
-      "@container": "@list"
-    },
     "description": {
       "@id": "schema:description",
       "@container": "@list"
     },
-    "version": "schema:version",
-    "sdfVersion": "kairos:sdfVersion",
-    "privateData": "kairos:privateData",
+    "template": "kairos:template",
+    "comment": {
+      "@id": "kairos:comment",
+      "@container": "@list"
+    },
+    "aka": "kairos:aka",
     "reference": {
       "@id": "kairos:reference",
       "@type": "@id"
     },
-    "achieves": "kairos:achieves",
-    "requires": "kairos:requires",
+    "privateData": "kairos:privateData",
+    "confidence": {
+      "@id": "kairos:confidence",
+      "@type": "xsd:float"
+    },
     "steps": "kairos:steps",
+    "minDuration": {
+      "@id": "kairos:minDuration",
+      "@type": "xsd:duration"
+    },
+    "maxDuration": {
+      "@id": "kairos:maxDuration",
+      "@type": "xsd:duration"
+    },
     "slots": {
       "@id": "kairos:slots",
       "@container": "@list"
@@ -42,17 +53,16 @@
       "@id": "kairos:participants",
       "@container": "@list"
     },
+    "achieves": "kairos:achieves",
+    "requires": "kairos:requires",
+    "refvar": "kairos:refvar",
     "role": {
       "@id": "kairos:role",
       "@type": "@id"
     },
+    "roleName": "kairos:roleName",
     "entityTypes": {
       "@id": "kairos:entityTypes",
-      "@type": "@id",
-      "@container": "@list"
-    },
-    "entityTypes_AND": {
-      "@id": "kairos:entityTypes_AND",
       "@type": "@id",
       "@container": "@list"
     },
@@ -61,32 +71,10 @@
       "@type": "@id",
       "@container": "@list"
     },
-    "confidence": {
-      "@id": "kairos:confidence",
-      "@type": "xsd:float"
-    },
-    "entityRelations": "kairos:entityRelations",
-    "relationSubject": {
-      "@id": "kairos:relationSubject",
-      "@type": "@id"
-    },
-    "relationPredicate": {
-      "@id": "kairos:relationPredicate",
-      "@type": "@id"
-    },
-    "relationObject": {
-      "@id": "kairos:relationObject",
-      "@type": "@id"
-    },
-    "relations": "kairos:relations",
-    "aka": "kairos:aka",
-    "minDuration": {
-      "@id": "kairos:minDuration",
-      "@type": "xsd:duration"
-    },
-    "maxDuration": {
-      "@id": "kairos:maxDuration",
-      "@type": "xsd:duration"
+    "entityTypes_AND": {
+      "@id": "kairos:entityTypes_AND",
+      "@type": "@id",
+      "@container": "@list"
     },
     "order": "kairos:order",
     "before": {
@@ -109,7 +97,20 @@
       "@id": "kairos:overlaps",
       "@type": "@id"
     },
-    "refvar": "kairos:refvar",
-    "flags": "kairos:flags"
+    "flags": "kairos:flags",
+    "entityRelations": "kairos:entityRelations",
+    "relationSubject": {
+      "@id": "kairos:relationSubject",
+      "@type": "@id"
+    },
+    "relations": "kairos:relations",
+    "relationPredicate": {
+      "@id": "kairos:relationPredicate",
+      "@type": "@id"
+    },
+    "relationObject": {
+      "@id": "kairos:relationObject",
+      "@type": "@id"
+    }
   }
 }

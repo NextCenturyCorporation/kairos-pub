@@ -86,7 +86,7 @@
       "slots": [
         {
           "@id": "caci:Primitives/Events/Contact.Contact.Propaganda/Slots/Sender",
-          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Communicator",
+          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Slots/Communicator",
           "roleName": "Sender",
           "comment": "This fills the super's Communicator role",
           "entityTypes": [
@@ -98,7 +98,7 @@
         },
         {
           "@id": "caci:Primitives/Events/Contact.Contact.Propaganda/Slots/Recipient",
-          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Recipient",
+          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Slots/Recipient",
           "roleName": "Recipient",
           "entityTypes": [
             "kairos:Primitives/Entities/PER",
@@ -109,7 +109,7 @@
         },
         {
           "@id": "caci:Primitives/Events/Contact.Contact.Propaganda/Slots/Instrument",
-          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Instrument",
+          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Slots/Instrument",
           "roleName": "Instrument",
           "entityTypes": [
             "kairos:Primitives/Entities/ABS",
@@ -118,7 +118,7 @@
         },
         {
           "@id": "caci:Primitives/Events/Contact.Contact.Propaganda/Slots/Topic",
-          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Topic",
+          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Slots/Topic",
           "roleName": "Topic",
           "entityTypes": [
             "kairos:Primitives/Entities/EVENT",
@@ -148,7 +148,7 @@
         },
         {
           "@id": "caci:Primitives/Events/Contact.Contact.Propaganda/Slots/Outlet",
-          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Place",
+          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Slots/Place",
           "roleName": "Outlet",
           "comment": "This fills the Contact.Contact.Broadcast Place role, but narrows entity types",
           "entityTypes": [
@@ -182,10 +182,10 @@
         "Conceptually, Coordinated Bombing Attack extends caci:Schemas/BombingAttack, but this is out of scope for Phase I.",
         "NOTE: This is the TA1 schema"
       ],
-      "super": "caci:Schemas/BombingAttack",
       "name": "Coordinated Bombing Attack",
       "description": "A coordinated effort by mulitple parties that results in a bombing attack",
-      "version": "caci-08.10.2020",
+      "template": "<arg1> coordinated with <arg2> about a bombing attack on <arg3> to take place at <arg4>",
+      "version": "caci-08.12.2020",
       "privateData": {
         "comment": "Performers can place any keys/values they wish here.  The map will be added to the graph but otherwise ignored by the system.  Properties maps can be added inside a schema, individual steps, slots, and order blocks, but not in their enclosing arrays.  Large amounts of private data can be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum.",
         "my_key": "my value",
@@ -209,7 +209,7 @@
               "aka": "teacher",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training_1/trainer",
               "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/TeacherTrainer",
-              "comment": "Reference specifies that the trainer is Al-Qaeda.",
+              "comment": "Reference specifies that the trainer is Al-Qaeda. Could also be done via an entityRelation.",
               "reference": "wiki:Q34490",
               "entityTypes": [
                 "kairos:Primitives/Entities/PER",
@@ -831,12 +831,10 @@
       "entityRelations": [
         {
           "relationSubject": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/participant/poc",
-          "comment": [
-            "POC participant from make_contact event is from a terrorist organization.",
-            "This corresponds to 'Each argument may be associated with a relation which may be useful to differentiate between schema' from \"Structure of a schema\""
-          ],
+          "comment": "This corresponds to 'Each argument may be associated with a relation which may be useful to differentiate between schema' from \"Structure of a schema\"",
           "relations": [
             {
+              "name": "POC participant from Contact event is from a terrorist organization.",
               "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
               "relationObject": "wiki:Q17127659"
             }
@@ -850,7 +848,7 @@
           ],
           "relations": [
             {
-              "comment": "Same attacker moved to specific location as moved to general location",
+              "name": "Same attacker moved to specific location as moved to general location",
               "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
               "relationObject": [
                 "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location_legally/attacker",
@@ -858,7 +856,7 @@
               ]
             },
             {
-              "comment": "Attacker lives in general attack location",
+              "name": "Attacker lives in general attack location",
               "relationPredicate": "kairos:Primitives/Relations/Physical.Resident.Resident",
               "relationObject": [
                 "caci:Schemas/CoordinatedBombingAttack/Slots/move_to_general_attack_location_legally/attackLocation",
@@ -875,12 +873,12 @@
           ],
           "relations": [
             {
-              "comment": "Giver of financing is one of the participants in the make_contact event",
+              "name": "Giver of financing is one of the participants in the make_contact event",
               "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
               "relationObject": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/participant/poc"
             },
             {
-              "comment": "Giver of financing is affiliated with one of the participants in the make_contact event",
+              "name": "Giver of financing is affiliated with one of the participants in the make_contact event",
               "relationPredicate": "kairos:Primitives/Relations/PersonalSocial.Relationship.Political",
               "relationObject": "caci:Schemas/CoordinatedBombingAttack/Slots/make_contact/participant/poc"
             }
@@ -890,7 +888,6 @@
       "slots": [
         {
           "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/agent",
-          "super": "caci:Schemas/BombingAttack/Slots/agent",
           "roleName": "Agent",
           "refvar": "Agent",
           "aka": [
@@ -919,7 +916,6 @@
         },
         {
           "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/target",
-          "super": "caci:Schemas/BombingAttack/Slots/target",
           "roleName": "Target",
           "aka": "victim",
           "entityTypes": [
@@ -931,7 +927,6 @@
         },
         {
           "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/place",
-          "super": "caci:Schemas/BombingAttack/Slots/place",
           "roleName": "Place",
           "refvar": "Place",
           "aka": "site",

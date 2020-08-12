@@ -10,7 +10,7 @@
   "primitives": [
     {
       "@id": "caci:Primitives/Events/Contact.Contact.Propaganda",
-      "version": "caci-08.10.2020",
+      "version": "caci-08.12.2020",
       "super": "kairos:Primitives/Events/Contact.Contact.Broadcast",
       "name": "Contact.Contact.Propaganda",
       "description": "A one-way communication that attempts to be persuasive and may be vague about the truth",
@@ -19,7 +19,7 @@
       "slots": [
         {
           "@id": "caci:Primitives/Events/Contact.Contact.Propaganda/Slots/Sender",
-          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Communicator",
+          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Slots/Communicator",
           "roleName": "Sender",
           "comment": "This fills the super's Communicator role",
           "entityTypes": [
@@ -31,7 +31,7 @@
         },
         {
           "@id": "caci:Primitives/Events/Contact.Contact.Propaganda/Slots/Recipient",
-          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Recipient",
+          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Slots/Recipient",
           "roleName": "Recipient",
           "entityTypes": [
             "kairos:Primitives/Entities/PER",
@@ -42,7 +42,7 @@
         },
         {
           "@id": "caci:Primitives/Events/Contact.Contact.Propaganda/Slots/Instrument",
-          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Instrument",
+          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Slots/Instrument",
           "roleName": "Instrument",
           "entityTypes": [
             "kairos:Primitives/Entities/ABS",
@@ -51,7 +51,7 @@
         },
         {
           "@id": "caci:Primitives/Events/Contact.Contact.Propaganda/Slots/Topic",
-          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Topic",
+          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Slots/Topic",
           "roleName": "Topic",
           "entityTypes": [
             "kairos:Primitives/Entities/EVENT",
@@ -81,7 +81,7 @@
         },
         {
           "@id": "caci:Primitives/Events/Contact.Contact.Propaganda/Slots/Outlet",
-          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Place",
+          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Slots/Place",
           "roleName": "Outlet",
           "comment": "This fills the Contact.Contact.Broadcast Place role, but narrows entity types",
           "entityTypes": [
