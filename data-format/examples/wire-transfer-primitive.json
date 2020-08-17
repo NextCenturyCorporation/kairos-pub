@@ -10,10 +10,10 @@
   "primitives": [
     {
       "@id": "caci:Primitives/Events/Transaction.Donation.WireTransfer",
-      "version": "caci-08.10.2020",
+      "version": "caci-08.17.2020",
       "super": "kairos:Primitives/Events/Transaction.Donation.Unspecified",
       "name": "Transaction.Donation.WireTransfer",
-      "description": "The voluntary transfer of monetary assets via a public wire transfer carrier",
+      "description": "The voluntary transfer of monetary assets",
       "aka": [
         "wiring",
         "EFT",
@@ -22,7 +22,7 @@
       "reference": "https://www.wikidata.org/wiki/Q334501",
       "minDuration": "PT10S",
       "maxDuration": "PT10M",
-      "template": "<arg1> wired <arg4> to <arg2> for the benefit of <arg3> via <arg5> carrier",
+      "template": "<arg1> wired <arg4> to <arg2> for the benefit of <arg3>",
       "slots": [
         {
           "@id": "caci:Primitives/Events/Transaction.Donation.WireTransfer/Slots/Sender",
@@ -63,13 +63,6 @@
           "roleName": "Amount",
           "comment": "In WireTransfer, the Amount slot fills the super's ArtifactMoney role, and restricts it to MON",
           "entityTypes": "kairos:Primitives/Entities/MON"
-        },
-        {
-          "@id": "caci:Primitives/Events/Transaction.Donation.WireTransfer/Slots/Carrier",
-          "super": "kairos:Primitives/Events/Transaction.Donation.Unspecified/Slots/Place",
-          "roleName": "Carrier",
-          "comment": "In WireTransfer, the Carrier slot fills the super's Place slot, and restricts it to ORG (e.g., Western Union)",
-          "entityTypes": "kairos:Primitives/Entities/ORG"
         }
       ]
     }
