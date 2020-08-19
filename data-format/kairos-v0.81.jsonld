@@ -36,7 +36,10 @@
       "@id": "kairos:confidence",
       "@type": "xsd:float"
     },
-    "steps": "kairos:steps",
+    "steps": {
+      "@id": "kairos:steps",
+      "@container": "@list"
+    },
     "minDuration": {
       "@id": "kairos:minDuration",
       "@type": "xsd:duration"
@@ -155,7 +158,7 @@
       "@type": "xsd:integer"
     },
     "boundingBox": {
-      "@id": "boundingBox",
+      "@id": "kairos:boundingBox",
       "@type": "xsd:integer",
       "@container": "@list"
     },
