@@ -2527,9 +2527,9 @@
         ]
       },
       {
-        "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Events/Disaster.DiseaseOutbreak.Unspecified/Slots/Victim ",
+        "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Events/Disaster.DiseaseOutbreak.Unspecified/Slots/Victim",
         "argIndex": 2,
-        "roleName": "Victim ",
+        "roleName": "Victim",
         "outputValue": "evt034arg02victim",
         "entityTypes": [
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
@@ -2614,9 +2614,9 @@
     "description": "For use as the crime argument in a Justice event when the crime event is not taggable as any other annotation ontology event type",
     "slots": [
       {
-        "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Events/GenericCrime.GenericCrime.GenericCrime/Slots/Perpetrator ",
+        "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Events/GenericCrime.GenericCrime.GenericCrime/Slots/Perpetrator",
         "argIndex": 1,
-        "roleName": "Perpetrator ",
+        "roleName": "Perpetrator",
         "outputValue": "evt036arg01perpetrator",
         "entityTypes": [
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
@@ -2626,9 +2626,9 @@
         ]
       },
       {
-        "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Events/GenericCrime.GenericCrime.GenericCrime/Slots/Victim ",
+        "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Events/GenericCrime.GenericCrime.GenericCrime/Slots/Victim",
         "argIndex": 2,
-        "roleName": "Victim ",
+        "roleName": "Victim",
         "outputValue": "evt036arg02victim",
         "entityTypes": [
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
@@ -2639,9 +2639,9 @@
         ]
       },
       {
-        "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Events/GenericCrime.GenericCrime.GenericCrime/Slots/Place ",
+        "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Events/GenericCrime.GenericCrime.GenericCrime/Slots/Place",
         "argIndex": 3,
-        "roleName": "Place ",
+        "roleName": "Place",
         "outputValue": "evt036arg03place",
         "entityTypes": [
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LOC",
@@ -2670,7 +2670,7 @@
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG",
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
-          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/side"
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/SID"
         ]
       },
       {
@@ -2726,7 +2726,7 @@
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG",
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
-          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/side"
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/SID"
         ]
       },
       {
@@ -3358,9 +3358,9 @@
     "description": "The physical injuring of a person or animal",
     "slots": [
       {
-        "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Events/Life.Injure.Unspecified/Slots/Victim ",
+        "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Events/Life.Injure.Unspecified/Slots/Victim",
         "argIndex": 1,
-        "roleName": "Victim ",
+        "roleName": "Victim",
         "outputValue": "evt049arg01victim",
         "entityTypes": [
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
@@ -3436,9 +3436,9 @@
     "description": "A determination of the disease or medical condition that explains a person's or animal's symptoms and signs",
     "slots": [
       {
-        "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Events/Medical.Diagnosis.Unspecified/Slots/Treater ",
+        "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Events/Medical.Diagnosis.Unspecified/Slots/Treater",
         "argIndex": 1,
-        "roleName": "Treater ",
+        "roleName": "Treater",
         "outputValue": "evt050arg01treater",
         "entityTypes": [
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
@@ -3499,9 +3499,9 @@
     "description": "Any kind of medical treatment or intervention for a person or an animal, often following a diagnosis of a medical condition",
     "slots": [
       {
-        "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Events/Medical.Intervention.Unspecified/Slots/Treater ",
+        "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Events/Medical.Intervention.Unspecified/Slots/Treater",
         "argIndex": 1,
-        "roleName": "Treater ",
+        "roleName": "Treater",
         "outputValue": "evt051arg01treater",
         "entityTypes": [
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
@@ -3521,9 +3521,9 @@
         ]
       },
       {
-        "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Events/Medical.Intervention.Unspecified/Slots/MedicalIssue ",
+        "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Events/Medical.Intervention.Unspecified/Slots/MedicalIssue",
         "argIndex": 3,
-        "roleName": "MedicalIssue ",
+        "roleName": "MedicalIssue",
         "outputValue": "evt051arg03medicalissue",
         "entityTypes": [
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/MHI"
@@ -3562,9 +3562,9 @@
     "description": "A person or an animal is inoculated against a disease",
     "slots": [
       {
-        "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Events/Medical.Vaccinate.Unspecified/Slots/Treater ",
+        "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Events/Medical.Vaccinate.Unspecified/Slots/Treater",
         "argIndex": 1,
-        "roleName": "Treater ",
+        "roleName": "Treater",
         "outputValue": "evt052arg01treater",
         "entityTypes": [
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
@@ -4411,9 +4411,9 @@
     "description": "A voluntary transfer of resources from one GPE to another from the perspective of governments, often with strings attached",
     "slots": [
       {
-        "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Events/Transaction.AidBetweenGovernments.Unspecified/Slots/Giver ",
+        "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Events/Transaction.AidBetweenGovernments.Unspecified/Slots/Giver",
         "argIndex": 1,
-        "roleName": "Giver ",
+        "roleName": "Giver",
         "outputValue": "evt065arg01giver",
         "entityTypes": [
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE"
@@ -4650,8 +4650,7 @@
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC"
         ]
-      },
-
+      }
     ]
   }
 ]
