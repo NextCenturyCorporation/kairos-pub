@@ -26,3 +26,5 @@ Steps to start development -
 4.  (Recommended) Run local unit tests on the generated artifact jar file
 5.  Plug the KAIROS Docker Repository user credentials you obtained from the KAIROS Dev team into the build script and run the script to build, tag, and push the Docker image to the KAIROS Docker Repository
 6.  Plug in your implementation (refer to the **AlgorithmExecutor** class discussed above), along with any 3rd party library dependencies into the project and re-run the build script.
+
+This will push the docker image (containing your algorithm implementation) to the KAIROS Docker Repository; this submission is now ready to participate in a KAIROS evaluation experiment.
