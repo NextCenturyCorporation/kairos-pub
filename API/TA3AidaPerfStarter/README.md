@@ -25,4 +25,4 @@ Steps to start development -
 3.  Run **./gradlew clean build**. 
 4.  (Recommended) Run local unit tests on the generated artifact jar file
 5.  Plug the Kairos Docker repo user credentials you obtained from the Kairos Dev team into the build script and run the script to build, tag and push Docker image to Kairos Docker Repo
-6.  Plug in your implementation (refer to the **AlgorithmExecutor** class discussed above) and re-run build script.
+6.  Plug in your implementation (refer to the **AlgorithmExecutor** class discussed above), along with any 3rd party library dependencies into the project and re-run build script.
