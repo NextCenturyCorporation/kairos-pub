@@ -20,7 +20,7 @@ Contact the NextCentury/CACI Kairos Development team to obtain those credentials
 
 Steps to start development - 
 
-1.  Pull the API project folder 
+1.  Pull the specific project folder from https://github.com/NextCenturyCorporation/kairos-pub/tree/master/API 
 2.  Rename the project locally. Make sure the name matches the build and the resulting artifact in the docker/Dockerfile
 3.  Run **./gradlew clean build**. 
 4.  (Recommended) Run local unit tests on the generated artifact jar file
