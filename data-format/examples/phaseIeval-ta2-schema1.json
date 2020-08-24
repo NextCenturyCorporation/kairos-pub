@@ -218,6 +218,16 @@
               "@id": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Slots/travel/means",
               "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/Institution",
               "entityTypes": "kairos:Primitives/Entities/ORG"
+            },
+            {
+              "name": "place",
+              "@id": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Slots/travel/place",
+              "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/Place",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC"
+              ]
             }
           ]
         },
@@ -735,7 +745,7 @@
               ],
               "values": [
                 {
-                  "value": "shotgun pallets",
+                  "name": "shotgun pallets",
                   "entityTypes": "kairos:Primitives/Entities/COM",
                   "confidence": 1,
                   "provenance": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Provenance/Entity1236"
