@@ -8,12 +8,6 @@ import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 import com.nextcentury.kairos.tuple.KairosMessage;
 import com.nextcentury.kairos.utils.ExceptionHelper;
 
-/**
- * Class for performers to plug-in their implementations
- * 
- * @author kdeshpande
- *
- */
 public class AlgorithmExecutor {
 	private static final Logger logger = LogManager.getLogger(AlgorithmExecutor.class);
 

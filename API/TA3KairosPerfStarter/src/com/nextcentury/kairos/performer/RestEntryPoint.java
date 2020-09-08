@@ -14,22 +14,14 @@ import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 import org.codehaus.jackson.type.TypeReference;
 
 import com.nextcentury.kairos.performer.executor.AlgorithmExecutor;
-import com.nextcentury.kairos.performer.healthcheck.StatusChecker;
+import com.nextcentury.kairos.performer.healthcheck.ContainerStatusChecker;
+import com.nextcentury.kairos.performer.healthcheck.PerformerStatusChecker;
 import com.nextcentury.kairos.tuple.KairosMessage;
 import com.nextcentury.kairos.utils.ExceptionHelper;
 import com.nextcentury.kairos.utils.StatusCode;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpServer;
 
-/**
- * Main entry class
- * 
- * - sets up the container environment - starts up thread pooling - starts up
- * file system folder monitoring
- * 
- * @author kdeshpande
- *
- */
 public class RestEntryPoint {
 	private static final Logger logger = LogManager.getLogger(RestEntryPoint.class);
 	private static final String APPLICATION_JSON = "application/json";
@@ -37,6 +29,7 @@ public class RestEntryPoint {
 
 	private static final String KAIROS_SERVICE = "/kairos";
 	private static final String KAIROS_SERVICE_ENTRYPOINT = KAIROS_SERVICE + "/entrypoint";
+	private static final String KAIROS_SERVICE_STATUS = KAIROS_SERVICE + "/status";
 
 	private static final String KAIROS_SERVICE_READY = KAIROS_SERVICE + "/ready";
 	private static final String KAIROS_SERVICE_ALIVE = KAIROS_SERVICE + "/alive";
@@ -88,7 +81,8 @@ public class RestEntryPoint {
 		logger.debug(" - Creating context - " + KAIROS_SERVICE_READY);
 		server.createContext(KAIROS_SERVICE_READY, (exchange -> {
 			try {
-				new StatusChecker(exchange, StatusChecker.StatusType.READINESS_CHECK).runStatusCheck();
+				new ContainerStatusChecker(exchange, ContainerStatusChecker.StatusType.READINESS_CHECK)
+						.runStatusCheck();
 			} finally {
 				exchange.close();
 			}
@@ -97,12 +91,21 @@ public class RestEntryPoint {
 		logger.debug(" - Creating context - " + KAIROS_SERVICE_ALIVE);
 		server.createContext(KAIROS_SERVICE_ALIVE, (exchange -> {
 			try {
-				new StatusChecker(exchange, StatusChecker.StatusType.ALIVE_CHECK).runStatusCheck();
+				new ContainerStatusChecker(exchange, ContainerStatusChecker.StatusType.ALIVE_CHECK).runStatusCheck();
 			} finally {
 				exchange.close();
 			}
 		}));
 
+		logger.debug(" - Creating context - " + KAIROS_SERVICE_STATUS);
+		server.createContext(KAIROS_SERVICE_STATUS, (exchange -> {
+			try {
+				new PerformerStatusChecker(exchange).runStatusCheck();
+			} finally {
+				exchange.close();
+			}
+		}));
+		
 		// server.setExecutor(Executors.newWorkStealingPool(cores));
 		server.setExecutor(Executors.newFixedThreadPool(5));
 		server.start();
@@ -132,7 +135,7 @@ public class RestEntryPoint {
 
 			KairosMessage inputObject = mapper.readValue(payload, new TypeReference<KairosMessage>() {
 			});
-			
+
 			// an actual AlgorithmExecutor might take the payload as a parameter
 			// this is just to demonstrate the concept
 			String returnValue = new AlgorithmExecutor(inputObject).execute();
