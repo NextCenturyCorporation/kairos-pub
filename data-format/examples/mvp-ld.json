@@ -1,42 +1,34 @@
 {
-  "@context": {
-    "schema": "http://schema.org/",
-    "kairos": "https://kairos-sdf.s3.amazonaws.com/context/kairos#",
-    "schemas": "kairos:schemas",
-    "super": {
-      "@id": "kairos:super",
-      "@type": "@id"
-    },
-    "name": "schema:name",
-    "comment": "kairos:comment",
-    "description": "schema:description",
-    "version": "schema:version",
-    "sdfVersion": "kairos:sdfVersion",
-    "steps": "kairos:steps",
-    "slots": "kairos:slots",
-    "participants": "kairos:participants",
-    "role": {
-      "@id": "kairos:role",
-      "@type": "@id"
-    },
-    "performer": "https://performer.edu/kairos.namespace/"
-  },
-  "sdfVersion": "0.7",
+  "@context": [
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.81.jsonld",
+    {
+      "performer": "https://performer.edu/kairos.namespace/"
+    }
+  ],
+  "@id": "performer:Submissions/TA1/12345",
+  "sdfVersion": "0.81",
   "schemas": [
     {
       "@id": "performer:mvp",
-      "super": "kairos:Event",
       "name": "mvp",
       "description": "a minimal viable schema that is a valid, if vacuous, schema",
-      "version": "TA1 performer-<algorithm> / TA2 performer-<algorithm>",
+      "version": "TA1 performer-<algorithm>",
       "steps": {
         "@id": "performer:myevent_1",
-        "@type": "kairos:primitive1",
+        "@type": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode",
+        "name": "mystep_1",
         "participants": {
           "name": "myslot_1",
           "@id": "performer:myslot_1",
-          "role": "kairos:primitive1/Slots/slotRole"
+          "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Attacker",
+          "entityTypes": "kairos:Primitives/Entities/PER"
         }
+      },
+      "slots": {
+        "@id": "performer:myslot",
+        "role": "performer:myrole_1",
+        "roleName": "myrole",
+        "entityTypes": "kairos:Primitives/Entities/PER"
       }
     }
   ]
