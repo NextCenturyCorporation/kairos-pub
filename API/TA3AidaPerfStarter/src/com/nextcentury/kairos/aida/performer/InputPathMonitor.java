@@ -21,18 +21,10 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 import org.codehaus.jackson.type.TypeReference;
 
-import com.nextcentury.kairos.tuple.KairosMessage;
-import com.nextcentury.kairos.tuple.ReturnValueTuple;
-import com.nextcentury.kairos.tuple.StatusCode;
+import com.nextcentury.kairos.aida.performer.tuple.KairosMessage;
+import com.nextcentury.kairos.aida.performer.tuple.ReturnValueTuple;
+import com.nextcentury.kairos.aida.performer.tuple.StatusCode;
 
-/**
- * FIle System monitor class
- *  
- * - Each "new" file trigger gets processed in its own thread via the executor service
- *  
- * @author kdeshpande
- *
- */
 public class InputPathMonitor {
 	private static final Logger logger = LogManager.getLogger(InputPathMonitor.class);
 	private static ObjectMapper mapper = new ObjectMapper();
@@ -44,12 +36,14 @@ public class InputPathMonitor {
 	private String performerName;
 	private String inputPathStr;
 	private String outputPathStr;
+	private String logPathStr;
 	private ExecutorService executorService;
 
-	public InputPathMonitor(String performerName, String inputPathStr, String outputPathStr,
+	public InputPathMonitor(String performerName, String inputPathStr, String outputPathStr, String logPathStr, 
 			ExecutorService executorService) {
 		this.inputPathStr = inputPathStr;
 		this.outputPathStr = outputPathStr;
+		this.logPathStr = logPathStr;
 		this.performerName = performerName;
 		this.executorService = executorService;
 	}
