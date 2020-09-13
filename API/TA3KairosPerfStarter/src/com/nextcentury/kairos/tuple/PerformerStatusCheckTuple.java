@@ -3,8 +3,20 @@ package com.nextcentury.kairos.tuple;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 public class PerformerStatusCheckTuple {
+
 	public enum PerformerStatusType {
-		PROCESSING, DONE_PROCESSING
+		INITIALIZED("initialized"), PROCESSING("Processing"), DONE_PROCESSING("Done Processing"), PROCESSING_ERROR("Processing Error"),
+		PROCESSING_WARNING("Processing Warning");
+
+		private String status;
+
+		PerformerStatusType(String type) {
+			this.status = type;
+		}
+
+		public String getStatus() {
+			return status;
+		}
 	};
 	
 	@JsonProperty("performerstatus")

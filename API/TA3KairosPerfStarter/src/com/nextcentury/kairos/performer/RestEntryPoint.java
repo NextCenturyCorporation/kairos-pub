@@ -39,10 +39,12 @@ public class RestEntryPoint {
 	private static String evaluatorName;
 	private static String experimentName;
 	private static String performerName;
+	private static String ta1SchemaLibPath;
 
 	private static String EXPERIMENT_CONFIG_KEY_EVALUATOR = "EVALUATOR";
 	private static String EXPERIMENT_CONFIG_KEY_EXPERIMENT = "EXPERIMENT";
 	private static String EXPERIMENT_CONFIG_KEY_PERFORMER = "PERFORMER_NAME";
+	private static String EXPERIMENT_CONFIG_KEY_TA1SCHEMALIBPATH = "TA1SCHEMALIBPATH";
 
 	private static ObjectMapper mapper = new ObjectMapper();
 	static {
@@ -54,6 +56,7 @@ public class RestEntryPoint {
 		experimentName = System.getenv().get(EXPERIMENT_CONFIG_KEY_EXPERIMENT);
 		evaluatorName = System.getenv().get(EXPERIMENT_CONFIG_KEY_EVALUATOR);
 		performerName = System.getenv().get(EXPERIMENT_CONFIG_KEY_PERFORMER);
+		ta1SchemaLibPath = System.getenv().get(EXPERIMENT_CONFIG_KEY_TA1SCHEMALIBPATH);
 
 		// initialize and listen
 		new RestEntryPoint().delegate();
