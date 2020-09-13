@@ -21,6 +21,7 @@ public class PerformerStatusChecker {
 	private HttpExchange exchange;
 
 	public static final String APPLICATION_JSON = "application/json";
+	public static final String TEXT_PLAIN = "text/plain";
 	public static final String CONTENT_TYPE = "Content-Type";
 
 	private static ObjectMapper mapper = new ObjectMapper();
@@ -34,12 +35,12 @@ public class PerformerStatusChecker {
 	}
 
 	public void runStatusCheck() {
-		logger.debug(" - Status check---> " + exchange.getRequestURI().toString());
+		logger.debug(" - Performer Status check---> " + exchange.getRequestURI().toString());
 
 		OutputStream responseBody = null;
 		BufferedReader reader = null;
 		InputStreamReader isReader = null;
-		byte[] response = "success".getBytes();
+
 		try {
 			StringBuffer buff = new StringBuffer();
 			String line = null;
@@ -51,17 +52,17 @@ public class PerformerStatusChecker {
 
 			PerformerStatusCheckTuple statusCheckResult = new PerformerStatusCheckTuple();
 			statusCheckResult.setPayload("A OK");
-			statusCheckResult.setPerformerStatus(PerformerStatusType.PROCESSING);
+			statusCheckResult.setPerformerStatus(PerformerStatusType.INITIALIZED);
 			// convert the status check result to a string
-			String returnValue = null;
-			String payloadStr = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(statusCheckResult);
+			//String payloadStr = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(statusCheckResult);
+			String payloadStr = statusCheckResult.getPerformerStatus().getStatus();
 
 			// send back status code to specify check result probe
 			exchange.sendResponseHeaders(StatusCode.OK.getCode(), 0);
 			// write the response back
-			exchange.getResponseHeaders().set(CONTENT_TYPE, APPLICATION_JSON);
+			exchange.getResponseHeaders().set(CONTENT_TYPE, TEXT_PLAIN);
 			responseBody = exchange.getResponseBody();
-			responseBody.write(response);
+			responseBody.write(payloadStr.getBytes());
 		} catch (Throwable e) {
 			logger.error(ExceptionHelper.getExceptionTrace(e));
 		} finally {
@@ -86,9 +87,6 @@ public class PerformerStatusChecker {
 					logger.error(ExceptionHelper.getExceptionTrace(e));
 				}
 			}
-
-			// free up as much memory as we can
-			response = null;
 		}
 	}
 }

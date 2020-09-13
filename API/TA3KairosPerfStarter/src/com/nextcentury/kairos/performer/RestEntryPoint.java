@@ -9,6 +9,9 @@ import java.util.concurrent.Executors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.LoggerContext;
+import org.apache.logging.log4j.core.appender.FileAppender;
+import org.apache.logging.log4j.core.config.Configuration;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 import org.codehaus.jackson.type.TypeReference;
@@ -23,7 +26,7 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpServer;
 
 public class RestEntryPoint {
-	private static final Logger logger = LogManager.getLogger(RestEntryPoint.class);
+	private static Logger logger = null;
 	private static final String APPLICATION_JSON = "application/json";
 	private static final String CONTENT_TYPE = "Content-Type";
 
@@ -40,11 +43,18 @@ public class RestEntryPoint {
 	private static String experimentName;
 	private static String performerName;
 	private static String ta1SchemaLibPath;
+	private static String graphgPath;
 
 	private static String EXPERIMENT_CONFIG_KEY_EVALUATOR = "EVALUATOR";
 	private static String EXPERIMENT_CONFIG_KEY_EXPERIMENT = "EXPERIMENT";
 	private static String EXPERIMENT_CONFIG_KEY_PERFORMER = "PERFORMER_NAME";
 	private static String EXPERIMENT_CONFIG_KEY_TA1SCHEMALIBPATH = "TA1SCHEMALIBPATH";
+	private static String EXPERIMENT_CONFIG_KEY_GRAPHGPATH = "GRAPHGPATH";
+
+	private static final String KAIROSFSMOUNTPATH_ROOT = "/var/kairosfs";
+
+	private static String mountPathPersist;
+	private static String mountPathLog;
 
 	private static ObjectMapper mapper = new ObjectMapper();
 	static {
@@ -53,13 +63,34 @@ public class RestEntryPoint {
 	}
 
 	public static void main(String[] args) throws IOException {
+
 		experimentName = System.getenv().get(EXPERIMENT_CONFIG_KEY_EXPERIMENT);
 		evaluatorName = System.getenv().get(EXPERIMENT_CONFIG_KEY_EVALUATOR);
 		performerName = System.getenv().get(EXPERIMENT_CONFIG_KEY_PERFORMER);
 		ta1SchemaLibPath = System.getenv().get(EXPERIMENT_CONFIG_KEY_TA1SCHEMALIBPATH);
+		graphgPath = System.getenv().get(EXPERIMENT_CONFIG_KEY_GRAPHGPATH);
+
+		mountPathPersist = new StringBuffer(KAIROSFSMOUNTPATH_ROOT).append("/").append(experimentName).append("/")
+				.append(performerName).append("/persist").toString().toLowerCase();
+		mountPathLog = new StringBuffer(KAIROSFSMOUNTPATH_ROOT).append("/").append(experimentName).append("/")
+				.append(performerName).append("/log").toString().toLowerCase();
+
+		// always do this first, so that log4j knows where to write the log file to
+		configureLogging();
 
 		// initialize and listen
 		new RestEntryPoint().delegate();
+	}
+
+	private static void configureLogging() {
+		System.setProperty("logfilelocation", mountPathLog);
+
+		final LoggerContext ctx = (LoggerContext) LogManager.getContext();
+		ctx.reconfigure();
+		logger = LogManager.getLogger(RestEntryPoint.class);
+		final Configuration config = ctx.getConfiguration();
+		FileAppender fileAppender = config.getAppender("FILE");
+		logger.debug("Log file name - " + fileAppender.getFileName());
 	}
 
 	private void delegate() throws IOException {
@@ -108,7 +139,7 @@ public class RestEntryPoint {
 				exchange.close();
 			}
 		}));
-		
+
 		// server.setExecutor(Executors.newWorkStealingPool(cores));
 		server.setExecutor(Executors.newFixedThreadPool(5));
 		server.start();
