@@ -1,6 +1,6 @@
 {
   "@context": [
-    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.81.jsonld",
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.9.jsonld",
     {
       "caci": "https://caci.com/kairos/",
       "my_key": "caci:my_key",
@@ -8,7 +8,7 @@
     }
   ],
   "@id": "caci:Submissions/TA1/12345",
-  "sdfVersion": "0.81",
+  "sdfVersion": "0.9a",
   "primitives": [
     {
       "@id": "caci:Primitives/Events/Transaction.Donation.WireTransfer",
@@ -162,7 +162,6 @@
         "Possess bomb making instruction",
         "Contact funding source",
         "Obtain financing",
-        "Receive further training",
         "Send propaganda materials",
         "Obtain transportation",
         "Arrive at general location of attack (legally)",
@@ -178,7 +177,7 @@
       "name": "Coordinated Bombing Attack",
       "description": "A coordinated effort by mulitple parties that results in a bombing attack",
       "template": "<arg1> coordinated with <arg2> about a bombing attack on <arg3> to take place at <arg4>",
-      "version": "caci-08.17.2020",
+      "version": "caci-09.15.2020",
       "privateData": {
         "comment": "Performers can place any keys/values they wish here.  The map will be added to the graph but otherwise ignored by the system.  Properties maps can be added inside a schema, individual steps, slots, and order blocks, but not in their enclosing arrays.  Large amounts of private data can be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum.",
         "my_key": "my value",
@@ -431,41 +430,6 @@
                 "kairos:Primitives/Entities/ORG",
                 "kairos:Primitives/Entities/GPE",
                 "kairos:Primitives/Entities/SID"
-              ]
-            }
-          ]
-        },
-        {
-          "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/training_2",
-          "name": "Receive further training",
-          "@type": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified",
-          "aka": [
-            "training",
-            "teaching"
-          ],
-          "participants": [
-            {
-              "name": "trainer",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training_2/trainer",
-              "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/TeacherTrainer",
-              "refvar": "Point of Contact",
-              "entityTypes": [
-                "kairos:Primitives/Entities/PER",
-                "kairos:Primitives/Entities/ORG",
-                "kairos:Primitives/Entities/AML"
-              ]
-            },
-            {
-              "name": "learner",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training_2/learner",
-              "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/Learner",
-              "refvar": "Agent",
-              "entityTypes": [
-                "kairos:Primitives/Entities/PER",
-                "kairos:Primitives/Entities/ORG",
-                "kairos:Primitives/Entities/COM",
-                "kairos:Primitives/Entities/AML",
-                "kairos:Primitives/Entities/ABS"
               ]
             }
           ]
@@ -759,9 +723,9 @@
           "contained": "caci:Schemas/CoordinatedBombingAttack/Steps/wire_transfer"
         },
         {
-          "comment": "Mailing anti-Israel letters to newspapers and training in NJ overlap.  Contrived to show an overlaps example.",
+          "comment": "Mailing anti-Israel letters to newspapers and obtaining financing overlap.  Contrived to show an overlaps example.",
           "overlaps": [
-            "caci:Schemas/CoordinatedBombingAttack/Steps/training_2",
+            "caci:Schemas/CoordinatedBombingAttack/Steps/obtain_financing",
             "caci:Schemas/CoordinatedBombingAttack/Steps/media_propaganda"
           ]
         },
@@ -772,11 +736,6 @@
             "caci:Schemas/CoordinatedBombingAttack/Steps/media_propaganda",
             "caci:Schemas/CoordinatedBombingAttack/Steps/obtain_transportation"
           ],
-          "flags": "precondition"
-        },
-        {
-          "before": "caci:Schemas/CoordinatedBombingAttack/Steps/training_1",
-          "after": "caci:Schemas/CoordinatedBombingAttack/Steps/training_2",
           "flags": "precondition"
         },
         {
@@ -810,7 +769,6 @@
             "caci:Schemas/CoordinatedBombingAttack/Steps/wire_transfer",
             "caci:Schemas/CoordinatedBombingAttack/Steps/move_illegally",
             "caci:Schemas/CoordinatedBombingAttack/Steps/get_bombmaking_howto",
-            "caci:Schemas/CoordinatedBombingAttack/Steps/training_2",
             "caci:Schemas/CoordinatedBombingAttack/Steps/media_propaganda",
             "caci:Schemas/CoordinatedBombingAttack/Steps/obtain_transportation"
           ],

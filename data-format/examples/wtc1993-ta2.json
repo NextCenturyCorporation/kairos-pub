@@ -1,6 +1,6 @@
 {
   "@context": [
-    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.81.jsonld",
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.9.jsonld",
     {
       "caci": "https://caci.com/kairos/",
       "my_key": "caci:my_key",
@@ -8,8 +8,9 @@
     }
   ],
   "@id": "caci:Submissions/TA2/54321",
-  "sdfVersion": "0.81",
+  "sdfVersion": "0.9a",
   "ta2": true,
+  "task2": false,
   "primitives": [
     {
       "@id": "caci:Primitives/Events/Transaction.Donation.WireTransfer",
@@ -22,7 +23,7 @@
         "EFT",
         "electronic funds transfer"
       ],
-      "reference": "https://www.wikidata.org/wiki/Q334501",
+      "reference": "wiki:Q334501",
       "minDuration": "PT10S",
       "maxDuration": "PT10M",
       "template": "<arg1> wired <arg4> to <arg2> for the benefit of <arg3>",
@@ -75,7 +76,7 @@
       "super": "kairos:Primitives/Events/Contact.Contact.Broadcast",
       "name": "Contact.Contact.Propaganda",
       "description": "A one-way communication that attempts to be persuasive and may be vague about the truth",
-      "reference": "https://www.wikidata.org/wiki/Q7281",
+      "reference": "wiki:Q7281",
       "template": "<arg1> communicated ideals to <arg2> about <arg4> topic using <arg3> at <arg5> place (one-way communication)",
       "slots": [
         {
@@ -177,7 +178,8 @@
       "name": "World Trade Center 1993 Attack",
       "description": "A terrorist attack on the World Trade Center, carried out on 2/26/1993, when a truck bomb detonated below the North Tower",
       "template": "<arg1> coordinated with <arg2> about a bombing attack on <arg3> to take place at <arg4>",
-      "version": "caci-08.17.2020 / caci-08.24.2020",
+      "version": "caci-09.15.2020 / caci-09.15.2020",
+      "super": "caci:Schemas/CoordinatedBombingAttack",
       "confidence": 0.9,
       "privateData": {
         "comment": "Performers can place any keys/values they wish here.  The map will be added to the graph but otherwise ignored by the system.  Properties maps can be added inside a schema, individual steps, slots, and order blocks, but not in their enclosing arrays.  Large amounts of private data can be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum.",
@@ -197,7 +199,15 @@
           "maxDuration": "P3M",
           "reference": "wiki:Q918385",
           "confidence": 0.85,
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/training_1",
+          "comment": "For Task 2, provenance should be the @id of the step in Graph G (e.g., VP1001.00005): not validated in Task 2.",
           "provenance": "Event1237",
+          "modality": [
+            "hedged",
+            "negated",
+            "generic",
+            "irrealis"
+          ],
           "temporal": [
             {
               "comment": [
@@ -274,6 +284,7 @@
                   "name": "Ramzi Yousef",
                   "entityTypes": "kairos:Primitives/Entities/PER",
                   "confidence": 1,
+                  "comment": "For Task 2, provenance should be the @id of the participant in Graph G (e.g., AR1001.0010): not validated in Task 2.",
                   "provenance": "Entity1236"
                 }
               ]
@@ -322,6 +333,7 @@
           ],
           "aka": "telegraphic transfer",
           "confidence": 0.75,
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/wire_transfer",
           "provenance": "Event1237",
           "participants": [
             {
@@ -339,7 +351,9 @@
                   "name": "Khalid Shaikh Mohammed",
                   "entityTypes": "kairos:Primitives/Entities/PER",
                   "confidence": 1,
-                  "provenance": "Entity1234"
+                  "provenance": "Entity1234",
+                  "comment": "If the document wasn't certain of an argument filler, modality can be set to hedged.",
+                  "modality": "hedged"
                 }
               ]
             },
@@ -396,6 +410,7 @@
           "@type": "kairos:Primitives/Events/Movement.Transportation.IllegalTransportation",
           "name": "Enter US illegally",
           "confidence": 0.8,
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/move_illegally",
           "provenance": "Event1237",
           "temporal": [
             {
@@ -494,6 +509,7 @@
           "@type": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified",
           "name": "Possess bomb making instruction",
           "confidence": 0.55,
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/get_bombmaking_howto",
           "provenance": "Event1237",
           "participants": [
             {
@@ -597,6 +613,7 @@
           ],
           "aka": "contact",
           "confidence": 0.65,
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/make_contact",
           "provenance": "Event1237",
           "participants": [
             {
@@ -689,6 +706,7 @@
           "name": "Get financing from Sheikh",
           "aka": "financing",
           "confidence": 0.65,
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/obtain_financing",
           "provenance": "Event1237",
           "participants": [
             {
@@ -781,6 +799,8 @@
             "teaching"
           ],
           "confidence": 0.85,
+          "comment": "Null ta1ref means the event was discovered in the documents but not specified in the TA1 schema.",
+          "ta1ref": null,
           "provenance": "Event1237",
           "participants": [
             {
@@ -792,8 +812,7 @@
                 "kairos:Primitives/Entities/PER",
                 "kairos:Primitives/Entities/ORG",
                 "kairos:Primitives/Entities/AML"
-              ],
-              "values": []
+              ]
             },
             {
               "name": "subject_matter",
@@ -813,29 +832,30 @@
                 "kairos:Primitives/Entities/AML",
                 "kairos:Primitives/Entities/ABS"
               ],
-              "values": []
+              "values": [
+                {
+                  "name": "Ramzi Yousef",
+                  "entityTypes": "kairos:Primitives/Entities/PER",
+                  "confidence": 1,
+                  "provenance": "Entity1236"
+                }
+              ]
             },
             {
               "name": "means",
-              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/training_1/means",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/training_2/means",
               "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/Means",
               "entityTypes": [
                 "kairos:Primitives/Entities/COM",
                 "kairos:Primitives/Entities/ABS",
                 "kairos:Primitives/Entities/INF"
-              ],
-              "comment": [
-                "Unlike Learner, TA1 didn't specify anything for Means.",
-                "Since TA2 didn't extract a value from documents, it expresses N/R (not relevant) but omitting values keyword."
               ]
             },
             {
               "name": "institution",
               "@id": "caci:Schemas/Instantiated/WTC1993/Slots/training_2/institution",
               "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/Institution",
-              "entityTypes": "kairos:Primitives/Entities/ORG",
-              "comment": "Alternatively, TA2 can express Not Relevant by setting values to null.",
-              "values": null
+              "entityTypes": "kairos:Primitives/Entities/ORG"
             },
             {
               "name": "place",
@@ -845,6 +865,14 @@
                 "kairos:Primitives/Entities/LOC",
                 "kairos:Primitives/Entities/GPE",
                 "kairos:Primitives/Entities/FAC"
+              ],
+              "values": [
+                {
+                  "name": "New Jersey",
+                  "entityTypes": "kairos:Primitives/Entities/GPE",
+                  "confidence": 1,
+                  "provenance": "Entity1236"
+                }
               ]
             }
           ]
@@ -855,6 +883,7 @@
           "comment": "Contact.Contact.Propaganda is a specialization of the Contact.Contact.Broadcast event primitive",
           "@type": "caci:Primitives/Events/Contact.Contact.Propaganda",
           "confidence": 0.75,
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/media_propaganda",
           "provenance": "Event1237",
           "participants": [
             {
@@ -954,6 +983,7 @@
           "@type": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified",
           "name": "Rent a van",
           "confidence": 0.85,
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/obtain_transportation",
           "provenance": "Event1237",
           "participants": [
             {
@@ -1074,6 +1104,7 @@
           "@type": "kairos:Primitives/Events/Movement.Transportation.Unspecified",
           "name": "Drive to Manhattan",
           "confidence": 0.85,
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_general_attack_location_legally",
           "provenance": "Event1237",
           "comment": "Contrived example to show use of achieves/requires.  In this case, TA2 included the 'move_to_general_attack_location_legally' step in its instantiation.",
           "achieves": "arrived-at-general-location",
@@ -1189,6 +1220,7 @@
           "@type": "kairos:Primitives/Events/Movement.Transportation.Unspecified",
           "name": "Park at WTC (1993)",
           "confidence": 0.95,
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_specific_attack_location",
           "provenance": "Event1237",
           "temporal": [
             {
@@ -1308,6 +1340,7 @@
           "aka": "explode",
           "name": "Bomb explosion killing 6 people",
           "confidence": 1,
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/bombing",
           "provenance": "Event1237",
           "temporal": [
             {
@@ -1416,6 +1449,7 @@
           "@type": "kairos:Primitives/Events/Movement.Transportation.IllegalTransportation",
           "name": "Escaped to Pakistan",
           "confidence": 0.8,
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/escape",
           "provenance": "Event1237",
           "temporal": {
             "absoluteTime": "1993-02-26T12:05:00-05:00",

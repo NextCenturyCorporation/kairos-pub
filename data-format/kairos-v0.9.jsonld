@@ -1,0 +1,184 @@
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "kairos": "https://kairos-sdf.s3.amazonaws.com/context/kairos/",
+    "wiki": "https://www.wikidata.org/wiki/",
+    "sdfVersion": "kairos:sdfVersion",
+    "ta2": {
+      "@id": "kairos:ta2",
+      "@type": "xsd:boolean"
+    },
+    "task2": {
+      "@id": "kairos:task2",
+      "@type": "xsd:boolean"
+    },
+    "schemas": "kairos:schemas",
+    "primitives": "kairos:primitives",
+    "super": {
+      "@id": "kairos:super",
+      "@type": "@id"
+    },
+    "version": "schema:version",
+    "name": "schema:name",
+    "description": {
+      "@id": "schema:description",
+      "@container": "@list"
+    },
+    "template": "kairos:template",
+    "comment": {
+      "@id": "kairos:comment",
+      "@container": "@list"
+    },
+    "aka": "kairos:aka",
+    "reference": {
+      "@id": "kairos:reference",
+      "@type": "@id"
+    },
+    "privateData": "kairos:privateData",
+    "confidence": {
+      "@id": "kairos:confidence",
+      "@type": "xsd:float"
+    },
+    "steps": {
+      "@id": "kairos:steps",
+      "@container": "@list"
+    },
+    "minDuration": {
+      "@id": "kairos:minDuration",
+      "@type": "xsd:duration"
+    },
+    "maxDuration": {
+      "@id": "kairos:maxDuration",
+      "@type": "xsd:duration"
+    },
+    "temporal": "kairos:temporal",
+    "duration": {
+      "@id": "kairos:duration",
+      "@type": "xsd:duration"
+    },
+    "earliestStartTime": {
+      "@id": "kairos:earliestStartTime",
+      "@type": "xsd:dateTime"
+    },
+    "latestStartTime": {
+      "@id": "kairos:latestStartTime",
+      "@type": "xsd:dateTime"
+    },
+    "earliestEndTime": {
+      "@id": "kairos:earliestEndTime",
+      "@type": "xsd:dateTime"
+    },
+    "latestEndTime": {
+      "@id": "kairos:latestEndTime",
+      "@type": "xsd:dateTime"
+    },
+    "absoluteTime": {
+      "@id": "kairos:absoluteTime",
+      "@type": "xsd:dateTime"
+    },
+    "ta1provenance": {
+      "@id": "kairos:ta1provenance",
+      "@type": "@id"
+    },
+    "modality": "kairos:modality",
+    "slots": {
+      "@id": "kairos:slots",
+      "@container": "@list"
+    },
+    "participants": {
+      "@id": "kairos:participants",
+      "@container": "@list"
+    },
+    "achieves": "kairos:achieves",
+    "requires": "kairos:requires",
+    "refvar": "kairos:refvar",
+    "role": {
+      "@id": "kairos:role",
+      "@type": "@id"
+    },
+    "roleName": "kairos:roleName",
+    "values": "kairos:values",
+    "provenance": "kairos:provenance",
+    "entityTypes": {
+      "@id": "kairos:entityTypes",
+      "@type": "@id",
+      "@container": "@list"
+    },
+    "entityTypes_OR": {
+      "@id": "kairos:entityTypes_OR",
+      "@type": "@id",
+      "@container": "@list"
+    },
+    "entityTypes_AND": {
+      "@id": "kairos:entityTypes_AND",
+      "@type": "@id",
+      "@container": "@list"
+    },
+    "order": "kairos:order",
+    "before": {
+      "@id": "kairos:before",
+      "@type": "@id"
+    },
+    "after": {
+      "@id": "kairos:after",
+      "@type": "@id"
+    },
+    "container": {
+      "@id": "kairos:container",
+      "@type": "@id"
+    },
+    "contained": {
+      "@id": "kairos:contained",
+      "@type": "@id"
+    },
+    "overlaps": {
+      "@id": "kairos:overlaps",
+      "@type": "@id"
+    },
+    "flags": "kairos:flags",
+    "entityRelations": "kairos:entityRelations",
+    "relationSubject": {
+      "@id": "kairos:relationSubject",
+      "@type": "@id"
+    },
+    "relations": "kairos:relations",
+    "relationPredicate": {
+      "@id": "kairos:relationPredicate",
+      "@type": "@id"
+    },
+    "relationObject": {
+      "@id": "kairos:relationObject",
+      "@type": "@id"
+    },
+    "provenanceData": "kairos:provenanceData",
+    "mediaType": "kairos:mediaType",
+    "childID": "kairos:childID",
+    "parentIDs": "kairos:parentIDs",
+    "offset": {
+      "@id": "kairos:offset",
+      "@type": "xsd:integer"
+    },
+    "length": {
+      "@id": "kairos:length",
+      "@type": "xsd:integer"
+    },
+    "boundingBox": {
+      "@id": "kairos:boundingBox",
+      "@type": "xsd:integer",
+      "@container": "@list"
+    },
+    "keyframes": {
+      "@id": "kairos:keyframes",
+      "@type": "xsd:integer"
+    },
+    "startTime": {
+      "@id": "kairos:startTime",
+      "@type": "xsd:float"
+    },
+    "endTime": {
+      "@id": "kairos:endTime",
+      "@type": "xsd:float"
+    }
+  }
+}
