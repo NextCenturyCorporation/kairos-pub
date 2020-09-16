@@ -5,14 +5,8 @@ import org.apache.logging.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 
-import com.nextcentury.kairos.tuple.KairosMessage;
+import com.nextcentury.kairos.aida.performer.tuple.KairosMessage;
 
-/**
- * Class for performers to plug-in their implementations
- * 
- * @author kdeshpande
- *
- */
 public class AlgorithmExecutor {
 	private static final Logger logger = LogManager.getLogger(AlgorithmExecutor.class);
 

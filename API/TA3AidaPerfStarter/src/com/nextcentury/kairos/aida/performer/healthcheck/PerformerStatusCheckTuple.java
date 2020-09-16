@@ -1,4 +1,4 @@
-package com.nextcentury.kairos.tuple;
+package com.nextcentury.kairos.aida.performer.healthcheck;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 

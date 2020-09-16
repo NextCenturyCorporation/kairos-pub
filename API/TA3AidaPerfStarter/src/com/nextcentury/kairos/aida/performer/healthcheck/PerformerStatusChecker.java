@@ -1,4 +1,4 @@
-package com.nextcentury.kairos.performer.healthcheck;
+package com.nextcentury.kairos.aida.performer.healthcheck;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -9,10 +9,9 @@ import org.apache.logging.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 
-import com.nextcentury.kairos.tuple.PerformerStatusCheckTuple;
-import com.nextcentury.kairos.tuple.PerformerStatusCheckTuple.PerformerStatusType;
-import com.nextcentury.kairos.utils.ExceptionHelper;
-import com.nextcentury.kairos.utils.StatusCode;
+import com.nextcentury.kairos.aida.performer.ExceptionHelper;
+import com.nextcentury.kairos.aida.performer.tuple.PerformerStatusType;
+import com.nextcentury.kairos.aida.performer.tuple.StatusCode;
 import com.sun.net.httpserver.HttpExchange;
 
 public class PerformerStatusChecker {
@@ -50,12 +49,11 @@ public class PerformerStatusChecker {
 				buff.append(line);
 			}
 
-			PerformerStatusCheckTuple statusCheckResult = new PerformerStatusCheckTuple();
-			statusCheckResult.setPayload("A OK");
-			statusCheckResult.setPerformerStatus(PerformerStatusType.INITIALIZED);
+	
 			// convert the status check result to a string
-			//String payloadStr = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(statusCheckResult);
-			String payloadStr = statusCheckResult.getPerformerStatus().getStatus();
+			// String payloadStr =
+			// mapper.writerWithDefaultPrettyPrinter().writeValueAsString(statusCheckResult);
+			String payloadStr = PerformerStatusType.INITIALIZED.getStatus();
 
 			// send back status code to specify check result probe
 			exchange.sendResponseHeaders(StatusCode.OK.getCode(), 0);
