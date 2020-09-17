@@ -192,7 +192,7 @@
     "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/GeneralAffiliation.ArtifactPoliticalOrganizationReligiousAffiliation.ControlTerritory",
     "name": "GeneralAffiliation.ArtifactPoliticalOrganizationReligiousAffiliation.ControlTerritory",
     "template": "<arg1> is controlled by <arg2>",
-    "description": "A side, person, organization, location, or GPE controlling territory.  ",
+    "description": "A side, person, organization, location, or GPE controlling territory.",
     "argOne": "Territory",
     "argOneOutputValue": "rel007arg01territory",
     "argOneTypeConstraints": [
@@ -395,7 +395,7 @@
     "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/GeneralAffiliation.OrganizationWebsite.OrganizationWebsite",
     "name": "GeneralAffiliation.OrganizationWebsite.OrganizationWebsite",
     "template": "<arg1> has <arg2> website",
-    "description": "An official top level URL for an organization entity’s website",
+    "description": "An official top level URL for an organization entity's website",
     "argOne": "Organization",
     "argOneOutputValue": "rel016arg01organization",
     "argOneTypeConstraints": [

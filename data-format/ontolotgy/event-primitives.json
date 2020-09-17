@@ -3663,7 +3663,9 @@
         "entityTypes": [
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LOC",
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
-          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC"
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC",
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/COM",
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VEH"
         ]
       },
       {
@@ -3674,7 +3676,9 @@
         "entityTypes": [
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LOC",
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
-          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC"
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC",
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/COM",
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VEH"
         ]
       }
     ]
@@ -3751,7 +3755,9 @@
         "entityTypes": [
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LOC",
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
-          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC"
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC",
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/COM",
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VEH"
         ]
       },
       {
@@ -3762,7 +3768,9 @@
         "entityTypes": [
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LOC",
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
-          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC"
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC",
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/COM",
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VEH"
         ]
       }
     ]
@@ -3827,7 +3835,9 @@
         "entityTypes": [
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LOC",
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
-          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC"
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC",
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/COM",
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VEH"
         ]
       },
       {
@@ -3838,7 +3848,9 @@
         "entityTypes": [
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LOC",
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
-          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC"
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC",
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/COM",
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VEH"
         ]
       }
     ]
@@ -3915,7 +3927,9 @@
         "entityTypes": [
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LOC",
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
-          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC"
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC",
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/COM",
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VEH"
         ]
       },
       {
@@ -3926,7 +3940,9 @@
         "entityTypes": [
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LOC",
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
-          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC"
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC",
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/COM",
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VEH"
         ]
       }
     ]
@@ -3991,7 +4007,9 @@
         "entityTypes": [
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LOC",
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
-          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC"
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC",
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/COM",
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VEH"
         ]
       },
       {
@@ -4002,7 +4020,9 @@
         "entityTypes": [
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LOC",
           "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
-          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC"
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/FAC",
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/COM",
+          "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VEH"
         ]
       }
     ]
@@ -4654,3 +4674,4 @@
     ]
   }
 ]
+

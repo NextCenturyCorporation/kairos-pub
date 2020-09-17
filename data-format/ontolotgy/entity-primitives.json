@@ -3,19 +3,19 @@
     "annotIndexId": "LDC_KAIROS_ent_001",
     "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ABS",
     "name": "ABS",
-    "description": "Abstract, non-tangible artifacts such as software (e.g., programs, tool kits, apps, e-mail), measureable intellectual property, contracts, etc. (nb: does not include laws, which are LAW type)."
+    "description": "Abstract, non-tangible artifacts such as software (e.g., programs, tool kits, apps, e-mail), measureable intellectual property, contracts, etc. (nb: does not include laws, which are LAW type)"
   },
   {
     "annotIndexId": "LDC_KAIROS_ent_002",
     "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/AML",
     "name": "AML",
-    "description": "Animal, a non-human living organism which feeds on organic matter, typically having specialized sense organs and a nervous system and able to respond rapidly to stimuli."
+    "description": "Animal, a non-human living organism which feeds on organic matter, typically having specialized sense organs and a nervous system and able to respond rapidly to stimuli"
   },
   {
     "annotIndexId": "LDC_KAIROS_ent_003",
     "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/BAL",
     "name": "BAL",
-    "description": "A ballot for an election, either the paper ballot used for voting, including both physical paper ballots and also the slate of candidates and ballot questions."
+    "description": "A ballot for an election, either the paper ballot used for voting, including both physical paper ballots and also the slate of candidates and ballot questions"
   },
   {
     "annotIndexId": "LDC_KAIROS_ent_004",
@@ -27,7 +27,7 @@
     "annotIndexId": "LDC_KAIROS_ent_005",
     "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/COM",
     "name": "COM",
-    "description": "A tangible product or article of trade for which someone pays or barters, or more generally, an artifact or a thing."
+    "description": "A tangible product or article of trade for which someone pays or barters, or more generally, an artifact or a thing"
   },
   {
     "annotIndexId": "LDC_KAIROS_ent_006",
@@ -57,13 +57,13 @@
     "annotIndexId": "LDC_KAIROS_ent_010",
     "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/LOC",
     "name": "LOC",
-    "description": "Geographical entities such as geographical areas and landmasses, bodies of water."
+    "description": "Geographical entities such as geographical areas and landmasses, bodies of water"
   },
   {
     "annotIndexId": "LDC_KAIROS_ent_011",
     "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/MHI",
     "name": "MHI",
-    "description": "Any medical condition or health issue, to include everything from disease to broken bones to fever to general ill health, medical errors, even natural causes."
+    "description": "Any medical condition or health issue, to include everything from disease to broken bones to fever to general ill health, medical errors, even natural causes"
   },
   {
     "annotIndexId": "LDC_KAIROS_ent_012",
@@ -75,7 +75,7 @@
     "annotIndexId": "LDC_KAIROS_ent_013",
     "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/NAT",
     "name": "NAT",
-    "description": "Valuable materials or substances, such as minerals, forests, water, and fertile land, that are not man-made, occur naturally within the environment and can be used for economic gain."
+    "description": "Valuable materials or substances, such as minerals, forests, water, and fertile land, that are not man-made, occur naturally within the environment and can be used for economic gain"
   },
   {
     "annotIndexId": "LDC_KAIROS_ent_014",
@@ -93,7 +93,7 @@
     "annotIndexId": "LDC_KAIROS_ent_016",
     "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PLA",
     "name": "PLA",
-    "description": "Plants/flora as well as edible fungi such as mushrooms; multicellular living organisms, typically growing in the earth and  lacking the power of locomotion, ex. grass and crops such as wheat, beans, fruit, etc. "
+    "description": "Plants/flora as well as edible fungi such as mushrooms; multicellular living organisms, typically growing in the earth and  lacking the power of locomotion, ex. grass and crops such as wheat, beans, fruit, etc."
   },
   {
     "annotIndexId": "LDC_KAIROS_ent_017",
@@ -111,7 +111,7 @@
     "annotIndexId": "LDC_KAIROS_ent_019",
     "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/SEN",
     "name": "SEN",
-    "description": "The judicial or court sentence in a Justice event, the punishment a judge gives to a defendant found guilty of a crime."
+    "description": "The judicial or court sentence in a Justice event, the punishment a judge gives to a defendant found guilty of a crime"
   },
   {
     "annotIndexId": "LDC_KAIROS_ent_020",
@@ -123,13 +123,13 @@
     "annotIndexId": "LDC_KAIROS_ent_021",
     "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/TTL",
     "name": "TTL",
-    "description": "A person’s title or job role"
+    "description": "A person's title or job role"
   },
   {
     "annotIndexId": "LDC_KAIROS_ent_022",
     "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/VAL",
     "name": "VAL",
-    "description": "A numerical value or non-numerical value such as an informational property such as color or make or URL."
+    "description": "A numerical value or non-numerical value such as an informational property such as color or make or URL"
   },
   {
     "annotIndexId": "LDC_KAIROS_ent_023",
@@ -141,12 +141,13 @@
     "annotIndexId": "LDC_KAIROS_ent_024",
     "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/WEA",
     "name": "WEA",
-    "description": "A physical device that is primarily used as an instrument for physically harming or destroying entities."
+    "description": "A physical device that is primarily used as an instrument for physically harming or destroying entities"
   },
   {
-    "annotIndexId": "",
+    "annotIndexId": "NONE",
     "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/EVENT",
     "name": "EVENT",
-    "description": "Not strictly an entity type in LDC, but this might be needed for tooling to represent arguments that take an event."
+    "description": "Not strictly an entity type in LDC, but this is needed for tooling to represent arguments that take an event."
   }
 ]
+
