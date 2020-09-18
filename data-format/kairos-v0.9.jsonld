@@ -77,8 +77,8 @@
       "@id": "kairos:absoluteTime",
       "@type": "xsd:dateTime"
     },
-    "ta1provenance": {
-      "@id": "kairos:ta1provenance",
+    "ta1ref": {
+      "@id": "kairos:ta1ref",
       "@type": "@id"
     },
     "modality": "kairos:modality",
