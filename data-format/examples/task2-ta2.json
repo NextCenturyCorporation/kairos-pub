@@ -1,0 +1,1679 @@
+{
+  "@context": [
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.9.jsonld",
+    {
+      "caci": "https://caci.com/kairos/",
+      "my_key": "caci:my_key",
+      "giant_bitstring": "caci:giant_bitstring"
+    }
+  ],
+  "@id": "ibm:Submissions/TA1/Q3",
+  "ta2": true,
+  "sdfVersion": "0.81",
+  "schemas": [
+    {
+      "@id": "ibm:Schemas/AttackWithDBIED",
+      "name": "Attack with DBIED",
+      "description": "An event scenario that results in an DBIED attack",
+      "version": "sbu-08.19.2020 / ibm-08-28-2020",
+      "confidence": "1.0",
+      "steps": [
+        {
+          "@id": "ibm:Schemas/AttackWithDBIED/Steps/Get_drone_1",
+          "@type": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified",
+          "name": "Get drone",
+          "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/Get_drone_1",
+          "comment": "provenance is null (or omitted) because the event was not found in the documents.",
+          "provenance": null,
+          "participants": [
+            {
+              "name": "giver",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Get_drone_1/giver",
+              "role": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified/Slots/Giver",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ]
+            },
+            {
+              "name": "acquirer",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Get_drone_1/acquirer",
+              "role": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified/Slots/Recipient",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ],
+              "values": []
+            },
+            {
+              "name": "drone",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Get_drone_1/drone",
+              "role": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified/Slots/AcquiredEntity",
+              "entityTypes": [
+                "kairos:Primitives/Entities/BAL",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/MON",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/AML",
+                "kairos:Primitives/Entities/PTH",
+                "kairos:Primitives/Entities/PLA",
+                "kairos:Primitives/Entities/ABS",
+                "kairos:Primitives/Entities/NAT",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/ORG"
+              ],
+              "values": []
+            },
+            {
+              "name": "pay",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Get_drone_1/pay",
+              "role": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified/Slots/PaymentBarter",
+              "entityTypes": [
+                "kairos:Primitives/Entities/BAL",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/MON",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/AML",
+                "kairos:Primitives/Entities/PTH",
+                "kairos:Primitives/Entities/PLA",
+                "kairos:Primitives/Entities/ABS",
+                "kairos:Primitives/Entities/NAT",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/ORG"
+              ]
+            },
+            {
+              "name": "beneficiary",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Get_drone_1/beneficiary",
+              "role": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified/Slots/Beneficiary",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ]
+            },
+            {
+              "name": "Place",
+              "@id": "ibm:Place_66jJ4CJ",
+              "role": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified/Slots/Place",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC"
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "ibm:Schemas/AttackWithDBIED/Steps/BuildDBIED_1",
+          "@type": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified",
+          "name": "Build a DBIED",
+          "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/BuildDBIED_1",
+          "comment": "Because this step was found in the documents (Graph G), we specify the step ID from Graph G as provenance.",
+          "provenance": "VP1001.00030",
+          "confidence": 0.76,
+          "temporal": [
+            {
+              "latestStartTime": "2018-08-04Txx:xx:xx",
+              "confidence": 1
+            },
+            {
+              "latestEndTime": "2018-08-04Txx:xx:xx",
+              "confidence": 1
+            }
+          ],
+          "participants": [
+            {
+              "name": "agent",
+              "aka": "attacker",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/BuildDBIED_1/agent",
+              "role": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified/Slots/ManufacturerAssembler",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ],
+              "values": []
+            },
+            {
+              "name": "bomb",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/BuildDBIED_1/bomb",
+              "role": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified/Slots/Artifact",
+              "entityTypes": [
+                "kairos:Primitives/Entities/MON",
+                "kairos:Primitives/Entities/BAL",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/PTH"
+              ],
+              "values": [
+                {
+                  "name": "drones",
+                  "confidence": 1,
+                  "comment": "Any argument that was found in Graph G specifies the participant id from Graph G as provenance.",
+                  "provenance": "AR1001.0062",
+                  "entityTypes": "kairos:Primitives/Entities/VEH"
+                }
+              ]
+            },
+            {
+              "name": "components",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/BuildDBIED_1/components",
+              "role": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified/Slots/Components",
+              "entityTypes": [
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/PTH"
+              ],
+              "values": [
+                {
+                  "name": "C4 explosives",
+                  "confidence": 1,
+                  "provenance": "AR1001.0061",
+                  "entityTypes": "kairos:Primitives/Entities/WEA"
+                }
+              ]
+            },
+            {
+              "name": "instrument",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/BuildDBIED_1/instrument",
+              "role": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified/Slots/Instrument",
+              "entityTypes": [
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/INF"
+              ]
+            },
+            {
+              "name": "place",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/BuildDBIED_1/place",
+              "role": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified/Slots/Place",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC"
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "ibm:Schemas/AttackWithDBIED/Steps/BuildIED_1",
+          "@type": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified",
+          "name": "Build an IED",
+          "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/BuildIED_1",
+          "provenance": null,
+          "participants": [
+            {
+              "name": "agent",
+              "aka": "attacker",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/BuildIED_1/agent",
+              "role": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified/Slots/ManufacturerAssembler",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ],
+              "values": []
+            },
+            {
+              "name": "bomb",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/BuildIED_1/bomb",
+              "role": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified/Slots/Artifact",
+              "entityTypes": [
+                "kairos:Primitives/Entities/MON",
+                "kairos:Primitives/Entities/BAL",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/PTH"
+              ],
+              "values": []
+            },
+            {
+              "name": "components",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/BuildIED_1/components",
+              "role": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified/Slots/Components",
+              "entityTypes": [
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/PTH"
+              ]
+            },
+            {
+              "name": "instrument",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/BuildIED_1/instrument",
+              "role": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified/Slots/Instrument",
+              "entityTypes": [
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/INF"
+              ]
+            },
+            {
+              "name": "place",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/BuildIED_1/place",
+              "role": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified/Slots/Place",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC"
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "ibm:Schemas/AttackWithDBIED/Steps/Transport_1",
+          "@type": "kairos:Primitives/Events/Movement.Transportation.Unspecified",
+          "name": "IED transport",
+          "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/Transport_1",
+          "confidence": 0.76,
+          "provenance": "VP1001.00034",
+          "temporal": [
+            {
+              "earliestStartTime": "2018-08-04T17:xx:xx",
+              "confidence": 1
+            },
+            {
+              "latestStartTime": "2018-08-04T17:xx:xx",
+              "confidence": 1
+            },
+            {
+              "earliestEndTime": "2018-08-04T17:xx:xx",
+              "confidence": 1
+            },
+            {
+              "latestEndTime": "2018-08-04T17:xx:xx",
+              "confidence": 1
+            }
+          ],
+          "participants": [
+            {
+              "name": "from",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/from",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Origin",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/GPE"
+              ]
+            },
+            {
+              "name": "to",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/to",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Destination",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/GPE"
+              ],
+              "values": [
+                {
+                  "name": "the stage where Maduro is speaking",
+                  "confidence": 1,
+                  "provenance": "AR1001.0077",
+                  "entityTypes": "kairos:Primitives/Entities/FAC"
+                }
+              ]
+            },
+            {
+              "name": "agent",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/agent",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Transporter",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ],
+              "values": [
+                {
+                  "name": "2 drone operators",
+                  "confidence": 1,
+                  "provenance": "AR1001.0078",
+                  "entityTypes": "kairos:Primitives/Entities/PER"
+                }
+              ]
+            },
+            {
+              "name": "vehicle",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/vehicle",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Vehicle",
+              "entityTypes": "kairos:Primitives/Entities/VEH",
+              "values": [
+                {
+                  "name": "the drone that exploded near the stage where Maduro was speaking",
+                  "confidence": 1,
+                  "provenance": "AR1001.0075",
+                  "entityTypes": "kairos:Primitives/Entities/VEH"
+                }
+              ]
+            },
+            {
+              "name": "object",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/object",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/PassengerArtifact",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/BAL",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/MON",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/AML",
+                "kairos:Primitives/Entities/PTH",
+                "kairos:Primitives/Entities/PLA",
+                "kairos:Primitives/Entities/BOD",
+                "kairos:Primitives/Entities/NAT"
+              ],
+              "values": [
+                {
+                  "name": "C4 explosives",
+                  "confidence": 1,
+                  "provenance": "AR1001.0076",
+                  "entityTypes": "kairos:Primitives/Entities/WEA"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "ibm:Schemas/AttackWithDBIED/Steps/Explode_1",
+          "@type": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode",
+          "name": "Explode",
+          "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/Explode_1",
+          "confidence": 0.76,
+          "provenance": "VP1001.00037",
+          "temporal": [
+            {
+              "earliestStartTime": "2018-08-04T17:41:xx",
+              "confidence": 1
+            },
+            {
+              "latestStartTime": "2018-08-04T17:41:xx",
+              "confidence": 1
+            },
+            {
+              "earliestEndTime": "2018-08-04T17:41:xx",
+              "confidence": 1
+            },
+            {
+              "latestEndTime": "2018-08-04T17:41:xx",
+              "confidence": 1
+            }
+          ],
+          "participants": [
+            {
+              "name": "agent",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/agent",
+              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Attacker",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ],
+              "values": []
+            },
+            {
+              "name": "device",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/device",
+              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/ExplosiveDevice",
+              "entityTypes": [
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/COM"
+              ],
+              "values": [
+                {
+                  "name": "C4 explosives",
+                  "confidence": 1,
+                  "provenance": "AR1001.0089",
+                  "entityTypes": "kairos:Primitives/Entities/WEA"
+                }
+              ]
+            },
+            {
+              "name": "means",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/means",
+              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Instrument",
+              "entityTypes": [
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/COM"
+              ]
+            },
+            {
+              "name": "place",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/place",
+              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Place",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC"
+              ],
+              "values": [
+                {
+                  "name": "Caracas",
+                  "confidence": 1,
+                  "provenance": "AR1001.0090",
+                  "entityTypes": "kairos:Primitives/Entities/GPE"
+                }
+              ]
+            },
+            {
+              "name": "target",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/target",
+              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Target",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/SID",
+                "kairos:Primitives/Entities/AML",
+                "kairos:Primitives/Entities/PLA",
+                "kairos:Primitives/Entities/NAT"
+              ],
+              "values": [
+                {
+                  "name": "Nicolás Maduro",
+                  "confidence": 1,
+                  "provenance": "AR1001.0094",
+                  "entityTypes": "kairos:Primitives/Entities/PER"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "ibm:Schemas/AttackWithDBIED/Steps/Attack_with_bomb_1",
+          "@type": "kairos:Primitives/Events/Conflict.Attack.Unspecified",
+          "name": "Attack with a bomb",
+          "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/Attack_with_bomb_1",
+          "provenance": null,
+          "participants": [
+            {
+              "name": "attacker",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/attacker",
+              "role": "kairos:Primitives/Events/Conflict.Attack.Unspecified/Slots/Attacker",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID",
+                "kairos:Primitives/Entities/AML"
+              ],
+              "values": []
+            },
+            {
+              "name": "target",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/target",
+              "role": "kairos:Primitives/Events/Conflict.Attack.Unspecified/Slots/Target",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/SID",
+                "kairos:Primitives/Entities/AML",
+                "kairos:Primitives/Entities/PLA",
+                "kairos:Primitives/Entities/NAT"
+              ]
+            },
+            {
+              "name": "means",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/means",
+              "role": "kairos:Primitives/Events/Conflict.Attack.Unspecified/Slots/Instrument",
+              "entityTypes": [
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/PTH"
+              ],
+              "values": []
+            },
+            {
+              "name": "place",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/place",
+              "role": "kairos:Primitives/Events/Conflict.Attack.Unspecified/Slots/Place",
+              "entityTypes": [
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE"
+              ],
+              "values": []
+            }
+          ]
+        },
+        {
+          "@id": "ibm:Schemas/AttackWithDBIED/Steps/Die_1",
+          "@type": "kairos:Primitives/Events/Life.Die.Unspecified",
+          "name": "Die from an attack",
+          "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/Die_1",
+          "provenance": null,
+          "participants": [
+            {
+              "name": "victim",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Die_1/victim",
+              "role": "kairos:Primitives/Events/Life.Die.Unspecified/Slots/Victim",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/AML"
+              ]
+            },
+            {
+              "name": "place",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Die_1/Place",
+              "role": "kairos:Primitives/Events/Life.Die.Unspecified/Slots/Place",
+              "entityTypes": [
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE"
+              ]
+            },
+            {
+              "name": "killer",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Die_1/Killer",
+              "role": "kairos:Primitives/Events/Life.Die.Unspecified/Slots/Killer",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID",
+                "kairos:Primitives/Entities/AML"
+              ]
+            },
+            {
+              "name": "medicalcause",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Die_1/MedicalCause",
+              "role": "kairos:Primitives/Events/Life.Die.Unspecified/Slots/MedicalIssue",
+              "entityTypes": "kairos:Primitives/Entities/MHI"
+            }
+          ]
+        },
+        {
+          "@id": "ibm:Schemas/AttackWithDBIED/Steps/Injured_1",
+          "@type": "kairos:Primitives/Events/Life.Injure.Unspecified",
+          "name": "Injure from an attack",
+          "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/Injured_1",
+          "confidence": 0.76,
+          "provenance": "VP1001.00052",
+          "temporal": [
+            {
+              "earliestStartTime": "2018-08-04T17:41:xx",
+              "confidence": 1
+            },
+            {
+              "latestStartTime": "2018-08-04T17:41:xx",
+              "confidence": 1
+            },
+            {
+              "earliestEndTime": "2018-08-04T17:41:xx",
+              "confidence": 1
+            },
+            {
+              "latestEndTime": "2018-08-04T17:41:xx",
+              "confidence": 1
+            }
+          ],
+          "participants": [
+            {
+              "name": "victim",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Injured_1/victim",
+              "role": "kairos:Primitives/Events/Life.Injure.Unspecified/Slots/Victim",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/AML"
+              ],
+              "values": [
+                {
+                  "name": "7 soldiers",
+                  "confidence": 1,
+                  "provenance": "AR1001.0150.prov",
+                  "entityTypes": "kairos:Primitives/Entities/PER"
+                }
+              ]
+            },
+            {
+              "name": "injurer",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Injured_1/agent",
+              "role": "kairos:Primitives/Events/Life.Injure.Unspecified/Slots/Injurer",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID",
+                "kairos:Primitives/Entities/AML"
+              ]
+            },
+            {
+              "name": "instrument",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Injured_1/instrument",
+              "role": "kairos:Primitives/Events/Life.Injure.Unspecified/Slots/Instrument",
+              "entityTypes": [
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/BAL",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/MON"
+              ],
+              "values": [
+                {
+                  "name": "C4 explosives",
+                  "confidence": 1,
+                  "provenance": "AR1001.0151.prov",
+                  "entityTypes": "kairos:Primitives/Entities/WEA"
+                }
+              ]
+            },
+            {
+              "name": "body_part",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Injured_1/body_part",
+              "role": "kairos:Primitives/Events/Life.Injure.Unspecified/Slots/BodyPart",
+              "entityTypes": "kairos:Primitives/Entities/BOD"
+            },
+            {
+              "name": "Victim",
+              "@id": "ibm:Victim_WH6ySTj",
+              "role": "kairos:Primitives/Events/Life.Injure.Unspecified/Slots/Victim",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/AML"
+              ]
+            },
+            {
+              "name": "MedicalCondition",
+              "@id": "ibm:MedicalCondition_Hpa5K8e",
+              "role": "kairos:Primitives/Events/Life.Injure.Unspecified/Slots/MedicalCondition",
+              "entityTypes": "kairos:Primitives/Entities/MHI"
+            },
+            {
+              "name": "Place",
+              "@id": "ibm:Place_ckVuOLs",
+              "role": "kairos:Primitives/Events/Life.Injure.Unspecified/Slots/Place",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC"
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "ibm:Schemas/AttackWithDBIED/Steps/Damage_1",
+          "@type": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Damage",
+          "name": "Damage of a thing",
+          "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/Damage_1",
+          "confidence": 0.76,
+          "provenance": "VP1001.00051",
+          "temporal": [
+            {
+              "earliestStartTime": "2018-08-04T17:4x:xx",
+              "confidence": 1
+            },
+            {
+              "latestStartTime": "2018-08-04T17:4x:xx",
+              "confidence": 1
+            },
+            {
+              "earliestEndTime": "2018-08-04T17:4x:xx",
+              "confidence": 1
+            },
+            {
+              "latestEndTime": "2018-08-04T17:4x:xx",
+              "confidence": 1
+            }
+          ],
+          "participants": [
+            {
+              "name": "damager",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Damage_1/damager",
+              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Damage/Slots/Damager",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ]
+            },
+            {
+              "name": "artifact",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Damage_1/artifact",
+              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Damage/Slots/Artifact",
+              "entityTypes": [
+                "kairos:Primitives/Entities/BAL",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/MON",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/PTH",
+                "kairos:Primitives/Entities/NAT"
+              ],
+              "values": [
+                {
+                  "name": "a nearby apartment building",
+                  "confidence": 1,
+                  "provenance": "AR1001.0146",
+                  "entityTypes": "kairos:Primitives/Entities/FAC"
+                }
+              ]
+            },
+            {
+              "name": "means",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Damage_1/means",
+              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Damage/Slots/Instrument",
+              "entityTypes": [
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA"
+              ],
+              "values": [
+                {
+                  "name": "C4 explosives",
+                  "confidence": 1,
+                  "provenance": "AR1001.0147",
+                  "entityTypes": "kairos:Primitives/Entities/WEA"
+                }
+              ]
+            },
+            {
+              "name": "place",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Damage_1/place",
+              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Damage/Slots/Place",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/GPE"
+              ],
+              "values": [
+                {
+                  "name": "Caracas",
+                  "confidence": 1,
+                  "provenance": "AR1001.0148",
+                  "entityTypes": "kairos:Primitives/Entities/GPE"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "ibm:Schemas/AttackWithDBIED/Steps/Destroy_1",
+          "@type": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Destroy",
+          "name": "Destroy a thing",
+          "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/Destroy_1",
+          "provenance": null,
+          "participants": [
+            {
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Destroy_1/agent",
+              "name": "destroyer",
+              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Destroy/Slots/Destroyer",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ]
+            },
+            {
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Destroy_1/atifact",
+              "name": "artifact",
+              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Destroy/Slots/Artifact",
+              "entityTypes": [
+                "kairos:Primitives/Entities/BAL",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/MON",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/PTH",
+                "kairos:Primitives/Entities/NAT"
+              ]
+            },
+            {
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Destroy_1/means",
+              "name": "means",
+              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Destroy/Slots/Instrument",
+              "entityTypes": [
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA"
+              ]
+            },
+            {
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Destroy_1/place",
+              "name": "place",
+              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Destroy/Slots/Place",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/GPE"
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00005",
+          "name": "Juan Manuel Santos and Julio Borges collaborated on drone attack",
+          "@type": "kairos:Primitives/Events/Contact.Contact.Unspecified",
+          "comment": "Everything in Graph G that wasn't in the schema will have ta1ref=null, or better yet, omit ta1ref.",
+          "ta1ref": null,
+          "confidence": 0.76,
+          "provenance": "VP1001.00005",
+          "modality": "hedged",
+          "temporal": [
+            {
+              "latestStartTime": "2018-08-04Txx:xx:xx",
+              "confidence": 0.59
+            },
+            {
+              "latestEndTime": "2018-08-04Txx:xx:xx",
+              "confidence": 0.59
+            }
+          ],
+          "participants": [
+            {
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00005/AR1001.0009",
+              "name": "Participant",
+              "role": "kairos:Primitives/Events/Contact.Contact.Unspecified/Slots/Participant",
+              "entityTypes": "kairos:Primitives/Entities/PER",
+              "values": [
+                {
+                  "name": "Juan Manuel Santos",
+                  "confidence": 1,
+                  "provenance": "AR1001.0009",
+                  "entityTypes": "kairos:Primitives/Entities/PER"
+                },
+                {
+                  "comment": "This second argument filler could also be represented by an additional Participant.",
+                  "name": "Julio Borges",
+                  "confidence": 1,
+                  "provenance": "AR1001.0010",
+                  "entityTypes": "kairos:Primitives/Entities/PER"
+                }
+              ]
+            },
+            {
+              "name": "Topic",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00005/VP1001.00037",
+              "role": "kairos:Primitives/Events/Contact.Contact.Unspecified/Slots/Topic",
+              "entityTypes": "kairos:Primitives/Entities/EVENT",
+              "values": [
+                {
+                  "name": "Drone explodes near the stage where Maduro is speaking",
+                  "confidence": 1,
+                  "provenance": "VP1001.00037",
+                  "entityTypes": "kairos:Primitives/Events/Contact.Contact.Unspecified"
+                },
+                {
+                  "name": "Drone explodes at nearby apartment building",
+                  "confidence": 1,
+                  "provenance": "VP1001.00050",
+                  "entityTypes": "kairos:Primitives/Events/Contact.Contact.Unspecified"
+                }
+              ]
+            },
+            {
+              "name": "Place",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00005/Place",
+              "role": "kairos:Primitives/Events/Contact.Contact.Unspecified/Slots/Place",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC"
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00035",
+          "name": "Drones are disoriented with radio signal inhibitors",
+          "@type": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.DisableDefuse",
+          "confidence": 0.76,
+          "provenance": "VP1001.00035",
+          "temporal": [
+            {
+              "earliestStartTime": "2018-08-04T17:xx:xx",
+              "confidence": 0.59
+            },
+            {
+              "latestStartTime": "2018-08-04T17:xx:xx",
+              "confidence": 0.59
+            },
+            {
+              "earliestEndTime": "2018-08-04T17:xx:xx",
+              "confidence": 0.59
+            },
+            {
+              "latestEndTime": "2018-08-04T17:xx:xx",
+              "confidence": 0.59
+            }
+          ],
+          "participants": [
+            {
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00035/AR1001.0079",
+              "name": "Artifact",
+              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.DisableDefuse/Slots/Artifact",
+              "entityTypes": "kairos:Primitives/Entities/VEH",
+              "values": [
+                {
+                  "name": "drones",
+                  "confidence": 1,
+                  "provenance": "AR1001.0079",
+                  "entityTypes": "kairos:Primitives/Entities/VEH"
+                }
+              ]
+            },
+            {
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00035/AR1001.0080",
+              "name": "Place",
+              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.DisableDefuse/Slots/Place",
+              "entityTypes": "kairos:Primitives/Entities/GPE",
+              "values": [
+                {
+                  "name": "Caracas",
+                  "confidence": 1,
+                  "provenance": "AR1001.0080",
+                  "entityTypes": "kairos:Primitives/Entities/GPE"
+                }
+              ]
+            },
+            {
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00035/AR1001.0081",
+              "name": "Place",
+              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.DisableDefuse/Slots/Place",
+              "entityTypes": "kairos:Primitives/Entities/LOC",
+              "values": [
+                {
+                  "name": "downtown Caracas",
+                  "confidence": 1,
+                  "provenance": "AR1001.0081",
+                  "entityTypes": "kairos:Primitives/Entities/LOC"
+                }
+              ]
+            },
+            {
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00035/AR1001.0082",
+              "name": "radio signal inhibitors",
+              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.DisableDefuse/Slots/Instrument",
+              "entityTypes": "kairos:Primitives/Entities/COM",
+              "values": [
+                {
+                  "name": "radio signal inhibitors",
+                  "confidence": 1,
+                  "provenance": "AR1001.0082",
+                  "entityTypes": "kairos:Primitives/Entities/COM"
+                }
+              ]
+            },
+            {
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00035/AR1001.0083",
+              "name": "Disabler",
+              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.DisableDefuse/Slots/Disabler",
+              "entityTypes": "kairos:Primitives/Entities/ORG",
+              "values": [
+                {
+                  "name": "Venezuelan intelligence",
+                  "confidence": 1,
+                  "provenance": "AR1001.0083",
+                  "entityTypes": "kairos:Primitives/Entities/ORG"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00048",
+          "name": "Drone is diverted toward nearby apartment building",
+          "@type": "kairos:Primitives/Events/Movement.Transportation.Unspecified",
+          "confidence": 0.76,
+          "provenance": "VP1001.00048",
+          "temporal": [
+            {
+              "earliestStartTime": "2018-08-04T17:xx:xx",
+              "confidence": 0.59
+            },
+            {
+              "latestStartTime": "2018-08-04T17:xx:xx",
+              "confidence": 0.59
+            },
+            {
+              "earliestEndTime": "2018-08-04T17:xx:xx",
+              "confidence": 0.59
+            },
+            {
+              "latestEndTime": "2018-08-04T17:xx:xx",
+              "confidence": 0.59
+            }
+          ],
+          "participants": [
+            {
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00048/AR1001.0134",
+              "name": "Vehicle",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Vehicle",
+              "entityTypes": "kairos:Primitives/Entities/VEH",
+              "values": [
+                {
+                  "name": "the drone that crashed into the apartment building",
+                  "confidence": 1,
+                  "provenance": "AR1001.0134",
+                  "entityTypes": "kairos:Primitives/Entities/VEH"
+                }
+              ]
+            },
+            {
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00048/AR1001.0135",
+              "name": "Destination",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Destination",
+              "entityTypes": "kairos:Primitives/Entities/FAC",
+              "values": [
+                {
+                  "name": "a nearby apartment building",
+                  "confidence": 1,
+                  "provenance": "AR1001.0135",
+                  "entityTypes": "kairos:Primitives/Entities/FAC"
+                }
+              ]
+            },
+            {
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00048/AR1001.0136",
+              "name": "C4 explosives",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/PassengerArtifact",
+              "entityTypes": "kairos:Primitives/Entities/WEA",
+              "values": [
+                {
+                  "name": "C4 explosives",
+                  "confidence": 1,
+                  "provenance": "AR1001.0136",
+                  "entityTypes": "kairos:Primitives/Entities/WEA"
+                }
+              ]
+            },
+            {
+              "name": "Transporter",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00048/Transporter",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Transporter",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ],
+              "values": []
+            },
+            {
+              "name": "Origin",
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00048/Origin",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Origin",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC"
+              ],
+              "values": []
+            }
+          ]
+        },
+        {
+          "@id": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00049",
+          "name": "Drone crashes into apartment building",
+          "@type": "kairos:Primitives/Events/Disaster.Crash.Unspecified",
+          "confidence": 0.76,
+          "provenance": "VP1001.00049",
+          "temporal": [
+            {
+              "earliestStartTime": "2018-08-04T17:4x:xx",
+              "confidence": 0.59
+            },
+            {
+              "latestStartTime": "2018-08-04T17:4x:xx",
+              "confidence": 0.59
+            },
+            {
+              "earliestEndTime": "2018-08-04T17:4x:xx",
+              "confidence": 0.59
+            },
+            {
+              "latestEndTime": "2018-08-04T17:4x:xx",
+              "confidence": 0.59
+            }
+          ],
+          "participants": [
+            {
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00049/AR1001.0137",
+              "name": "Vehicle",
+              "role": "kairos:Primitives/Events/Disaster.Crash.Unspecified/Slots/Vehicle",
+              "entityTypes": "kairos:Primitives/Entities/VEH",
+              "values": [
+                {
+                  "name": "the drone that crashed into the apartment building",
+                  "confidence": 1,
+                  "provenance": "AR1001.0137",
+                  "entityTypes": "kairos:Primitives/Entities/VEH"
+                }
+              ]
+            },
+            {
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00049/AR1001.0138",
+              "name": "CrashObject",
+              "role": "kairos:Primitives/Events/Disaster.Crash.Unspecified/Slots/CrashObject",
+              "entityTypes": "kairos:Primitives/Entities/FAC",
+              "values": [
+                {
+                  "name": "a nearby apartment building",
+                  "confidence": 1,
+                  "provenance": "AR1001.0138",
+                  "entityTypes": "kairos:Primitives/Entities/FAC"
+                }
+              ]
+            },
+            {
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00049/AR1001.0139",
+              "name": "Place",
+              "role": "kairos:Primitives/Events/Disaster.Crash.Unspecified/Slots/Place",
+              "entityTypes": [
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/LOC"
+              ],
+              "values": [
+                {
+                  "name": "Caracas",
+                  "confidence": 1,
+                  "provenance": "AR1001.0139",
+                  "entityTypes": "kairos:Primitives/Entities/GPE"
+                },
+                {
+                  "name": "downtown Caracas",
+                  "confidence": 1,
+                  "provenance": "AR1001.0140",
+                  "entityTypes": "kairos:Primitives/Entities/LOC"
+                }
+              ]
+            },
+            {
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00049/DriverPassenger",
+              "name": "DriverPassenger",
+              "role": "kairos:Primitives/Events/Disaster.Crash.Unspecified/Slots/DriverPassenger",
+              "entityTypes": "kairos:Primitives/Entities/PER",
+              "values": []
+            }
+          ]
+        },
+        {
+          "@id": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00050",
+          "name": "Drone explodes at nearby apartment building",
+          "@type": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode",
+          "confidence": 0.76,
+          "provenance": "VP1001.00050",
+          "temporal": [
+            {
+              "earliestStartTime": "2018-08-04T17:4x:xx",
+              "confidence": 0.59
+            },
+            {
+              "latestStartTime": "2018-08-04T17:4x:xx",
+              "confidence": 0.59
+            },
+            {
+              "earliestEndTime": "2018-08-04T17:4x:xx",
+              "confidence": 0.59
+            },
+            {
+              "latestEndTime": "2018-08-04T17:4x:xx",
+              "confidence": 0.59
+            }
+          ],
+          "participants": [
+            {
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00050/AR1001.0141",
+              "name": "ExplosiveDevice",
+              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/ExplosiveDevice",
+              "entityTypes": "kairos:Primitives/Entities/WEA",
+              "values": [
+                {
+                  "name": "C4 explosives",
+                  "confidence": 1,
+                  "provenance": "AR1001.0141",
+                  "entityTypes": "kairos:Primitives/Entities/WEA"
+                }
+              ]
+            },
+            {
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00050/AR1001.0142",
+              "name": "Instrument",
+              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Instrument",
+              "entityTypes": "kairos:Primitives/Entities/VEH",
+              "values": [
+                {
+                  "name": "the drone that crashed into the apartment building",
+                  "confidence": 1,
+                  "provenance": "AR1001.0142",
+                  "entityTypes": "kairos:Primitives/Entities/VEH"
+                }
+              ]
+            },
+            {
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00050/AR1001.0143",
+              "name": "Place",
+              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Place",
+              "entityTypes": "kairos:Primitives/Entities/FAC",
+              "values": [
+                {
+                  "name": "a nearby apartment building",
+                  "confidence": 1,
+                  "provenance": "AR1001.0143",
+                  "entityTypes": "kairos:Primitives/Entities/FAC"
+                }
+              ]
+            },
+            {
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00050/AR1001.0144/AR1001.0145",
+              "name": "Place",
+              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Place",
+              "entityTypes": [
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/LOC"
+              ],
+              "values": [
+                {
+                  "name": "Caracas",
+                  "confidence": 1,
+                  "provenance": "AR1001.0144",
+                  "entityTypes": "kairos:Primitives/Entities/GPE"
+                },
+                {
+                  "name": "downtown Caracas",
+                  "confidence": 1,
+                  "provenance": "AR1001.0145",
+                  "entityTypes": "kairos:Primitives/Entities/LOC"
+                }
+              ]
+            },
+            {
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00050/Attacker",
+              "name": "Attacker",
+              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Attacker",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ],
+              "values": []
+            },
+            {
+              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00050/Target",
+              "name": "Target",
+              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Target",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/SID",
+                "kairos:Primitives/Entities/AML",
+                "kairos:Primitives/Entities/PLA",
+                "kairos:Primitives/Entities/NAT"
+              ],
+              "values": []
+            }
+          ]
+        }
+      ],
+      "order": [
+        {
+          "before": [
+            "ibm:Schemas/AttackWithDBIED/Steps/Get_drone_1",
+            "ibm:Schemas/AttackWithDBIED/Steps/BuildIED_1"
+          ],
+          "after": "ibm:Schemas/AttackWithDBIED/Steps/BuildDBIED_1",
+          "flag": "precondition",
+          "confidence": 0.4999
+        },
+        {
+          "before": "ibm:Schemas/AttackWithDBIED/Steps/BuildIED_1",
+          "after": "ibm:Schemas/AttackWithDBIED/Steps/Transport_1",
+          "confidence": 0.4999
+        },
+        {
+          "before": "ibm:Schemas/AttackWithDBIED/Steps/BuildIED_1",
+          "after": "ibm:Schemas/AttackWithDBIED/Steps/Explode_1",
+          "flags": "precondition",
+          "confidence": 0.4999
+        },
+        {
+          "before": [
+            "ibm:Schemas/AttackWithDBIED/Steps/BuildIED_1",
+            "ibm:Schemas/AttackWithDBIED/Steps/Transport_1",
+            "ibm:Schemas/AttackWithDBIED/Steps/Explode_1"
+          ],
+          "after": "ibm:Schemas/AttackWithDBIED/Steps/Attack_with_bomb_1",
+          "flags": "precondition",
+          "confidence": 0.4999
+        },
+        {
+          "before": "ibm:Schemas/AttackWithDBIED/Steps/Attack_with_bomb_1",
+          "after": [
+            "ibm:Schemas/AttackWithDBIED/Steps/Die_1",
+            "ibm:Schemas/AttackWithDBIED/Steps/Injured_1",
+            "ibm:Schemas/AttackWithDBIED/Steps/Damage_1",
+            "ibm:Schemas/AttackWithDBIED/Steps/Destroy_1"
+          ],
+          "flags": "precondition",
+          "confidence": 0.4999
+        },
+        {
+          "before": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00005",
+          "after": "ibm:Schemas/AttackWithDBIED/Steps/BuildDBIED_1",
+          "flags": "precondition",
+          "confidence": 0.4999
+        },
+        {
+          "before": "ibm:Schemas/AttackWithDBIED/Steps/BuildDBIED_1",
+          "after": "ibm:Schemas/AttackWithDBIED/Steps/Transport_1",
+          "flags": "precondition",
+          "confidence": 0.4999
+        },
+        {
+          "before": "ibm:Schemas/AttackWithDBIED/Steps/Transport_1",
+          "after": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00035",
+          "flags": "precondition",
+          "confidence": 0.4999
+        },
+        {
+          "before": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00035",
+          "after": "ibm:Schemas/AttackWithDBIED/Steps/Explode_1",
+          "flags": "precondition",
+          "confidence": 0.4999
+        },
+        {
+          "before": "ibm:Schemas/AttackWithDBIED/Steps/Explode_1",
+          "after": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00048",
+          "flags": "precondition",
+          "confidence": 0.4999
+        },
+        {
+          "before": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00048",
+          "after": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00049",
+          "flags": "precondition",
+          "confidence": 0.4999
+        },
+        {
+          "before": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00049",
+          "after": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00050",
+          "flags": "precondition",
+          "confidence": 0.4999
+        },
+        {
+          "before": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00050",
+          "after": "ibm:Schemas/AttackWithDBIED/Steps/Damage_1",
+          "flags": "precondition",
+          "confidence": 0.4999
+        },
+        {
+          "before": "ibm:Schemas/AttackWithDBIED/Steps/Damage_1",
+          "after": "ibm:Schemas/AttackWithDBIED/Steps/Injured_1",
+          "flags": "precondition",
+          "confidence": 0.4999
+        }
+      ],
+      "entityRelations": [
+        {
+          "relationSubject": "ibm:Schemas/AttackWithDBIED/Slots/Get_drone_1/acquirer",
+          "relations": [
+            {
+              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
+              "relationObject": "ibm:Schemas/AttackWithDBIED/Slots/BuildIED_1/agent",
+              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/BEr7z8exXl5sS"
+            },
+            {
+              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
+              "relationObject": "ibm:Schemas/AttackWithDBIED/Slots/BuildIED_1/agent",
+              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/jcBFrhntOxjCb"
+            },
+            {
+              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
+              "relationObject": "ibm:Schemas/AttackWithDBIED/Slots/BuildDBIED_1/agent",
+              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/HtSQqKWIdTxrB"
+            },
+            {
+              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
+              "relationObject": "ibm:Schemas/AttackWithDBIED/Slots/BuildDBIED_1/agent",
+              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/asC3ks69WoLDa"
+            },
+            {
+              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
+              "relationObject": "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/agent",
+              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/Cvkatx5ZmvhIe"
+            },
+            {
+              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
+              "relationObject": "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/agent",
+              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/gWr5mzhRyeMAh"
+            },
+            {
+              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
+              "relationObject": [
+                "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/agent",
+                "ibm:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/attacker"
+              ],
+              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/YXB2fOtiqvHay"
+            },
+            {
+              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
+              "relationObject": [
+                "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/agent",
+                "ibm:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/attacker"
+              ],
+              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/ImiVf5ZWlyHXM"
+            }
+          ]
+        },
+        {
+          "relationSubject": "ibm:Schemas/AttackWithDBIED/Slots/BuildIED_1/agent",
+          "relations": [
+            {
+              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
+              "relationObject": "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/agent",
+              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/M6AKb1jmSUFco"
+            },
+            {
+              "comment": "In case where the person who built an IED is different from the one who transports",
+              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
+              "relationObject": "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/agent",
+              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/WSieFpkZldq41"
+            },
+            {
+              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
+              "relationObject": [
+                "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/agent",
+                "ibm:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/attacker"
+              ],
+              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/x9HRYJkKbmIn2"
+            },
+            {
+              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
+              "relationObject": [
+                "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/agent",
+                "ibm:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/attacker"
+              ],
+              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/bc7AS6vWi6AOa"
+            }
+          ]
+        },
+        {
+          "relationSubject": "ibm:Schemas/AttackWithDBIED/Slots/BuildDBIED_1/agent",
+          "relations": [
+            {
+              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
+              "relationObject": "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/agent",
+              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/QNerc1ODRJ4tV"
+            },
+            {
+              "comment": "In case where the person who built an IED is different from the one who transports",
+              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
+              "relationObject": "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/agent",
+              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/PRgwhW2Hl3Bi1"
+            },
+            {
+              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
+              "relationObject": [
+                "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/agent",
+                "ibm:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/attacker"
+              ],
+              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/1FROVzv7t8Y6i"
+            },
+            {
+              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
+              "relationObject": [
+                "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/agent",
+                "ibm:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/attacker"
+              ],
+              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/u8J4sMKNVKmMq"
+            }
+          ]
+        },
+        {
+          "relationSubject": "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/agent",
+          "relations": [
+            {
+              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
+              "relationObject": [
+                "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/agent",
+                "ibm:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/attacker"
+              ],
+              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/Q4KMqDTFhkdtT"
+            },
+            {
+              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
+              "relationObject": [
+                "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/agent",
+                "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/agent",
+                "ibm:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/attacker"
+              ],
+              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/sneKqAqaMdSFE"
+            }
+          ]
+        },
+        {
+          "relationSubject": "ibm:Schemas/AttackWithDBIED/Slots/BuildIED_1/bomb",
+          "comment": "Assuming that there is one IED.",
+          "relations": [
+            {
+              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
+              "comment": "IED",
+              "relationObject": [
+                "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/object",
+                "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/device",
+                "ibm:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/means"
+              ],
+              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/cOOdGvzDQGDoH"
+            }
+          ]
+        },
+        {
+          "relationSubject": "ibm:Schemas/AttackWithDBIED/Slots/Get_drone_1/drone",
+          "comment": "Assuming that there is one DBIED.",
+          "relations": [
+            {
+              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
+              "comment": "DBIED",
+              "relationObject": [
+                "ibm:Schemas/AttackWithDBIED/Slots/BuildDBIED_1/bomb",
+                "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/object"
+              ],
+              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/MDwtmt57Cn3l5"
+            }
+          ]
+        },
+        {
+          "relationSubject": "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/to",
+          "comment": "The location for an attack",
+          "relations": [
+            {
+              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
+              "relationObject": "ibm:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/place",
+              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/MKFhb04UHRZPj"
+            }
+          ]
+        }
+      ],
+      "slots": [
+        {
+          "@id": "ibm:Schemas/AttackWithDBIED/Slots/agent",
+          "roleName": "Agent",
+          "aka": [
+            "Primary Actor",
+            "attacker"
+          ],
+          "entityTypes": [
+            "kairos:Primitives/Entities/PER",
+            "kairos:Primitives/Entities/ORG"
+          ]
+        },
+        {
+          "@id": "ibm:Schemas/AttackWithDBIED/Slots/instrument",
+          "roleName": "Instrument",
+          "aka": [
+            "means",
+            "device"
+          ],
+          "entityTypes": [
+            "kairos:Primitives/Entities/COM",
+            "kairos:Primitives/Entities/VEH",
+            "kairos:Primitives/Entities/WEA"
+          ]
+        },
+        {
+          "@id": "ibm:Schemas/AttackWithDBIED/Slots/target",
+          "roleName": "Target",
+          "aka": "victim",
+          "entityTypes": [
+            "kairos:Primitives/Entities/COM",
+            "kairos:Primitives/Entities/FAC",
+            "kairos:Primitives/Entities/PER",
+            "kairos:Primitives/Entities/VEH"
+          ]
+        },
+        {
+          "@id": "ibm:Schemas/AttackWithDBIED/Slots/place",
+          "roleName": "Place",
+          "aka": "site",
+          "entityTypes": [
+            "kairos:Primitives/Entities/FAC",
+            "kairos:Primitives/Entities/LOC",
+            "kairos:Primitives/Entities/GPE"
+          ]
+        }
+      ]
+    }
+  ]
+}
