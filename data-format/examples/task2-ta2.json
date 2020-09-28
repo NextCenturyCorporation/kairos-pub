@@ -9,6 +9,7 @@
   ],
   "@id": "ibm:Submissions/TA1/Q3",
   "ta2": true,
+  "task2": true,
   "sdfVersion": "0.81",
   "schemas": [
     {
