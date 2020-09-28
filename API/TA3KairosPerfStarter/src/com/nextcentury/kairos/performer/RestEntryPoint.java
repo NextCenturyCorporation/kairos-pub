@@ -16,9 +16,9 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 import org.codehaus.jackson.type.TypeReference;
 
+import com.nextcentury.kairos.performer.algorithm.status.AlgorithmStatusChecker;
 import com.nextcentury.kairos.performer.executor.AlgorithmExecutor;
-import com.nextcentury.kairos.performer.healthcheck.ContainerStatusChecker;
-import com.nextcentury.kairos.performer.healthcheck.PerformerStatusChecker;
+import com.nextcentury.kairos.performer.healthcheck.PodStatusChecker;
 import com.nextcentury.kairos.tuple.KairosMessage;
 import com.nextcentury.kairos.utils.ExceptionHelper;
 import com.nextcentury.kairos.utils.StatusCode;
@@ -115,7 +115,7 @@ public class RestEntryPoint {
 		logger.debug(" - Creating context - " + KAIROS_SERVICE_READY);
 		server.createContext(KAIROS_SERVICE_READY, (exchange -> {
 			try {
-				new ContainerStatusChecker(exchange, ContainerStatusChecker.StatusType.READINESS_CHECK)
+				new PodStatusChecker(exchange, PodStatusChecker.StatusType.READINESS_CHECK)
 						.runStatusCheck();
 			} finally {
 				exchange.close();
@@ -125,7 +125,7 @@ public class RestEntryPoint {
 		logger.debug(" - Creating context - " + KAIROS_SERVICE_ALIVE);
 		server.createContext(KAIROS_SERVICE_ALIVE, (exchange -> {
 			try {
-				new ContainerStatusChecker(exchange, ContainerStatusChecker.StatusType.ALIVE_CHECK).runStatusCheck();
+				new PodStatusChecker(exchange, PodStatusChecker.StatusType.ALIVE_CHECK).runStatusCheck();
 			} finally {
 				exchange.close();
 			}
@@ -134,7 +134,7 @@ public class RestEntryPoint {
 		logger.debug(" - Creating context - " + KAIROS_SERVICE_STATUS);
 		server.createContext(KAIROS_SERVICE_STATUS, (exchange -> {
 			try {
-				new PerformerStatusChecker(exchange).runStatusCheck();
+				new AlgorithmStatusChecker(exchange).runStatusCheck();
 			} finally {
 				exchange.close();
 			}

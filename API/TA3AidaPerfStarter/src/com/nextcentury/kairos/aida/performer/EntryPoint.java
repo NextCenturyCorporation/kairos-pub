@@ -13,7 +13,8 @@ import org.apache.logging.log4j.core.config.Configuration;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 
-import com.nextcentury.kairos.aida.performer.healthcheck.PerformerStatusChecker;
+import com.nextcentury.kairos.aida.performer.algorithm.status.AlgorithmStatusChecker;
+import com.nextcentury.kairos.aida.performer.healthcheck.PodStatusChecker;
 import com.sun.net.httpserver.HttpServer;
 
 public class EntryPoint {
@@ -39,6 +40,9 @@ public class EntryPoint {
 	private static final String KAIROS_SERVICE = "/kairos";
 	private static final String KAIROS_SERVICE_STATUS = KAIROS_SERVICE + "/status";
 
+	private static final String KAIROS_SERVICE_READY = KAIROS_SERVICE + "/ready";
+	private static final String KAIROS_SERVICE_ALIVE = KAIROS_SERVICE + "/alive";
+
 	private static final String KAIROSFSMOUNTPATH_ROOT = "/var/kairosfs";
 
 	private static ObjectMapper mapper = new ObjectMapper();
@@ -56,7 +60,6 @@ public class EntryPoint {
 		performerName = System.getenv().get(EXPERIMENT_CONFIG_KEY_PERFORMER);
 		ta1SchemaLibPath = System.getenv().get(EXPERIMENT_CONFIG_KEY_TA1SCHEMALIBPATH);
 		graphgPath = System.getenv().get(EXPERIMENT_CONFIG_KEY_GRAPHGPATH);
-		
 
 		mountPathPersist = new StringBuffer(KAIROSFSMOUNTPATH_ROOT).append("/").append(experimentName).append("/")
 				.append(performerName).append("/persist").toString().toLowerCase();
@@ -65,15 +68,34 @@ public class EntryPoint {
 
 		// always do this first, so that log4j knows where to write the log file to
 		configureLogging();
-		
+
 		int cores = Runtime.getRuntime().availableProcessors();
 		logger.debug("# of cores on host - " + cores);
 
 		HttpServer server = HttpServer.create(new InetSocketAddress(serverPort), 0);
+
+		logger.debug(" - Creating context - " + KAIROS_SERVICE_READY);
+		server.createContext(KAIROS_SERVICE_READY, (exchange -> {
+			try {
+				new PodStatusChecker(exchange, PodStatusChecker.StatusType.READINESS_CHECK).runStatusCheck();
+			} finally {
+				exchange.close();
+			}
+		}));
+
+		logger.debug(" - Creating context - " + KAIROS_SERVICE_ALIVE);
+		server.createContext(KAIROS_SERVICE_ALIVE, (exchange -> {
+			try {
+				new PodStatusChecker(exchange, PodStatusChecker.StatusType.ALIVE_CHECK).runStatusCheck();
+			} finally {
+				exchange.close();
+			}
+		}));
+		
 		logger.debug(" - Creating context - " + KAIROS_SERVICE_STATUS);
 		server.createContext(KAIROS_SERVICE_STATUS, (exchange -> {
 			try {
-				new PerformerStatusChecker(exchange).runStatusCheck();
+				new AlgorithmStatusChecker(exchange).runStatusCheck();
 			} finally {
 				exchange.close();
 			}
