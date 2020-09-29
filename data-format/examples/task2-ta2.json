@@ -14,6 +14,7 @@
   "schemas": [
     {
       "@id": "ibm:Schemas/AttackWithDBIED",
+      "super": "sbu:Schemas/AttackWithDBIED",
       "name": "Attack with DBIED",
       "description": "An event scenario that results in an DBIED attack",
       "version": "sbu-08.19.2020 / ibm-08-28-2020",
