@@ -178,7 +178,7 @@
       "name": "World Trade Center 1993 Attack",
       "description": "A terrorist attack on the World Trade Center, carried out on 2/26/1993, when a truck bomb detonated below the North Tower",
       "template": "<arg1> coordinated with <arg2> about a bombing attack on <arg3> to take place at <arg4>",
-      "version": "caci-09.15.2020 / caci-09.15.2020",
+      "version": "caci-10.01.2020 / caci-10.01.2020",
       "super": "caci:Schemas/CoordinatedBombingAttack",
       "confidence": 0.9,
       "privateData": {
@@ -1633,6 +1633,7 @@
               "relationPredicate": "kairos:Primitives/Relations/PersonalSocial.Relationship.Unspecified",
               "relationObject": "caci:Schemas/Instantiated/WTC1993/Slots/wire_transfer/recipient",
               "reference": "wiki:Q76557",
+              "ta1ref": null,
               "confidence": 1,
               "provenance": "Relation1238"
             }
@@ -1662,6 +1663,7 @@
               "name": "Same attacker moved to specific location as moved to general location",
               "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
               "relationObject": "caci:Schemas/Instantiated/WTC1993/Slots/move_to_general_attack_location_legally/attacker",
+              "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Relations/attacker_location1",
               "confidence": 0.9,
               "provenance": "Relation1238"
             },
@@ -1669,6 +1671,7 @@
               "name": "Attacker lives in general attack location",
               "relationPredicate": "kairos:Primitives/Relations/Physical.Resident.Resident",
               "relationObject": "caci:Schemas/Instantiated/WTC1993/Slots/move_to_general_attack_location_legally/attackLocation",
+              "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Relations/attacker_location2",
               "confidence": 0.2,
               "provenance": "Relation1238"
             }
@@ -1685,6 +1688,7 @@
               "name": "Giver of financing is one of the participants in the make_contact event",
               "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
               "relationObject": "caci:Schemas/Instantiated/WTC1993/Slots/make_contact/participant/poc",
+              "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Relations/financier1",
               "confidence": 0.75,
               "provenance": "Relation1238"
             },
@@ -1692,6 +1696,7 @@
               "name": "Giver of financing is affiliated with one of the participants in the make_contact event",
               "relationPredicate": "kairos:Primitives/Relations/PersonalSocial.Relationship.Political",
               "relationObject": "caci:Schemas/Instantiated/WTC1993/Slots/make_contact/participant/poc",
+              "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Relations/financier2",
               "confidence": 0.25,
               "provenance": "Relation1238"
             }
