@@ -4,11 +4,11 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 
+import org.apache.http.HttpStatus;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.nextcentury.kairos.aida.performer.utils.ExceptionHelper;
-import com.nextcentury.kairos.aida.performer.utils.StatusCode;
 import com.sun.net.httpserver.HttpExchange;
 
 public class PodStatusChecker {
@@ -52,7 +52,7 @@ public class PodStatusChecker {
 			}
 
 			// send back status code to specify check result probe
-			exchange.sendResponseHeaders(StatusCode.OK.getCode(), 0);
+			exchange.sendResponseHeaders(HttpStatus.SC_OK, 0);
 
 			// write the response back
 			exchange.getResponseHeaders().set(CONTENT_TYPE, APPLICATION_JSON);

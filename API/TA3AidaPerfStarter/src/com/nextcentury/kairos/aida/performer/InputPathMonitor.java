@@ -15,6 +15,7 @@ import java.util.stream.Stream;
 import org.apache.commons.io.monitor.FileAlterationListenerAdaptor;
 import org.apache.commons.io.monitor.FileAlterationMonitor;
 import org.apache.commons.io.monitor.FileAlterationObserver;
+import org.apache.http.HttpStatus;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -23,7 +24,6 @@ import org.codehaus.jackson.type.TypeReference;
 
 import com.nextcentury.kairos.aida.performer.tuple.KairosMessage;
 import com.nextcentury.kairos.aida.performer.tuple.ReturnValueTuple;
-import com.nextcentury.kairos.aida.performer.tuple.StatusCode;
 
 public class InputPathMonitor {
 	private static final Logger logger = LogManager.getLogger(InputPathMonitor.class);
@@ -39,7 +39,7 @@ public class InputPathMonitor {
 	private String logPathStr;
 	private ExecutorService executorService;
 
-	public InputPathMonitor(String performerName, String inputPathStr, String outputPathStr, String logPathStr, 
+	public InputPathMonitor(String performerName, String inputPathStr, String outputPathStr, String logPathStr,
 			ExecutorService executorService) {
 		this.inputPathStr = inputPathStr;
 		this.outputPathStr = outputPathStr;
@@ -100,7 +100,7 @@ public class InputPathMonitor {
 				String result = new AlgorithmExecutor(inputObject).execute();
 
 				ReturnValueTuple valueTuple = new ReturnValueTuple();
-				valueTuple.setStatusCode(StatusCode.OK.getCode());
+				valueTuple.setStatusCode(HttpStatus.SC_OK);
 				valueTuple.setValue(result);
 
 				// sign the output with performer name

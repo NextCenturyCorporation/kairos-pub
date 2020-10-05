@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 
+import org.apache.http.HttpStatus;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -11,7 +12,6 @@ import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 
 import com.nextcentury.kairos.aida.performer.ExceptionHelper;
 import com.nextcentury.kairos.aida.performer.tuple.PerformerStatusType;
-import com.nextcentury.kairos.aida.performer.tuple.StatusCode;
 import com.sun.net.httpserver.HttpExchange;
 
 public class AlgorithmStatusChecker {
@@ -49,14 +49,13 @@ public class AlgorithmStatusChecker {
 				buff.append(line);
 			}
 
-	
 			// convert the status check result to a string
 			// String payloadStr =
 			// mapper.writerWithDefaultPrettyPrinter().writeValueAsString(statusCheckResult);
 			String payloadStr = PerformerStatusType.INITIALIZED.getStatus();
 
 			// send back status code to specify check result probe
-			exchange.sendResponseHeaders(StatusCode.OK.getCode(), 0);
+			exchange.sendResponseHeaders(HttpStatus.SC_OK, 0);
 			// write the response back
 			exchange.getResponseHeaders().set(CONTENT_TYPE, TEXT_PLAIN);
 			responseBody = exchange.getResponseBody();

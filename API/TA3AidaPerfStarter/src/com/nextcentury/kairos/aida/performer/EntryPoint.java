@@ -1,10 +1,12 @@
 package com.nextcentury.kairos.aida.performer;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import org.apache.http.HttpStatus;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.LoggerContext;
@@ -91,12 +93,26 @@ public class EntryPoint {
 				exchange.close();
 			}
 		}));
-		
+
 		logger.debug(" - Creating context - " + KAIROS_SERVICE_STATUS);
 		server.createContext(KAIROS_SERVICE_STATUS, (exchange -> {
+			OutputStream responseBody = null;
 			try {
-				new AlgorithmStatusChecker(exchange).runStatusCheck();
+				if (exchange.getRequestMethod().equalsIgnoreCase("GET")) {
+					new AlgorithmStatusChecker(exchange).runStatusCheck();
+				} else {
+					exchange.sendResponseHeaders(HttpStatus.SC_METHOD_NOT_ALLOWED, 0);
+					responseBody = exchange.getResponseBody();
+					responseBody.write("Only GET supported".getBytes());
+				}
 			} finally {
+				if (responseBody != null) {
+					try {
+						responseBody.close();
+					} catch (Throwable e) {
+						logger.error(ExceptionHelper.getExceptionTrace(e));
+					}
+				}
 				exchange.close();
 			}
 		}));
