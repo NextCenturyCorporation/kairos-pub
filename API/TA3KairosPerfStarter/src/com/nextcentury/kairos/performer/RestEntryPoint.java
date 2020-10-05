@@ -7,6 +7,7 @@ import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.util.concurrent.Executors;
 
+import org.apache.http.HttpStatus;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.LoggerContext;
@@ -21,7 +22,6 @@ import com.nextcentury.kairos.performer.executor.AlgorithmExecutor;
 import com.nextcentury.kairos.performer.healthcheck.PodStatusChecker;
 import com.nextcentury.kairos.tuple.KairosMessage;
 import com.nextcentury.kairos.utils.ExceptionHelper;
-import com.nextcentury.kairos.utils.StatusCode;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpServer;
 
@@ -63,7 +63,6 @@ public class RestEntryPoint {
 	}
 
 	public static void main(String[] args) throws IOException {
-
 		experimentName = System.getenv().get(EXPERIMENT_CONFIG_KEY_EXPERIMENT);
 		evaluatorName = System.getenv().get(EXPERIMENT_CONFIG_KEY_EVALUATOR);
 		performerName = System.getenv().get(EXPERIMENT_CONFIG_KEY_PERFORMER);
@@ -105,9 +104,23 @@ public class RestEntryPoint {
 		HttpServer server = HttpServer.create(new InetSocketAddress(serverPort), 0);
 		logger.debug("Creating context - " + KAIROS_SERVICE_ENTRYPOINT);
 		server.createContext(KAIROS_SERVICE_ENTRYPOINT, (exchange -> {
+			OutputStream responseBody = null;
 			try {
-				handleMessage(exchange);
+				if (exchange.getRequestMethod().equalsIgnoreCase("POST")) {
+					handleEntrypointMessage(exchange);
+				} else {
+					exchange.sendResponseHeaders(HttpStatus.SC_METHOD_NOT_ALLOWED, 0);
+					responseBody = exchange.getResponseBody();
+					responseBody.write("Only POST supported".getBytes());
+				}
 			} finally {
+				if (responseBody != null) {
+					try {
+						responseBody.close();
+					} catch (Throwable e) {
+						logger.error(ExceptionHelper.getExceptionTrace(e));
+					}
+				}
 				exchange.close();
 			}
 		}));
@@ -115,8 +128,7 @@ public class RestEntryPoint {
 		logger.debug(" - Creating context - " + KAIROS_SERVICE_READY);
 		server.createContext(KAIROS_SERVICE_READY, (exchange -> {
 			try {
-				new PodStatusChecker(exchange, PodStatusChecker.StatusType.READINESS_CHECK)
-						.runStatusCheck();
+				new PodStatusChecker(exchange, PodStatusChecker.StatusType.READINESS_CHECK).runStatusCheck();
 			} finally {
 				exchange.close();
 			}
@@ -133,9 +145,23 @@ public class RestEntryPoint {
 
 		logger.debug(" - Creating context - " + KAIROS_SERVICE_STATUS);
 		server.createContext(KAIROS_SERVICE_STATUS, (exchange -> {
+			OutputStream responseBody = null;
 			try {
-				new AlgorithmStatusChecker(exchange).runStatusCheck();
+				if (exchange.getRequestMethod().equalsIgnoreCase("GET")) {
+					new AlgorithmStatusChecker(exchange).runStatusCheck();
+				} else {
+					exchange.sendResponseHeaders(HttpStatus.SC_OK, 0);
+					responseBody = exchange.getResponseBody();
+					responseBody.write("Only GET supported".getBytes());
+				}
 			} finally {
+				if (responseBody != null) {
+					try {
+						responseBody.close();
+					} catch (Throwable e) {
+						logger.error(ExceptionHelper.getExceptionTrace(e));
+					}
+				}
 				exchange.close();
 			}
 		}));
@@ -149,7 +175,7 @@ public class RestEntryPoint {
 		logger.debug("");
 	}
 
-	public void handleMessage(HttpExchange exchange) {
+	public void handleEntrypointMessage(HttpExchange exchange) {
 		logger.debug("URI ---> " + exchange.getRequestURI().toString());
 
 		OutputStream responseBody = null;
@@ -174,7 +200,7 @@ public class RestEntryPoint {
 			// this is just to demonstrate the concept
 			String returnValue = new AlgorithmExecutor(inputObject).execute();
 
-			exchange.sendResponseHeaders(StatusCode.OK.getCode(), 0);
+			exchange.sendResponseHeaders(HttpStatus.SC_OK, 0);
 			// write the response back
 			exchange.getResponseHeaders().set(CONTENT_TYPE, APPLICATION_JSON);
 			responseBody = exchange.getResponseBody();
@@ -226,7 +252,7 @@ public class RestEntryPoint {
 			// set the processed result
 			String returnValue = "Sending back an error  - " + payload;
 
-			exchange.sendResponseHeaders(StatusCode.BAD_REQUEST.getCode(), 0);
+			exchange.sendResponseHeaders(HttpStatus.SC_BAD_REQUEST, 0);
 			// write the response back
 			exchange.getResponseHeaders().set(CONTENT_TYPE, APPLICATION_JSON);
 			responseBody = exchange.getResponseBody();

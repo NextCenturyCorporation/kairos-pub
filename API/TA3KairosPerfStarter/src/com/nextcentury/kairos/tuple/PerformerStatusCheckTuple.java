@@ -5,8 +5,8 @@ import org.codehaus.jackson.annotate.JsonProperty;
 public class PerformerStatusCheckTuple {
 	
 	public enum PerformerStatusType {
-		INITIALIZED("Initialized"), PROCESSING("Processing"), DONE_PROCESSING("Done Processing"), PROCESSING_ERROR("Processing Error"),
-		PROCESSING_WARNING("Processing Warning"), WAITING_ON_DATA("Waiting on Data");
+		INITIALIZED("INITIALIZED"), PROCESSING("PROCESSING"), DONE_PROCESSING("DONE_PROCESSING"), PROCESSING_ERROR("PROCESSING_ERROR"),
+		PROCESSING_WARNING("PROCESSING_WARNING"), WAITING_ON_DATA("WAITING_ON_DATA");
 
 		private String status;
 
