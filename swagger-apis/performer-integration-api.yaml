@@ -1,0 +1,98 @@
+openapi: 3.0.0
+info:
+  title: KAIROS Performer implementation API
+  description: This is the specification for the KAIROS Performer Implementation API, that every performer container implementation will need to implement. 
+  version: 0.1.0
+servers:
+  - url: http://{aws-generated-url} # this is dynamically generated k8s ingress IP on AWS
+    description: KAIROS Integration endpoint url
+paths:
+  /kairos/status:
+    get:
+      summary: Returns current processing state of performer container.
+      description: status field must be one of the "statusTypes" listed below.
+      responses:
+        '200':
+          description: Current processing state of the performer container
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/statusResponse'
+  /kairos/entrypoint:
+    post:
+      summary: Performer algorithm execution entry point.
+      description: Kicks off the performer algorithm execution.
+      requestBody:
+        description: |
+          Contains the message payload to be passed in to the performer algorithm. id, sender, and time fields will always be populated. 
+          * The message will container either the 'content' field or 'contentUri' field but not both. 
+          * If content is set it will contain the data to be processed.
+          * If 'contentUri' is set it will contain the address to find the content which may either be hosted remotely or as a local file.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/entrypointMessage'
+      responses:
+        '200':
+          description: Results of performer execution (in json)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/entrypointResponse'
+components:
+  schemas:
+    entrypointMessage:
+      type: object
+      required:
+        - id
+        - sender
+        - time
+      properties:
+        id:
+          type: string
+          format: uuid
+        sender:
+          type: string
+        time:
+          type: string
+          format: date-time
+        content:
+          type: object
+          example: "Example source document content here"
+        contentUri:
+          type: string
+          format: uri
+          example: "s3://karios-experiment-data/sample.txt"
+    entrypointResponse:
+      type: object
+      required:
+        - requestId
+        - content
+      properties:
+        requestId:
+          type: string
+          format: uuid
+        content:
+          type: object
+          example: "Example response information here"
+    statusResponse:
+      type: object
+      required:
+        - status
+        - message
+      properties:
+        status:
+          $ref: '#/components/schemas/statusTypes'
+        message:
+          type: string
+          example: "(Optional) If application this field may pass along any information the performer may want to include"
+    statusTypes:
+      type: string
+      enum:
+        - INITIALIZED
+        - PROCESSING
+        - DONE_PROCESSING
+        - PROCESSING_ERROR
+        - PROCESSING_WARNING
+        - WAITING_ON_DATA
