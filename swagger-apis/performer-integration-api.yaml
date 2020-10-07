@@ -59,7 +59,7 @@ components:
           format: date-time
         content:
           type: object
-          example: "Example source document content here"
+          example: "Example source document content here."
         contentUri:
           type: string
           format: uri
@@ -75,7 +75,7 @@ components:
           format: uuid
         content:
           type: object
-          example: "Example response information here"
+          example: "Example response information here."
     statusResponse:
       type: object
       required:
@@ -86,7 +86,7 @@ components:
           $ref: '#/components/schemas/statusTypes'
         message:
           type: string
-          example: "(Optional) If application this field may pass along any information the performer may want to include"
+          example: "(Optional) If applicable this field may pass along any information the performer may want to include."
     statusTypes:
       type: string
       enum:
