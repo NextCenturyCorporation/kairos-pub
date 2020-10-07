@@ -1,11 +1,13 @@
-package com.nextcentury.kairos.aida.performer;
+package com.nextcentury.kairos.aida.performer.executor;
 
+import org.apache.http.HttpStatus;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 
-import com.nextcentury.kairos.aida.performer.tuple.KairosMessage;
+import com.nextcentury.kairos.aida.performer.ExceptionHelper;
+import com.nextcentury.kairos.aida.performer.algorithm.entrypoint.io.EntrypointMessage;
 
 public class AlgorithmExecutor {
 	private static final Logger logger = LogManager.getLogger(AlgorithmExecutor.class);
@@ -15,11 +17,24 @@ public class AlgorithmExecutor {
 		mapper.setSerializationInclusion(Inclusion.NON_NULL);
 		mapper.setSerializationInclusion(Inclusion.NON_EMPTY);
 	}
-	private KairosMessage input;
 
-	public AlgorithmExecutor(KairosMessage input) {
+	private EntrypointMessage input;
+	private String performerName;
+	private String output;
+	private int statusCode;
+
+	public AlgorithmExecutor(String performerName, EntrypointMessage input) {
 		super();
 		this.input = input;
+		this.performerName =performerName;
+	}
+
+	public String getOutput() {
+		return output;
+	}
+
+	public int getStatusCode() {
+		return statusCode;
 	}
 
 	/**
@@ -27,22 +42,26 @@ public class AlgorithmExecutor {
 	 * 
 	 * @return
 	 */
-	public String execute() {
-		String returnValue = null;
+	public void execute() {
 		try {
 			String payloadStr = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(input);
 			logger.debug("received - ");
 			logger.debug(payloadStr);
 
 			// invoke algorthm implementation here
-			// return value returned from execution in the returnValue field
+			// return string value json returned from execution in the returnValue field
 
+			//
 			// dummy return value
-			returnValue = "Successfully processed from aida-style test performer container";
+			//
+			output = "Successfully processed from test performer container - " + performerName;
+
+			//
+			// simulating a successful return
+			//
+			statusCode = HttpStatus.SC_OK;
 		} catch (Throwable e) {
 			logger.error(ExceptionHelper.getExceptionTrace(e));
 		}
-
-		return returnValue;
 	}
 }

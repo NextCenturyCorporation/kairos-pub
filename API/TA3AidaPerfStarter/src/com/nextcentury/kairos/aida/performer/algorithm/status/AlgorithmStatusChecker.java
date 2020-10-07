@@ -11,7 +11,8 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 
 import com.nextcentury.kairos.aida.performer.ExceptionHelper;
-import com.nextcentury.kairos.aida.performer.tuple.PerformerStatusType;
+import com.nextcentury.kairos.aida.performer.algorithm.status.io.PerformerStatusResponseType;
+import com.nextcentury.kairos.aida.performer.algorithm.status.io.StatusResponse;
 import com.sun.net.httpserver.HttpExchange;
 
 public class AlgorithmStatusChecker {
@@ -49,10 +50,9 @@ public class AlgorithmStatusChecker {
 				buff.append(line);
 			}
 
-			// convert the status check result to a string
-			// String payloadStr =
-			// mapper.writerWithDefaultPrettyPrinter().writeValueAsString(statusCheckResult);
-			String payloadStr = PerformerStatusType.INITIALIZED.getStatus();
+			StatusResponse statusResponse = new StatusResponse();
+			statusResponse.setStatus(PerformerStatusResponseType.INITIALIZED);
+			String payloadStr = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(statusResponse);
 
 			// send back status code to specify check result probe
 			exchange.sendResponseHeaders(HttpStatus.SC_OK, 0);

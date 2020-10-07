@@ -15,15 +15,15 @@ import java.util.stream.Stream;
 import org.apache.commons.io.monitor.FileAlterationListenerAdaptor;
 import org.apache.commons.io.monitor.FileAlterationMonitor;
 import org.apache.commons.io.monitor.FileAlterationObserver;
-import org.apache.http.HttpStatus;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 import org.codehaus.jackson.type.TypeReference;
 
-import com.nextcentury.kairos.aida.performer.tuple.KairosMessage;
-import com.nextcentury.kairos.aida.performer.tuple.ReturnValueTuple;
+import com.nextcentury.kairos.aida.performer.algorithm.entrypoint.io.EntrypointMessage;
+import com.nextcentury.kairos.aida.performer.algorithm.entrypoint.io.EntrypointResponse;
+import com.nextcentury.kairos.aida.performer.executor.AlgorithmExecutor;
 
 public class InputPathMonitor {
 	private static final Logger logger = LogManager.getLogger(InputPathMonitor.class);
@@ -36,13 +36,15 @@ public class InputPathMonitor {
 	private String performerName;
 	private String inputPathStr;
 	private String outputPathStr;
+	private String errorPathStr;
 	private String logPathStr;
 	private ExecutorService executorService;
 
-	public InputPathMonitor(String performerName, String inputPathStr, String outputPathStr, String logPathStr,
-			ExecutorService executorService) {
+	public InputPathMonitor(String performerName, String inputPathStr, String outputPathStr, String errorPathStr,
+			String logPathStr, ExecutorService executorService) {
 		this.inputPathStr = inputPathStr;
 		this.outputPathStr = outputPathStr;
+		this.errorPathStr = errorPathStr;
 		this.logPathStr = logPathStr;
 		this.performerName = performerName;
 		this.executorService = executorService;
@@ -56,7 +58,7 @@ public class InputPathMonitor {
 			@Override
 			public void onFileCreate(File file) {
 				logger.debug("File Created:" + file.getName());
-				executorService.submit(new WorkerThread(file, outputPathStr));
+				executorService.submit(new WorkerThread(file, outputPathStr, errorPathStr));
 			}
 
 			@Override
@@ -77,48 +79,62 @@ public class InputPathMonitor {
 	class WorkerThread implements Runnable {
 		private File file;
 		private String outputPathStr;
+		private String errorPathStr;
 
-		public WorkerThread(File file, String outputPathStr) {
+		public WorkerThread(File file, String outputPathStr, String errorPathStr) {
 			super();
 			this.file = file;
 			this.outputPathStr = outputPathStr;
+			this.errorPathStr = errorPathStr;
 		}
 
 		@Override
 		public void run() {
-			KairosMessage inputObject = null;
+			EntrypointMessage inputObject = null;
 			try {
 				String fileName = file.getAbsoluteFile().toString();
 				logger.debug("Reading input file - " + fileName);
 				// this is the content of the result file
 				String payload = new String(Files.readAllBytes(Paths.get(fileName)));
-				inputObject = mapper.readValue(payload, new TypeReference<KairosMessage>() {
+				logger.debug(payload);
+
+				inputObject = mapper.readValue(payload, new TypeReference<EntrypointMessage>() {
 				});
 
 				// invoke the algorithm
-				// an real performer will pass in the payload
-				String result = new AlgorithmExecutor(inputObject).execute();
+				AlgorithmExecutor executor = new AlgorithmExecutor(performerName, inputObject);
+				executor.execute();
 
-				ReturnValueTuple valueTuple = new ReturnValueTuple();
-				valueTuple.setStatusCode(HttpStatus.SC_OK);
-				valueTuple.setValue(result);
-
-				// sign the output with performer name
-				inputObject.setProcessResult(valueTuple);
+				EntrypointResponse outputObject = new EntrypointResponse();
+				outputObject.setRequestId(inputObject.getId());
+				outputObject.setContent(executor.getOutput());
 
 				// convert it back to a string
-				String content = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(inputObject);
+				String content = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(outputObject);
 				// logger.debug(content);
 
+				//
+				// if everything went ok, write file to the output path
+				//
+				//
 				// send the message on its way, by writing to output path
 				String outputFileName = new StringBuffer(outputPathStr).append("/").append(Instant.now().toString())
 						.toString();
 				Files.write(Paths.get(outputFileName), content.getBytes(), StandardOpenOption.CREATE);
-
 				logger.debug("----Wrote file " + outputFileName);
-				// logger.debug();
-				// logger.debug(content);
-				logger.debug("");
+
+				//
+				// if things went south, write file to the error path
+				//
+				//
+				// send the message on its way, by writing to error path
+				// String errorFileName = new
+				// StringBuffer(errorPathStr).append("/").append(Instant.now().toString())
+				// .toString();
+				// Files.write(Paths.get(errorFileName), content.getBytes(),
+				// StandardOpenOption.CREATE);
+				// logger.debug("----Wrote file " + errorFileName);
+
 				logger.debug("");
 			} catch (Exception e) {
 				logger.error(ExceptionHelper.getExceptionTrace(e));

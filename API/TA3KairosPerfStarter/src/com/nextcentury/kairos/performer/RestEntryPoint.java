@@ -17,10 +17,10 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 import org.codehaus.jackson.type.TypeReference;
 
+import com.nextcentury.kairos.performer.algorithm.entrypoint.io.EntrypointMessage;
 import com.nextcentury.kairos.performer.algorithm.status.AlgorithmStatusChecker;
 import com.nextcentury.kairos.performer.executor.AlgorithmExecutor;
 import com.nextcentury.kairos.performer.healthcheck.PodStatusChecker;
-import com.nextcentury.kairos.tuple.KairosMessage;
 import com.nextcentury.kairos.utils.ExceptionHelper;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpServer;
@@ -95,7 +95,6 @@ public class RestEntryPoint {
 	private void delegate() throws IOException {
 		int cores = Runtime.getRuntime().availableProcessors();
 		logger.debug("# of cores on host - " + cores);
-
 		logger.debug("Experiment Name - " + experimentName);
 		logger.debug("Evaluator Name - " + evaluatorName);
 		logger.debug("Performer Name - " + performerName);
@@ -190,73 +189,19 @@ public class RestEntryPoint {
 			while ((line = reader.readLine()) != null) {
 				buff.append(line);
 			}
-			// payload is what was sent in with the REST call
-			String payload = buff.toString();
-
-			KairosMessage inputObject = mapper.readValue(payload, new TypeReference<KairosMessage>() {
+			EntrypointMessage inputObject = mapper.readValue(buff.toString(), new TypeReference<EntrypointMessage>() {
 			});
 
 			// an actual AlgorithmExecutor might take the payload as a parameter
 			// this is just to demonstrate the concept
-			String returnValue = new AlgorithmExecutor(inputObject).execute();
+			AlgorithmExecutor executor = new AlgorithmExecutor(performerName, inputObject);
+			executor.execute();
 
-			exchange.sendResponseHeaders(HttpStatus.SC_OK, 0);
+			exchange.sendResponseHeaders(executor.getStatusCode(), 0);
 			// write the response back
 			exchange.getResponseHeaders().set(CONTENT_TYPE, APPLICATION_JSON);
 			responseBody = exchange.getResponseBody();
-			responseBody.write(returnValue.getBytes());
-		} catch (Throwable e) {
-			logger.error(ExceptionHelper.getExceptionTrace(e));
-		} finally {
-			if (isReader != null) {
-				try {
-					isReader.close();
-				} catch (Throwable e) {
-					logger.error(ExceptionHelper.getExceptionTrace(e));
-				}
-			}
-			if (reader != null) {
-				try {
-					reader.close();
-				} catch (Throwable e) {
-					logger.error(ExceptionHelper.getExceptionTrace(e));
-				}
-			}
-			if (responseBody != null) {
-				try {
-					responseBody.close();
-				} catch (Throwable e) {
-					logger.error(ExceptionHelper.getExceptionTrace(e));
-				}
-			}
-		}
-	}
-
-	public void handleErrorMessage(HttpExchange exchange) {
-		logger.debug("URI ---> " + exchange.getRequestURI().toString());
-
-		OutputStream responseBody = null;
-		BufferedReader reader = null;
-		InputStreamReader isReader = null;
-
-		try {
-			StringBuffer buff = new StringBuffer();
-			String line = null;
-			isReader = new InputStreamReader(exchange.getRequestBody());
-			reader = new BufferedReader(isReader);
-			while ((line = reader.readLine()) != null) {
-				buff.append(line);
-			}
-			String payload = buff.toString();
-
-			// set the processed result
-			String returnValue = "Sending back an error  - " + payload;
-
-			exchange.sendResponseHeaders(HttpStatus.SC_BAD_REQUEST, 0);
-			// write the response back
-			exchange.getResponseHeaders().set(CONTENT_TYPE, APPLICATION_JSON);
-			responseBody = exchange.getResponseBody();
-			responseBody.write(returnValue.getBytes());
+			responseBody.write(executor.getOutput().getBytes());
 		} catch (Throwable e) {
 			logger.error(ExceptionHelper.getExceptionTrace(e));
 		} finally {

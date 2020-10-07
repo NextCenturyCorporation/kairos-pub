@@ -167,7 +167,7 @@ public class EntryPoint {
 				.toString().toLowerCase();
 
 		// monitor input folder, process and write to output folder
-		new InputPathMonitor(performerName, mountPathIn, mountPathOut, mountPathLog, executorService).start();
+		new InputPathMonitor(performerName, mountPathIn, mountPathOut, mountPathError, mountPathLog, executorService).start();
 
 		logger.debug("");
 		logger.debug("Kairos Aida Test Performer service ready ......");

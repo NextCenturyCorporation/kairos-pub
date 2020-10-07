@@ -1,4 +1,4 @@
-package com.nextcentury.kairos.aida.performer.tuple;
+package com.nextcentury.kairos.aida.performer.algorithm.status;
 
 public enum PerformerStatusType {
 	INITIALIZED("INITIALIZED"), PROCESSING("PROCESSING"), DONE_PROCESSING("DONE_PROCESSING"), PROCESSING_ERROR("PROCESSING_ERROR"),
