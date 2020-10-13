@@ -8,7 +8,7 @@
     }
   ],
   "@id": "caci:Examples/TA1/12345",
-  "sdfVersion": "0.9a",
+  "sdfVersion": "0.9",
   "schemas": [
     {
       "@id": "caci:Schemas/PIeval-TA1-Schema1",
@@ -21,7 +21,7 @@
       ],
       "name": "Phase I Eval Schema #1, Task 1, TA1",
       "description": "This is a schema with specific arguments involving terrorism and a truck",
-      "version": "caci-09.08.2020",
+      "version": "caci-10.13.2020",
       "template": "<arg1> coordinated with <arg2> about a bombing attack",
       "privateData": {
         "comment": "Performers can place any keys/values they wish here.  The map will be added to the graph but otherwise ignored by the system.  Properties maps can be added inside a schema, individual steps, slots, and order blocks, but not in their enclosing arrays.  Large amounts of private data can be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum.",
@@ -306,18 +306,22 @@
       ],
       "order": [
         {
+          "@id": "caci:Schemas/PIeval-TA1-Schema1/Order/travel_b4_study",
           "before": "caci:Schemas/PIeval-TA1-Schema1/Steps/travel",
           "after": "caci:Schemas/PIeval-TA1-Schema1/Steps/study"
         },
         {
+          "@id": "caci:Schemas/PIeval-TA1-Schema1/Order/study_b4_meet",
           "before": "caci:Schemas/PIeval-TA1-Schema1/Steps/study",
           "after": "caci:Schemas/PIeval-TA1-Schema1/Steps/meet"
         },
         {
+          "@id": "caci:Schemas/PIeval-TA1-Schema1/Order/meet_b4_join",
           "before": "caci:Schemas/PIeval-TA1-Schema1/Steps/meet",
           "after": "caci:Schemas/PIeval-TA1-Schema1/Steps/join_group"
         },
         {
+          "@id": "caci:Schemas/PIeval-TA1-Schema1/Order/join_b4_acquire",
           "before": "caci:Schemas/PIeval-TA1-Schema1/Steps/join_group",
           "after": [
             "caci:Schemas/PIeval-TA1-Schema1/Steps/acquire_truck",
@@ -326,6 +330,7 @@
           ]
         },
         {
+          "@id": "caci:Schemas/PIeval-TA1-Schema1/Order/acquire_b4_mix",
           "before": [
             "caci:Schemas/PIeval-TA1-Schema1/Steps/acquire_truck",
             "caci:Schemas/PIeval-TA1-Schema1/Steps/acquire_item1",
@@ -334,10 +339,12 @@
           "after": "caci:Schemas/PIeval-TA1-Schema1/Steps/mix"
         },
         {
+          "@id": "caci:Schemas/PIeval-TA1-Schema1/Order/mix_b4_park",
           "before": "caci:Schemas/PIeval-TA1-Schema1/Steps/mix",
           "after": "caci:Schemas/PIeval-TA1-Schema1/Steps/park_truck"
         },
         {
+          "@id": "caci:Schemas/PIeval-TA1-Schema1/Order/park_b4_explode",
           "before": "caci:Schemas/PIeval-TA1-Schema1/Steps/park_truck",
           "after": "caci:Schemas/PIeval-TA1-Schema1/Steps/explode"
         }

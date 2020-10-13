@@ -240,33 +240,30 @@
           "@id": "sbu:Schemas/AttackWithDBIED/Steps/Die_1",
           "@type": "kairos:Primitives/Events/Life.Die.Unspecified",
           "name": "Die from an attack",
-          "participants": [
-          ]
+          "participants": []
         },
         {
           "@id": "sbu:Schemas/AttackWithDBIED/Steps/Injured_1",
           "@type": "kairos:Primitives/Events/Life.Injure.Unspecified",
           "name": "Injure from an attack",
-          "participants": [
-          ]
+          "participants": []
         },
         {
           "@id": "sbu:Schemas/AttackWithDBIED/Steps/Damage_1",
           "@type": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Damage",
           "name": "Damage of a thing",
-          "participants": [
-          ]
+          "participants": []
         },
         {
           "@id": "sbu:Schemas/AttackWithDBIED/Steps/Destroy_1",
           "@type": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Destroy",
           "name": "Destroy a thing",
-          "participants": [
-          ]
+          "participants": []
         }
       ],
       "order": [
         {
+          "@id": "sbu:Schemas/AttackWithDBIED/Order/dbied1_requirements",
           "before": [
             "sbu:Schemas/AttackWithDBIED/Steps/Get_drone_1",
             "sbu:Schemas/AttackWithDBIED/Steps/BuildIED_1"
@@ -275,15 +272,18 @@
           "flag": "precondition"
         },
         {
+          "@id": "sbu:Schemas/AttackWithDBIED/Order/ied_b4_transport",
           "before": "sbu:Schemas/AttackWithDBIED/Steps/BuildIED_1",
           "after": "sbu:Schemas/AttackWithDBIED/Steps/Transport_1"
         },
         {
+          "@id": "sbu:Schemas/AttackWithDBIED/Order/ied_b4_explode",
           "before": "sbu:Schemas/AttackWithDBIED/Steps/BuildIED_1",
           "after": "sbu:Schemas/AttackWithDBIED/Steps/Explode_1",
           "flags": "precondition"
         },
         {
+          "@id": "sbu:Schemas/AttackWithDBIED/Order/explode_b4_attack",
           "before": [
             "sbu:Schemas/AttackWithDBIED/Steps/BuildIED_1",
             "sbu:Schemas/AttackWithDBIED/Steps/Transport_1",
@@ -293,6 +293,7 @@
           "flags": "precondition"
         },
         {
+          "@id": "sbu:Schemas/AttackWithDBIED/Order/attack_b4_damage",
           "before": "sbu:Schemas/AttackWithDBIED/Steps/Attack_with_bomb_1",
           "after": [
             "sbu:Schemas/AttackWithDBIED/Steps/Die_1",

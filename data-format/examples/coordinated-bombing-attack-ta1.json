@@ -8,7 +8,7 @@
     }
   ],
   "@id": "caci:Submissions/TA1/12345",
-  "sdfVersion": "0.9a",
+  "sdfVersion": "0.9",
   "primitives": [
     {
       "@id": "caci:Primitives/Events/Transaction.Donation.WireTransfer",
@@ -177,7 +177,7 @@
       "name": "Coordinated Bombing Attack",
       "description": "A coordinated effort by mulitple parties that results in a bombing attack",
       "template": "<arg1> coordinated with <arg2> about a bombing attack on <arg3> to take place at <arg4>",
-      "version": "caci-10.01.2020",
+      "version": "caci-10.13.2020",
       "privateData": {
         "comment": "Performers can place any keys/values they wish here.  The map will be added to the graph but otherwise ignored by the system.  Properties maps can be added inside a schema, individual steps, slots, and order blocks, but not in their enclosing arrays.  Large amounts of private data can be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum.",
         "my_key": "my value",
@@ -718,11 +718,13 @@
       ],
       "order": [
         {
+          "@id": "caci:Schemas/CoordinatedBombingAttack/Order/training_1_b4_wire_transfer",
           "comment": "Wire transfer occurs while training with Al-Qaeda.  Contrived to show a container/contained example.",
           "container": "caci:Schemas/CoordinatedBombingAttack/Steps/training_1",
           "contained": "caci:Schemas/CoordinatedBombingAttack/Steps/wire_transfer"
         },
         {
+          "@id": "caci:Schemas/CoordinatedBombingAttack/Order/financing_overlaps_propaganda",
           "comment": "Mailing anti-Israel letters to newspapers and obtaining financing overlap.  Contrived to show an overlaps example.",
           "overlaps": [
             "caci:Schemas/CoordinatedBombingAttack/Steps/obtain_financing",
@@ -730,6 +732,7 @@
           ]
         },
         {
+          "@id": "caci:Schemas/CoordinatedBombingAttack/Order/move_b4_propaganda",
           "comment": "Must arrive at destination country before sending propagnda and obtaining transportation",
           "before": "caci:Schemas/CoordinatedBombingAttack/Steps/move_illegally",
           "after": [
@@ -739,6 +742,7 @@
           "flags": "precondition"
         },
         {
+          "@id": "caci:Schemas/CoordinatedBombingAttack/Order/attack_locations",
           "before": [
             "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_general_attack_location_legally",
             "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_general_attack_location_illegally"
@@ -747,11 +751,13 @@
           "flags": "precondition"
         },
         {
+          "@id": "caci:Schemas/CoordinatedBombingAttack/Order/bombing_b4_escape",
           "before": "caci:Schemas/CoordinatedBombingAttack/Steps/bombing",
           "after": "caci:Schemas/CoordinatedBombingAttack/Steps/escape",
           "flags": "precondition"
         },
         {
+          "@id": "caci:Schemas/CoordinatedBombingAttack/Order/lots_b4_bombing",
           "comment": "At some point, the system should be able to infer transitive relations.  Not sure if in Phase I.",
           "before": [
             "caci:Schemas/CoordinatedBombingAttack/Steps/training_1",
@@ -765,6 +771,7 @@
           "flags": "precondition"
         },
         {
+          "@id": "caci:Schemas/CoordinatedBombingAttack/Order/more_b4_bombing",
           "before": [
             "caci:Schemas/CoordinatedBombingAttack/Steps/wire_transfer",
             "caci:Schemas/CoordinatedBombingAttack/Steps/move_illegally",

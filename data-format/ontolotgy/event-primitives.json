@@ -192,7 +192,7 @@
     "typeOutputValue": "artifactexistence",
     "subTypeOutputValue": "damagedestroydisabledismantle",
     "subSubTypeOutputValue": "dismantle",
-    "template": "<arg1> dismantled <arg2> using <arg3> instrument in <arg4> place",
+    "template": "<arg1> dismantled <arg2> using <arg3> instrument into <arg4> components in <arg5> place",
     "description": "Disassembling an artifact in such a way that it could be reassembled",
     "slots": [
       {
@@ -4674,4 +4674,3 @@
     ]
   }
 ]
-

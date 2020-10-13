@@ -1557,13 +1557,14 @@
       "order": [
         {
           "comment": "Wire transfer occurs while training with Al-Qaeda.  Contrived to show a container/contained example.",
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Order/training_1_b4_wire_transfer",
           "container": "caci:Schemas/Instantiated/WTC1993/Steps/training_1",
           "contained": "caci:Schemas/Instantiated/WTC1993/Steps/wire_transfer",
-          "confidence": 1,
-          "provenance": "Event1237"
+          "confidence": 1
         },
         {
-          "comment": "Mailing anti-Israel letters to newspapers and training in NJ overlap.  Contrived to show an overlaps example.",
+          "comment": "Mailing anti-Israel letters to newspapers and training in NJ overlap. Contrived to show an overlaps example.",
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Order/financing_overlaps_propaganda",
           "overlaps": [
             "caci:Schemas/Instantiated/WTC1993/Steps/training_2",
             "caci:Schemas/Instantiated/WTC1993/Steps/media_propaganda"
@@ -1572,6 +1573,7 @@
         },
         {
           "comment": "Must arrive at destination country before sending propagnda and obtaining transportation",
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Order/move_b4_propaganda",
           "before": "caci:Schemas/Instantiated/WTC1993/Steps/move_illegally",
           "after": [
             "caci:Schemas/Instantiated/WTC1993/Steps/media_propaganda",
@@ -1581,18 +1583,21 @@
           "confidence": 0.75
         },
         {
+          "ta1ref": null,
           "before": "caci:Schemas/Instantiated/WTC1993/Steps/training_1",
           "after": "caci:Schemas/Instantiated/WTC1993/Steps/training_2",
           "flags": "precondition",
           "confidence": 0.75
         },
         {
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Order/attack_locations",
           "before": "caci:Schemas/Instantiated/WTC1993/Steps/move_to_general_attack_location_legally",
           "after": "caci:Schemas/Instantiated/WTC1993/Steps/move_to_specific_attack_location",
           "flags": "precondition",
           "confidence": 0.75
         },
         {
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Order/bombing_b4_escape",
           "before": "caci:Schemas/Instantiated/WTC1993/Steps/bombing",
           "after": "caci:Schemas/Instantiated/WTC1993/Steps/escape",
           "flags": "precondition",
@@ -1600,6 +1605,7 @@
         },
         {
           "comment": "At some point, the system should be able to infer transitive relations.  Not sure if in Phase I.",
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Order/lots_b4_bombing",
           "before": [
             "caci:Schemas/Instantiated/WTC1993/Steps/training_1",
             "caci:Schemas/Instantiated/WTC1993/Steps/obtain_financing",
@@ -1612,6 +1618,7 @@
           "confidence": 0.75
         },
         {
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Order/more_b4_bombing",
           "before": [
             "caci:Schemas/Instantiated/WTC1993/Steps/wire_transfer",
             "caci:Schemas/Instantiated/WTC1993/Steps/move_illegally",

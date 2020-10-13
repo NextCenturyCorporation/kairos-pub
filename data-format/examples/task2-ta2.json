@@ -7,10 +7,10 @@
       "giant_bitstring": "caci:giant_bitstring"
     }
   ],
-  "@id": "ibm:Submissions/TA1/Q3",
+  "@id": "ibm:Submissions/TA2/Q3",
   "ta2": true,
   "task2": true,
-  "sdfVersion": "0.81",
+  "sdfVersion": "0.9",
   "schemas": [
     {
       "@id": "ibm:Schemas/AttackWithDBIED",
@@ -1352,6 +1352,7 @@
       ],
       "order": [
         {
+          "ta1ref": "sbu:Schemas/AttackWithDBIED/Order/dbied1_requirements",
           "before": [
             "ibm:Schemas/AttackWithDBIED/Steps/Get_drone_1",
             "ibm:Schemas/AttackWithDBIED/Steps/BuildIED_1"
@@ -1361,17 +1362,20 @@
           "confidence": 0.4999
         },
         {
+          "ta1ref": "sbu:Schemas/AttackWithDBIED/Order/ied_b4_transport",
           "before": "ibm:Schemas/AttackWithDBIED/Steps/BuildIED_1",
           "after": "ibm:Schemas/AttackWithDBIED/Steps/Transport_1",
           "confidence": 0.4999
         },
         {
+          "ta1ref": "sbu:Schemas/AttackWithDBIED/Order/ied_b4_explode",
           "before": "ibm:Schemas/AttackWithDBIED/Steps/BuildIED_1",
           "after": "ibm:Schemas/AttackWithDBIED/Steps/Explode_1",
           "flags": "precondition",
           "confidence": 0.4999
         },
         {
+          "ta1ref": "sbu:Schemas/AttackWithDBIED/Order/explode_b4_attack",
           "before": [
             "ibm:Schemas/AttackWithDBIED/Steps/BuildIED_1",
             "ibm:Schemas/AttackWithDBIED/Steps/Transport_1",
@@ -1382,6 +1386,7 @@
           "confidence": 0.4999
         },
         {
+          "ta1ref": "sbu:Schemas/AttackWithDBIED/Order/attack_b4_damage",
           "before": "ibm:Schemas/AttackWithDBIED/Steps/Attack_with_bomb_1",
           "after": [
             "ibm:Schemas/AttackWithDBIED/Steps/Die_1",

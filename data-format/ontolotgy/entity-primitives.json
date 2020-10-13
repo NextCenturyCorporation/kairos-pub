@@ -21,7 +21,7 @@
     "annotIndexId": "LDC_KAIROS_ent_004",
     "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/BOD",
     "name": "BOD",
-    "description": "An identifiable, living part of an human's or animal's body, such as a eye, ear, neck, leg, etc."
+    "description": "An identifiable, living part of a human's or animal's body, such as a eye, ear, neck, leg, etc."
   },
   {
     "annotIndexId": "LDC_KAIROS_ent_005",
@@ -150,4 +150,3 @@
     "description": "Not strictly an entity type in LDC, but this is needed for tooling to represent arguments that take an event."
   }
 ]
-

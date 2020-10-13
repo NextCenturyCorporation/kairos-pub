@@ -947,21 +947,25 @@
       ],
       "order": [
         {
+          "ta1ref": "caci:Schemas/PIeval-TA1-Schema1/Order/travel_b4_study",
           "before": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Steps/travel",
           "after": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Steps/study",
           "confidence": 0.65
         },
         {
+          "ta1ref": "caci:Schemas/PIeval-TA1-Schema1/Order/study_b4_meet",
           "before": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Steps/study",
           "after": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Steps/meet",
           "confidence": 0.65
         },
         {
+          "ta1ref": "caci:Schemas/PIeval-TA1-Schema1/Order/meet_b4_join",
           "before": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Steps/meet",
           "after": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Steps/join_group",
           "confidence": 0.65
         },
         {
+          "ta1ref": "caci:Schemas/PIeval-TA1-Schema1/Order/join_b4_acquire",
           "before": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Steps/join_group",
           "after": [
             "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Steps/acquire_truck",
@@ -971,6 +975,7 @@
           "confidence": 0.65
         },
         {
+          "ta1ref": "caci:Schemas/PIeval-TA1-Schema1/Order/acquire_b4_mix",
           "before": [
             "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Steps/acquire_truck",
             "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Steps/acquire_item1",
@@ -980,11 +985,13 @@
           "confidence": 0.65
         },
         {
+          "ta1ref": "caci:Schemas/PIeval-TA1-Schema1/Order/mix_b4_park",
           "before": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Steps/mix",
           "after": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Steps/park_truck",
           "confidence": 0.65
         },
         {
+          "ta1ref": "caci:Schemas/PIeval-TA1-Schema1/Order/park_b4_explode",
           "before": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Steps/park_truck",
           "after": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Steps/explode",
           "confidence": 0.65
