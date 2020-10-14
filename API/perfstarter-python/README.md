@@ -10,16 +10,9 @@ This example uses the [Connexion](https://github.com/zalando/connexion) library 
 ## Requirements
 Python 3.5.2+
 
-
-    Make sure you have the latest version of pip, run this command -> pip install --upgrade pip --user
-
-    Edit requirements requirements.txt, change the connexion library version -> connexion == 2.6.0
-
-    Get and install the dependencies, run this command -> pip3 install -r requirements.txt --user --use-feature=2020-resolver
+Make sure you have the latest version of pip, run this command -> pip install --upgrade pip --user
 
 Get and install the dependencies, run this command -> pip3 install connexion[swagger-ui]
-
-    Change swagger_server/swagger/swagger.yaml -> change "{aws-genenerated-url}" to a valid ip (for example, www.google.com). Please remember, this is a dynamically generated url - just as the description says...😀
 
 
 ## Usage
