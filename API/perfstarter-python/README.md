@@ -25,13 +25,13 @@ python3 -m swagger_server
 and open your browser to here:
 
 ```
-http://localhost:8080/ui/
+http://localhost:10100/ui/
 ```
 
 Your Swagger definition lives here:
 
 ```
-http://localhost:8080/openapi.json
+http://localhost:10100/openapi.json
 ```
 
 To launch the integration tests, use tox:
@@ -49,5 +49,5 @@ To run the server on a Docker container, please execute the following from the r
 docker build -t swagger_server .
 
 # starting up a container
-docker run -p 8080:8080 swagger_server
+docker run -p 10100:10100 swagger_server
 ```
