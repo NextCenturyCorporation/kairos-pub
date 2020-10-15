@@ -1,6 +1,6 @@
 {
   "@context": [
-    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.9.jsonld",
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.91.jsonld",
     {
       "caci": "https://caci.com/kairos/",
       "my_key": "caci:my_key",
@@ -8,7 +8,7 @@
     }
   ],
   "@id": "caci:Submissions/TA2/54321",
-  "sdfVersion": "0.9a",
+  "sdfVersion": "0.91",
   "ta2": true,
   "task2": false,
   "primitives": [
@@ -169,7 +169,7 @@
         "8. Mail anti-Israel letters to newspapers",
         "9. Rent a van",
         "10. Drive to Manhattan",
-        "11. Park at WTC (1993)",
+        "11. Park at WTC",
         "12. Bomb explosion killing 6 people",
         "13. Escaped to Pakistan",
         "",
@@ -178,7 +178,7 @@
       "name": "World Trade Center 1993 Attack",
       "description": "A terrorist attack on the World Trade Center, carried out on 2/26/1993, when a truck bomb detonated below the North Tower",
       "template": "<arg1> coordinated with <arg2> about a bombing attack on <arg3> to take place at <arg4>",
-      "version": "caci-10.01.2020 / caci-10.01.2020",
+      "version": "caci-10.13.2020 / caci-10.15.2020",
       "super": "caci:Schemas/CoordinatedBombingAttack",
       "confidence": 0.9,
       "privateData": {
@@ -508,9 +508,10 @@
           "@id": "caci:Schemas/Instantiated/WTC1993/Steps/get_bombmaking_howto",
           "@type": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified",
           "name": "Possess bomb making instruction",
-          "confidence": 0.55,
           "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/get_bombmaking_howto",
-          "provenance": "Event1237",
+          "comment": "If a schema step is not found in the documents or Graph G, then TA2 specifies a provenance of \"n/a\" and a confidence of 1.0.",
+          "provenance": "n/a",
+          "confidence": 1,
           "participants": [
             {
               "name": "giver",
@@ -800,7 +801,7 @@
           ],
           "confidence": 0.85,
           "comment": "Null ta1ref means the event was discovered in the documents but not specified in the TA1 schema.",
-          "ta1ref": null,
+          "ta1ref": "kairos:NULL",
           "provenance": "Event1237",
           "participants": [
             {
@@ -1218,7 +1219,7 @@
         {
           "@id": "caci:Schemas/Instantiated/WTC1993/Steps/move_to_specific_attack_location",
           "@type": "kairos:Primitives/Events/Movement.Transportation.Unspecified",
-          "name": "Park at WTC (1993)",
+          "name": "Park at WTC",
           "confidence": 0.95,
           "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_specific_attack_location",
           "provenance": "Event1237",
@@ -1583,7 +1584,7 @@
           "confidence": 0.75
         },
         {
-          "ta1ref": null,
+          "ta1ref": "kairos:NULL",
           "before": "caci:Schemas/Instantiated/WTC1993/Steps/training_1",
           "after": "caci:Schemas/Instantiated/WTC1993/Steps/training_2",
           "flags": "precondition",
@@ -1634,36 +1635,43 @@
       "entityRelations": [
         {
           "relationSubject": "caci:Schemas/Instantiated/WTC1993/Slots/wire_transfer/sender",
+          "provenance": "Entity1234",
           "relations": [
             {
               "name": "Wire transfer was from recipient's uncle",
               "relationPredicate": "kairos:Primitives/Relations/PersonalSocial.Relationship.Unspecified",
               "relationObject": "caci:Schemas/Instantiated/WTC1993/Slots/wire_transfer/recipient",
               "reference": "wiki:Q76557",
-              "ta1ref": null,
+              "ta1ref": "kairos:NULL",
               "confidence": 1,
-              "provenance": "Relation1238"
+              "provenance": "Entity1235",
+              "relationProvenance": "Relation1238"
             }
           ]
         },
         {
           "relationSubject": "caci:Schemas/Instantiated/WTC1993/Slots/make_contact/participant/poc",
+          "provenance": "Entity1234",
           "comment": "This corresponds to 'Each argument may be associated with a relation which may be useful to differentiate between schema' from \"Structure of a schema\"",
           "relations": [
             {
               "name": "Sheikh participant from make_contact event is connected with Rabbi Kahane Murderer",
               "relationPredicate": "kairos:Primitives/Relations/PersonalSocial.Relationship.Political",
               "relationObject": "wiki:Q2918749",
+              "ta1ref": "kairos:NULL",
               "confidence": 0.75,
-              "provenance": "Relation1238"
+              "provenance": "Entity1235",
+              "relationProvenance": "Relation1238"
             }
           ]
         },
         {
           "relationSubject": "caci:Schemas/Instantiated/WTC1993/Slots/move_to_specific_attack_location/attacker",
+          "provenance": "Entity1234",
           "comment": [
             "Same attacker moved to specific location as moved to general location, or lives in general attack location",
-            "This corresponds to 'argument A32 could be identical with A21 or related to A22' from \"Structure of a schema\""
+            "This corresponds to 'argument A32 could be identical with A21 or related to A22' from \"Structure of a schema\"",
+            "NOTE: We do not include 'Attacker lives in general attack location' relation because it was not found in the documents, and multiple relations objects in TA1 connotes 'OR' semantics."
           ],
           "relations": [
             {
@@ -1672,66 +1680,63 @@
               "relationObject": "caci:Schemas/Instantiated/WTC1993/Slots/move_to_general_attack_location_legally/attacker",
               "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Relations/attacker_location1",
               "confidence": 0.9,
-              "provenance": "Relation1238"
-            },
-            {
-              "name": "Attacker lives in general attack location",
-              "relationPredicate": "kairos:Primitives/Relations/Physical.Resident.Resident",
-              "relationObject": "caci:Schemas/Instantiated/WTC1993/Slots/move_to_general_attack_location_legally/attackLocation",
-              "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Relations/attacker_location2",
-              "confidence": 0.2,
-              "provenance": "Relation1238"
+              "provenance": "Entity1235",
+              "relationProvenance": "Relation1238"
             }
           ]
         },
         {
           "relationSubject": "caci:Schemas/Instantiated/WTC1993/Slots/obtain_financing/giver",
+          "provenance": "Entity1234",
           "comment": [
             "Giver of financing is one of the participants in the make_contact event, or is affiliated with it",
-            "This corresponds to 'Arguments A41 and A51 are either identical or related' from \"Structure of a schema\""
+            "This corresponds to 'Arguments A41 and A51 are either identical or related' from \"Structure of a schema\"",
+            "NOTE: We do not include 'Giver of financing is one of the participants in the make_contact event' relation because it was not found in the documents, and multiple relations objects in TA1 connotes 'OR' semantics."
           ],
           "relations": [
-            {
-              "name": "Giver of financing is one of the participants in the make_contact event",
-              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
-              "relationObject": "caci:Schemas/Instantiated/WTC1993/Slots/make_contact/participant/poc",
-              "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Relations/financier1",
-              "confidence": 0.75,
-              "provenance": "Relation1238"
-            },
             {
               "name": "Giver of financing is affiliated with one of the participants in the make_contact event",
               "relationPredicate": "kairos:Primitives/Relations/PersonalSocial.Relationship.Political",
               "relationObject": "caci:Schemas/Instantiated/WTC1993/Slots/make_contact/participant/poc",
               "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Relations/financier2",
               "confidence": 0.25,
-              "provenance": "Relation1238"
+              "provenance": "Entity1235",
+              "relationProvenance": "Relation1238"
             }
           ]
         },
         {
           "relationSubject": "caci:Schemas/Instantiated/WTC1993/Slots/obtain_transportation/vehicle_rented",
+          "comment": [
+            "This is contrived because you'd never see something like \"vehicle is yellow\" in TA2 output...",
+            "Also note that assessors will not intepret/translate Wikidata links/QIDs; they will see the arg as n/a."
+          ],
+          "provenance": "Entity1234",
           "relations": [
             {
               "name": "vehicle is a Ryder",
               "relationPredicate": "kairos:Primitives/Relations/Information.Color.Color",
               "relationObject": "wiki:Q943",
+              "ta1ref": "kairos:NULL",
               "confidence": 1,
-              "provenance": "Relation1238"
+              "provenance": "Entity1235",
+              "relationProvenance": "Relation1238"
             },
             {
               "name": "vehicle is yellow",
               "relationPredicate": "kairos:Primitives/Relations/Information.Make.Make",
               "relationObject": "wiki:Q2178198",
+              "ta1ref": "kairos:NULL",
               "confidence": 1,
-              "provenance": "Relation1238"
+              "provenance": "Entity1235",
+              "relationProvenance": "Relation1238"
             }
           ]
         }
       ],
       "provenanceData": [
         {
-          "@id": "Entity1234",
+          "provenance": "Entity1234",
           "comment": [
             " *Text documents* ",
             "'childID' is an LDC child_id. It is the ID of the document/artifact",
@@ -1744,7 +1749,7 @@
           "length": 76
         },
         {
-          "@id": "Entity1235",
+          "provenance": "Entity1235",
           "comment": [
             " *Images* ",
             "'parentIDs' is a list of documents that are parent to 'childID.",
@@ -1764,7 +1769,7 @@
           ]
         },
         {
-          "@id": "Entity1236",
+          "provenance": "Entity1236",
           "comment": [
             " *Audio recordings* ",
             "'startTime' and 'endTime are in seconds."
@@ -1776,7 +1781,7 @@
           "endTime": 5.12
         },
         {
-          "@id": "Event1237",
+          "provenance": "Event1237",
           "comment": [
             " *Videos -- time range* ",
             "'startTime' and 'endTime are in seconds."
@@ -1794,7 +1799,7 @@
           ]
         },
         {
-          "@id": "Relation1238",
+          "provenance": "Relation1238",
           "comment": [
             " *Videos -- key frames* ",
             "'keyFrames' is an array of LDC-supplied key frame IDs."

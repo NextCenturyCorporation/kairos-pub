@@ -1,13 +1,13 @@
 {
   "@context": [
-    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.9.jsonld",
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.91.jsonld",
     {
       "nist": "https://nist.gov/kairos/"
     }
   ],
   "@id": "nist:Quizlet3/GraphG/ce1001",
-  "sdfVersion": "0.9",
-  "ta2": false,
+  "sdfVersion": "0.91",
+  "ta2": true,
   "task2": true,
   "schemas": [
     {
@@ -15,7 +15,7 @@
       "comment": "Adapted by TA3 from NIST's ce1001_event_primitives_graphG.json from Quizlet 3.",
       "name": "ce1001",
       "description": "Graph G for ce1001 for Quizlet 3",
-      "version": "nist-08.20.2020",
+      "version": "nist/caci-10.14.2020",
       "slots": [
         {
           "@id": "nist:GraphG/ce1001/Slots/agent",
@@ -37,6 +37,8 @@
           "@id": "VP1001.00005",
           "name": "Juan Manuel Santos and Julio Borges collaborated on drone attack",
           "@type": "kairos:Primitives/Events/Contact.Contact.Unspecified",
+          "ta1ref": "kairos:NULL",
+          "provenance": "VP1001.00005",
           "modality": "hedged",
           "temporal": [
             {
@@ -77,6 +79,8 @@
           "@id": "VP1001.00030",
           "name": "Drones are loaded with C4 explosives",
           "@type": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified",
+          "ta1ref": "kairos:NULL",
+          "provenance": "VP1001.00030",
           "temporal": [
             {
               "latestStartTime": "2018-08-04Txx:xx:xx"
@@ -104,6 +108,8 @@
           "@id": "VP1001.00034",
           "name": "Drone is flown to stage where Maduro is speaking",
           "@type": "kairos:Primitives/Events/Movement.Transportation.Unspecified",
+          "ta1ref": "kairos:NULL",
+          "provenance": "VP1001.00034",
           "temporal": [
             {
               "earliestStartTime": "2018-08-04T17:xx:xx"
@@ -149,6 +155,8 @@
           "@id": "VP1001.00035",
           "name": "Drones are disoriented with radio signal inhibitors",
           "@type": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.DisableDefuse",
+          "ta1ref": "kairos:NULL",
+          "provenance": "VP1001.00035",
           "temporal": [
             {
               "earliestStartTime": "2018-08-04T17:xx:xx"
@@ -200,6 +208,8 @@
           "@id": "VP1001.00037",
           "name": "Drone explodes near the stage where Maduro is speaking",
           "@type": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode",
+          "ta1ref": "kairos:NULL",
+          "provenance": "VP1001.00037",
           "temporal": [
             {
               "earliestStartTime": "2018-08-04T17:41:xx"
@@ -257,6 +267,8 @@
           "@id": "VP1001.00048",
           "name": "Drone is diverted toward nearby apartment building",
           "@type": "kairos:Primitives/Events/Movement.Transportation.Unspecified",
+          "ta1ref": "kairos:NULL",
+          "provenance": "VP1001.00048",
           "temporal": [
             {
               "earliestStartTime": "2018-08-04T17:xx:xx"
@@ -296,6 +308,8 @@
           "@id": "VP1001.00049",
           "name": "Drone crashes into apartment building",
           "@type": "kairos:Primitives/Events/Disaster.Crash.Unspecified",
+          "ta1ref": "kairos:NULL",
+          "provenance": "VP1001.00049",
           "temporal": [
             {
               "earliestStartTime": "2018-08-04T17:4x:xx"
@@ -341,6 +355,8 @@
           "@id": "VP1001.00050",
           "name": "Drone explodes at nearby apartment building",
           "@type": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode",
+          "ta1ref": "kairos:NULL",
+          "provenance": "VP1001.00050",
           "temporal": [
             {
               "earliestStartTime": "2018-08-04T17:4x:xx"
@@ -392,6 +408,8 @@
           "@id": "VP1001.00051",
           "name": "Apartment building is damaged by drone explosion",
           "@type": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Damage",
+          "ta1ref": "kairos:NULL",
+          "provenance": "VP1001.00051",
           "temporal": [
             {
               "earliestStartTime": "2018-08-04T17:4x:xx"
@@ -437,6 +455,8 @@
           "@id": "VP1001.00052",
           "name": "7 soldiers were injured by drone explosion near the stage",
           "@type": "kairos:Primitives/Events/Life.Injure.Unspecified",
+          "ta1ref": "kairos:NULL",
+          "provenance": "VP1001.00052",
           "temporal": [
             {
               "earliestStartTime": "2018-08-04T17:41:xx"
@@ -479,20 +499,52 @@
           ]
         }
       ],
-      "entityRelations": [],
+      "entityRelations": [
+        {
+          "relationSubject": "AR1001.0094",
+          "provenance": "TBD",
+          "relations": [
+            {
+              "ta1ref": "kairos:NULL",
+              "name": "Nicolas Maduro is president of Venezuela",
+              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.Leadership.HeadOfState",
+              "relationObject": "AR1001.0090",
+              "provenance": "TBD",
+              "relationProvenance": "RR1001.00001"
+            }
+          ]
+        },
+        {
+          "relationSubject": "AR1001.0146",
+          "provenance": "TBD",
+          "relations": [
+            {
+              "ta1ref": "kairos:NULL",
+              "name": "The apartment building damaged by the drone is near the stage where Maduro was speaking",
+              "relationPredicate": "kairos:Primitives/Relations/Physical.LocatedNear.Unspecified",
+              "relationObject": "AR1001.0077",
+              "provenance": "TBD",
+              "relationProvenance": "RR1001.00017"
+            }
+          ]
+        }
+      ],
       "order": [
         {
           "comment": "Attackers collaborate before drones are loaded with C4",
+          "ta1ref": "kairos:NULL",
           "before": "VP1001.00005",
           "after": "VP1001.00030"
         },
         {
           "comment": "Drones are loaded with C4 before they are flown to stage",
+          "ta1ref": "kairos:NULL",
           "before": "VP1001.00030",
           "after": "VP1001.00034"
         },
         {
           "comment": "Drone is flown to stage before one explodes and another is diverted",
+          "ta1ref": "kairos:NULL",
           "before": "VP1001.00034",
           "after": [
             "VP1001.00037",
@@ -501,26 +553,31 @@
         },
         {
           "comment": "Drone explodes over stage before soldiers are injured",
+          "ta1ref": "kairos:NULL",
           "before": "VP1001.00037",
           "after": "VP1001.00052"
         },
         {
           "comment": "Drone disoriented before diverted toward apartments",
+          "ta1ref": "kairos:NULL",
           "before": "VP1001.00035",
           "after": "VP1001.00048"
         },
         {
           "comment": "Drone diverted to apartment before it crashes into apartment",
+          "ta1ref": "kairos:NULL",
           "before": "VP1001.00048",
           "after": "VP1001.00049"
         },
         {
           "comment": "Drone crashes into apartment before it explodes",
+          "ta1ref": "kairos:NULL",
           "before": "VP1001.00049",
           "after": "VP1001.00050"
         },
         {
           "comment": "Drone explodes before apartment building is damaged",
+          "ta1ref": "kairos:NULL",
           "before": "VP1001.00050",
           "after": "VP1001.00051"
         }

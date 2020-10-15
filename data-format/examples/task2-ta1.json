@@ -14,7 +14,8 @@
       "@id": "sbu:Schemas/AttackWithDBIED",
       "name": "Attack with DBIED",
       "description": "An event scenario that results in an DBIED attack, with modification by TA3",
-      "version": "sbu-08.19.2020",
+      "template": "<arg1> detonated an IED using <arg2> to attack <arg3> target at <arg4> place",
+      "version": "sbu/caci-10.14.2020",
       "steps": [
         {
           "@id": "sbu:Schemas/AttackWithDBIED/Steps/Get_drone_1",
@@ -193,6 +194,34 @@
                 "kairos:Primitives/Entities/WEA",
                 "kairos:Primitives/Entities/COM"
               ]
+            },
+            {
+              "name": "place",
+              "@id": "sbu:Schemas/AttackWithDBIED/Slots/Explode_1/place",
+              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Place",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC"
+              ]
+            },
+            {
+              "name": "target",
+              "@id": "sbu:Schemas/AttackWithDBIED/Slots/Explode_1/target",
+              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Target",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/SID",
+                "kairos:Primitives/Entities/AML",
+                "kairos:Primitives/Entities/PLA",
+                "kairos:Primitives/Entities/NAT"
+              ]
             }
           ]
         },
@@ -306,147 +335,16 @@
       ],
       "entityRelations": [
         {
-          "relationSubject": "sbu:Schemas/AttackWithDBIED/Slots/Get_drone_1/acquirer",
-          "relations": [
-            {
-              "@id": "sbu:Schemas/AttackWithDBIED/Relations/BEr7z8exXl5sS",
-              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
-              "relationObject": "sbu:Schemas/AttackWithDBIED/Slots/BuildIED_1/agent",
-              "confidence": ".75"
-            },
-            {
-              "@id": "sbu:Schemas/AttackWithDBIED/Relations/jcBFrhntOxjCb",
-              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
-              "relationObject": "sbu:Schemas/AttackWithDBIED/Slots/BuildIED_1/agent",
-              "confidence": ".25"
-            },
-            {
-              "@id": "sbu:Schemas/AttackWithDBIED/Relations/HtSQqKWIdTxrB",
-              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
-              "relationObject": "sbu:Schemas/AttackWithDBIED/Slots/BuildDBIED_1/agent",
-              "confidence": ".75"
-            },
-            {
-              "@id": "sbu:Schemas/AttackWithDBIED/Relations/asC3ks69WoLDa",
-              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
-              "relationObject": "sbu:Schemas/AttackWithDBIED/Slots/BuildDBIED_1/agent",
-              "confidence": ".25"
-            },
-            {
-              "@id": "sbu:Schemas/AttackWithDBIED/Relations/Cvkatx5ZmvhIe",
-              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
-              "relationObject": "sbu:Schemas/AttackWithDBIED/Slots/Transport_1/agent",
-              "confidence": ".75"
-            },
-            {
-              "@id": "sbu:Schemas/AttackWithDBIED/Relations/gWr5mzhRyeMAh",
-              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
-              "relationObject": "sbu:Schemas/AttackWithDBIED/Slots/Transport_1/agent",
-              "confidence": ".25"
-            },
-            {
-              "@id": "sbu:Schemas/AttackWithDBIED/Relations/YXB2fOtiqvHay",
-              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
-              "relationObject": [
-                "sbu:Schemas/AttackWithDBIED/Slots/Explode_1/agent",
-                "sbu:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/attacker"
-              ],
-              "confidence": ".75"
-            },
-            {
-              "@id": "sbu:Schemas/AttackWithDBIED/Relations/ImiVf5ZWlyHXM",
-              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
-              "relationObject": [
-                "sbu:Schemas/AttackWithDBIED/Slots/Explode_1/agent",
-                "sbu:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/attacker"
-              ],
-              "confidence": ".25"
-            }
-          ]
-        },
-        {
-          "relationSubject": "sbu:Schemas/AttackWithDBIED/Slots/BuildIED_1/agent",
-          "relations": [
-            {
-              "@id": "sbu:Schemas/AttackWithDBIED/Relations/M6AKb1jmSUFco",
-              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
-              "relationObject": "sbu:Schemas/AttackWithDBIED/Slots/Transport_1/agent",
-              "confidence": ".75"
-            },
-            {
-              "comment": [
-                "In case where the person who built an IED is different from the one who transports",
-                "This can be suggested via \"confidence\", although this is not formal usage."
-              ],
-              "@id": "sbu:Schemas/AttackWithDBIED/Relations/WSieFpkZldq41",
-              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
-              "relationObject": "sbu:Schemas/AttackWithDBIED/Slots/Transport_1/agent",
-              "confidence": ".25"
-            },
-            {
-              "@id": "sbu:Schemas/AttackWithDBIED/Relations/x9HRYJkKbmIn2",
-              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
-              "relationObject": [
-                "sbu:Schemas/AttackWithDBIED/Slots/Explode_1/agent",
-                "sbu:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/attacker"
-              ],
-              "confidence": ".75"
-            },
-            {
-              "@id": "sbu:Schemas/AttackWithDBIED/Relations/bc7AS6vWi6AOa",
-              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
-              "relationObject": [
-                "sbu:Schemas/AttackWithDBIED/Slots/Explode_1/agent",
-                "sbu:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/attacker"
-              ],
-              "confidence": ".25"
-            }
-          ]
-        },
-        {
-          "relationSubject": "sbu:Schemas/AttackWithDBIED/Slots/BuildDBIED_1/agent",
-          "relations": [
-            {
-              "@id": "sbu:Schemas/AttackWithDBIED/Relations/QNerc1ODRJ4tV",
-              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
-              "relationObject": "sbu:Schemas/AttackWithDBIED/Slots/Transport_1/agent",
-              "confidence": ".75"
-            },
-            {
-              "comment": [
-                "In case where the person who built an IED is different from the one who transports",
-                "This can be suggested via \"confidence\", although this is not formal usage."
-              ],
-              "@id": "sbu:Schemas/AttackWithDBIED/Relations/PRgwhW2Hl3Bi1",
-              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
-              "relationObject": "sbu:Schemas/AttackWithDBIED/Slots/Transport_1/agent",
-              "confidence": ".25"
-            },
-            {
-              "@id": "sbu:Schemas/AttackWithDBIED/Relations/1FROVzv7t8Y6i",
-              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
-              "relationObject": [
-                "sbu:Schemas/AttackWithDBIED/Slots/Explode_1/agent",
-                "sbu:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/attacker"
-              ],
-              "confidence": ".75"
-            },
-            {
-              "@id": "sbu:Schemas/AttackWithDBIED/Relations/u8J4sMKNVKmMq",
-              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
-              "relationObject": [
-                "sbu:Schemas/AttackWithDBIED/Slots/Explode_1/agent",
-                "sbu:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/attacker"
-              ],
-              "confidence": ".25"
-            }
-          ]
-        },
-        {
           "relationSubject": "sbu:Schemas/AttackWithDBIED/Slots/Transport_1/agent",
+          "comment": [
+            "In case where the person who built an IED is different from the one who transports",
+            "Specifying multiple relations has OR semantics.",
+            "The likelihood of each can be suggested via \"confidence\", although this is not formal usage."
+          ],
           "relations": [
             {
               "@id": "sbu:Schemas/AttackWithDBIED/Relations/Q4KMqDTFhkdtT",
+              "name": "Person who transports the IED is the same as the person who built it",
               "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
               "relationObject": [
                 "sbu:Schemas/AttackWithDBIED/Slots/Explode_1/agent",
@@ -456,6 +354,7 @@
             },
             {
               "@id": "sbu:Schemas/AttackWithDBIED/Relations/sneKqAqaMdSFE",
+              "name": "Person who transports the IED is employed by the person who built it",
               "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
               "relationObject": [
                 "sbu:Schemas/AttackWithDBIED/Slots/Transport_1/agent",
@@ -467,47 +366,14 @@
           ]
         },
         {
-          "relationSubject": "sbu:Schemas/AttackWithDBIED/Slots/BuildIED_1/bomb",
-          "comment": "Assuming that there is one IED.",
-          "relations": [
-            {
-              "@id": "sbu:Schemas/AttackWithDBIED/Relations/cOOdGvzDQGDoH",
-              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
-              "comment": "IED",
-              "relationObject": [
-                "sbu:Schemas/AttackWithDBIED/Slots/Transport_1/object",
-                "sbu:Schemas/AttackWithDBIED/Slots/Explode_1/device",
-                "sbu:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/means"
-              ],
-              "confidence": "1.0"
-            }
-          ]
-        },
-        {
-          "relationSubject": "sbu:Schemas/AttackWithDBIED/Slots/Get_drone_1/drone",
-          "comment": "Assuming that there is one DBIED.",
-          "relations": [
-            {
-              "@id": "sbu:Schemas/AttackWithDBIED/Relations/MDwtmt57Cn3l5",
-              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
-              "comment": "DBIED",
-              "relationObject": [
-                "sbu:Schemas/AttackWithDBIED/Slots/BuildDBIED_1/bomb",
-                "sbu:Schemas/AttackWithDBIED/Slots/Transport_1/object"
-              ],
-              "confidence": "1.0"
-            }
-          ]
-        },
-        {
-          "relationSubject": "sbu:Schemas/AttackWithDBIED/Slots/Transport_1/to",
-          "comment": "The location for an attack",
+          "relationSubject": "sbu:Schemas/AttackWithDBIED/Slots/Explode_1/target",
           "relations": [
             {
               "@id": "sbu:Schemas/AttackWithDBIED/Relations/MKFhb04UHRZPj",
-              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
-              "relationObject": "sbu:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/place",
-              "confidence": "1.0"
+              "name": "The target of the attack is the head of state of the place of the explosion",
+              "comment": "This relation was not in the original schema, but was added so TA2 can use a TA1 relation.",
+              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.Leadership.HeadOfState",
+              "relationObject": "sbu:Schemas/AttackWithDBIED/Slots/Explode_1/place"
             }
           ]
         }

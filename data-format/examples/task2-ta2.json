@@ -1,6 +1,6 @@
 {
   "@context": [
-    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.9.jsonld",
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.91.jsonld",
     {
       "caci": "https://caci.com/kairos/",
       "my_key": "caci:my_key",
@@ -10,14 +10,14 @@
   "@id": "ibm:Submissions/TA2/Q3",
   "ta2": true,
   "task2": true,
-  "sdfVersion": "0.9",
+  "sdfVersion": "0.91",
   "schemas": [
     {
       "@id": "ibm:Schemas/AttackWithDBIED",
       "super": "sbu:Schemas/AttackWithDBIED",
       "name": "Attack with DBIED",
       "description": "An event scenario that results in an DBIED attack",
-      "version": "sbu-08.19.2020 / ibm-08-28-2020",
+      "version": "sbu/caci-10.14.2020 / caci-10.14.2020",
       "confidence": "1.0",
       "steps": [
         {
@@ -25,8 +25,9 @@
           "@type": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified",
           "name": "Get drone",
           "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/Get_drone_1",
-          "comment": "provenance is null (or omitted) because the event was not found in the documents.",
-          "provenance": null,
+          "comment": "provenance is \"n/a\" because the event was not found in the documents.",
+          "provenance": "n/a",
+          "confidence": 1,
           "participants": [
             {
               "name": "giver",
@@ -217,7 +218,8 @@
           "@type": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified",
           "name": "Build an IED",
           "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/BuildIED_1",
-          "provenance": null,
+          "provenance": "n/a",
+          "confidence": 1,
           "participants": [
             {
               "name": "agent",
@@ -511,7 +513,8 @@
           "@type": "kairos:Primitives/Events/Conflict.Attack.Unspecified",
           "name": "Attack with a bomb",
           "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/Attack_with_bomb_1",
-          "provenance": null,
+          "provenance": "n/a",
+          "confidence": 1,
           "participants": [
             {
               "name": "attacker",
@@ -574,7 +577,8 @@
           "@type": "kairos:Primitives/Events/Life.Die.Unspecified",
           "name": "Die from an attack",
           "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/Die_1",
-          "provenance": null,
+          "provenance": "n/a",
+          "confidence": 1,
           "participants": [
             {
               "name": "victim",
@@ -828,7 +832,8 @@
           "@type": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Destroy",
           "name": "Destroy a thing",
           "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/Destroy_1",
-          "provenance": null,
+          "provenance": "n/a",
+          "confidence": 1,
           "participants": [
             {
               "@id": "ibm:Schemas/AttackWithDBIED/Slots/Destroy_1/agent",
@@ -883,8 +888,8 @@
           "@id": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00005",
           "name": "Juan Manuel Santos and Julio Borges collaborated on drone attack",
           "@type": "kairos:Primitives/Events/Contact.Contact.Unspecified",
-          "comment": "Everything in Graph G that wasn't in the schema will have ta1ref=null, or better yet, omit ta1ref.",
-          "ta1ref": null,
+          "comment": "Steps from Graph G that are not matched to the schema will have ta1ref of \"kairos:NULL\".",
+          "ta1ref": "kairos:NULL",
           "confidence": 0.76,
           "provenance": "VP1001.00005",
           "modality": "hedged",
@@ -956,6 +961,7 @@
           "@id": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00035",
           "name": "Drones are disoriented with radio signal inhibitors",
           "@type": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.DisableDefuse",
+          "ta1ref": "kairos:NULL",
           "confidence": 0.76,
           "provenance": "VP1001.00035",
           "temporal": [
@@ -1053,6 +1059,7 @@
           "@id": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00048",
           "name": "Drone is diverted toward nearby apartment building",
           "@type": "kairos:Primitives/Events/Movement.Transportation.Unspecified",
+          "ta1ref": "kairos:NULL",
           "confidence": 0.76,
           "provenance": "VP1001.00048",
           "temporal": [
@@ -1145,6 +1152,7 @@
           "@id": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00049",
           "name": "Drone crashes into apartment building",
           "@type": "kairos:Primitives/Events/Disaster.Crash.Unspecified",
+          "ta1ref": "kairos:NULL",
           "confidence": 0.76,
           "provenance": "VP1001.00049",
           "temporal": [
@@ -1230,6 +1238,7 @@
           "@id": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00050",
           "name": "Drone explodes at nearby apartment building",
           "@type": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode",
+          "ta1ref": "kairos:NULL",
           "confidence": 0.76,
           "provenance": "VP1001.00050",
           "temporal": [
@@ -1398,54 +1407,64 @@
           "confidence": 0.4999
         },
         {
+          "comment": "Order relations introduced by TA2 should also have a ta1ref of \"kairos:NULL\".",
+          "ta1ref": "kairos:NULL",
           "before": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00005",
           "after": "ibm:Schemas/AttackWithDBIED/Steps/BuildDBIED_1",
           "flags": "precondition",
           "confidence": 0.4999
         },
         {
+          "ta1ref": "kairos:NULL",
           "before": "ibm:Schemas/AttackWithDBIED/Steps/BuildDBIED_1",
           "after": "ibm:Schemas/AttackWithDBIED/Steps/Transport_1",
           "flags": "precondition",
           "confidence": 0.4999
         },
         {
+          "ta1ref": "kairos:NULL",
           "before": "ibm:Schemas/AttackWithDBIED/Steps/Transport_1",
           "after": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00035",
           "flags": "precondition",
           "confidence": 0.4999
         },
         {
+          "ta1ref": "kairos:NULL",
           "before": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00035",
           "after": "ibm:Schemas/AttackWithDBIED/Steps/Explode_1",
           "flags": "precondition",
           "confidence": 0.4999
         },
         {
+          "ta1ref": "kairos:NULL",
           "before": "ibm:Schemas/AttackWithDBIED/Steps/Explode_1",
           "after": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00048",
           "flags": "precondition",
           "confidence": 0.4999
         },
         {
+          "ta1ref": "kairos:NULL",
           "before": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00048",
           "after": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00049",
           "flags": "precondition",
           "confidence": 0.4999
         },
         {
+          "ta1ref": "kairos:NULL",
           "before": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00049",
           "after": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00050",
           "flags": "precondition",
           "confidence": 0.4999
         },
         {
+          "ta1ref": "kairos:NULL",
           "before": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00050",
           "after": "ibm:Schemas/AttackWithDBIED/Steps/Damage_1",
           "flags": "precondition",
           "confidence": 0.4999
         },
         {
+          "ta1ref": "kairos:NULL",
           "before": "ibm:Schemas/AttackWithDBIED/Steps/Damage_1",
           "after": "ibm:Schemas/AttackWithDBIED/Steps/Injured_1",
           "flags": "precondition",
@@ -1454,181 +1473,32 @@
       ],
       "entityRelations": [
         {
-          "relationSubject": "ibm:Schemas/AttackWithDBIED/Slots/Get_drone_1/acquirer",
+          "relationSubject": "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/target",
+          "provenance": "TBD",
           "relations": [
             {
-              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
-              "relationObject": "ibm:Schemas/AttackWithDBIED/Slots/BuildIED_1/agent",
-              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/BEr7z8exXl5sS"
-            },
-            {
-              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
-              "relationObject": "ibm:Schemas/AttackWithDBIED/Slots/BuildIED_1/agent",
-              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/jcBFrhntOxjCb"
-            },
-            {
-              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
-              "relationObject": "ibm:Schemas/AttackWithDBIED/Slots/BuildDBIED_1/agent",
-              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/HtSQqKWIdTxrB"
-            },
-            {
-              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
-              "relationObject": "ibm:Schemas/AttackWithDBIED/Slots/BuildDBIED_1/agent",
-              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/asC3ks69WoLDa"
-            },
-            {
-              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
-              "relationObject": "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/agent",
-              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/Cvkatx5ZmvhIe"
-            },
-            {
-              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
-              "relationObject": "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/agent",
-              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/gWr5mzhRyeMAh"
-            },
-            {
-              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
-              "relationObject": [
-                "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/agent",
-                "ibm:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/attacker"
-              ],
-              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/YXB2fOtiqvHay"
-            },
-            {
-              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
-              "relationObject": [
-                "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/agent",
-                "ibm:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/attacker"
-              ],
-              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/ImiVf5ZWlyHXM"
+              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/MKFhb04UHRZPj",
+              "name": "Nicolas Maduro is president of Venezuela",
+              "comment": "This relation was not in the original schema, but was added so TA2 can use a TA1 relation.",
+              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.Leadership.HeadOfState",
+              "relationObject": "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/place",
+              "provenance": "TBD",
+              "relationProvenance": "RR1001.00001"
             }
           ]
         },
         {
-          "relationSubject": "ibm:Schemas/AttackWithDBIED/Slots/BuildIED_1/agent",
+          "relationSubject": "ibm:Schemas/AttackWithDBIED/Slots/Damage_1/artifact",
+          "provenance": "TBD",
           "relations": [
             {
-              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
-              "relationObject": "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/agent",
-              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/M6AKb1jmSUFco"
-            },
-            {
-              "comment": "In case where the person who built an IED is different from the one who transports",
-              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
-              "relationObject": "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/agent",
-              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/WSieFpkZldq41"
-            },
-            {
-              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
-              "relationObject": [
-                "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/agent",
-                "ibm:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/attacker"
-              ],
-              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/x9HRYJkKbmIn2"
-            },
-            {
-              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
-              "relationObject": [
-                "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/agent",
-                "ibm:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/attacker"
-              ],
-              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/bc7AS6vWi6AOa"
-            }
-          ]
-        },
-        {
-          "relationSubject": "ibm:Schemas/AttackWithDBIED/Slots/BuildDBIED_1/agent",
-          "relations": [
-            {
-              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
-              "relationObject": "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/agent",
-              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/QNerc1ODRJ4tV"
-            },
-            {
-              "comment": "In case where the person who built an IED is different from the one who transports",
-              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
-              "relationObject": "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/agent",
-              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/PRgwhW2Hl3Bi1"
-            },
-            {
-              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
-              "relationObject": [
-                "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/agent",
-                "ibm:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/attacker"
-              ],
-              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/1FROVzv7t8Y6i"
-            },
-            {
-              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
-              "relationObject": [
-                "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/agent",
-                "ibm:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/attacker"
-              ],
-              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/u8J4sMKNVKmMq"
-            }
-          ]
-        },
-        {
-          "relationSubject": "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/agent",
-          "relations": [
-            {
-              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
-              "relationObject": [
-                "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/agent",
-                "ibm:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/attacker"
-              ],
-              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/Q4KMqDTFhkdtT"
-            },
-            {
-              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
-              "relationObject": [
-                "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/agent",
-                "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/agent",
-                "ibm:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/attacker"
-              ],
-              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/sneKqAqaMdSFE"
-            }
-          ]
-        },
-        {
-          "relationSubject": "ibm:Schemas/AttackWithDBIED/Slots/BuildIED_1/bomb",
-          "comment": "Assuming that there is one IED.",
-          "relations": [
-            {
-              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
-              "comment": "IED",
-              "relationObject": [
-                "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/object",
-                "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/device",
-                "ibm:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/means"
-              ],
-              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/cOOdGvzDQGDoH"
-            }
-          ]
-        },
-        {
-          "relationSubject": "ibm:Schemas/AttackWithDBIED/Slots/Get_drone_1/drone",
-          "comment": "Assuming that there is one DBIED.",
-          "relations": [
-            {
-              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
-              "comment": "DBIED",
-              "relationObject": [
-                "ibm:Schemas/AttackWithDBIED/Slots/BuildDBIED_1/bomb",
-                "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/object"
-              ],
-              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/MDwtmt57Cn3l5"
-            }
-          ]
-        },
-        {
-          "relationSubject": "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/to",
-          "comment": "The location for an attack",
-          "relations": [
-            {
-              "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
-              "relationObject": "ibm:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/place",
-              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/MKFhb04UHRZPj"
+              "ta1ref": "kairos:NULL",
+              "name": "The apartment building damaged by the drone is near the stage where Maduro was speaking",
+              "comment": "This relation was in Graph G, but not matched to a TA1 relation.",
+              "relationPredicate": "kairos:Primitives/Relations/Physical.LocatedNear.Unspecified",
+              "relationObject": "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/to",
+              "provenance": "TBD",
+              "relationProvenance": "RR1001.00017"
             }
           ]
         }

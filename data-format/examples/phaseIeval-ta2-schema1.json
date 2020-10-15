@@ -1,6 +1,6 @@
 {
   "@context": [
-    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.9.jsonld",
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.91.jsonld",
     {
       "caci": "https://caci.com/kairos/",
       "my_key": "caci:my_key",
@@ -8,7 +8,7 @@
     }
   ],
   "@id": "caci:Examples/TA2/54321",
-  "sdfVersion": "0.9a",
+  "sdfVersion": "0.91",
   "ta2": true,
   "task2": false,
   "schemas": [
@@ -26,7 +26,7 @@
       ],
       "name": "Phase I Eval Schema #1, Task 1, TA2",
       "description": "This is a schema with specific arguments involving terrorism and a truck",
-      "version": "caci-08.12.2020 / caci-08.14.2020",
+      "version": "caci-10.13.2020 / caci-10.14.2020",
       "super": "caci:Schemas/PIeval-TA1-Schema1",
       "template": "<arg1> coordinated with <arg2> about a bombing attack",
       "confidence": 0.92,
@@ -881,8 +881,9 @@
           "@id": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Steps/explode",
           "@type": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode",
           "ta1ref": "caci:Schemas/PIeval-TA1-Schema1/Steps/explode",
-          "confidence": 0.5,
-          "provenance": "Event1237",
+          "comment": "When a schema step is not matched, its provenance is \"n/a\" and confidence is ignored.",
+          "confidence": 1,
+          "provenance": "n/a",
           "name": "Explode",
           "participants": [
             {
@@ -1016,7 +1017,7 @@
       ],
       "provenanceData": [
         {
-          "@id": "Entity1234",
+          "provenance": "Entity1234",
           "comment": [
             " *Text documents* ",
             "'childID' is an LDC child_id. It is the ID of the document/artifact",
@@ -1029,7 +1030,7 @@
           "length": 76
         },
         {
-          "@id": "Entity1235",
+          "provenance": "Entity1235",
           "comment": [
             " *Images* ",
             "'parentIDs' is a list of documents that are parent to 'childID.",
@@ -1049,7 +1050,7 @@
           ]
         },
         {
-          "@id": "Entity1236",
+          "provenance": "Entity1236",
           "comment": [
             " *Audio recordings* ",
             "'startTime' and 'endTime are in seconds."
@@ -1061,7 +1062,7 @@
           "endTime": 5.12
         },
         {
-          "@id": "Event1237",
+          "provenance": "Event1237",
           "comment": [
             " *Videos -- time range* ",
             "'startTime' and 'endTime are in seconds."
@@ -1079,7 +1080,7 @@
           ]
         },
         {
-          "@id": "Event1238",
+          "provenance": "Event1238",
           "comment": [
             " *Videos -- key frames* ",
             "'keyFrames' is an array of LDC-supplied key frame IDs."
