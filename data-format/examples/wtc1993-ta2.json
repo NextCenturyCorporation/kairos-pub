@@ -1638,6 +1638,7 @@
           "provenance": "Entity1234",
           "relations": [
             {
+              "@id": "caci:Schemas/Instantiated/WTC1993/Relations/wire_transfer_uncle",
               "name": "Wire transfer was from recipient's uncle",
               "relationPredicate": "kairos:Primitives/Relations/PersonalSocial.Relationship.Unspecified",
               "relationObject": "caci:Schemas/Instantiated/WTC1993/Slots/wire_transfer/recipient",
@@ -1655,6 +1656,7 @@
           "comment": "This corresponds to 'Each argument may be associated with a relation which may be useful to differentiate between schema' from \"Structure of a schema\"",
           "relations": [
             {
+              "@id": "caci:Schemas/Instantiated/WTC1993/Relations/sheikh_connected",
               "name": "Sheikh participant from make_contact event is connected with Rabbi Kahane Murderer",
               "relationPredicate": "kairos:Primitives/Relations/PersonalSocial.Relationship.Political",
               "relationObject": "wiki:Q2918749",
@@ -1675,6 +1677,7 @@
           ],
           "relations": [
             {
+              "@id": "caci:Schemas/CoordinatedBombingAttack/Relations/attacker_location1",
               "name": "Same attacker moved to specific location as moved to general location",
               "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
               "relationObject": "caci:Schemas/Instantiated/WTC1993/Slots/move_to_general_attack_location_legally/attacker",
@@ -1695,6 +1698,7 @@
           ],
           "relations": [
             {
+              "@id": "caci:Schemas/CoordinatedBombingAttack/Relations/financier2",
               "name": "Giver of financing is affiliated with one of the participants in the make_contact event",
               "relationPredicate": "kairos:Primitives/Relations/PersonalSocial.Relationship.Political",
               "relationObject": "caci:Schemas/Instantiated/WTC1993/Slots/make_contact/participant/poc",
@@ -1714,6 +1718,7 @@
           "provenance": "Entity1234",
           "relations": [
             {
+              "@id": "caci:Schemas/CoordinatedBombingAttack/Relations/vehicle_make",
               "name": "vehicle is a Ryder",
               "relationPredicate": "kairos:Primitives/Relations/Information.Color.Color",
               "relationObject": "wiki:Q943",
@@ -1723,6 +1728,7 @@
               "relationProvenance": "Relation1238"
             },
             {
+              "@id": "caci:Schemas/CoordinatedBombingAttack/Relations/vehicle_color",
               "name": "vehicle is yellow",
               "relationPredicate": "kairos:Primitives/Relations/Information.Make.Make",
               "relationObject": "wiki:Q2178198",

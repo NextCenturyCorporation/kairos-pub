@@ -15,7 +15,7 @@
       "comment": "Adapted by TA3 from NIST's ce1001_event_primitives_graphG.json from Quizlet 3.",
       "name": "ce1001",
       "description": "Graph G for ce1001 for Quizlet 3",
-      "version": "nist/caci-10.14.2020",
+      "version": "nist/caci-10.17.2020",
       "slots": [
         {
           "@id": "nist:GraphG/ce1001/Slots/agent",
@@ -502,28 +502,28 @@
       "entityRelations": [
         {
           "relationSubject": "AR1001.0094",
-          "provenance": "TBD",
+          "provenance": "AR1001.0094",
           "relations": [
             {
               "ta1ref": "kairos:NULL",
               "name": "Nicolas Maduro is president of Venezuela",
               "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.Leadership.HeadOfState",
               "relationObject": "AR1001.0090",
-              "provenance": "TBD",
+              "provenance": "AR1001.0090",
               "relationProvenance": "RR1001.00001"
             }
           ]
         },
         {
           "relationSubject": "AR1001.0146",
-          "provenance": "TBD",
+          "provenance": "AR1001.0146",
           "relations": [
             {
               "ta1ref": "kairos:NULL",
               "name": "The apartment building damaged by the drone is near the stage where Maduro was speaking",
               "relationPredicate": "kairos:Primitives/Relations/Physical.LocatedNear.Unspecified",
               "relationObject": "AR1001.0077",
-              "provenance": "TBD",
+              "provenance": "AR1001.0077",
               "relationProvenance": "RR1001.00017"
             }
           ]

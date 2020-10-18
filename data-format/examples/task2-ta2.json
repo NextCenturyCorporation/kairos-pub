@@ -17,7 +17,7 @@
       "super": "sbu:Schemas/AttackWithDBIED",
       "name": "Attack with DBIED",
       "description": "An event scenario that results in an DBIED attack",
-      "version": "sbu/caci-10.14.2020 / caci-10.14.2020",
+      "version": "sbu/caci-10.14.2020 / caci-10.17.2020",
       "confidence": "1.0",
       "steps": [
         {
@@ -27,7 +27,6 @@
           "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/Get_drone_1",
           "comment": "provenance is \"n/a\" because the event was not found in the documents.",
           "provenance": "n/a",
-          "confidence": 1,
           "participants": [
             {
               "name": "giver",
@@ -125,15 +124,12 @@
           "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/BuildDBIED_1",
           "comment": "Because this step was found in the documents (Graph G), we specify the step ID from Graph G as provenance.",
           "provenance": "VP1001.00030",
-          "confidence": 0.76,
           "temporal": [
             {
-              "latestStartTime": "2018-08-04Txx:xx:xx",
-              "confidence": 1
+              "latestStartTime": "2018-08-04Txx:xx:xx"
             },
             {
-              "latestEndTime": "2018-08-04Txx:xx:xx",
-              "confidence": 1
+              "latestEndTime": "2018-08-04Txx:xx:xx"
             }
           ],
           "participants": [
@@ -166,7 +162,6 @@
               "values": [
                 {
                   "name": "drones",
-                  "confidence": 1,
                   "comment": "Any argument that was found in Graph G specifies the participant id from Graph G as provenance.",
                   "provenance": "AR1001.0062",
                   "entityTypes": "kairos:Primitives/Entities/VEH"
@@ -186,7 +181,6 @@
               "values": [
                 {
                   "name": "C4 explosives",
-                  "confidence": 1,
                   "provenance": "AR1001.0061",
                   "entityTypes": "kairos:Primitives/Entities/WEA"
                 }
@@ -219,7 +213,6 @@
           "name": "Build an IED",
           "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/BuildIED_1",
           "provenance": "n/a",
-          "confidence": 1,
           "participants": [
             {
               "name": "agent",
@@ -286,24 +279,19 @@
           "@type": "kairos:Primitives/Events/Movement.Transportation.Unspecified",
           "name": "IED transport",
           "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/Transport_1",
-          "confidence": 0.76,
           "provenance": "VP1001.00034",
           "temporal": [
             {
-              "earliestStartTime": "2018-08-04T17:xx:xx",
-              "confidence": 1
+              "earliestStartTime": "2018-08-04T17:xx:xx"
             },
             {
-              "latestStartTime": "2018-08-04T17:xx:xx",
-              "confidence": 1
+              "latestStartTime": "2018-08-04T17:xx:xx"
             },
             {
-              "earliestEndTime": "2018-08-04T17:xx:xx",
-              "confidence": 1
+              "earliestEndTime": "2018-08-04T17:xx:xx"
             },
             {
-              "latestEndTime": "2018-08-04T17:xx:xx",
-              "confidence": 1
+              "latestEndTime": "2018-08-04T17:xx:xx"
             }
           ],
           "participants": [
@@ -329,7 +317,6 @@
               "values": [
                 {
                   "name": "the stage where Maduro is speaking",
-                  "confidence": 1,
                   "provenance": "AR1001.0077",
                   "entityTypes": "kairos:Primitives/Entities/FAC"
                 }
@@ -348,7 +335,6 @@
               "values": [
                 {
                   "name": "2 drone operators",
-                  "confidence": 1,
                   "provenance": "AR1001.0078",
                   "entityTypes": "kairos:Primitives/Entities/PER"
                 }
@@ -362,7 +348,6 @@
               "values": [
                 {
                   "name": "the drone that exploded near the stage where Maduro was speaking",
-                  "confidence": 1,
                   "provenance": "AR1001.0075",
                   "entityTypes": "kairos:Primitives/Entities/VEH"
                 }
@@ -390,7 +375,6 @@
               "values": [
                 {
                   "name": "C4 explosives",
-                  "confidence": 1,
                   "provenance": "AR1001.0076",
                   "entityTypes": "kairos:Primitives/Entities/WEA"
                 }
@@ -403,24 +387,19 @@
           "@type": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode",
           "name": "Explode",
           "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/Explode_1",
-          "confidence": 0.76,
           "provenance": "VP1001.00037",
           "temporal": [
             {
-              "earliestStartTime": "2018-08-04T17:41:xx",
-              "confidence": 1
+              "earliestStartTime": "2018-08-04T17:41:xx"
             },
             {
-              "latestStartTime": "2018-08-04T17:41:xx",
-              "confidence": 1
+              "latestStartTime": "2018-08-04T17:41:xx"
             },
             {
-              "earliestEndTime": "2018-08-04T17:41:xx",
-              "confidence": 1
+              "earliestEndTime": "2018-08-04T17:41:xx"
             },
             {
-              "latestEndTime": "2018-08-04T17:41:xx",
-              "confidence": 1
+              "latestEndTime": "2018-08-04T17:41:xx"
             }
           ],
           "participants": [
@@ -447,7 +426,6 @@
               "values": [
                 {
                   "name": "C4 explosives",
-                  "confidence": 1,
                   "provenance": "AR1001.0089",
                   "entityTypes": "kairos:Primitives/Entities/WEA"
                 }
@@ -474,7 +452,6 @@
               "values": [
                 {
                   "name": "Caracas",
-                  "confidence": 1,
                   "provenance": "AR1001.0090",
                   "entityTypes": "kairos:Primitives/Entities/GPE"
                 }
@@ -500,7 +477,6 @@
               "values": [
                 {
                   "name": "Nicolás Maduro",
-                  "confidence": 1,
                   "provenance": "AR1001.0094",
                   "entityTypes": "kairos:Primitives/Entities/PER"
                 }
@@ -514,7 +490,6 @@
           "name": "Attack with a bomb",
           "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/Attack_with_bomb_1",
           "provenance": "n/a",
-          "confidence": 1,
           "participants": [
             {
               "name": "attacker",
@@ -578,7 +553,6 @@
           "name": "Die from an attack",
           "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/Die_1",
           "provenance": "n/a",
-          "confidence": 1,
           "participants": [
             {
               "name": "victim",
@@ -624,24 +598,19 @@
           "@type": "kairos:Primitives/Events/Life.Injure.Unspecified",
           "name": "Injure from an attack",
           "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/Injured_1",
-          "confidence": 0.76,
           "provenance": "VP1001.00052",
           "temporal": [
             {
-              "earliestStartTime": "2018-08-04T17:41:xx",
-              "confidence": 1
+              "earliestStartTime": "2018-08-04T17:41:xx"
             },
             {
-              "latestStartTime": "2018-08-04T17:41:xx",
-              "confidence": 1
+              "latestStartTime": "2018-08-04T17:41:xx"
             },
             {
-              "earliestEndTime": "2018-08-04T17:41:xx",
-              "confidence": 1
+              "earliestEndTime": "2018-08-04T17:41:xx"
             },
             {
-              "latestEndTime": "2018-08-04T17:41:xx",
-              "confidence": 1
+              "latestEndTime": "2018-08-04T17:41:xx"
             }
           ],
           "participants": [
@@ -656,7 +625,6 @@
               "values": [
                 {
                   "name": "7 soldiers",
-                  "confidence": 1,
                   "provenance": "AR1001.0150.prov",
                   "entityTypes": "kairos:Primitives/Entities/PER"
                 }
@@ -689,7 +657,6 @@
               "values": [
                 {
                   "name": "C4 explosives",
-                  "confidence": 1,
                   "provenance": "AR1001.0151.prov",
                   "entityTypes": "kairos:Primitives/Entities/WEA"
                 }
@@ -733,24 +700,19 @@
           "@type": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Damage",
           "name": "Damage of a thing",
           "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/Damage_1",
-          "confidence": 0.76,
           "provenance": "VP1001.00051",
           "temporal": [
             {
-              "earliestStartTime": "2018-08-04T17:4x:xx",
-              "confidence": 1
+              "earliestStartTime": "2018-08-04T17:4x:xx"
             },
             {
-              "latestStartTime": "2018-08-04T17:4x:xx",
-              "confidence": 1
+              "latestStartTime": "2018-08-04T17:4x:xx"
             },
             {
-              "earliestEndTime": "2018-08-04T17:4x:xx",
-              "confidence": 1
+              "earliestEndTime": "2018-08-04T17:4x:xx"
             },
             {
-              "latestEndTime": "2018-08-04T17:4x:xx",
-              "confidence": 1
+              "latestEndTime": "2018-08-04T17:4x:xx"
             }
           ],
           "participants": [
@@ -783,7 +745,6 @@
               "values": [
                 {
                   "name": "a nearby apartment building",
-                  "confidence": 1,
                   "provenance": "AR1001.0146",
                   "entityTypes": "kairos:Primitives/Entities/FAC"
                 }
@@ -801,7 +762,6 @@
               "values": [
                 {
                   "name": "C4 explosives",
-                  "confidence": 1,
                   "provenance": "AR1001.0147",
                   "entityTypes": "kairos:Primitives/Entities/WEA"
                 }
@@ -819,7 +779,6 @@
               "values": [
                 {
                   "name": "Caracas",
-                  "confidence": 1,
                   "provenance": "AR1001.0148",
                   "entityTypes": "kairos:Primitives/Entities/GPE"
                 }
@@ -833,7 +792,6 @@
           "name": "Destroy a thing",
           "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/Destroy_1",
           "provenance": "n/a",
-          "confidence": 1,
           "participants": [
             {
               "@id": "ibm:Schemas/AttackWithDBIED/Slots/Destroy_1/agent",
@@ -890,17 +848,14 @@
           "@type": "kairos:Primitives/Events/Contact.Contact.Unspecified",
           "comment": "Steps from Graph G that are not matched to the schema will have ta1ref of \"kairos:NULL\".",
           "ta1ref": "kairos:NULL",
-          "confidence": 0.76,
           "provenance": "VP1001.00005",
           "modality": "hedged",
           "temporal": [
             {
-              "latestStartTime": "2018-08-04Txx:xx:xx",
-              "confidence": 0.59
+              "latestStartTime": "2018-08-04Txx:xx:xx"
             },
             {
-              "latestEndTime": "2018-08-04Txx:xx:xx",
-              "confidence": 0.59
+              "latestEndTime": "2018-08-04Txx:xx:xx"
             }
           ],
           "participants": [
@@ -912,14 +867,12 @@
               "values": [
                 {
                   "name": "Juan Manuel Santos",
-                  "confidence": 1,
                   "provenance": "AR1001.0009",
                   "entityTypes": "kairos:Primitives/Entities/PER"
                 },
                 {
                   "comment": "This second argument filler could also be represented by an additional Participant.",
                   "name": "Julio Borges",
-                  "confidence": 1,
                   "provenance": "AR1001.0010",
                   "entityTypes": "kairos:Primitives/Entities/PER"
                 }
@@ -933,13 +886,11 @@
               "values": [
                 {
                   "name": "Drone explodes near the stage where Maduro is speaking",
-                  "confidence": 1,
                   "provenance": "VP1001.00037",
                   "entityTypes": "kairos:Primitives/Events/Contact.Contact.Unspecified"
                 },
                 {
                   "name": "Drone explodes at nearby apartment building",
-                  "confidence": 1,
                   "provenance": "VP1001.00050",
                   "entityTypes": "kairos:Primitives/Events/Contact.Contact.Unspecified"
                 }
@@ -962,24 +913,19 @@
           "name": "Drones are disoriented with radio signal inhibitors",
           "@type": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.DisableDefuse",
           "ta1ref": "kairos:NULL",
-          "confidence": 0.76,
           "provenance": "VP1001.00035",
           "temporal": [
             {
-              "earliestStartTime": "2018-08-04T17:xx:xx",
-              "confidence": 0.59
+              "earliestStartTime": "2018-08-04T17:xx:xx"
             },
             {
-              "latestStartTime": "2018-08-04T17:xx:xx",
-              "confidence": 0.59
+              "latestStartTime": "2018-08-04T17:xx:xx"
             },
             {
-              "earliestEndTime": "2018-08-04T17:xx:xx",
-              "confidence": 0.59
+              "earliestEndTime": "2018-08-04T17:xx:xx"
             },
             {
-              "latestEndTime": "2018-08-04T17:xx:xx",
-              "confidence": 0.59
+              "latestEndTime": "2018-08-04T17:xx:xx"
             }
           ],
           "participants": [
@@ -991,7 +937,6 @@
               "values": [
                 {
                   "name": "drones",
-                  "confidence": 1,
                   "provenance": "AR1001.0079",
                   "entityTypes": "kairos:Primitives/Entities/VEH"
                 }
@@ -1005,7 +950,6 @@
               "values": [
                 {
                   "name": "Caracas",
-                  "confidence": 1,
                   "provenance": "AR1001.0080",
                   "entityTypes": "kairos:Primitives/Entities/GPE"
                 }
@@ -1019,7 +963,6 @@
               "values": [
                 {
                   "name": "downtown Caracas",
-                  "confidence": 1,
                   "provenance": "AR1001.0081",
                   "entityTypes": "kairos:Primitives/Entities/LOC"
                 }
@@ -1033,7 +976,6 @@
               "values": [
                 {
                   "name": "radio signal inhibitors",
-                  "confidence": 1,
                   "provenance": "AR1001.0082",
                   "entityTypes": "kairos:Primitives/Entities/COM"
                 }
@@ -1047,7 +989,6 @@
               "values": [
                 {
                   "name": "Venezuelan intelligence",
-                  "confidence": 1,
                   "provenance": "AR1001.0083",
                   "entityTypes": "kairos:Primitives/Entities/ORG"
                 }
@@ -1060,24 +1001,19 @@
           "name": "Drone is diverted toward nearby apartment building",
           "@type": "kairos:Primitives/Events/Movement.Transportation.Unspecified",
           "ta1ref": "kairos:NULL",
-          "confidence": 0.76,
           "provenance": "VP1001.00048",
           "temporal": [
             {
-              "earliestStartTime": "2018-08-04T17:xx:xx",
-              "confidence": 0.59
+              "earliestStartTime": "2018-08-04T17:xx:xx"
             },
             {
-              "latestStartTime": "2018-08-04T17:xx:xx",
-              "confidence": 0.59
+              "latestStartTime": "2018-08-04T17:xx:xx"
             },
             {
-              "earliestEndTime": "2018-08-04T17:xx:xx",
-              "confidence": 0.59
+              "earliestEndTime": "2018-08-04T17:xx:xx"
             },
             {
-              "latestEndTime": "2018-08-04T17:xx:xx",
-              "confidence": 0.59
+              "latestEndTime": "2018-08-04T17:xx:xx"
             }
           ],
           "participants": [
@@ -1089,7 +1025,6 @@
               "values": [
                 {
                   "name": "the drone that crashed into the apartment building",
-                  "confidence": 1,
                   "provenance": "AR1001.0134",
                   "entityTypes": "kairos:Primitives/Entities/VEH"
                 }
@@ -1103,7 +1038,6 @@
               "values": [
                 {
                   "name": "a nearby apartment building",
-                  "confidence": 1,
                   "provenance": "AR1001.0135",
                   "entityTypes": "kairos:Primitives/Entities/FAC"
                 }
@@ -1117,7 +1051,6 @@
               "values": [
                 {
                   "name": "C4 explosives",
-                  "confidence": 1,
                   "provenance": "AR1001.0136",
                   "entityTypes": "kairos:Primitives/Entities/WEA"
                 }
@@ -1153,24 +1086,19 @@
           "name": "Drone crashes into apartment building",
           "@type": "kairos:Primitives/Events/Disaster.Crash.Unspecified",
           "ta1ref": "kairos:NULL",
-          "confidence": 0.76,
           "provenance": "VP1001.00049",
           "temporal": [
             {
-              "earliestStartTime": "2018-08-04T17:4x:xx",
-              "confidence": 0.59
+              "earliestStartTime": "2018-08-04T17:4x:xx"
             },
             {
-              "latestStartTime": "2018-08-04T17:4x:xx",
-              "confidence": 0.59
+              "latestStartTime": "2018-08-04T17:4x:xx"
             },
             {
-              "earliestEndTime": "2018-08-04T17:4x:xx",
-              "confidence": 0.59
+              "earliestEndTime": "2018-08-04T17:4x:xx"
             },
             {
-              "latestEndTime": "2018-08-04T17:4x:xx",
-              "confidence": 0.59
+              "latestEndTime": "2018-08-04T17:4x:xx"
             }
           ],
           "participants": [
@@ -1182,7 +1110,6 @@
               "values": [
                 {
                   "name": "the drone that crashed into the apartment building",
-                  "confidence": 1,
                   "provenance": "AR1001.0137",
                   "entityTypes": "kairos:Primitives/Entities/VEH"
                 }
@@ -1196,7 +1123,6 @@
               "values": [
                 {
                   "name": "a nearby apartment building",
-                  "confidence": 1,
                   "provenance": "AR1001.0138",
                   "entityTypes": "kairos:Primitives/Entities/FAC"
                 }
@@ -1213,13 +1139,11 @@
               "values": [
                 {
                   "name": "Caracas",
-                  "confidence": 1,
                   "provenance": "AR1001.0139",
                   "entityTypes": "kairos:Primitives/Entities/GPE"
                 },
                 {
                   "name": "downtown Caracas",
-                  "confidence": 1,
                   "provenance": "AR1001.0140",
                   "entityTypes": "kairos:Primitives/Entities/LOC"
                 }
@@ -1239,24 +1163,19 @@
           "name": "Drone explodes at nearby apartment building",
           "@type": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode",
           "ta1ref": "kairos:NULL",
-          "confidence": 0.76,
           "provenance": "VP1001.00050",
           "temporal": [
             {
-              "earliestStartTime": "2018-08-04T17:4x:xx",
-              "confidence": 0.59
+              "earliestStartTime": "2018-08-04T17:4x:xx"
             },
             {
-              "latestStartTime": "2018-08-04T17:4x:xx",
-              "confidence": 0.59
+              "latestStartTime": "2018-08-04T17:4x:xx"
             },
             {
-              "earliestEndTime": "2018-08-04T17:4x:xx",
-              "confidence": 0.59
+              "earliestEndTime": "2018-08-04T17:4x:xx"
             },
             {
-              "latestEndTime": "2018-08-04T17:4x:xx",
-              "confidence": 0.59
+              "latestEndTime": "2018-08-04T17:4x:xx"
             }
           ],
           "participants": [
@@ -1268,7 +1187,6 @@
               "values": [
                 {
                   "name": "C4 explosives",
-                  "confidence": 1,
                   "provenance": "AR1001.0141",
                   "entityTypes": "kairos:Primitives/Entities/WEA"
                 }
@@ -1278,11 +1196,10 @@
               "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00050/AR1001.0142",
               "name": "Instrument",
               "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Instrument",
-              "entityTypes": "kairos:Primitives/Entities/VEH",
+              "entityTypes": "kairos:Primitives/Entities/WEA",
               "values": [
                 {
                   "name": "the drone that crashed into the apartment building",
-                  "confidence": 1,
                   "provenance": "AR1001.0142",
                   "entityTypes": "kairos:Primitives/Entities/VEH"
                 }
@@ -1296,7 +1213,6 @@
               "values": [
                 {
                   "name": "a nearby apartment building",
-                  "confidence": 1,
                   "provenance": "AR1001.0143",
                   "entityTypes": "kairos:Primitives/Entities/FAC"
                 }
@@ -1313,13 +1229,11 @@
               "values": [
                 {
                   "name": "Caracas",
-                  "confidence": 1,
                   "provenance": "AR1001.0144",
                   "entityTypes": "kairos:Primitives/Entities/GPE"
                 },
                 {
                   "name": "downtown Caracas",
-                  "confidence": 1,
                   "provenance": "AR1001.0145",
                   "entityTypes": "kairos:Primitives/Entities/LOC"
                 }
@@ -1367,21 +1281,18 @@
             "ibm:Schemas/AttackWithDBIED/Steps/BuildIED_1"
           ],
           "after": "ibm:Schemas/AttackWithDBIED/Steps/BuildDBIED_1",
-          "flag": "precondition",
-          "confidence": 0.4999
+          "flag": "precondition"
         },
         {
           "ta1ref": "sbu:Schemas/AttackWithDBIED/Order/ied_b4_transport",
           "before": "ibm:Schemas/AttackWithDBIED/Steps/BuildIED_1",
-          "after": "ibm:Schemas/AttackWithDBIED/Steps/Transport_1",
-          "confidence": 0.4999
+          "after": "ibm:Schemas/AttackWithDBIED/Steps/Transport_1"
         },
         {
           "ta1ref": "sbu:Schemas/AttackWithDBIED/Order/ied_b4_explode",
           "before": "ibm:Schemas/AttackWithDBIED/Steps/BuildIED_1",
           "after": "ibm:Schemas/AttackWithDBIED/Steps/Explode_1",
-          "flags": "precondition",
-          "confidence": 0.4999
+          "flags": "precondition"
         },
         {
           "ta1ref": "sbu:Schemas/AttackWithDBIED/Order/explode_b4_attack",
@@ -1391,8 +1302,7 @@
             "ibm:Schemas/AttackWithDBIED/Steps/Explode_1"
           ],
           "after": "ibm:Schemas/AttackWithDBIED/Steps/Attack_with_bomb_1",
-          "flags": "precondition",
-          "confidence": 0.4999
+          "flags": "precondition"
         },
         {
           "ta1ref": "sbu:Schemas/AttackWithDBIED/Order/attack_b4_damage",
@@ -1403,151 +1313,95 @@
             "ibm:Schemas/AttackWithDBIED/Steps/Damage_1",
             "ibm:Schemas/AttackWithDBIED/Steps/Destroy_1"
           ],
-          "flags": "precondition",
-          "confidence": 0.4999
+          "flags": "precondition"
         },
         {
           "comment": "Order relations introduced by TA2 should also have a ta1ref of \"kairos:NULL\".",
           "ta1ref": "kairos:NULL",
           "before": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00005",
           "after": "ibm:Schemas/AttackWithDBIED/Steps/BuildDBIED_1",
-          "flags": "precondition",
-          "confidence": 0.4999
+          "flags": "precondition"
         },
         {
           "ta1ref": "kairos:NULL",
           "before": "ibm:Schemas/AttackWithDBIED/Steps/BuildDBIED_1",
           "after": "ibm:Schemas/AttackWithDBIED/Steps/Transport_1",
-          "flags": "precondition",
-          "confidence": 0.4999
+          "flags": "precondition"
         },
         {
           "ta1ref": "kairos:NULL",
           "before": "ibm:Schemas/AttackWithDBIED/Steps/Transport_1",
           "after": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00035",
-          "flags": "precondition",
-          "confidence": 0.4999
+          "flags": "precondition"
         },
         {
           "ta1ref": "kairos:NULL",
           "before": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00035",
           "after": "ibm:Schemas/AttackWithDBIED/Steps/Explode_1",
-          "flags": "precondition",
-          "confidence": 0.4999
+          "flags": "precondition"
         },
         {
           "ta1ref": "kairos:NULL",
           "before": "ibm:Schemas/AttackWithDBIED/Steps/Explode_1",
           "after": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00048",
-          "flags": "precondition",
-          "confidence": 0.4999
+          "flags": "precondition"
         },
         {
           "ta1ref": "kairos:NULL",
           "before": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00048",
           "after": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00049",
-          "flags": "precondition",
-          "confidence": 0.4999
+          "flags": "precondition"
         },
         {
           "ta1ref": "kairos:NULL",
           "before": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00049",
           "after": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00050",
-          "flags": "precondition",
-          "confidence": 0.4999
+          "flags": "precondition"
         },
         {
           "ta1ref": "kairos:NULL",
           "before": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00050",
           "after": "ibm:Schemas/AttackWithDBIED/Steps/Damage_1",
-          "flags": "precondition",
-          "confidence": 0.4999
+          "flags": "precondition"
         },
         {
           "ta1ref": "kairos:NULL",
           "before": "ibm:Schemas/AttackWithDBIED/Steps/Damage_1",
           "after": "ibm:Schemas/AttackWithDBIED/Steps/Injured_1",
-          "flags": "precondition",
-          "confidence": 0.4999
+          "flags": "precondition"
         }
       ],
       "entityRelations": [
         {
           "relationSubject": "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/target",
-          "provenance": "TBD",
+          "provenance": "AR1001.0094",
           "relations": [
             {
+              "@id": "ibm:Schemas/AttackWithDBIED/Relations/MKFhb04UHRZPj",
               "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/MKFhb04UHRZPj",
               "name": "Nicolas Maduro is president of Venezuela",
               "comment": "This relation was not in the original schema, but was added so TA2 can use a TA1 relation.",
               "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.Leadership.HeadOfState",
               "relationObject": "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/place",
-              "provenance": "TBD",
+              "provenance": "AR1001.0090",
               "relationProvenance": "RR1001.00001"
             }
           ]
         },
         {
           "relationSubject": "ibm:Schemas/AttackWithDBIED/Slots/Damage_1/artifact",
-          "provenance": "TBD",
+          "provenance": "AR1001.0146",
           "relations": [
             {
+              "@id": "ibm:Schemas/AttackWithDBIED/Relations/foobar",
               "ta1ref": "kairos:NULL",
               "name": "The apartment building damaged by the drone is near the stage where Maduro was speaking",
               "comment": "This relation was in Graph G, but not matched to a TA1 relation.",
               "relationPredicate": "kairos:Primitives/Relations/Physical.LocatedNear.Unspecified",
               "relationObject": "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/to",
-              "provenance": "TBD",
+              "provenance": "AR1001.0077",
               "relationProvenance": "RR1001.00017"
             }
-          ]
-        }
-      ],
-      "slots": [
-        {
-          "@id": "ibm:Schemas/AttackWithDBIED/Slots/agent",
-          "roleName": "Agent",
-          "aka": [
-            "Primary Actor",
-            "attacker"
-          ],
-          "entityTypes": [
-            "kairos:Primitives/Entities/PER",
-            "kairos:Primitives/Entities/ORG"
-          ]
-        },
-        {
-          "@id": "ibm:Schemas/AttackWithDBIED/Slots/instrument",
-          "roleName": "Instrument",
-          "aka": [
-            "means",
-            "device"
-          ],
-          "entityTypes": [
-            "kairos:Primitives/Entities/COM",
-            "kairos:Primitives/Entities/VEH",
-            "kairos:Primitives/Entities/WEA"
-          ]
-        },
-        {
-          "@id": "ibm:Schemas/AttackWithDBIED/Slots/target",
-          "roleName": "Target",
-          "aka": "victim",
-          "entityTypes": [
-            "kairos:Primitives/Entities/COM",
-            "kairos:Primitives/Entities/FAC",
-            "kairos:Primitives/Entities/PER",
-            "kairos:Primitives/Entities/VEH"
-          ]
-        },
-        {
-          "@id": "ibm:Schemas/AttackWithDBIED/Slots/place",
-          "roleName": "Place",
-          "aka": "site",
-          "entityTypes": [
-            "kairos:Primitives/Entities/FAC",
-            "kairos:Primitives/Entities/LOC",
-            "kairos:Primitives/Entities/GPE"
           ]
         }
       ]
