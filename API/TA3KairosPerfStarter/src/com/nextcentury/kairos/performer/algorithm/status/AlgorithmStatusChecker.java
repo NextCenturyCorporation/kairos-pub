@@ -50,7 +50,7 @@ public class AlgorithmStatusChecker {
 			}
 
 			StatusResponse statusResponse = new StatusResponse();
-			statusResponse.setStatus(PerformerStatusResponseType.INITIALIZED);
+			statusResponse.setStatus(PerformerStatusResponseType.INITIALIZING);
 			String payloadStr = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(statusResponse);
 
 			// send back status code to specify check result probe

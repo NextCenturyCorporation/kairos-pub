@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.Executors;
 
 import org.apache.http.HttpStatus;
@@ -21,6 +24,8 @@ import com.nextcentury.kairos.performer.algorithm.entrypoint.io.EntrypointMessag
 import com.nextcentury.kairos.performer.algorithm.status.AlgorithmStatusChecker;
 import com.nextcentury.kairos.performer.executor.AlgorithmExecutor;
 import com.nextcentury.kairos.performer.healthcheck.PodStatusChecker;
+import com.nextcentury.kairos.performer.submission.SubmissionMessage;
+import com.nextcentury.kairos.restclient.RestClient;
 import com.nextcentury.kairos.utils.ExceptionHelper;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpServer;
@@ -29,6 +34,8 @@ public class RestEntryPoint {
 	private static Logger logger = null;
 	private static final String APPLICATION_JSON = "application/json";
 	private static final String CONTENT_TYPE = "Content-Type";
+
+	private static final String HTTP = "http://";
 
 	private static final String KAIROS_SERVICE = "/kairos";
 	private static final String KAIROS_SERVICE_ENTRYPOINT = KAIROS_SERVICE + "/entrypoint";
@@ -56,18 +63,31 @@ public class RestEntryPoint {
 	private static String mountPathPersist;
 	private static String mountPathLog;
 
+	private static String enclave;
+	private static String submissionServiceUrl;
 	private static ObjectMapper mapper = new ObjectMapper();
 	static {
 		mapper.setSerializationInclusion(Inclusion.NON_NULL);
 		mapper.setSerializationInclusion(Inclusion.NON_EMPTY);
 	}
 
+	private static List<String> envErrorList = null;
+
 	public static void main(String[] args) throws IOException {
-		experimentName = System.getenv().get(EXPERIMENT_CONFIG_KEY_EXPERIMENT);
-		evaluatorName = System.getenv().get(EXPERIMENT_CONFIG_KEY_EVALUATOR);
-		performerName = System.getenv().get(EXPERIMENT_CONFIG_KEY_PERFORMER);
+		envErrorList = new ArrayList<String>();
+		
+		experimentName = validateEnvConfig(EXPERIMENT_CONFIG_KEY_EXPERIMENT);
+		evaluatorName = validateEnvConfig(EXPERIMENT_CONFIG_KEY_EVALUATOR);
+		performerName = validateEnvConfig(EXPERIMENT_CONFIG_KEY_PERFORMER);
 		ta1SchemaLibPath = System.getenv().get(EXPERIMENT_CONFIG_KEY_TA1SCHEMALIBPATH);
 		graphgPath = System.getenv().get(EXPERIMENT_CONFIG_KEY_GRAPHGPATH);
+
+		if (envErrorList.size() != 0) {
+			System.err.println("Following env config errors were found !!! ");
+			System.err.println("");
+			envErrorList.forEach(System.err::println);
+			return;
+		}
 
 		mountPathPersist = new StringBuffer(KAIROSFSMOUNTPATH_ROOT).append("/").append(experimentName).append("/")
 				.append(performerName).append("/persist").toString().toLowerCase();
@@ -76,6 +96,13 @@ public class RestEntryPoint {
 
 		// always do this first, so that log4j knows where to write the log file to
 		configureLogging();
+
+		// nist-expk-performera-msgprocessor.nist-expk-enclave.svc.cluster.local/kairos/submission
+		enclave = new StringBuffer(evaluatorName).append("-").append(experimentName).append("-enclave").toString()
+				.toLowerCase();
+		submissionServiceUrl = new StringBuffer(HTTP).append(evaluatorName).append("-").append(experimentName)
+				.append("-").append(performerName).append("-msgprocessor").append(".").append(enclave)
+				.append(".svc.cluster.local/kairos/submission").toString().toLowerCase();
 
 		// initialize and listen
 		new RestEntryPoint().delegate();
@@ -197,11 +224,21 @@ public class RestEntryPoint {
 			AlgorithmExecutor executor = new AlgorithmExecutor(performerName, inputObject);
 			executor.execute();
 
+			SubmissionMessage submission = new SubmissionMessage();
+			submission.setPerformername(performerName);
+			submission.setData(executor.getOutput());
+
+			// convert submissionMessage to json string
+			String payloadStr = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(submission);
+
+			// call the msg processor with the submission
+			callSubmissionService(payloadStr);
+
 			exchange.sendResponseHeaders(executor.getStatusCode(), 0);
 			// write the response back
 			exchange.getResponseHeaders().set(CONTENT_TYPE, APPLICATION_JSON);
 			responseBody = exchange.getResponseBody();
-			responseBody.write(executor.getOutput().getBytes());
+			responseBody.write(payloadStr.getBytes());
 		} catch (Throwable e) {
 			logger.error(ExceptionHelper.getExceptionTrace(e));
 		} finally {
@@ -227,5 +264,31 @@ public class RestEntryPoint {
 				}
 			}
 		}
+	}
+
+	private static String validateEnvConfig(String envKey) {
+		Map<String, String> envMap = System.getenv();
+
+		String value = null;
+		if (!envMap.containsKey(envKey)) {
+			envErrorList.add("Environment variable - " + envKey + " not provided.");
+		} else {
+			value = System.getenv().get(envKey);
+			if (value == null || value.isEmpty()) {
+				envErrorList.add("Environment variable - " + envKey + " has null or empty value.");
+			} else {
+			}
+		}
+
+		return value;
+	}
+
+	private String callSubmissionService(String output) {
+		// invoke the submission service
+		logger.debug("\tInvoking - " + submissionServiceUrl);
+		String processingState = new RestClient(submissionServiceUrl, output).getResponse();
+		logger.debug("\tReturned from rest call - " + processingState);
+
+		return processingState;
 	}
 }
