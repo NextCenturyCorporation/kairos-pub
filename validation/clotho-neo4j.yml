@@ -1,0 +1,24 @@
+version: '3'
+services:
+  neo4j:
+    image: neo4j:3.5.0
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment:
+      NEO4J_AUTH: none
+  clotho:
+    image: openjdk:11
+    volumes:
+      - .:/jars
+    depends_on:
+      - neo4j
+    links:
+      - "neo4j"
+    ports:
+      - "8008:8008"
+    environment:
+      DB_TYPE: "Neo4j"
+      DB_URI: "bolt://neo4j:7687"
+    working_dir: "/jars/"
+    command: "/bin/bash -c 'java -jar $$(ls moirai-clotho.jar)'"
