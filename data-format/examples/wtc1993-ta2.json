@@ -1720,7 +1720,7 @@
             {
               "@id": "caci:Schemas/CoordinatedBombingAttack/Relations/vehicle_make",
               "name": "vehicle is a Ryder",
-              "relationPredicate": "kairos:Primitives/Relations/Information.Color.Color",
+              "relationPredicate": "kairos:Primitives/Relations/Information.Make.Make",
               "relationObject": "wiki:Q943",
               "ta1ref": "kairos:NULL",
               "confidence": 1,
@@ -1729,8 +1729,10 @@
             },
             {
               "@id": "caci:Schemas/CoordinatedBombingAttack/Relations/vehicle_color",
-              "name": "vehicle is yellow",
-              "relationPredicate": "kairos:Primitives/Relations/Information.Make.Make",
+              "comment": "Contrived example to show how modality can be set to negated.",
+              "modality": "negated",
+              "name": "vehicle is not yellow",
+              "relationPredicate": "kairos:Primitives/Relations/Information.Color.Color",
               "relationObject": "wiki:Q2178198",
               "ta1ref": "kairos:NULL",
               "confidence": 1,
