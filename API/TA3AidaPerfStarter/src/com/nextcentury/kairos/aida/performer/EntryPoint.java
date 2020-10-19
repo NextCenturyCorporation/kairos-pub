@@ -3,6 +3,9 @@ package com.nextcentury.kairos.aida.performer;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -53,15 +56,29 @@ public class EntryPoint {
 		mapper.setSerializationInclusion(Inclusion.NON_EMPTY);
 	}
 
+	private static List<String> envErrorList = null;
+	static {
+		envErrorList = new ArrayList<String>();
+	}
+
 	private static final int THREAD_POOL_SIZE = 10;
 	private static ExecutorService executorService = null;
 
 	public static void main(String[] args) throws IOException {
-		experimentName = System.getenv().get(EXPERIMENT_CONFIG_KEY_EXPERIMENT);
-		evaluatorName = System.getenv().get(EXPERIMENT_CONFIG_KEY_EVALUATOR);
-		performerName = System.getenv().get(EXPERIMENT_CONFIG_KEY_PERFORMER);
+		envErrorList = new ArrayList<String>();
+		
+		experimentName = validateEnvConfig(EXPERIMENT_CONFIG_KEY_EXPERIMENT);
+		evaluatorName = validateEnvConfig(EXPERIMENT_CONFIG_KEY_EVALUATOR);
+		performerName = validateEnvConfig(EXPERIMENT_CONFIG_KEY_PERFORMER);
 		ta1SchemaLibPath = System.getenv().get(EXPERIMENT_CONFIG_KEY_TA1SCHEMALIBPATH);
 		graphgPath = System.getenv().get(EXPERIMENT_CONFIG_KEY_GRAPHGPATH);
+
+		if (envErrorList.size() != 0) {
+			System.err.println("Following env config errors were found !!! ");
+			System.err.println("");
+			envErrorList.forEach(System.err::println);
+			return;
+		}
 
 		mountPathPersist = new StringBuffer(KAIROSFSMOUNTPATH_ROOT).append("/").append(experimentName).append("/")
 				.append(performerName).append("/persist").toString().toLowerCase();
@@ -167,10 +184,27 @@ public class EntryPoint {
 				.toString().toLowerCase();
 
 		// monitor input folder, process and write to output folder
-		new InputPathMonitor(performerName, mountPathIn, mountPathOut, mountPathError, mountPathLog, executorService).start();
+		new InputPathMonitor(performerName, mountPathIn, mountPathOut, mountPathError, mountPathLog, executorService)
+				.start();
 
 		logger.debug("");
 		logger.debug("Kairos Aida Test Performer service ready ......");
 		logger.debug("");
+	}
+
+	private static String validateEnvConfig(String envKey) {
+		Map<String, String> envMap = System.getenv();
+
+		String value = null;
+		if (!envMap.containsKey(envKey)) {
+			envErrorList.add("Environment variable - " + envKey + " not provided.");
+		} else {
+			value = System.getenv().get(envKey);
+			if (value == null || value.isEmpty()) {
+				envErrorList.add("Environment variable - " + envKey + " has null or empty value.");
+			}
+		}
+
+		return value;
 	}
 }

@@ -22,8 +22,8 @@ import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 import org.codehaus.jackson.type.TypeReference;
 
 import com.nextcentury.kairos.aida.performer.algorithm.entrypoint.io.EntrypointMessage;
-import com.nextcentury.kairos.aida.performer.algorithm.entrypoint.io.EntrypointResponse;
 import com.nextcentury.kairos.aida.performer.executor.AlgorithmExecutor;
+import com.nextcentury.kairos.performer.submission.SubmissionMessage;
 
 public class InputPathMonitor {
 	private static final Logger logger = LogManager.getLogger(InputPathMonitor.class);
@@ -105,12 +105,16 @@ public class InputPathMonitor {
 				AlgorithmExecutor executor = new AlgorithmExecutor(performerName, inputObject);
 				executor.execute();
 
-				EntrypointResponse outputObject = new EntrypointResponse();
-				outputObject.setRequestId(inputObject.getId());
-				outputObject.setContent(executor.getOutput());
+				SubmissionMessage submission = new SubmissionMessage();
+				submission.setPerformername(performerName);
+				submission.setData(executor.getOutput());
+
+				// EntrypointResponse outputObject = new EntrypointResponse();
+				// outputObject.setRequestId(inputObject.getId());
+				// outputObject.setContent(executor.getOutput());
 
 				// convert it back to a string
-				String content = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(outputObject);
+				String content = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(submission);
 				// logger.debug(content);
 
 				//

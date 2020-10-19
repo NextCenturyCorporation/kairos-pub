@@ -20,7 +20,7 @@ public class EntrypointMessage {
 	private String time;
 
 	@JsonProperty("content")
-	private String content;
+	private Content content;
 
 	@JsonProperty("contentUri")
 	private String contentUri;
@@ -53,11 +53,11 @@ public class EntrypointMessage {
 		this.time = time;
 	}
 
-	public String getContent() {
+	public Content getContent() {
 		return content;
 	}
 
-	public void setContent(String content) {
+	public void setContent(Content content) {
 		this.content = content;
 	}
 
@@ -74,4 +74,6 @@ public class EntrypointMessage {
 		return "EntrypointMessage [id=" + id + ", sender=" + sender + ", time=" + time + ", content=" + content
 				+ ", contentUri=" + contentUri + "]";
 	}
+
+	
 }
