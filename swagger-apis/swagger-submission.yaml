@@ -1,0 +1,36 @@
+openapi: 3.0.0
+info:
+  title: KAIROS Performer Submission REST endpoint API
+  description: This is the specification for the KAIROS Performer Submission REST endpoint API, that every performer container implementation will call, to submit the result documents back to the KAIROS Framework. 
+  version: '0.1'
+servers:
+  - url: http://{aws-generated-url} # this is dynamically generated k8s ingress IP on AWS
+    description: KAIROS Performer Submission API endpoint url
+paths:
+  /kairos/submission:
+    post:
+      summary: Performer submission entry point.
+      description: Allows performer to submit a result document from algorithm execution.
+      requestBody:
+        description: Contains the result document payload to be passed back to the KAIROS Runtime framework. The data field is mandatory. 
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/submissionMessage'
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    submissionMessage:
+      type: object
+      required:
+        - performername
+        - data
+      properties:
+        performername:
+          type: string
+        data:
+          type: object
+          example: "Example result document content to be submitted."

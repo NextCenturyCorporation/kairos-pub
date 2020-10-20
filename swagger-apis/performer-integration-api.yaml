@@ -1,0 +1,113 @@
+openapi: 3.0.0
+info:
+  title: KAIROS Performer implementation API
+  description: This is the specification for the KAIROS Performer Implementation API,
+    that every performer container implementation will need to implement.
+  version: "0.1"
+servers:
+- url: http://www.google.com
+  description: KAIROS Integration endpoint url
+paths:
+  /kairos/status:
+    get:
+      summary: Returns current processing state of performer container.
+      description: status field must be one of the "statusTypes" listed below.
+      operationId: kairos_status_get
+      responses:
+        "200":
+          description: Current processing state of the performer container
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/statusResponse'
+      x-openapi-router-controller: swagger_server.controllers.default_controller
+  /kairos/entrypoint:
+    post:
+      summary: Performer algorithm execution entry point.
+      description: Kicks off the performer algorithm execution.
+      operationId: kairos_entrypoint_post
+      requestBody:
+        description: "Contains the message payload to be passed in to the performer\
+          \ algorithm. id, sender, and time fields will always be populated. \n* The\
+          \ message will container either the 'content' field or 'contentUri' field\
+          \ but not both. \n* If content is set it will contain the data to be processed.\n\
+          * If 'contentUri' is set it will contain the address to find the content\
+          \ which may either be hosted remotely or as a local file.\n"
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/entrypointMessage'
+        required: true
+      responses:
+        "200":
+          description: Results of performer execution (in json)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/entrypointResponse'
+      x-openapi-router-controller: swagger_server.controllers.default_controller
+components:
+  schemas:
+    entrypointMessage:
+      required:
+      - id
+      - sender
+      - time
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        sender:
+          type: string
+        time:
+          type: string
+          format: date-time
+        content:
+          type: object
+          example: { "data" : "Example source document content here." }
+        contentUri:
+          type: string
+          format: uri
+          example: s3://karios-experiment-data/sample.txt
+    entrypointResponse:
+      required:
+      - content
+      - requestId
+      type: object
+      properties:
+        requestId:
+          type: string
+          format: uuid
+        content:
+          type: object
+          example: Example response information here.
+      example:
+        requestId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        content: Example response information here.
+    statusResponse:
+      required:
+      - message
+      - status
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/statusTypes'
+        message:
+          type: string
+          example: (Optional) If applicable this field may pass along any information
+            the performer may want to include.
+      example:
+        message: (Optional) If applicable this field may pass along any information
+          the performer may want to include.
+        status: INITIALIZED
+    statusTypes:
+      type: string
+      enum:
+      - INITIALIZED
+      - PROCESSING
+      - DONE_PROCESSING
+      - PROCESSING_ERROR
+      - PROCESSING_WARNING
+      - WAITING_ON_DATA
+
