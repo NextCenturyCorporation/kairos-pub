@@ -1,3 +1,6 @@
+
+You will need to install git-lfs to clone the full contents of this repository.
+
 Run command: docker-compose -f clotho-neo4j.yml up
 
 This is create two containers 
