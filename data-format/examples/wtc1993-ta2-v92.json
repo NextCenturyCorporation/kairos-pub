@@ -1,0 +1,1948 @@
+{
+  "@context": [
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.92.jsonld",
+    {
+      "caci": "https://caci.com/kairos/",
+      "my_key": "caci:my_key",
+      "giant_bitstring": "caci:giant_bitstring"
+    }
+  ],
+  "@id": "caci:Submissions/TA2/54321",
+  "sdfVersion": "0.92",
+  "ta2": true,
+  "task2": false,
+  "primitives": [
+    {
+      "@id": "caci:Primitives/Events/Transaction.Donation.WireTransfer",
+      "version": "caci-10.20.2020",
+      "super": "kairos:Primitives/Events/Transaction.Donation.Unspecified",
+      "name": "Transaction.Donation.WireTransfer",
+      "description": "The voluntary transfer of monetary assets",
+      "aka": [
+        "wiring",
+        "EFT",
+        "electronic funds transfer"
+      ],
+      "reference": "wiki:Q334501",
+      "template": "<arg1> wired <arg4> to <arg2> for the benefit of <arg3>",
+      "slots": [
+        {
+          "@id": "caci:Primitives/Events/Transaction.Donation.WireTransfer/Slots/Sender",
+          "super": "kairos:Primitives/Events/Transaction.Donation.Unspecified/Slots/Giver",
+          "roleName": "Sender",
+          "entityTypes": [
+            "kairos:Primitives/Entities/PER",
+            "kairos:Primitives/Entities/ORG",
+            "kairos:Primitives/Entities/GPE",
+            "kairos:Primitives/Entities/SID"
+          ]
+        },
+        {
+          "@id": "caci:Primitives/Events/Transaction.Donation.WireTransfer/Slots/Recipient",
+          "super": "kairos:Primitives/Events/Transaction.Donation.Unspecified/Slots/Recipient",
+          "roleName": "Recipient",
+          "entityTypes": [
+            "kairos:Primitives/Entities/PER",
+            "kairos:Primitives/Entities/ORG",
+            "kairos:Primitives/Entities/GPE",
+            "kairos:Primitives/Entities/SID"
+          ]
+        },
+        {
+          "@id": "caci:Primitives/Events/Transaction.Donation.WireTransfer/Slots/Beneficiary",
+          "super": "kairos:Primitives/Events/Transaction.Donation.Unspecified/Slots/Beneficiary",
+          "roleName": "Beneficiary",
+          "entityTypes": [
+            "kairos:Primitives/Entities/PER",
+            "kairos:Primitives/Entities/ORG",
+            "kairos:Primitives/Entities/GPE",
+            "kairos:Primitives/Entities/SID"
+          ]
+        },
+        {
+          "@id": "caci:Primitives/Events/Transaction.Donation.WireTransfer/Slots/Amount",
+          "super": "kairos:Primitives/Events/Transaction.Donation.Unspecified/Slots/ArtifactMoney",
+          "roleName": "Amount",
+          "comment": "In WireTransfer, the Amount slot fills the super's ArtifactMoney role, and restricts it to MON",
+          "entityTypes": "kairos:Primitives/Entities/MON"
+        }
+      ]
+    },
+    {
+      "@id": "caci:Primitives/Events/Contact.Contact.Propaganda",
+      "version": "caci-08.17.2020",
+      "super": "kairos:Primitives/Events/Contact.Contact.Broadcast",
+      "name": "Contact.Contact.Propaganda",
+      "description": "A one-way communication that attempts to be persuasive and may be vague about the truth",
+      "reference": "wiki:Q7281",
+      "template": "<arg1> communicated ideals to <arg2> about <arg4> topic using <arg3> at <arg5> place (one-way communication)",
+      "slots": [
+        {
+          "@id": "caci:Primitives/Events/Contact.Contact.Propaganda/Slots/Sender",
+          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Slots/Communicator",
+          "roleName": "Sender",
+          "comment": "This fills the super's Communicator role",
+          "entityTypes": [
+            "kairos:Primitives/Entities/PER",
+            "kairos:Primitives/Entities/ORG",
+            "kairos:Primitives/Entities/GPE",
+            "kairos:Primitives/Entities/SID"
+          ]
+        },
+        {
+          "@id": "caci:Primitives/Events/Contact.Contact.Propaganda/Slots/Recipient",
+          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Slots/Recipient",
+          "roleName": "Recipient",
+          "entityTypes": [
+            "kairos:Primitives/Entities/PER",
+            "kairos:Primitives/Entities/ORG",
+            "kairos:Primitives/Entities/GPE",
+            "kairos:Primitives/Entities/SID"
+          ]
+        },
+        {
+          "@id": "caci:Primitives/Events/Contact.Contact.Propaganda/Slots/Instrument",
+          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Slots/Instrument",
+          "roleName": "Instrument",
+          "entityTypes": [
+            "kairos:Primitives/Entities/ABS",
+            "kairos:Primitives/Entities/COM"
+          ]
+        },
+        {
+          "@id": "caci:Primitives/Events/Contact.Contact.Propaganda/Slots/Topic",
+          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Slots/Topic",
+          "roleName": "Topic",
+          "entityTypes": [
+            "kairos:Primitives/Entities/EVENT",
+            "kairos:Primitives/Entities/PER",
+            "kairos:Primitives/Entities/ORG",
+            "kairos:Primitives/Entities/GPE",
+            "kairos:Primitives/Entities/SID",
+            "kairos:Primitives/Entities/LOC",
+            "kairos:Primitives/Entities/FAC",
+            "kairos:Primitives/Entities/VEH",
+            "kairos:Primitives/Entities/WEA",
+            "kairos:Primitives/Entities/COM",
+            "kairos:Primitives/Entities/BAL",
+            "kairos:Primitives/Entities/MON",
+            "kairos:Primitives/Entities/LAW",
+            "kairos:Primitives/Entities/RES",
+            "kairos:Primitives/Entities/VAL",
+            "kairos:Primitives/Entities/MHI",
+            "kairos:Primitives/Entities/INF",
+            "kairos:Primitives/Entities/ABS",
+            "kairos:Primitives/Entities/AML",
+            "kairos:Primitives/Entities/BOD",
+            "kairos:Primitives/Entities/NAT",
+            "kairos:Primitives/Entities/PLA",
+            "kairos:Primitives/Entities/PTH"
+          ]
+        },
+        {
+          "@id": "caci:Primitives/Events/Contact.Contact.Propaganda/Slots/Outlet",
+          "super": "kairos:Primitives/Events/Contact.Contact.Broadcast/Slots/Place",
+          "roleName": "Outlet",
+          "comment": "This fills the Contact.Contact.Broadcast Place role, but narrows entity types",
+          "entityTypes": [
+            "kairos:Primitives/Entities/LOC",
+            "kairos:Primitives/Entities/FAC"
+          ]
+        }
+      ]
+    }
+  ],
+  "schemas": [
+    {
+      "@id": "caci:Schemas/Instantiated/WTC1993",
+      "comment": [
+        "Scenario E:",
+        "1. Spend time training at Al Qaeda center in Afghanistan",
+        "2. Wire transfer from an uncle",
+        "3. Enter US illegally",
+        "4. Possess bomb making instruction",
+        "5. Contact Sheikh connected with Rabbi Kahane Murderer",
+        "6. Get financing from Sheikh",
+        "7. Train in NJ",
+        "8. Mail anti-Israel letters to newspapers",
+        "9. Rent a van",
+        "10. Drive to Manhattan",
+        "11. Park at WTC",
+        "12. Bomb explosion killing 6 people",
+        "13. Escaped to Pakistan",
+        "",
+        "NOTE: This is the TA2 complex event."
+      ],
+      "name": "World Trade Center 1993 Attack",
+      "description": "A terrorist attack on the World Trade Center, carried out on 2/26/1993, when a truck bomb detonated below the North Tower",
+      "template": "<arg1> coordinated with <arg2> about a bombing attack on <arg3> to take place at <arg4>",
+      "version": "caci-10.13.2020 / caci-10.21.2020",
+      "super": "caci:Schemas/CoordinatedBombingAttack",
+      "confidence": 0.9,
+      "privateData": {
+        "comment": "Performers can place any keys/values they wish here.  The map will be added to the graph but otherwise ignored by the system.  Properties maps can be added inside a schema, individual steps, slots, and order blocks, but not in their enclosing arrays.  Large amounts of private data can be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum.",
+        "my_key": "my value",
+        "giant_bitstring": "s3://caci-kairos/privateData/WTC1993/ce-bitstring.gz"
+      },
+      "steps": [
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Steps/training_1",
+          "name": "Spend time training at Al Qaeda center in Afghanistan",
+          "@type": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified",
+          "aka": [
+            "learning",
+            "teaching"
+          ],
+          "minDuration": "PT10M",
+          "maxDuration": "P3M",
+          "reference": "wiki:Q918385",
+          "confidence": 0.85,
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/training_1",
+          "comment": "For Task 2, provenance should be the @id of the step in Graph G (e.g., VP1001.00005): not validated in Task 2.",
+          "provenance": "Event1237",
+          "modality": [
+            "hedged",
+            "negated",
+            "generic",
+            "irrealis"
+          ],
+          "temporal": [
+            {
+              "comment": [
+                "TA1 optionally sets minDuration and maxDuration; TA2 sets duration, confidence, and optional provenance of this object",
+                "See Conflict.Attack.DetonateExplode step for absoluteTime example"
+              ],
+              "duration": "P4D",
+              "confidence": 0.5
+            },
+            {
+              "comment": "Temporal variables can be combined into one object if they have the same confidence",
+              "earliestStartTime": "1991-01-01T00:00:00",
+              "earliestEndTime": "1991-03-31T23:59:59",
+              "confidence": 0.6
+            },
+            {
+              "latestStartTime": "1991-03-31T00:00:00",
+              "latestEndTime": "1991-12-31T23:59:59",
+              "confidence": 0.7
+            }
+          ],
+          "participants": [
+            {
+              "name": "trainer",
+              "aka": "teacher",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/training_1/trainer",
+              "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/TeacherTrainer",
+              "comment": "Reference specifies that the trainer is Al-Qaeda. Could also be done via an entityRelation.",
+              "reference": "wiki:Q34490",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/AML"
+              ],
+              "values": [
+                {
+                  "comment": "Note: all keywords here are required except comment.",
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/al-qaeda",
+                  "confidence": 0.75,
+                  "provenance": [
+                    "Entity1234",
+                    "Entity1235"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "subject_matter",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/training_1/subject_matter",
+              "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/FieldOfKnowledge",
+              "entityTypes": "kairos:Primitives/Entities/INF",
+              "reference": "wiki:Q7283",
+              "comment": [
+                "TA1 specified via Wikidata reference that the subject matter was terrorism.",
+                "TA2 did not find evidence for this in documents, so expresses N/A (not available) via empty values array."
+              ],
+              "values": []
+            },
+            {
+              "name": "learner",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/training_1/learner",
+              "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/Learner",
+              "refvar": "Agent",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/AML",
+                "kairos:Primitives/Entities/ABS"
+              ],
+              "values": [
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
+                  "confidence": 1,
+                  "comment": "For Task 2, provenance should be the @id of the participant in Graph G (e.g., AR1001.0010): not validated in Task 2.",
+                  "provenance": "Entity1236"
+                }
+              ]
+            },
+            {
+              "name": "means",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/training_1/means",
+              "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/Means",
+              "entityTypes": [
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/ABS",
+                "kairos:Primitives/Entities/INF"
+              ],
+              "comment": [
+                "Unlike FieldOfKnowledge, TA1 didn't specify anything for Means.",
+                "Since TA2 didn't extract a value from documents, it expresses N/R (not relevant) but omitting values keyword."
+              ]
+            },
+            {
+              "name": "institution",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/training_1/institution",
+              "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/Institution",
+              "entityTypes": "kairos:Primitives/Entities/ORG",
+              "comment": "Alternatively, TA2 can express Not Relevant by setting values to null.",
+              "values": null
+            },
+            {
+              "name": "place",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/training_1/place",
+              "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/Place",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC"
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Steps/wire_transfer",
+          "@type": "caci:Primitives/Events/Transaction.Donation.WireTransfer",
+          "name": "Wire transfer from an uncle",
+          "comment": [
+            "Transaction.Donation.WireTransfer is a specialization of Transaction.Donation.Unspecified.",
+            "It narrows the ArtifactMoney slot and removes the Place slot."
+          ],
+          "aka": "telegraphic transfer",
+          "confidence": 0.75,
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/wire_transfer",
+          "provenance": "Event1237",
+          "participants": [
+            {
+              "name": "sender",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/wire_transfer/sender",
+              "role": "caci:Primitives/Events/Transaction.Donation.WireTransfer/Slots/Sender",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ],
+              "values": [
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/ks-mohammed",
+                  "confidence": 1,
+                  "provenance": "Entity1234",
+                  "comment": "If the document wasn't certain of an argument filler, modality can be set to hedged.",
+                  "modality": "hedged"
+                }
+              ]
+            },
+            {
+              "name": "recipient",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/wire_transfer/recipient",
+              "role": "caci:Primitives/Events/Transaction.Donation.WireTransfer/Slots/Recipient",
+              "refvar": "Agent",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ],
+              "values": [
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/m-salameh",
+                  "confidence": 1,
+                  "provenance": "Entity1235"
+                }
+              ]
+            },
+            {
+              "name": "beneficiary",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/wire_transfer/beneficiary",
+              "role": "caci:Primitives/Events/Transaction.Donation.WireTransfer/Slots/Beneficiary",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ]
+            },
+            {
+              "name": "amount",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/wire_transfer/amount",
+              "role": "caci:Primitives/Events/Transaction.Donation.WireTransfer/Slots/Amount",
+              "comment": "In WireTransfer, the Amount slot fills the Donation's ArtifactMoney role, and restricts it to MON",
+              "entityTypes": "kairos:Primitives/Entities/MON",
+              "values": [
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/money",
+                  "confidence": 1,
+                  "provenance": "Entity1234"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Steps/move_illegally",
+          "@type": "kairos:Primitives/Events/Movement.Transportation.IllegalTransportation",
+          "name": "Enter US illegally",
+          "confidence": 0.8,
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/move_illegally",
+          "provenance": "Event1237",
+          "temporal": [
+            {
+              "earliestStartTime": "1992-09-01T00:00:00",
+              "latestEndTime": "1992-09-01T23:59:59",
+              "confidence": 0.9
+            }
+          ],
+          "participants": [
+            {
+              "name": "agentOfMovement",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/move_illegally/agentOfMovement",
+              "role": "kairos:Primitives/Events/Movement.Transportation.IllegalTransportation/Slots/Transporter",
+              "refvar": "Agent",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ]
+            },
+            {
+              "name": "thingsMoved",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/move_illegally/thingsMoved",
+              "role": "kairos:Primitives/Events/Movement.Transportation.IllegalTransportation/Slots/PassengerArtifact",
+              "refvar": "Agent",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/BAL",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/MON",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/AML",
+                "kairos:Primitives/Entities/PTH",
+                "kairos:Primitives/Entities/PLA",
+                "kairos:Primitives/Entities/BOD",
+                "kairos:Primitives/Entities/NAT"
+              ],
+              "values": [
+                {
+                  "comment": "Note: entity cannot be an array because separate confidence and provenance is required",
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
+                  "confidence": 1,
+                  "provenance": "Entity1235"
+                },
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/a-ajaj",
+                  "confidence": 1,
+                  "provenance": "Entity1236"
+                }
+              ]
+            },
+            {
+              "name": "vehicle",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/move_illegally/vehicle",
+              "role": "kairos:Primitives/Events/Movement.Transportation.IllegalTransportation/Slots/Vehicle",
+              "entityTypes": "kairos:Primitives/Entities/VEH"
+            },
+            {
+              "name": "origin",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/move_illegally/origin",
+              "role": "kairos:Primitives/Events/Movement.Transportation.IllegalTransportation/Slots/Origin",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/GPE"
+              ]
+            },
+            {
+              "name": "destinationPlace",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/move_illegally/destinationPlace",
+              "role": "kairos:Primitives/Events/Movement.Transportation.IllegalTransportation/Slots/Destination",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/GPE"
+              ],
+              "reference": "wiki:Q30",
+              "values": [
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/usa",
+                  "confidence": 0.85,
+                  "provenance": "Entity1234"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Steps/get_bombmaking_howto",
+          "@type": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified",
+          "name": "Possess bomb making instruction",
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/get_bombmaking_howto",
+          "comment": "If a schema step is not found in the documents or Graph G, then TA2 specifies a provenance of \"n/a\" and a confidence of 1.0.",
+          "provenance": "n/a",
+          "confidence": 1,
+          "participants": [
+            {
+              "name": "giver",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/get_bombmaking_howto/giver",
+              "role": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified/Slots/Giver",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ]
+            },
+            {
+              "name": "acquirer",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/get_bombmaking_howto/acquirer",
+              "role": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified/Slots/Recipient",
+              "refvar": "Agent",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ],
+              "values": []
+            },
+            {
+              "name": "acquiredEntity",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/get_bombmaking_howto/AcquiredEntity",
+              "role": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified/Slots/AcquiredEntity",
+              "reference": "wiki:Q1057179",
+              "entityTypes": [
+                "kairos:Primitives/Entities/BAL",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/MON",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/ABS",
+                "kairos:Primitives/Entities/AML",
+                "kairos:Primitives/Entities/NAT",
+                "kairos:Primitives/Entities/PLA",
+                "kairos:Primitives/Entities/PTH"
+              ],
+              "values": []
+            },
+            {
+              "name": "payment",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/get_bombmaking_howto/payment",
+              "role": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified/Slots/PaymentBarter",
+              "entityTypes": [
+                "kairos:Primitives/Entities/BAL",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/MON",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/ABS",
+                "kairos:Primitives/Entities/AML",
+                "kairos:Primitives/Entities/NAT",
+                "kairos:Primitives/Entities/PLA",
+                "kairos:Primitives/Entities/PTH"
+              ]
+            },
+            {
+              "name": "beneficiary",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/get_bombmaking_howto/beneficiary",
+              "role": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified/Slots/Beneficiary",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ]
+            },
+            {
+              "name": "place",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/get_bombmaking_howto/place",
+              "role": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified/Slots/Place",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC"
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Steps/make_contact",
+          "@type": "kairos:Primitives/Events/Contact.Contact.Unspecified",
+          "name": "Contact Sheikh connected with Rabbi Kahane Murderer",
+          "comment": [
+            "Note that TA1 has broken up the Contact primitive's Participant role into two distinct slots, so that they",
+            "can assign reference and refvars to both participants individually."
+          ],
+          "aka": "contact",
+          "confidence": 0.65,
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/make_contact",
+          "provenance": "Event1237",
+          "participants": [
+            {
+              "name": "primary_actor",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/make_contact/participant/primary_actor",
+              "role": "kairos:Primitives/Events/Contact.Contact.Unspecified/Slots/Participant",
+              "refvar": "Agent",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ],
+              "values": [
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
+                  "confidence": 1,
+                  "provenance": "Entity1234"
+                }
+              ]
+            },
+            {
+              "name": "poc",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/make_contact/participant/poc",
+              "role": "kairos:Primitives/Events/Contact.Contact.Unspecified/Slots/Participant",
+              "refvar": "Point of Contact",
+              "reference": "wiki:Q2289279",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ],
+              "values": [
+                {
+                  "comment": "In SDF v0.92, values can have name/entityTypes instead of entity. To be removed in v0.93.",
+                  "name": "Omar Abdel-Rahman",
+                  "entityTypes": "kairos:Primitives/Entities/PER",
+                  "confidence": 1,
+                  "provenance": "Entity1235"
+                }
+              ]
+            },
+            {
+              "name": "topic",
+              "aka": "contact",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/make_contact/topic",
+              "role": "kairos:Primitives/Events/Contact.Contact.Unspecified/Slots/Topic",
+              "entityTypes": [
+                "kairos:Primitives/Entities/EVENT",
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID",
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/BAL",
+                "kairos:Primitives/Entities/MON",
+                "kairos:Primitives/Entities/LAW",
+                "kairos:Primitives/Entities/RES",
+                "kairos:Primitives/Entities/VAL",
+                "kairos:Primitives/Entities/MHI",
+                "kairos:Primitives/Entities/INF",
+                "kairos:Primitives/Entities/ABS",
+                "kairos:Primitives/Entities/AML",
+                "kairos:Primitives/Entities/BOD",
+                "kairos:Primitives/Entities/NAT",
+                "kairos:Primitives/Entities/PLA",
+                "kairos:Primitives/Entities/PTH"
+              ]
+            },
+            {
+              "name": "place",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/make_contact/place",
+              "role": "kairos:Primitives/Events/Contact.Contact.Unspecified/Slots/Place",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC"
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Steps/obtain_financing",
+          "@type": "kairos:Primitives/Events/Transaction.Donation.Unspecified",
+          "name": "Get financing from Sheikh",
+          "aka": "financing",
+          "confidence": 0.65,
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/obtain_financing",
+          "provenance": "Event1237",
+          "participants": [
+            {
+              "name": "giver",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/obtain_financing/giver",
+              "role": "kairos:Primitives/Events/Transaction.Donation.Unspecified/Slots/Giver",
+              "comment": "We don't specify refvar here because we have defined an entityRelation where the giver is either the POC from the Contact event or related to it.",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ],
+              "values": [
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/af-mosque",
+                  "confidence": 0.75,
+                  "provenance": "Entity1234"
+                }
+              ]
+            },
+            {
+              "name": "recipient",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/obtain_financing/recipient",
+              "role": "kairos:Primitives/Events/Transaction.Donation.Unspecified/Slots/Recipient",
+              "refvar": "Agent",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ],
+              "values": []
+            },
+            {
+              "name": "beneficiary",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/obtain_financing/beneficiary",
+              "role": "kairos:Primitives/Events/Transaction.Donation.Unspecified/Slots/Beneficiary",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ]
+            },
+            {
+              "name": "money",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/obtain_financing/money",
+              "role": "kairos:Primitives/Events/Transaction.Donation.Unspecified/Slots/ArtifactMoney",
+              "entityTypes": [
+                "kairos:Primitives/Entities/MON",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/BAL",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/AML",
+                "kairos:Primitives/Entities/PLA",
+                "kairos:Primitives/Entities/NAT",
+                "kairos:Primitives/Entities/ABS",
+                "kairos:Primitives/Entities/BOD"
+              ]
+            },
+            {
+              "name": "place",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/obtain_financing/place",
+              "role": "kairos:Primitives/Events/Transaction.Donation.Unspecified/Slots/Place",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC"
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Steps/training_2",
+          "name": "Train in NJ",
+          "@type": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified",
+          "aka": [
+            "training",
+            "teaching"
+          ],
+          "confidence": 0.85,
+          "comment": "Null ta1ref means the event was discovered in the documents but not specified in the TA1 schema.",
+          "ta1ref": "kairos:NULL",
+          "provenance": "Event1237",
+          "participants": [
+            {
+              "name": "trainer",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/training_2/trainer",
+              "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/TeacherTrainer",
+              "refvar": "Point of Contact",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/AML"
+              ]
+            },
+            {
+              "name": "subject_matter",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/training_2/subject_matter",
+              "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/FieldOfKnowledge",
+              "entityTypes": "kairos:Primitives/Entities/INF"
+            },
+            {
+              "name": "learner",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/training_2/learner",
+              "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/Learner",
+              "refvar": "Agent",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/AML",
+                "kairos:Primitives/Entities/ABS"
+              ],
+              "values": [
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
+                  "confidence": 1,
+                  "provenance": "Entity1236"
+                }
+              ]
+            },
+            {
+              "name": "means",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/training_2/means",
+              "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/Means",
+              "entityTypes": [
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/ABS",
+                "kairos:Primitives/Entities/INF"
+              ]
+            },
+            {
+              "name": "institution",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/training_2/institution",
+              "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/Institution",
+              "entityTypes": "kairos:Primitives/Entities/ORG"
+            },
+            {
+              "name": "place",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/training_2/place",
+              "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/Place",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC"
+              ],
+              "values": [
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/new-jersey",
+                  "confidence": 1,
+                  "provenance": "Entity1236"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Steps/media_propaganda",
+          "name": "Mail anti-Israel letters to newspapers",
+          "comment": "Contact.Contact.Propaganda is a specialization of the Contact.Contact.Broadcast event primitive",
+          "@type": "caci:Primitives/Events/Contact.Contact.Propaganda",
+          "confidence": 0.75,
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/media_propaganda",
+          "provenance": "Event1237",
+          "participants": [
+            {
+              "name": "sender",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/media_propaganda/sender",
+              "role": "caci:Primitives/Events/Contact.Contact.Propaganda/Slots/Sender",
+              "comment": "This fills the Contact.Contact.Broadcast Communicator role",
+              "refvar": "Agent",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ],
+              "values": [
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
+                  "confidence": 1,
+                  "provenance": "Entity1234"
+                }
+              ]
+            },
+            {
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/media_propaganda/Slots/Recipient",
+              "role": "caci:Primitives/Events/Contact.Contact.Propaganda/Slots/Recipient",
+              "name": "recipient",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ]
+            },
+            {
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/media_propaganda/instrument",
+              "role": "caci:Primitives/Events/Contact.Contact.Propaganda/Slots/Instrument",
+              "name": "instrument",
+              "entityTypes": [
+                "kairos:Primitives/Entities/ABS",
+                "kairos:Primitives/Entities/COM"
+              ]
+            },
+            {
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/media_propaganda/topic",
+              "role": "caci:Primitives/Events/Contact.Contact.Propaganda/Slots/Topic",
+              "name": "topic",
+              "entityTypes": [
+                "kairos:Primitives/Entities/EVENT",
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID",
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/BAL",
+                "kairos:Primitives/Entities/MON",
+                "kairos:Primitives/Entities/LAW",
+                "kairos:Primitives/Entities/RES",
+                "kairos:Primitives/Entities/VAL",
+                "kairos:Primitives/Entities/MHI",
+                "kairos:Primitives/Entities/INF",
+                "kairos:Primitives/Entities/ABS",
+                "kairos:Primitives/Entities/AML",
+                "kairos:Primitives/Entities/BOD",
+                "kairos:Primitives/Entities/NAT",
+                "kairos:Primitives/Entities/PLA",
+                "kairos:Primitives/Entities/PTH"
+              ]
+            },
+            {
+              "name": "outlet",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/media_propaganda/outlet",
+              "role": "caci:Primitives/Events/Contact.Contact.Propaganda/Slots/Outlet",
+              "comment": "This fills the Contact.Contact.Broadcast Place role",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/FAC"
+              ],
+              "reference": "wiki:Q17502905",
+              "values": [
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/newspapers",
+                  "confidence": 0.8,
+                  "provenance": "Entity1235"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Steps/obtain_transportation",
+          "@type": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified",
+          "name": "Rent a van",
+          "confidence": 0.85,
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/obtain_transportation",
+          "provenance": "Event1237",
+          "participants": [
+            {
+              "name": "giver",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/obtain_transportation/giver",
+              "role": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified/Slots/Giver",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ]
+            },
+            {
+              "name": "acquirer",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/obtain_transportation/acquirer",
+              "role": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified/Slots/Recipient",
+              "refvar": "Agent",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ],
+              "values": [
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
+                  "confidence": 1,
+                  "provenance": "Entity1235"
+                },
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/e-ismoil",
+                  "confidence": 1,
+                  "provenance": "Entity1236"
+                }
+              ]
+            },
+            {
+              "name": "vehicle_rented",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/obtain_transportation/vehicle_rented",
+              "role": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified/Slots/AcquiredEntity",
+              "comment": "This shows an example of refvar used in primitive slots, not schema slot arguments.",
+              "refvar": "Vehicle",
+              "entityTypes": [
+                "kairos:Primitives/Entities/BAL",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/MON",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/ABS",
+                "kairos:Primitives/Entities/AML",
+                "kairos:Primitives/Entities/NAT",
+                "kairos:Primitives/Entities/PLA",
+                "kairos:Primitives/Entities/PTH"
+              ],
+              "values": [
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Vehicle",
+                  "confidence": 0.63,
+                  "provenance": "Entity1234"
+                }
+              ]
+            },
+            {
+              "name": "payment",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/obtain_transportation/payment",
+              "role": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified/Slots/PaymentBarter",
+              "entityTypes": [
+                "kairos:Primitives/Entities/BAL",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/MON",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/ABS",
+                "kairos:Primitives/Entities/AML",
+                "kairos:Primitives/Entities/NAT",
+                "kairos:Primitives/Entities/PLA",
+                "kairos:Primitives/Entities/PTH"
+              ]
+            },
+            {
+              "name": "beneficiary",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/obtain_transportation/beneficiary",
+              "role": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified/Slots/Beneficiary",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ]
+            },
+            {
+              "name": "place",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/obtain_transportation/place",
+              "role": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified/Slots/Place",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC"
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Steps/move_to_general_attack_location_legally",
+          "@type": "kairos:Primitives/Events/Movement.Transportation.Unspecified",
+          "name": "Drive to Manhattan",
+          "confidence": 0.85,
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_general_attack_location_legally",
+          "provenance": "Event1237",
+          "comment": "Contrived example to show use of achieves/requires.  In this case, TA2 included the 'move_to_general_attack_location_legally' step in its instantiation.",
+          "achieves": "arrived-at-general-location",
+          "temporal": [
+            {
+              "name": "2 hours",
+              "duration": "PT2H",
+              "confidence": 0.4
+            },
+            {
+              "name": "2/26/1993 at around 10am",
+              "earliestStartTime": "1993-02-26T10:00:00-05:00",
+              "confidence": 0.5
+            }
+          ],
+          "participants": [
+            {
+              "name": "attacker",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/move_to_general_attack_location_legally/attacker",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Transporter",
+              "refvar": "Agent",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ],
+              "values": [
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
+                  "confidence": 1,
+                  "provenance": "Entity1235"
+                }
+              ]
+            },
+            {
+              "name": "passenger",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/move_to_general_attack_location_legally/passenger",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/PassengerArtifact",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/BAL",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/MON",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/AML",
+                "kairos:Primitives/Entities/PTH",
+                "kairos:Primitives/Entities/PLA",
+                "kairos:Primitives/Entities/BOD",
+                "kairos:Primitives/Entities/NAT"
+              ],
+              "values": [
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/e-ismoil",
+                  "confidence": 1,
+                  "provenance": "Entity1234"
+                }
+              ]
+            },
+            {
+              "name": "vehicle",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/move_to_general_attack_location_legally/vehicle",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Vehicle",
+              "refvar": "Vehicle",
+              "entityTypes": "kairos:Primitives/Entities/VEH",
+              "values": [
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Vehicle",
+                  "confidence": 0.8,
+                  "provenance": "Entity1236"
+                }
+              ]
+            },
+            {
+              "name": "origin",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/move_to_general_attack_location_legally/origin",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Origin",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/GPE"
+              ]
+            },
+            {
+              "name": "attackLocation",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/move_to_general_attack_location_legally/attackLocation",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Destination",
+              "refvar": "general-attack-location",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/GPE"
+              ],
+              "values": [
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/general-attack-location",
+                  "confidence": 0.8,
+                  "provenance": "Entity1234"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Steps/move_to_specific_attack_location",
+          "@type": "kairos:Primitives/Events/Movement.Transportation.Unspecified",
+          "name": "Park at WTC",
+          "confidence": 0.95,
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_specific_attack_location",
+          "provenance": "Event1237",
+          "temporal": [
+            {
+              "earliestStartTime": "1993-02-26T12:00:00-05:00",
+              "confidence": 0.6,
+              "provenance": "Entity1234"
+            }
+          ],
+          "participants": [
+            {
+              "name": "attacker",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/move_to_specific_attack_location/attacker",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Transporter",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ],
+              "values": [
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
+                  "confidence": 1,
+                  "provenance": "Entity1236"
+                }
+              ]
+            },
+            {
+              "name": "passenger",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/move_to_specific_attack_location/passenger",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/PassengerArtifact",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/BAL",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/MON",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/AML",
+                "kairos:Primitives/Entities/PTH",
+                "kairos:Primitives/Entities/PLA",
+                "kairos:Primitives/Entities/BOD",
+                "kairos:Primitives/Entities/NAT"
+              ],
+              "values": [
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/e-ismoil",
+                  "confidence": 1,
+                  "provenance": "Entity1234"
+                }
+              ]
+            },
+            {
+              "name": "vehicle",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/move_to_specific_attack_location/vehicle",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Vehicle",
+              "refvar": "Vehicle",
+              "entityTypes": "kairos:Primitives/Entities/VEH",
+              "values": [
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Vehicle",
+                  "confidence": 0.9,
+                  "provenance": "Entity1234"
+                }
+              ]
+            },
+            {
+              "name": "starting point",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/move_to_specific_attack_location/startingPoint",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Origin",
+              "refvar": "general-attack-location",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/GPE"
+              ],
+              "values": [
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/general-attack-location",
+                  "confidence": 0.8,
+                  "provenance": "Entity1234"
+                }
+              ]
+            },
+            {
+              "name": "attackLocation",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/move_to_specific_attack_location/attackLocation",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Destination",
+              "refvar": "Place",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/GPE"
+              ],
+              "values": [
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Place",
+                  "confidence": 1,
+                  "provenance": "Entity1235"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Steps/bombing",
+          "@type": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode",
+          "aka": "explode",
+          "name": "Bomb explosion killing 6 people",
+          "confidence": 1,
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/bombing",
+          "provenance": "Event1237",
+          "temporal": [
+            {
+              "absoluteTime": "1993-02-26T12:17:37-05:00",
+              "confidence": 1
+            }
+          ],
+          "participants": [
+            {
+              "name": "agent",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/bombing/agent",
+              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Attacker",
+              "refvar": "Agent",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ],
+              "values": [
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
+                  "confidence": 1,
+                  "provenance": "Entity1234"
+                },
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/e-ismoil",
+                  "confidence": 1,
+                  "provenance": "Entity1235"
+                }
+              ]
+            },
+            {
+              "name": "target",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/bombing/target",
+              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Target",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/SID",
+                "kairos:Primitives/Entities/AML",
+                "kairos:Primitives/Entities/PLA",
+                "kairos:Primitives/Entities/NAT"
+              ]
+            },
+            {
+              "name": "trigger",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/bombing/trigger",
+              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Instrument",
+              "entityTypes": [
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/WEA"
+              ],
+              "reference": "wiki:Q127197",
+              "values": []
+            },
+            {
+              "name": "bomb",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/bombing/bomb",
+              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/ExplosiveDevice",
+              "entityTypes": [
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/WEA"
+              ],
+              "reference": "wiki:Q127197",
+              "values": [
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/bomb",
+                  "confidence": 0.8,
+                  "provenance": "Entity1234"
+                }
+              ]
+            },
+            {
+              "name": "place",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/bombing/place",
+              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Place",
+              "refvar": "Place",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC"
+              ],
+              "values": [
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Place",
+                  "confidence": 1,
+                  "provenance": "Entity1236"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Steps/escape",
+          "@type": "kairos:Primitives/Events/Movement.Transportation.IllegalTransportation",
+          "name": "Escaped to Pakistan",
+          "confidence": 0.8,
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/escape",
+          "provenance": "Event1237",
+          "temporal": {
+            "absoluteTime": "1993-02-26T12:05:00-05:00",
+            "confidence": 0.8
+          },
+          "participants": [
+            {
+              "name": "escapee",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/escape/escapee",
+              "role": "kairos:Primitives/Events/Movement.Transportation.IllegalTransportation/Slots/Transporter",
+              "refvar": "Agent",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ],
+              "values": [
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
+                  "confidence": 1,
+                  "provenance": "Entity1236"
+                }
+              ]
+            },
+            {
+              "name": "passenger",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/escape/passenger",
+              "role": "kairos:Primitives/Events/Movement.Transportation.IllegalTransportation/Slots/PassengerArtifact",
+              "refvar": "Agent",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/BAL",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/MON",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/AML",
+                "kairos:Primitives/Entities/PTH",
+                "kairos:Primitives/Entities/PLA",
+                "kairos:Primitives/Entities/BOD",
+                "kairos:Primitives/Entities/NAT"
+              ],
+              "values": [
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/e-ismoil",
+                  "confidence": 1,
+                  "provenance": "Entity1236"
+                }
+              ]
+            },
+            {
+              "name": "getaway car",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/escape/getaway_car",
+              "role": "kairos:Primitives/Events/Movement.Transportation.IllegalTransportation/Slots/Vehicle",
+              "refvar": "Vehicle",
+              "entityTypes": "kairos:Primitives/Entities/VEH",
+              "values": []
+            },
+            {
+              "name": "sourcePlace",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/escape/sourcePlace",
+              "role": "kairos:Primitives/Events/Movement.Transportation.IllegalTransportation/Slots/Origin",
+              "refvar": "Place",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/GPE"
+              ],
+              "values": [
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Place",
+                  "confidence": 1,
+                  "provenance": "Entity1234"
+                }
+              ]
+            },
+            {
+              "name": "destination",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/escape/destination",
+              "role": "kairos:Primitives/Events/Movement.Transportation.IllegalTransportation/Slots/Destination",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/GPE"
+              ],
+              "values": [
+                {
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/pakistan",
+                  "confidence": 1,
+                  "provenance": "Entity1235"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "entities": [
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/al-qaeda",
+          "name": "Al-Qaeda",
+          "entityTypes": "kairos:Primitives/Entities/ORG"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
+          "name": "Ramzi Yousef",
+          "entityTypes": "kairos:Primitives/Entities/PER",
+          "refvar": "Agent"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/ks-mohammed",
+          "name": "Khalid Shaikh Mohammed",
+          "entityTypes": "kairos:Primitives/Entities/PER"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/m-salameh",
+          "name": "Mohammed Salameh",
+          "entityTypes": "kairos:Primitives/Entities/PER",
+          "refvar": "Agent"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/money",
+          "name": "US$660",
+          "entityTypes": "kairos:Primitives/Entities/MON"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/a-ajaj",
+          "name": "Ahmed Ajaj",
+          "entityTypes": "kairos:Primitives/Entities/PER",
+          "refvar": "Agent"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/usa",
+          "name": "USA",
+          "entityTypes": "kairos:Primitives/Entities/GPE"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/Point-of-Contact",
+          "name": "Omar Abdel-Rahman",
+          "entityTypes": "kairos:Primitives/Entities/PER",
+          "refvar": "Point of Contact"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/af-mosque",
+          "name": "Al-Farooq Mosque",
+          "comment": [
+            "TA2 can specify entityTypes in entities objects to express the type of the slot filler/extracted entity.",
+            "Multiple entity types are typically expressed with AND semantics."
+          ],
+          "entityTypes_AND": [
+            "kairos:Primitives/Entities/ORG",
+            "kairos:Primitives/Entities/PER"
+          ]
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/new-jersey",
+          "name": "New Jersey",
+          "entityTypes": "kairos:Primitives/Entities/GPE"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/newspapers",
+          "name": "various New York newspapers",
+          "entityTypes": "kairos:Primitives/Entities/FAC"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/e-ismoil",
+          "name": "Eyad Ismoil",
+          "entityTypes": "kairos:Primitives/Entities/PER",
+          "refvar": "Agent"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/Vehicle",
+          "name": "Ryder van",
+          "entityTypes": "kairos:Primitives/Entities/ORG",
+          "refvar": "Vehicle"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/general-attack-location",
+          "name": "Manhattan",
+          "entityTypes": "kairos:Primitives/Entities/GPE",
+          "refvar": "general-attack-location"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/Place",
+          "name": "World Trade Center North Tower",
+          "reference": "wiki:Q11235",
+          "entityTypes": "kairos:Primitives/Entities/FAC",
+          "refvar": "Place"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/bomb",
+          "name": "1,336 lb (606 kg) urea nitrate–hydrogen gas enhanced device",
+          "entityTypes": "kairos:Primitives/Entities/WEA"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/pakistan",
+          "name": "Pakistan",
+          "entityTypes": "kairos:Primitives/Entities/GPE"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/es-nosair",
+          "name": "El Sayyid Nosair",
+          "entityTypes": "kairos:Primitives/Entities/PER",
+          "reference": "wiki:Q2918749"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/ryder",
+          "name": "Ryder",
+          "entityTypes": "kairos:Primitives/Entities/ORG"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/yellow",
+          "name": "yellow",
+          "entityTypes": "kairos:Primitives/Entities/VAL",
+          "reference": "wiki:Q943"
+        }
+      ],
+      "order": [
+        {
+          "comment": "Wire transfer occurs while training with Al-Qaeda.  Contrived to show a container/contained example.",
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Order/training_1_b4_wire_transfer",
+          "container": "caci:Schemas/Instantiated/WTC1993/Steps/training_1",
+          "contained": "caci:Schemas/Instantiated/WTC1993/Steps/wire_transfer",
+          "confidence": 1
+        },
+        {
+          "comment": "Mailing anti-Israel letters to newspapers and training in NJ overlap. Contrived to show an overlaps example.",
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Order/financing_overlaps_propaganda",
+          "overlaps": [
+            "caci:Schemas/Instantiated/WTC1993/Steps/training_2",
+            "caci:Schemas/Instantiated/WTC1993/Steps/media_propaganda"
+          ],
+          "confidence": 0.75
+        },
+        {
+          "comment": "Must arrive at destination country before sending propagnda and obtaining transportation",
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Order/move_b4_propaganda",
+          "before": "caci:Schemas/Instantiated/WTC1993/Steps/move_illegally",
+          "after": [
+            "caci:Schemas/Instantiated/WTC1993/Steps/media_propaganda",
+            "caci:Schemas/Instantiated/WTC1993/Steps/obtain_transportation"
+          ],
+          "flags": "precondition",
+          "confidence": 0.75
+        },
+        {
+          "ta1ref": "kairos:NULL",
+          "before": "caci:Schemas/Instantiated/WTC1993/Steps/training_1",
+          "after": "caci:Schemas/Instantiated/WTC1993/Steps/training_2",
+          "flags": "precondition",
+          "confidence": 0.75
+        },
+        {
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Order/attack_locations",
+          "before": "caci:Schemas/Instantiated/WTC1993/Steps/move_to_general_attack_location_legally",
+          "after": "caci:Schemas/Instantiated/WTC1993/Steps/move_to_specific_attack_location",
+          "flags": "precondition",
+          "confidence": 0.75
+        },
+        {
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Order/bombing_b4_escape",
+          "before": "caci:Schemas/Instantiated/WTC1993/Steps/bombing",
+          "after": "caci:Schemas/Instantiated/WTC1993/Steps/escape",
+          "flags": "precondition",
+          "confidence": 0.75
+        },
+        {
+          "comment": "At some point, the system should be able to infer transitive relations.  Not sure if in Phase I.",
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Order/lots_b4_bombing",
+          "before": [
+            "caci:Schemas/Instantiated/WTC1993/Steps/training_1",
+            "caci:Schemas/Instantiated/WTC1993/Steps/obtain_financing",
+            "caci:Schemas/Instantiated/WTC1993/Steps/make_contact",
+            "caci:Schemas/Instantiated/WTC1993/Steps/move_to_general_attack_location_legally",
+            "caci:Schemas/Instantiated/WTC1993/Steps/move_to_specific_attack_location"
+          ],
+          "after": "caci:Schemas/Instantiated/WTC1993/Steps/bombing",
+          "flags": "precondition",
+          "confidence": 0.75
+        },
+        {
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Order/more_b4_bombing",
+          "before": [
+            "caci:Schemas/Instantiated/WTC1993/Steps/wire_transfer",
+            "caci:Schemas/Instantiated/WTC1993/Steps/move_illegally",
+            "caci:Schemas/Instantiated/WTC1993/Steps/get_bombmaking_howto",
+            "caci:Schemas/Instantiated/WTC1993/Steps/training_2",
+            "caci:Schemas/Instantiated/WTC1993/Steps/media_propaganda",
+            "caci:Schemas/Instantiated/WTC1993/Steps/obtain_transportation"
+          ],
+          "after": "caci:Schemas/Instantiated/WTC1993/Steps/bombing",
+          "confidence": 0.75
+        }
+      ],
+      "entityRelations": [
+        {
+          "relationSubject": "caci:Schemas/Instantiated/WTC1993/Entities/ks-mohammed",
+          "provenance": "Entity1234",
+          "relations": [
+            {
+              "@id": "caci:Schemas/Instantiated/WTC1993/Relations/wire_transfer_uncle",
+              "name": "Wire transfer was sent from recipient's uncle",
+              "relationPredicate": "kairos:Primitives/Relations/PersonalSocial.Relationship.Unspecified",
+              "relationObject": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/m-salameh",
+              "reference": "wiki:Q76557",
+              "ta1ref": "kairos:NULL",
+              "confidence": 1,
+              "provenance": "Entity1235",
+              "relationProvenance": "Relation1238"
+            }
+          ]
+        },
+        {
+          "relationSubject": "caci:Schemas/Instantiated/WTC1993/Slots/make_contact/participant/poc",
+          "provenance": "Entity1234",
+          "comment": "This corresponds to 'Each argument may be associated with a relation which may be useful to differentiate between schema' from \"Structure of a schema\"",
+          "relations": [
+            {
+              "@id": "caci:Schemas/Instantiated/WTC1993/Relations/sheikh_connected",
+              "name": "Point of contact is connected with Rabbi Kahane Murderer",
+              "relationPredicate": "kairos:Primitives/Relations/PersonalSocial.Relationship.Political",
+              "relationObject": "caci:Schemas/Instantiated/WTC1993/Entities/es-nosair",
+              "ta1ref": "kairos:NULL",
+              "confidence": 0.75,
+              "provenance": "Entity1235",
+              "relationProvenance": "Relation1238"
+            }
+          ]
+        },
+        {
+          "relationSubject": "caci:Schemas/Instantiated/WTC1993/Entities/af-mosque",
+          "provenance": "Entity1234",
+          "comment": [
+            "Giver of financing is one of the participants in the make_contact event, or is affiliated with it",
+            "This corresponds to 'Arguments A41 and A51 are either identical or related' from \"Structure of a schema\"",
+            "NOTE: We do not include 'Giver of financing is one of the participants in the make_contact event' relation because it was not found in the documents, and multiple relations objects in TA1 connotes 'OR' semantics."
+          ],
+          "relations": [
+            {
+              "@id": "caci:Schemas/CoordinatedBombingAttack/Relations/financier2",
+              "name": "Giver of financing is affiliated with one of the participants in the make_contact event",
+              "relationPredicate": "kairos:Primitives/Relations/PersonalSocial.Relationship.Political",
+              "relationObject": "caci:Schemas/Instantiated/WTC1993/Slots/make_contact/participant/poc",
+              "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Relations/financier2",
+              "confidence": 0.25,
+              "provenance": "Entity1235",
+              "relationProvenance": "Relation1238"
+            }
+          ]
+        },
+        {
+          "relationSubject": "caci:Schemas/Instantiated/WTC1993/Entities/Vehicle",
+          "comment": [
+            "This is contrived because you'd never see something like \"vehicle is not yellow\" in TA2 output...",
+            "Also note that assessors will not intepret/translate Wikidata links/QIDs; they will see the arg as n/a."
+          ],
+          "provenance": "Entity1234",
+          "relations": [
+            {
+              "@id": "caci:Schemas/CoordinatedBombingAttack/Relations/vehicle_make",
+              "name": "vehicle is a Ryder",
+              "relationPredicate": "kairos:Primitives/Relations/Information.Make.Make",
+              "relationObject": "caci:Schemas/Instantiated/WTC1993/Entities/ryder",
+              "ta1ref": "kairos:NULL",
+              "confidence": 1,
+              "provenance": "Entity1235",
+              "relationProvenance": "Relation1238"
+            }
+          ]
+        },
+        {
+          "relationSubject": "caci:Schemas/Instantiated/WTC1993/Entities/Vehicle",
+          "comment": [
+            "This is contrived because you'd never see something like \"vehicle is not yellow\" in TA2 output...",
+            "Also note that assessors will not intepret/translate Wikidata links/QIDs; they will see the arg as n/a."
+          ],
+          "provenance": "Entity1234",
+          "relations": [
+            {
+              "@id": "caci:Schemas/CoordinatedBombingAttack/Relations/vehicle_color",
+              "comment": "Contrived example to show \"first order objects\" and how modality can be set to negated.",
+              "modality": "negated",
+              "name": "vehicle is not yellow",
+              "relationPredicate": "kairos:Primitives/Relations/Information.Color.Color",
+              "relationObject": "caci:Schemas/Instantiated/WTC1993/Entities/yellow",
+              "ta1ref": "kairos:NULL",
+              "confidence": 1,
+              "provenance": "Entity1235",
+              "relationProvenance": "Relation1238"
+            }
+          ]
+        }
+      ],
+      "provenanceData": [
+        {
+          "provenance": "Entity1234",
+          "comment": [
+            " *Text documents* ",
+            "'childID' is an LDC child_id. It is the ID of the document/artifact",
+            "mediaType is an IANA Media Type.",
+            "'offset' and 'length' are in characters."
+          ],
+          "childID": "K0C03N4OJ",
+          "mediaType": "text/plain",
+          "offset": 27,
+          "length": 76
+        },
+        {
+          "provenance": "Entity1235",
+          "comment": [
+            " *Images* ",
+            "'parentIDs' is a list of documents that are parent to 'childID.",
+            "'parentIDs' can be a list because a single image/video/etc. can be embedded in more than one parent document.",
+            "'parentIDs' is redundant since the same information is present in the LDC-provided parent_children.tab.",
+            "'boundingBox' dimensions are in pixels",
+            "For images, 'boundingBox' is required."
+          ],
+          "childID": "K0C03N4OK",
+          "parentIDs": "K0C03N4OL",
+          "mediaType": "image/png",
+          "boundingBox": [
+            100,
+            101,
+            200,
+            201
+          ]
+        },
+        {
+          "provenance": "Entity1236",
+          "comment": [
+            " *Audio recordings* ",
+            "'startTime' and 'endTime are in seconds."
+          ],
+          "childID": "K0C03N4OO",
+          "parentIDs": "K0C03N4OP",
+          "mediaType": "audio/wav",
+          "startTime": 2.56,
+          "endTime": 5.12
+        },
+        {
+          "provenance": "Event1237",
+          "comment": [
+            " *Videos -- time range* ",
+            "'startTime' and 'endTime are in seconds."
+          ],
+          "childID": "K0C03N4OM",
+          "parentIDs": "K0C03N4ON",
+          "mediaType": "video/mpeg",
+          "startTime": 2.56,
+          "endTime": 5.12,
+          "boundingBox": [
+            100,
+            101,
+            200,
+            201
+          ]
+        },
+        {
+          "provenance": "Relation1238",
+          "comment": [
+            " *Videos -- key frames* ",
+            "'keyFrames' is an array of LDC-supplied key frame IDs."
+          ],
+          "childID": "K0C03N4OM",
+          "parentIDs": "K0C03N4ON",
+          "mediaType": "video/mpeg",
+          "keyFrames": [
+            60,
+            61,
+            62
+          ],
+          "boundingBox": [
+            100,
+            101,
+            200,
+            201
+          ]
+        }
+      ],
+      "slots": [
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Slots/agent",
+          "roleName": "Agent",
+          "refvar": "Agent",
+          "aka": [
+            "Primary Actor",
+            "attacker"
+          ],
+          "entityTypes": [
+            "kairos:Primitives/Entities/PER",
+            "kairos:Primitives/Entities/ORG"
+          ]
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Slots/poc",
+          "roleName": "Point of Contact",
+          "refvar": "Point of Contact",
+          "aka": [
+            "POC",
+            "Financier",
+            "Backer"
+          ],
+          "entityTypes": [
+            "kairos:Primitives/Entities/PER",
+            "kairos:Primitives/Entities/ORG",
+            "kairos:Primitives/Entities/GPE"
+          ]
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Slots/target",
+          "roleName": "Target",
+          "aka": "victim",
+          "entityTypes": [
+            "kairos:Primitives/Entities/COM",
+            "kairos:Primitives/Entities/FAC",
+            "kairos:Primitives/Entities/PER",
+            "kairos:Primitives/Entities/VEH"
+          ]
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Slots/place",
+          "roleName": "Place",
+          "refvar": "Place",
+          "aka": "site",
+          "entityTypes": [
+            "kairos:Primitives/Entities/FAC",
+            "kairos:Primitives/Entities/LOC",
+            "kairos:Primitives/Entities/GPE"
+          ]
+        }
+      ]
+    }
+  ]
+}
