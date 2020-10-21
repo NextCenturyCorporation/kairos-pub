@@ -14,7 +14,7 @@
   "primitives": [
     {
       "@id": "caci:Primitives/Events/Transaction.Donation.WireTransfer",
-      "version": "caci-08.17.2020",
+      "version": "caci-10.20.2020",
       "super": "kairos:Primitives/Events/Transaction.Donation.Unspecified",
       "name": "Transaction.Donation.WireTransfer",
       "description": "The voluntary transfer of monetary assets",
@@ -24,8 +24,6 @@
         "electronic funds transfer"
       ],
       "reference": "wiki:Q334501",
-      "minDuration": "PT10S",
-      "maxDuration": "PT10M",
       "template": "<arg1> wired <arg4> to <arg2> for the benefit of <arg3>",
       "slots": [
         {
@@ -178,7 +176,7 @@
       "name": "World Trade Center 1993 Attack",
       "description": "A terrorist attack on the World Trade Center, carried out on 2/26/1993, when a truck bomb detonated below the North Tower",
       "template": "<arg1> coordinated with <arg2> about a bombing attack on <arg3> to take place at <arg4>",
-      "version": "caci-10.13.2020 / caci-10.15.2020",
+      "version": "caci-10.13.2020 / caci-10.20.2020",
       "super": "caci:Schemas/CoordinatedBombingAttack",
       "confidence": 0.9,
       "privateData": {
