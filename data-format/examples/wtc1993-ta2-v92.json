@@ -1527,7 +1527,7 @@
         {
           "@id": "caci:Schemas/Instantiated/WTC1993/Entities/Vehicle",
           "name": "Ryder van",
-          "entityTypes": "kairos:Primitives/Entities/ORG",
+          "entityTypes": "kairos:Primitives/Entities/VEH",
           "refvar": "Vehicle"
         },
         {
