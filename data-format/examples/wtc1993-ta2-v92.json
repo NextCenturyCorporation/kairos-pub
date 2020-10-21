@@ -240,17 +240,15 @@
                 "kairos:Primitives/Entities/ORG",
                 "kairos:Primitives/Entities/AML"
               ],
-              "values": [
-                {
-                  "comment": "Note: all keywords here are required except comment.",
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/al-qaeda",
-                  "confidence": 0.75,
-                  "provenance": [
-                    "Entity1234",
-                    "Entity1235"
-                  ]
-                }
-              ]
+              "values": {
+                "comment": "Note: all keywords here are required except comment.",
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/al-qaeda",
+                "confidence": 0.75,
+                "provenance": [
+                  "Entity1234",
+                  "Entity1235"
+                ]
+              }
             },
             {
               "name": "subject_matter",
@@ -276,14 +274,12 @@
                 "kairos:Primitives/Entities/AML",
                 "kairos:Primitives/Entities/ABS"
               ],
-              "values": [
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
-                  "confidence": 1,
-                  "comment": "For Task 2, provenance should be the @id of the participant in Graph G (e.g., AR1001.0010): not validated in Task 2.",
-                  "provenance": "Entity1236"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
+                "confidence": 1,
+                "comment": "For Task 2, provenance should be the @id of the participant in Graph G (e.g., AR1001.0010): not validated in Task 2.",
+                "provenance": "Entity1236"
+              }
             },
             {
               "name": "means",
@@ -342,15 +338,13 @@
                 "kairos:Primitives/Entities/GPE",
                 "kairos:Primitives/Entities/SID"
               ],
-              "values": [
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/ks-mohammed",
-                  "confidence": 1,
-                  "provenance": "Entity1234",
-                  "comment": "If the document wasn't certain of an argument filler, modality can be set to hedged.",
-                  "modality": "hedged"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/ks-mohammed",
+                "confidence": 1,
+                "provenance": "Entity1234",
+                "comment": "If the document wasn't certain of an argument filler, modality can be set to hedged.",
+                "modality": "hedged"
+              }
             },
             {
               "name": "recipient",
@@ -363,13 +357,11 @@
                 "kairos:Primitives/Entities/GPE",
                 "kairos:Primitives/Entities/SID"
               ],
-              "values": [
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/m-salameh",
-                  "confidence": 1,
-                  "provenance": "Entity1235"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/m-salameh",
+                "confidence": 1,
+                "provenance": "Entity1235"
+              }
             },
             {
               "name": "beneficiary",
@@ -388,13 +380,11 @@
               "role": "caci:Primitives/Events/Transaction.Donation.WireTransfer/Slots/Amount",
               "comment": "In WireTransfer, the Amount slot fills the Donation's ArtifactMoney role, and restricts it to MON",
               "entityTypes": "kairos:Primitives/Entities/MON",
-              "values": [
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/money",
-                  "confidence": 1,
-                  "provenance": "Entity1234"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/money",
+                "confidence": 1,
+                "provenance": "Entity1234"
+              }
             }
           ]
         },
@@ -485,13 +475,11 @@
                 "kairos:Primitives/Entities/GPE"
               ],
               "reference": "wiki:Q30",
-              "values": [
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/usa",
-                  "confidence": 0.85,
-                  "provenance": "Entity1234"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/usa",
+                "confidence": 0.85,
+                "provenance": "Entity1234"
+              }
             }
           ]
         },
@@ -619,13 +607,11 @@
                 "kairos:Primitives/Entities/GPE",
                 "kairos:Primitives/Entities/SID"
               ],
-              "values": [
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
-                  "confidence": 1,
-                  "provenance": "Entity1234"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
+                "confidence": 1,
+                "provenance": "Entity1234"
+              }
             },
             {
               "name": "poc",
@@ -639,15 +625,13 @@
                 "kairos:Primitives/Entities/GPE",
                 "kairos:Primitives/Entities/SID"
               ],
-              "values": [
-                {
-                  "comment": "In SDF v0.92, values can have name/entityTypes instead of entity. To be removed in v0.93.",
-                  "name": "Omar Abdel-Rahman",
-                  "entityTypes": "kairos:Primitives/Entities/PER",
-                  "confidence": 1,
-                  "provenance": "Entity1235"
-                }
-              ]
+              "values": {
+                "comment": "In SDF v0.92, values can have name/entityTypes instead of entity. To be removed in v0.93.",
+                "name": "Omar Abdel-Rahman",
+                "entityTypes": "kairos:Primitives/Entities/PER",
+                "confidence": 1,
+                "provenance": "Entity1235"
+              }
             },
             {
               "name": "topic",
@@ -712,13 +696,11 @@
                 "kairos:Primitives/Entities/GPE",
                 "kairos:Primitives/Entities/SID"
               ],
-              "values": [
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/af-mosque",
-                  "confidence": 0.75,
-                  "provenance": "Entity1234"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/af-mosque",
+                "confidence": 0.75,
+                "provenance": "Entity1234"
+              }
             },
             {
               "name": "recipient",
@@ -816,13 +798,11 @@
                 "kairos:Primitives/Entities/AML",
                 "kairos:Primitives/Entities/ABS"
               ],
-              "values": [
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
-                  "confidence": 1,
-                  "provenance": "Entity1236"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
+                "confidence": 1,
+                "provenance": "Entity1236"
+              }
             },
             {
               "name": "means",
@@ -849,13 +829,11 @@
                 "kairos:Primitives/Entities/GPE",
                 "kairos:Primitives/Entities/FAC"
               ],
-              "values": [
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/new-jersey",
-                  "confidence": 1,
-                  "provenance": "Entity1236"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/new-jersey",
+                "confidence": 1,
+                "provenance": "Entity1236"
+              }
             }
           ]
         },
@@ -880,13 +858,11 @@
                 "kairos:Primitives/Entities/GPE",
                 "kairos:Primitives/Entities/SID"
               ],
-              "values": [
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
-                  "confidence": 1,
-                  "provenance": "Entity1234"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
+                "confidence": 1,
+                "provenance": "Entity1234"
+              }
             },
             {
               "@id": "caci:Schemas/Instantiated/WTC1993/Slots/media_propaganda/Slots/Recipient",
@@ -948,13 +924,11 @@
                 "kairos:Primitives/Entities/FAC"
               ],
               "reference": "wiki:Q17502905",
-              "values": [
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/newspapers",
-                  "confidence": 0.8,
-                  "provenance": "Entity1235"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/newspapers",
+                "confidence": 0.8,
+                "provenance": "Entity1235"
+              }
             }
           ]
         },
@@ -1023,13 +997,11 @@
                 "kairos:Primitives/Entities/PLA",
                 "kairos:Primitives/Entities/PTH"
               ],
-              "values": [
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Vehicle",
-                  "confidence": 0.63,
-                  "provenance": "Entity1234"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Vehicle",
+                "confidence": 0.63,
+                "provenance": "Entity1234"
+              }
             },
             {
               "name": "payment",
@@ -1108,13 +1080,11 @@
                 "kairos:Primitives/Entities/GPE",
                 "kairos:Primitives/Entities/SID"
               ],
-              "values": [
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
-                  "confidence": 1,
-                  "provenance": "Entity1235"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
+                "confidence": 1,
+                "provenance": "Entity1235"
+              }
             },
             {
               "name": "passenger",
@@ -1135,13 +1105,11 @@
                 "kairos:Primitives/Entities/BOD",
                 "kairos:Primitives/Entities/NAT"
               ],
-              "values": [
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/e-ismoil",
-                  "confidence": 1,
-                  "provenance": "Entity1234"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/e-ismoil",
+                "confidence": 1,
+                "provenance": "Entity1234"
+              }
             },
             {
               "name": "vehicle",
@@ -1149,13 +1117,11 @@
               "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Vehicle",
               "refvar": "Vehicle",
               "entityTypes": "kairos:Primitives/Entities/VEH",
-              "values": [
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Vehicle",
-                  "confidence": 0.8,
-                  "provenance": "Entity1236"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Vehicle",
+                "confidence": 0.8,
+                "provenance": "Entity1236"
+              }
             },
             {
               "name": "origin",
@@ -1177,13 +1143,11 @@
                 "kairos:Primitives/Entities/FAC",
                 "kairos:Primitives/Entities/GPE"
               ],
-              "values": [
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/general-attack-location",
-                  "confidence": 0.8,
-                  "provenance": "Entity1234"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/general-attack-location",
+                "confidence": 0.8,
+                "provenance": "Entity1234"
+              }
             }
           ]
         },
@@ -1212,13 +1176,11 @@
                 "kairos:Primitives/Entities/GPE",
                 "kairos:Primitives/Entities/SID"
               ],
-              "values": [
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
-                  "confidence": 1,
-                  "provenance": "Entity1236"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
+                "confidence": 1,
+                "provenance": "Entity1236"
+              }
             },
             {
               "name": "passenger",
@@ -1239,13 +1201,11 @@
                 "kairos:Primitives/Entities/BOD",
                 "kairos:Primitives/Entities/NAT"
               ],
-              "values": [
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/e-ismoil",
-                  "confidence": 1,
-                  "provenance": "Entity1234"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/e-ismoil",
+                "confidence": 1,
+                "provenance": "Entity1234"
+              }
             },
             {
               "name": "vehicle",
@@ -1253,13 +1213,11 @@
               "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Vehicle",
               "refvar": "Vehicle",
               "entityTypes": "kairos:Primitives/Entities/VEH",
-              "values": [
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Vehicle",
-                  "confidence": 0.9,
-                  "provenance": "Entity1234"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Vehicle",
+                "confidence": 0.9,
+                "provenance": "Entity1234"
+              }
             },
             {
               "name": "starting point",
@@ -1271,13 +1229,11 @@
                 "kairos:Primitives/Entities/FAC",
                 "kairos:Primitives/Entities/GPE"
               ],
-              "values": [
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/general-attack-location",
-                  "confidence": 0.8,
-                  "provenance": "Entity1234"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/general-attack-location",
+                "confidence": 0.8,
+                "provenance": "Entity1234"
+              }
             },
             {
               "name": "attackLocation",
@@ -1289,13 +1245,11 @@
                 "kairos:Primitives/Entities/FAC",
                 "kairos:Primitives/Entities/GPE"
               ],
-              "values": [
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Place",
-                  "confidence": 1,
-                  "provenance": "Entity1235"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Place",
+                "confidence": 1,
+                "provenance": "Entity1235"
+              }
             }
           ]
         },
@@ -1376,13 +1330,11 @@
                 "kairos:Primitives/Entities/WEA"
               ],
               "reference": "wiki:Q127197",
-              "values": [
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/bomb",
-                  "confidence": 0.8,
-                  "provenance": "Entity1234"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/bomb",
+                "confidence": 0.8,
+                "provenance": "Entity1234"
+              }
             },
             {
               "name": "place",
@@ -1394,13 +1346,11 @@
                 "kairos:Primitives/Entities/GPE",
                 "kairos:Primitives/Entities/FAC"
               ],
-              "values": [
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Place",
-                  "confidence": 1,
-                  "provenance": "Entity1236"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Place",
+                "confidence": 1,
+                "provenance": "Entity1236"
+              }
             }
           ]
         },
@@ -1427,13 +1377,11 @@
                 "kairos:Primitives/Entities/GPE",
                 "kairos:Primitives/Entities/SID"
               ],
-              "values": [
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
-                  "confidence": 1,
-                  "provenance": "Entity1236"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
+                "confidence": 1,
+                "provenance": "Entity1236"
+              }
             },
             {
               "name": "passenger",
@@ -1455,13 +1403,11 @@
                 "kairos:Primitives/Entities/BOD",
                 "kairos:Primitives/Entities/NAT"
               ],
-              "values": [
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/e-ismoil",
-                  "confidence": 1,
-                  "provenance": "Entity1236"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/e-ismoil",
+                "confidence": 1,
+                "provenance": "Entity1236"
+              }
             },
             {
               "name": "getaway car",
@@ -1481,13 +1427,11 @@
                 "kairos:Primitives/Entities/FAC",
                 "kairos:Primitives/Entities/GPE"
               ],
-              "values": [
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Place",
-                  "confidence": 1,
-                  "provenance": "Entity1234"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Place",
+                "confidence": 1,
+                "provenance": "Entity1234"
+              }
             },
             {
               "name": "destination",
@@ -1498,13 +1442,11 @@
                 "kairos:Primitives/Entities/FAC",
                 "kairos:Primitives/Entities/GPE"
               ],
-              "values": [
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/pakistan",
-                  "confidence": 1,
-                  "provenance": "Entity1235"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/pakistan",
+                "confidence": 1,
+                "provenance": "Entity1235"
+              }
             }
           ]
         }
@@ -1710,36 +1652,32 @@
         {
           "relationSubject": "caci:Schemas/Instantiated/WTC1993/Entities/ks-mohammed",
           "provenance": "Entity1234",
-          "relations": [
-            {
-              "@id": "caci:Schemas/Instantiated/WTC1993/Relations/wire_transfer_uncle",
-              "name": "Wire transfer was sent from recipient's uncle",
-              "relationPredicate": "kairos:Primitives/Relations/PersonalSocial.Relationship.Unspecified",
-              "relationObject": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/m-salameh",
-              "reference": "wiki:Q76557",
-              "ta1ref": "kairos:NULL",
-              "confidence": 1,
-              "provenance": "Entity1235",
-              "relationProvenance": "Relation1238"
-            }
-          ]
+          "relations": {
+            "@id": "caci:Schemas/Instantiated/WTC1993/Relations/wire_transfer_uncle",
+            "name": "Wire transfer was sent from recipient's uncle",
+            "relationPredicate": "kairos:Primitives/Relations/PersonalSocial.Relationship.Unspecified",
+            "relationObject": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/m-salameh",
+            "reference": "wiki:Q76557",
+            "ta1ref": "kairos:NULL",
+            "confidence": 1,
+            "provenance": "Entity1235",
+            "relationProvenance": "Relation1238"
+          }
         },
         {
           "relationSubject": "caci:Schemas/Instantiated/WTC1993/Slots/make_contact/participant/poc",
           "provenance": "Entity1234",
           "comment": "This corresponds to 'Each argument may be associated with a relation which may be useful to differentiate between schema' from \"Structure of a schema\"",
-          "relations": [
-            {
-              "@id": "caci:Schemas/Instantiated/WTC1993/Relations/sheikh_connected",
-              "name": "Point of contact is connected with Rabbi Kahane Murderer",
-              "relationPredicate": "kairos:Primitives/Relations/PersonalSocial.Relationship.Political",
-              "relationObject": "caci:Schemas/Instantiated/WTC1993/Entities/es-nosair",
-              "ta1ref": "kairos:NULL",
-              "confidence": 0.75,
-              "provenance": "Entity1235",
-              "relationProvenance": "Relation1238"
-            }
-          ]
+          "relations": {
+            "@id": "caci:Schemas/Instantiated/WTC1993/Relations/sheikh_connected",
+            "name": "Point of contact is connected with Rabbi Kahane Murderer",
+            "relationPredicate": "kairos:Primitives/Relations/PersonalSocial.Relationship.Political",
+            "relationObject": "caci:Schemas/Instantiated/WTC1993/Entities/es-nosair",
+            "ta1ref": "kairos:NULL",
+            "confidence": 0.75,
+            "provenance": "Entity1235",
+            "relationProvenance": "Relation1238"
+          }
         },
         {
           "relationSubject": "caci:Schemas/Instantiated/WTC1993/Entities/af-mosque",
@@ -1749,18 +1687,16 @@
             "This corresponds to 'Arguments A41 and A51 are either identical or related' from \"Structure of a schema\"",
             "NOTE: We do not include 'Giver of financing is one of the participants in the make_contact event' relation because it was not found in the documents, and multiple relations objects in TA1 connotes 'OR' semantics."
           ],
-          "relations": [
-            {
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Relations/financier2",
-              "name": "Giver of financing is affiliated with one of the participants in the make_contact event",
-              "relationPredicate": "kairos:Primitives/Relations/PersonalSocial.Relationship.Political",
-              "relationObject": "caci:Schemas/Instantiated/WTC1993/Slots/make_contact/participant/poc",
-              "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Relations/financier2",
-              "confidence": 0.25,
-              "provenance": "Entity1235",
-              "relationProvenance": "Relation1238"
-            }
-          ]
+          "relations": {
+            "@id": "caci:Schemas/CoordinatedBombingAttack/Relations/financier2",
+            "name": "Giver of financing is affiliated with one of the participants in the make_contact event",
+            "relationPredicate": "kairos:Primitives/Relations/PersonalSocial.Relationship.Political",
+            "relationObject": "caci:Schemas/Instantiated/WTC1993/Slots/make_contact/participant/poc",
+            "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Relations/financier2",
+            "confidence": 0.25,
+            "provenance": "Entity1235",
+            "relationProvenance": "Relation1238"
+          }
         },
         {
           "relationSubject": "caci:Schemas/Instantiated/WTC1993/Entities/Vehicle",
@@ -1769,18 +1705,16 @@
             "Also note that assessors will not intepret/translate Wikidata links/QIDs; they will see the arg as n/a."
           ],
           "provenance": "Entity1234",
-          "relations": [
-            {
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Relations/vehicle_make",
-              "name": "vehicle is a Ryder",
-              "relationPredicate": "kairos:Primitives/Relations/Information.Make.Make",
-              "relationObject": "caci:Schemas/Instantiated/WTC1993/Entities/ryder",
-              "ta1ref": "kairos:NULL",
-              "confidence": 1,
-              "provenance": "Entity1235",
-              "relationProvenance": "Relation1238"
-            }
-          ]
+          "relations": {
+            "@id": "caci:Schemas/CoordinatedBombingAttack/Relations/vehicle_make",
+            "name": "vehicle is a Ryder",
+            "relationPredicate": "kairos:Primitives/Relations/Information.Make.Make",
+            "relationObject": "caci:Schemas/Instantiated/WTC1993/Entities/ryder",
+            "ta1ref": "kairos:NULL",
+            "confidence": 1,
+            "provenance": "Entity1235",
+            "relationProvenance": "Relation1238"
+          }
         },
         {
           "relationSubject": "caci:Schemas/Instantiated/WTC1993/Entities/Vehicle",
@@ -1789,20 +1723,18 @@
             "Also note that assessors will not intepret/translate Wikidata links/QIDs; they will see the arg as n/a."
           ],
           "provenance": "Entity1234",
-          "relations": [
-            {
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Relations/vehicle_color",
-              "comment": "Contrived example to show \"first order objects\" and how modality can be set to negated.",
-              "modality": "negated",
-              "name": "vehicle is not yellow",
-              "relationPredicate": "kairos:Primitives/Relations/Information.Color.Color",
-              "relationObject": "caci:Schemas/Instantiated/WTC1993/Entities/yellow",
-              "ta1ref": "kairos:NULL",
-              "confidence": 1,
-              "provenance": "Entity1235",
-              "relationProvenance": "Relation1238"
-            }
-          ]
+          "relations": {
+            "@id": "caci:Schemas/CoordinatedBombingAttack/Relations/vehicle_color",
+            "comment": "Contrived example to show \"first order objects\" and how modality can be set to negated.",
+            "modality": "negated",
+            "name": "vehicle is not yellow",
+            "relationPredicate": "kairos:Primitives/Relations/Information.Color.Color",
+            "relationObject": "caci:Schemas/Instantiated/WTC1993/Entities/yellow",
+            "ta1ref": "kairos:NULL",
+            "confidence": 1,
+            "provenance": "Entity1235",
+            "relationProvenance": "Relation1238"
+          }
         }
       ],
       "provenanceData": [
