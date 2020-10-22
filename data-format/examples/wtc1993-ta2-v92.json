@@ -1,6 +1,6 @@
 {
   "@context": [
-    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.91.jsonld",
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.92.jsonld",
     {
       "caci": "https://caci.com/kairos/",
       "my_key": "caci:my_key",
@@ -8,7 +8,7 @@
     }
   ],
   "@id": "caci:Submissions/TA2/54321",
-  "sdfVersion": "0.91",
+  "sdfVersion": "0.92",
   "ta2": true,
   "task2": false,
   "primitives": [
@@ -176,7 +176,7 @@
       "name": "World Trade Center 1993 Attack",
       "description": "A terrorist attack on the World Trade Center, carried out on 2/26/1993, when a truck bomb detonated below the North Tower",
       "template": "<arg1> coordinated with <arg2> about a bombing attack on <arg3> to take place at <arg4>",
-      "version": "caci-10.13.2020 / caci-10.20.2020",
+      "version": "caci-10.13.2020 / caci-10.21.2020",
       "super": "caci:Schemas/CoordinatedBombingAttack",
       "confidence": 0.9,
       "privateData": {
@@ -241,9 +241,8 @@
                 "kairos:Primitives/Entities/AML"
               ],
               "values": {
-                "comment": "Note: all keywords here are required.",
-                "name": "Al-Qaeda",
-                "entityTypes": "kairos:Primitives/Entities/ORG",
+                "comment": "Note: all keywords here are required except comment.",
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/al-qaeda",
                 "confidence": 0.75,
                 "provenance": [
                   "Entity1234",
@@ -276,8 +275,7 @@
                 "kairos:Primitives/Entities/ABS"
               ],
               "values": {
-                "name": "Ramzi Yousef",
-                "entityTypes": "kairos:Primitives/Entities/PER",
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
                 "confidence": 1,
                 "comment": "For Task 2, provenance should be the @id of the participant in Graph G (e.g., AR1001.0010): not validated in Task 2.",
                 "provenance": "Entity1236"
@@ -341,8 +339,7 @@
                 "kairos:Primitives/Entities/SID"
               ],
               "values": {
-                "name": "Khalid Shaikh Mohammed",
-                "entityTypes": "kairos:Primitives/Entities/PER",
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/ks-mohammed",
                 "confidence": 1,
                 "provenance": "Entity1234",
                 "comment": "If the document wasn't certain of an argument filler, modality can be set to hedged.",
@@ -361,8 +358,7 @@
                 "kairos:Primitives/Entities/SID"
               ],
               "values": {
-                "name": "Mohammed Salameh",
-                "entityTypes": "kairos:Primitives/Entities/PER",
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/m-salameh",
                 "confidence": 1,
                 "provenance": "Entity1235"
               }
@@ -385,8 +381,7 @@
               "comment": "In WireTransfer, the Amount slot fills the Donation's ArtifactMoney role, and restricts it to MON",
               "entityTypes": "kairos:Primitives/Entities/MON",
               "values": {
-                "name": "US$660",
-                "entityTypes": "kairos:Primitives/Entities/MON",
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/money",
                 "confidence": 1,
                 "provenance": "Entity1234"
               }
@@ -442,14 +437,13 @@
               ],
               "values": [
                 {
-                  "name": "Ramzi Yousef",
-                  "entityTypes": "kairos:Primitives/Entities/PER",
+                  "comment": "Note: entity cannot be an array because separate confidence and provenance is required",
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
                   "confidence": 1,
                   "provenance": "Entity1235"
                 },
                 {
-                  "name": "Ahmed Ajaj",
-                  "entityTypes": "kairos:Primitives/Entities/PER",
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/a-ajaj",
                   "confidence": 1,
                   "provenance": "Entity1236"
                 }
@@ -482,8 +476,7 @@
               ],
               "reference": "wiki:Q30",
               "values": {
-                "name": "USA",
-                "entityTypes": "kairos:Primitives/Entities/GPE",
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/usa",
                 "confidence": 0.85,
                 "provenance": "Entity1234"
               }
@@ -615,8 +608,7 @@
                 "kairos:Primitives/Entities/SID"
               ],
               "values": {
-                "name": "Ramzi Yousef",
-                "entityTypes": "kairos:Primitives/Entities/PER",
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
                 "confidence": 1,
                 "provenance": "Entity1234"
               }
@@ -634,6 +626,7 @@
                 "kairos:Primitives/Entities/SID"
               ],
               "values": {
+                "comment": "In SDF v0.92, values can have name/entityTypes instead of entity. To be removed in v0.93.",
                 "name": "Omar Abdel-Rahman",
                 "entityTypes": "kairos:Primitives/Entities/PER",
                 "confidence": 1,
@@ -704,15 +697,7 @@
                 "kairos:Primitives/Entities/SID"
               ],
               "values": {
-                "name": "Al-Farooq Mosque",
-                "comment": [
-                  "TA2 can specify entityTypes in values objects to express the type of the slot filler/extracted entity.",
-                  "Multiple entity types are typically expressed with AND semantics."
-                ],
-                "entityTypes_AND": [
-                  "kairos:Primitives/Entities/ORG",
-                  "kairos:Primitives/Entities/PER"
-                ],
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/af-mosque",
                 "confidence": 0.75,
                 "provenance": "Entity1234"
               }
@@ -814,8 +799,7 @@
                 "kairos:Primitives/Entities/ABS"
               ],
               "values": {
-                "name": "Ramzi Yousef",
-                "entityTypes": "kairos:Primitives/Entities/PER",
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
                 "confidence": 1,
                 "provenance": "Entity1236"
               }
@@ -846,8 +830,7 @@
                 "kairos:Primitives/Entities/FAC"
               ],
               "values": {
-                "name": "New Jersey",
-                "entityTypes": "kairos:Primitives/Entities/GPE",
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/new-jersey",
                 "confidence": 1,
                 "provenance": "Entity1236"
               }
@@ -876,8 +859,7 @@
                 "kairos:Primitives/Entities/SID"
               ],
               "values": {
-                "name": "Ramzi Yousef",
-                "entityTypes": "kairos:Primitives/Entities/PER",
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
                 "confidence": 1,
                 "provenance": "Entity1234"
               }
@@ -943,8 +925,7 @@
               ],
               "reference": "wiki:Q17502905",
               "values": {
-                "name": "various New York newspapers",
-                "entityTypes": "kairos:Primitives/Entities/FAC",
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/newspapers",
                 "confidence": 0.8,
                 "provenance": "Entity1235"
               }
@@ -983,14 +964,12 @@
               ],
               "values": [
                 {
-                  "name": "Ramzi Yousef",
-                  "entityTypes": "kairos:Primitives/Entities/PER",
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
                   "confidence": 1,
                   "provenance": "Entity1235"
                 },
                 {
-                  "name": "Eyad Ismoil",
-                  "entityTypes": "kairos:Primitives/Entities/PER",
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/e-ismoil",
                   "confidence": 1,
                   "provenance": "Entity1236"
                 }
@@ -1019,9 +998,7 @@
                 "kairos:Primitives/Entities/PTH"
               ],
               "values": {
-                "comment": "non-text extractions still require a name/handle.",
-                "name": "Ryder van",
-                "entityTypes": "kairos:Primitives/Entities/VEH",
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Vehicle",
                 "confidence": 0.63,
                 "provenance": "Entity1234"
               }
@@ -1104,8 +1081,7 @@
                 "kairos:Primitives/Entities/SID"
               ],
               "values": {
-                "name": "Ramzi Yousef",
-                "entityTypes": "kairos:Primitives/Entities/PER",
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
                 "confidence": 1,
                 "provenance": "Entity1235"
               }
@@ -1130,8 +1106,7 @@
                 "kairos:Primitives/Entities/NAT"
               ],
               "values": {
-                "name": "Eyad Ismoil",
-                "entityTypes": "kairos:Primitives/Entities/PER",
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/e-ismoil",
                 "confidence": 1,
                 "provenance": "Entity1234"
               }
@@ -1143,8 +1118,7 @@
               "refvar": "Vehicle",
               "entityTypes": "kairos:Primitives/Entities/VEH",
               "values": {
-                "name": "Ryder van",
-                "entityTypes": "kairos:Primitives/Entities/VEH",
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Vehicle",
                 "confidence": 0.8,
                 "provenance": "Entity1236"
               }
@@ -1170,8 +1144,7 @@
                 "kairos:Primitives/Entities/GPE"
               ],
               "values": {
-                "name": "Manhattan",
-                "entityTypes": "kairos:Primitives/Entities/GPE",
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/general-attack-location",
                 "confidence": 0.8,
                 "provenance": "Entity1234"
               }
@@ -1203,10 +1176,8 @@
                 "kairos:Primitives/Entities/GPE",
                 "kairos:Primitives/Entities/SID"
               ],
-              "comment": "We don't specify refvar here because it's not basic coref:  we have defined an entityRelation for it.",
               "values": {
-                "name": "Ramzi Yousef",
-                "entityTypes": "kairos:Primitives/Entities/PER",
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
                 "confidence": 1,
                 "provenance": "Entity1236"
               }
@@ -1231,8 +1202,7 @@
                 "kairos:Primitives/Entities/NAT"
               ],
               "values": {
-                "name": "Eyad Ismoil",
-                "entityTypes": "kairos:Primitives/Entities/PER",
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/e-ismoil",
                 "confidence": 1,
                 "provenance": "Entity1234"
               }
@@ -1244,8 +1214,7 @@
               "refvar": "Vehicle",
               "entityTypes": "kairos:Primitives/Entities/VEH",
               "values": {
-                "name": "Ryder van",
-                "entityTypes": "kairos:Primitives/Entities/VEH",
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Vehicle",
                 "confidence": 0.9,
                 "provenance": "Entity1234"
               }
@@ -1261,8 +1230,7 @@
                 "kairos:Primitives/Entities/GPE"
               ],
               "values": {
-                "name": "Manhattan",
-                "entityTypes": "kairos:Primitives/Entities/GPE",
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/general-attack-location",
                 "confidence": 0.8,
                 "provenance": "Entity1234"
               }
@@ -1278,9 +1246,7 @@
                 "kairos:Primitives/Entities/GPE"
               ],
               "values": {
-                "name": "parking garage beneath the World Trade Center",
-                "reference": "wiki:Q11235",
-                "entityTypes": "kairos:Primitives/Entities/FAC",
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Place",
                 "confidence": 1,
                 "provenance": "Entity1235"
               }
@@ -1315,14 +1281,12 @@
               ],
               "values": [
                 {
-                  "name": "Ramzi Yousef",
-                  "entityTypes": "kairos:Primitives/Entities/PER",
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
                   "confidence": 1,
                   "provenance": "Entity1234"
                 },
                 {
-                  "name": "Eyad Ismoil",
-                  "entityTypes": "kairos:Primitives/Entities/PER",
+                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/e-ismoil",
                   "confidence": 1,
                   "provenance": "Entity1235"
                 }
@@ -1367,8 +1331,7 @@
               ],
               "reference": "wiki:Q127197",
               "values": {
-                "name": "1,336 lb (606 kg) urea nitrate–hydrogen gas enhanced device",
-                "entityTypes": "kairos:Primitives/Entities/WEA",
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/bomb",
                 "confidence": 0.8,
                 "provenance": "Entity1234"
               }
@@ -1384,9 +1347,7 @@
                 "kairos:Primitives/Entities/FAC"
               ],
               "values": {
-                "name": "World Trade Center North Tower",
-                "reference": "wiki:Q11235",
-                "entityTypes": "kairos:Primitives/Entities/FAC",
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Place",
                 "confidence": 1,
                 "provenance": "Entity1236"
               }
@@ -1417,8 +1378,7 @@
                 "kairos:Primitives/Entities/SID"
               ],
               "values": {
-                "name": "Ramzi Yousef",
-                "entityTypes": "kairos:Primitives/Entities/PER",
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
                 "confidence": 1,
                 "provenance": "Entity1236"
               }
@@ -1444,8 +1404,7 @@
                 "kairos:Primitives/Entities/NAT"
               ],
               "values": {
-                "name": "Eyad Ismoil",
-                "entityTypes": "kairos:Primitives/Entities/PER",
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/e-ismoil",
                 "confidence": 1,
                 "provenance": "Entity1236"
               }
@@ -1469,9 +1428,7 @@
                 "kairos:Primitives/Entities/GPE"
               ],
               "values": {
-                "name": "World Trade Center North Tower",
-                "reference": "wiki:Q11235",
-                "entityTypes": "kairos:Primitives/Entities/FAC",
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Place",
                 "confidence": 1,
                 "provenance": "Entity1234"
               }
@@ -1486,13 +1443,132 @@
                 "kairos:Primitives/Entities/GPE"
               ],
               "values": {
-                "name": "Pakistan",
-                "entityTypes": "kairos:Primitives/Entities/GPE",
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/pakistan",
                 "confidence": 1,
                 "provenance": "Entity1235"
               }
             }
           ]
+        }
+      ],
+      "entities": [
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/al-qaeda",
+          "name": "Al-Qaeda",
+          "entityTypes": "kairos:Primitives/Entities/ORG"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
+          "name": "Ramzi Yousef",
+          "entityTypes": "kairos:Primitives/Entities/PER",
+          "refvar": "Agent"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/ks-mohammed",
+          "name": "Khalid Shaikh Mohammed",
+          "entityTypes": "kairos:Primitives/Entities/PER"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/m-salameh",
+          "name": "Mohammed Salameh",
+          "entityTypes": "kairos:Primitives/Entities/PER",
+          "refvar": "Agent"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/money",
+          "name": "US$660",
+          "entityTypes": "kairos:Primitives/Entities/MON"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/a-ajaj",
+          "name": "Ahmed Ajaj",
+          "entityTypes": "kairos:Primitives/Entities/PER",
+          "refvar": "Agent"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/usa",
+          "name": "USA",
+          "entityTypes": "kairos:Primitives/Entities/GPE"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/Point-of-Contact",
+          "name": "Omar Abdel-Rahman",
+          "entityTypes": "kairos:Primitives/Entities/PER",
+          "refvar": "Point of Contact"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/af-mosque",
+          "name": "Al-Farooq Mosque",
+          "comment": [
+            "TA2 can specify entityTypes in entities objects to express the type of the slot filler/extracted entity.",
+            "Multiple entity types are typically expressed with AND semantics."
+          ],
+          "entityTypes_AND": [
+            "kairos:Primitives/Entities/ORG",
+            "kairos:Primitives/Entities/PER"
+          ]
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/new-jersey",
+          "name": "New Jersey",
+          "entityTypes": "kairos:Primitives/Entities/GPE"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/newspapers",
+          "name": "various New York newspapers",
+          "entityTypes": "kairos:Primitives/Entities/FAC"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/e-ismoil",
+          "name": "Eyad Ismoil",
+          "entityTypes": "kairos:Primitives/Entities/PER",
+          "refvar": "Agent"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/Vehicle",
+          "name": "Ryder van",
+          "entityTypes": "kairos:Primitives/Entities/VEH",
+          "refvar": "Vehicle"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/general-attack-location",
+          "name": "Manhattan",
+          "entityTypes": "kairos:Primitives/Entities/GPE",
+          "refvar": "general-attack-location"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/Place",
+          "name": "World Trade Center North Tower",
+          "reference": "wiki:Q11235",
+          "entityTypes": "kairos:Primitives/Entities/FAC",
+          "refvar": "Place"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/bomb",
+          "name": "1,336 lb (606 kg) urea nitrate–hydrogen gas enhanced device",
+          "entityTypes": "kairos:Primitives/Entities/WEA"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/pakistan",
+          "name": "Pakistan",
+          "entityTypes": "kairos:Primitives/Entities/GPE"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/es-nosair",
+          "name": "El Sayyid Nosair",
+          "entityTypes": "kairos:Primitives/Entities/PER",
+          "reference": "wiki:Q2918749"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/ryder",
+          "name": "Ryder",
+          "entityTypes": "kairos:Primitives/Entities/ORG"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/yellow",
+          "name": "yellow",
+          "entityTypes": "kairos:Primitives/Entities/VAL",
+          "reference": "wiki:Q943"
         }
       ],
       "order": [
@@ -1574,13 +1650,13 @@
       ],
       "entityRelations": [
         {
-          "relationSubject": "caci:Schemas/Instantiated/WTC1993/Slots/wire_transfer/sender",
+          "relationSubject": "caci:Schemas/Instantiated/WTC1993/Entities/ks-mohammed",
           "provenance": "Entity1234",
           "relations": {
             "@id": "caci:Schemas/Instantiated/WTC1993/Relations/wire_transfer_uncle",
-            "name": "Wire transfer was from recipient's uncle",
+            "name": "Wire transfer was sent from recipient's uncle",
             "relationPredicate": "kairos:Primitives/Relations/PersonalSocial.Relationship.Unspecified",
-            "relationObject": "caci:Schemas/Instantiated/WTC1993/Slots/wire_transfer/recipient",
+            "relationObject": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/m-salameh",
             "reference": "wiki:Q76557",
             "ta1ref": "kairos:NULL",
             "confidence": 1,
@@ -1594,9 +1670,9 @@
           "comment": "This corresponds to 'Each argument may be associated with a relation which may be useful to differentiate between schema' from \"Structure of a schema\"",
           "relations": {
             "@id": "caci:Schemas/Instantiated/WTC1993/Relations/sheikh_connected",
-            "name": "Sheikh participant from make_contact event is connected with Rabbi Kahane Murderer",
+            "name": "Point of contact is connected with Rabbi Kahane Murderer",
             "relationPredicate": "kairos:Primitives/Relations/PersonalSocial.Relationship.Political",
-            "relationObject": "wiki:Q2918749",
+            "relationObject": "caci:Schemas/Instantiated/WTC1993/Entities/es-nosair",
             "ta1ref": "kairos:NULL",
             "confidence": 0.75,
             "provenance": "Entity1235",
@@ -1604,26 +1680,7 @@
           }
         },
         {
-          "relationSubject": "caci:Schemas/Instantiated/WTC1993/Slots/move_to_specific_attack_location/attacker",
-          "provenance": "Entity1234",
-          "comment": [
-            "Same attacker moved to specific location as moved to general location, or lives in general attack location",
-            "This corresponds to 'argument A32 could be identical with A21 or related to A22' from \"Structure of a schema\"",
-            "NOTE: We do not include 'Attacker lives in general attack location' relation because it was not found in the documents, and multiple relations objects in TA1 connotes 'OR' semantics."
-          ],
-          "relations": {
-            "@id": "caci:Schemas/CoordinatedBombingAttack/Relations/attacker_location1",
-            "name": "Same attacker moved to specific location as moved to general location",
-            "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
-            "relationObject": "caci:Schemas/Instantiated/WTC1993/Slots/move_to_general_attack_location_legally/attacker",
-            "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Relations/attacker_location1",
-            "confidence": 0.9,
-            "provenance": "Entity1235",
-            "relationProvenance": "Relation1238"
-          }
-        },
-        {
-          "relationSubject": "caci:Schemas/Instantiated/WTC1993/Slots/obtain_financing/giver",
+          "relationSubject": "caci:Schemas/Instantiated/WTC1993/Entities/af-mosque",
           "provenance": "Entity1234",
           "comment": [
             "Giver of financing is one of the participants in the make_contact event, or is affiliated with it",
@@ -1642,36 +1699,42 @@
           }
         },
         {
-          "relationSubject": "caci:Schemas/Instantiated/WTC1993/Slots/obtain_transportation/vehicle_rented",
+          "relationSubject": "caci:Schemas/Instantiated/WTC1993/Entities/Vehicle",
           "comment": [
-            "This is contrived because you'd never see something like \"vehicle is yellow\" in TA2 output...",
+            "This is contrived because you'd never see something like \"vehicle is not yellow\" in TA2 output...",
             "Also note that assessors will not intepret/translate Wikidata links/QIDs; they will see the arg as n/a."
           ],
           "provenance": "Entity1234",
-          "relations": [
-            {
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Relations/vehicle_make",
-              "name": "vehicle is a Ryder",
-              "relationPredicate": "kairos:Primitives/Relations/Information.Make.Make",
-              "relationObject": "wiki:Q943",
-              "ta1ref": "kairos:NULL",
-              "confidence": 1,
-              "provenance": "Entity1235",
-              "relationProvenance": "Relation1238"
-            },
-            {
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Relations/vehicle_color",
-              "comment": "Contrived example to show how modality can be set to negated.",
-              "modality": "negated",
-              "name": "vehicle is not yellow",
-              "relationPredicate": "kairos:Primitives/Relations/Information.Color.Color",
-              "relationObject": "wiki:Q2178198",
-              "ta1ref": "kairos:NULL",
-              "confidence": 1,
-              "provenance": "Entity1235",
-              "relationProvenance": "Relation1238"
-            }
-          ]
+          "relations": {
+            "@id": "caci:Schemas/CoordinatedBombingAttack/Relations/vehicle_make",
+            "name": "vehicle is a Ryder",
+            "relationPredicate": "kairos:Primitives/Relations/Information.Make.Make",
+            "relationObject": "caci:Schemas/Instantiated/WTC1993/Entities/ryder",
+            "ta1ref": "kairos:NULL",
+            "confidence": 1,
+            "provenance": "Entity1235",
+            "relationProvenance": "Relation1238"
+          }
+        },
+        {
+          "relationSubject": "caci:Schemas/Instantiated/WTC1993/Entities/Vehicle",
+          "comment": [
+            "This is contrived because you'd never see something like \"vehicle is not yellow\" in TA2 output...",
+            "Also note that assessors will not intepret/translate Wikidata links/QIDs; they will see the arg as n/a."
+          ],
+          "provenance": "Entity1234",
+          "relations": {
+            "@id": "caci:Schemas/CoordinatedBombingAttack/Relations/vehicle_color",
+            "comment": "Contrived example to show \"first order objects\" and how modality can be set to negated.",
+            "modality": "negated",
+            "name": "vehicle is not yellow",
+            "relationPredicate": "kairos:Primitives/Relations/Information.Color.Color",
+            "relationObject": "caci:Schemas/Instantiated/WTC1993/Entities/yellow",
+            "ta1ref": "kairos:NULL",
+            "confidence": 1,
+            "provenance": "Entity1235",
+            "relationProvenance": "Relation1238"
+          }
         }
       ],
       "provenanceData": [
