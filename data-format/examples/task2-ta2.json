@@ -1,6 +1,6 @@
 {
   "@context": [
-    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.91.jsonld",
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.92.jsonld",
     {
       "caci": "https://caci.com/kairos/",
       "my_key": "caci:my_key",
@@ -10,14 +10,15 @@
   "@id": "ibm:Submissions/TA2/Q3",
   "ta2": true,
   "task2": true,
-  "sdfVersion": "0.91",
+  "sdfVersion": "0.92",
   "schemas": [
     {
       "@id": "ibm:Schemas/AttackWithDBIED",
       "super": "sbu:Schemas/AttackWithDBIED",
       "name": "Attack with DBIED",
       "description": "An event scenario that results in an DBIED attack",
-      "version": "sbu/caci-10.14.2020 / caci-10.17.2020",
+      "comment": "This is an attempt to show was TA2 Task 2 output should look like.  However, it was adapted from a Quizlet 3 schema and Graph G, so is somewhat out of date.  Graph G has evolved since this example, and the references may be off.  But it still should provide a basic template for TA2 Task 2 output.",
+      "version": "sbu/caci-10.14.2020 / caci-10.26.2020",
       "confidence": "1.0",
       "steps": [
         {
@@ -161,10 +162,9 @@
               ],
               "values": [
                 {
-                  "name": "drones",
                   "comment": "Any argument that was found in Graph G specifies the participant id from Graph G as provenance.",
-                  "provenance": "AR1001.0062",
-                  "entityTypes": "kairos:Primitives/Entities/VEH"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/bomb",
+                  "provenance": "AR1001.0062"
                 }
               ]
             },
@@ -180,9 +180,8 @@
               ],
               "values": [
                 {
-                  "name": "C4 explosives",
-                  "provenance": "AR1001.0061",
-                  "entityTypes": "kairos:Primitives/Entities/WEA"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/components",
+                  "provenance": "AR1001.0061"
                 }
               ]
             },
@@ -316,9 +315,8 @@
               ],
               "values": [
                 {
-                  "name": "the stage where Maduro is speaking",
-                  "provenance": "AR1001.0077",
-                  "entityTypes": "kairos:Primitives/Entities/FAC"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/stage",
+                  "provenance": "AR1001.0077"
                 }
               ]
             },
@@ -334,9 +332,8 @@
               ],
               "values": [
                 {
-                  "name": "2 drone operators",
-                  "provenance": "AR1001.0078",
-                  "entityTypes": "kairos:Primitives/Entities/PER"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/transporter",
+                  "provenance": "AR1001.0078"
                 }
               ]
             },
@@ -347,9 +344,8 @@
               "entityTypes": "kairos:Primitives/Entities/VEH",
               "values": [
                 {
-                  "name": "the drone that exploded near the stage where Maduro was speaking",
-                  "provenance": "AR1001.0075",
-                  "entityTypes": "kairos:Primitives/Entities/VEH"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/drone1",
+                  "provenance": "AR1001.0075"
                 }
               ]
             },
@@ -374,9 +370,8 @@
               ],
               "values": [
                 {
-                  "name": "C4 explosives",
-                  "provenance": "AR1001.0076",
-                  "entityTypes": "kairos:Primitives/Entities/WEA"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/components",
+                  "provenance": "AR1001.0076"
                 }
               ]
             }
@@ -425,9 +420,8 @@
               ],
               "values": [
                 {
-                  "name": "C4 explosives",
-                  "provenance": "AR1001.0089",
-                  "entityTypes": "kairos:Primitives/Entities/WEA"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/components",
+                  "provenance": "AR1001.0089"
                 }
               ]
             },
@@ -451,9 +445,8 @@
               ],
               "values": [
                 {
-                  "name": "Caracas",
-                  "provenance": "AR1001.0090",
-                  "entityTypes": "kairos:Primitives/Entities/GPE"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/place",
+                  "provenance": "AR1001.0090"
                 }
               ]
             },
@@ -476,9 +469,8 @@
               ],
               "values": [
                 {
-                  "name": "Nicolás Maduro",
-                  "provenance": "AR1001.0094",
-                  "entityTypes": "kairos:Primitives/Entities/PER"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/target",
+                  "provenance": "AR1001.0094"
                 }
               ]
             }
@@ -624,9 +616,8 @@
               ],
               "values": [
                 {
-                  "name": "7 soldiers",
-                  "provenance": "AR1001.0150.prov",
-                  "entityTypes": "kairos:Primitives/Entities/PER"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/victim",
+                  "provenance": "AR1001.0150"
                 }
               ]
             },
@@ -656,9 +647,8 @@
               ],
               "values": [
                 {
-                  "name": "C4 explosives",
-                  "provenance": "AR1001.0151.prov",
-                  "entityTypes": "kairos:Primitives/Entities/WEA"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/components",
+                  "provenance": "AR1001.0151"
                 }
               ]
             },
@@ -744,9 +734,8 @@
               ],
               "values": [
                 {
-                  "name": "a nearby apartment building",
-                  "provenance": "AR1001.0146",
-                  "entityTypes": "kairos:Primitives/Entities/FAC"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/place2",
+                  "provenance": "AR1001.0146"
                 }
               ]
             },
@@ -761,9 +750,8 @@
               ],
               "values": [
                 {
-                  "name": "C4 explosives",
-                  "provenance": "AR1001.0147",
-                  "entityTypes": "kairos:Primitives/Entities/WEA"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/components",
+                  "provenance": "AR1001.0147"
                 }
               ]
             },
@@ -778,9 +766,8 @@
               ],
               "values": [
                 {
-                  "name": "Caracas",
-                  "provenance": "AR1001.0148",
-                  "entityTypes": "kairos:Primitives/Entities/GPE"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/place",
+                  "provenance": "AR1001.0148"
                 }
               ]
             }
@@ -866,15 +853,13 @@
               "entityTypes": "kairos:Primitives/Entities/PER",
               "values": [
                 {
-                  "name": "Juan Manuel Santos",
-                  "provenance": "AR1001.0009",
-                  "entityTypes": "kairos:Primitives/Entities/PER"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/jm-santos",
+                  "provenance": "AR1001.0009"
                 },
                 {
                   "comment": "This second argument filler could also be represented by an additional Participant.",
-                  "name": "Julio Borges",
-                  "provenance": "AR1001.0010",
-                  "entityTypes": "kairos:Primitives/Entities/PER"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/j-borges",
+                  "provenance": "AR1001.0010"
                 }
               ]
             },
@@ -885,14 +870,12 @@
               "entityTypes": "kairos:Primitives/Entities/EVENT",
               "values": [
                 {
-                  "name": "Drone explodes near the stage where Maduro is speaking",
-                  "provenance": "VP1001.00037",
-                  "entityTypes": "kairos:Primitives/Events/Contact.Contact.Unspecified"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/explosion1",
+                  "provenance": "VP1001.00037"
                 },
                 {
-                  "name": "Drone explodes at nearby apartment building",
-                  "provenance": "VP1001.00050",
-                  "entityTypes": "kairos:Primitives/Events/Contact.Contact.Unspecified"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/explosion2",
+                  "provenance": "VP1001.00050"
                 }
               ]
             },
@@ -936,9 +919,8 @@
               "entityTypes": "kairos:Primitives/Entities/VEH",
               "values": [
                 {
-                  "name": "drones",
-                  "provenance": "AR1001.0079",
-                  "entityTypes": "kairos:Primitives/Entities/VEH"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/bomb",
+                  "provenance": "AR1001.0079"
                 }
               ]
             },
@@ -949,9 +931,8 @@
               "entityTypes": "kairos:Primitives/Entities/GPE",
               "values": [
                 {
-                  "name": "Caracas",
-                  "provenance": "AR1001.0080",
-                  "entityTypes": "kairos:Primitives/Entities/GPE"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/place",
+                  "provenance": "AR1001.0080"
                 }
               ]
             },
@@ -962,9 +943,8 @@
               "entityTypes": "kairos:Primitives/Entities/LOC",
               "values": [
                 {
-                  "name": "downtown Caracas",
-                  "provenance": "AR1001.0081",
-                  "entityTypes": "kairos:Primitives/Entities/LOC"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/location",
+                  "provenance": "AR1001.0081"
                 }
               ]
             },
@@ -975,9 +955,8 @@
               "entityTypes": "kairos:Primitives/Entities/COM",
               "values": [
                 {
-                  "name": "radio signal inhibitors",
-                  "provenance": "AR1001.0082",
-                  "entityTypes": "kairos:Primitives/Entities/COM"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/radio-inhibitors",
+                  "provenance": "AR1001.0082"
                 }
               ]
             },
@@ -988,9 +967,8 @@
               "entityTypes": "kairos:Primitives/Entities/ORG",
               "values": [
                 {
-                  "name": "Venezuelan intelligence",
-                  "provenance": "AR1001.0083",
-                  "entityTypes": "kairos:Primitives/Entities/ORG"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/venezuelan-intelligence",
+                  "provenance": "AR1001.0083"
                 }
               ]
             }
@@ -1024,9 +1002,8 @@
               "entityTypes": "kairos:Primitives/Entities/VEH",
               "values": [
                 {
-                  "name": "the drone that crashed into the apartment building",
-                  "provenance": "AR1001.0134",
-                  "entityTypes": "kairos:Primitives/Entities/VEH"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/drone2",
+                  "provenance": "AR1001.0134"
                 }
               ]
             },
@@ -1037,9 +1014,8 @@
               "entityTypes": "kairos:Primitives/Entities/FAC",
               "values": [
                 {
-                  "name": "a nearby apartment building",
-                  "provenance": "AR1001.0135",
-                  "entityTypes": "kairos:Primitives/Entities/FAC"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/place2",
+                  "provenance": "AR1001.0135"
                 }
               ]
             },
@@ -1050,9 +1026,8 @@
               "entityTypes": "kairos:Primitives/Entities/WEA",
               "values": [
                 {
-                  "name": "C4 explosives",
-                  "provenance": "AR1001.0136",
-                  "entityTypes": "kairos:Primitives/Entities/WEA"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/components",
+                  "provenance": "AR1001.0136"
                 }
               ]
             },
@@ -1109,9 +1084,8 @@
               "entityTypes": "kairos:Primitives/Entities/VEH",
               "values": [
                 {
-                  "name": "the drone that crashed into the apartment building",
-                  "provenance": "AR1001.0137",
-                  "entityTypes": "kairos:Primitives/Entities/VEH"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/drone2",
+                  "provenance": "AR1001.0137"
                 }
               ]
             },
@@ -1122,9 +1096,8 @@
               "entityTypes": "kairos:Primitives/Entities/FAC",
               "values": [
                 {
-                  "name": "a nearby apartment building",
-                  "provenance": "AR1001.0138",
-                  "entityTypes": "kairos:Primitives/Entities/FAC"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/place2",
+                  "provenance": "AR1001.0138"
                 }
               ]
             },
@@ -1138,14 +1111,12 @@
               ],
               "values": [
                 {
-                  "name": "Caracas",
-                  "provenance": "AR1001.0139",
-                  "entityTypes": "kairos:Primitives/Entities/GPE"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/place",
+                  "provenance": "AR1001.0139"
                 },
                 {
-                  "name": "downtown Caracas",
-                  "provenance": "AR1001.0140",
-                  "entityTypes": "kairos:Primitives/Entities/LOC"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/location",
+                  "provenance": "AR1001.0140"
                 }
               ]
             },
@@ -1186,9 +1157,8 @@
               "entityTypes": "kairos:Primitives/Entities/WEA",
               "values": [
                 {
-                  "name": "C4 explosives",
-                  "provenance": "AR1001.0141",
-                  "entityTypes": "kairos:Primitives/Entities/WEA"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/components",
+                  "provenance": "AR1001.0141"
                 }
               ]
             },
@@ -1199,9 +1169,8 @@
               "entityTypes": "kairos:Primitives/Entities/WEA",
               "values": [
                 {
-                  "name": "the drone that crashed into the apartment building",
-                  "provenance": "AR1001.0142",
-                  "entityTypes": "kairos:Primitives/Entities/VEH"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/drone2",
+                  "provenance": "AR1001.0142"
                 }
               ]
             },
@@ -1212,9 +1181,8 @@
               "entityTypes": "kairos:Primitives/Entities/FAC",
               "values": [
                 {
-                  "name": "a nearby apartment building",
-                  "provenance": "AR1001.0143",
-                  "entityTypes": "kairos:Primitives/Entities/FAC"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/place2",
+                  "provenance": "AR1001.0143"
                 }
               ]
             },
@@ -1228,14 +1196,12 @@
               ],
               "values": [
                 {
-                  "name": "Caracas",
-                  "provenance": "AR1001.0144",
-                  "entityTypes": "kairos:Primitives/Entities/GPE"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/place",
+                  "provenance": "AR1001.0144"
                 },
                 {
-                  "name": "downtown Caracas",
-                  "provenance": "AR1001.0145",
-                  "entityTypes": "kairos:Primitives/Entities/LOC"
+                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/location",
+                  "provenance": "AR1001.0145"
                 }
               ]
             },
@@ -1371,10 +1337,97 @@
           "flags": "precondition"
         }
       ],
+      "entities": [
+        {
+          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/bomb",
+          "name": "drones",
+          "entityTypes": "kairos:Primitives/Entities/VEH"
+        },
+        {
+          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/components",
+          "name": "C4 explosives",
+          "entityTypes": "kairos:Primitives/Entities/WEA"
+        },
+        {
+          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/stage",
+          "name": "the stage where Maduro is speaking",
+          "entityTypes": "kairos:Primitives/Entities/FAC"
+        },
+        {
+          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/transporter",
+          "name": "2 drone operators",
+          "entityTypes": "kairos:Primitives/Entities/PER"
+        },
+        {
+          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/drone1",
+          "name": "the drone that exploded near the stage where Maduro was speaking",
+          "entityTypes": "kairos:Primitives/Entities/VEH"
+        },
+        {
+          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/place",
+          "name": "Caracas",
+          "entityTypes": "kairos:Primitives/Entities/GPE"
+        },
+        {
+          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/target",
+          "name": "Nicolás Maduro",
+          "entityTypes": "kairos:Primitives/Entities/PER"
+        },
+        {
+          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/victim",
+          "name": "7 soldiers",
+          "entityTypes": "kairos:Primitives/Entities/PER"
+        },
+        {
+          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/place2",
+          "name": "a nearby apartment building",
+          "entityTypes": "kairos:Primitives/Entities/FAC"
+        },
+        {
+          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/jm-santos",
+          "name": "Juan Manuel Santos",
+          "entityTypes": "kairos:Primitives/Entities/PER"
+        },
+        {
+          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/j-borges",
+          "name": "Julio Borges",
+          "entityTypes": "kairos:Primitives/Entities/PER"
+        },
+        {
+          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/location",
+          "name": "downtown Caracas",
+          "entityTypes": "kairos:Primitives/Entities/LOC"
+        },
+        {
+          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/radio-inhibitors",
+          "name": "radio signal inhibitors",
+          "entityTypes": "kairos:Primitives/Entities/COM"
+        },
+        {
+          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/venezuelan-intelligence",
+          "name": "Venezuelan intelligence",
+          "entityTypes": "kairos:Primitives/Entities/ORG"
+        },
+        {
+          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/drone2",
+          "name": "the drone that crashed into the apartment building",
+          "entityTypes": "kairos:Primitives/Entities/VEH"
+        },
+        {
+          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/explosion1",
+          "name": "Drone explodes near the stage where Maduro is speaking",
+          "entityTypes": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode"
+        },
+        {
+          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/explosion2",
+          "name": "Drone explodes at nearby apartment building",
+          "entityTypes": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode"
+        }
+      ],
       "entityRelations": [
         {
-          "relationSubject": "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/target",
-          "provenance": "AR1001.0094",
+          "relationSubject": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/target",
+          "provenance": "provided by v0.92 Graph G",
           "relations": [
             {
               "@id": "ibm:Schemas/AttackWithDBIED/Relations/MKFhb04UHRZPj",
@@ -1382,15 +1435,15 @@
               "name": "Nicolas Maduro is president of Venezuela",
               "comment": "This relation was not in the original schema, but was added so TA2 can use a TA1 relation.",
               "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.Leadership.HeadOfState",
-              "relationObject": "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/place",
-              "provenance": "AR1001.0090",
+              "relationObject": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/place",
+              "provenance": "provided by v0.92 Graph G",
               "relationProvenance": "RR1001.00001"
             }
           ]
         },
         {
-          "relationSubject": "ibm:Schemas/AttackWithDBIED/Slots/Damage_1/artifact",
-          "provenance": "AR1001.0146",
+          "relationSubject": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/place2",
+          "provenance": "provided by v0.92 Graph G",
           "relations": [
             {
               "@id": "ibm:Schemas/AttackWithDBIED/Relations/foobar",
@@ -1398,8 +1451,8 @@
               "name": "The apartment building damaged by the drone is near the stage where Maduro was speaking",
               "comment": "This relation was in Graph G, but not matched to a TA1 relation.",
               "relationPredicate": "kairos:Primitives/Relations/Physical.LocatedNear.Unspecified",
-              "relationObject": "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/to",
-              "provenance": "AR1001.0077",
+              "relationObject": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/stage",
+              "provenance": "provided by v0.92 Graph G",
               "relationProvenance": "RR1001.00017"
             }
           ]
