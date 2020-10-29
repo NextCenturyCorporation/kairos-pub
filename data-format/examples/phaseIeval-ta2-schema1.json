@@ -1,6 +1,6 @@
 {
   "@context": [
-    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.91.jsonld",
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.92.jsonld",
     {
       "caci": "https://caci.com/kairos/",
       "my_key": "caci:my_key",
@@ -8,7 +8,7 @@
     }
   ],
   "@id": "caci:Examples/TA2/54321",
-  "sdfVersion": "0.91",
+  "sdfVersion": "0.92",
   "ta2": true,
   "task2": false,
   "schemas": [
@@ -26,7 +26,7 @@
       ],
       "name": "Phase I Eval Schema #1, Task 1, TA2",
       "description": "This is a schema with specific arguments involving terrorism and a truck",
-      "version": "caci-10.13.2020 / caci-10.14.2020",
+      "version": "caci-10.13.2020 / caci-10.23.2020",
       "super": "caci:Schemas/PIeval-TA1-Schema1",
       "template": "<arg1> coordinated with <arg2> about a bombing attack",
       "confidence": 0.92,
@@ -75,14 +75,11 @@
                 "kairos:Primitives/Entities/BOD",
                 "kairos:Primitives/Entities/NAT"
               ],
-              "values": [
-                {
-                  "name": "Hani Hanjour",
-                  "entityTypes": "kairos:Primitives/Entities/PER",
-                  "confidence": 1,
-                  "provenance": "Entity1234"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Entities/Agent",
+                "confidence": 1,
+                "provenance": "Entity1234"
+              }
             },
             {
               "name": "vehicle",
@@ -158,14 +155,11 @@
                 "kairos:Primitives/Entities/ORG",
                 "kairos:Primitives/Entities/AML"
               ],
-              "values": [
-                {
-                  "name": "Al-Qaeda",
-                  "entityTypes": "kairos:Primitives/Entities/ORG",
-                  "confidence": 0.82,
-                  "provenance": "Entity1235"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Entities/Point-of-Contact",
+                "confidence": 0.82,
+                "provenance": "Entity1235"
+              }
             },
             {
               "name": "subject_matter",
@@ -174,18 +168,15 @@
               "entityTypes": "kairos:Primitives/Entities/INF",
               "comment": "Wikidata entry for terrorism",
               "reference": "https://www.wikidata.org/wiki/Q7283",
-              "values": [
-                {
-                  "name": "studied terrorism",
-                  "entityTypes": "kairos:Primitives/Entities/INF",
-                  "confidence": 1,
-                  "comment": "provenance may be an array if multiple justifications are present in the documents",
-                  "provenance": [
-                    "Entity1235",
-                    "Entity1236"
-                  ]
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Entities/terrorism",
+                "confidence": 1,
+                "comment": "provenance may be an array if multiple justifications are present in the documents",
+                "provenance": [
+                  "Entity1235",
+                  "Entity1236"
+                ]
+              }
             },
             {
               "name": "learner",
@@ -199,14 +190,11 @@
                 "kairos:Primitives/Entities/AML",
                 "kairos:Primitives/Entities/ABS"
               ],
-              "values": [
-                {
-                  "name": "Hani Hanjour",
-                  "entityTypes": "kairos:Primitives/Entities/PER",
-                  "confidence": 0.91,
-                  "provenance": "Entity1234"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Entities/Agent",
+                "confidence": 0.91,
+                "provenance": "Entity1234"
+              }
             },
             {
               "name": "means",
@@ -256,14 +244,11 @@
                 "kairos:Primitives/Entities/GPE",
                 "kairos:Primitives/Entities/SID"
               ],
-              "values": [
-                {
-                  "name": "Hani Hanjour",
-                  "entityTypes": "kairos:Primitives/Entities/PER",
-                  "confidence": 0.82,
-                  "provenance": "Entity1234"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Entities/Agent",
+                "confidence": 0.82,
+                "provenance": "Entity1234"
+              }
             },
             {
               "name": "point of contact",
@@ -277,14 +262,11 @@
                 "kairos:Primitives/Entities/GPE",
                 "kairos:Primitives/Entities/SID"
               ],
-              "values": [
-                {
-                  "name": "Al-Qaeda operative",
-                  "entityTypes": "kairos:Primitives/Entities/PER",
-                  "confidence": 0.9,
-                  "provenance": "Entity1235"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Entities/Point-of-Contact",
+                "confidence": 0.9,
+                "provenance": "Entity1235"
+              }
             },
             {
               "name": "topic",
@@ -343,14 +325,11 @@
               "role": "kairos:Primitives/Events/Personnel.StartPosition.Unspecified/Slots/Employee",
               "refvar": "Agent",
               "entityTypes": "kairos:Primitives/Entities/PER",
-              "values": [
-                {
-                  "name": "Hani Hanjour",
-                  "entityTypes": "kairos:Primitives/Entities/PER",
-                  "confidence": 0.77,
-                  "provenance": "Entity1234"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Entities/Agent",
+                "confidence": 0.77,
+                "provenance": "Entity1234"
+              }
             },
             {
               "name": "group",
@@ -409,14 +388,11 @@
                 "kairos:Primitives/Entities/GPE",
                 "kairos:Primitives/Entities/SID"
               ],
-              "values": [
-                {
-                  "name": "Hani Hanjour",
-                  "entityTypes": "kairos:Primitives/Entities/PER",
-                  "confidence": 0.5,
-                  "provenance": "Entity1234"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Entities/Agent",
+                "confidence": 0.5,
+                "provenance": "Entity1234"
+              }
             },
             {
               "name": "truck",
@@ -441,14 +417,11 @@
                 "kairos:Primitives/Entities/PLA",
                 "kairos:Primitives/Entities/PTH"
               ],
-              "values": [
-                {
-                  "name": "picture of a truck",
-                  "entityTypes": "kairos:Primitives/Entities/VEH",
-                  "confidence": 0.63,
-                  "provenance": "Entity1236"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Entities/Truck",
+                "confidence": 0.63,
+                "provenance": "Entity1236"
+              }
             },
             {
               "name": "payment",
@@ -545,14 +518,11 @@
                 "kairos:Primitives/Entities/PLA",
                 "kairos:Primitives/Entities/PTH"
               ],
-              "values": [
-                {
-                  "name": "shotgun pallets",
-                  "entityTypes": "kairos:Primitives/Entities/COM",
-                  "confidence": 1,
-                  "provenance": "Entity1236"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Entities/Mix-Item-1",
+                "confidence": 1,
+                "provenance": "Entity1236"
+              }
             },
             {
               "name": "payment",
@@ -649,14 +619,11 @@
                 "kairos:Primitives/Entities/PLA",
                 "kairos:Primitives/Entities/PTH"
               ],
-              "values": [
-                {
-                  "name": "fuse",
-                  "entityTypes": "kairos:Primitives/Entities/COM",
-                  "confidence": 0.9,
-                  "provenance": "Entity1236"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Entities/Mix-Item-2",
+                "confidence": 0.9,
+                "provenance": "Entity1236"
+              }
             },
             {
               "name": "payment",
@@ -721,14 +688,11 @@
                 "kairos:Primitives/Entities/GPE",
                 "kairos:Primitives/Entities/SID"
               ],
-              "values": [
-                {
-                  "name": "Hani Hanjour",
-                  "entityTypes": "kairos:Primitives/Entities/PER",
-                  "confidence": 0.89,
-                  "provenance": "Entity1234"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Entities/Agent",
+                "confidence": 0.89,
+                "provenance": "Entity1234"
+              }
             },
             {
               "name": "artifact",
@@ -755,14 +719,11 @@
                 "kairos:Primitives/Entities/WEA",
                 "kairos:Primitives/Entities/PTH"
               ],
-              "values": [
-                {
-                  "name": "shotgun pallets",
-                  "entityTypes": "kairos:Primitives/Entities/COM",
-                  "confidence": 1,
-                  "provenance": "Entity1236"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Entities/Mix-Item-1",
+                "confidence": 1,
+                "provenance": "Entity1236"
+              }
             },
             {
               "name": "mix-item2",
@@ -775,14 +736,11 @@
                 "kairos:Primitives/Entities/WEA",
                 "kairos:Primitives/Entities/PTH"
               ],
-              "values": [
-                {
-                  "name": "fuse",
-                  "entityTypes": "kairos:Primitives/Entities/COM",
-                  "confidence": 0.9,
-                  "provenance": "Entity1236"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Entities/Mix-Item-2",
+                "confidence": 0.9,
+                "provenance": "Entity1236"
+              }
             },
             {
               "name": "instrument",
@@ -946,6 +904,44 @@
           ]
         }
       ],
+      "entities": [
+        {
+          "@id": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Entities/Agent",
+          "name": "Hani Hanjour",
+          "entityTypes": "kairos:Primitives/Entities/PER",
+          "refvar": "Agent"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Entities/Point-of-Contact",
+          "name": "Al-Qaeda",
+          "entityTypes": "kairos:Primitives/Entities/ORG",
+          "refvar": "Point of Contact"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Entities/terrorism",
+          "name": "studied terrorism",
+          "entityTypes": "kairos:Primitives/Entities/INF",
+          "reference": "https://www.wikidata.org/wiki/Q7283"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Entities/Truck",
+          "name": "picture of a truck",
+          "entityTypes": "kairos:Primitives/Entities/VEH",
+          "refvar": "Truck"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Entities/Mix-Item-1",
+          "name": "shotgun pallets",
+          "entityTypes": "kairos:Primitives/Entities/COM",
+          "refvar": "Mix Item 1"
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Entities/Mix-Item-2",
+          "name": "fuse",
+          "entityTypes": "kairos:Primitives/Entities/COM",
+          "refvar": "Mix Item 2"
+        }
+      ],
       "order": [
         {
           "ta1ref": "caci:Schemas/PIeval-TA1-Schema1/Order/travel_b4_study",
@@ -1012,7 +1008,10 @@
           "roleName": "POC",
           "refvar": "Point of Contact",
           "aka": "Contact",
-          "entityTypes": "kairos:Primitives/Entities/PER"
+          "entityTypes": [
+            "kairos:Primitives/Entities/PER",
+            "kairos:Primitives/Entities/ORG"
+          ]
         }
       ],
       "provenanceData": [
