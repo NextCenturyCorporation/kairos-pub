@@ -1,6 +1,6 @@
 {
   "@context": [
-    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.9.jsonld",
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.92.jsonld",
     {
       "caci": "https://caci.com/kairos/",
       "my_key": "caci:my_key",
@@ -8,7 +8,7 @@
     }
   ],
   "@id": "caci:Submissions/TA1/12345",
-  "sdfVersion": "0.9",
+  "sdfVersion": "0.92",
   "primitives": [
     {
       "@id": "caci:Primitives/Events/Transaction.Donation.WireTransfer",

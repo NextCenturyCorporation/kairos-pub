@@ -1,6 +1,6 @@
 {
   "@context": [
-    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.9.jsonld",
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.92.jsonld",
     {
       "sbu": "http://www.stonybrook.edu/kairos/",
       "my_key": "sbu:my_key",
@@ -8,7 +8,7 @@
     }
   ],
   "@id": "sbu:Submissions/TA1/Q3",
-  "sdfVersion": "0.9",
+  "sdfVersion": "0.92",
   "schemas": [
     {
       "@id": "sbu:Schemas/AttackWithDBIED",
