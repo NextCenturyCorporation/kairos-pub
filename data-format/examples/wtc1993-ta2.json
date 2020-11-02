@@ -1450,7 +1450,7 @@
           "ta1ref": "kairos:NULL",
           "provenance": "Event1237",
           "temporal": {
-            "absoluteTime": "1990-11-05T21:xx:xx-05:00",
+            "absoluteTime": "1990-11-05T21:00:00-05:00",
             "confidence": 1
           },
           "participants": [
