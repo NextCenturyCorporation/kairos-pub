@@ -1,6 +1,6 @@
 {
   "@context": [
-    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.92.jsonld",
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.93.jsonld",
     {
       "caci": "https://caci.com/kairos/",
       "my_key": "caci:my_key",
@@ -8,7 +8,7 @@
     }
   ],
   "@id": "caci:Submissions/TA2/54321",
-  "sdfVersion": "0.92",
+  "sdfVersion": "0.93",
   "ta2": true,
   "task2": false,
   "primitives": [
@@ -176,7 +176,7 @@
       "name": "World Trade Center 1993 Attack",
       "description": "A terrorist attack on the World Trade Center, carried out on 2/26/1993, when a truck bomb detonated below the North Tower",
       "template": "<arg1> coordinated with <arg2> about a bombing attack on <arg3> to take place at <arg4>",
-      "version": "caci-10.13.2020 / caci-10.21.2020",
+      "version": "caci-10.13.2020 / caci-11.02.2020",
       "super": "caci:Schemas/CoordinatedBombingAttack",
       "confidence": 0.9,
       "privateData": {
@@ -395,13 +395,11 @@
           "confidence": 0.8,
           "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/move_illegally",
           "provenance": "Event1237",
-          "temporal": [
-            {
-              "earliestStartTime": "1992-09-01T00:00:00",
-              "latestEndTime": "1992-09-01T23:59:59",
-              "confidence": 0.9
-            }
-          ],
+          "temporal": {
+            "earliestStartTime": "1992-09-01T00:00:00",
+            "latestEndTime": "1992-09-01T23:59:59",
+            "confidence": 0.9
+          },
           "participants": [
             {
               "name": "agentOfMovement",
@@ -626,9 +624,7 @@
                 "kairos:Primitives/Entities/SID"
               ],
               "values": {
-                "comment": "In SDF v0.92, values can have name/entityTypes instead of entity. To be removed in v0.93.",
-                "name": "Omar Abdel-Rahman",
-                "entityTypes": "kairos:Primitives/Entities/PER",
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Point-of-Contact",
                 "confidence": 1,
                 "provenance": "Entity1235"
               }
@@ -1158,13 +1154,11 @@
           "confidence": 0.95,
           "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_specific_attack_location",
           "provenance": "Event1237",
-          "temporal": [
-            {
-              "earliestStartTime": "1993-02-26T12:00:00-05:00",
-              "confidence": 0.6,
-              "provenance": "Entity1234"
-            }
-          ],
+          "temporal": {
+            "earliestStartTime": "1993-02-26T12:00:00-05:00",
+            "confidence": 0.6,
+            "provenance": "Entity1234"
+          },
           "participants": [
             {
               "name": "attacker",
@@ -1261,12 +1255,10 @@
           "confidence": 1,
           "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/bombing",
           "provenance": "Event1237",
-          "temporal": [
-            {
-              "absoluteTime": "1993-02-26T12:17:37-05:00",
-              "confidence": 1
-            }
-          ],
+          "temporal": {
+            "absoluteTime": "1993-02-26T12:17:37-05:00",
+            "confidence": 1
+          },
           "participants": [
             {
               "name": "agent",
@@ -1449,6 +1441,86 @@
               }
             }
           ]
+        },
+        {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Steps/assassination",
+          "@type": "kairos:Primitives/Events/Conflict.Attack.Unspecified",
+          "name": "Assassination of Rabbi Meir Kahane",
+          "confidence": 1,
+          "ta1ref": "kairos:NULL",
+          "provenance": "Event1237",
+          "temporal": {
+            "absoluteTime": "1990-11-05T21:xx:xx-05:00",
+            "confidence": 1
+          },
+          "participants": [
+            {
+              "name": "attacker",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/assassination/attacker",
+              "role": "kairos:Primitives/Events/Conflict.Attack.Unspecified/Slots/Attacker",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID",
+                "kairos:Primitives/Entities/AML"
+              ],
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/es-nosair",
+                "confidence": 1,
+                "provenance": "Entity1235"
+              }
+            },
+            {
+              "name": "target",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/assassination/target",
+              "role": "kairos:Primitives/Events/Conflict.Attack.Unspecified/Slots/Target",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/SID",
+                "kairos:Primitives/Entities/AML",
+                "kairos:Primitives/Entities/PLA",
+                "kairos:Primitives/Entities/NAT"
+              ],
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/meir-kahane",
+                "confidence": 1,
+                "provenance": "Entity1236"
+              }
+            },
+            {
+              "name": "murder weapon",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/assassination/trigger",
+              "role": "kairos:Primitives/Events/Conflict.Attack.Unspecified/Slots/Instrument",
+              "entityTypes": [
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/PTH"
+              ]
+            },
+            {
+              "name": "place",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/assassination/place",
+              "role": "kairos:Primitives/Events/Conflict.Attack.Unspecified/Slots/Place",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC"
+              ],
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/general-attack-location",
+                "confidence": 1,
+                "provenance": "Entity1236"
+              }
+            }
+          ]
         }
       ],
       "entities": [
@@ -1549,6 +1621,12 @@
           "entityTypes": "kairos:Primitives/Entities/WEA"
         },
         {
+          "@id": "caci:Schemas/Instantiated/WTC1993/Entities/meir-kahane",
+          "name": "Rabbi Meir Kahane",
+          "entityTypes": "kairos:Primitives/Entities/PER",
+          "reference": "wiki:Q247538"
+        },
+        {
           "@id": "caci:Schemas/Instantiated/WTC1993/Entities/pakistan",
           "name": "Pakistan",
           "entityTypes": "kairos:Primitives/Entities/GPE"
@@ -1572,6 +1650,13 @@
         }
       ],
       "order": [
+        {
+          "comment": "Rabbi Kahane assassination (background event) happens before training with Al-Qaeda.",
+          "ta1ref": "kairos:NULL",
+          "before": "caci:Schemas/Instantiated/WTC1993/Steps/assassination",
+          "after": "caci:Schemas/Instantiated/WTC1993/Steps/training_1",
+          "confidence": 1
+        },
         {
           "comment": "Wire transfer occurs while training with Al-Qaeda.  Contrived to show a container/contained example.",
           "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Order/training_1_b4_wire_transfer",
@@ -1672,6 +1757,21 @@
             "@id": "caci:Schemas/Instantiated/WTC1993/Relations/sheikh_connected",
             "name": "Point of contact is connected with Rabbi Kahane Murderer",
             "relationPredicate": "kairos:Primitives/Relations/PersonalSocial.Relationship.Political",
+            "relationObject": "caci:Schemas/Instantiated/WTC1993/Entities/es-nosair",
+            "ta1ref": "kairos:NULL",
+            "confidence": 0.75,
+            "provenance": "Entity1235",
+            "relationProvenance": "Relation1238"
+          }
+        },
+        {
+          "relationSubject": "caci:Schemas/Instantiated/WTC1993/Steps/assassination",
+          "provenance": "Entity1234",
+          "comment": "Another contrived example to show use of background steps in relations:  one would NOT use a Sponsorship relation here since Nosair was the murderer.",
+          "relations": {
+            "@id": "caci:Schemas/Instantiated/WTC1993/Relations/nosair-sponsored",
+            "name": "Murder of Rabbi Meir Kahane sponsored by E.S. Nosair",
+            "relationPredicate": "kairos:Primitives/Relations/GeneralAffiliation.Sponsorship.Unspecified",
             "relationObject": "caci:Schemas/Instantiated/WTC1993/Entities/es-nosair",
             "ta1ref": "kairos:NULL",
             "confidence": 0.75,
