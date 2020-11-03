@@ -1735,6 +1735,21 @@
       ],
       "entityRelations": [
         {
+          "comment": "This is a TA1 relation that was not found in the documents.  Set all three provenance fields to 'n/a'.",
+          "relationSubject": "caci:Schemas/Instantiated/WTC1993/Slots/make_contact/participant/poc",
+          "provenance": "n/a",
+          "relations": {
+            "@id": "caci:Schemas/Instantiated/WTC1993/Relations/poc_terrorist",
+            "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Relations/poc_terrorist",
+            "name": "POC participant from Contact event is from a terrorist organization.",
+            "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
+            "relationObject": "wiki:Q17127659",
+            "relationProvenance": "n/a",
+            "confidence": 1,
+            "provenance": "n/a"
+          }
+        },
+        {
           "relationSubject": "caci:Schemas/Instantiated/WTC1993/Entities/ks-mohammed",
           "provenance": "Entity1234",
           "relations": {
@@ -1750,7 +1765,21 @@
           }
         },
         {
-          "relationSubject": "caci:Schemas/Instantiated/WTC1993/Slots/make_contact/participant/poc",
+          "relationSubject": "caci:Schemas/Instantiated/WTC1993/Slots/move_to_specific_attack_location/attacker",
+          "provenance": "n/a",
+          "relations": {
+            "@id": "caci:Schemas/Instantiated/WTC1993/Relations/attacker_location1",
+            "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Relations/attacker_location1",
+            "name": "Same attacker moved to specific location as moved to general location",
+            "relationPredicate": "kairos:Primitives/Relations/Physical.SameAs.SameAs",
+            "relationObject": "caci:Schemas/Instantiated/WTC1993/Slots/move_to_general_attack_location_legally/attacker",
+            "provenance": "n/a",
+            "relationProvenance": "n/a",
+            "confidence": 0
+          }
+        },
+        {
+          "relationSubject": "caci:Schemas/Instantiated/WTC1993/Entities/Point-of-Contact",
           "provenance": "Entity1234",
           "comment": "This corresponds to 'Each argument may be associated with a relation which may be useful to differentiate between schema' from \"Structure of a schema\"",
           "relations": {
@@ -1791,7 +1820,7 @@
             "@id": "caci:Schemas/CoordinatedBombingAttack/Relations/financier2",
             "name": "Giver of financing is affiliated with one of the participants in the make_contact event",
             "relationPredicate": "kairos:Primitives/Relations/PersonalSocial.Relationship.Political",
-            "relationObject": "caci:Schemas/Instantiated/WTC1993/Slots/make_contact/participant/poc",
+            "relationObject": "caci:Schemas/Instantiated/WTC1993/Entities/Point-of-Contact",
             "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Relations/financier2",
             "confidence": 0.25,
             "provenance": "Entity1235",

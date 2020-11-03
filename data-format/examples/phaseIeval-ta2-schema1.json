@@ -1,6 +1,6 @@
 {
   "@context": [
-    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.92.jsonld",
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.93.jsonld",
     {
       "caci": "https://caci.com/kairos/",
       "my_key": "caci:my_key",
@@ -8,7 +8,7 @@
     }
   ],
   "@id": "caci:Examples/TA2/54321",
-  "sdfVersion": "0.92",
+  "sdfVersion": "0.93",
   "ta2": true,
   "task2": false,
   "schemas": [
@@ -26,7 +26,7 @@
       ],
       "name": "Phase I Eval Schema #1, Task 1, TA2",
       "description": "This is a schema with specific arguments involving terrorism and a truck",
-      "version": "caci-10.13.2020 / caci-10.23.2020",
+      "version": "caci-10.13.2020 / caci-11.03.2020",
       "super": "caci:Schemas/PIeval-TA1-Schema1",
       "template": "<arg1> coordinated with <arg2> about a bombing attack",
       "confidence": 0.92,
@@ -208,7 +208,7 @@
             },
             {
               "name": "institution",
-              "@id": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Slots/travel/means",
+              "@id": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Slots/travel/institution",
               "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/Institution",
               "entityTypes": "kairos:Primitives/Entities/ORG"
             },

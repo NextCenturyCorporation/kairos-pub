@@ -1,6 +1,6 @@
 {
   "@context": [
-    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.92.jsonld",
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.93.jsonld",
     {
       "caci": "https://caci.com/kairos/",
       "my_key": "caci:my_key",
@@ -8,11 +8,11 @@
     }
   ],
   "@id": "caci:Submissions/TA1/12345",
-  "sdfVersion": "0.92",
+  "sdfVersion": "0.93",
   "primitives": [
     {
       "@id": "caci:Primitives/Events/Transaction.Donation.WireTransfer",
-      "version": "caci-09.08.2020",
+      "version": "caci-11.03.2020",
       "super": "kairos:Primitives/Events/Transaction.Donation.Unspecified",
       "name": "Transaction.Donation.WireTransfer",
       "description": "The voluntary transfer of monetary assets",

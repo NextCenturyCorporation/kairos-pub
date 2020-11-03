@@ -1,12 +1,12 @@
 {
   "@context": [
-    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.92.jsonld",
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.93.jsonld",
     {
       "performer": "https://performer.edu/kairos.namespace/"
     }
   ],
   "@id": "performer:Submissions/TA1/12345",
-  "sdfVersion": "0.92",
+  "sdfVersion": "0.93",
   "schemas": [
     {
       "@id": "performer:mvp",
