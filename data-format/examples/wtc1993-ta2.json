@@ -1934,12 +1934,12 @@
           "provenance": "Relation1238",
           "comment": [
             " *Videos -- key frames* ",
-            "'keyFrames' is an array of LDC-supplied key frame IDs."
+            "'keyframes' is an array of LDC-supplied key frame IDs."
           ],
           "childID": "K0C03N4OM",
           "parentIDs": "K0C03N4ON",
           "mediaType": "video/mpeg",
-          "keyFrames": [
+          "keyframes": [
             60,
             61,
             62
