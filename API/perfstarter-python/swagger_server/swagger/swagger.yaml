@@ -100,14 +100,13 @@ components:
       example:
         message: (Optional) If applicable this field may pass along any information
           the performer may want to include.
-        status: INITIALIZED
+        status: INITIALIZING
     statusTypes:
       type: string
       enum:
-      - INITIALIZED
+      - INITIALIZING
       - PROCESSING
-      - DONE_PROCESSING
-      - PROCESSING_ERROR
-      - PROCESSING_WARNING
-      - WAITING_ON_DATA
+      - ERROR
+      - WARNING
+      - WAITING
 
