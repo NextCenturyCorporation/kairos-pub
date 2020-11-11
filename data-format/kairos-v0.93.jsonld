@@ -13,7 +13,10 @@
       "@id": "kairos:task2",
       "@type": "xsd:boolean"
     },
-    "schemas": "kairos:schemas",
+    "schemas": {
+      "@id": "kairos:schemas",
+      "@container": "@list"
+    },
     "primitives": "kairos:primitives",
     "super": {
       "@id": "kairos:super",
