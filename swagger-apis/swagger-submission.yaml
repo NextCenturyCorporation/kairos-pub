@@ -28,9 +28,26 @@ components:
       required:
         - performername
         - data
+        - ta1name
+        - ceid
+        - experimenttype
       properties:
         performername:
           type: string
+          example: "ibm"
         data:
           type: object
           example: "Example result document content to be submitted."
+        ta1name:
+          type: string
+          example: "sbu"
+        ceid:
+          type: string
+          example: "ce1002"
+        experimentname:
+          $ref: '#/components/schemas/experimentTypes'
+    experimentTypes:
+      type: string
+      enum:
+      - task1
+      - task2
