@@ -51,6 +51,7 @@ components:
     entrypointMessage:
       required:
       - id
+      - runId
       - sender
       - time
       type: object
@@ -58,6 +59,8 @@ components:
         id:
           type: string
           format: uuid
+        runId:
+          type: string
         sender:
           type: string
         time:
@@ -69,7 +72,7 @@ components:
         contentUri:
           type: string
           format: uri
-          example: s3://karios-experiment-data/sample.txt
+          example: s3://karios-experiment-data/performera/
     entrypointResponse:
       required:
       - content
