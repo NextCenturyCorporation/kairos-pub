@@ -12,7 +12,7 @@ paths:
       summary: Performer submission entry point.
       description: Allows performer to submit a result document from algorithm execution.
       requestBody:
-        description: Contains the result document payload to be passed back to the KAIROS Runtime framework. The data field is mandatory. 
+        description: Contains the result document payload to be passed back to the KAIROS Runtime framework. All fields are mandatory.
         required: true
         content:
           application/json:
@@ -26,12 +26,15 @@ components:
     submissionMessage:
       type: object
       required:
+        - runId
         - performername
         - data
         - ta1name
         - ceid
         - experimenttype
       properties:
+        runId:
+          type: string
         performername:
           type: string
           example: "ibm"
