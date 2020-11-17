@@ -47,7 +47,7 @@ components:
         ceid:
           type: string
           example: "ce1002"
-        experimentname:
+        experimenttype:
           $ref: '#/components/schemas/experimentTypes'
     experimentTypes:
       type: string
