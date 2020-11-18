@@ -72,7 +72,7 @@ components:
         contentUri:
           type: string
           format: uri
-          example: s3://karios-experiment-data/performera/
+          example: s3://kairos-experiment-data/performera/
     entrypointResponse:
       required:
       - content
