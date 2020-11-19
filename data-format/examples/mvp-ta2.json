@@ -1,0 +1,68 @@
+{
+  "@context": [
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v1.0.jsonld",
+    {
+      "performer": "https://performer.edu/kairos.namespace/"
+    }
+  ],
+  "@id": "performer:Submissions/TA2/12345",
+  "sdfVersion": "1.0",
+  "ta2": true,
+  "ceID": "ce1002",
+  "schemas": [
+    {
+      "@id": "performer:mvp-ta2",
+      "super": "performer:mvp-ta1",
+      "name": "mvp",
+      "description": "an instantiation of a minimal viable schema that is a valid, if vacuous, schema",
+      "version": "TA2 performer-<algorithm>",
+      "confidence": 1,
+      "steps": {
+        "@id": "performer:ComplexEvents/myevent_1",
+        "@type": "kairos:Primitives/Events/Conflict.Attack.Unspecified",
+        "ta1ref": "performer:Schemas/myevent_1",
+        "name": "mystep_1",
+        "confidence": 1,
+        "provenance": "prov1",
+        "participants": [
+          {
+            "name": "myslot_1",
+            "@id": "performer:myslot_1",
+            "role": "kairos:Primitives/Events/Conflict.Attack.Unspecified/Slots/Attacker",
+            "entityTypes": "kairos:Primitives/Entities/PER",
+            "values": []
+          },
+          {
+            "name": "myslot_2",
+            "@id": "performer:myslot_2",
+            "role": "kairos:Primitives/Events/Conflict.Attack.Unspecified/Slots/Target",
+            "entityTypes": "kairos:Primitives/Entities/PER"
+          },
+          {
+            "name": "myslot_3",
+            "@id": "performer:myslot_3",
+            "role": "kairos:Primitives/Events/Conflict.Attack.Unspecified/Slots/Instrument",
+            "entityTypes": "kairos:Primitives/Entities/WEA"
+          },
+          {
+            "name": "myslot_4",
+            "@id": "performer:myslot_4",
+            "role": "kairos:Primitives/Events/Conflict.Attack.Unspecified/Slots/Place",
+            "entityTypes": "kairos:Primitives/Entities/FAC"
+          }
+        ]
+      },
+      "slots": {
+        "@id": "performer:myslot",
+        "role": "performer:myrole_1",
+        "roleName": "myrole",
+        "entityTypes": "kairos:Primitives/Entities/PER"
+      },
+      "provenanceData": {
+        "provenance": "prov1",
+        "childID": "childdoc-id",
+        "mediaType": "text/plain"
+      }
+    }
+  ]
+}

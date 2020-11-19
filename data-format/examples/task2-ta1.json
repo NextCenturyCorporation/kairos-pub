@@ -1,6 +1,6 @@
 {
   "@context": [
-    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.93.jsonld",
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v1.0.jsonld",
     {
       "sbu": "http://www.stonybrook.edu/kairos/",
       "my_key": "sbu:my_key",
@@ -8,14 +8,14 @@
     }
   ],
   "@id": "sbu:Submissions/TA1/Q3",
-  "sdfVersion": "0.93",
+  "sdfVersion": "1.0",
   "schemas": [
     {
       "@id": "sbu:Schemas/AttackWithDBIED",
       "name": "Attack with DBIED",
       "description": "An event scenario that results in an DBIED attack, with modification by TA3",
       "template": "<arg1> detonated an IED using <arg2> to attack <arg3> target at <arg4> place",
-      "version": "sbu/caci-10.14.2020",
+      "version": "sbu/caci-11.18.2020",
       "steps": [
         {
           "@id": "sbu:Schemas/AttackWithDBIED/Steps/Get_drone_1",

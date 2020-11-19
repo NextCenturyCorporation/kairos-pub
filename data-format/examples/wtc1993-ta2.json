@@ -1,6 +1,6 @@
 {
   "@context": [
-    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.93.jsonld",
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v1.0.jsonld",
     {
       "caci": "https://caci.com/kairos/",
       "my_key": "caci:my_key",
@@ -8,13 +8,14 @@
     }
   ],
   "@id": "caci:Submissions/TA2/54321",
-  "sdfVersion": "0.93",
+  "sdfVersion": "1.0",
   "ta2": true,
   "task2": false,
+  "ceID": "ce1002",
   "primitives": [
     {
       "@id": "caci:Primitives/Events/Transaction.Donation.WireTransfer",
-      "version": "caci-10.20.2020",
+      "version": "caci-11.19.2020 / caci-11.19.2020",
       "super": "kairos:Primitives/Events/Transaction.Donation.Unspecified",
       "name": "Transaction.Donation.WireTransfer",
       "description": "The voluntary transfer of monetary assets",
@@ -350,7 +351,6 @@
               "name": "recipient",
               "@id": "caci:Schemas/Instantiated/WTC1993/Slots/wire_transfer/recipient",
               "role": "caci:Primitives/Events/Transaction.Donation.WireTransfer/Slots/Recipient",
-              "refvar": "Agent",
               "entityTypes": [
                 "kairos:Primitives/Entities/PER",
                 "kairos:Primitives/Entities/ORG",
@@ -411,13 +411,17 @@
                 "kairos:Primitives/Entities/ORG",
                 "kairos:Primitives/Entities/GPE",
                 "kairos:Primitives/Entities/SID"
-              ]
+              ],
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
+                "confidence": 1,
+                "provenance": "Entity1235"
+              }
             },
             {
               "name": "thingsMoved",
               "@id": "caci:Schemas/Instantiated/WTC1993/Slots/move_illegally/thingsMoved",
               "role": "kairos:Primitives/Events/Movement.Transportation.IllegalTransportation/Slots/PassengerArtifact",
-              "refvar": "Agent",
               "entityTypes": [
                 "kairos:Primitives/Entities/PER",
                 "kairos:Primitives/Entities/BAL",
@@ -505,14 +509,17 @@
               "name": "acquirer",
               "@id": "caci:Schemas/Instantiated/WTC1993/Slots/get_bombmaking_howto/acquirer",
               "role": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified/Slots/Recipient",
-              "refvar": "Agent",
               "entityTypes": [
                 "kairos:Primitives/Entities/PER",
                 "kairos:Primitives/Entities/ORG",
                 "kairos:Primitives/Entities/GPE",
                 "kairos:Primitives/Entities/SID"
               ],
-              "values": []
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/a-ajaj",
+                "confidence": 1,
+                "provenance": "Entity1235"
+              }
             },
             {
               "name": "acquiredEntity",
@@ -709,7 +716,11 @@
                 "kairos:Primitives/Entities/GPE",
                 "kairos:Primitives/Entities/SID"
               ],
-              "values": []
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
+                "confidence": 1,
+                "provenance": "Entity1234"
+              }
             },
             {
               "name": "beneficiary",
@@ -769,7 +780,6 @@
               "name": "trainer",
               "@id": "caci:Schemas/Instantiated/WTC1993/Slots/training_2/trainer",
               "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/TeacherTrainer",
-              "refvar": "Point of Contact",
               "entityTypes": [
                 "kairos:Primitives/Entities/PER",
                 "kairos:Primitives/Entities/ORG",
@@ -786,7 +796,6 @@
               "name": "learner",
               "@id": "caci:Schemas/Instantiated/WTC1993/Slots/training_2/learner",
               "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/Learner",
-              "refvar": "Agent",
               "entityTypes": [
                 "kairos:Primitives/Entities/PER",
                 "kairos:Primitives/Entities/ORG",
@@ -958,18 +967,27 @@
                 "kairos:Primitives/Entities/GPE",
                 "kairos:Primitives/Entities/SID"
               ],
-              "values": [
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
-                  "confidence": 1,
-                  "provenance": "Entity1235"
-                },
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/e-ismoil",
-                  "confidence": 1,
-                  "provenance": "Entity1236"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
+                "confidence": 1,
+                "provenance": "Entity1235"
+              }
+            },
+            {
+              "name": "acquirer2",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/obtain_transportation/acquirer2",
+              "role": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified/Slots/Recipient",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ],
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/e-ismoil",
+                "confidence": 1,
+                "provenance": "Entity1236"
+              }
             },
             {
               "name": "vehicle_rented",
@@ -1261,7 +1279,7 @@
           },
           "participants": [
             {
-              "name": "agent",
+              "name": "attacker-agent",
               "@id": "caci:Schemas/Instantiated/WTC1993/Slots/bombing/agent",
               "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Attacker",
               "refvar": "Agent",
@@ -1271,18 +1289,27 @@
                 "kairos:Primitives/Entities/GPE",
                 "kairos:Primitives/Entities/SID"
               ],
-              "values": [
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
-                  "confidence": 1,
-                  "provenance": "Entity1234"
-                },
-                {
-                  "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/e-ismoil",
-                  "confidence": 1,
-                  "provenance": "Entity1235"
-                }
-              ]
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
+                "confidence": 1,
+                "provenance": "Entity1234"
+              }
+            },
+            {
+              "name": "co-attacker",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/bombing/co-attacker",
+              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Attacker",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ],
+              "values": {
+                "entity": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/e-ismoil",
+                "confidence": 1,
+                "provenance": "Entity1235"
+              }
             },
             {
               "name": "target",
@@ -1379,7 +1406,6 @@
               "name": "passenger",
               "@id": "caci:Schemas/Instantiated/WTC1993/Slots/escape/passenger",
               "role": "kairos:Primitives/Events/Movement.Transportation.IllegalTransportation/Slots/PassengerArtifact",
-              "refvar": "Agent",
               "entityTypes": [
                 "kairos:Primitives/Entities/PER",
                 "kairos:Primitives/Entities/BAL",
@@ -1405,9 +1431,7 @@
               "name": "getaway car",
               "@id": "caci:Schemas/Instantiated/WTC1993/Slots/escape/getaway_car",
               "role": "kairos:Primitives/Events/Movement.Transportation.IllegalTransportation/Slots/Vehicle",
-              "refvar": "Vehicle",
-              "entityTypes": "kairos:Primitives/Entities/VEH",
-              "values": []
+              "entityTypes": "kairos:Primitives/Entities/VEH"
             },
             {
               "name": "sourcePlace",
@@ -1543,8 +1567,7 @@
         {
           "@id": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/m-salameh",
           "name": "Mohammed Salameh",
-          "entityTypes": "kairos:Primitives/Entities/PER",
-          "refvar": "Agent"
+          "entityTypes": "kairos:Primitives/Entities/PER"
         },
         {
           "@id": "caci:Schemas/Instantiated/WTC1993/Entities/money",
@@ -1554,8 +1577,7 @@
         {
           "@id": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/a-ajaj",
           "name": "Ahmed Ajaj",
-          "entityTypes": "kairos:Primitives/Entities/PER",
-          "refvar": "Agent"
+          "entityTypes": "kairos:Primitives/Entities/PER"
         },
         {
           "@id": "caci:Schemas/Instantiated/WTC1993/Entities/usa",
@@ -1593,8 +1615,7 @@
         {
           "@id": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/e-ismoil",
           "name": "Eyad Ismoil",
-          "entityTypes": "kairos:Primitives/Entities/PER",
-          "refvar": "Agent"
+          "entityTypes": "kairos:Primitives/Entities/PER"
         },
         {
           "@id": "caci:Schemas/Instantiated/WTC1993/Entities/Vehicle",
@@ -1754,9 +1775,9 @@
           "provenance": "Entity1234",
           "relations": {
             "@id": "caci:Schemas/Instantiated/WTC1993/Relations/wire_transfer_uncle",
-            "name": "Wire transfer was sent from recipient's uncle",
+            "name": "Wire transfer was sent from attacker's uncle",
             "relationPredicate": "kairos:Primitives/Relations/PersonalSocial.Relationship.Unspecified",
-            "relationObject": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/m-salameh",
+            "relationObject": "caci:Schemas/Instantiated/WTC1993/Entities/Agent/r-yousef",
             "reference": "wiki:Q76557",
             "ta1ref": "kairos:NULL",
             "confidence": 1,

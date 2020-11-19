@@ -1,16 +1,15 @@
 {
   "@context": [
-    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.93.jsonld",
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v1.0.jsonld",
     {
-      "caci": "https://caci.com/kairos/",
-      "my_key": "caci:my_key",
-      "giant_bitstring": "caci:giant_bitstring"
+      "caci": "https://caci.com/kairos/"
     }
   ],
   "@id": "caci:Examples/TA2/54321",
-  "sdfVersion": "0.93",
+  "sdfVersion": "1.0",
   "ta2": true,
   "task2": false,
+  "ceID": "ce1002",
   "schemas": [
     {
       "@id": "caci:Schemas/Instantiated/PIeval-TA2-Schema1",
@@ -26,15 +25,10 @@
       ],
       "name": "Phase I Eval Schema #1, Task 1, TA2",
       "description": "This is a schema with specific arguments involving terrorism and a truck",
-      "version": "caci-10.13.2020 / caci-11.03.2020",
+      "version": "caci-11.18.2020 / caci-11.18.2020",
       "super": "caci:Schemas/PIeval-TA1-Schema1",
       "template": "<arg1> coordinated with <arg2> about a bombing attack",
       "confidence": 0.92,
-      "privateData": {
-        "comment": "Performers can place any keys/values they wish here.  The map will be added to the graph but otherwise ignored by the system.  Properties maps can be added inside a schema, individual steps, slots, and order blocks, but not in their enclosing arrays.  Large amounts of private data can be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum.",
-        "my_key": "my value",
-        "giant_bitstring": "s3://caci-kairos/privateData/PIeval-TA2-Schema1/schema-bitstring.gz"
-      },
       "steps": [
         {
           "@id": "caci:Schemas/Instantiated/PIeval-TA2-Schema1/Steps/travel",

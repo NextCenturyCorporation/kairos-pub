@@ -1,6 +1,6 @@
 {
   "@context": [
-    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.93.jsonld",
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v1.0.jsonld",
     {
       "caci": "https://caci.com/kairos/",
       "my_key": "caci:my_key",
@@ -8,11 +8,11 @@
     }
   ],
   "@id": "caci:Submissions/TA1/12345",
-  "sdfVersion": "0.93",
+  "sdfVersion": "1.0",
   "primitives": [
     {
       "@id": "caci:Primitives/Events/Transaction.Donation.WireTransfer",
-      "version": "caci-11.03.2020",
+      "version": "caci-11.19.2020",
       "super": "kairos:Primitives/Events/Transaction.Donation.Unspecified",
       "name": "Transaction.Donation.WireTransfer",
       "description": "The voluntary transfer of monetary assets",
@@ -253,18 +253,6 @@
               ]
             },
             {
-              "name": "recipient",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/wire_transfer/recipient",
-              "role": "caci:Primitives/Events/Transaction.Donation.WireTransfer/Slots/Recipient",
-              "refvar": "Agent",
-              "entityTypes": [
-                "kairos:Primitives/Entities/PER",
-                "kairos:Primitives/Entities/ORG",
-                "kairos:Primitives/Entities/GPE",
-                "kairos:Primitives/Entities/SID"
-              ]
-            },
-            {
               "name": "amount",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/wire_transfer/amount",
               "role": "caci:Primitives/Events/Transaction.Donation.WireTransfer/Slots/Amount",
@@ -291,27 +279,6 @@
               ]
             },
             {
-              "name": "thingsMoved",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_illegally/thingsMoved",
-              "role": "kairos:Primitives/Events/Movement.Transportation.IllegalTransportation/Slots/PassengerArtifact",
-              "refvar": "Agent",
-              "entityTypes": [
-                "kairos:Primitives/Entities/PER",
-                "kairos:Primitives/Entities/BAL",
-                "kairos:Primitives/Entities/COM",
-                "kairos:Primitives/Entities/FAC",
-                "kairos:Primitives/Entities/LOC",
-                "kairos:Primitives/Entities/MON",
-                "kairos:Primitives/Entities/VEH",
-                "kairos:Primitives/Entities/WEA",
-                "kairos:Primitives/Entities/AML",
-                "kairos:Primitives/Entities/PTH",
-                "kairos:Primitives/Entities/PLA",
-                "kairos:Primitives/Entities/BOD",
-                "kairos:Primitives/Entities/NAT"
-              ]
-            },
-            {
               "name": "destinationPlace",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/move_illegally/destinationPlace",
               "role": "kairos:Primitives/Events/Movement.Transportation.IllegalTransportation/Slots/Destination",
@@ -329,18 +296,6 @@
           "@type": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified",
           "name": "Possess bomb making instruction",
           "participants": [
-            {
-              "name": "acquirer",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/get_bombmaking_howto/acquirer",
-              "role": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified/Slots/Recipient",
-              "refvar": "Agent",
-              "entityTypes": [
-                "kairos:Primitives/Entities/PER",
-                "kairos:Primitives/Entities/ORG",
-                "kairos:Primitives/Entities/GPE",
-                "kairos:Primitives/Entities/SID"
-              ]
-            },
             {
               "name": "acquiredEntity",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/get_bombmaking_howto/AcquiredEntity",
@@ -488,7 +443,6 @@
               "name": "transportation",
               "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/obtain_transportation/transportation",
               "role": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified/Slots/AcquiredEntity",
-              "comment": "This shows an example of refvar used in primitive slots, not schema slot arguments.",
               "refvar": "Vehicle",
               "entityTypes": [
                 "kairos:Primitives/Entities/BAL",
@@ -694,13 +648,6 @@
                 "kairos:Primitives/Entities/GPE",
                 "kairos:Primitives/Entities/SID"
               ]
-            },
-            {
-              "name": "getaway car",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/escape/getaway_car",
-              "role": "kairos:Primitives/Events/Movement.Transportation.IllegalTransportation/Slots/Vehicle",
-              "refvar": "Vehicle",
-              "entityTypes": "kairos:Primitives/Entities/VEH"
             },
             {
               "name": "sourcePlace",

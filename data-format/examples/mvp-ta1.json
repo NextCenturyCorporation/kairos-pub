@@ -1,26 +1,26 @@
 {
   "@context": [
-    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.93.jsonld",
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v1.0.jsonld",
     {
       "performer": "https://performer.edu/kairos.namespace/"
     }
   ],
   "@id": "performer:Submissions/TA1/12345",
-  "sdfVersion": "0.93",
+  "sdfVersion": "1.0",
   "schemas": [
     {
-      "@id": "performer:mvp",
+      "@id": "performer:mvp-ta1",
       "name": "mvp",
       "description": "a minimal viable schema that is a valid, if vacuous, schema",
       "version": "TA1 performer-<algorithm>",
       "steps": {
-        "@id": "performer:myevent_1",
-        "@type": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode",
+        "@id": "performer:Schemas/myevent_1",
+        "@type": "kairos:Primitives/Events/Conflict.Attack.Unspecified",
         "name": "mystep_1",
         "participants": {
           "name": "myslot_1",
           "@id": "performer:myslot_1",
-          "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Attacker",
+          "role": "kairos:Primitives/Events/Conflict.Attack.Unspecified/Slots/Attacker",
           "entityTypes": "kairos:Primitives/Entities/PER"
         }
       },

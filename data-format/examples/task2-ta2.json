@@ -1,16 +1,15 @@
 {
   "@context": [
-    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.93.jsonld",
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v1.0.jsonld",
     {
-      "caci": "https://caci.com/kairos/",
-      "my_key": "caci:my_key",
-      "giant_bitstring": "caci:giant_bitstring"
+      "caci": "https://caci.com/kairos/"
     }
   ],
   "@id": "ibm:Submissions/TA2/Q3",
   "ta2": true,
   "task2": true,
-  "sdfVersion": "0.93",
+  "ceID": "ce1001",
+  "sdfVersion": "1.0",
   "schemas": [
     {
       "@id": "ibm:Schemas/AttackWithDBIED",
@@ -18,7 +17,7 @@
       "name": "Attack with DBIED",
       "description": "An event scenario that results in an DBIED attack",
       "comment": "This is an attempt to show was TA2 Task 2 output should look like.  However, it was adapted from a Quizlet 3 schema and Graph G, so is somewhat out of date.  Graph G has evolved since this example, and the references may be off.  But it still should provide a basic template for TA2 Task 2 output.",
-      "version": "sbu/caci-11.03.2020 / caci-11.03.2020",
+      "version": "sbu/caci-11.18.2020 / caci-11.18.2020",
       "confidence": "1.0",
       "steps": [
         {
