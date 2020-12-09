@@ -1838,7 +1838,7 @@
             "NOTE: We do not include 'Giver of financing is one of the participants in the make_contact event' relation because it was not found in the documents, and multiple relations objects in TA1 connotes 'OR' semantics."
           ],
           "relations": {
-            "@id": "caci:Schemas/CoordinatedBombingAttack/Relations/financier2",
+            "@id": "caci:Schemas/Instantiated/WTC1993/Relations/financier2",
             "name": "Giver of financing is affiliated with one of the participants in the make_contact event",
             "relationPredicate": "kairos:Primitives/Relations/PersonalSocial.Relationship.Political",
             "relationObject": "caci:Schemas/Instantiated/WTC1993/Entities/Point-of-Contact",
@@ -1856,7 +1856,7 @@
           ],
           "provenance": "Entity1234",
           "relations": {
-            "@id": "caci:Schemas/CoordinatedBombingAttack/Relations/vehicle_make",
+            "@id": "caci:Schemas/Instantiated/WTC1993/Relations/vehicle_make",
             "name": "vehicle is a Ryder",
             "relationPredicate": "kairos:Primitives/Relations/Information.Make.Make",
             "relationObject": "caci:Schemas/Instantiated/WTC1993/Entities/ryder",
@@ -1874,7 +1874,7 @@
           ],
           "provenance": "Entity1234",
           "relations": {
-            "@id": "caci:Schemas/CoordinatedBombingAttack/Relations/vehicle_color",
+            "@id": "caci:Schemas/Instantiated/WTC1993/Relations/vehicle_color",
             "comment": "Contrived example to show \"first order objects\" and how modality can be set to negated.",
             "modality": "negated",
             "name": "vehicle is not yellow",
