@@ -185,7 +185,7 @@
       },
       "steps": [
         {
-          "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/training_1",
+          "@id": "caci:Schemas/CoordinatedBombingAttack/Steps/training",
           "name": "Train with Al-Qaeda",
           "@type": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified",
           "aka": [
@@ -199,7 +199,7 @@
             {
               "name": "trainer",
               "aka": "teacher",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training_1/trainer",
+              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training/trainer",
               "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/TeacherTrainer",
               "comment": "Reference specifies that the trainer is Al-Qaeda. Could also be done via an entityRelation.",
               "reference": "wiki:Q34490",
@@ -211,14 +211,14 @@
             },
             {
               "name": "subject_matter",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training_1/subject_matter",
+              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training/subject_matter",
               "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/FieldOfKnowledge",
               "entityTypes": "kairos:Primitives/Entities/INF",
               "reference": "wiki:Q7283"
             },
             {
               "name": "learner",
-              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training_1/learner",
+              "@id": "caci:Schemas/CoordinatedBombingAttack/Slots/training/learner",
               "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/Learner",
               "refvar": "Agent",
               "entityTypes": [
@@ -665,14 +665,26 @@
       ],
       "order": [
         {
-          "@id": "caci:Schemas/CoordinatedBombingAttack/Order/training_1_b4_wire_transfer",
-          "comment": "Wire transfer occurs while training with Al-Qaeda.  Contrived to show a container/contained example.",
-          "container": "caci:Schemas/CoordinatedBombingAttack/Steps/training_1",
-          "contained": "caci:Schemas/CoordinatedBombingAttack/Steps/wire_transfer"
+          "@id": "caci:Schemas/CoordinatedBombingAttack/Order/train_b4_moving",
+          "comment": "Train with Al-Qaeda before moving illegally.",
+          "before": "caci:Schemas/CoordinatedBombingAttack/Steps/training",
+          "after": "caci:Schemas/CoordinatedBombingAttack/Steps/move_illegally"
+        },
+        {
+          "@id": "caci:Schemas/CoordinatedBombingAttack/Order/move_b4_contact",
+          "comment": "Moving illegally happens before making contact with POC",
+          "before": "caci:Schemas/CoordinatedBombingAttack/Steps/move_illegally",
+          "after": "caci:Schemas/CoordinatedBombingAttack/Steps/make_contact"
+        },
+        {
+          "@id": "caci:Schemas/CoordinatedBombingAttack/Order/obtain_financing_during_make_contact",
+          "comment": "Obtaining financing occurs while making contact with POC.",
+          "container": "caci:Schemas/CoordinatedBombingAttack/Steps/make_contact",
+          "contained": "caci:Schemas/CoordinatedBombingAttack/Steps/obtain_financing"
         },
         {
           "@id": "caci:Schemas/CoordinatedBombingAttack/Order/financing_overlaps_propaganda",
-          "comment": "Mailing anti-Israel letters to newspapers and obtaining financing overlap.  Contrived to show an overlaps example.",
+          "comment": "Sending propaganda materials and obtaining financing overlap.  Contrived to show an overlaps example.",
           "overlaps": [
             "caci:Schemas/CoordinatedBombingAttack/Steps/obtain_financing",
             "caci:Schemas/CoordinatedBombingAttack/Steps/media_propaganda"
@@ -680,11 +692,18 @@
         },
         {
           "@id": "caci:Schemas/CoordinatedBombingAttack/Order/move_b4_propaganda",
-          "comment": "Must arrive at destination country before sending propagnda and obtaining transportation",
+          "comment": "Must arrive at destination country before sending propagnda",
           "before": "caci:Schemas/CoordinatedBombingAttack/Steps/move_illegally",
+          "after": "caci:Schemas/CoordinatedBombingAttack/Steps/media_propaganda",
+          "flags": "precondition"
+        },
+        {
+          "@id": "caci:Schemas/CoordinatedBombingAttack/Order/obtain_b4_move",
+          "comment": "Must obtain transportation before using it",
+          "before": "caci:Schemas/CoordinatedBombingAttack/Steps/obtain_transportation",
           "after": [
-            "caci:Schemas/CoordinatedBombingAttack/Steps/media_propaganda",
-            "caci:Schemas/CoordinatedBombingAttack/Steps/obtain_transportation"
+            "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_general_attack_location_legally",
+            "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_general_attack_location_illegally"
           ],
           "flags": "precondition"
         },
@@ -698,35 +717,28 @@
           "flags": "precondition"
         },
         {
-          "@id": "caci:Schemas/CoordinatedBombingAttack/Order/bombing_b4_escape",
-          "before": "caci:Schemas/CoordinatedBombingAttack/Steps/bombing",
-          "after": "caci:Schemas/CoordinatedBombingAttack/Steps/escape",
-          "flags": "precondition"
-        },
-        {
-          "@id": "caci:Schemas/CoordinatedBombingAttack/Order/lots_b4_bombing",
-          "comment": "At some point, the system should be able to infer transitive relations.  Not sure if in Phase I.",
-          "before": [
-            "caci:Schemas/CoordinatedBombingAttack/Steps/training_1",
-            "caci:Schemas/CoordinatedBombingAttack/Steps/obtain_financing",
-            "caci:Schemas/CoordinatedBombingAttack/Steps/make_contact",
-            "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_general_attack_location_legally",
-            "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_general_attack_location_illegally",
-            "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_specific_attack_location"
-          ],
+          "@id": "caci:Schemas/CoordinatedBombingAttack/Order/arrive_b4_bombing",
+          "comment": "Must arrive at attack site before attacking",
+          "before": "caci:Schemas/CoordinatedBombingAttack/Steps/move_to_specific_attack_location",
           "after": "caci:Schemas/CoordinatedBombingAttack/Steps/bombing",
           "flags": "precondition"
         },
         {
-          "@id": "caci:Schemas/CoordinatedBombingAttack/Order/more_b4_bombing",
+          "comment": "These steps happen before the day of the attack",
+          "@id": "caci:Schemas/CoordinatedBombingAttack/Order/steps_b4_attackoperation",
           "before": [
             "caci:Schemas/CoordinatedBombingAttack/Steps/wire_transfer",
-            "caci:Schemas/CoordinatedBombingAttack/Steps/move_illegally",
             "caci:Schemas/CoordinatedBombingAttack/Steps/get_bombmaking_howto",
             "caci:Schemas/CoordinatedBombingAttack/Steps/media_propaganda",
-            "caci:Schemas/CoordinatedBombingAttack/Steps/obtain_transportation"
+            "caci:Schemas/CoordinatedBombingAttack/Steps/obtain_financing"
           ],
-          "after": "caci:Schemas/CoordinatedBombingAttack/Steps/bombing"
+          "after": "caci:Schemas/CoordinatedBombingAttack/Steps/obtain_transportation"
+        },
+        {
+          "@id": "caci:Schemas/CoordinatedBombingAttack/Order/bombing_b4_escape",
+          "before": "caci:Schemas/CoordinatedBombingAttack/Steps/bombing",
+          "after": "caci:Schemas/CoordinatedBombingAttack/Steps/escape",
+          "flags": "precondition"
         }
       ],
       "entityRelations": [

@@ -187,7 +187,7 @@
       },
       "steps": [
         {
-          "@id": "caci:Schemas/Instantiated/WTC1993/Steps/training_1",
+          "@id": "caci:Schemas/Instantiated/WTC1993/Steps/training",
           "name": "Spend time training at Al Qaeda center in Afghanistan",
           "@type": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified",
           "aka": [
@@ -198,7 +198,7 @@
           "maxDuration": "P3M",
           "reference": "wiki:Q918385",
           "confidence": 0.85,
-          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/training_1",
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Steps/training",
           "comment": "For Task 2, provenance should be the @id of the step in Graph G (e.g., VP1001.00005): not validated in Task 2.",
           "provenance": "Event1237",
           "modality": [
@@ -232,7 +232,7 @@
             {
               "name": "trainer",
               "aka": "teacher",
-              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/training_1/trainer",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/training/trainer",
               "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/TeacherTrainer",
               "comment": "Reference specifies that the trainer is Al-Qaeda. Could also be done via an entityRelation.",
               "reference": "wiki:Q34490",
@@ -253,7 +253,7 @@
             },
             {
               "name": "subject_matter",
-              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/training_1/subject_matter",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/training/subject_matter",
               "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/FieldOfKnowledge",
               "entityTypes": "kairos:Primitives/Entities/INF",
               "reference": "wiki:Q7283",
@@ -265,7 +265,7 @@
             },
             {
               "name": "learner",
-              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/training_1/learner",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/training/learner",
               "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/Learner",
               "refvar": "Agent",
               "entityTypes": [
@@ -284,7 +284,7 @@
             },
             {
               "name": "means",
-              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/training_1/means",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/training/means",
               "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/Means",
               "entityTypes": [
                 "kairos:Primitives/Entities/COM",
@@ -298,7 +298,7 @@
             },
             {
               "name": "institution",
-              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/training_1/institution",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/training/institution",
               "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/Institution",
               "entityTypes": "kairos:Primitives/Entities/ORG",
               "comment": "Alternatively, TA2 can express Not Relevant by setting values to null.",
@@ -306,7 +306,7 @@
             },
             {
               "name": "place",
-              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/training_1/place",
+              "@id": "caci:Schemas/Instantiated/WTC1993/Slots/training/place",
               "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/Place",
               "entityTypes": [
                 "kairos:Primitives/Entities/LOC",
@@ -1675,39 +1675,59 @@
           "comment": "Rabbi Kahane assassination (background event) happens before training with Al-Qaeda.",
           "ta1ref": "kairos:NULL",
           "before": "caci:Schemas/Instantiated/WTC1993/Steps/assassination",
-          "after": "caci:Schemas/Instantiated/WTC1993/Steps/training_1",
+          "after": "caci:Schemas/Instantiated/WTC1993/Steps/training",
           "confidence": 1
         },
         {
-          "comment": "Wire transfer occurs while training with Al-Qaeda.  Contrived to show a container/contained example.",
-          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Order/training_1_b4_wire_transfer",
-          "container": "caci:Schemas/Instantiated/WTC1993/Steps/training_1",
-          "contained": "caci:Schemas/Instantiated/WTC1993/Steps/wire_transfer",
-          "confidence": 1
+          "comment": "Train with Al-Qaeda before moving illegally.",
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Order/train_b4_moving",
+          "before": "caci:Schemas/Instantiated/WTC1993/Steps/training",
+          "after": "caci:Schemas/Instantiated/WTC1993/Steps/move_illegally",
+          "confidence": 0.75
         },
         {
-          "comment": "Mailing anti-Israel letters to newspapers and training in NJ overlap. Contrived to show an overlaps example.",
+          "comment": "Moving illegally happens before making contact with Sheikh",
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Order/move_b4_contact",
+          "before": "caci:Schemas/Instantiated/WTC1993/Steps/move_illegally",
+          "after": "caci:Schemas/Instantiated/WTC1993/Steps/make_contact",
+          "confidence": 0.75
+        },
+        {
+          "comment": "Obtaining financing occurs while making contact with Sheikh.",
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Order/obtain_financing_during_make_contact",
+          "container": "caci:Schemas/Instantiated/WTC1993/Steps/make_contact",
+          "contained": "caci:Schemas/Instantiated/WTC1993/Steps/obtain_financing",
+          "confidence": 0.75
+        },
+        {
+          "comment": "Mailing anti-Israel letters to newspapers and obtaining financing overlap.  Contrived to show an overlaps example.",
           "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Order/financing_overlaps_propaganda",
           "overlaps": [
-            "caci:Schemas/Instantiated/WTC1993/Steps/training_2",
+            "caci:Schemas/Instantiated/WTC1993/Steps/obtain_financing",
             "caci:Schemas/Instantiated/WTC1993/Steps/media_propaganda"
           ],
           "confidence": 0.75
         },
         {
-          "comment": "Must arrive at destination country before sending propagnda and obtaining transportation",
+          "comment": "Must arrive in the US before sending anti-Israel letters to newspapers",
           "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Order/move_b4_propaganda",
           "before": "caci:Schemas/Instantiated/WTC1993/Steps/move_illegally",
-          "after": [
-            "caci:Schemas/Instantiated/WTC1993/Steps/media_propaganda",
-            "caci:Schemas/Instantiated/WTC1993/Steps/obtain_transportation"
-          ],
+          "after": "caci:Schemas/Instantiated/WTC1993/Steps/media_propaganda",
           "flags": "precondition",
           "confidence": 0.75
         },
         {
+          "comment": "Must obtain transportation before using it",
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Order/obtain_b4_use",
+          "before": "caci:Schemas/Instantiated/WTC1993/Steps/obtain_transportation",
+          "after": "caci:Schemas/Instantiated/WTC1993/Steps/move_to_general_attack_location_legally",
+          "flags": "precondition",
+          "confidence": 1
+        },
+        {
+          "comment": "Training with Al-Qaeda happens before domestic training",
           "ta1ref": "kairos:NULL",
-          "before": "caci:Schemas/Instantiated/WTC1993/Steps/training_1",
+          "before": "caci:Schemas/Instantiated/WTC1993/Steps/training",
           "after": "caci:Schemas/Instantiated/WTC1993/Steps/training_2",
           "flags": "precondition",
           "confidence": 0.75
@@ -1720,37 +1740,37 @@
           "confidence": 0.75
         },
         {
+          "comment": "Must arrive at attack site before attacking",
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Order/arrive_b4_bombing",
+          "before": "caci:Schemas/Instantiated/WTC1993/Steps/move_to_specific_attack_location",
+          "after": "caci:Schemas/Instantiated/WTC1993/Steps/bombing",
+          "flags": "precondition",
+          "confidence": 0.75
+        },
+        {
+          "comment": "These steps happen before the day of the attack",
+          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Order/steps_b4_attackoperation",
+          "before": [
+            "caci:Schemas/Instantiated/WTC1993/Steps/wire_transfer",
+            "caci:Schemas/Instantiated/WTC1993/Steps/get_bombmaking_howto",
+            "caci:Schemas/Instantiated/WTC1993/Steps/media_propaganda",
+            "caci:Schemas/Instantiated/WTC1993/Steps/obtain_financing"
+          ],
+          "after": "caci:Schemas/Instantiated/WTC1993/Steps/obtain_transportation",
+          "confidence": 0.75
+        },
+        {
+          "comment": "Domestic training also happens before the attack",
+          "ta1ref": "kairos:NULL",
+          "before": "caci:Schemas/Instantiated/WTC1993/Steps/training_2",
+          "after": "caci:Schemas/Instantiated/WTC1993/Steps/obtain_transportation",
+          "confidence": 0.75
+        },
+        {
           "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Order/bombing_b4_escape",
           "before": "caci:Schemas/Instantiated/WTC1993/Steps/bombing",
           "after": "caci:Schemas/Instantiated/WTC1993/Steps/escape",
           "flags": "precondition",
-          "confidence": 0.75
-        },
-        {
-          "comment": "At some point, the system should be able to infer transitive relations.  Not sure if in Phase I.",
-          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Order/lots_b4_bombing",
-          "before": [
-            "caci:Schemas/Instantiated/WTC1993/Steps/training_1",
-            "caci:Schemas/Instantiated/WTC1993/Steps/obtain_financing",
-            "caci:Schemas/Instantiated/WTC1993/Steps/make_contact",
-            "caci:Schemas/Instantiated/WTC1993/Steps/move_to_general_attack_location_legally",
-            "caci:Schemas/Instantiated/WTC1993/Steps/move_to_specific_attack_location"
-          ],
-          "after": "caci:Schemas/Instantiated/WTC1993/Steps/bombing",
-          "flags": "precondition",
-          "confidence": 0.75
-        },
-        {
-          "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Order/more_b4_bombing",
-          "before": [
-            "caci:Schemas/Instantiated/WTC1993/Steps/wire_transfer",
-            "caci:Schemas/Instantiated/WTC1993/Steps/move_illegally",
-            "caci:Schemas/Instantiated/WTC1993/Steps/get_bombmaking_howto",
-            "caci:Schemas/Instantiated/WTC1993/Steps/training_2",
-            "caci:Schemas/Instantiated/WTC1993/Steps/media_propaganda",
-            "caci:Schemas/Instantiated/WTC1993/Steps/obtain_transportation"
-          ],
-          "after": "caci:Schemas/Instantiated/WTC1993/Steps/bombing",
           "confidence": 0.75
         }
       ],
@@ -1762,7 +1782,7 @@
           "relations": {
             "@id": "caci:Schemas/Instantiated/WTC1993/Relations/poc_terrorist",
             "ta1ref": "caci:Schemas/CoordinatedBombingAttack/Relations/poc_terrorist",
-            "name": "POC participant from Contact event is from a terrorist organization.",
+            "name": "POC participant from Contact event is from a terrorist organization",
             "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.EmploymentMembership.Membership",
             "relationObject": "wiki:Q17127659",
             "relationProvenance": "n/a",
