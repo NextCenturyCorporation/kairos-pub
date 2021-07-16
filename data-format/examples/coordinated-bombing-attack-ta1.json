@@ -175,7 +175,7 @@
         "NOTE: This is the TA1 schema"
       ],
       "name": "Coordinated Bombing Attack",
-      "description": "A coordinated effort by mulitple parties that results in a bombing attack",
+      "description": "A coordinated effort by multiple parties that results in a bombing attack",
       "template": "<arg1> coordinated with <arg2> about a bombing attack on <arg3> to take place at <arg4>",
       "version": "caci-10.13.2020",
       "privateData": {

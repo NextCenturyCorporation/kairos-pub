@@ -1872,7 +1872,7 @@
           "relationSubject": "caci:Schemas/Instantiated/WTC1993/Entities/Vehicle",
           "comment": [
             "This is contrived because you'd never see something like \"vehicle is not yellow\" in TA2 output...",
-            "Also note that assessors will not intepret/translate Wikidata links/QIDs; they will see the arg as n/a."
+            "Also note that assessors will not interpret/translate Wikidata links/QIDs; they will see the arg as n/a."
           ],
           "provenance": "Entity1234",
           "relations": {
@@ -1890,7 +1890,7 @@
           "relationSubject": "caci:Schemas/Instantiated/WTC1993/Entities/Vehicle",
           "comment": [
             "This is contrived because you'd never see something like \"vehicle is not yellow\" in TA2 output...",
-            "Also note that assessors will not intepret/translate Wikidata links/QIDs; they will see the arg as n/a."
+            "Also note that assessors will not interpret/translate Wikidata links/QIDs; they will see the arg as n/a."
           ],
           "provenance": "Entity1234",
           "relations": {

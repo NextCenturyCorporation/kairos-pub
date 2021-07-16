@@ -1,29 +1,33 @@
 {
   "@context": [
-    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v0.91.jsonld",
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v1.0.jsonld",
     {
       "nist": "https://nist.gov/kairos/"
     }
   ],
-  "@id": "nist:Quizlet3/GraphG/ce1001",
-  "sdfVersion": "0.91",
+  "@id": "nist:Phase1Evaluation/GraphG/ce1005",
+  "sdfVersion": "1.0",
   "ta2": true,
   "task2": true,
+  "ceID": "ce1005",
   "schemas": [
     {
-      "@id": "nist:GraphG/ce1001",
-      "comment": "Adapted by TA3 from NIST's ce1001_event_primitives_graphG.json from Quizlet 3.",
-      "name": "ce1001",
-      "description": "Graph G for ce1001 for Quizlet 3",
-      "version": "nist/caci-10.17.2020",
+      "@id": "nist:GraphG/ce1005",
+      "comment": "",
+      "name": "ce1005",
+      "description": "Graph G of ce1005 for Phase 1 Evaluation",
+      "version": "nist-12-03-2020",
+      "super": "nist:GraphG/ce1005",
+      "template": "",
+      "confidence": 1,
       "slots": [
         {
-          "@id": "nist:GraphG/ce1001/Slots/agent",
+          "@id": "nist:GraphG/ce1005/Slots/agent",
           "roleName": "Agent",
           "entityTypes": "kairos:Primitives/Entities/PER"
         },
         {
-          "@id": "nist:GraphG/ce1001/Slots/place",
+          "@id": "nist:GraphG/ce1005/Slots/place",
           "roleName": "Place",
           "entityTypes": [
             "kairos:Primitives/Entities/FAC",
@@ -34,552 +38,1309 @@
       ],
       "steps": [
         {
-          "@id": "VP1001.00005",
-          "name": "Juan Manuel Santos and Julio Borges collaborated on drone attack",
-          "@type": "kairos:Primitives/Events/Contact.Contact.Unspecified",
+          "@id": "VP1005.1006",
+          "name": "Communication between Khaled Khayat and Islamic State began around April using an encrypted cell phone app",
+          "@type": "kairos:Primitives/Events/Contact.Contact.Correspondence",
           "ta1ref": "kairos:NULL",
-          "provenance": "VP1001.00005",
-          "modality": "hedged",
+          "provenance": "VP1005.1006",
           "temporal": [
             {
-              "latestStartTime": "2018-08-04Txx:xx:xx"
+              "earliestStartTime": "2017-04-xxTxx:xx:xx"
             },
             {
-              "latestEndTime": "2018-08-04Txx:xx:xx"
+              "latestStartTime": "2017-04-xxTxx:xx:xx"
             }
           ],
           "participants": [
             {
-              "name": "Juan Manuel Santos",
-              "@id": "AR1001.0009",
-              "role": "kairos:Primitives/Events/Contact.Contact.Unspecified/Slots/Participant",
-              "entityTypes": "kairos:Primitives/Entities/PER"
+              "name": "Instrument",
+              "@id": "VP1005.1006/Instrument",
+              "role": "kairos:Primitives/Events/Contact.Contact.Correspondence/Slots/Instrument",
+              "entityTypes": "kairos:Primitives/Entities/ABS",
+              "values": [
+                {
+                  "provenance": "AR1005.1039",
+                  "entity": "EE1005.1010"
+                }
+              ]
             },
             {
-              "name": "Julio Borges",
-              "@id": "AR1001.0010",
-              "role": "kairos:Primitives/Events/Contact.Contact.Unspecified/Slots/Participant",
-              "entityTypes": "kairos:Primitives/Entities/PER"
+              "name": "Participant",
+              "@id": "VP1005.1006/Participant",
+              "role": "kairos:Primitives/Events/Contact.Contact.Correspondence/Slots/Participant",
+              "entityTypes": "kairos:Primitives/Entities/ORG",
+              "values": [
+                {
+                  "provenance": "AR1005.1040",
+                  "entity": "EE1005.1040"
+                },
+                {
+                  "provenance": "AR1005.1041",
+                  "entity": "EE1005.1045"
+                }
+              ]
             },
             {
-              "name": "Drone explodes near the stage where Maduro is speaking",
-              "@id": "VP1001.00037",
-              "role": "kairos:Primitives/Events/Contact.Contact.Unspecified/Slots/Topic",
-              "entityTypes": "kairos:Primitives/Events/Contact.Contact.Unspecified"
+              "name": "Topic",
+              "@id": "VP1005.1006/Topic",
+              "role": "kairos:Primitives/Events/Contact.Contact.Correspondence/Slots/Topic",
+              "entityTypes": [
+                "kairos:Primitives/Entities/EVENT",
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID",
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/BAL",
+                "kairos:Primitives/Entities/MON",
+                "kairos:Primitives/Entities/LAW",
+                "kairos:Primitives/Entities/RES",
+                "kairos:Primitives/Entities/VAL",
+                "kairos:Primitives/Entities/MHI",
+                "kairos:Primitives/Entities/INF",
+                "kairos:Primitives/Entities/ABS",
+                "kairos:Primitives/Entities/AML",
+                "kairos:Primitives/Entities/BOD",
+                "kairos:Primitives/Entities/NAT",
+                "kairos:Primitives/Entities/PLA",
+                "kairos:Primitives/Entities/PTH"
+              ]
             },
             {
-              "name": "Drone explodes at nearby apartment building",
-              "@id": "VP1001.00050",
-              "role": "kairos:Primitives/Events/Contact.Contact.Unspecified/Slots/Topic",
-              "entityTypes": "kairos:Primitives/Events/Contact.Contact.Unspecified"
+              "name": "Place",
+              "@id": "VP1005.1006/Place",
+              "role": "kairos:Primitives/Events/Contact.Contact.Correspondence/Slots/Place",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC"
+              ]
+            }
+          ],
+          "modality": "hedged"
+        },
+        {
+          "@id": "VP1005.1009",
+          "name": "Khaled Khayat and Mahmoud Khayat were under the instruction of the person known as “The Controller“ on how to build the bomb via an encrypted cell phone app",
+          "@type": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified",
+          "ta1ref": "kairos:NULL",
+          "provenance": "VP1005.1009",
+          "temporal": [
+            {
+              "earliestStartTime": "2017-03-31Txx:xx:xx"
+            },
+            {
+              "latestEndTime": "2017-07-16Txx:xx:xx"
+            }
+          ],
+          "participants": [
+            {
+              "name": "Means",
+              "@id": "VP1005.1009/Means",
+              "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/Means",
+              "entityTypes": "kairos:Primitives/Entities/ABS",
+              "values": [
+                {
+                  "provenance": "AR1005.1055",
+                  "entity": "EE1005.1010"
+                }
+              ]
+            },
+            {
+              "name": "FieldOfKnowledge",
+              "@id": "VP1005.1009/FieldOfKnowledge",
+              "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/FieldOfKnowledge",
+              "entityTypes": "kairos:Primitives/Entities/INF",
+              "values": [
+                {
+                  "provenance": "AR1005.1056",
+                  "entity": "EE1005.1035"
+                }
+              ]
+            },
+            {
+              "name": "Institution",
+              "@id": "VP1005.1009/Institution",
+              "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/Institution",
+              "entityTypes": "kairos:Primitives/Entities/ORG",
+              "values": [
+                {
+                  "provenance": "AR1005.1057",
+                  "entity": "EE1005.1040"
+                }
+              ]
+            },
+            {
+              "name": "Learner",
+              "@id": "VP1005.1009/Learner",
+              "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/Learner",
+              "entityTypes": "kairos:Primitives/Entities/PER",
+              "values": [
+                {
+                  "provenance": "AR1005.1058",
+                  "entity": "EE1005.1045"
+                },
+                {
+                  "provenance": "AR1005.1059",
+                  "entity": "EE1005.1052"
+                }
+              ]
+            },
+            {
+              "name": "TeacherTrainer",
+              "@id": "VP1005.1009/TeacherTrainer",
+              "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/TeacherTrainer",
+              "entityTypes": "kairos:Primitives/Entities/PER",
+              "values": [
+                {
+                  "provenance": "AR1005.1060",
+                  "entity": "EE1005.1078"
+                }
+              ]
+            },
+            {
+              "name": "Place",
+              "@id": "VP1005.1009/Place",
+              "role": "kairos:Primitives/Events/Cognitive.TeachingTrainingLearning.Unspecified/Slots/Place",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC"
+              ]
             }
           ]
         },
         {
-          "@id": "VP1001.00030",
-          "name": "Drones are loaded with C4 explosives",
+          "@id": "VP1005.1010",
+          "name": "Islamic State instructed Khaled Khayat and Mahmoud Khayat via an encrypted cell phone app to bomb and destroy the Etihad Airways flight from Sydney to Abu Dhabi from Sydney to Abu Dhabi using an a fully functional IED",
+          "@type": "kairos:Primitives/Events/Contact.RequestCommand.Correspondence",
+          "ta1ref": "kairos:NULL",
+          "provenance": "VP1005.1010",
+          "temporal": [
+            {
+              "earliestStartTime": "2017-03-31Txx:xx:xx"
+            },
+            {
+              "latestEndTime": "2017-07-16Txx:xx:xx"
+            }
+          ],
+          "participants": [
+            {
+              "name": "Instrument",
+              "@id": "VP1005.1010/Instrument",
+              "role": "kairos:Primitives/Events/Contact.RequestCommand.Correspondence/Slots/Instrument",
+              "entityTypes": "kairos:Primitives/Entities/ABS",
+              "values": [
+                {
+                  "provenance": "AR1005.1061",
+                  "entity": "EE1005.1010"
+                }
+              ]
+            },
+            {
+              "name": "Communicator",
+              "@id": "VP1005.1010/Communicator",
+              "role": "kairos:Primitives/Events/Contact.RequestCommand.Correspondence/Slots/Communicator",
+              "entityTypes": "kairos:Primitives/Entities/ORG",
+              "values": [
+                {
+                  "provenance": "AR1005.1062",
+                  "entity": "EE1005.1040"
+                }
+              ]
+            },
+            {
+              "name": "Recipient",
+              "@id": "VP1005.1010/Recipient",
+              "role": "kairos:Primitives/Events/Contact.RequestCommand.Correspondence/Slots/Recipient",
+              "entityTypes": "kairos:Primitives/Entities/PER",
+              "values": [
+                {
+                  "provenance": "AR1005.1063",
+                  "entity": "EE1005.1045"
+                },
+                {
+                  "provenance": "AR1005.1066",
+                  "entity": "EE1005.1052"
+                }
+              ]
+            },
+            {
+              "name": "Topic",
+              "@id": "VP1005.1010/Topic",
+              "role": "kairos:Primitives/Events/Contact.RequestCommand.Correspondence/Slots/Topic",
+              "entityTypes": "kairos:Primitives/Entities/EVENT",
+              "values": [
+                {
+                  "provenance": "VP1005.1013",
+                  "entity": "VP1005.1013"
+                },
+                {
+                  "provenance": "VP1005.1014",
+                  "entity": "VP1005.1014"
+                }
+              ]
+            },
+            {
+              "name": "Place",
+              "@id": "VP1005.1010/Place",
+              "role": "kairos:Primitives/Events/Contact.RequestCommand.Correspondence/Slots/Place",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC"
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "VP1005.1013",
+          "name": "Khaled Khayat and Mahmoud Khayat bomb the Etihad Airways flight from Sydney to Abu Dhabi using an a fully functional IED",
+          "@type": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode",
+          "ta1ref": "kairos:NULL",
+          "provenance": "VP1005.1013",
+          "temporal": [
+            {
+              "earliestStartTime": "2017-07-15Txx:xx:xx"
+            },
+            {
+              "latestStartTime": "2017-07-15Txx:xx:xx"
+            },
+            {
+              "earliestEndTime": "2017-07-15Txx:xx:xx"
+            },
+            {
+              "latestEndTime": "2017-07-15Txx:xx:xx"
+            }
+          ],
+          "participants": [
+            {
+              "name": "ExplosiveDevice",
+              "@id": "VP1005.1013/ExplosiveDevice",
+              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/ExplosiveDevice",
+              "entityTypes": "kairos:Primitives/Entities/WEA",
+              "values": [
+                {
+                  "provenance": "AR1005.1089",
+                  "entity": "EE1005.1026"
+                }
+              ]
+            },
+            {
+              "name": "Attacker",
+              "@id": "VP1005.1013/Attacker",
+              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Attacker",
+              "entityTypes": "kairos:Primitives/Entities/PER",
+              "values": [
+                {
+                  "provenance": "AR1005.1090",
+                  "entity": "EE1005.1045"
+                },
+                {
+                  "provenance": "AR1005.1091",
+                  "entity": "EE1005.1052"
+                }
+              ]
+            },
+            {
+              "name": "Target",
+              "@id": "VP1005.1013/Target",
+              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Target",
+              "entityTypes": "kairos:Primitives/Entities/VEH",
+              "values": [
+                {
+                  "provenance": "AR1005.1092",
+                  "entity": "EE1005.1024"
+                }
+              ]
+            },
+            {
+              "name": "Instrument",
+              "@id": "VP1005.1013/Instrument",
+              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Instrument",
+              "entityTypes": [
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/COM"
+              ]
+            },
+            {
+              "name": "Place",
+              "@id": "VP1005.1013/Place",
+              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Place",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC"
+              ]
+            }
+          ],
+          "modality": "irrealis"
+        },
+        {
+          "@id": "VP1005.1014",
+          "name": "Khaled Khayat and Mahmoud Khayat destroy the Etihad Airways flight from Sydney to Abu Dhabi from Sydney to Abu Dhabi using an a fully functional IED",
+          "@type": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Destroy",
+          "ta1ref": "kairos:NULL",
+          "provenance": "VP1005.1014",
+          "temporal": [
+            {
+              "earliestStartTime": "2017-07-15Txx:xx:xx"
+            },
+            {
+              "latestStartTime": "2017-07-15Txx:xx:xx"
+            },
+            {
+              "earliestEndTime": "2017-07-15Txx:xx:xx"
+            },
+            {
+              "latestEndTime": "2017-07-15Txx:xx:xx"
+            }
+          ],
+          "participants": [
+            {
+              "name": "Instrument",
+              "@id": "VP1005.1014/Instrument",
+              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Destroy/Slots/Instrument",
+              "entityTypes": "kairos:Primitives/Entities/WEA",
+              "values": [
+                {
+                  "provenance": "AR1005.1093",
+                  "entity": "EE1005.1026"
+                }
+              ]
+            },
+            {
+              "name": "Destroyer",
+              "@id": "VP1005.1014/Destroyer",
+              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Destroy/Slots/Destroyer",
+              "entityTypes": "kairos:Primitives/Entities/PER",
+              "values": [
+                {
+                  "provenance": "AR1005.1094",
+                  "entity": "EE1005.1045"
+                },
+                {
+                  "provenance": "AR1005.1095",
+                  "entity": "EE1005.1052"
+                }
+              ]
+            },
+            {
+              "name": "Artifact",
+              "@id": "VP1005.1014/Artifact",
+              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Destroy/Slots/Artifact",
+              "entityTypes": "kairos:Primitives/Entities/VEH",
+              "values": [
+                {
+                  "provenance": "AR1005.1096",
+                  "entity": "EE1005.1024"
+                }
+              ]
+            },
+            {
+              "name": "Place",
+              "@id": "VP1005.1014/Place",
+              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Destroy/Slots/Place",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC"
+              ]
+            }
+          ],
+          "modality": "irrealis"
+        },
+        {
+          "@id": "VP1005.1016",
+          "name": "A senior Islamic State member in Turkey gave bomb components and pentaerythritol tetranitrate to Khaled Khayat and Mahmoud Khayat in Sydney",
+          "@type": "kairos:Primitives/Events/Transaction.Donation.Unspecified",
+          "ta1ref": "kairos:NULL",
+          "provenance": "VP1005.1016",
+          "temporal": [
+            {
+              "latestStartTime": "2017-07-15Txx:xx:xx"
+            },
+            {
+              "latestEndTime": "2017-07-15Txx:xx:xx"
+            }
+          ],
+          "participants": [
+            {
+              "name": "Giver",
+              "@id": "VP1005.1016/Giver",
+              "role": "kairos:Primitives/Events/Transaction.Donation.Unspecified/Slots/Giver",
+              "entityTypes": "kairos:Primitives/Entities/PER",
+              "values": [
+                {
+                  "provenance": "AR1005.1102",
+                  "entity": "EE1005.1065"
+                }
+              ]
+            },
+            {
+              "name": "ArtifactMoney",
+              "@id": "VP1005.1016/ArtifactMoney",
+              "role": "kairos:Primitives/Events/Transaction.Donation.Unspecified/Slots/ArtifactMoney",
+              "entityTypes": "kairos:Primitives/Entities/COM",
+              "values": [
+                {
+                  "provenance": "AR1005.1103",
+                  "entity": "EE1005.1022"
+                },
+                {
+                  "provenance": "AR1005.1106",
+                  "entity": "EE1005.1055"
+                }
+              ]
+            },
+            {
+              "name": "Recipient",
+              "@id": "VP1005.1016/Recipient",
+              "role": "kairos:Primitives/Events/Transaction.Donation.Unspecified/Slots/Recipient",
+              "entityTypes": "kairos:Primitives/Entities/PER",
+              "values": [
+                {
+                  "provenance": "AR1005.1104",
+                  "entity": "EE1005.1045"
+                },
+                {
+                  "provenance": "AR1005.1105",
+                  "entity": "EE1005.1052"
+                }
+              ]
+            },
+            {
+              "name": "Place",
+              "@id": "VP1005.1016/Place",
+              "role": "kairos:Primitives/Events/Transaction.Donation.Unspecified/Slots/Place",
+              "entityTypes": "kairos:Primitives/Entities/GPE",
+              "values": [
+                {
+                  "provenance": "AR1005.1107",
+                  "entity": "EE1005.1068"
+                },
+                {
+                  "provenance": "AR1005.1108",
+                  "entity": "EE1005.1082"
+                }
+              ]
+            },
+            {
+              "name": "Beneficiary",
+              "@id": "VP1005.1016/Beneficiary",
+              "role": "kairos:Primitives/Events/Transaction.Donation.Unspecified/Slots/Beneficiary",
+              "entityTypes": [
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/ORG",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/SID"
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "VP1005.1019",
+          "name": "Khaled Khayat and Mahmoud Khayat concealed a fully functional IED in a kitchen meat grinder",
+          "@type": "kairos:Primitives/Events/Movement.Transportation.Unspecified",
+          "ta1ref": "kairos:NULL",
+          "provenance": "VP1005.1019",
+          "temporal": [
+            {
+              "earliestStartTime": "2017-07-xxTxx:xx:xx"
+            },
+            {
+              "latestStartTime": "2017-07-xxTxx:xx:xx"
+            },
+            {
+              "earliestEndTime": "2017-07-xxTxx:xx:xx"
+            },
+            {
+              "latestEndTime": "2017-07-xxTxx:xx:xx"
+            }
+          ],
+          "participants": [
+            {
+              "name": "PassengerArtifact",
+              "@id": "VP1005.1019/PassengerArtifact",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/PassengerArtifact",
+              "entityTypes": "kairos:Primitives/Entities/WEA",
+              "values": [
+                {
+                  "provenance": "AR1005.1118",
+                  "entity": "EE1005.1026"
+                }
+              ]
+            },
+            {
+              "name": "Destination",
+              "@id": "VP1005.1019/Destination",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Destination",
+              "entityTypes": "kairos:Primitives/Entities/COM",
+              "values": [
+                {
+                  "provenance": "AR1005.1119",
+                  "entity": "EE1005.1054"
+                }
+              ]
+            },
+            {
+              "name": "Transporter",
+              "@id": "VP1005.1019/Transporter",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Transporter",
+              "entityTypes": "kairos:Primitives/Entities/PER",
+              "values": [
+                {
+                  "provenance": "AR1005.1120",
+                  "entity": "EE1005.1045"
+                },
+                {
+                  "provenance": "AR1005.1121",
+                  "entity": "EE1005.1052"
+                }
+              ]
+            },
+            {
+              "name": "Vehicle",
+              "@id": "VP1005.1019/Vehicle",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Vehicle",
+              "entityTypes": [
+                "kairos:Primitives/Entities/VEH"
+              ]
+            },
+            {
+              "name": "Origin",
+              "@id": "VP1005.1019/Origin",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Origin",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/VEH"
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "VP1005.1020",
+          "name": "Khaled Khayat and Mahmoud Khayat put a fully functional IED in Amer Khayat's bag",
+          "@type": "kairos:Primitives/Events/Movement.Transportation.Unspecified",
+          "ta1ref": "kairos:NULL",
+          "provenance": "VP1005.1020",
+          "temporal": [
+            {
+              "latestStartTime": "2017-07-16Txx:xx:xx"
+            },
+            {
+              "latestEndTime": "2017-07-16Txx:xx:xx"
+            }
+          ],
+          "participants": [
+            {
+              "name": "Destination",
+              "@id": "VP1005.1020/Destination",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Destination",
+              "entityTypes": "kairos:Primitives/Entities/COM",
+              "values": [
+                {
+                  "provenance": "AR1005.1130",
+                  "entity": "EE1005.1009"
+                }
+              ]
+            },
+            {
+              "name": "PassengerArtifact",
+              "@id": "VP1005.1020/PassengerArtifact",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/PassengerArtifact",
+              "entityTypes": "kairos:Primitives/Entities/WEA",
+              "values": [
+                {
+                  "provenance": "AR1005.1131",
+                  "entity": "EE1005.1026"
+                }
+              ]
+            },
+            {
+              "name": "Transporter",
+              "@id": "VP1005.1020/Transporter",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Transporter",
+              "entityTypes": "kairos:Primitives/Entities/PER",
+              "values": [
+                {
+                  "provenance": "AR1005.1132",
+                  "entity": "EE1005.1045"
+                },
+                {
+                  "provenance": "AR1005.1133",
+                  "entity": "EE1005.1052"
+                }
+              ]
+            },
+            {
+              "name": "Vehicle",
+              "@id": "VP1005.1020/Vehicle",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Vehicle",
+              "entityTypes": [
+                "kairos:Primitives/Entities/VEH"
+              ]
+            },
+            {
+              "name": "Origin",
+              "@id": "VP1005.1020/Origin",
+              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Origin",
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/VEH"
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "VP1005.1039",
+          "name": "Khaled Khayat and Mahmoud Khayat construct hydrogen sulfide dispersion device in Australia",
           "@type": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified",
           "ta1ref": "kairos:NULL",
-          "provenance": "VP1001.00030",
+          "provenance": "VP1005.1039",
           "temporal": [
             {
-              "latestStartTime": "2018-08-04Txx:xx:xx"
+              "earliestStartTime": "2017-07-15Txx:xx:xx"
             },
             {
-              "latestEndTime": "2018-08-04Txx:xx:xx"
+              "earliestEndTime": "2017-07-29Txx:xx:xx"
+            },
+            {
+              "latestEndTime": "2017-07-29Txx:xx:xx"
             }
           ],
           "participants": [
             {
-              "name": "C4 explosives",
-              "@id": "AR1001.0061",
+              "name": "Place",
+              "@id": "VP1005.1039/Place",
+              "role": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified/Slots/Place",
+              "entityTypes": "kairos:Primitives/Entities/GPE",
+              "values": [
+                {
+                  "provenance": "AR1005.1206",
+                  "entity": "EE1005.1012"
+                }
+              ]
+            },
+            {
+              "name": "Components",
+              "@id": "VP1005.1039/Components",
               "role": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified/Slots/Components",
-              "entityTypes": "kairos:Primitives/Entities/WEA"
+              "entityTypes": "kairos:Primitives/Entities/COM",
+              "values": [
+                {
+                  "provenance": "AR1005.1207",
+                  "entity": "EE1005.1036"
+                }
+              ]
             },
             {
-              "name": "drones",
-              "@id": "AR1001.0062",
+              "name": "Artifact",
+              "@id": "VP1005.1039/Artifact",
               "role": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified/Slots/Artifact",
-              "entityTypes": "kairos:Primitives/Entities/VEH"
-            }
-          ]
-        },
-        {
-          "@id": "VP1001.00034",
-          "name": "Drone is flown to stage where Maduro is speaking",
-          "@type": "kairos:Primitives/Events/Movement.Transportation.Unspecified",
-          "ta1ref": "kairos:NULL",
-          "provenance": "VP1001.00034",
-          "temporal": [
-            {
-              "earliestStartTime": "2018-08-04T17:xx:xx"
+              "entityTypes": "kairos:Primitives/Entities/WEA",
+              "values": [
+                {
+                  "provenance": "AR1005.1208",
+                  "entity": "EE1005.1037"
+                }
+              ]
             },
             {
-              "latestStartTime": "2018-08-04T17:xx:xx"
+              "name": "ManufacturerAssembler",
+              "@id": "VP1005.1039/ManufacturerAssembler",
+              "role": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified/Slots/ManufacturerAssembler",
+              "entityTypes": "kairos:Primitives/Entities/PER",
+              "values": [
+                {
+                  "provenance": "AR1005.1209",
+                  "entity": "EE1005.1045"
+                },
+                {
+                  "provenance": "AR1005.1210",
+                  "entity": "EE1005.1052"
+                }
+              ]
             },
             {
-              "earliestEndTime": "2018-08-04T17:xx:xx"
-            },
-            {
-              "latestEndTime": "2018-08-04T17:xx:xx"
-            }
-          ],
-          "participants": [
-            {
-              "name": "the drone that exploded near the stage where Maduro was speaking",
-              "@id": "AR1001.0075",
-              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Vehicle",
-              "entityTypes": "kairos:Primitives/Entities/VEH"
-            },
-            {
-              "name": "C4 explosives",
-              "@id": "AR1001.0076",
-              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/PassengerArtifact",
-              "entityTypes": "kairos:Primitives/Entities/WEA"
-            },
-            {
-              "name": "the stage where Maduro is speaking",
-              "@id": "AR1001.0077",
-              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Destination",
-              "entityTypes": "kairos:Primitives/Entities/FAC"
-            },
-            {
-              "name": "2 drone operators",
-              "@id": "AR1001.0078",
-              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Transporter",
-              "entityTypes": "kairos:Primitives/Entities/PER"
-            }
-          ]
-        },
-        {
-          "@id": "VP1001.00035",
-          "name": "Drones are disoriented with radio signal inhibitors",
-          "@type": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.DisableDefuse",
-          "ta1ref": "kairos:NULL",
-          "provenance": "VP1001.00035",
-          "temporal": [
-            {
-              "earliestStartTime": "2018-08-04T17:xx:xx"
-            },
-            {
-              "latestStartTime": "2018-08-04T17:xx:xx"
-            },
-            {
-              "earliestEndTime": "2018-08-04T17:xx:xx"
-            },
-            {
-              "latestEndTime": "2018-08-04T17:xx:xx"
+              "name": "Instrument",
+              "@id": "VP1005.1039/Instrument",
+              "role": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified/Slots/Instrument",
+              "entityTypes": [
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/INF"
+              ]
             }
           ],
-          "participants": [
-            {
-              "name": "drones",
-              "@id": "AR1001.0079",
-              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.DisableDefuse/Slots/Artifact",
-              "entityTypes": "kairos:Primitives/Entities/VEH"
-            },
-            {
-              "name": "Caracas",
-              "@id": "AR1001.0080",
-              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.DisableDefuse/Slots/Place",
-              "entityTypes": "kairos:Primitives/Entities/GPE"
-            },
-            {
-              "name": "downtown Caracas",
-              "@id": "AR1001.0081",
-              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.DisableDefuse/Slots/Place",
-              "entityTypes": "kairos:Primitives/Entities/LOC"
-            },
-            {
-              "name": "radio signal inhibitors",
-              "@id": "AR1001.0082",
-              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.DisableDefuse/Slots/Instrument",
-              "entityTypes": "kairos:Primitives/Entities/COM"
-            },
-            {
-              "name": "Venezuelan intelligence",
-              "@id": "AR1001.0083",
-              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.DisableDefuse/Slots/Disabler",
-              "entityTypes": "kairos:Primitives/Entities/ORG"
-            }
-          ]
+          "modality": "irrealis"
         },
         {
-          "@id": "VP1001.00037",
-          "name": "Drone explodes near the stage where Maduro is speaking",
+          "@id": "VP1005.1040",
+          "name": "Khaled Khayat and Mahmoud Khayat launch an attack with hydrogen sulfide dispersion device",
           "@type": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode",
           "ta1ref": "kairos:NULL",
-          "provenance": "VP1001.00037",
-          "temporal": [
-            {
-              "earliestStartTime": "2018-08-04T17:41:xx"
-            },
-            {
-              "latestStartTime": "2018-08-04T17:41:xx"
-            },
-            {
-              "earliestEndTime": "2018-08-04T17:41:xx"
-            },
-            {
-              "latestEndTime": "2018-08-04T17:41:xx"
-            }
-          ],
+          "provenance": "VP1005.1040",
+          "temporal": [],
           "participants": [
             {
-              "name": "C4 explosives",
-              "@id": "AR1001.0089",
+              "name": "ExplosiveDevice",
+              "@id": "VP1005.1040/ExplosiveDevice",
               "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/ExplosiveDevice",
-              "entityTypes": "kairos:Primitives/Entities/WEA"
+              "entityTypes": "kairos:Primitives/Entities/WEA",
+              "values": [
+                {
+                  "provenance": "AR1005.1215",
+                  "entity": "EE1005.1037"
+                }
+              ]
             },
             {
-              "name": "Caracas",
-              "@id": "AR1001.0090",
-              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Place",
-              "entityTypes": "kairos:Primitives/Entities/GPE"
+              "name": "Attacker",
+              "@id": "VP1005.1040/Attacker",
+              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Attacker",
+              "entityTypes": "kairos:Primitives/Entities/PER",
+              "values": [
+                {
+                  "provenance": "AR1005.1216",
+                  "entity": "EE1005.1045"
+                },
+                {
+                  "provenance": "AR1005.1217",
+                  "entity": "EE1005.1052"
+                }
+              ]
             },
             {
-              "name": "downtown Caracas",
-              "@id": "AR1001.0091",
-              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Place",
-              "entityTypes": "kairos:Primitives/Entities/LOC"
-            },
-            {
-              "name": "the stage where Maduro is speaking",
-              "@id": "AR1001.0092",
-              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Place",
-              "entityTypes": "kairos:Primitives/Entities/FAC"
-            },
-            {
-              "name": "Avenida Bolivar",
-              "@id": "AR1001.0093",
-              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Place",
-              "entityTypes": "kairos:Primitives/Entities/FAC"
-            },
-            {
-              "name": "Nicolás Maduro",
-              "@id": "AR1001.0094",
+              "name": "Target",
+              "@id": "VP1005.1040/Target",
               "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Target",
-              "entityTypes": "kairos:Primitives/Entities/PER"
-            }
-          ]
-        },
-        {
-          "@id": "VP1001.00048",
-          "name": "Drone is diverted toward nearby apartment building",
-          "@type": "kairos:Primitives/Events/Movement.Transportation.Unspecified",
-          "ta1ref": "kairos:NULL",
-          "provenance": "VP1001.00048",
-          "temporal": [
-            {
-              "earliestStartTime": "2018-08-04T17:xx:xx"
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC",
+                "kairos:Primitives/Entities/PER",
+                "kairos:Primitives/Entities/COM",
+                "kairos:Primitives/Entities/VEH",
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/SID",
+                "kairos:Primitives/Entities/AML",
+                "kairos:Primitives/Entities/PLA",
+                "kairos:Primitives/Entities/NAT"
+              ]
             },
             {
-              "latestStartTime": "2018-08-04T17:xx:xx"
-            },
-            {
-              "earliestEndTime": "2018-08-04T17:xx:xx"
-            },
-            {
-              "latestEndTime": "2018-08-04T17:xx:xx"
-            }
-          ],
-          "participants": [
-            {
-              "name": "the drone that crashed into the apartment building",
-              "@id": "AR1001.0134",
-              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Vehicle",
-              "entityTypes": "kairos:Primitives/Entities/VEH"
-            },
-            {
-              "name": "a nearby apartment building",
-              "@id": "AR1001.0135",
-              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Destination",
-              "entityTypes": "kairos:Primitives/Entities/FAC"
-            },
-            {
-              "name": "C4 explosives",
-              "@id": "AR1001.0136",
-              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/PassengerArtifact",
-              "entityTypes": "kairos:Primitives/Entities/WEA"
-            }
-          ]
-        },
-        {
-          "@id": "VP1001.00049",
-          "name": "Drone crashes into apartment building",
-          "@type": "kairos:Primitives/Events/Disaster.Crash.Unspecified",
-          "ta1ref": "kairos:NULL",
-          "provenance": "VP1001.00049",
-          "temporal": [
-            {
-              "earliestStartTime": "2018-08-04T17:4x:xx"
-            },
-            {
-              "latestStartTime": "2018-08-04T17:4x:xx"
-            },
-            {
-              "earliestEndTime": "2018-08-04T17:4x:xx"
-            },
-            {
-              "latestEndTime": "2018-08-04T17:4x:xx"
-            }
-          ],
-          "participants": [
-            {
-              "name": "the drone that crashed into the apartment building",
-              "@id": "AR1001.0137",
-              "role": "kairos:Primitives/Events/Disaster.Crash.Unspecified/Slots/Vehicle",
-              "entityTypes": "kairos:Primitives/Entities/VEH"
-            },
-            {
-              "name": "a nearby apartment building",
-              "@id": "AR1001.0138",
-              "role": "kairos:Primitives/Events/Disaster.Crash.Unspecified/Slots/CrashObject",
-              "entityTypes": "kairos:Primitives/Entities/FAC"
-            },
-            {
-              "name": "Caracas",
-              "@id": "AR1001.0139",
-              "role": "kairos:Primitives/Events/Disaster.Crash.Unspecified/Slots/Place",
-              "entityTypes": "kairos:Primitives/Entities/GPE"
-            },
-            {
-              "name": "downtown Caracas",
-              "@id": "AR1001.0140",
-              "role": "kairos:Primitives/Events/Disaster.Crash.Unspecified/Slots/Place",
-              "entityTypes": "kairos:Primitives/Entities/LOC"
-            }
-          ]
-        },
-        {
-          "@id": "VP1001.00050",
-          "name": "Drone explodes at nearby apartment building",
-          "@type": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode",
-          "ta1ref": "kairos:NULL",
-          "provenance": "VP1001.00050",
-          "temporal": [
-            {
-              "earliestStartTime": "2018-08-04T17:4x:xx"
-            },
-            {
-              "latestStartTime": "2018-08-04T17:4x:xx"
-            },
-            {
-              "earliestEndTime": "2018-08-04T17:4x:xx"
-            },
-            {
-              "latestEndTime": "2018-08-04T17:4x:xx"
-            }
-          ],
-          "participants": [
-            {
-              "name": "C4 explosives",
-              "@id": "AR1001.0141",
-              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/ExplosiveDevice",
-              "entityTypes": "kairos:Primitives/Entities/WEA"
-            },
-            {
-              "name": "the drone that crashed into the apartment building",
-              "@id": "AR1001.0142",
+              "name": "Instrument",
+              "@id": "VP1005.1040/Instrument",
               "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Instrument",
-              "entityTypes": "kairos:Primitives/Entities/VEH"
+              "entityTypes": [
+                "kairos:Primitives/Entities/WEA",
+                "kairos:Primitives/Entities/COM"
+              ]
             },
             {
-              "name": "a nearby apartment building",
-              "@id": "AR1001.0143",
+              "name": "Place",
+              "@id": "VP1005.1040/Place",
               "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Place",
-              "entityTypes": "kairos:Primitives/Entities/FAC"
-            },
-            {
-              "name": "Caracas",
-              "@id": "AR1001.0144",
-              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Place",
-              "entityTypes": "kairos:Primitives/Entities/GPE"
-            },
-            {
-              "name": "downtown Caracas",
-              "@id": "AR1001.0145",
-              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Place",
-              "entityTypes": "kairos:Primitives/Entities/LOC"
+              "entityTypes": [
+                "kairos:Primitives/Entities/LOC",
+                "kairos:Primitives/Entities/GPE",
+                "kairos:Primitives/Entities/FAC"
+              ]
             }
-          ]
+          ],
+          "modality": "irrealis"
         },
         {
-          "@id": "VP1001.00051",
-          "name": "Apartment building is damaged by drone explosion",
-          "@type": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Damage",
+          "@id": "VP1005.1072",
+          "name": "Khaled Khayat has been jailed at the High-Risk Management Correctional Centre for an attack with hydrogen sulfide dispersion device, bombing and destroying the Etihad Airways flight from Sydney to Abu Dhabi with Mahmoud Khayat",
+          "@type": "kairos:Primitives/Events/Justice.ArrestJailDetain.Unspecified",
           "ta1ref": "kairos:NULL",
-          "provenance": "VP1001.00051",
+          "provenance": "VP1005.1072",
           "temporal": [
             {
-              "earliestStartTime": "2018-08-04T17:4x:xx"
+              "earliestStartTime": "2019-12-17Txx:xx:xx"
             },
             {
-              "latestStartTime": "2018-08-04T17:4x:xx"
+              "latestStartTime": "2019-12-17Txx:xx:xx"
             },
             {
-              "earliestEndTime": "2018-08-04T17:4x:xx"
-            },
-            {
-              "latestEndTime": "2018-08-04T17:4x:xx"
+              "earliestEndTime": "2049-xx-xxTxx:xx:xx"
             }
           ],
           "participants": [
             {
-              "name": "a nearby apartment building",
-              "@id": "AR1001.0146",
-              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Damage/Slots/Artifact",
-              "entityTypes": "kairos:Primitives/Entities/FAC"
+              "name": "Jailer",
+              "@id": "VP1005.1072/Jailer",
+              "role": "kairos:Primitives/Events/Justice.ArrestJailDetain.Unspecified/Slots/Jailer",
+              "entityTypes": "kairos:Primitives/Entities/PER",
+              "values": [
+                {
+                  "provenance": "AR1005.1395",
+                  "entity": "EE1005.1019"
+                }
+              ]
             },
             {
-              "name": "C4 explosives",
-              "@id": "AR1001.0147",
-              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Damage/Slots/Instrument",
-              "entityTypes": "kairos:Primitives/Entities/WEA"
+              "name": "Place",
+              "@id": "VP1005.1072/Place",
+              "role": "kairos:Primitives/Events/Justice.ArrestJailDetain.Unspecified/Slots/Place",
+              "entityTypes": "kairos:Primitives/Entities/FAC",
+              "values": [
+                {
+                  "provenance": "AR1005.1396",
+                  "entity": "EE1005.1034"
+                }
+              ]
             },
             {
-              "name": "Caracas",
-              "@id": "AR1001.0148",
-              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Damage/Slots/Place",
-              "entityTypes": "kairos:Primitives/Entities/GPE"
+              "name": "Detainee",
+              "@id": "VP1005.1072/Detainee",
+              "role": "kairos:Primitives/Events/Justice.ArrestJailDetain.Unspecified/Slots/Detainee",
+              "entityTypes": "kairos:Primitives/Entities/PER",
+              "values": [
+                {
+                  "provenance": "AR1005.1397",
+                  "entity": "EE1005.1045"
+                }
+              ]
             },
             {
-              "name": "downtown Caracas",
-              "@id": "AR1001.0149",
-              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Damage/Slots/Place",
-              "entityTypes": "kairos:Primitives/Entities/LOC"
+              "name": "Crime",
+              "@id": "VP1005.1072/Crime",
+              "role": "kairos:Primitives/Events/Justice.ArrestJailDetain.Unspecified/Slots/Crime",
+              "entityTypes": "kairos:Primitives/Entities/EVENT",
+              "values": [
+                {
+                  "provenance": "VP1005.1013",
+                  "entity": "VP1005.1013"
+                },
+                {
+                  "provenance": "VP1005.1014",
+                  "entity": "VP1005.1014"
+                },
+                {
+                  "provenance": "VP1005.1040",
+                  "entity": "VP1005.1040"
+                }
+              ]
             }
           ]
         },
         {
-          "@id": "VP1001.00052",
-          "name": "7 soldiers were injured by drone explosion near the stage",
-          "@type": "kairos:Primitives/Events/Life.Injure.Unspecified",
+          "@id": "VP1005.1073",
+          "name": "Mahmoud Khayat has been jailed at the High-Risk Management Correctional Centre for an attack with hydrogen sulfide dispersion device, bombing and destroying the Etihad Airways flight from Sydney to Abu Dhabi with Khaled Khayat",
+          "@type": "kairos:Primitives/Events/Justice.ArrestJailDetain.Unspecified",
           "ta1ref": "kairos:NULL",
-          "provenance": "VP1001.00052",
+          "provenance": "VP1005.1073",
           "temporal": [
             {
-              "earliestStartTime": "2018-08-04T17:41:xx"
+              "earliestStartTime": "2019-12-17Txx:xx:xx"
             },
             {
-              "latestStartTime": "2018-08-04T17:41:xx"
+              "latestStartTime": "2019-12-17Txx:xx:xx"
             },
             {
-              "earliestEndTime": "2018-08-04T17:41:xx"
-            },
-            {
-              "latestEndTime": "2018-08-04T17:41:xx"
+              "earliestEndTime": "2046-xx-xxTxx:xx:xx"
             }
           ],
           "participants": [
             {
-              "name": "7 soldiers",
-              "@id": "AR1001.0150",
-              "role": "kairos:Primitives/Events/Life.Injure.Unspecified/Slots/Victim",
-              "entityTypes": "kairos:Primitives/Entities/PER"
+              "name": "Jailer",
+              "@id": "VP1005.1073/Jailer",
+              "role": "kairos:Primitives/Events/Justice.ArrestJailDetain.Unspecified/Slots/Jailer",
+              "entityTypes": "kairos:Primitives/Entities/PER",
+              "values": [
+                {
+                  "provenance": "AR1005.1403",
+                  "entity": "EE1005.1019"
+                }
+              ]
             },
             {
-              "name": "C4 explosives",
-              "@id": "AR1001.0151",
-              "role": "kairos:Primitives/Events/Life.Injure.Unspecified/Slots/Instrument",
-              "entityTypes": "kairos:Primitives/Entities/WEA"
+              "name": "Place",
+              "@id": "VP1005.1073/Place",
+              "role": "kairos:Primitives/Events/Justice.ArrestJailDetain.Unspecified/Slots/Place",
+              "entityTypes": "kairos:Primitives/Entities/FAC",
+              "values": [
+                {
+                  "provenance": "AR1005.1404",
+                  "entity": "EE1005.1034"
+                }
+              ]
             },
             {
-              "name": "Caracas",
-              "@id": "AR1001.0152",
-              "role": "kairos:Primitives/Events/Life.Injure.Unspecified/Slots/Place",
-              "entityTypes": "kairos:Primitives/Entities/GPE"
+              "name": "Crime",
+              "@id": "VP1005.1073/Crime",
+              "role": "kairos:Primitives/Events/Justice.ArrestJailDetain.Unspecified/Slots/Crime",
+              "entityTypes": "kairos:Primitives/Entities/EVENT",
+              "values": [
+                {
+                  "provenance": "VP1005.1013",
+                  "entity": "VP1005.1013"
+                },
+                {
+                  "provenance": "VP1005.1014",
+                  "entity": "VP1005.1014"
+                },
+                {
+                  "provenance": "VP1005.1040",
+                  "entity": "VP1005.1040"
+                }
+              ]
             },
             {
-              "name": "downtown Caracas",
-              "@id": "AR1001.0153",
-              "role": "kairos:Primitives/Events/Life.Injure.Unspecified/Slots/Place",
-              "entityTypes": "kairos:Primitives/Entities/LOC"
+              "name": "Detainee",
+              "@id": "VP1005.1073/Detainee",
+              "role": "kairos:Primitives/Events/Justice.ArrestJailDetain.Unspecified/Slots/Detainee",
+              "entityTypes": "kairos:Primitives/Entities/PER",
+              "values": [
+                {
+                  "provenance": "AR1005.1408",
+                  "entity": "EE1005.1052"
+                }
+              ]
             }
           ]
         }
       ],
       "entityRelations": [
         {
-          "relationSubject": "AR1001.0094",
-          "provenance": "AR1001.0094",
+          "relationSubject": "EE1005.1045",
+          "provenance": "AR1005.1008",
           "relations": [
             {
+              "@id": "AR1005.1008_AR1005.1007",
               "ta1ref": "kairos:NULL",
-              "name": "Nicolas Maduro is president of Venezuela",
-              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.Leadership.HeadOfState",
-              "relationObject": "AR1001.0090",
-              "provenance": "AR1001.0090",
-              "relationProvenance": "RR1001.00001"
+              "name": "Khaled Khayat sympathized with Islamic State",
+              "relationPredicate": "kairos:Primitives/Relations/Evaluate.Sentiment.Positive",
+              "relationObject": "EE1005.1040",
+              "provenance": "AR1005.1007",
+              "relationProvenance": "RR1005.1002"
             }
           ]
         },
         {
-          "relationSubject": "AR1001.0146",
-          "provenance": "AR1001.0146",
+          "relationSubject": "EE1005.1052",
+          "provenance": "AR1005.1010",
           "relations": [
             {
+              "@id": "AR1005.1010_AR1005.1009",
               "ta1ref": "kairos:NULL",
-              "name": "The apartment building damaged by the drone is near the stage where Maduro was speaking",
-              "relationPredicate": "kairos:Primitives/Relations/Physical.LocatedNear.Unspecified",
-              "relationObject": "AR1001.0077",
-              "provenance": "AR1001.0077",
-              "relationProvenance": "RR1001.00017"
+              "name": "Mahmoud Khayat sympathized with Islamic State",
+              "relationPredicate": "kairos:Primitives/Relations/Evaluate.Sentiment.Positive",
+              "relationObject": "EE1005.1040",
+              "provenance": "AR1005.1009",
+              "relationProvenance": "RR1005.1003"
+            }
+          ]
+        },
+        {
+          "relationSubject": "VP1005.1013",
+          "provenance": "VP1005.1013",
+          "relations": [
+            {
+              "@id": "VP1005.1013_AR1005.1042",
+              "ta1ref": "kairos:NULL",
+              "name": "Islamic State was behind the bombing of the Etihad Airways flight from Sydney to Abu Dhabi using an a fully functional IED",
+              "relationPredicate": "kairos:Primitives/Relations/GeneralAffiliation.Sponsorship.Unspecified",
+              "relationObject": "EE1005.1040",
+              "provenance": "AR1005.1042",
+              "relationProvenance": "RR1005.1013"
+            }
+          ]
+        },
+        {
+          "relationSubject": "EE1005.1045",
+          "provenance": "AR1005.1085",
+          "relations": [
+            {
+              "@id": "AR1005.1085_VP1005.1013",
+              "ta1ref": "kairos:NULL",
+              "name": "Khaled Khayat intended to bomb the Etihad Airways flight from Sydney to Abu Dhabi using an a fully functional IED with Mahmoud Khayat",
+              "relationPredicate": "kairos:Primitives/Relations/Evaluate.Intent.Intent",
+              "relationObject": "VP1005.1013",
+              "provenance": "VP1005.1013",
+              "relationProvenance": "RR1005.1019"
+            }
+          ]
+        },
+        {
+          "relationSubject": "EE1005.1052",
+          "provenance": "AR1005.1088",
+          "relations": [
+            {
+              "@id": "AR1005.1088_VP1005.1013",
+              "ta1ref": "kairos:NULL",
+              "name": "Mahmoud Khayat intended to bomb the Etihad Airways flight from Sydney to Abu Dhabi using an a fully functional IED with Khaled Khayat",
+              "relationPredicate": "kairos:Primitives/Relations/Evaluate.Intent.Intent",
+              "relationObject": "VP1005.1013",
+              "provenance": "VP1005.1013",
+              "relationProvenance": "RR1005.1020"
+            }
+          ]
+        },
+        {
+          "relationSubject": "EE1005.1045",
+          "provenance": "AR1005.1211",
+          "relations": [
+            {
+              "@id": "AR1005.1211_VP1005.1040",
+              "ta1ref": "kairos:NULL",
+              "name": "Khaled Khayat hoped to launch an attack with hydrogen sulfide dispersion device with Mahmoud Khayat",
+              "relationPredicate": "kairos:Primitives/Relations/Evaluate.Intent.Intent",
+              "relationObject": "VP1005.1040",
+              "provenance": "VP1005.1040",
+              "relationProvenance": "RR1005.1028"
+            }
+          ]
+        },
+        {
+          "relationSubject": "EE1005.1052",
+          "provenance": "AR1005.1214",
+          "relations": [
+            {
+              "@id": "AR1005.1214_VP1005.1040",
+              "ta1ref": "kairos:NULL",
+              "name": "Mahmoud Khayat hoped to launch an attack with hydrogen sulfide dispersion device with Khaled Khayat",
+              "relationPredicate": "kairos:Primitives/Relations/Evaluate.Intent.Intent",
+              "relationObject": "VP1005.1040",
+              "provenance": "VP1005.1040",
+              "relationProvenance": "RR1005.1029"
+            }
+          ]
+        },
+        {
+          "relationSubject": "EE1005.1045",
+          "provenance": "AR1005.1427",
+          "relations": [
+            {
+              "@id": "AR1005.1427_AR1005.1428",
+              "ta1ref": "kairos:NULL",
+              "name": "Khaled Khayat and Mahmoud Khayat are brothers",
+              "relationPredicate": "kairos:Primitives/Relations/PersonalSocial.Relationship.Unspecified",
+              "relationObject": "EE1005.1052",
+              "provenance": "AR1005.1428",
+              "relationProvenance": "RR1005.1045"
             }
           ]
         }
       ],
       "order": [
         {
-          "comment": "Attackers collaborate before drones are loaded with C4",
+          "comment": "",
           "ta1ref": "kairos:NULL",
-          "before": "VP1001.00005",
-          "after": "VP1001.00030"
-        },
-        {
-          "comment": "Drones are loaded with C4 before they are flown to stage",
-          "ta1ref": "kairos:NULL",
-          "before": "VP1001.00030",
-          "after": "VP1001.00034"
-        },
-        {
-          "comment": "Drone is flown to stage before one explodes and another is diverted",
-          "ta1ref": "kairos:NULL",
-          "before": "VP1001.00034",
+          "before": "VP1005.1006",
           "after": [
-            "VP1001.00037",
-            "VP1001.00035"
+            "VP1005.1009",
+            "VP1005.1010",
+            "VP1005.1013",
+            "VP1005.1014",
+            "VP1005.1016",
+            "VP1005.1019",
+            "VP1005.1020",
+            "VP1005.1039",
+            "VP1005.1040",
+            "VP1005.1072",
+            "VP1005.1073"
           ]
         },
         {
-          "comment": "Drone explodes over stage before soldiers are injured",
+          "comment": "",
           "ta1ref": "kairos:NULL",
-          "before": "VP1001.00037",
-          "after": "VP1001.00052"
+          "before": "VP1005.1009",
+          "after": [
+            "VP1005.1013",
+            "VP1005.1014",
+            "VP1005.1019",
+            "VP1005.1020",
+            "VP1005.1039",
+            "VP1005.1040",
+            "VP1005.1072",
+            "VP1005.1073"
+          ]
         },
         {
-          "comment": "Drone disoriented before diverted toward apartments",
+          "comment": "",
           "ta1ref": "kairos:NULL",
-          "before": "VP1001.00035",
-          "after": "VP1001.00048"
+          "before": "VP1005.1010",
+          "after": [
+            "VP1005.1013",
+            "VP1005.1014",
+            "VP1005.1039",
+            "VP1005.1040",
+            "VP1005.1072",
+            "VP1005.1073"
+          ]
         },
         {
-          "comment": "Drone diverted to apartment before it crashes into apartment",
+          "comment": "",
           "ta1ref": "kairos:NULL",
-          "before": "VP1001.00048",
-          "after": "VP1001.00049"
+          "before": "VP1005.1016",
+          "after": [
+            "VP1005.1013",
+            "VP1005.1014",
+            "VP1005.1019",
+            "VP1005.1020",
+            "VP1005.1039",
+            "VP1005.1040",
+            "VP1005.1072",
+            "VP1005.1073"
+          ]
         },
         {
-          "comment": "Drone crashes into apartment before it explodes",
+          "comment": "",
           "ta1ref": "kairos:NULL",
-          "before": "VP1001.00049",
-          "after": "VP1001.00050"
+          "before": "VP1005.1019",
+          "after": [
+            "VP1005.1013",
+            "VP1005.1014",
+            "VP1005.1020",
+            "VP1005.1039",
+            "VP1005.1040",
+            "VP1005.1072",
+            "VP1005.1073"
+          ]
         },
         {
-          "comment": "Drone explodes before apartment building is damaged",
+          "comment": "",
           "ta1ref": "kairos:NULL",
-          "before": "VP1001.00050",
-          "after": "VP1001.00051"
+          "before": "VP1005.1020",
+          "after": [
+            "VP1005.1013",
+            "VP1005.1014",
+            "VP1005.1039",
+            "VP1005.1040",
+            "VP1005.1072",
+            "VP1005.1073"
+          ]
+        },
+        {
+          "comment": "",
+          "ta1ref": "kairos:NULL",
+          "before": "VP1005.1039",
+          "after": [
+            "VP1005.1040",
+            "VP1005.1072",
+            "VP1005.1073"
+          ]
+        },
+        {
+          "comment": "",
+          "ta1ref": "kairos:NULL",
+          "before": "VP1005.1072",
+          "after": "VP1005.1073"
+        }
+      ],
+      "entities": [
+        {
+          "@id": "EE1005.1010",
+          "name": "An encrypted cell phone app",
+          "entityTypes": "kairos:Primitives/Entities/ABS"
+        },
+        {
+          "@id": "EE1005.1040",
+          "name": "Islamic State",
+          "entityTypes": "kairos:Primitives/Entities/ORG"
+        },
+        {
+          "@id": "EE1005.1045",
+          "name": "Khaled Khayat",
+          "entityTypes": "kairos:Primitives/Entities/PER"
+        },
+        {
+          "@id": "EE1005.1035",
+          "name": "how to assemble the explosive device",
+          "entityTypes": "kairos:Primitives/Entities/INF"
+        },
+        {
+          "@id": "EE1005.1052",
+          "name": "Mahmoud Khayat",
+          "entityTypes": "kairos:Primitives/Entities/PER"
+        },
+        {
+          "@id": "EE1005.1078",
+          "name": "the person known as “The Controller“",
+          "entityTypes": "kairos:Primitives/Entities/PER"
+        },
+        {
+          "@id": "EE1005.1026",
+          "name": "a fully functional IED",
+          "entityTypes": "kairos:Primitives/Entities/WEA"
+        },
+        {
+          "@id": "EE1005.1024",
+          "name": "the Etihad Airways flight",
+          "entityTypes": "kairos:Primitives/Entities/VEH"
+        },
+        {
+          "@id": "EE1005.1065",
+          "name": "a senior Islamic State member",
+          "entityTypes": "kairos:Primitives/Entities/PER"
+        },
+        {
+          "@id": "EE1005.1022",
+          "name": "components sent by a Islamic State member",
+          "entityTypes": "kairos:Primitives/Entities/COM"
+        },
+        {
+          "@id": "EE1005.1055",
+          "name": "pentaerythritol tetranitrate",
+          "entityTypes": "kairos:Primitives/Entities/COM"
+        },
+        {
+          "@id": "EE1005.1068",
+          "name": "Sydney",
+          "entityTypes": "kairos:Primitives/Entities/GPE"
+        },
+        {
+          "@id": "EE1005.1082",
+          "name": "Turkey",
+          "entityTypes": "kairos:Primitives/Entities/GPE"
+        },
+        {
+          "@id": "EE1005.1054",
+          "name": "a kitchen meat grinder",
+          "entityTypes": "kairos:Primitives/Entities/COM"
+        },
+        {
+          "@id": "EE1005.1009",
+          "name": "a bag containing the kitchen meat grinder",
+          "entityTypes": "kairos:Primitives/Entities/COM"
+        },
+        {
+          "@id": "EE1005.1012",
+          "name": "Australia",
+          "entityTypes": "kairos:Primitives/Entities/GPE"
+        },
+        {
+          "@id": "EE1005.1036",
+          "name": "hydrogen sulfide",
+          "entityTypes": "kairos:Primitives/Entities/COM"
+        },
+        {
+          "@id": "EE1005.1037",
+          "name": "hydrogen sulfide dispersion device",
+          "entityTypes": "kairos:Primitives/Entities/WEA"
+        },
+        {
+          "@id": "EE1005.1019",
+          "name": "Christine Adamson",
+          "entityTypes": "kairos:Primitives/Entities/PER"
+        },
+        {
+          "@id": "EE1005.1034",
+          "name": "High-Risk Management Correctional Centre",
+          "entityTypes": "kairos:Primitives/Entities/FAC"
         }
       ]
     }
