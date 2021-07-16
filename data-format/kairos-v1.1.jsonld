@@ -1,0 +1,100 @@
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "kairos": "https://kairos-sdf.s3.amazonaws.com/context/kairos/",
+    "wiki": "https://www.wikidata.org/",
+    "sdfVersion": "kairos:sdfVersion",
+    "ta2": {
+      "@id": "kairos:ta2",
+      "@type": "xsd:boolean"
+    },
+    "events": "kairos:events",
+    "version": "schema:version",
+    "name": "schema:name",
+    "description": {
+      "@id": "schema:description",
+      "@container": "@list"
+    },
+    "template": "kairos:template",
+    "goal": "kairos:goal",
+    "comment": {
+      "@id": "kairos:comment",
+      "@container": "@list"
+    },
+    "aka": "kairos:aka",
+    "reference": {
+      "@id": "kairos:reference",
+      "@type": "@id"
+    },
+    "privateData": "kairos:privateData",
+    "modality": "kairos:modality",
+    "TA1explanation": "kairos:TA1explanation",
+    "minDuration": {
+      "@id": "kairos:minDuration",
+      "@type": "xsd:duration"
+    },
+    "maxDuration": {
+      "@id": "kairos:maxDuration",
+      "@type": "xsd:duration"
+    },
+    "child": {
+      "@id": "kairos:child",
+      "@type": "@id"
+    },
+    "children": "kairos:children",
+    "childrenOLD": {
+      "@id": "kairos:childrenOLD",
+      "@type": "@id"
+    },
+    "optional": {
+      "@id": "kairos:optional",
+      "@type": "xsd:boolean"
+    },
+    "importance": {
+      "@id": "kairos:importance",
+      "@type": "xsd:float"
+    },
+    "repeatable": {
+      "@id": "kairos:repeatable",
+      "@type": "xsd:boolean"
+    },
+    "outlink_gate": "kairos:outlink_gate",
+    "outlinks": {
+      "@id": "kairos:outlinks",
+      "@type": "@id"
+    },
+    "qnode": {
+      "@id": "kairos:qnode",
+      "@type": "@id",
+      "@container": "@list"
+    },
+    "qlabel": {
+      "@id": "kairos:qlabel",
+      "@container": "@list"
+    },
+    "participants": {
+      "@id": "kairos:participants",
+      "@container": "@list"
+    },
+    "roleName": "kairos:roleName",
+    "entity": {
+      "@id": "kairos:entity",
+      "@type": "@id"
+    },
+    "entities": "kairos:entities",
+    "relations": "kairos:relations",
+    "relationSubject": {
+      "@id": "kairos:relationSubject",
+      "@type": "@id"
+    },
+    "relationPredicate": {
+      "@id": "kairos:relationPredicate",
+      "@type": "@id"
+    },
+    "relationObject": {
+      "@id": "kairos:relationObject",
+      "@type": "@id"
+    }
+  }
+}

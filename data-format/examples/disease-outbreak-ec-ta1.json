@@ -1,0 +1,981 @@
+{
+  "@context": [
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v1.1.jsonld",
+    {
+      "caci": "https://caci.com/kairos/",
+      "my_key": "caci:my_key",
+      "giant_bitstring": "caci:giant_bitstring"
+    }
+  ],
+  "@id": "caci:Submissions/TA1/12345",
+  "sdfVersion": "1.1",
+  "version": "caci-07.15.2021",
+  "ta2": "false",
+  "comment": [
+    "Example provides representation for E. Hovy's SDF proposal, with some changes based on discussion with Quizlet 6 subcommittee.",
+    "The events and entities are based on the CMU example presented to the KSF working group, which is itself based on E. Hovy's Event Complex schema layout for a disease outbreak.",
+    "This is the TA1 example."
+  ],
+  "events": [
+    {
+      "@id": "caci:Events/disease-outbreak",
+      "name": "Disease outbreak",
+      "description": "Event complex for a disease outbreak",
+      "comment": "qnode is optional but informative for events with children. qlabel is taken directly from WikiData.",
+      "qnode": "wiki:Q3241045",
+      "qlabel": "disease outbreak",
+      "minDuration": "P4M",
+      "maxDuration": "P2Y",
+      "TA1explanation": "Optional. Playground for TA1 explainability.  Valid anywhere in the JSON-LD structure, but particularly in event nodes.",
+      "privateData": {
+        "comment": "Performers can place any keys/values they wish here.  Large amounts of private data will be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum.",
+        "my_key": "my value",
+        "giant_bitstring": "s3://caci-kairos/privateData/DiseaseOutbreak/ec-bitstring.gz"
+      },
+      "children": [
+        "caci:Events/pathogen-progression",
+        "caci:Events/patient-progression",
+        "caci:Events/healthworker-response",
+        "caci:Events/epidemiologist-response",
+        "caci:Events/authority-response",
+        "caci:Events/manufacturer-do-involvement",
+        "caci:Events/businessperson-do-response",
+        "caci:Events/not-all-of-these-schemas-are-implemented-here"
+      ]
+    },
+    {
+      "@id": "caci:Events/pathogen-progression",
+      "name": "Pathogen progression",
+      "description": "Schema for the progression of a pathogen",
+      "template": "<Arg0> pathogen infects <Arg1> patient and spreads to <Arg2> environment",
+      "goal": "optional freeform string, playground for TA1s in Quizlet 6",
+      "TA1explanation": "Optional. Playground for TA1 explainability.",
+      "participants": [
+        {
+          "@id": "caci:Events/pathogen-progressions/1",
+          "comment": "Note that when we're not using an event from the KOWG, performers can create participants/role names, but please indicate Arg0, Arg1, etc.",
+          "roleName": "Arg0-Agent",
+          "entity": "caci:Entities/pathogen"
+        },
+        {
+          "@id": "caci:Events/pathogen-progressions/2",
+          "roleName": "Arg1-Patient",
+          "entity": "caci:Entities/patient-1"
+        },
+        {
+          "@id": "caci:Events/pathogen-progressions/3",
+          "roleName": "Arg2-Environment",
+          "entity": "caci:Entities/society"
+        }
+      ],
+      "children": [
+        {
+          "child": "caci:Events/pathogen-come-into-being",
+          "comment": [
+            "Semantics of optional is that if it is set to true, then the event is optional.  If it is set to false OR MISSING, the event is mandatory. TA1 systems decide whether an event its optional or not.",
+            "Semantics of importance have NOT been defined for Quizlet 6.  Use it how you wish and document how TA2 should use it.",
+            "Think of outlinks as the next node (or nodes) in a succession of nodes."
+          ],
+          "optional": true,
+          "importance": 0.3,
+          "outlinks": "caci:Events/pathogen-replicate"
+        },
+        {
+          "child": "caci:Events/pathogen-replicate",
+          "outlinks": "caci:Events/pathogen-spread"
+        },
+        {
+          "child": "caci:Events/pathogen-spread"
+        }
+      ],
+      "relations": [
+        {
+          "comment": "Note that relation triples (with relationPredicates taken from WD Pnodes and Qnodes) can be defined in any event node.  By convention, they should only define relations between child event nodes and/or the node where the relation is defined."
+        }
+      ]
+    },
+    {
+      "@id": "caci:Events/pathogen-come-into-being",
+      "name": "Come into being",
+      "description": "Event type in which a pathogen comes into being",
+      "qnode": "wiki:Q468777",
+      "qlabel": "existence",
+      "participants": [
+        {
+          "@id": "caci:Events/come-into-being/1",
+          "roleName": "Arg0-Agent",
+          "entity": "caci:Entities/pathogen"
+        }
+      ]
+    },
+    {
+      "@id": "caci:Events/pathogen-replicate",
+      "name": "Replicate",
+      "description": "Event type in which a pathogen replicates",
+      "qnode": "wiki:Q23013246",
+      "qlabel": "copy",
+      "participants": [
+        {
+          "@id": "caci:Events/pathogen-replicate",
+          "roleName": "Arg0-Agent",
+          "entity": "caci:Entities/pathogen"
+        }
+      ]
+    },
+    {
+      "@id": "caci:Events/pathogen-spread",
+      "name": "Spread",
+      "description": "Schema in which a pathogen propogates/spreads",
+      "template": "Pathogen <Arg0> spreads throughout patient <Arg1>",
+      "participants": [
+        {
+          "@id": "caci:Events/pathogen-spread/1",
+          "roleName": "Arg0-Agent",
+          "entity": "caci:Entities/pathogen"
+        },
+        {
+          "@id": "caci:Events/pathogen-spread/2",
+          "roleName": "Arg1-Patient",
+          "entity": "caci:Entities/patient-1"
+        }
+      ],
+      "children": [
+        {
+          "child": "caci:Events/pathogen-escape",
+          "optional": true,
+          "outlinks": "caci:Events/pathogen-infect-patient"
+        },
+        {
+          "child": "caci:Events/pathogen-infect-patient",
+          "outlinks": "caci:Events/pathogen-live-in-body"
+        },
+        {
+          "child": "caci:Events/pathogen-live-in-body",
+          "outlinks": "caci:Events/pathogen-continue"
+        },
+        {
+          "comment": "This is a subevent with alternative paths.",
+          "child": "caci:Events/pathogen-continue"
+        }
+      ]
+    },
+    {
+      "@id": "caci:Events/pathogen-escape",
+      "name": "Escape body",
+      "description": "Event type in which a pathogen escapes from a body or reservoir",
+      "template": "<Arg0> pathogen escapes from the body of <Arg1>",
+      "comment": "Union of escape (response to distress) and go (to move from a place to another that is further away)",
+      "qnode": [
+        "wiki:Q19279529",
+        "wiki:Q1430466"
+      ],
+      "qlabel": [
+        "escape",
+        "go"
+      ],
+      "participants": [
+        {
+          "@id": "caci:Events/pathogen-escape/1",
+          "roleName": "Arg0-Agent",
+          "entity": "caci:Entities/pathogen"
+        },
+        {
+          "@id": "caci:Events/pathogen-escape/2",
+          "roleName": "Arg1-Patient",
+          "entity": "caci:Entities/patient"
+        }
+      ]
+    },
+    {
+      "@id": "caci:Events/pathogen-infect-patient",
+      "name": "Infect patient",
+      "description": "Event type in which a pathogen infects a patient",
+      "template": "<Arg0> agent infects <Arg1> patient with <Arg3> pathogen",
+      "qnode": "wiki:Q166231",
+      "qlabel": "infection",
+      "participants": [
+        {
+          "@id": "caci:Events/pathogen-infect-patient/1",
+          "comment": "Note that when we use an event from the KOWG, we use its role names as documented in the Events_cheatsheet_v1 distributed 15-July.",
+          "roleName": "A1-gol_thing_becoming_infected",
+          "entity": "caci:Entities/patient"
+        },
+        {
+          "@id": "caci:Events/pathogen-infect-patient/2",
+          "roleName": "A2-ppt_infectant",
+          "entity": "caci:Entities/pathogen"
+        }
+      ]
+    },
+    {
+      "@id": "caci:Events/pathogen-live-in-body",
+      "name": "Live in body",
+      "description": "Event type in which a pathogen lives in the body of a patient",
+      "comment": "This is clearly a bad mapping, but shows that even leaf nodes (verbs) are not constrained to the KOWG events or event pool.",
+      "qnode": "wiki:Q3",
+      "qlabel": "life",
+      "goal": "Just a reminder that you can define goals in any event node",
+      "participants": [
+        {
+          "@id": "caci:Events/pathogen-live-in-body/1",
+          "roleName": "Arg0-Agent",
+          "entity": "caci:Entities/pathogen"
+        },
+        {
+          "@id": "caci:Events/pathogen-live-in-body/2",
+          "roleName": "Arg1-Patient",
+          "entity": "caci:Entities/patient"
+        }
+      ]
+    },
+    {
+      "@id": "caci:Events/pathogen-continue",
+      "name": "Continue",
+      "description": "Schema in which further spreading or a decrease in the prevalence of a pathogen occurs",
+      "participants": [
+        {
+          "@id": "caci:Events/pathogen-continue/1",
+          "roleName": "Arg0-Agent",
+          "entity": "caci:Entities/pathogen"
+        },
+        {
+          "@id": "caci:Events/pathogen-continue/2",
+          "roleName": "Arg1-Patient",
+          "entity": "caci:Entities/society"
+        }
+      ],
+      "outlink_gate": "xor",
+      "children": [
+        {
+          "child": "caci:Events/pathogen-spread"
+        },
+        {
+          "child": "caci:Events/pathogen-decrease"
+        }
+      ]
+    },
+    {
+      "@id": "caci:Events/pathogen-decrease",
+      "name": "Decrease in society",
+      "description": "Event type in which a pathogen decreases in society",
+      "qnode": "wiki:Q47496130",
+      "qlabel": "reduction",
+      "participants": [
+        {
+          "@id": "caci:Events/pathogen-decrease/1",
+          "roleName": "Arg0-Agent",
+          "entity": "caci:Entities/pathogen"
+        },
+        {
+          "@id": "caci:Events/pathogen-decrease/2",
+          "roleName": "Arg1-Patient",
+          "entity": "caci:Entities/society"
+        }
+      ]
+    },
+    {
+      "@id": "caci:Events/patient-progression",
+      "name": "Patient progressions",
+      "description": "Schema from the progression of a patient",
+      "participants": [
+        {
+          "@id": "caci:Events/patient-progression/001",
+          "roleName": "Arg0-Agent",
+          "entity": "caci:Entities/patient"
+        }
+      ],
+      "children": [
+        {
+          "child": "caci:Events/patient-travels-to-contaminant",
+          "optional": true,
+          "importance": 0.3,
+          "outlinks": "caci:Events/patient-contract-disease"
+        },
+        {
+          "child": "caci:Events/patient-contract-disease",
+          "optional": true,
+          "importance": 0.5,
+          "outlinks": "caci:Events/patient-get-sick"
+        },
+        {
+          "child": "caci:Events/patient-get-sick",
+          "outlinks": "caci:Events/patient-diagnosed"
+        },
+        {
+          "child": "caci:Events/patient-diagnosed",
+          "outlinks": "caci:Events/patient-be-treated"
+        },
+        {
+          "child": "caci:Events/patient-be-treated",
+          "outlinks": "caci:Events/patient-change-life-pattern"
+        },
+        {
+          "child": "caci:Events/patient-change-life-pattern",
+          "optional": true,
+          "importance": 0.1,
+          "outlinks": "caci:Events/patient-get-meds"
+        },
+        {
+          "child": "caci:Events/patient-get-meds",
+          "outlinks": "caci:Events/patient-continue"
+        },
+        {
+          "child": "caci:Events/patient-continue"
+        }
+      ]
+    },
+    {
+      "@id": "caci:Events/patient-travels-to-contaminant",
+      "name": "Patient travel to contaminat",
+      "description": "Event type in which patient(s) travel to contaminated location/facility",
+      "qnode": "wiki:Q61509",
+      "qlabel": "travel",
+      "participants": [
+        {
+          "@id": "caci:Events/patient-travels-to-contaminant/1",
+          "roleName": "A0-pag_agent_mover",
+          "entity": "caci:Entities/patient"
+        },
+        {
+          "@id": "caci:Events/patient-travels-to-contaminant/2",
+          "roleName": "A2-GOL_X_destination",
+          "entity": "caci:Entities/location"
+        }
+      ]
+    },
+    {
+      "@id": "caci:Events/patient-contract-disease",
+      "name": "Patient contracts disease",
+      "description": "Event type in which patient(s) contract(s) disease",
+      "qnode": "wiki:Q166231",
+      "qlabel": "infection",
+      "participants": [
+        {
+          "@id": "caci:Events/patient-contract-disease/2",
+          "roleName": "A1-gol_thing_becoming_infected",
+          "entity": "caci:Entities/patient"
+        },
+        {
+          "@id": "caci:Events/patient-contract-disease/1",
+          "roleName": "A2-ppt_infectant",
+          "entity": "caci:Entities/pathogen-1"
+        }
+      ]
+    },
+    {
+      "@id": "caci:Events/patient-get-sick",
+      "name": "Patient gets sick",
+      "description": "Event type in which patient(s) get(s) sick",
+      "qnode": "wiki:Q12136",
+      "qlabel": "disease",
+      "participants": [
+        {
+          "@id": "caci:Events/patient-get-sick/1",
+          "roleName": "A1-ppt_X_sick/ill_one",
+          "entity": "caci:Entities/patient"
+        }
+      ]
+    },
+    {
+      "@id": "caci:Events/patient-diagnosed",
+      "name": "Patient diagnosed",
+      "description": "Event type in which patient(s) get(s) diagnosed",
+      "qnode": "wiki:Q177719",
+      "qlabel": "medical diagnosis",
+      "participants": [
+        {
+          "@id": "caci:Events/patient-diagnosed/1",
+          "roleName": "A0-pag_agent_doctor",
+          "entity": "caci:Entities/doctor"
+        },
+        {
+          "@id": "caci:Events/patient-diagnosed/2",
+          "roleName": "A1-ppt_theme_patient",
+          "entity": "caci:Entities/patient"
+        }
+      ]
+    },
+    {
+      "@id": "caci:Events/patient-be-treated",
+      "name": "Patient gets treated",
+      "description": "Event type in which patient(s) is/are treated",
+      "qnode": "wiki:Q179661",
+      "qlabel": "treatment",
+      "participants": [
+        {
+          "@id": "caci:Events/patient-be-treated/1",
+          "roleName": "A0-pag_X_doctor",
+          "entity": "caci:Entities/medical-professional"
+        },
+        {
+          "@id": "caci:Events/patient-be-treated/2",
+          "roleName": "A1-ppt_X_patient",
+          "entity": "caci:Entities/patient"
+        }
+      ]
+    },
+    {
+      "@id": "caci:Events/patient-change-life-pattern",
+      "name": "Patient changes life pattern",
+      "description": "Event type in which life pattern changes",
+      "comment": "Here we use a mapping from the KOWG event pools.  The assumption is to provide both qnodes",
+      "qnode": [
+        "wiki:Q1399332",
+        "wiki:Q67004728"
+      ],
+      "qlabel": "treatment adherence and compliance",
+      "participants": [
+        {
+          "@id": "caci:Events/patient-change-life-pattern/1",
+          "roleName": "A0-pag_X_complier",
+          "entity": "caci:Entities/patient"
+        }
+      ]
+    },
+    {
+      "@id": "caci:Events/patient-get-meds",
+      "name": "Patient gets medication",
+      "description": "Event type in which patient(s) receive(s) vaccine or other medication",
+      "comment": "vaccination (innoculation) is different from treatment with medications",
+      "qnode": "wiki:Q192995",
+      "qlabel": "vaccination",
+      "participants": [
+        {
+          "@id": "caci:Events/patient-get-meds/1",
+          "roleName": "A0-pag_X_inoculator",
+          "entity": "caci:Entities/medical-professional"
+        },
+        {
+          "@id": "caci:Events/patient-get-meds/2",
+          "roleName": "A1-ppt_X_patient_inoculated",
+          "entity": "caci:Entities/patient"
+        },
+        {
+          "@id": "caci:Events/patient-get-meds/3",
+          "roleName": "A2-ppt_X_inoculated_against",
+          "entity": "caci:Entities/pathogen-1"
+        }
+      ]
+    },
+    {
+      "@id": "caci:Events/patient-continue",
+      "name": "Patient continues beyond infection, illness, and treatment",
+      "description": "Schema for the continuation of an illness in patient(s)",
+      "participants": [
+        {
+          "@id": "caci:Events/patient-continue/1",
+          "roleName": "Arg1-Patient",
+          "entity": "caci:Entities/patient"
+        }
+      ],
+      "outlink_gate": "xor",
+      "children": [
+        {
+          "child": "caci:Events/patient-improve"
+        },
+        {
+          "child": "caci:Events/patient-die"
+        }
+      ]
+    },
+    {
+      "@id": "caci:Events/patient-die",
+      "name": "Patient dies",
+      "description": "Event type in which patient(s) die(s)",
+      "qnode": "wiki:Q4",
+      "qlabel": "death",
+      "participants": [
+        {
+          "@id": "caci:Events/patient-die/1",
+          "roleName": "ARG1-ppt_Patient_the deceased",
+          "entity": "caci:Entities/patient"
+        }
+      ]
+    },
+    {
+      "@id": "caci:Events/patient-improve",
+      "description": "Event type in which patient's condition improves",
+      "name": "Patient improves",
+      "qnode": "wiki:Q1595418",
+      "qlabel": "remedy",
+      "participants": [
+        {
+          "@id": "caci:Events/patient-improve",
+          "roleName": "ARG1-dir_Source_patient",
+          "entity": "caci:Entities/patient"
+        }
+      ]
+    },
+    {
+      "@id": "caci:Events/epidemiologist-response",
+      "description": "Schema in which an epidemiologist responds to an outbreak",
+      "name": "Epidemiologist response",
+      "participants": [
+        {
+          "@id": "caci:Events/epidemiologist-response/1",
+          "roleName": "Arg0-Agent",
+          "entity": "caci:Entities/epidemiologist"
+        },
+        {
+          "@id": "caci:Events/epidemiologist-response/2",
+          "roleName": "Arg1-Disease",
+          "entity": "caci:Entities/disease"
+        }
+      ],
+      "children": [
+        {
+          "child": "caci:Events/learn-about-disease",
+          "optional": true,
+          "importance": 0.3,
+          "outlinks": "caci:Events/investigate-cluster"
+        },
+        {
+          "child": "caci:Events/investigate-cluster",
+          "optional": true,
+          "importance": 0.3,
+          "comment": "Repeatable events need to be expanded by TA2 as distinct events at instantiation time.",
+          "repeatable": true,
+          "outlinks": "caci:Events/annouce-outbreak"
+        },
+        {
+          "child": "caci:Events/annouce-outbreak",
+          "outlinks": "caci:Events/investigate-origin-propagation"
+        },
+        {
+          "child": "caci:Events/investigate-origin-propagation",
+          "optional": true,
+          "importance": 0.5,
+          "outlinks": "caci:Events/research-antidote"
+        },
+        {
+          "child": "caci:Events/research-antidote",
+          "importance": 0.4,
+          "outlinks": "caci:Events/epidemiologist-educate"
+        },
+        {
+          "child": "caci:Events/epidemiologist-educate",
+          "optional": true,
+          "importance": 0.7,
+          "outlinks": "caci:Events/epidemiologist-publish"
+        },
+        {
+          "child": "caci:Events/epidemiologist-publish",
+          "optional": true,
+          "importance": 0.4
+        }
+      ]
+    },
+    {
+      "@id": "caci:Events/learn-about-disease",
+      "name": "Learn about disease",
+      "description": "Schema in which epidemiologists learn about a disease",
+      "qnode": "wiki:Q12772819",
+      "qlabel": "discovery",
+      "participants": [
+        {
+          "@id": "caci:Events/learn-about-disease/1",
+          "roleName": "Arg0-Agent",
+          "entity": "caci:Entities/epidemiologist"
+        },
+        {
+          "@id": "caci:Events/learn-about-disease/2",
+          "roleName": "Arg1-Disease",
+          "entity": "caci:Entities/disease"
+        }
+      ]
+    },
+    {
+      "@id": "caci:Events/investigate-cluster",
+      "name": "Investigate cluster",
+      "description": "Schema in which epidemiologists investigate clusters",
+      "qnode": "wiki:Q1298668",
+      "qlabel": "research project",
+      "participants": [
+        {
+          "@id": "caci:Events/investigate-cluster/1",
+          "roleName": "Arg0-Agent",
+          "entity": "caci:Entities/epidemiologist"
+        },
+        {
+          "@id": "caci:Events/investigate-cluster/2",
+          "roleName": "Arg1-Cluster",
+          "entity": "caci:Entities/cluster"
+        }
+      ]
+    },
+    {
+      "@id": "caci:Events/announce-outbreak",
+      "name": "Announce outbreak",
+      "description": "Event type in which epidemiologists announce outbreak",
+      "qnode": "wiki:Q52947181",
+      "qlabel": "public statement",
+      "participants": [
+        {
+          "@id": "caci:Events/announce-outbreak/1",
+          "roleName": "A0-pag_agent_announcer",
+          "entity": "caci:Entities/epidemiologist"
+        },
+        {
+          "@id": "caci:Events/announce-outbreak/2",
+          "roleName": "A2-gol_recipient_hearer",
+          "entity": "caci:Entities/public"
+        }
+      ]
+    },
+    {
+      "@id": "caci:Events/investigate-origin-propagation",
+      "name": "Investigate origins and propagation",
+      "description": "Event type in which epidemiologists investigate the origins and propagation of a disease",
+      "qnode": "wiki:Q2752427",
+      "qlabel": "medical research",
+      "participants": [
+        {
+          "@id": "caci:Events/investigate-origin-propagation/1",
+          "roleName": "Arg0_Agent",
+          "entity": "caci:Entities/epidemiologist"
+        },
+        {
+          "@id": "caci:Events/investigate-origin-propagation/2",
+          "roleName": "Arg1_Disease",
+          "entity": "caci:Entities/pathogen-2"
+        }
+      ]
+    },
+    {
+      "@id": "caci:Events/research-antidote",
+      "name": "Research antidote",
+      "description": "Event type in which epidemiologists research vacciens and other antidotes for a disease",
+      "comment": "WD does not distinguish investigation of the origin from vaccine or treatment research",
+      "qnode": "wiki:Q2752427",
+      "qlabel": "medical research",
+      "participants": [
+        {
+          "@id": "caci:Events/research-antidote/1",
+          "roleName": "Arg0_Agent",
+          "entity": "caci:Entities/epidemiologist"
+        },
+        {
+          "@id": "caci:Events/research-antidote/2",
+          "roleName": "Arg0_Antidote",
+          "entity": "caci:Entities/antidote"
+        }
+      ]
+    },
+    {
+      "@id": "caci:Events/epidemiologist-educate",
+      "name": "Epidemiologists educate",
+      "description": "Schema in which epidemiologists carry out their educational mission",
+      "qnode": "wiki:Q8434",
+      "qlabel": "education",
+      "participants": [
+        {
+          "@id": "caci:Events/epidemiologist-educate/1",
+          "roleName": "A0-pag_agent_teacher",
+          "entity": "caci:Entities/epidemiologist"
+        },
+        {
+          "@id": "caci:Events/epidemiologist-educate/2",
+          "roleName": "A1-PPT_topic_subject",
+          "entity": "caci:Entities/disease"
+        },
+        {
+          "@id": "caci:Events/epidemiologist-educate/3",
+          "comment": "Just like in Phase I, multiple participants can share the same role.",
+          "roleName": "A2-gol_recipient_student",
+          "entity": "caci:Entities/healthcare-sector"
+        },
+        {
+          "@id": "caci:Events/epidemiologist-educate/4",
+          "roleName": "A2-gol_recipient_student",
+          "entity": "caci:Entities/manufacturer"
+        },
+        {
+          "@id": "caci:Events/epidemiologist-educate/5",
+          "roleName": "A2-gol_recipient_student",
+          "entity": "caci:Entities/authority"
+        }
+      ],
+      "outlink_gate": "and",
+      "children": [
+        {
+          "child": "caci:Events/educate-healthcare",
+          "importance": 0.8
+        },
+        {
+          "child": "caci:Events/educate-manufacturer",
+          "importance": 0.4,
+          "optional": true
+        },
+        {
+          "child": "caci:Events/educate-authority",
+          "importance": 0.8
+        }
+      ]
+    },
+    {
+      "@id": "caci:Events/educate-healthcare",
+      "name": "Educate healthcare",
+      "description": "Event types in which epidemiologists educate healthcare workers",
+      "qnode": "wiki:Q8434",
+      "qlabel": "education",
+      "participants": [
+        {
+          "@id": "caci:Events/educate-healthcare/1",
+          "roleName": "A0-pag_agent_teacher",
+          "entity": "caci:Entities/epidemiologist"
+        },
+        {
+          "@id": "caci:Events/educate-healthcare/2",
+          "roleName": "A1-PPT_topic_subject",
+          "entity": "caci:Entities/disease"
+        },
+        {
+          "@id": "caci:Events/educate-healthcare/3",
+          "roleName": "A2-gol_recipient_student",
+          "entity": "caci:Entities/healthcare"
+        }
+      ]
+    },
+    {
+      "@id": "caci:Events/educate-manufacturer",
+      "name": "Educate manufacturers",
+      "description": "Event type in which epidemiologists educate pharmaceutical manufacturers",
+      "qnode": "wiki:Q8434",
+      "qlabel": "education",
+      "participants": [
+        {
+          "@id": "caci:Events/educate-manufacturer/1",
+          "roleName": "A0-pag_agent_teacher",
+          "entity": "caci:Entities/epidemiologist"
+        },
+        {
+          "@id": "caci:Events/educate-manufacturer/2",
+          "roleName": "A1-PPT_topic_subject",
+          "entity": "caci:Entities/disease"
+        },
+        {
+          "@id": "caci:Events/educate-manufacturer/3",
+          "roleName": "A2-gol_recipient_student",
+          "entity": "caci:Entities/manufacturer"
+        }
+      ]
+    },
+    {
+      "@id": "caci:Events/educate-authority",
+      "name": "Educate authorities",
+      "description": "Event type in wich epidemiologists educate government authorities",
+      "qnode": "wiki:Q8434",
+      "qlabel": "education",
+      "participants": [
+        {
+          "@id": "caci:Events/educate-authority/1",
+          "roleName": "A0-pag_agent_teacher",
+          "entity": "caci:Entities/epidemiologist"
+        },
+        {
+          "@id": "caci:Events/educate-authority/2",
+          "roleName": "A1-PPT_topic_subject",
+          "entity": "caci:Entities/disease"
+        },
+        {
+          "@id": "caci:Events/educate-authority/3",
+          "roleName": "A2-gol_recipient_student",
+          "entity": "caci:Entities/authority"
+        }
+      ]
+    },
+    {
+      "@id": "caci:Events/epidemiologist-publish",
+      "name": "Publish",
+      "description": "Event type in which epidemiologists publish research results",
+      "qnode": "wiki:Q52947181",
+      "qlabel": "public statement",
+      "participants": [
+        {
+          "@id": "caci:Events/epidemiologist-publish/1",
+          "roleName": "Arg0_Agent",
+          "entity": "caci:Entities/epidemiologist"
+        },
+        {
+          "@id": "caci:Events/epidemiologist-publish/2",
+          "roleName": "Arg1_Findings",
+          "entity": "caci:Entities/findings"
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "@id": "caci:Entities/pathogen",
+      "name": "Pathogen",
+      "qnode": "wiki:Q170065",
+      "qlabel": "pathogen",
+      "comment": "TA2 will add things like text handle (from extraction), extracted type, and link to provenanceData array (like in Phase I)."
+    },
+    {
+      "@id": "caci:Entities/society",
+      "name": "Society",
+      "qnode": "wiki:000",
+      "qlabel": "society"
+    },
+    {
+      "@id": "caci:Entities/patient",
+      "name": "Patient",
+      "qnode": "wiki:Q181600",
+      "qlabel": "patient"
+    },
+    {
+      "@id": "caci:Entities/patient-1",
+      "name": "Patient",
+      "qnode": "wiki:Q181600",
+      "qlabel": "patient"
+    },
+    {
+      "@id": "caci:Entities/medical-professional",
+      "name": "Medical Professional",
+      "qnode": "wiki:Q11974939",
+      "qlabel": "health professional"
+    },
+    {
+      "@id": "caci:Entities/pathogen-1",
+      "name": "Pathogen",
+      "qnode": "wiki:Q170065",
+      "qlabel": "pathogen"
+    },
+    {
+      "@id": "caci:Entities/pathogen-3",
+      "name": "Pathogen",
+      "qnode": "wiki:Q170065",
+      "qlabel": "pathogen"
+    },
+    {
+      "@id": "caci:Entities/medication",
+      "name": "Medication",
+      "qnode": "wiki:Q12140",
+      "qlabel": "medication"
+    },
+    {
+      "@id": "caci:Entities/epidemiologist",
+      "name": "Epidemiologist",
+      "qnode": "wiki:Q13416803",
+      "qlabel": "epidemiologist"
+    },
+    {
+      "@id": "caci:Entities/disease",
+      "name": "Disease",
+      "qnode": "wiki:Q12136",
+      "qlabel": "disease"
+    },
+    {
+      "@id": "caci:Entities/cluster",
+      "name": "Cluster",
+      "qnode": "wiki:Q21157127",
+      "qlabel": "cluster"
+    },
+    {
+      "@id": "caci:Entities/pathogen-2",
+      "name": "Pathogen",
+      "qnode": "wiki:Q170065",
+      "qlabel": "pathogen"
+    },
+    {
+      "@id": "caci:Entities/public",
+      "name": "Public",
+      "qnode": "wiki:Q2388316",
+      "qlabel": "public"
+    },
+    {
+      "@id": "caci:Entities/antidote",
+      "name": "Antidote",
+      "qnode": "wiki:Q12140",
+      "qlabel": "medication"
+    },
+    {
+      "@id": "caci:Entities/healthcare-sector",
+      "name": "Healthcare Sector",
+      "qnode": "wiki:Q31207",
+      "qlabel": "health care"
+    },
+    {
+      "@id": "caci:Entities/manufacturer",
+      "name": "Pharmaceutical Manfacturers",
+      "qnode": "wiki:Q507443",
+      "qlabel": "pharmaceutical industry"
+    },
+    {
+      "@id": "caci:Entities/authority",
+      "name": "Government Authority",
+      "qnode": "wiki:Q2659904",
+      "qlabel": "government organization"
+    },
+    {
+      "@id": "caci:Entities/findings",
+      "name": "Research Findings",
+      "qnode": "wiki:Q107296061",
+      "qlabel": "study result"
+    },
+    {
+      "@id": "caci:Entities/location",
+      "name": "Contaminant Location",
+      "qnode": "wiki:Q2221906",
+      "qlabel": "geographic location"
+    }
+  ],
+  "relations": [
+    {
+      "comment": "Currently, TA1 relations do not require @ids like they did in Phase I.  But they might in the future.",
+      "name": "pathogen from pathogen-progression schema has an equivalence relation to the pathogen in the patient-progression schema",
+      "relationSubject": "caci:Entities/pathogen",
+      "relationPredicate": "wiki:Q26161438",
+      "relationObject": "caci:Entities/pathogen-2"
+    },
+    {
+      "name": "patient from patient-progression schema has an equivalence relation to the health-worker in the healthworker-response schema",
+      "relationSubject": "caci:Entities/patient",
+      "relationPredicate": "wiki:Q26161438",
+      "relationObject": "caci:Entities/patient-1"
+    },
+    {
+      "comment": "relation names (labels) are helpful to human assessors, but are not required at this point.",
+      "relationSubject": "caci:Events/pathogen-infect-patient",
+      "relationPredicate": "wiki:Q26161438",
+      "relationObject": "caci:Events/patient-contract-disease"
+    },
+    {
+      "comment": "These are temporal relations between schemas in the Event Complex.  This is using the 'partial coincidence' relation from WD:  \"general phenomenon where distinct entities (such as regions of space, events, or sequences) overlap in extent\"",
+      "relationSubject": "caci:Events/pathogen-progression",
+      "relationPredicate": "wiki:Q65560376",
+      "relationObject": [
+        "caci:Events/patient-progression",
+        "caci:Events/healthworker-response",
+        "caci:Events/epidemiologist-response",
+        "caci:Events/authority-response",
+        "caci:Events/manufacturer-do-involvement",
+        "caci:Events/businessperson-do-response"
+      ]
+    },
+    {
+      "relationSubject": "caci:Events/pathogen-live-in-body",
+      "relationPredicate": "wiki:Q26161438",
+      "relationObject": "caci:Events/patient-get-sick"
+    },
+    {
+      "relationSubject": "caci:Entities/pathogen",
+      "relationPredicate": "wiki:Q26161438",
+      "relationObject": "caci:Entities/pathogen-1"
+    },
+    {
+      "relationSubject": "caci:Entities/pathogen",
+      "relationPredicate": "wiki:Q26161438",
+      "relationObject": "caci:Entities/pathogen-2"
+    },
+    {
+      "relationSubject": "caci:Entities/pathogen",
+      "relationPredicate": "wiki:Q26161438",
+      "relationObject": "caci:Entities/pathogen-3"
+    },
+    {
+      "comment": "TODO: add many more equivalence relations between schema-level entities (i.e., protagonists) and events within the complex, and maybe temporal relations among subevents in different schemas"
+    }
+  ]
+}
