@@ -7,14 +7,15 @@
       "giant_bitstring": "caci:giant_bitstring"
     }
   ],
-  "@id": "caci:Submissions/TA1/12345",
-  "sdfVersion": "1.1",
-  "version": "caci-07.20.2021",
-  "ta2": false,
+  "@id": "caci:Submissions/TA2/12345",
+  "sdfVersion": "1.1.1",
+  "version": "caci-07.20.2021 / caci-07.20.2021",
+  "ceId": "ce1002",
+  "ta2": true,
   "comment": [
     "Example provides representation for E. Hovy's SDF proposal, with some changes based on discussion with Quizlet 6 subcommittee.",
     "The events and entities are based on the CMU example presented to the KSF working group, which is itself based on E. Hovy's Event Complex schema layout for a disease outbreak.",
-    "This is the TA1 example."
+    "This is the TA2 example."
   ],
   "events": [
     {
@@ -152,10 +153,6 @@
         {
           "child": "caci:Events/pathogen-live-in-body",
           "outlinks": "caci:Events/pathogen-continue"
-        },
-        {
-          "comment": "This is a subevent with alternative paths.",
-          "child": "caci:Events/pathogen-continue"
         }
       ]
     },
@@ -193,6 +190,32 @@
       "template": "<Arg0> agent infects <Arg1> patient with <Arg3> pathogen",
       "qnode": "wiki:Q166231",
       "qlabel": "infection",
+      "provenance": "Event1",
+      "confidence": 0.9,
+      "modality": [
+        "hedged",
+        "negated",
+        "generic",
+        "irrealis"
+      ],
+      "temporal": [
+        {
+          "comment": "TA1 optionally sets minDuration and maxDuration; TA2 sets duration, confidence, and optional provenance of this object",
+          "duration": "P4D",
+          "confidence": 0.5
+        },
+        {
+          "comment": "Temporal variables can be combined into one object if they have the same confidence",
+          "earliestStartTime": "1976-07-21T00:00:00",
+          "earliestEndTime": "1976-07-23T23:59:59",
+          "confidence": 0.7
+        },
+        {
+          "latestStartTime": "1976-07-23T00:00:00",
+          "latestEndTime": "1976-07-23T23:59:59",
+          "confidence": 0.8
+        }
+      ],
       "participants": [
         {
           "@id": "caci:Events/pathogen-infect-patient/1",
@@ -214,6 +237,8 @@
       "comment": "This is clearly a bad mapping, but shows that even leaf nodes (verbs) are not constrained to the KOWG events or event pool.",
       "qnode": "wiki:Q3",
       "qlabel": "life",
+      "provenance": "Event2",
+      "confidence": 0.8,
       "goal": "Just a reminder that you can define goals in any event node",
       "participants": [
         {
@@ -368,6 +393,8 @@
       "description": "Event type in which patient(s) get(s) sick",
       "qnode": "wiki:Q12136",
       "qlabel": "disease",
+      "provenance": "Event2",
+      "confidence": 0.8,
       "participants": [
         {
           "@id": "caci:Events/patient-get-sick/1",
@@ -468,11 +495,11 @@
           "entity": "caci:Entities/patient"
         }
       ],
-      "outlink_gate": "xor",
+      "comment": [
+        "TA2 removed the xor and the child event that didn't happen (patient-improve).",
+        "It may be that TA2 should remove patient-continue entirely and change the patient-get-meds outlinks in the patient-progression schema node."
+      ],
       "children": [
-        {
-          "child": "caci:Events/patient-improve"
-        },
         {
           "child": "caci:Events/patient-die"
         }
@@ -484,24 +511,12 @@
       "description": "Event type in which patient(s) die(s)",
       "qnode": "wiki:Q4",
       "qlabel": "death",
+      "provenance": "Event3",
+      "confidence": 1,
       "participants": [
         {
           "@id": "caci:Events/patient-die/1",
           "roleName": "A1-ppt_the deceased",
-          "entity": "caci:Entities/patient"
-        }
-      ]
-    },
-    {
-      "@id": "caci:Events/patient-improve",
-      "description": "Event type in which patient's condition improves",
-      "name": "Patient improves",
-      "qnode": "wiki:Q1595418",
-      "qlabel": "remedy",
-      "participants": [
-        {
-          "@id": "caci:Events/patient-improve",
-          "roleName": "A1-dir_Source_patient",
           "entity": "caci:Entities/patient"
         }
       ]
@@ -656,7 +671,7 @@
         },
         {
           "@id": "caci:Events/research-antidote/2",
-          "roleName": "A0-Antidote",
+          "roleName": "A1-Antidote",
           "entity": "caci:Entities/antidote"
         }
       ]
@@ -810,7 +825,11 @@
       "name": "Pathogen",
       "qnode": "wiki:Q170065",
       "qlabel": "pathogen",
-      "comment": "TA2 will add things like text handle (from extraction), extracted type, and link to provenanceData array (like in Phase I)."
+      "comment": "TA2 adds human-readable handle (from extraction), extracted type, confidence, and link to provenanceData array.",
+      "TA2qnode": "wiki:Q147885",
+      "TA2handle": "Legionella pneumophila",
+      "provenance": "Entity3",
+      "confidence": 1
     },
     {
       "@id": "caci:Entities/society",
@@ -822,7 +841,11 @@
       "@id": "caci:Entities/patient",
       "name": "Patient",
       "qnode": "wiki:Q181600",
-      "qlabel": "patient"
+      "qlabel": "patient",
+      "TA2qnode": "wiki:Q181600",
+      "TA2handle": "Ray Brennan",
+      "provenance": "Entity1",
+      "confidence": 0.9
     },
     {
       "@id": "caci:Entities/patient-1",
@@ -840,7 +863,11 @@
       "@id": "caci:Entities/pathogen-1",
       "name": "Pathogen",
       "qnode": "wiki:Q170065",
-      "qlabel": "pathogen"
+      "qlabel": "pathogen",
+      "TA2qnode": "wiki:Q154882",
+      "TA2handle": "Legionnaires' disease",
+      "provenance": "Entity3",
+      "confidence": 1
     },
     {
       "@id": "caci:Entities/medication",
@@ -912,7 +939,11 @@
       "@id": "caci:Entities/location",
       "name": "Contaminant Location",
       "qnode": "wiki:Q2221906",
-      "qlabel": "geographic location"
+      "qlabel": "geographic location",
+      "TA2qnode": "wiki:Q1345",
+      "TA2handle": "Philadelphia",
+      "provenance": "Entity2",
+      "confidence": 0.9
     }
   ],
   "relations": [
@@ -920,8 +951,12 @@
       "comment": "Currently, TA1 relations do not require @ids like they did in Phase I.  But they might in the future.",
       "name": "pathogen from pathogen-progression schema has an equivalence relation to the pathogen in the patient-progression schema",
       "relationSubject": "caci:Entities/pathogen",
+      "relationSubject_prov": "Entity2",
       "relationPredicate": "wiki:Q26161438",
-      "relationObject": "caci:Entities/pathogen-1"
+      "relationProvenance": "Relation1",
+      "relationObject": "caci:Entities/pathogen-1",
+      "relationObject_prov": "Entity3",
+      "confidence": 1
     },
     {
       "relationSubject": "caci:Entities/pathogen",
@@ -956,10 +991,111 @@
     {
       "relationSubject": "caci:Events/pathogen-live-in-body",
       "relationPredicate": "wiki:Q26161438",
-      "relationObject": "caci:Events/patient-get-sick"
+      "relationObject": "caci:Events/patient-get-sick",
+      "provenance": "Relation1"
     },
     {
       "comment": "TODO: add many more equivalence relations between schema-level entities (i.e., protagonists) and events within the complex, and maybe temporal relations among subevents in different schemas"
+    }
+  ],
+  "provenanceData": [
+    {
+      "provenance": "Event1",
+      "comment": [
+        " *Text documents* ",
+        "'childID' is an LDC child_id. It is the ID of the document/artifact",
+        "mediaType is an IANA Media Type.",
+        "'offset' and 'length' are in characters."
+      ],
+      "childID": "K0C03N4OJ",
+      "mediaType": "text/plain",
+      "offset": 27,
+      "length": 76
+    },
+    {
+      "provenance": "Event2",
+      "comment": [
+        " *Images* ",
+        "'parentIDs' is a list of documents that are parent to 'childID.",
+        "'parentIDs' can be a list because a single image/video/etc. can be embedded in more than one parent document.",
+        "'parentIDs' is redundant since the same information is present in the LDC-provided parent_children.tab.",
+        "'boundingBox' dimensions are in pixels",
+        "For images, 'boundingBox' is required."
+      ],
+      "childID": "K0C03N4OK",
+      "parentIDs": "K0C03N4OL",
+      "mediaType": "image/png",
+      "boundingBox": [
+        100,
+        101,
+        200,
+        201
+      ]
+    },
+    {
+      "provenance": "Event3",
+      "comment": [
+        " *Videos -- key frames* ",
+        "'keyframes' is an array of LDC-supplied key frame IDs."
+      ],
+      "childID": "K0C03N4OM",
+      "parentIDs": "K0C03N4ON",
+      "mediaType": "video/mpeg",
+      "keyframes": [
+        60,
+        61,
+        62
+      ],
+      "boundingBox": [
+        100,
+        101,
+        200,
+        201
+      ]
+    },
+    {
+      "provenance": "Entity1",
+      "comment": [
+        " *Audio recordings* ",
+        "'startTime' and 'endTime are in seconds."
+      ],
+      "childID": "K0C03N4OO",
+      "parentIDs": "K0C03N4OP",
+      "mediaType": "audio/wav",
+      "startTime": 2.56,
+      "endTime": 5.12
+    },
+    {
+      "provenance": "Entity2",
+      "comment": [
+        " *Videos -- time range* ",
+        "'startTime' and 'endTime are in seconds."
+      ],
+      "childID": "K0C03N4OM",
+      "parentIDs": "K0C03N4ON",
+      "mediaType": "video/mpeg",
+      "startTime": 2.56,
+      "endTime": 5.12,
+      "boundingBox": [
+        100,
+        101,
+        200,
+        201
+      ]
+    },
+    {
+      "provenance": "Entity3",
+      "childID": "K0C03N4OZ",
+      "mediaType": "text/plain",
+      "offset": 5,
+      "length": 21
+    },
+    {
+      "provenance": "Relation1",
+      "childID": "K0C03N4TZ",
+      "mediaType": "text/plain",
+      "offset": 5,
+      "length": 21
     }
   ]
 }

@@ -38,15 +38,39 @@
       "@id": "kairos:maxDuration",
       "@type": "xsd:duration"
     },
+    "temporal": {
+      "@id": "kairos:temporal",
+      "@container": "@list"
+    },
+    "duration": {
+      "@id": "kairos:duration",
+      "@type": "xsd:duration"
+    },
+    "earliestStartTime": {
+      "@id": "kairos:earliestStartTime",
+      "@type": "xsd:dateTime"
+    },
+    "latestStartTime": {
+      "@id": "kairos:latestStartTime",
+      "@type": "xsd:dateTime"
+    },
+    "earliestEndTime": {
+      "@id": "kairos:earliestEndTime",
+      "@type": "xsd:dateTime"
+    },
+    "latestEndTime": {
+      "@id": "kairos:latestEndTime",
+      "@type": "xsd:dateTime"
+    },
+    "absoluteTime": {
+      "@id": "kairos:absoluteTime",
+      "@type": "xsd:dateTime"
+    },
     "child": {
       "@id": "kairos:child",
       "@type": "@id"
     },
     "children": "kairos:children",
-    "childrenOLD": {
-      "@id": "kairos:childrenOLD",
-      "@type": "@id"
-    },
     "optional": {
       "@id": "kairos:optional",
       "@type": "xsd:boolean"
@@ -88,13 +112,18 @@
       "@id": "kairos:relationSubject",
       "@type": "@id"
     },
+    "relationSubject_prov": "kairos:relationSubject_prov",
     "relationPredicate": {
       "@id": "kairos:relationPredicate",
       "@type": "@id"
     },
+    "relationProvenance": "kairos:relationProvenance",
     "relationObject": {
       "@id": "kairos:relationObject",
       "@type": "@id"
-    }
+    },
+    "relationObject_prov": "kairos:relationObject_prov",
+    "TA2qnode": "kairos:TA2qnode",
+    "TA2handle": "kairos:TA2handle"
   }
 }
