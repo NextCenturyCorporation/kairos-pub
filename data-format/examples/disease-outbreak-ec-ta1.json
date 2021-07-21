@@ -152,10 +152,6 @@
         {
           "child": "caci:Events/pathogen-live-in-body",
           "outlinks": "caci:Events/pathogen-continue"
-        },
-        {
-          "comment": "This is a subevent with alternative paths.",
-          "child": "caci:Events/pathogen-continue"
         }
       ]
     },
