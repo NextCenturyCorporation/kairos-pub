@@ -27,21 +27,35 @@
       "qlabel": "disease outbreak",
       "minDuration": "P4M",
       "maxDuration": "P2Y",
-      "TA1explanation": "Optional. Playground for TA1 explainability.  Valid anywhere in the JSON-LD structure, but particularly in event nodes.",
+      "TA1explanation": "Optional. Playground for TA1 explainability.  Valid anywhere in the JSON-LD structure.",
       "privateData": {
         "comment": "Performers can place any keys/values they wish here.  Large amounts of private data will be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum.",
         "my_key": "my value",
         "giant_bitstring": "s3://caci-kairos/privateData/DiseaseOutbreak/ec-bitstring.gz"
       },
       "children": [
-        "caci:Events/pathogen-progression",
-        "caci:Events/patient-progression",
-        "caci:Events/healthworker-response",
-        "caci:Events/epidemiologist-response",
-        "caci:Events/authority-response",
-        "caci:Events/manufacturer-do-involvement",
-        "caci:Events/businessperson-do-response",
-        "caci:Events/not-all-of-these-schemas-are-implemented-here"
+        {
+          "comment": "Not all of these schemas are implemented here",
+          "child": "caci:Events/pathogen-progression"
+        },
+        {
+          "child": "caci:Events/patient-progression"
+        },
+        {
+          "child": "caci:Events/healthworker-response"
+        },
+        {
+          "child": "caci:Events/epidemiologist-response"
+        },
+        {
+          "child": "caci:Events/authority-response"
+        },
+        {
+          "child": "caci:Events/manufacturer-do-involvement"
+        },
+        {
+          "child": "caci:Events/businessperson-do-response"
+        }
       ]
     },
     {
@@ -948,7 +962,7 @@
   ],
   "relations": [
     {
-      "comment": "Currently, TA1 relations do not require @ids like they did in Phase I.  But they might in the future.",
+      "ta1ref": "caci:Relations/relation1",
       "name": "pathogen from pathogen-progression schema has an equivalence relation to the pathogen in the patient-progression schema",
       "relationSubject": "caci:Entities/pathogen",
       "relationSubject_prov": "Entity2",
@@ -959,23 +973,27 @@
       "confidence": 1
     },
     {
+      "ta1ref": "caci:Relations/relation2",
       "relationSubject": "caci:Entities/pathogen",
       "relationPredicate": "wiki:Q26161438",
       "relationObject": "caci:Entities/pathogen-2"
     },
     {
+      "ta1ref": "caci:Relations/relation3",
       "name": "patient from patient-progression schema has an equivalence relation to the health-worker in the healthworker-response schema",
       "relationSubject": "caci:Entities/patient",
       "relationPredicate": "wiki:Q26161438",
       "relationObject": "caci:Entities/patient-1"
     },
     {
+      "ta1ref": "caci:Relations/relation4",
       "comment": "relation names (labels) are helpful to human assessors, but are not required at this point.",
       "relationSubject": "caci:Events/pathogen-infect-patient",
       "relationPredicate": "wiki:Q26161438",
       "relationObject": "caci:Events/patient-contract-disease"
     },
     {
+      "ta1ref": "caci:Relations/relation5",
       "comment": "These are temporal relations between schemas in the Event Complex.  This is using the 'partial coincidence' relation from WD:  \"general phenomenon where distinct entities (such as regions of space, events, or sequences) overlap in extent\"",
       "relationSubject": "caci:Events/pathogen-progression",
       "relationPredicate": "wiki:Q65560376",
@@ -989,6 +1007,7 @@
       ]
     },
     {
+      "ta1ref": "caci:Relations/relation6",
       "relationSubject": "caci:Events/pathogen-live-in-body",
       "relationPredicate": "wiki:Q26161438",
       "relationObject": "caci:Events/patient-get-sick",
