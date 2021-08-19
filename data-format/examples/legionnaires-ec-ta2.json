@@ -10,7 +10,7 @@
   "@id": "caci:Submissions/TA2/12345",
   "sdfVersion": "1.1.1",
   "version": "caci-07.20.2021 / caci-07.20.2021",
-  "ceId": "ce1002",
+  "ceID": "ce1002",
   "ta2": true,
   "comment": [
     "Example provides representation for E. Hovy's SDF proposal, with some changes based on discussion with Quizlet 6 subcommittee.",

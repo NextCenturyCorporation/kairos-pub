@@ -9,7 +9,15 @@
       "@id": "kairos:ta2",
       "@type": "xsd:boolean"
     },
-    "events": "kairos:events",
+    "task2": {
+      "@id": "kairos:task2",
+      "@type": "xsd:boolean"
+    },
+    "ceID": "kairos:ceID",
+    "events": {
+      "@id": "kairos:events",
+      "@container": "@list"
+    },
     "version": "schema:version",
     "name": "schema:name",
     "description": {
@@ -28,7 +36,6 @@
       "@type": "@id"
     },
     "privateData": "kairos:privateData",
-    "modality": "kairos:modality",
     "TA1explanation": "kairos:TA1explanation",
     "minDuration": {
       "@id": "kairos:minDuration",
@@ -66,6 +73,12 @@
       "@id": "kairos:absoluteTime",
       "@type": "xsd:dateTime"
     },
+    "ta1ref": {
+      "@id": "kairos:ta1ref",
+      "@type": "@id"
+    },
+    "NULL": "kairos:NULL",
+    "modality": "kairos:modality",
     "child": {
       "@id": "kairos:child",
       "@type": "@id"
@@ -108,6 +121,7 @@
     },
     "entities": "kairos:entities",
     "relations": "kairos:relations",
+    "provenanceData": "kairos:provenanceData",
     "relationSubject": {
       "@id": "kairos:relationSubject",
       "@type": "@id"
