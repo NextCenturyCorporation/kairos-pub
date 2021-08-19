@@ -121,7 +121,6 @@
     },
     "entities": "kairos:entities",
     "relations": "kairos:relations",
-    "provenanceData": "kairos:provenanceData",
     "relationSubject": {
       "@id": "kairos:relationSubject",
       "@type": "@id"
@@ -138,6 +137,35 @@
     },
     "relationObject_prov": "kairos:relationObject_prov",
     "TA2qnode": "kairos:TA2qnode",
-    "TA2handle": "kairos:TA2handle"
+    "TA2handle": "kairos:TA2handle",
+    "provenanceData": "kairos:provenanceData",
+    "mediaType": "kairos:mediaType",
+    "childID": "kairos:childID",
+    "parentIDs": "kairos:parentIDs",
+    "offset": {
+      "@id": "kairos:offset",
+      "@type": "xsd:integer"
+    },
+    "length": {
+      "@id": "kairos:length",
+      "@type": "xsd:integer"
+    },
+    "boundingBox": {
+      "@id": "kairos:boundingBox",
+      "@type": "xsd:integer",
+      "@container": "@list"
+    },
+    "keyframes": {
+      "@id": "kairos:keyframes",
+      "@type": "xsd:integer"
+    },
+    "startTime": {
+      "@id": "kairos:startTime",
+      "@type": "xsd:float"
+    },
+    "endTime": {
+      "@id": "kairos:endTime",
+      "@type": "xsd:float"
+    }
   }
 }
