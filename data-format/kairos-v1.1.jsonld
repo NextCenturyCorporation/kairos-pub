@@ -30,6 +30,7 @@
       "@id": "kairos:comment",
       "@container": "@list"
     },
+    "provenance": "kairos:provenance",
     "aka": "kairos:aka",
     "reference": {
       "@id": "kairos:reference",
