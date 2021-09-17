@@ -139,6 +139,10 @@
     "relationObject_prov": "kairos:relationObject_prov",
     "TA2qnode": "kairos:TA2qnode",
     "TA2handle": "kairos:TA2handle",
+    "confidence": {
+      "@id": "kairos:confidence",
+      "@type": "xsd:float"
+    },
     "provenanceData": "kairos:provenanceData",
     "mediaType": "kairos:mediaType",
     "childID": "kairos:childID",

@@ -53,7 +53,7 @@
           "child": "caci:Events/manufacturer-do-involvement"
         },
         {
-          "child": "caci:Events/businessperson-do-response"
+          "child": "caci:Events/business-do-response"
         }
       ]
     },
@@ -104,7 +104,7 @@
       ],
       "relations": [
         {
-          "comment": "Note that relation triples (with relationPredicates taken from WD Pnodes and Qnodes) can be defined in any event node.  By convention, they should only define relations between child event nodes and/or the node where the relation is defined."
+          "name": "Note that relation triples (with relationPredicates taken from WD Pnodes and Qnodes) can be defined in any event node.  By convention, they should only define relations between child event nodes and/or the node where the relation is defined."
         }
       ]
     },
@@ -153,6 +153,7 @@
           "entity": "caci:Entities/patient-1"
         }
       ],
+      "outlink_gate": "and",
       "children": [
         {
           "child": "caci:Events/pathogen-escape",
@@ -166,6 +167,9 @@
         {
           "child": "caci:Events/pathogen-live-in-body",
           "outlinks": "caci:Events/pathogen-continue"
+        },
+        {
+          "child": "caci:Events/pathogen-continue"
         }
       ]
     },
@@ -336,7 +340,7 @@
     },
     {
       "@id": "caci:Events/patient-travels-to-contaminant",
-      "name": "Patient travel to contaminat",
+      "name": "Patient travel to contaminant",
       "description": "Event type in which patient(s) travel to contaminated location/facility",
       "qnode": "wiki:Q61509",
       "qlabel": "travel",
@@ -396,7 +400,7 @@
         {
           "@id": "caci:Events/patient-diagnosed/1",
           "roleName": "A0-pag_agent_doctor",
-          "entity": "caci:Entities/doctor"
+          "entity": "caci:Entities/medical-professional"
         },
         {
           "@id": "caci:Events/patient-diagnosed/2",
@@ -545,10 +549,10 @@
           "importance": 0.3,
           "comment": "Repeatable events need to be expanded by TA2 as distinct events at instantiation time.",
           "repeatable": true,
-          "outlinks": "caci:Events/annouce-outbreak"
+          "outlinks": "caci:Events/announce-outbreak"
         },
         {
-          "child": "caci:Events/annouce-outbreak",
+          "child": "caci:Events/announce-outbreak",
           "outlinks": "caci:Events/investigate-origin-propagation"
         },
         {
@@ -742,7 +746,7 @@
         {
           "@id": "caci:Events/educate-healthcare/3",
           "roleName": "A2-gol_recipient_student",
-          "entity": "caci:Entities/healthcare"
+          "entity": "caci:Entities/healthcare-sector"
         }
       ]
     },
@@ -812,6 +816,42 @@
           "entity": "caci:Entities/findings"
         }
       ]
+    },
+    {
+      "@id": "caci:Events/healthworker-response",
+      "name": "Health worker response",
+      "description": "Schema for the response of a health worker to a health crisis",
+      "comment": "Content not filled in",
+      "qnode": "wiki:foobar",
+      "qlabel": "foobar",
+      "participants": []
+    },
+    {
+      "@id": "caci:Events/authority-response",
+      "name": "Authority response",
+      "description": "Schema for the response of an authority to a health crisis",
+      "comment": "Content not filled in",
+      "qnode": "wiki:foobar",
+      "qlabel": "foobar",
+      "participants": []
+    },
+    {
+      "@id": "caci:Events/manufacturer-do-involvement",
+      "name": "Manufacturer DO involvement",
+      "description": "Schema for the involvement of a pharmaceutical manufacturer in a disease outbreak",
+      "comment": "Content not filled in",
+      "qnode": "wiki:foobar",
+      "qlabel": "foobar",
+      "participants": []
+    },
+    {
+      "@id": "caci:Events/business-do-response",
+      "name": "Business response",
+      "description": "Schema for the response of a business to a disease outbreak",
+      "comment": "Content not filled in",
+      "qnode": "wiki:foobar",
+      "qlabel": "foobar",
+      "participants": []
     }
   ],
   "entities": [
@@ -935,6 +975,7 @@
     },
     {
       "@id": "caci:Relations/relation2",
+      "name": "pathogen from pathogen-progression schema has an equivalence relation to the pathogen in the epidemiologist response schema",
       "relationSubject": "caci:Entities/pathogen",
       "relationPredicate": "wiki:Q26161438",
       "relationObject": "caci:Entities/pathogen-2"
@@ -955,6 +996,7 @@
     },
     {
       "@id": "caci:Relations/relation5",
+      "name": "The pathogen progression schema overlaps the other schemas in the Event Complex",
       "comment": "These are temporal relations between schemas in the Event Complex.  This is using the 'partial coincidence' relation from WD:  \"general phenomenon where distinct entities (such as regions of space, events, or sequences) overlap in extent\"",
       "relationSubject": "caci:Events/pathogen-progression",
       "relationPredicate": "wiki:Q65560376",
@@ -964,17 +1006,16 @@
         "caci:Events/epidemiologist-response",
         "caci:Events/authority-response",
         "caci:Events/manufacturer-do-involvement",
-        "caci:Events/businessperson-do-response"
+        "caci:Events/business-do-response"
       ]
     },
     {
       "@id": "caci:Relations/relation6",
+      "name": "'Live in body' event from the pathogen-progression schema has an equivalence relation to the 'Patient gets sick' event from the patient-progression schema",
+      "comment": "TODO: add many more equivalence relations between schema-level entities (i.e., protagonists) and events within the complex, and maybe temporal relations among subevents in different schemas",
       "relationSubject": "caci:Events/pathogen-live-in-body",
       "relationPredicate": "wiki:Q26161438",
       "relationObject": "caci:Events/patient-get-sick"
-    },
-    {
-      "comment": "TODO: add many more equivalence relations between schema-level entities (i.e., protagonists) and events within the complex, and maybe temporal relations among subevents in different schemas"
     }
   ]
 }
