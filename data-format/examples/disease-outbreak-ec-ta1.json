@@ -51,7 +51,6 @@
           "child": "caci:TA1/Events/pathogen-come-into-being",
           "comment": [
             "Semantics of optional is that if it is set to true, then the event is optional.  If it is set to false OR MISSING, the event is mandatory. TA1 systems decide whether an event its optional or not.",
-            "Semantics of importance have NOT been defined for Quizlet 6.  Use it how you wish and document how TA2 should use it.",
             "Think of outlinks as the next node (or nodes) in a succession of nodes."
           ],
           "optional": true,

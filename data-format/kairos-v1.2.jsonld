@@ -25,6 +25,8 @@
       "@id": "kairos:events",
       "@container": "@list"
     },
+    "achieves": "kairos:achieves",
+    "requires": "kairos:requires",
     "version": "schema:version",
     "name": "schema:name",
     "description": {
