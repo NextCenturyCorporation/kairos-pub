@@ -27,7 +27,6 @@
     },
     "achieves": "kairos:achieves",
     "requires": "kairos:requires",
-    "version": "schema:version",
     "name": "schema:name",
     "description": {
       "@id": "schema:description",
