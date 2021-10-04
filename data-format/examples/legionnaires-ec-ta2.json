@@ -29,7 +29,7 @@
         "caci:TA2/Events/epidemiologist-response",
         "caci:TA2/Events/authority-response",
         "caci:TA2/Events/manufacturer-do-involvement",
-        "caci:TA2/Events/businessperson-do-response"
+        "caci:TA2/Events/business-do-response"
       ],
       "events": [
         {
@@ -182,13 +182,16 @@
             {
               "child": "caci:TA2/Events/pathogen-live-in-body",
               "outlinks": "caci:TA2/Events/pathogen-continue"
+            },
+            {
+              "child": "caci:TA2/Events/pathogen-continue"
             }
           ]
         },
         {
           "@id": "caci:TA2/Events/pathogen-escape",
           "ta1ref": "caci:TA1/Events/pathogen-escape",
-          "name": "Escape body",
+          "name": "Escape",
           "description": "Event type in which a pathogen escapes from a body or reservoir",
           "comment": "Union of escape (response to distress) and go (to move from a place to another that is further away)",
           "qnode": [
@@ -217,7 +220,7 @@
         {
           "@id": "caci:TA2/Events/pathogen-infect-patient",
           "ta1ref": "caci:TA1/Events/pathogen-infect-patient",
-          "name": "Mr. Ray Brennan was exposed to the Legionella virus.",
+          "name": "Patient exposed to pathogen",
           "description": "Event type in which a pathogen infects a patient",
           "qnode": "wiki:Q166231",
           "qlabel": "infection",
@@ -273,7 +276,7 @@
         {
           "@id": "caci:TA2/Events/pathogen-live-in-body",
           "ta1ref": "caci:TA1/Events/pathogen-live-in-body",
-          "name": "Legionella lived in Mr. Brennan's body",
+          "name": "The pathogen lived in the patient's body",
           "description": "Event type in which a pathogen lives in the body of a patient",
           "comment": "This is clearly a bad mapping, but shows that even leaf nodes (verbs) are not constrained to the KOWG events or event pool.",
           "qnode": "wiki:Q3",
@@ -357,8 +360,8 @@
         {
           "@id": "caci:TA2/Events/patient-progression",
           "ta1ref": "caci:TA1/Events/patient-progression",
-          "name": "Patient progressions",
-          "description": "Schema from the progression of a patient",
+          "name": "Patient progression",
+          "description": "Schema for the progression of a patient",
           "provenance": "n/a",
           "confidence": 1,
           "participants": [
@@ -412,7 +415,7 @@
         {
           "@id": "caci:TA2/Events/patient-travels-to-contaminant",
           "ta1ref": "caci:TA1/Events/patient-travels-to-contaminant",
-          "name": "Mr. Brennan attended the American Legion convention in Philadelphia",
+          "name": "The patient traveled to the location of the contaminant",
           "description": "Event type in which patient(s) travel to contaminated location/facility",
           "qnode": "wiki:Q61509",
           "qlabel": "travel",
@@ -444,7 +447,7 @@
         {
           "@id": "caci:TA2/Events/patient-contract-disease",
           "ta1ref": "caci:TA1/Events/patient-contract-disease",
-          "name": "Patient contracts disease",
+          "name": "Contract disease",
           "description": "Event type in which patient(s) contract(s) disease",
           "qnode": "wiki:Q166231",
           "qlabel": "infection",
@@ -466,7 +469,7 @@
         {
           "@id": "caci:TA2/Events/patient-get-sick",
           "ta1ref": "caci:TA1/Events/patient-get-sick",
-          "name": "Mr. Ray Brennan gets sick",
+          "name": "The patient gets sick",
           "description": "Event type in which patient(s) get(s) sick",
           "qnode": "wiki:Q12136",
           "qlabel": "disease",
@@ -506,7 +509,7 @@
               "entity": "caci:TA2/Entities/patient"
             }
           ],
-          "prediction": {
+          "predictions": {
             "confidence": 0.8,
             "predictionProvenance": [
               "caci:TA2/Events/patient-get-sick",
@@ -638,7 +641,7 @@
         {
           "@id": "caci:TA2/Events/patient-die",
           "ta1ref": "caci:TA1/Events/patient-die",
-          "name": "Mr. Ray Brennan dies",
+          "name": "The patient dies",
           "description": "Mr. Ray Brennan died at his home three days after the convention ended of an apparent heart attack.",
           "qnode": "wiki:Q4",
           "qlabel": "death",
@@ -723,8 +726,8 @@
         {
           "@id": "caci:TA2/Events/learn-about-disease",
           "ta1ref": "caci:TA1/Events/learn-about-disease",
-          "name": "Learn about disease",
-          "description": "Schema in which epidemiologists learn about a disease",
+          "name": "Learn",
+          "description": "Event type in which epidemiologists learn about a disease",
           "qnode": "wiki:Q12772819",
           "qlabel": "discovery",
           "confidence": 1,
@@ -746,7 +749,7 @@
           "@id": "caci:TA2/Events/investigate-cluster",
           "ta1ref": "caci:TA1/Events/investigate-cluster",
           "name": "Investigate",
-          "description": "Schema in which epidemiologists investigate clusters",
+          "description": "Event type in which epidemiologists investigate clusters",
           "qnode": "wiki:Q1298668",
           "qlabel": "research project",
           "confidence": 1,
@@ -789,7 +792,7 @@
         {
           "@id": "caci:TA2/Events/investigate-origin-propagation",
           "ta1ref": "caci:TA1/Events/investigate-origin-propagation",
-          "name": "Investigate origins and propagation",
+          "name": "Research",
           "description": "Event type in which epidemiologists investigate the origins and propagation of a disease",
           "qnode": "wiki:Q2752427",
           "qlabel": "medical research",
@@ -811,8 +814,8 @@
         {
           "@id": "caci:TA2/Events/research-antidote",
           "ta1ref": "caci:TA1/Events/research-antidote",
-          "name": "Research antidote",
-          "description": "Event type in which epidemiologists research vacciens and other antidotes for a disease",
+          "name": "Research",
+          "description": "Event type in which epidemiologists research vaccines and other antidotes for a disease",
           "comment": "WD does not distinguish investigation of the origin from vaccine or treatment research",
           "qnode": "wiki:Q2752427",
           "qlabel": "medical research",
@@ -987,6 +990,50 @@
               "entity": "caci:TA2/Entities/findings"
             }
           ]
+        },
+        {
+          "@id": "caci:TA2/Events/healthworker-response",
+          "ta1ref": "caci:TA1/Events/healthworker-response",
+          "name": "Health worker response",
+          "description": "Schema for the response of a health worker to a health crisis",
+          "comment": "Content not filled in",
+          "qnode": "wiki:foobar",
+          "qlabel": "foobar",
+          "confidence": 1,
+          "provenance": "n/a"
+        },
+        {
+          "@id": "caci:TA2/Events/authority-response",
+          "ta1ref": "caci:TA1/Events/authority-response",
+          "name": "Authority response",
+          "description": "Schema for the response of an authority to a health crisis",
+          "comment": "Content not filled in",
+          "qnode": "wiki:foobar",
+          "qlabel": "foobar",
+          "confidence": 1,
+          "provenance": "n/a"
+        },
+        {
+          "@id": "caci:TA2/Events/manufacturer-do-involvement",
+          "ta1ref": "caci:TA1/Events/manufacturer-do-involvement",
+          "name": "Manufacturer DO involvement",
+          "description": "Schema for the involvement of a pharmaceutical manufacturer in a disease outbreak",
+          "comment": "Content not filled in",
+          "qnode": "wiki:foobar",
+          "qlabel": "foobar",
+          "confidence": 1,
+          "provenance": "n/a"
+        },
+        {
+          "@id": "caci:TA2/Events/business-do-response",
+          "ta1ref": "caci:TA1/Events/business-do-response",
+          "name": "Business response",
+          "description": "Schema for the response of a business to a disease outbreak",
+          "comment": "Content not filled in",
+          "qnode": "wiki:foobar",
+          "qlabel": "foobar",
+          "confidence": 1,
+          "provenance": "n/a"
         }
       ],
       "entities": [
@@ -1256,7 +1303,7 @@
       ]
     },
     {
-      "name": "Disease outbreak",
+      "name": "Disease outbreak (variant)",
       "confidence": 0.5,
       "comment": "Not all of these schemas are implemented here",
       "schemaInstantiations": [
@@ -1269,14 +1316,22 @@
           "ta1ref": "caci:TA1/Events/pathogen-progression",
           "name": "Pathogen progression",
           "description": "Schema for the progression of a pathogen",
-          "comment": "Rest of definition is omitted."
+          "comment": "Rest of definition is omitted.",
+          "qnode": "wiki:foobar",
+          "qlabel": "foobar",
+          "provenance": "n/a",
+          "confidence": 1
         },
         {
           "@id": "caci:TA2/Events/patient-progression",
           "ta1ref": "caci:TA1/Events/patient-progression",
-          "name": "Patient progressions",
+          "name": "Patient progression",
           "description": "Schema from the progression of a patient",
-          "comment": "Rest of definition is omitted."
+          "comment": "Rest of definition is omitted.",
+          "qnode": "wiki:foobar",
+          "qlabel": "foobar",
+          "provenance": "n/a",
+          "confidence": 1
         }
       ],
       "entities": [],

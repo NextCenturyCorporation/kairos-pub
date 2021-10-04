@@ -254,8 +254,8 @@
     },
     {
       "@id": "caci:TA1/Events/patient-progression",
-      "name": "Patient progressions",
-      "description": "Schema from the progression of a patient",
+      "name": "Patient progression",
+      "description": "Schema for the progression of a patient",
       "participants": [
         {
           "@id": "caci:TA1/Events/patient-progression/001",
@@ -398,7 +398,7 @@
       "@id": "caci:TA1/Events/patient-change-life-pattern",
       "name": "Compliance",
       "description": "Event type in which life pattern changes",
-      "comment": "Here we use a mapping from the KOWG event pools.  The assumption is to provide both qnodes",
+      "comment": "Multiple qnodes should be specified as lists, not as \"wiki:Q1399332 | wiki:Q67004728\"",
       "qnode": [
         "wiki:Q1399332",
         "wiki:Q67004728"
@@ -549,7 +549,7 @@
     {
       "@id": "caci:TA1/Events/learn-about-disease",
       "name": "Learn",
-      "description": "Schema in which epidemiologists learn about a disease",
+      "description": "Event type in which epidemiologists learn about a disease",
       "qnode": "wiki:Q12772819",
       "qlabel": "discovery",
       "participants": [
@@ -568,7 +568,7 @@
     {
       "@id": "caci:TA1/Events/investigate-cluster",
       "name": "Investigate",
-      "description": "Schema in which epidemiologists investigate clusters",
+      "description": "Event type in which epidemiologists investigate clusters",
       "qnode": "wiki:Q1298668",
       "qlabel": "research project",
       "participants": [
@@ -625,7 +625,7 @@
     {
       "@id": "caci:TA1/Events/research-antidote",
       "name": "Research",
-      "description": "Event type in which epidemiologists research vacciens and other antidotes for a disease",
+      "description": "Event type in which epidemiologists research vaccines and other antidotes for a disease",
       "comment": "WD does not distinguish investigation of the origin from vaccine or treatment research",
       "qnode": "wiki:Q2752427",
       "qlabel": "medical research",
