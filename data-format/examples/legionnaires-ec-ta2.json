@@ -516,7 +516,7 @@
               "caci:TA2/Events/patient-be-treated",
               "caci:TA2/Events/patient-get-meds",
               "caci:TA2/Relations/patient-lives-in-PA",
-              "caci:TA2/Entities/ray-brennan"
+              "caci:TA2/Entities/Ray_Brennan"
             ]
           }
         },
@@ -568,7 +568,7 @@
           "ta1ref": "caci:TA1/Events/patient-get-meds",
           "name": "Patients get medication",
           "description": "Event type in which patient(s) receive(s) vaccine or other medication",
-          "comment": "vaccination (innoculation) is different from treatment with medications",
+          "comment": "vaccination (inoculation) is different from treatment with medications",
           "qnode": "wiki:Q192995",
           "qlabel": "vaccination",
           "confidence": 0.7,
@@ -587,7 +587,7 @@
                 {
                   "comment": "Example of two argument fillers of the same event argument, with distinct provenance and confidence.",
                   "ta2entity": "caci:TA2/Entities/Joe_Smith",
-                  "provenance": "Entity4",
+                  "provenance": "Entity3",
                   "confidence": 0.9
                 },
                 {
@@ -627,12 +627,11 @@
           ],
           "confidence": 1,
           "provenance": "Event2",
-          "comment": [
-            "TA2 removed the xor and the child event that didn't happen (patient-improve).",
-            "It may be that TA2 should remove patient-continue entirely and change the patient-get-meds outlinks in the patient-progression schema node."
-          ],
-          "outlink_gate": "and",
+          "outlink_gate": "xor",
           "children": [
+            {
+              "child": "caci:TA2/Events/patient-improve"
+            },
             {
               "child": "caci:TA2/Events/patient-die"
             }
@@ -657,6 +656,23 @@
                 "provenance": "Entity2",
                 "confidence": 0.9
               }
+            }
+          ]
+        },
+        {
+          "@id": "caci:TA2/Events/patient-improve",
+          "ta1ref": "caci:TA1/Events/patient-improve",
+          "name": "Improvement",
+          "description": "Event type in which patient's condition improves",
+          "qnode": "wiki:Q1595418",
+          "qlabel": "remedy",
+          "confidence": 1,
+          "provenance": "n/a",
+          "participants": [
+            {
+              "@id": "caci:TA2/Events/patient-improve",
+              "roleName": "A1-dir_Source_patient",
+              "entity": "caci:TA2/Entities/patient"
             }
           ]
         },
@@ -1092,7 +1108,7 @@
           "comment": "This just shows how a specific dosage mentioned in the text can be its own real-world entity.",
           "name": "200 mg Advil",
           "ta2qnode": "wiki:Q16240691",
-          "ta2label": "Advil"
+          "ta2qlabel": "Advil"
         },
         {
           "@id": "caci:TA2/Entities/patient-1",
@@ -1188,7 +1204,7 @@
           "@id": "caci:TA2/Entities/Philadelphia",
           "name": "Philadelphia, PA",
           "ta2qnode": "wiki:Q1345",
-          "ta2handle": "Philadelphia"
+          "ta2qlabel": "Philadelphia"
         }
       ],
       "relations": [
