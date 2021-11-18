@@ -3,8 +3,9 @@
     "schema": "http://schema.org/",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "kairos": "https://kairos-sdf.s3.amazonaws.com/context/kairos/",
-    "wd": "http://www.wikidata.org/entity",
-    "wdt": "http://www.wikidata.org/prop/direct",
+    "wd": "https://www.wikidata.org/entity/",
+    "wdt": "https://www.wikidata.org/prop/direct/",
+    "dwd": "https://dwd.isi.edu/browser/",
     "sdfVersion": "kairos:sdfVersion",
     "ta2": {
       "@id": "kairos:ta2",
@@ -46,7 +47,10 @@
       "@type": "@id"
     },
     "privateData": "kairos:privateData",
-    "TA1explanation": "kairos:TA1explanation",
+    "ta1explanation": {
+      "@id": "kairos:ta1explanation",
+      "@container": "@list"
+    },
     "minDuration": {
       "@id": "kairos:minDuration",
       "@type": "xsd:duration"
@@ -93,7 +97,10 @@
       "@id": "kairos:child",
       "@type": "@id"
     },
-    "children": "kairos:children",
+    "children": {
+      "@id": "kairos:children",
+      "@container": "@list"
+    },
     "optional": {
       "@id": "kairos:optional",
       "@type": "xsd:boolean"
@@ -106,7 +113,7 @@
       "@id": "kairos:repeatable",
       "@type": "xsd:boolean"
     },
-    "outlink_gate": "kairos:outlink_gate",
+    "children_gate": "kairos:children_gate",
     "outlinks": {
       "@id": "kairos:outlinks",
       "@type": "@id",

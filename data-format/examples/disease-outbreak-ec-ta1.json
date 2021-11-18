@@ -9,7 +9,7 @@
   ],
   "@id": "caci:Submissions/TA1/12345",
   "sdfVersion": "1.3",
-  "version": "caci-11.10.2021",
+  "version": "caci-11.18.2021",
   "ta2": false,
   "comment": [
     "Example provides representation of E. Hovy's Event Complex schema layout for a disease outbreak.",
@@ -21,7 +21,6 @@
       "name": "Pathogen progression",
       "description": "Schema for the progression of a pathogen",
       "goal": "Optional freeform string, playground for TA1s",
-      "TA1explanation": "Optional freeform string, playground for TA1 explainability.",
       "privateData": {
         "comment": "Performers can place any keys/values they wish here.  Large amounts of private data will be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum.",
         "my_key": "my value",
@@ -45,7 +44,7 @@
           "entity": "caci:Entities/00002/society"
         }
       ],
-      "outlink_gate": "and",
+      "children_gate": "and",
       "children": [
         {
           "child": "caci:Events/00002/pathogen-come-into-being",
@@ -68,7 +67,7 @@
       "relations": [
         {
           "@id": "caci:Relations/00001/pathogen-progression",
-          "comment": "Note that relation triples (with relationPredicates taken from DWD relations) can be defined in any event node.  By convention, they should only define relations between child event nodes and/or the node where the relation is defined. This is a silly yet illustrative example.",
+          "comment": "Note that relation triples (with relationPredicates taken from Wikidata) can be defined in any event node.  By convention, relations place in an event should only define relations between child event nodes and/or the node where the relation is defined. This is a silly yet illustrative example.",
           "name": "patient is a member of society",
           "relationSubject": "caci:Entities/00004/patient-1",
           "relationPredicate": "wdt:P463",
@@ -80,6 +79,7 @@
       "@id": "caci:Events/00002/pathogen-come-into-being",
       "name": "Come into being",
       "description": "Event type in which a pathogen comes into being",
+      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
       "qnode": "wd:Q468777",
       "qlabel": "existence",
       "participants": [
@@ -94,6 +94,7 @@
       "@id": "caci:Events/00003/pathogen-replicate",
       "name": "Replicate",
       "description": "Event type in which a pathogen replicates",
+      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
       "qnode": "wd:Q23013246",
       "qlabel": "copy",
       "participants": [
@@ -120,7 +121,7 @@
           "entity": "caci:Entities/00004/patient-1"
         }
       ],
-      "outlink_gate": "and",
+      "children_gate": "and",
       "children": [
         {
           "child": "caci:Events/00005/pathogen-escape",
@@ -144,6 +145,7 @@
       "@id": "caci:Events/00005/pathogen-escape",
       "name": "Escape body",
       "description": "Event type in which a pathogen escapes from a body or reservoir",
+      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
       "comment": "Union of escape (response to distress) and go (to move from a place to another that is further away)",
       "qnode": [
         "wd:Q19279529",
@@ -170,6 +172,7 @@
       "@id": "caci:Events/00006/pathogen-infect-patient",
       "name": "Infect",
       "description": "Event type in which a pathogen infects a patient",
+      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
       "qnode": "wd:Q166231",
       "qlabel": "infection",
       "participants": [
@@ -190,6 +193,7 @@
       "@id": "caci:Events/00007/pathogen-live-in-body",
       "name": "Live in body",
       "description": "Event type in which a pathogen lives in the body of a patient",
+      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
       "comment": "This is clearly a bad mapping, but shows that even leaf nodes (verbs) are not constrained to the KOWG events or event pool.",
       "qnode": "wd:Q3",
       "qlabel": "life",
@@ -223,7 +227,7 @@
           "entity": "caci:Entities/00002/society"
         }
       ],
-      "outlink_gate": "xor",
+      "children_gate": "xor",
       "children": [
         {
           "child": "caci:Events/00004/pathogen-spread"
@@ -237,6 +241,7 @@
       "@id": "caci:Events/00009/pathogen-decrease",
       "name": "Decrease in society",
       "description": "Event type in which a pathogen decreases in society",
+      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
       "qnode": "wd:Q47496130",
       "qlabel": "reduction",
       "participants": [
@@ -263,7 +268,7 @@
           "entity": "caci:Entities/00003/patient"
         }
       ],
-      "outlink_gate": "and",
+      "children_gate": "and",
       "children": [
         {
           "child": "caci:Events/00011/patient-travels-to-contaminant",
@@ -308,6 +313,7 @@
       "@id": "caci:Events/00011/patient-travels-to-contaminant",
       "name": "Travel",
       "description": "Event type in which patient(s) travel to contaminated location/facility",
+      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
       "qnode": "wd:Q61509",
       "qlabel": "travel",
       "participants": [
@@ -327,6 +333,7 @@
       "@id": "caci:Events/00012/patient-contract-disease",
       "name": "Contract disease",
       "description": "Event type in which patient(s) contract(s) disease",
+      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
       "qnode": "wd:Q166231",
       "qlabel": "infection",
       "participants": [
@@ -346,6 +353,7 @@
       "@id": "caci:Events/00013/patient-get-sick",
       "name": "Get sick",
       "description": "Event type in which patient(s) get(s) sick",
+      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
       "qnode": "wd:Q12136",
       "qlabel": "disease",
       "participants": [
@@ -360,6 +368,7 @@
       "@id": "caci:Events/00014/patient-diagnosed",
       "name": "Diagnosis",
       "description": "Event type in which patient(s) get(s) diagnosed",
+      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
       "qnode": "wd:Q177719",
       "qlabel": "medical diagnosis",
       "participants": [
@@ -379,6 +388,7 @@
       "@id": "caci:Events/00015/patient-be-treated",
       "name": "Treatment",
       "description": "Event type in which patient(s) is/are treated",
+      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
       "qnode": "wd:Q179661",
       "qlabel": "treatment",
       "participants": [
@@ -398,6 +408,7 @@
       "@id": "caci:Events/00016/patient-change-life-pattern",
       "name": "Compliance",
       "description": "Event type in which life pattern changes",
+      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
       "comment": "Multiple qnodes should be specified as lists, not as \"wd:Q1399332 | wd:Q67004728\"",
       "qnode": [
         "wd:Q1399332",
@@ -416,6 +427,7 @@
       "@id": "caci:Events/00017/patient-get-meds",
       "name": "Get medication",
       "description": "Event type in which patient(s) receive(s) vaccine or other medication",
+      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
       "comment": "vaccination (innoculation) is different from treatment with medications",
       "qnode": "wd:Q192995",
       "qlabel": "vaccination",
@@ -448,7 +460,7 @@
           "entity": "caci:Entities/00003/patient"
         }
       ],
-      "outlink_gate": "xor",
+      "children_gate": "xor",
       "children": [
         {
           "child": "caci:Events/00020/patient-improve"
@@ -462,6 +474,7 @@
       "@id": "caci:Events/00019/patient-die",
       "name": "Death",
       "description": "Event type in which patient(s) die(s)",
+      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
       "qnode": "wd:Q4",
       "qlabel": "death",
       "participants": [
@@ -476,6 +489,7 @@
       "@id": "caci:Events/00020/patient-improve",
       "name": "Improvement",
       "description": "Event type in which patient's condition improves",
+      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
       "qnode": "wd:Q1595418",
       "qlabel": "remedy",
       "participants": [
@@ -502,7 +516,7 @@
           "entity": "caci:Entities/00009/disease"
         }
       ],
-      "outlink_gate": "and",
+      "children_gate": "and",
       "children": [
         {
           "child": "caci:Events/00022/learn-about-disease",
@@ -544,6 +558,7 @@
       "@id": "caci:Events/00022/learn-about-disease",
       "name": "Learn",
       "description": "Event type in which epidemiologists learn about a disease",
+      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
       "qnode": "wd:Q12772819",
       "qlabel": "discovery",
       "participants": [
@@ -563,6 +578,7 @@
       "@id": "caci:Events/00023/investigate-cluster",
       "name": "Investigate",
       "description": "Event type in which epidemiologists investigate clusters",
+      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
       "qnode": "wd:Q1298668",
       "qlabel": "research project",
       "participants": [
@@ -582,6 +598,7 @@
       "@id": "caci:Events/00024/announce-outbreak",
       "name": "Announce",
       "description": "Event type in which epidemiologists announce outbreak",
+      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
       "qnode": "wd:Q52947181",
       "qlabel": "public statement",
       "participants": [
@@ -601,6 +618,7 @@
       "@id": "caci:Events/00025/investigate-origin-propagation",
       "name": "Research",
       "description": "Event type in which epidemiologists investigate the origins and propagation of a disease",
+      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
       "qnode": "wd:Q2752427",
       "qlabel": "medical research",
       "participants": [
@@ -620,6 +638,7 @@
       "@id": "caci:Events/00026/research-antidote",
       "name": "Research",
       "description": "Event type in which epidemiologists research vaccines and other antidotes for a disease",
+      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
       "comment": "WD does not distinguish investigation of the origin from vaccine or treatment research",
       "qnode": "wd:Q2752427",
       "qlabel": "medical research",
@@ -670,7 +689,7 @@
           "entity": "caci:Entities/00016/authority"
         }
       ],
-      "outlink_gate": "and",
+      "children_gate": "and",
       "children": [
         {
           "child": "caci:Events/00028/educate-healthcare",
@@ -691,6 +710,7 @@
       "@id": "caci:Events/00028/educate-healthcare",
       "name": "Educate",
       "description": "Event types in which epidemiologists educate healthcare workers",
+      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
       "qnode": "wd:Q8434",
       "qlabel": "education",
       "participants": [
@@ -715,6 +735,7 @@
       "@id": "caci:Events/00029/educate-manufacturer",
       "name": "Educate",
       "description": "Event type in which epidemiologists educate pharmaceutical manufacturers",
+      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
       "qnode": "wd:Q8434",
       "qlabel": "education",
       "participants": [
@@ -739,6 +760,7 @@
       "@id": "caci:Events/00030/educate-authority",
       "name": "Educate",
       "description": "Event type in wich epidemiologists educate government authorities",
+      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
       "qnode": "wd:Q8434",
       "qlabel": "education",
       "participants": [
@@ -763,6 +785,7 @@
       "@id": "caci:Events/00031/healthworker-response",
       "name": "Health worker response",
       "description": "Schema for the response of a health worker to a health crisis",
+      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
       "comment": "Content not filled in",
       "qnode": "wd:foobar",
       "qlabel": "foobar",
@@ -772,6 +795,7 @@
       "@id": "caci:Events/00032/authority-response",
       "name": "Authority response",
       "description": "Schema for the response of an authority to a health crisis",
+      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
       "comment": "Content not filled in",
       "qnode": "wd:foobar",
       "qlabel": "foobar",
@@ -781,6 +805,7 @@
       "@id": "caci:Events/00033/manufacturer-do-involvement",
       "name": "Manufacturer DO involvement",
       "description": "Schema for the involvement of a pharmaceutical manufacturer in a disease outbreak",
+      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
       "comment": "Content not filled in",
       "qnode": "wd:foobar",
       "qlabel": "foobar",
@@ -790,6 +815,7 @@
       "@id": "caci:Events/00034/business-do-response",
       "name": "Business response",
       "description": "Schema for the response of a business to a disease outbreak",
+      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
       "comment": "Content not filled in",
       "qnode": "wd:foobar",
       "qlabel": "foobar",
@@ -943,7 +969,7 @@
     {
       "@id": "caci:Relations/00006",
       "name": "The pathogen progression schema overlaps the other schemas.",
-      "comment": "Temporal relations can be defined here.  This relations uses the 'partial coincidence' relation from WD:  \"general phenomenon where distinct entities (such as regions of space, events, or sequences) overlap in extent\"",
+      "comment": "Temporal relations must be taken from a subset of Wikidata temporal relations (see the SDF documentation).",
       "relationSubject": "caci:Events/00001/pathogen-progression",
       "relationPredicate": "wd:Q65560376",
       "relationObject": [
