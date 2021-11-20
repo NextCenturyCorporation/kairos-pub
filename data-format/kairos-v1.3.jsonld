@@ -47,10 +47,7 @@
       "@type": "@id"
     },
     "privateData": "kairos:privateData",
-    "ta1explanation": {
-      "@id": "kairos:ta1explanation",
-      "@container": "@list"
-    },
+    "ta1explanation": "kairos:ta1explanation",
     "minDuration": {
       "@id": "kairos:minDuration",
       "@type": "xsd:duration"

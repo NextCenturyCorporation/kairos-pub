@@ -717,7 +717,7 @@
               "entity": "caci:Entities/00014/disease"
             }
           ],
-          "child_gate": "and",
+          "children_gate": "and",
           "children": [
             {
               "child": "caci:Events/00022/learn-about-disease",
@@ -1314,7 +1314,6 @@
           "ta1ref": "kairos:NULL",
           "comment": "TA2 can add extra-relevant relations (found in the documents but not in the schema); use 'kairos:NULL' for ta1ref. P551 is 'residence'.",
           "name": "Patient resided in location of contaminant.",
-          "ta1explanation": "extra-relevant relation",
           "relationSubject": "caci:Entities/00006/Ray_Brennan",
           "relationPredicate": "wdt:P551",
           "relationObject": "caci:Entities/00024/Philadelphia",
