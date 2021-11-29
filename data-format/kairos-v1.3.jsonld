@@ -40,7 +40,11 @@
       "@id": "kairos:comment",
       "@container": "@list"
     },
-    "provenance": "kairos:provenance",
+    "provenanceID": "kairos:provenanceID",
+    "provenance": {
+      "@id": "kairos:provenance",
+      "@container": "@list"
+    },
     "aka": "kairos:aka",
     "reference": {
       "@id": "kairos:reference",
@@ -151,17 +155,26 @@
       "@id": "kairos:relationSubject",
       "@type": "@id"
     },
-    "relationSubject_prov": "kairos:relationSubject_prov",
+    "relationSubject_prov": {
+      "@id": "kairos:relationSubject_prov",
+      "@container": "@list"
+    },
     "relationPredicate": {
       "@id": "kairos:relationPredicate",
       "@type": "@id"
     },
-    "relationProvenance": "kairos:relationProvenance",
+    "relationProvenance": {
+      "@id": "kairos:relationProvenance",
+      "@container": "@list"
+    },
     "relationObject": {
       "@id": "kairos:relationObject",
       "@type": "@id"
     },
-    "relationObject_prov": "kairos:relationObject_prov",
+    "relationObject_prov": {
+      "@id": "kairos:relationObject_prov",
+      "@container": "@list"
+    },
     "ta2qnode": {
       "@id": "kairos:ta2qnode",
       "@type": "@id",

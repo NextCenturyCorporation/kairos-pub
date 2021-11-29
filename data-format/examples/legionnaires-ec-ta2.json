@@ -9,7 +9,7 @@
   ],
   "@id": "caci:Submissions/TA2/12345",
   "sdfVersion": "1.3",
-  "version": "caci-11.18.2021 / caci-11.18.2021",
+  "version": "caci-11.25.2021 / caci-11.25.2021",
   "ceID": "ce1002",
   "ta2": true,
   "task2": false,
@@ -147,7 +147,7 @@
           "provenance": "n/a",
           "participants": [
             {
-              "@id": "caci:Events/00003/pathogen-replicate",
+              "@id": "caci:Participants/00097/pathogen-replicate",
               "roleName": "A0-Agent",
               "entity": "caci:Entities/00001/pathogen"
             }
@@ -157,7 +157,8 @@
           "@id": "caci:Events/00004/pathogen-spread",
           "ta1ref": "caci:Events/00004/pathogen-spread",
           "name": "Spread",
-          "description": "Schema in which a pathogen propogates/spreads",
+          "description": "Schema in which a pathogen propagates/spreads",
+          "ta1explanation": "ta1explanations are optional in hierarchy event nodes (those with children).",
           "confidence": 1,
           "provenance": "n/a",
           "participants": [
@@ -595,7 +596,7 @@
           "provenance": "Event1",
           "participants": [
             {
-              "@id": "caci:Events/00016/patient-change-life-pattern",
+              "@id": "caci:Participants/00098/patient-change-life-pattern",
               "roleName": "A0-pag_X_inoculator",
               "entity": "caci:Entities/00010/medical-professional"
             },
@@ -692,7 +693,7 @@
           "provenance": "n/a",
           "participants": [
             {
-              "@id": "caci:Events/00020/patient-improve",
+              "@id": "caci:Participants/00099/patient-improve",
               "roleName": "A1-dir_Source_patient",
               "entity": "caci:Entities/00005/patient"
             }
@@ -1257,8 +1258,8 @@
       ],
       "relations": [
         {
-          "@id": "caci:Relations/00002",
-          "ta1ref": "caci:Relations/00002",
+          "@id": "caci:Relations/00002/",
+          "ta1ref": "caci:Relations/00002/",
           "comment": [
             "This is a TA1 relation that was not found in the documents.  Set all three provenance fields to 'n/a'.",
             "It doesn't really make sense to instantiate these equivalence relations, as it will be borne out by instantiated entities."
@@ -1273,8 +1274,8 @@
           "confidence": 1
         },
         {
-          "@id": "caci:Relations/00003",
-          "ta1ref": "caci:Relations/00003",
+          "@id": "caci:Relations/00003/",
+          "ta1ref": "caci:Relations/00003/",
           "name": "pathogen from pathogen-progression schema has an equivalence relation to the pathogen in the epidemiologist response schema",
           "relationSubject": "caci:Entities/00001/pathogen",
           "relationPredicate": "wd:Q26161438",
@@ -1285,8 +1286,8 @@
           "confidence": 1
         },
         {
-          "@id": "caci:Relations/00004",
-          "ta1ref": "caci:Relations/00004",
+          "@id": "caci:Relations/00004/",
+          "ta1ref": "caci:Relations/00004/",
           "comment": "This is a TA1 relation that was not found in the documents.  Set all three provenance fields to 'n/a'.",
           "name": "patient from patient-progression schema has an equivalence relation to the health-worker in the healthworker-response schema",
           "relationSubject": "caci:Entities/00005/patient",
@@ -1298,8 +1299,8 @@
           "confidence": 0
         },
         {
-          "@id": "caci:Relations/00005",
-          "ta1ref": "caci:Relations/00005",
+          "@id": "caci:Relations/00005/",
+          "ta1ref": "caci:Relations/00005/",
           "comment": "relation names (labels) are helpful to human assessors, but are not required at this point.",
           "relationSubject": "caci:Events/00006/pathogen-infect-patient",
           "relationPredicate": "wd:Q26161438",
@@ -1323,8 +1324,8 @@
           "confidence": 0.7
         },
         {
-          "@id": "caci:Relations/00007",
-          "ta1ref": "caci:Relations/00006",
+          "@id": "caci:Relations/00007/",
+          "ta1ref": "caci:Relations/00006/",
           "comment": [
             "Temporal relations must be taken from a subset of Wikidata temporal relations (see the SDF documentation).",
             "Note that TA2 needs to split up TA1 relations with multiple relationObjects because each one requires its own relationObject_prov."
@@ -1339,8 +1340,8 @@
           "confidence": 0.8
         },
         {
-          "@id": "caci:Relations/00008",
-          "ta1ref": "caci:Relations/00006",
+          "@id": "caci:Relations/00008/",
+          "ta1ref": "caci:Relations/00006/",
           "comment": "Note that TA2 needs to split up TA1 relations with multiple relationObjects because each one requires its own relationObject_prov.",
           "name": "The pathogen progression schema overlaps other schemas in the Event Complex",
           "relationSubject": "caci:Events/00001/pathogen-progression",
@@ -1352,8 +1353,8 @@
           "confidence": 0.8
         },
         {
-          "@id": "caci:Relations/00009",
-          "ta1ref": "caci:Relations/00007",
+          "@id": "caci:Relations/00009/",
+          "ta1ref": "caci:Relations/00007/",
           "name": "'Live in body' event from the pathogen-progression schema has an equivalence relation to the 'Patient gets sick' event from the patient-progression schema",
           "relationSubject": "caci:Events/00007/pathogen-live-in-body",
           "relationPredicate": "wd:Q26161438",
@@ -1377,7 +1378,7 @@
       "events": [
         {
           "@id": "caci:Events/00001/pathogen-progression",
-          "ta1ref": "caci:TA1/Events/pathogen-progression",
+          "ta1ref": "caci:Events/00001/pathogen-progression",
           "name": "Pathogen progression",
           "description": "Schema for the progression of a pathogen",
           "ta1explanation": "Justification of the event, propagated from TA1.",
@@ -1389,7 +1390,7 @@
         },
         {
           "@id": "caci:Events/00002/patient-progression",
-          "ta1ref": "caci:TA1/Events/patient-progression",
+          "ta1ref": "caci:Events/00002/patient-progression",
           "name": "Patient progression",
           "description": "Schema from the progression of a patient",
           "ta1explanation": "Justification of the event, propagated from TA1.",
@@ -1406,7 +1407,7 @@
   ],
   "provenanceData": [
     {
-      "provenance": "Event1",
+      "provenanceID": "Event1",
       "comment": [
         " *Text documents* ",
         "'childID' is an LDC child_id. It is the ID of the document/artifact",
@@ -1419,7 +1420,7 @@
       "length": 76
     },
     {
-      "provenance": "Event2",
+      "provenanceID": "Event2",
       "comment": [
         " *Images* ",
         "'parentIDs' is a list of documents that are parent to 'childID.",
@@ -1439,7 +1440,7 @@
       ]
     },
     {
-      "provenance": "Event3",
+      "provenanceID": "Event3",
       "comment": [
         " *Videos -- key frames* ",
         "'keyframes' is an array of LDC-supplied key frame IDs."
@@ -1460,7 +1461,7 @@
       ]
     },
     {
-      "provenance": "Entity1",
+      "provenanceID": "Entity1",
       "comment": [
         " *Audio recordings* ",
         "'startTime' and 'endTime are in seconds."
@@ -1472,7 +1473,7 @@
       "endTime": 5.12
     },
     {
-      "provenance": "Entity2",
+      "provenanceID": "Entity2",
       "comment": [
         " *Videos -- time range* ",
         "'startTime' and 'endTime are in seconds."
@@ -1490,14 +1491,14 @@
       ]
     },
     {
-      "provenance": "Entity3",
+      "provenanceID": "Entity3",
       "childID": "K0C03N4OZ",
       "mediaType": "text/plain",
       "offset": 5,
       "length": 21
     },
     {
-      "provenance": "Relation1",
+      "provenanceID": "Relation1",
       "childID": "K0C03N4TZ",
       "mediaType": "text/plain",
       "offset": 5,

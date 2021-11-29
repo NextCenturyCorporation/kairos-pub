@@ -9,7 +9,7 @@
   ],
   "@id": "caci:Submissions/TA1/12345",
   "sdfVersion": "1.3",
-  "version": "caci-11.18.2021",
+  "version": "caci-11.25.2021",
   "ta2": false,
   "comment": [
     "Example provides representation of E. Hovy's Event Complex schema layout for a disease outbreak.",
@@ -108,7 +108,8 @@
     {
       "@id": "caci:Events/00004/pathogen-spread",
       "name": "Spread",
-      "description": "Schema in which a pathogen propogates/spreads",
+      "description": "Schema in which a pathogen propagates/spreads",
+      "ta1explanation": "ta1explanations are optional in hierarchy event nodes (those with children).",
       "participants": [
         {
           "@id": "caci:Participants/00006/pathogen-spread",
@@ -938,21 +939,21 @@
   ],
   "relations": [
     {
-      "@id": "caci:Relations/00002",
+      "@id": "caci:Relations/00002/",
       "name": "pathogen from pathogen-progression schema has an equivalence relation to the pathogen in the patient-progression schema",
       "relationSubject": "caci:Entities/00001/pathogen",
       "relationPredicate": "wd:Q26161438",
       "relationObject": "caci:Entities/00006/pathogen-1"
     },
     {
-      "@id": "caci:Relations/00003",
+      "@id": "caci:Relations/00003/",
       "name": "pathogen from pathogen-progression schema has an equivalence relation to the pathogen in the epidemiologist response schema",
       "relationSubject": "caci:Entities/00001/pathogen",
       "relationPredicate": "wd:Q26161438",
       "relationObject": "caci:Entities/00011/pathogen-2"
     },
     {
-      "@id": "caci:Relations/00004",
+      "@id": "caci:Relations/00004/",
       "name": "patient from patient-progression schema has an equivalence relation to the patient in the healthworker-response schema",
       "relationSubject": "caci:Entities/00003/patient",
       "relationPredicate": "wd:Q26161438",
@@ -960,14 +961,14 @@
       "centrality": 0.9
     },
     {
-      "@id": "caci:Relations/00005",
+      "@id": "caci:Relations/00005/",
       "comment": "relation names (labels) are helpful to human assessors, but are not required at this point.",
       "relationSubject": "caci:Events/00006/pathogen-infect-patient",
       "relationPredicate": "wd:Q26161438",
       "relationObject": "caci:Events/00012/patient-contract-disease"
     },
     {
-      "@id": "caci:Relations/00006",
+      "@id": "caci:Relations/00006/",
       "name": "The pathogen progression schema overlaps the other schemas.",
       "comment": "Temporal relations must be taken from a subset of Wikidata temporal relations (see the SDF documentation).",
       "relationSubject": "caci:Events/00001/pathogen-progression",
@@ -982,7 +983,7 @@
       ]
     },
     {
-      "@id": "caci:Relations/00007",
+      "@id": "caci:Relations/00007/",
       "name": "'Live in body' event from the pathogen-progression schema has an equivalence relation to the 'Patient gets sick' event from the patient-progression schema",
       "relationSubject": "caci:Events/00007/pathogen-live-in-body",
       "relationPredicate": "wd:Q26161438",
