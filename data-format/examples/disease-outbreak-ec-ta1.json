@@ -1,6 +1,6 @@
 {
   "@context": [
-    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v1.3.jsonld",
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v1.3.1.jsonld",
     {
       "caci": "https://caci.com/kairos/",
       "my_key": "caci:my_key",
@@ -8,8 +8,8 @@
     }
   ],
   "@id": "caci:Submissions/TA1/12345",
-  "sdfVersion": "1.3",
-  "version": "caci-11.25.2021",
+  "sdfVersion": "1.3.1",
+  "version": "caci-12.03.2021",
   "ta2": false,
   "comment": [
     "Example provides representation of E. Hovy's Event Complex schema layout for a disease outbreak.",
@@ -415,7 +415,10 @@
         "wd:Q1399332",
         "wd:Q67004728"
       ],
-      "qlabel": "treatment adherence and compliance",
+      "qlabel": [
+        "compliance",
+        "treatment adherence and compliance"
+      ],
       "participants": [
         {
           "@id": "caci:Participants/00028/patient-change-life-pattern",
@@ -760,7 +763,7 @@
     {
       "@id": "caci:Events/00030/educate-authority",
       "name": "Educate",
-      "description": "Event type in wich epidemiologists educate government authorities",
+      "description": "Event type in which epidemiologists educate government authorities",
       "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
       "qnode": "wd:Q8434",
       "qlabel": "education",
@@ -914,7 +917,7 @@
     },
     {
       "@id": "caci:Entities/00015/manufacturer",
-      "name": "Pharmaceutical Manfacturers",
+      "name": "Pharmaceutical Manufacturers",
       "qnode": "wd:Q507443",
       "qlabel": "pharmaceutical industry"
     },
@@ -923,12 +926,6 @@
       "name": "Government Authority",
       "qnode": "wd:Q2659904",
       "qlabel": "government organization"
-    },
-    {
-      "@id": "caci:Entities/00017/findings",
-      "name": "Research Findings",
-      "qnode": "wd:Q107296061",
-      "qlabel": "study result"
     },
     {
       "@id": "caci:Entities/00018/location",
