@@ -9,7 +9,7 @@
   ],
   "@id": "caci:Submissions/TA2/12345",
   "sdfVersion": "1.3.1",
-  "version": "caci-12.03.2021 / caci-12.03.2021",
+  "version": "caci-12.03.2021 / caci-12.06.2021",
   "ceID": "ce1002",
   "ta2": true,
   "task2": false,
@@ -76,7 +76,8 @@
               "values": {
                 "ta2entity": "caci:Entities/00004/American_society",
                 "provenance": "caci:Provenance/00012/",
-                "confidence": 0.5
+                "confidence": 0.5,
+                "modality": "generic"
               }
             }
           ],
@@ -641,12 +642,6 @@
               "entity": "caci:Entities/00005/patient",
               "values": [
                 {
-                  "comment": "Example of two argument fillers of the same event argument, with distinct provenance and confidence.",
-                  "ta2entity": "caci:Entities/00007/Joe_Smith",
-                  "provenance": "caci:Provenance/00013/",
-                  "confidence": 0.9
-                },
-                {
                   "ta2entity": "caci:Entities/00006/Ray_Brennan",
                   "comment": "If there are two source justifications, include them in a list.  If LDC looks at provenance, it may only consider the first.",
                   "provenance": [
@@ -654,6 +649,12 @@
                     "Entity3"
                   ],
                   "confidence": 0.9
+                },
+                {
+                  "comment": "Use confidence to represent AND/OR fillers, with distinct provenance.",
+                  "ta2entity": "caci:Entities/00007/Joe_Smith",
+                  "provenance": "caci:Provenance/00013/",
+                  "confidence": 0.4
                 }
               ]
             },
@@ -1370,6 +1371,7 @@
           "relationProvenance": "caci:Provenance/00101/",
           "relationSubject_prov": "caci:Provenance/00012/",
           "relationObject_prov": "caci:Provenance/00013/",
+          "modality": "hedged",
           "confidence": 0.7
         },
         {
