@@ -553,11 +553,19 @@
               "@id": "caci:Participants/00024/patient-diagnosed",
               "roleName": "A1-ppt_theme_patient",
               "entity": "caci:Entities/00005/patient",
-              "values": {
-                "ta2entity": "caci:Entities/00006/Ray_Brennan",
-                "provenance": "caci:Provenance/00012/",
-                "confidence": 0.9
-              }
+              "values": [
+                {
+                  "ta2entity": "caci:Entities/00006/Ray_Brennan",
+                  "provenance": "caci:Provenance/00012/",
+                  "confidence": 0.9
+                },
+                {
+                  "comment": "Use confidence to represent uncertainty about fillers, with distinct provenance.",
+                  "ta2entity": "caci:Entities/00007/Joe_Smith",
+                  "provenance": "caci:Provenance/00013/",
+                  "confidence": 0.4
+                }
+              ]
             }
           ],
           "prediction": {
@@ -646,15 +654,9 @@
                   "comment": "If there are two source justifications, include them in a list.  If LDC looks at provenance, it may only consider the first.",
                   "provenance": [
                     "caci:Provenance/00012/",
-                    "Entity3"
+                    "caci:Provenance/00013/"
                   ],
                   "confidence": 0.9
-                },
-                {
-                  "comment": "Use confidence to represent AND/OR fillers, with distinct provenance.",
-                  "ta2entity": "caci:Entities/00007/Joe_Smith",
-                  "provenance": "caci:Provenance/00013/",
-                  "confidence": 0.4
                 }
               ]
             },
