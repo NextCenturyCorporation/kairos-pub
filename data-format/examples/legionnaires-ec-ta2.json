@@ -720,7 +720,7 @@
           "participants": [
             {
               "@id": "caci:Participants/00031/patient-die",
-              "roleName": "A1-ppt_the deceased",
+              "roleName": "A1-ppt_the_deceased",
               "entity": "caci:Entities/00005/patient",
               "values": {
                 "ta2entity": "caci:Entities/00006/Ray_Brennan",
