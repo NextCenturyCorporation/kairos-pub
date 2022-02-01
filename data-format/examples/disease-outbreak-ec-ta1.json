@@ -1,6 +1,6 @@
 {
   "@context": [
-    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v1.4.jsonld",
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v1.4.1.jsonld",
     {
       "caci": "https://caci.com/kairos/",
       "my_key": "caci:my_key",
@@ -8,7 +8,7 @@
     }
   ],
   "@id": "caci:Submissions/TA1/12345",
-  "sdfVersion": "1.4",
+  "sdfVersion": "1.4.1",
   "version": "caci-01.24.2022",
   "ta2": false,
   "comment": [

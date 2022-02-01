@@ -997,7 +997,7 @@
           "confidence": 0.8
         },
         {
-          "@id": "caci:Relations/00012/",
+          "@id": "caci:Relations/00011/",
           "name": "Infect before Live in body",
           "relationSubject": "caci:Events/00006/pathogen-infect-patient",
           "relationPredicate": "wd:Q79030196",
@@ -1005,7 +1005,7 @@
           "confidence": 0.8
         },
         {
-          "@id": "caci:Relations/00011/",
+          "@id": "caci:Relations/00012/",
           "comment": "Note: additional temporal relations omitted for brevity.",
           "name": "Live in body before Decrease in society",
           "relationSubject": "caci:Events/00006/pathogen-infect-patient",
