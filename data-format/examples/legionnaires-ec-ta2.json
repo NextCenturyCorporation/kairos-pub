@@ -10,7 +10,7 @@
   ],
   "@id": "caci_ta2:Submissions/TA2/12345",
   "sdfVersion": "1.4.1",
-  "version": "caci-01.24.2022 / caci-01.31.2022",
+  "version": "caci-02.03.2022 / caci-02.03.2022",
   "ceID": "ce1002",
   "ta2": true,
   "task2": false,
@@ -422,12 +422,15 @@
               "values": [
                 {
                   "ta2entity": "caci_ta2:Entities/00006/Ray_Brennan",
-                  "comment": "If there are two source justifications, include them in a list.  If LDC looks at provenance, it may only consider the first.",
+                  "comment": "If there are two source justifications, include them (and their confidences) in a list.  If LDC looks at provenance, it may only consider the first.",
                   "provenance": [
                     "caci_ta2:Provenance/00012/",
                     "caci_ta2:Provenance/00013/"
                   ],
-                  "confidence": 0.9
+                  "confidence": [
+                    0.9,
+                    0.8
+                  ]
                 }
               ]
             },

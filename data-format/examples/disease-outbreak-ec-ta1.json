@@ -2,14 +2,14 @@
   "@context": [
     "https://kairos-sdf.s3.amazonaws.com/context/kairos-v1.4.1.jsonld",
     {
-      "caci": "https://caci.com/kairos/",
-      "my_key": "caci:my_key",
-      "giant_bitstring": "caci:giant_bitstring"
+      "caci_ta1": "https://caci.com/kairos/ta1/",
+      "my_key": "caci_ta1:my_key",
+      "giant_bitstring": "caci_ta1:giant_bitstring"
     }
   ],
-  "@id": "caci:Submissions/TA1/12345",
+  "@id": "caci_ta1:Submissions/TA1/12345",
   "sdfVersion": "1.4.1",
-  "version": "caci-01.24.2022",
+  "version": "caci-02.03.2022",
   "ta2": false,
   "comment": [
     "Example provides representation of E. Hovy's Event Complex schema layout for a disease outbreak.",
@@ -17,7 +17,7 @@
   ],
   "events": [
     {
-      "@id": "caci:Events/00001/pathogen-progression",
+      "@id": "caci_ta1:Events/00001/pathogen-progression",
       "name": "Pathogen progression",
       "description": "Schema for the progression of a pathogen",
       "goal": "Optional freeform string, playground for TA1s",
@@ -28,55 +28,55 @@
       },
       "participants": [
         {
-          "@id": "caci:Participants/00001/pathogen-progression",
+          "@id": "caci_ta1:Participants/00001/pathogen-progression",
           "comment": "Note that when we're not using an event from the KOWG, performers can create participants/role names, but please indicate A0, A1, etc.",
           "roleName": "A0-Agent",
-          "entity": "caci:Entities/00001/pathogen"
+          "entity": "caci_ta1:Entities/00001/pathogen"
         },
         {
-          "@id": "caci:Participants/00002/pathogen-progression",
+          "@id": "caci_ta1:Participants/00002/pathogen-progression",
           "roleName": "A1-Patient",
-          "entity": "caci:Entities/00004/patient-1"
+          "entity": "caci_ta1:Entities/00004/patient-1"
         },
         {
-          "@id": "caci:Participants/00003/pathogen-progression",
+          "@id": "caci_ta1:Participants/00003/pathogen-progression",
           "roleName": "A2-Environment",
-          "entity": "caci:Entities/00002/society"
+          "entity": "caci_ta1:Entities/00002/society"
         }
       ],
       "children_gate": "and",
       "children": [
         {
-          "child": "caci:Events/00002/pathogen-come-into-being",
+          "child": "caci_ta1:Events/00002/pathogen-come-into-being",
           "comment": [
             "Semantics of optional is that if it is set to true, then the event is optional.  If it is set to false OR MISSING, the event is mandatory. TA1 systems decide whether an event its optional or not.",
             "Think of outlinks as the next node (or nodes) in a succession of nodes."
           ],
           "optional": true,
           "importance": 0.3,
-          "outlinks": "caci:Events/00003/pathogen-replicate"
+          "outlinks": "caci_ta1:Events/00003/pathogen-replicate"
         },
         {
-          "child": "caci:Events/00003/pathogen-replicate",
-          "outlinks": "caci:Events/00004/pathogen-spread"
+          "child": "caci_ta1:Events/00003/pathogen-replicate",
+          "outlinks": "caci_ta1:Events/00004/pathogen-spread"
         },
         {
-          "child": "caci:Events/00004/pathogen-spread"
+          "child": "caci_ta1:Events/00004/pathogen-spread"
         }
       ],
       "relations": [
         {
-          "@id": "caci:Relations/00001/pathogen-progression",
+          "@id": "caci_ta1:Relations/00001/pathogen-progression",
           "comment": "Note that relation triples (with relationPredicates taken from Wikidata) can be defined in any event node.  By convention, relations place in an event should only define relations between child event nodes and/or the node where the relation is defined. This is a silly yet illustrative example.",
           "name": "patient is a member of society",
-          "relationSubject": "caci:Entities/00004/patient-1",
+          "relationSubject": "caci_ta1:Entities/00004/patient-1",
           "relationPredicate": "wdt:P463",
-          "relationObject": "caci:Entities/00002/society"
+          "relationObject": "caci_ta1:Entities/00002/society"
         }
       ]
     },
     {
-      "@id": "caci:Events/00002/pathogen-come-into-being",
+      "@id": "caci_ta1:Events/00002/pathogen-come-into-being",
       "name": "Come into being",
       "description": "Event type in which a pathogen comes into being",
       "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
@@ -84,14 +84,14 @@
       "qlabel": "existence",
       "participants": [
         {
-          "@id": "caci:Participants/00004/come-into-being",
+          "@id": "caci_ta1:Participants/00004/come-into-being",
           "roleName": "A0-Agent",
-          "entity": "caci:Entities/00001/pathogen"
+          "entity": "caci_ta1:Entities/00001/pathogen"
         }
       ]
     },
     {
-      "@id": "caci:Events/00003/pathogen-replicate",
+      "@id": "caci_ta1:Events/00003/pathogen-replicate",
       "name": "Replicate",
       "description": "Event type in which a pathogen replicates",
       "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
@@ -99,51 +99,51 @@
       "qlabel": "copy",
       "participants": [
         {
-          "@id": "caci:Participants/00005/pathogen-replicate",
+          "@id": "caci_ta1:Participants/00005/pathogen-replicate",
           "roleName": "A0-Agent",
-          "entity": "caci:Entities/00001/pathogen"
+          "entity": "caci_ta1:Entities/00001/pathogen"
         }
       ]
     },
     {
-      "@id": "caci:Events/00004/pathogen-spread",
+      "@id": "caci_ta1:Events/00004/pathogen-spread",
       "name": "Spread",
       "description": "Schema in which a pathogen propagates/spreads",
       "ta1explanation": "ta1explanations are optional in hierarchy event nodes (those with children).",
       "participants": [
         {
-          "@id": "caci:Participants/00006/pathogen-spread",
+          "@id": "caci_ta1:Participants/00006/pathogen-spread",
           "roleName": "A0-Agent",
-          "entity": "caci:Entities/00001/pathogen"
+          "entity": "caci_ta1:Entities/00001/pathogen"
         },
         {
-          "@id": "caci:Participants/00007/pathogen-spread",
+          "@id": "caci_ta1:Participants/00007/pathogen-spread",
           "roleName": "A1-Patient",
-          "entity": "caci:Entities/00004/patient-1"
+          "entity": "caci_ta1:Entities/00004/patient-1"
         }
       ],
       "children_gate": "and",
       "children": [
         {
-          "child": "caci:Events/00005/pathogen-escape",
+          "child": "caci_ta1:Events/00005/pathogen-escape",
           "optional": true,
-          "outlinks": "caci:Events/00006/pathogen-infect-patient"
+          "outlinks": "caci_ta1:Events/00006/pathogen-infect-patient"
         },
         {
-          "child": "caci:Events/00006/pathogen-infect-patient",
-          "outlinks": "caci:Events/00007/pathogen-live-in-body"
+          "child": "caci_ta1:Events/00006/pathogen-infect-patient",
+          "outlinks": "caci_ta1:Events/00007/pathogen-live-in-body"
         },
         {
-          "child": "caci:Events/00007/pathogen-live-in-body",
-          "outlinks": "caci:Events/00008/pathogen-continue"
+          "child": "caci_ta1:Events/00007/pathogen-live-in-body",
+          "outlinks": "caci_ta1:Events/00008/pathogen-continue"
         },
         {
-          "child": "caci:Events/00008/pathogen-continue"
+          "child": "caci_ta1:Events/00008/pathogen-continue"
         }
       ]
     },
     {
-      "@id": "caci:Events/00005/pathogen-escape",
+      "@id": "caci_ta1:Events/00005/pathogen-escape",
       "name": "Escape body",
       "description": "Event type in which a pathogen escapes from a body or reservoir",
       "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
@@ -158,19 +158,19 @@
       ],
       "participants": [
         {
-          "@id": "caci:Participants/00008/pathogen-escape",
+          "@id": "caci_ta1:Participants/00008/pathogen-escape",
           "roleName": "A0-Agent",
-          "entity": "caci:Entities/00001/pathogen"
+          "entity": "caci_ta1:Entities/00001/pathogen"
         },
         {
-          "@id": "caci:Participants/00009/pathogen-escape",
+          "@id": "caci_ta1:Participants/00009/pathogen-escape",
           "roleName": "A1-Patient",
-          "entity": "caci:Entities/00003/patient"
+          "entity": "caci_ta1:Entities/00003/patient"
         }
       ]
     },
     {
-      "@id": "caci:Events/00006/pathogen-infect-patient",
+      "@id": "caci_ta1:Events/00006/pathogen-infect-patient",
       "name": "Infect",
       "description": "Event type in which a pathogen infects a patient",
       "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
@@ -178,20 +178,20 @@
       "qlabel": "infection",
       "participants": [
         {
-          "@id": "caci:Participants/00010/pathogen-infect-patient",
+          "@id": "caci_ta1:Participants/00010/pathogen-infect-patient",
           "comment": "Note that when we use an event from the KOWG/XPO, we use its role names as documented in XPO spreadsheets.",
           "roleName": "A1-gol_thing_becoming_infected",
-          "entity": "caci:Entities/00003/patient"
+          "entity": "caci_ta1:Entities/00003/patient"
         },
         {
-          "@id": "caci:Participants/00011/pathogen-infect-patient",
+          "@id": "caci_ta1:Participants/00011/pathogen-infect-patient",
           "roleName": "A2-ppt_infectant",
-          "entity": "caci:Entities/00001/pathogen"
+          "entity": "caci_ta1:Entities/00001/pathogen"
         }
       ]
     },
     {
-      "@id": "caci:Events/00007/pathogen-live-in-body",
+      "@id": "caci_ta1:Events/00007/pathogen-live-in-body",
       "name": "Live in body",
       "description": "Event type in which a pathogen lives in the body of a patient",
       "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
@@ -201,45 +201,45 @@
       "goal": "Just a reminder that you can define goals in any event node",
       "participants": [
         {
-          "@id": "caci:Participants/00012/pathogen-live-in-body",
+          "@id": "caci_ta1:Participants/00012/pathogen-live-in-body",
           "roleName": "A0-Agent",
-          "entity": "caci:Entities/00001/pathogen"
+          "entity": "caci_ta1:Entities/00001/pathogen"
         },
         {
-          "@id": "caci:Participants/00013/pathogen-live-in-body",
+          "@id": "caci_ta1:Participants/00013/pathogen-live-in-body",
           "roleName": "A1-Patient",
-          "entity": "caci:Entities/00003/patient"
+          "entity": "caci_ta1:Entities/00003/patient"
         }
       ]
     },
     {
-      "@id": "caci:Events/00008/pathogen-continue",
+      "@id": "caci_ta1:Events/00008/pathogen-continue",
       "name": "Continue",
       "description": "Schema in which further spreading or a decrease in the prevalence of a pathogen occurs",
       "participants": [
         {
-          "@id": "caci:Participants/00014/pathogen-continue",
+          "@id": "caci_ta1:Participants/00014/pathogen-continue",
           "roleName": "A0-Agent",
-          "entity": "caci:Entities/00001/pathogen"
+          "entity": "caci_ta1:Entities/00001/pathogen"
         },
         {
-          "@id": "caci:Participants/00015/pathogen-continue",
+          "@id": "caci_ta1:Participants/00015/pathogen-continue",
           "roleName": "A1-Patient",
-          "entity": "caci:Entities/00002/society"
+          "entity": "caci_ta1:Entities/00002/society"
         }
       ],
       "children_gate": "xor",
       "children": [
         {
-          "child": "caci:Events/00004/pathogen-spread"
+          "child": "caci_ta1:Events/00004/pathogen-spread"
         },
         {
-          "child": "caci:Events/00009/pathogen-decrease"
+          "child": "caci_ta1:Events/00009/pathogen-decrease"
         }
       ]
     },
     {
-      "@id": "caci:Events/00009/pathogen-decrease",
+      "@id": "caci_ta1:Events/00009/pathogen-decrease",
       "name": "Decrease in society",
       "description": "Event type in which a pathogen decreases in society",
       "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
@@ -247,71 +247,71 @@
       "qlabel": "reduction",
       "participants": [
         {
-          "@id": "caci:Participants/00016/pathogen-decrease",
+          "@id": "caci_ta1:Participants/00016/pathogen-decrease",
           "roleName": "A0-Agent",
-          "entity": "caci:Entities/00001/pathogen"
+          "entity": "caci_ta1:Entities/00001/pathogen"
         },
         {
-          "@id": "caci:Participants/00017/pathogen-decrease",
+          "@id": "caci_ta1:Participants/00017/pathogen-decrease",
           "roleName": "A1-Patient",
-          "entity": "caci:Entities/00002/society"
+          "entity": "caci_ta1:Entities/00002/society"
         }
       ]
     },
     {
-      "@id": "caci:Events/00010/patient-progression",
+      "@id": "caci_ta1:Events/00010/patient-progression",
       "name": "Patient progression",
       "description": "Schema for the progression of a patient",
       "participants": [
         {
-          "@id": "caci:Participants/00018/patient-progression",
+          "@id": "caci_ta1:Participants/00018/patient-progression",
           "roleName": "A0-Agent",
-          "entity": "caci:Entities/00003/patient"
+          "entity": "caci_ta1:Entities/00003/patient"
         }
       ],
       "children_gate": "and",
       "children": [
         {
-          "child": "caci:Events/00011/patient-travels-to-contaminant",
+          "child": "caci_ta1:Events/00011/patient-travels-to-contaminant",
           "optional": true,
           "importance": 0.3,
-          "outlinks": "caci:Events/00012/patient-contract-disease"
+          "outlinks": "caci_ta1:Events/00012/patient-contract-disease"
         },
         {
-          "child": "caci:Events/00012/patient-contract-disease",
+          "child": "caci_ta1:Events/00012/patient-contract-disease",
           "optional": true,
           "importance": 0.5,
-          "outlinks": "caci:Events/00013/patient-get-sick"
+          "outlinks": "caci_ta1:Events/00013/patient-get-sick"
         },
         {
-          "child": "caci:Events/00013/patient-get-sick",
-          "outlinks": "caci:Events/00014/patient-diagnosed"
+          "child": "caci_ta1:Events/00013/patient-get-sick",
+          "outlinks": "caci_ta1:Events/00014/patient-diagnosed"
         },
         {
-          "child": "caci:Events/00014/patient-diagnosed",
-          "outlinks": "caci:Events/00015/patient-be-treated"
+          "child": "caci_ta1:Events/00014/patient-diagnosed",
+          "outlinks": "caci_ta1:Events/00015/patient-be-treated"
         },
         {
-          "child": "caci:Events/00015/patient-be-treated",
-          "outlinks": "caci:Events/00016/patient-change-life-pattern"
+          "child": "caci_ta1:Events/00015/patient-be-treated",
+          "outlinks": "caci_ta1:Events/00016/patient-change-life-pattern"
         },
         {
-          "child": "caci:Events/00016/patient-change-life-pattern",
+          "child": "caci_ta1:Events/00016/patient-change-life-pattern",
           "optional": true,
           "importance": 0.1,
-          "outlinks": "caci:Events/00017/patient-get-meds"
+          "outlinks": "caci_ta1:Events/00017/patient-get-meds"
         },
         {
-          "child": "caci:Events/00017/patient-get-meds",
-          "outlinks": "caci:Events/00018/patient-continue"
+          "child": "caci_ta1:Events/00017/patient-get-meds",
+          "outlinks": "caci_ta1:Events/00018/patient-continue"
         },
         {
-          "child": "caci:Events/00018/patient-continue"
+          "child": "caci_ta1:Events/00018/patient-continue"
         }
       ]
     },
     {
-      "@id": "caci:Events/00011/patient-travels-to-contaminant",
+      "@id": "caci_ta1:Events/00011/patient-travels-to-contaminant",
       "name": "Travel",
       "description": "Event type in which patient(s) travel to contaminated location/facility",
       "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
@@ -319,19 +319,19 @@
       "qlabel": "travel",
       "participants": [
         {
-          "@id": "caci:Participants/00019/patient-travels-to-contaminant",
+          "@id": "caci_ta1:Participants/00019/patient-travels-to-contaminant",
           "roleName": "A0-pag_agent_mover",
-          "entity": "caci:Entities/00003/patient"
+          "entity": "caci_ta1:Entities/00003/patient"
         },
         {
-          "@id": "caci:Participants/00020/patient-travels-to-contaminant",
+          "@id": "caci_ta1:Participants/00020/patient-travels-to-contaminant",
           "roleName": "A2-GOL_X_destination",
-          "entity": "caci:Entities/00018/location"
+          "entity": "caci_ta1:Entities/00018/location"
         }
       ]
     },
     {
-      "@id": "caci:Events/00012/patient-contract-disease",
+      "@id": "caci_ta1:Events/00012/patient-contract-disease",
       "name": "Contract disease",
       "description": "Event type in which patient(s) contract(s) disease",
       "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
@@ -339,19 +339,19 @@
       "qlabel": "infection",
       "participants": [
         {
-          "@id": "caci:Participants/00021/patient-contract-disease",
+          "@id": "caci_ta1:Participants/00021/patient-contract-disease",
           "roleName": "A1-gol_thing_becoming_infected",
-          "entity": "caci:Entities/00003/patient"
+          "entity": "caci_ta1:Entities/00003/patient"
         },
         {
-          "@id": "caci:Participants/00022/patient-contract-disease",
+          "@id": "caci_ta1:Participants/00022/patient-contract-disease",
           "roleName": "A2-ppt_infectant",
-          "entity": "caci:Entities/00006/pathogen-1"
+          "entity": "caci_ta1:Entities/00006/pathogen-1"
         }
       ]
     },
     {
-      "@id": "caci:Events/00013/patient-get-sick",
+      "@id": "caci_ta1:Events/00013/patient-get-sick",
       "name": "Get sick",
       "description": "Event type in which patient(s) get(s) sick",
       "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
@@ -359,14 +359,14 @@
       "qlabel": "disease",
       "participants": [
         {
-          "@id": "caci:Participants/00023/patient-get-sick",
+          "@id": "caci_ta1:Participants/00023/patient-get-sick",
           "roleName": "A1-ppt_X_sick/ill_one",
-          "entity": "caci:Entities/00003/patient"
+          "entity": "caci_ta1:Entities/00003/patient"
         }
       ]
     },
     {
-      "@id": "caci:Events/00014/patient-diagnosed",
+      "@id": "caci_ta1:Events/00014/patient-diagnosed",
       "name": "Diagnosis",
       "description": "Event type in which patient(s) get(s) diagnosed",
       "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
@@ -374,19 +374,19 @@
       "qlabel": "medical diagnosis",
       "participants": [
         {
-          "@id": "caci:Participants/00024/patient-diagnosed",
+          "@id": "caci_ta1:Participants/00024/patient-diagnosed",
           "roleName": "A0-pag_agent_doctor",
-          "entity": "caci:Entities/00005/medical-professional"
+          "entity": "caci_ta1:Entities/00005/medical-professional"
         },
         {
-          "@id": "caci:Participants/00025/patient-diagnosed",
+          "@id": "caci_ta1:Participants/00025/patient-diagnosed",
           "roleName": "A1-ppt_theme_patient",
-          "entity": "caci:Entities/00003/patient"
+          "entity": "caci_ta1:Entities/00003/patient"
         }
       ]
     },
     {
-      "@id": "caci:Events/00015/patient-be-treated",
+      "@id": "caci_ta1:Events/00015/patient-be-treated",
       "name": "Treatment",
       "description": "Event type in which patient(s) is/are treated",
       "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
@@ -394,19 +394,19 @@
       "qlabel": "treatment",
       "participants": [
         {
-          "@id": "caci:Participants/00026/patient-be-treated",
+          "@id": "caci_ta1:Participants/00026/patient-be-treated",
           "roleName": "A0-pag_X_doctor",
-          "entity": "caci:Entities/00005/medical-professional"
+          "entity": "caci_ta1:Entities/00005/medical-professional"
         },
         {
-          "@id": "caci:Participants/00027/patient-be-treated",
+          "@id": "caci_ta1:Participants/00027/patient-be-treated",
           "roleName": "A1-ppt_X_patient",
-          "entity": "caci:Entities/00003/patient"
+          "entity": "caci_ta1:Entities/00003/patient"
         }
       ]
     },
     {
-      "@id": "caci:Events/00016/patient-change-life-pattern",
+      "@id": "caci_ta1:Events/00016/patient-change-life-pattern",
       "name": "Compliance",
       "description": "Event type in which life pattern changes",
       "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
@@ -421,14 +421,14 @@
       ],
       "participants": [
         {
-          "@id": "caci:Participants/00028/patient-change-life-pattern",
+          "@id": "caci_ta1:Participants/00028/patient-change-life-pattern",
           "roleName": "A0-pag_X_complier",
-          "entity": "caci:Entities/00003/patient"
+          "entity": "caci_ta1:Entities/00003/patient"
         }
       ]
     },
     {
-      "@id": "caci:Events/00017/patient-get-meds",
+      "@id": "caci_ta1:Events/00017/patient-get-meds",
       "name": "Get medication",
       "description": "Event type in which patient(s) receive(s) vaccine or other medication",
       "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
@@ -437,45 +437,45 @@
       "qlabel": "vaccination",
       "participants": [
         {
-          "@id": "caci:Participants/00029/patient-get-meds",
+          "@id": "caci_ta1:Participants/00029/patient-get-meds",
           "roleName": "A0-pag_X_inoculator",
-          "entity": "caci:Entities/00005/medical-professional"
+          "entity": "caci_ta1:Entities/00005/medical-professional"
         },
         {
-          "@id": "caci:Participants/00030/patient-get-meds",
+          "@id": "caci_ta1:Participants/00030/patient-get-meds",
           "roleName": "A1-ppt_X_patient_inoculated",
-          "entity": "caci:Entities/00003/patient"
+          "entity": "caci_ta1:Entities/00003/patient"
         },
         {
-          "@id": "caci:Participants/00031/patient-get-meds",
+          "@id": "caci_ta1:Participants/00031/patient-get-meds",
           "roleName": "A2-ppt_X_inoculated_against",
-          "entity": "caci:Entities/00006/pathogen-1"
+          "entity": "caci_ta1:Entities/00006/pathogen-1"
         }
       ]
     },
     {
-      "@id": "caci:Events/00018/patient-continue",
+      "@id": "caci_ta1:Events/00018/patient-continue",
       "name": "Continue",
       "description": "Schema for the continuation of an illness in patient(s), improvement or death",
       "participants": [
         {
-          "@id": "caci:Participants/00032/patient-continue",
+          "@id": "caci_ta1:Participants/00032/patient-continue",
           "roleName": "A1-Patient",
-          "entity": "caci:Entities/00003/patient"
+          "entity": "caci_ta1:Entities/00003/patient"
         }
       ],
       "children_gate": "xor",
       "children": [
         {
-          "child": "caci:Events/00020/patient-improve"
+          "child": "caci_ta1:Events/00020/patient-improve"
         },
         {
-          "child": "caci:Events/00019/patient-die"
+          "child": "caci_ta1:Events/00019/patient-die"
         }
       ]
     },
     {
-      "@id": "caci:Events/00019/patient-die",
+      "@id": "caci_ta1:Events/00019/patient-die",
       "name": "Death",
       "description": "Event type in which patient(s) die(s)",
       "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
@@ -483,14 +483,14 @@
       "qlabel": "death",
       "participants": [
         {
-          "@id": "caci:Participants/00033/patient-die",
+          "@id": "caci_ta1:Participants/00033/patient-die",
           "roleName": "A1-ppt_the deceased",
-          "entity": "caci:Entities/00003/patient"
+          "entity": "caci_ta1:Entities/00003/patient"
         }
       ]
     },
     {
-      "@id": "caci:Events/00020/patient-improve",
+      "@id": "caci_ta1:Events/00020/patient-improve",
       "name": "Improvement",
       "description": "Event type in which patient's condition improves",
       "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
@@ -498,68 +498,68 @@
       "qlabel": "remedy",
       "participants": [
         {
-          "@id": "caci:Participants/00034/patient-improve",
+          "@id": "caci_ta1:Participants/00034/patient-improve",
           "roleName": "A1-dir_Source_patient",
-          "entity": "caci:Entities/00003/patient"
+          "entity": "caci_ta1:Entities/00003/patient"
         }
       ]
     },
     {
-      "@id": "caci:Events/00021/epidemiologist-response",
+      "@id": "caci_ta1:Events/00021/epidemiologist-response",
       "name": "Epidemiologist response",
       "description": "Schema in which an epidemiologist responds to an outbreak",
       "participants": [
         {
-          "@id": "caci:Participants/00035/epidemiologist-response",
+          "@id": "caci_ta1:Participants/00035/epidemiologist-response",
           "roleName": "A0-Agent",
-          "entity": "caci:Entities/00008/epidemiologist"
+          "entity": "caci_ta1:Entities/00008/epidemiologist"
         },
         {
-          "@id": "caci:Participants/00036/epidemiologist-response",
+          "@id": "caci_ta1:Participants/00036/epidemiologist-response",
           "roleName": "A1-Disease",
-          "entity": "caci:Entities/00009/disease"
+          "entity": "caci_ta1:Entities/00009/disease"
         }
       ],
       "children_gate": "and",
       "children": [
         {
-          "child": "caci:Events/00022/learn-about-disease",
+          "child": "caci_ta1:Events/00022/learn-about-disease",
           "optional": true,
           "importance": 0.3,
-          "outlinks": "caci:Events/00023/investigate-cluster"
+          "outlinks": "caci_ta1:Events/00023/investigate-cluster"
         },
         {
-          "child": "caci:Events/00023/investigate-cluster",
+          "child": "caci_ta1:Events/00023/investigate-cluster",
           "optional": true,
           "importance": 0.3,
           "comment": "Repeatable events need to be expanded by TA2 as distinct events at instantiation time.",
           "repeatable": true,
-          "outlinks": "caci:Events/00024/announce-outbreak"
+          "outlinks": "caci_ta1:Events/00024/announce-outbreak"
         },
         {
-          "child": "caci:Events/00024/announce-outbreak",
-          "outlinks": "caci:Events/00025/investigate-origin-propagation"
+          "child": "caci_ta1:Events/00024/announce-outbreak",
+          "outlinks": "caci_ta1:Events/00025/investigate-origin-propagation"
         },
         {
-          "child": "caci:Events/00025/investigate-origin-propagation",
+          "child": "caci_ta1:Events/00025/investigate-origin-propagation",
           "optional": true,
           "importance": 0.5,
-          "outlinks": "caci:Events/00026/research-antidote"
+          "outlinks": "caci_ta1:Events/00026/research-antidote"
         },
         {
-          "child": "caci:Events/00026/research-antidote",
+          "child": "caci_ta1:Events/00026/research-antidote",
           "importance": 0.4,
-          "outlinks": "caci:Events/00027/epidemiologist-educate"
+          "outlinks": "caci_ta1:Events/00027/epidemiologist-educate"
         },
         {
-          "child": "caci:Events/00027/epidemiologist-educate",
+          "child": "caci_ta1:Events/00027/epidemiologist-educate",
           "optional": true,
           "importance": 0.7
         }
       ]
     },
     {
-      "@id": "caci:Events/00022/learn-about-disease",
+      "@id": "caci_ta1:Events/00022/learn-about-disease",
       "name": "Learn",
       "description": "Event type in which epidemiologists learn about a disease",
       "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
@@ -567,19 +567,19 @@
       "qlabel": "discovery",
       "participants": [
         {
-          "@id": "caci:Participants/00037/learn-about-disease",
+          "@id": "caci_ta1:Participants/00037/learn-about-disease",
           "roleName": "A0-Agent",
-          "entity": "caci:Entities/00008/epidemiologist"
+          "entity": "caci_ta1:Entities/00008/epidemiologist"
         },
         {
-          "@id": "caci:Participants/00038/learn-about-disease",
+          "@id": "caci_ta1:Participants/00038/learn-about-disease",
           "roleName": "A1-Disease",
-          "entity": "caci:Entities/00009/disease"
+          "entity": "caci_ta1:Entities/00009/disease"
         }
       ]
     },
     {
-      "@id": "caci:Events/00023/investigate-cluster",
+      "@id": "caci_ta1:Events/00023/investigate-cluster",
       "name": "Investigate",
       "description": "Event type in which epidemiologists investigate clusters",
       "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
@@ -587,19 +587,19 @@
       "qlabel": "research project",
       "participants": [
         {
-          "@id": "caci:Participants/00039/investigate-cluster",
+          "@id": "caci_ta1:Participants/00039/investigate-cluster",
           "roleName": "A0-Agent",
-          "entity": "caci:Entities/00008/epidemiologist"
+          "entity": "caci_ta1:Entities/00008/epidemiologist"
         },
         {
-          "@id": "caci:Participants/00040/investigate-cluster",
+          "@id": "caci_ta1:Participants/00040/investigate-cluster",
           "roleName": "A1-Cluster",
-          "entity": "caci:Entities/00010/cluster"
+          "entity": "caci_ta1:Entities/00010/cluster"
         }
       ]
     },
     {
-      "@id": "caci:Events/00024/announce-outbreak",
+      "@id": "caci_ta1:Events/00024/announce-outbreak",
       "name": "Announce",
       "description": "Event type in which epidemiologists announce outbreak",
       "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
@@ -607,19 +607,19 @@
       "qlabel": "public statement",
       "participants": [
         {
-          "@id": "caci:Participants/00041/announce-outbreak",
+          "@id": "caci_ta1:Participants/00041/announce-outbreak",
           "roleName": "A0-pag_agent_announcer",
-          "entity": "caci:Entities/00008/epidemiologist"
+          "entity": "caci_ta1:Entities/00008/epidemiologist"
         },
         {
-          "@id": "caci:Participants/00042/announce-outbreak",
+          "@id": "caci_ta1:Participants/00042/announce-outbreak",
           "roleName": "A2-gol_recipient_hearer",
-          "entity": "caci:Entities/00012/public"
+          "entity": "caci_ta1:Entities/00012/public"
         }
       ]
     },
     {
-      "@id": "caci:Events/00025/investigate-origin-propagation",
+      "@id": "caci_ta1:Events/00025/investigate-origin-propagation",
       "name": "Research",
       "description": "Event type in which epidemiologists investigate the origins and propagation of a disease",
       "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
@@ -627,19 +627,19 @@
       "qlabel": "medical research",
       "participants": [
         {
-          "@id": "caci:Participants/00043/investigate-origin-propagation",
+          "@id": "caci_ta1:Participants/00043/investigate-origin-propagation",
           "roleName": "A0-Agent",
-          "entity": "caci:Entities/00008/epidemiologist"
+          "entity": "caci_ta1:Entities/00008/epidemiologist"
         },
         {
-          "@id": "caci:Participants/00044/investigate-origin-propagation",
+          "@id": "caci_ta1:Participants/00044/investigate-origin-propagation",
           "roleName": "A1-Disease",
-          "entity": "caci:Entities/00011/pathogen-2"
+          "entity": "caci_ta1:Entities/00011/pathogen-2"
         }
       ]
     },
     {
-      "@id": "caci:Events/00026/research-antidote",
+      "@id": "caci_ta1:Events/00026/research-antidote",
       "name": "Research",
       "description": "Event type in which epidemiologists research vaccines and other antidotes for a disease",
       "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
@@ -648,70 +648,70 @@
       "qlabel": "medical research",
       "participants": [
         {
-          "@id": "caci:Participants/00045/research-antidote",
+          "@id": "caci_ta1:Participants/00045/research-antidote",
           "roleName": "A0-Agent",
-          "entity": "caci:Entities/00008/epidemiologist"
+          "entity": "caci_ta1:Entities/00008/epidemiologist"
         },
         {
-          "@id": "caci:Participants/00046/research-antidote",
+          "@id": "caci_ta1:Participants/00046/research-antidote",
           "roleName": "A0-Antidote",
-          "entity": "caci:Entities/00013/antidote"
+          "entity": "caci_ta1:Entities/00013/antidote"
         }
       ]
     },
     {
-      "@id": "caci:Events/00027/epidemiologist-educate",
+      "@id": "caci_ta1:Events/00027/epidemiologist-educate",
       "name": "Educate",
       "description": "Schema in which epidemiologists carry out their educational mission",
       "qnode": "wd:Q8434",
       "qlabel": "education",
       "participants": [
         {
-          "@id": "caci:Participants/00047/epidemiologist-educate",
+          "@id": "caci_ta1:Participants/00047/epidemiologist-educate",
           "roleName": "A0-pag_agent_teacher",
-          "entity": "caci:Entities/00008/epidemiologist"
+          "entity": "caci_ta1:Entities/00008/epidemiologist"
         },
         {
-          "@id": "caci:Participants/00048/epidemiologist-educate",
+          "@id": "caci_ta1:Participants/00048/epidemiologist-educate",
           "roleName": "A1-PPT_topic_subject",
-          "entity": "caci:Entities/00009/disease"
+          "entity": "caci_ta1:Entities/00009/disease"
         },
         {
-          "@id": "caci:Participants/00049/epidemiologist-educate",
+          "@id": "caci_ta1:Participants/00049/epidemiologist-educate",
           "comment": "Just like in Phase I, multiple participants can share the same role.",
           "roleName": "A2-gol_recipient_student",
-          "entity": "caci:Entities/00014/healthcare-sector"
+          "entity": "caci_ta1:Entities/00014/healthcare-sector"
         },
         {
-          "@id": "caci:Participants/00050/epidemiologist-educate",
+          "@id": "caci_ta1:Participants/00050/epidemiologist-educate",
           "roleName": "A2-gol_recipient_student",
-          "entity": "caci:Entities/00015/manufacturer"
+          "entity": "caci_ta1:Entities/00015/manufacturer"
         },
         {
-          "@id": "caci:Participants/00051/epidemiologist-educate",
+          "@id": "caci_ta1:Participants/00051/epidemiologist-educate",
           "roleName": "A2-gol_recipient_student",
-          "entity": "caci:Entities/00016/authority"
+          "entity": "caci_ta1:Entities/00016/authority"
         }
       ],
       "children_gate": "and",
       "children": [
         {
-          "child": "caci:Events/00028/educate-healthcare",
+          "child": "caci_ta1:Events/00028/educate-healthcare",
           "importance": 0.8
         },
         {
-          "child": "caci:Events/00029/educate-manufacturer",
+          "child": "caci_ta1:Events/00029/educate-manufacturer",
           "importance": 0.4,
           "optional": true
         },
         {
-          "child": "caci:Events/00030/educate-authority",
+          "child": "caci_ta1:Events/00030/educate-authority",
           "importance": 0.8
         }
       ]
     },
     {
-      "@id": "caci:Events/00028/educate-healthcare",
+      "@id": "caci_ta1:Events/00028/educate-healthcare",
       "name": "Educate",
       "description": "Event types in which epidemiologists educate healthcare workers",
       "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
@@ -719,24 +719,24 @@
       "qlabel": "education",
       "participants": [
         {
-          "@id": "caci:Participants/00052/educate-healthcare",
+          "@id": "caci_ta1:Participants/00052/educate-healthcare",
           "roleName": "A0-pag_agent_teacher",
-          "entity": "caci:Entities/00008/epidemiologist"
+          "entity": "caci_ta1:Entities/00008/epidemiologist"
         },
         {
-          "@id": "caci:Participants/00053/educate-healthcare",
+          "@id": "caci_ta1:Participants/00053/educate-healthcare",
           "roleName": "A1-PPT_topic_subject",
-          "entity": "caci:Entities/00009/disease"
+          "entity": "caci_ta1:Entities/00009/disease"
         },
         {
-          "@id": "caci:Participants/00054/educate-healthcare",
+          "@id": "caci_ta1:Participants/00054/educate-healthcare",
           "roleName": "A2-gol_recipient_student",
-          "entity": "caci:Entities/00014/healthcare-sector"
+          "entity": "caci_ta1:Entities/00014/healthcare-sector"
         }
       ]
     },
     {
-      "@id": "caci:Events/00029/educate-manufacturer",
+      "@id": "caci_ta1:Events/00029/educate-manufacturer",
       "name": "Educate",
       "description": "Event type in which epidemiologists educate pharmaceutical manufacturers",
       "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
@@ -744,24 +744,24 @@
       "qlabel": "education",
       "participants": [
         {
-          "@id": "caci:Participants/00055/educate-manufacturer",
+          "@id": "caci_ta1:Participants/00055/educate-manufacturer",
           "roleName": "A0-pag_agent_teacher",
-          "entity": "caci:Entities/00008/epidemiologist"
+          "entity": "caci_ta1:Entities/00008/epidemiologist"
         },
         {
-          "@id": "caci:Participants/00056/educate-manufacturer",
+          "@id": "caci_ta1:Participants/00056/educate-manufacturer",
           "roleName": "A1-PPT_topic_subject",
-          "entity": "caci:Entities/00009/disease"
+          "entity": "caci_ta1:Entities/00009/disease"
         },
         {
-          "@id": "caci:Participants/00057/educate-manufacturer",
+          "@id": "caci_ta1:Participants/00057/educate-manufacturer",
           "roleName": "A2-gol_recipient_student",
-          "entity": "caci:Entities/00015/manufacturer"
+          "entity": "caci_ta1:Entities/00015/manufacturer"
         }
       ]
     },
     {
-      "@id": "caci:Events/00030/educate-authority",
+      "@id": "caci_ta1:Events/00030/educate-authority",
       "name": "Educate",
       "description": "Event type in which epidemiologists educate government authorities",
       "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
@@ -769,24 +769,24 @@
       "qlabel": "education",
       "participants": [
         {
-          "@id": "caci:Participants/00058/educate-authority",
+          "@id": "caci_ta1:Participants/00058/educate-authority",
           "roleName": "A0-pag_agent_teacher",
-          "entity": "caci:Entities/00008/epidemiologist"
+          "entity": "caci_ta1:Entities/00008/epidemiologist"
         },
         {
-          "@id": "caci:Participants/00059/educate-authority",
+          "@id": "caci_ta1:Participants/00059/educate-authority",
           "roleName": "A1-PPT_topic_subject",
-          "entity": "caci:Entities/00009/disease"
+          "entity": "caci_ta1:Entities/00009/disease"
         },
         {
-          "@id": "caci:Participants/00060/educate-authority",
+          "@id": "caci_ta1:Participants/00060/educate-authority",
           "roleName": "A2-gol_recipient_student",
-          "entity": "caci:Entities/00016/authority"
+          "entity": "caci_ta1:Entities/00016/authority"
         }
       ]
     },
     {
-      "@id": "caci:Events/00031/healthworker-response",
+      "@id": "caci_ta1:Events/00031/healthworker-response",
       "name": "Health worker response",
       "description": "Schema for the response of a health worker to a health crisis",
       "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
@@ -796,7 +796,7 @@
       "participants": []
     },
     {
-      "@id": "caci:Events/00032/authority-response",
+      "@id": "caci_ta1:Events/00032/authority-response",
       "name": "Authority response",
       "description": "Schema for the response of an authority to a health crisis",
       "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
@@ -806,7 +806,7 @@
       "participants": []
     },
     {
-      "@id": "caci:Events/00033/manufacturer-do-involvement",
+      "@id": "caci_ta1:Events/00033/manufacturer-do-involvement",
       "name": "Manufacturer DO involvement",
       "description": "Schema for the involvement of a pharmaceutical manufacturer in a disease outbreak",
       "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
@@ -816,7 +816,7 @@
       "participants": []
     },
     {
-      "@id": "caci:Events/00034/business-do-response",
+      "@id": "caci_ta1:Events/00034/business-do-response",
       "name": "Business response",
       "description": "Schema for the response of a business to a disease outbreak",
       "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
@@ -828,107 +828,107 @@
   ],
   "entities": [
     {
-      "@id": "caci:Entities/00001/pathogen",
+      "@id": "caci_ta1:Entities/00001/pathogen",
       "name": "Pathogen",
       "qnode": "wd:Q170065",
       "qlabel": "pathogen",
       "centrality": 0.9
     },
     {
-      "@id": "caci:Entities/00002/society",
+      "@id": "caci_ta1:Entities/00002/society",
       "name": "Society",
       "qnode": "wd:Q8425",
       "qlabel": "society"
     },
     {
-      "@id": "caci:Entities/00003/patient",
+      "@id": "caci_ta1:Entities/00003/patient",
       "name": "Patient",
       "qnode": "wd:Q181600",
       "qlabel": "patient",
       "centrality": 1
     },
     {
-      "@id": "caci:Entities/00004/patient-1",
+      "@id": "caci_ta1:Entities/00004/patient-1",
       "name": "Patient",
       "qnode": "wd:Q181600",
       "qlabel": "patient"
     },
     {
-      "@id": "caci:Entities/00005/medical-professional",
+      "@id": "caci_ta1:Entities/00005/medical-professional",
       "name": "Medical Professional",
       "qnode": "wd:Q11974939",
       "qlabel": "health professional",
       "centrality": 0.9
     },
     {
-      "@id": "caci:Entities/00006/pathogen-1",
+      "@id": "caci_ta1:Entities/00006/pathogen-1",
       "name": "Pathogen",
       "qnode": "wd:Q170065",
       "qlabel": "pathogen"
     },
     {
-      "@id": "caci:Entities/00007/medication",
+      "@id": "caci_ta1:Entities/00007/medication",
       "name": "Medication",
       "qnode": "wd:Q12140",
       "qlabel": "medication"
     },
     {
-      "@id": "caci:Entities/00008/epidemiologist",
+      "@id": "caci_ta1:Entities/00008/epidemiologist",
       "name": "Epidemiologist",
       "qnode": "wd:Q13416803",
       "qlabel": "epidemiologist",
       "centrality": 0.8
     },
     {
-      "@id": "caci:Entities/00009/disease",
+      "@id": "caci_ta1:Entities/00009/disease",
       "name": "Disease",
       "qnode": "wd:Q12136",
       "qlabel": "disease"
     },
     {
-      "@id": "caci:Entities/00010/cluster",
+      "@id": "caci_ta1:Entities/00010/cluster",
       "name": "Cluster",
       "qnode": "wd:Q21157127",
       "qlabel": "cluster"
     },
     {
-      "@id": "caci:Entities/00011/pathogen-2",
+      "@id": "caci_ta1:Entities/00011/pathogen-2",
       "name": "Pathogen",
       "qnode": "wd:Q170065",
       "qlabel": "pathogen"
     },
     {
-      "@id": "caci:Entities/00012/public",
+      "@id": "caci_ta1:Entities/00012/public",
       "name": "Public",
       "qnode": "wd:Q2388316",
       "qlabel": "public"
     },
     {
-      "@id": "caci:Entities/00013/antidote",
+      "@id": "caci_ta1:Entities/00013/antidote",
       "name": "Antidote",
       "qnode": "wd:Q12140",
       "qlabel": "medication"
     },
     {
-      "@id": "caci:Entities/00014/healthcare-sector",
+      "@id": "caci_ta1:Entities/00014/healthcare-sector",
       "name": "Healthcare Sector",
       "qnode": "wd:Q31207",
       "qlabel": "health care"
     },
     {
-      "@id": "caci:Entities/00015/manufacturer",
+      "@id": "caci_ta1:Entities/00015/manufacturer",
       "name": "Pharmaceutical Manufacturers",
       "qnode": "wd:Q507443",
       "qlabel": "pharmaceutical industry"
     },
     {
-      "@id": "caci:Entities/00016/authority",
+      "@id": "caci_ta1:Entities/00016/authority",
       "name": "Government Authority",
       "qnode": "wd:Q2659904",
       "qlabel": "government organization"
     },
     {
-      "@id": "caci:Entities/00018/location",
+      "@id": "caci_ta1:Entities/00018/location",
       "name": "Contaminant Location",
       "qnode": "wd:Q2221906",
       "qlabel": "geographic location"
@@ -936,55 +936,55 @@
   ],
   "relations": [
     {
-      "@id": "caci:Relations/00002/",
+      "@id": "caci_ta1:Relations/00002/",
       "name": "pathogen from pathogen-progression schema has an equivalence relation to the pathogen in the patient-progression schema",
-      "relationSubject": "caci:Entities/00001/pathogen",
+      "relationSubject": "caci_ta1:Entities/00001/pathogen",
       "relationPredicate": "wd:Q26161438",
-      "relationObject": "caci:Entities/00006/pathogen-1"
+      "relationObject": "caci_ta1:Entities/00006/pathogen-1"
     },
     {
-      "@id": "caci:Relations/00003/",
+      "@id": "caci_ta1:Relations/00003/",
       "name": "pathogen from pathogen-progression schema has an equivalence relation to the pathogen in the epidemiologist response schema",
-      "relationSubject": "caci:Entities/00001/pathogen",
+      "relationSubject": "caci_ta1:Entities/00001/pathogen",
       "relationPredicate": "wd:Q26161438",
-      "relationObject": "caci:Entities/00011/pathogen-2"
+      "relationObject": "caci_ta1:Entities/00011/pathogen-2"
     },
     {
-      "@id": "caci:Relations/00004/",
+      "@id": "caci_ta1:Relations/00004/",
       "name": "patient from patient-progression schema has an equivalence relation to the patient in the healthworker-response schema",
-      "relationSubject": "caci:Entities/00003/patient",
+      "relationSubject": "caci_ta1:Entities/00003/patient",
       "relationPredicate": "wd:Q26161438",
-      "relationObject": "caci:Entities/00004/patient-1",
+      "relationObject": "caci_ta1:Entities/00004/patient-1",
       "centrality": 0.9
     },
     {
-      "@id": "caci:Relations/00005/",
+      "@id": "caci_ta1:Relations/00005/",
       "comment": "relation names (labels) are helpful to human assessors, but are not required at this point.",
-      "relationSubject": "caci:Events/00006/pathogen-infect-patient",
+      "relationSubject": "caci_ta1:Events/00006/pathogen-infect-patient",
       "relationPredicate": "wd:Q26161438",
-      "relationObject": "caci:Events/00012/patient-contract-disease"
+      "relationObject": "caci_ta1:Events/00012/patient-contract-disease"
     },
     {
-      "@id": "caci:Relations/00006/",
+      "@id": "caci_ta1:Relations/00006/",
       "name": "The pathogen progression schema overlaps the other schemas.",
       "comment": "Temporal relations must be taken from a subset of Wikidata temporal relations (see the SDF documentation).",
-      "relationSubject": "caci:Events/00001/pathogen-progression",
+      "relationSubject": "caci_ta1:Events/00001/pathogen-progression",
       "relationPredicate": "wd:Q65560376",
       "relationObject": [
-        "caci:Events/00010/patient-progression",
-        "caci:Events/00031/healthworker-response",
-        "caci:Events/00021/epidemiologist-response",
-        "caci:Events/00032/authority-response",
-        "caci:Events/00033/manufacturer-do-involvement",
-        "caci:Events/00034/business-do-response"
+        "caci_ta1:Events/00010/patient-progression",
+        "caci_ta1:Events/00031/healthworker-response",
+        "caci_ta1:Events/00021/epidemiologist-response",
+        "caci_ta1:Events/00032/authority-response",
+        "caci_ta1:Events/00033/manufacturer-do-involvement",
+        "caci_ta1:Events/00034/business-do-response"
       ]
     },
     {
-      "@id": "caci:Relations/00007/",
+      "@id": "caci_ta1:Relations/00007/",
       "name": "'Live in body' event from the pathogen-progression schema has an equivalence relation to the 'Patient gets sick' event from the patient-progression schema",
-      "relationSubject": "caci:Events/00007/pathogen-live-in-body",
+      "relationSubject": "caci_ta1:Events/00007/pathogen-live-in-body",
       "relationPredicate": "wd:Q26161438",
-      "relationObject": "caci:Events/00013/patient-get-sick"
+      "relationObject": "caci_ta1:Events/00013/patient-get-sick"
     }
   ]
 }
