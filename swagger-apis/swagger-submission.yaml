@@ -21,8 +21,39 @@ paths:
       responses:
         '200':
           description: OK
+  /kairos/hrf:
+    post:
+      summary: Performer HRF submission entry point.
+      description: Allows performer to submit HRF files.
+      requestBody:
+        description: Contains the HRF file payload to be saved to S3.
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/hrfSubmissionMessage'
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Missing required fields
 components:
   schemas:
+    hrfSubmissionMessage:
+      type: object
+      required:
+        - runId
+        - performername
+        - file
+      properties:
+        runId:
+          type: string
+        performername:
+          type: string
+          example: "ibm"
+        file:
+          type: string
+          format: binary
     submissionMessage:
       type: object
       required:
