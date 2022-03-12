@@ -36,12 +36,20 @@
           "qlabel": "existence",
           "comment": "If a schema event is not found in the documents or Graph G, then it is a prediction.  TA2 must specify predictionProvenance and confidence in the prediction. If the only reason the event is predicted is that it's in the schema, then specify the event @id as predictionProvenance.",
           "confidence": 0.25,
-          "predictionProvenance": "caci_ta2:Events/00002/pathogen-come-into-being",
+          "predictionProvenance": [
+            "caci_ta2:Events/00002/pathogen-come-into-being",
+            "caci_ta2:Entities/00002/Legionella"
+          ],
           "participants": [
             {
               "@id": "caci_ta2:Participants/00004/come-into-being",
               "roleName": "A0-Agent",
-              "entity": "caci_ta2:Entities/00001/pathogen"
+              "entity": "caci_ta2:Entities/00001/pathogen",
+              "values": {
+                "ta2entity": "caci_ta2:Entities/00002/Legionella",
+                "provenance": "caci_ta2:Provenance/00011/",
+                "confidence": 0.9
+              }
             }
           ]
         },
@@ -54,12 +62,20 @@
           "qnode": "wd:Q23013246",
           "qlabel": "copy",
           "confidence": 0.25,
-          "predictionProvenance": "caci_ta2:Events/00003/pathogen-replicate",
+          "predictionProvenance": [
+            "caci_ta2:Events/00003/pathogen-replicate",
+            "caci_ta2:Entities/00002/Legionella"
+          ],
           "participants": [
             {
               "@id": "caci_ta2:Participants/00097/pathogen-replicate",
               "roleName": "A0-Agent",
-              "entity": "caci_ta2:Entities/00001/pathogen"
+              "entity": "caci_ta2:Entities/00001/pathogen",
+              "values": {
+                "ta2entity": "caci_ta2:Entities/00002/Legionella",
+                "provenance": "caci_ta2:Provenance/00011/",
+                "confidence": 0.9
+              }
             }
           ]
         },
@@ -79,17 +95,31 @@
             "go"
           ],
           "confidence": 0.25,
-          "predictionProvenance": "caci_ta2:Events/00005/pathogen-escape",
+          "predictionProvenance": [
+            "caci_ta2:Events/00005/pathogen-escape",
+            "caci_ta2:Entities/00002/Legionella",
+            "caci_ta2:Entities/00006/Ray_Brennan"
+          ],
           "participants": [
             {
               "@id": "caci_ta2:Participants/00007/pathogen-escape",
               "roleName": "A0-Agent",
-              "entity": "caci_ta2:Entities/00001/pathogen"
+              "entity": "caci_ta2:Entities/00001/pathogen",
+              "values": {
+                "ta2entity": "caci_ta2:Entities/00002/Legionella",
+                "provenance": "caci_ta2:Provenance/00011/",
+                "confidence": 0.9
+              }
             },
             {
               "@id": "caci_ta2:Participants/00008/pathogen-escape",
               "roleName": "A1-Patient",
-              "entity": "caci_ta2:Entities/00005/patient"
+              "entity": "caci_ta2:Entities/00005/patient",
+              "values": {
+                "ta2entity": "caci_ta2:Entities/00006/Ray_Brennan",
+                "provenance": "caci_ta2:Provenance/00011/",
+                "confidence": 0.9
+              }
             }
           ]
         },
@@ -206,17 +236,22 @@
           "confidence": "0.8",
           "predictionProvenance": [
             "caci_ta2:Events/00019/patient-die",
-            "caci_ta2:Entities/00006/Ray_Brennan"
+            "caci_ta2:Entities/00002/Legionella"
           ],
           "participants": [
             {
               "@id": "caci_ta2:Participants/00015/pathogen-decrease",
               "roleName": "A0-Agent",
-              "entity": "caci_ta2:Entities/00001/pathogen"
+              "entity": "caci_ta2:Entities/00001/pathogen",
+              "values": {
+                "ta2entity": "caci_ta2:Entities/00002/Legionella",
+                "provenance": "caci_ta2:Provenance/00011/",
+                "confidence": 0.9
+              }
             },
             {
               "@id": "caci_ta2:Participants/00016/pathogen-decrease",
-              "roleName": "A1-Patient",
+              "roleName": "X1-Location",
               "entity": "caci_ta2:Entities/00003/society"
             }
           ]
@@ -235,7 +270,7 @@
             {
               "@id": "caci_ta2:Participants/00018/patient-travels-to-contaminant",
               "roleName": "A0-pag_agent_mover",
-              "entity": "caci_ta2:Entities/00005/patient",
+              "entity": "caci_ta2:Entities/00009/patient-1",
               "values": {
                 "ta2entity": "caci_ta2:Entities/00006/Ray_Brennan",
                 "provenance": "caci_ta2:Provenance/00012/",
@@ -265,13 +300,19 @@
           "confidence": 0.7,
           "predictionProvenance": [
             "caci_ta2:Events/00013/patient-get-sick",
-            "caci_ta2:Relations/00006/patient-lives-in-PA"
+            "caci_ta2:Relations/00006/patient-lives-in-PA",
+            "caci_ta2:Entities/00006/Ray_Brennan"
           ],
           "participants": [
             {
               "@id": "caci_ta2:Participants/00020/patient-contract-disease",
               "roleName": "A1-gol_thing_becoming_infected",
-              "entity": "caci_ta2:Entities/00005/patient"
+              "entity": "caci_ta2:Entities/00009/patient-1",
+              "values": {
+                "ta2entity": "caci_ta2:Entities/00006/Ray_Brennan",
+                "provenance": "caci_ta2:Provenance/00012/",
+                "confidence": 0.9
+              }
             },
             {
               "@id": "caci_ta2:Participants/00021/patient-contract-disease",
@@ -294,7 +335,7 @@
             {
               "@id": "caci_ta2:Participants/00022/patient-get-sick",
               "roleName": "A1-ppt_X_sick/ill_one",
-              "entity": "caci_ta2:Entities/00005/patient",
+              "entity": "caci_ta2:Entities/00009/patient-1",
               "values": {
                 "ta2entity": "caci_ta2:Entities/00006/Ray_Brennan",
                 "provenance": "caci_ta2:Provenance/00012/",
@@ -328,7 +369,7 @@
             {
               "@id": "caci_ta2:Participants/00024/patient-diagnosed",
               "roleName": "A1-ppt_theme_patient",
-              "entity": "caci_ta2:Entities/00005/patient",
+              "entity": "caci_ta2:Entities/00009/patient-1",
               "values": [
                 {
                   "ta2entity": "caci_ta2:Entities/00006/Ray_Brennan",
@@ -369,7 +410,12 @@
             {
               "@id": "caci_ta2:Participants/00026/patient-be-treated",
               "roleName": "A1-ppt_X_patient",
-              "entity": "caci_ta2:Entities/00005/patient"
+              "entity": "caci_ta2:Entities/00009/patient-1",
+              "values": {
+                "ta2entity": "caci_ta2:Entities/00006/Ray_Brennan",
+                "provenance": "caci_ta2:Provenance/00012/",
+                "confidence": 0.9
+              }
             }
           ]
         },
@@ -389,12 +435,20 @@
             "treatment adherence and compliance"
           ],
           "confidence": 0.25,
-          "predictionProvenance": "caci_ta2:Events/00016/patient-change-life-pattern",
+          "predictionProvenance": [
+            "caci_ta2:Events/00016/patient-change-life-pattern",
+            "caci_ta2:Entities/00006/Ray_Brennan"
+          ],
           "participants": [
             {
               "@id": "caci_ta2:Participants/00027/patient-change-life-pattern",
               "roleName": "A0-pag_X_complier",
-              "entity": "caci_ta2:Entities/00005/patient"
+              "entity": "caci_ta2:Entities/00009/patient-1",
+              "values": {
+                "ta2entity": "caci_ta2:Entities/00006/Ray_Brennan",
+                "provenance": "caci_ta2:Provenance/00012/",
+                "confidence": 0.9
+              }
             }
           ]
         },
@@ -418,7 +472,7 @@
             {
               "@id": "caci_ta2:Participants/00028/patient-get-meds",
               "roleName": "A1-ppt_X_patient_inoculated",
-              "entity": "caci_ta2:Entities/00005/patient",
+              "entity": "caci_ta2:Entities/00009/patient-1",
               "values": [
                 {
                   "ta2entity": "caci_ta2:Entities/00006/Ray_Brennan",
@@ -460,7 +514,7 @@
             {
               "@id": "caci_ta2:Participants/00031/patient-die",
               "roleName": "A1-ppt_the_deceased",
-              "entity": "caci_ta2:Entities/00005/patient",
+              "entity": "caci_ta2:Entities/00009/patient-1",
               "values": {
                 "ta2entity": "caci_ta2:Entities/00006/Ray_Brennan",
                 "provenance": "caci_ta2:Provenance/00012/",
@@ -478,12 +532,20 @@
           "qnode": "wd:Q12772819",
           "qlabel": "discovery",
           "confidence": 0.25,
-          "predictionProvenance": "caci_ta2:Events/00022/learn-about-disease",
+          "predictionProvenance": [
+            "caci_ta2:Events/00022/learn-about-disease",
+            "caci_ta2:Entities/00025/PA_Health_Dept"
+          ],
           "participants": [
             {
               "@id": "caci_ta2:Participants/00034/learn-about-disease",
               "roleName": "A0-Agent",
-              "entity": "caci_ta2:Entities/00013/epidemiologist"
+              "entity": "caci_ta2:Entities/00013/epidemiologist",
+              "values": {
+                "ta2entity": "caci_ta2:Entities/00025/PA_Health_Dept",
+                "provenance": "caci_ta2:Provenance/00012/",
+                "confidence": 0.7
+              }
             },
             {
               "@id": "caci_ta2:Participants/00035/learn-about-disease",
@@ -501,12 +563,20 @@
           "qnode": "wd:Q1298668",
           "qlabel": "research project",
           "confidence": 0.25,
-          "predictionProvenance": "caci_ta2:Events/00023/investigate-cluster",
+          "predictionProvenance": [
+            "caci_ta2:Events/00023/investigate-cluster",
+            "caci_ta2:Entities/00025/PA_Health_Dept"
+          ],
           "participants": [
             {
               "@id": "caci_ta2:Participants/00036/investigate-cluster",
               "roleName": "A0-Agent",
-              "entity": "caci_ta2:Entities/00013/epidemiologist"
+              "entity": "caci_ta2:Entities/00013/epidemiologist",
+              "values": {
+                "ta2entity": "caci_ta2:Entities/00025/PA_Health_Dept",
+                "provenance": "caci_ta2:Provenance/00012/",
+                "confidence": 0.7
+              }
             },
             {
               "@id": "caci_ta2:Participants/00037/investigate-cluster",
@@ -524,12 +594,20 @@
           "qnode": "wd:Q52947181",
           "qlabel": "public statement",
           "confidence": 0.25,
-          "predictionProvenance": "caci_ta2:Events/00024/announce-outbreak",
+          "predictionProvenance": [
+            "caci_ta2:Events/00024/announce-outbreak",
+            "caci_ta2:Entities/00025/PA_Health_Dept"
+          ],
           "participants": [
             {
               "@id": "caci_ta2:Participants/00038/announce-outbreak",
               "roleName": "A0-pag_agent_announcer",
-              "entity": "caci_ta2:Entities/00013/epidemiologist"
+              "entity": "caci_ta2:Entities/00013/epidemiologist",
+              "values": {
+                "ta2entity": "caci_ta2:Entities/00025/PA_Health_Dept",
+                "provenance": "caci_ta2:Provenance/00012/",
+                "confidence": 0.7
+              }
             },
             {
               "@id": "caci_ta2:Participants/00039/announce-outbreak",
@@ -547,12 +625,20 @@
           "qnode": "wd:Q2752427",
           "qlabel": "medical research",
           "confidence": 0.25,
-          "predictionProvenance": "caci_ta2:Events/00025/investigate-origin-propagation",
+          "predictionProvenance": [
+            "caci_ta2:Events/00025/investigate-origin-propagation",
+            "caci_ta2:Entities/00025/PA_Health_Dept"
+          ],
           "participants": [
             {
               "@id": "caci_ta2:Participants/00040/investigate-origin-propagation",
               "roleName": "A0-Agent",
-              "entity": "caci_ta2:Entities/00013/epidemiologist"
+              "entity": "caci_ta2:Entities/00013/epidemiologist",
+              "values": {
+                "ta2entity": "caci_ta2:Entities/00025/PA_Health_Dept",
+                "provenance": "caci_ta2:Provenance/00012/",
+                "confidence": 0.7
+              }
             },
             {
               "@id": "caci_ta2:Participants/00041/investigate-origin-propagation",
@@ -571,12 +657,20 @@
           "qnode": "wd:Q2752427",
           "qlabel": "medical research",
           "confidence": 0.5,
-          "predictionProvenance": "caci_ta2:Events/00031/epidemiologist-publish",
+          "predictionProvenance": [
+            "caci_ta2:Events/00031/epidemiologist-publish",
+            "caci_ta2:Entities/00025/PA_Health_Dept"
+          ],
           "participants": [
             {
               "@id": "caci_ta2:Participants/00042/epidemiologist",
               "roleName": "A0-Agent",
-              "entity": "caci_ta2:Entities/00013/epidemiologist"
+              "entity": "caci_ta2:Entities/00013/epidemiologist",
+              "values": {
+                "ta2entity": "caci_ta2:Entities/00025/PA_Health_Dept",
+                "provenance": "caci_ta2:Provenance/00012/",
+                "confidence": 0.7
+              }
             },
             {
               "@id": "caci_ta2:Participants/00043/research-antidote",
@@ -594,12 +688,20 @@
           "qnode": "wd:Q8434",
           "qlabel": "education",
           "confidence": 0.25,
-          "predictionProvenance": "caci_ta2:Events/00028/educate-healthcare",
+          "predictionProvenance": [
+            "caci_ta2:Events/00028/educate-healthcare",
+            "caci_ta2:Entities/00025/PA_Health_Dept"
+          ],
           "participants": [
             {
               "@id": "caci_ta2:Participants/00049/educate-healthcare",
               "roleName": "A0-pag_agent_teacher",
-              "entity": "caci_ta2:Entities/00013/epidemiologist"
+              "entity": "caci_ta2:Entities/00013/epidemiologist",
+              "values": {
+                "ta2entity": "caci_ta2:Entities/00025/PA_Health_Dept",
+                "provenance": "caci_ta2:Provenance/00012/",
+                "confidence": 0.7
+              }
             },
             {
               "@id": "caci_ta2:Participants/00050/educate-healthcare",
@@ -622,12 +724,20 @@
           "qnode": "wd:Q8434",
           "qlabel": "education",
           "confidence": 0.25,
-          "predictionProvenance": "caci_ta2:Events/00029/educate-manufacturer",
+          "predictionProvenance": [
+            "caci_ta2:Events/00029/educate-manufacturer",
+            "caci_ta2:Entities/00025/PA_Health_Dept"
+          ],
           "participants": [
             {
               "@id": "caci_ta2:Participants/00052/educate-manufacturer",
               "roleName": "A0-pag_agent_teacher",
-              "entity": "caci_ta2:Entities/00013/epidemiologist"
+              "entity": "caci_ta2:Entities/00013/epidemiologist",
+              "values": {
+                "ta2entity": "caci_ta2:Entities/00025/PA_Health_Dept",
+                "provenance": "caci_ta2:Provenance/00012/",
+                "confidence": 0.7
+              }
             },
             {
               "@id": "caci_ta2:Participants/00053/educate-manufacturer",
@@ -650,12 +760,20 @@
           "qnode": "wd:Q8434",
           "qlabel": "education",
           "confidence": 0.25,
-          "predictionProvenance": "caci_ta2:Events/00030/educate-authority",
+          "predictionProvenance": [
+            "caci_ta2:Events/00030/educate-authority",
+            "caci_ta2:Entities/00025/PA_Health_Dept"
+          ],
           "participants": [
             {
               "@id": "caci_ta2:Participants/00055/educate-authority",
               "roleName": "A0-pag_agent_teacher",
-              "entity": "caci_ta2:Entities/00013/epidemiologist"
+              "entity": "caci_ta2:Entities/00013/epidemiologist",
+              "values": {
+                "ta2entity": "caci_ta2:Entities/00025/PA_Health_Dept",
+                "provenance": "caci_ta2:Provenance/00012/",
+                "confidence": 0.7
+              }
             },
             {
               "@id": "caci_ta2:Participants/00056/educate-authority",
@@ -686,7 +804,7 @@
               "roleName": "A0-Agent",
               "entity": "caci_ta2:Entities/00013/epidemiologist",
               "values": {
-                "ta2entity": "caci_ta2:Entities/00025/Hippocrates",
+                "ta2entity": "caci_ta2:Entities/00025/PA_Health_Dept",
                 "provenance": "caci_ta2:Provenance/00012/",
                 "confidence": 0.7
               }
@@ -908,11 +1026,11 @@
           "ta2qlabel": "Philadelphia"
         },
         {
-          "@id": "caci_ta2:Entities/00025/Hippocrates",
+          "@id": "caci_ta2:Entities/00025/PA_Health_Dept",
           "comment": "In those rare cases an extracted entity has its own Wikidata entry, it should be used.",
-          "name": "Hippocrates",
-          "ta2qnode": "wd:Q5264",
-          "ta2qlabel": "Hippocrates"
+          "name": "Pennsylvania Department of Health",
+          "ta2qnode": "wd:Q7163712",
+          "ta2qlabel": "Pennsylvania Department of Health"
         }
       ],
       "relations": [
@@ -940,7 +1058,7 @@
           "@id": "caci_ta2:Relations/00004/",
           "ta1ref": "caci_ta1:Relations/00004/",
           "comment": "This is a TA1 relation that was not found in the documents.  Don't specify confidence or provenance.",
-          "name": "patient from patient-progression schema has an equivalence relation to the health-worker in the healthworker-response schema",
+          "name": "patient from pathogen-progression schema has an equivalence relation to the patient in the patient-progression schema",
           "relationSubject": "caci_ta2:Entities/00005/patient",
           "relationPredicate": "wd:Q26161438",
           "relationObject": "caci_ta2:Entities/00009/patient-1"

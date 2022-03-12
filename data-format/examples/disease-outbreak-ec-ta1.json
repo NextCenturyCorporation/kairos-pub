@@ -36,7 +36,7 @@
         {
           "@id": "caci_ta1:Participants/00002/pathogen-progression",
           "roleName": "A1-Patient",
-          "entity": "caci_ta1:Entities/00004/patient-1"
+          "entity": "caci_ta1:Entities/00003/patient"
         },
         {
           "@id": "caci_ta1:Participants/00003/pathogen-progression",
@@ -69,7 +69,7 @@
           "@id": "caci_ta1:Relations/00001/pathogen-progression",
           "comment": "Note that relation triples (with relationPredicates taken from Wikidata) can be defined in any event node.  By convention, relations place in an event should only define relations between child event nodes and/or the node where the relation is defined. This is a silly yet illustrative example.",
           "name": "patient is a member of society",
-          "relationSubject": "caci_ta1:Entities/00004/patient-1",
+          "relationSubject": "caci_ta1:Entities/00003/patient",
           "relationPredicate": "wdt:P463",
           "relationObject": "caci_ta1:Entities/00002/society"
         }
@@ -119,7 +119,7 @@
         {
           "@id": "caci_ta1:Participants/00007/pathogen-spread",
           "roleName": "A1-Patient",
-          "entity": "caci_ta1:Entities/00004/patient-1"
+          "entity": "caci_ta1:Entities/00003/patient"
         }
       ],
       "children_gate": "and",
@@ -224,7 +224,7 @@
         },
         {
           "@id": "caci_ta1:Participants/00015/pathogen-continue",
-          "roleName": "A1-Patient",
+          "roleName": "X1-Location",
           "entity": "caci_ta1:Entities/00002/society"
         }
       ],
@@ -253,7 +253,7 @@
         },
         {
           "@id": "caci_ta1:Participants/00017/pathogen-decrease",
-          "roleName": "A1-Patient",
+          "roleName": "X1-Location",
           "entity": "caci_ta1:Entities/00002/society"
         }
       ]
@@ -266,7 +266,7 @@
         {
           "@id": "caci_ta1:Participants/00018/patient-progression",
           "roleName": "A0-Agent",
-          "entity": "caci_ta1:Entities/00003/patient"
+          "entity": "caci_ta1:Entities/00004/patient-1"
         }
       ],
       "children_gate": "and",
@@ -321,7 +321,7 @@
         {
           "@id": "caci_ta1:Participants/00019/patient-travels-to-contaminant",
           "roleName": "A0-pag_agent_mover",
-          "entity": "caci_ta1:Entities/00003/patient"
+          "entity": "caci_ta1:Entities/00004/patient-1"
         },
         {
           "@id": "caci_ta1:Participants/00020/patient-travels-to-contaminant",
@@ -341,7 +341,7 @@
         {
           "@id": "caci_ta1:Participants/00021/patient-contract-disease",
           "roleName": "A1-gol_thing_becoming_infected",
-          "entity": "caci_ta1:Entities/00003/patient"
+          "entity": "caci_ta1:Entities/00004/patient-1"
         },
         {
           "@id": "caci_ta1:Participants/00022/patient-contract-disease",
@@ -361,7 +361,7 @@
         {
           "@id": "caci_ta1:Participants/00023/patient-get-sick",
           "roleName": "A1-ppt_X_sick/ill_one",
-          "entity": "caci_ta1:Entities/00003/patient"
+          "entity": "caci_ta1:Entities/00004/patient-1"
         }
       ]
     },
@@ -381,7 +381,7 @@
         {
           "@id": "caci_ta1:Participants/00025/patient-diagnosed",
           "roleName": "A1-ppt_theme_patient",
-          "entity": "caci_ta1:Entities/00003/patient"
+          "entity": "caci_ta1:Entities/00004/patient-1"
         }
       ]
     },
@@ -401,7 +401,7 @@
         {
           "@id": "caci_ta1:Participants/00027/patient-be-treated",
           "roleName": "A1-ppt_X_patient",
-          "entity": "caci_ta1:Entities/00003/patient"
+          "entity": "caci_ta1:Entities/00004/patient-1"
         }
       ]
     },
@@ -423,7 +423,7 @@
         {
           "@id": "caci_ta1:Participants/00028/patient-change-life-pattern",
           "roleName": "A0-pag_X_complier",
-          "entity": "caci_ta1:Entities/00003/patient"
+          "entity": "caci_ta1:Entities/00004/patient-1"
         }
       ]
     },
@@ -444,7 +444,7 @@
         {
           "@id": "caci_ta1:Participants/00030/patient-get-meds",
           "roleName": "A1-ppt_X_patient_inoculated",
-          "entity": "caci_ta1:Entities/00003/patient"
+          "entity": "caci_ta1:Entities/00004/patient-1"
         },
         {
           "@id": "caci_ta1:Participants/00031/patient-get-meds",
@@ -461,7 +461,7 @@
         {
           "@id": "caci_ta1:Participants/00032/patient-continue",
           "roleName": "A1-Patient",
-          "entity": "caci_ta1:Entities/00003/patient"
+          "entity": "caci_ta1:Entities/00004/patient-1"
         }
       ],
       "children_gate": "xor",
@@ -485,7 +485,7 @@
         {
           "@id": "caci_ta1:Participants/00033/patient-die",
           "roleName": "A1-ppt_the deceased",
-          "entity": "caci_ta1:Entities/00003/patient"
+          "entity": "caci_ta1:Entities/00004/patient-1"
         }
       ]
     },
@@ -500,7 +500,7 @@
         {
           "@id": "caci_ta1:Participants/00034/patient-improve",
           "roleName": "A1-dir_Source_patient",
-          "entity": "caci_ta1:Entities/00003/patient"
+          "entity": "caci_ta1:Entities/00004/patient-1"
         }
       ]
     },
@@ -951,7 +951,7 @@
     },
     {
       "@id": "caci_ta1:Relations/00004/",
-      "name": "patient from patient-progression schema has an equivalence relation to the patient in the healthworker-response schema",
+      "name": "patient from pathogen-progression schema has an equivalence relation to the patient in the patient-progression schema",
       "relationSubject": "caci_ta1:Entities/00003/patient",
       "relationPredicate": "wd:Q26161438",
       "relationObject": "caci_ta1:Entities/00004/patient-1",
