@@ -42,18 +42,29 @@ components:
     hrfSubmissionMessage:
       type: object
       required:
-        - runId
-        - performername
+        - ceid
+        - experimenttype
         - file
+        - performername
+        - runId
+        - ta1name
       properties:
-        runId:
+        ceid:
           type: string
-        performername:
-          type: string
-          example: "ibm"
+          example: "ce1002"
+        experimenttype:
+          $ref: '#/components/schemas/experimentTypes'
         file:
           type: string
           format: binary
+        performername:
+          type: string
+          example: "ibm"
+        runId:
+          type: string
+        ta1name:
+          type: string
+          example: "sbu"
     submissionMessage:
       type: object
       required:
@@ -64,22 +75,22 @@ components:
         - ceid
         - experimenttype
       properties:
-        runId:
-          type: string
-        performername:
-          type: string
-          example: "ibm"
-        data:
-          type: object
-          example: "Example result document content to be submitted."
-        ta1name:
-          type: string
-          example: "sbu"
         ceid:
           type: string
           example: "ce1002"
+        data:
+          type: object
+          example: "Example result document content to be submitted."
         experimenttype:
           $ref: '#/components/schemas/experimentTypes'
+        performername:
+          type: string
+          example: "ibm"
+        runId:
+          type: string
+        ta1name:
+          type: string
+          example: "sbu"
     experimentTypes:
       type: string
       enum:
