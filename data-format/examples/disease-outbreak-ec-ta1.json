@@ -1,6 +1,6 @@
 {
   "@context": [
-    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v1.4.1.jsonld",
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v2.0.jsonld",
     {
       "caci_ta1": "https://caci.com/kairos/ta1/",
       "my_key": "caci_ta1:my_key",
@@ -8,8 +8,8 @@
     }
   ],
   "@id": "caci_ta1:Submissions/TA1/12345",
-  "sdfVersion": "1.4.1",
-  "version": "caci-02.03.2022",
+  "sdfVersion": "2.0",
+  "version": "caci-03.17.2022",
   "ta2": false,
   "comment": [
     "Example provides representation of E. Hovy's Event Complex schema layout for a disease outbreak.",
