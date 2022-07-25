@@ -1,1462 +1,1633 @@
 {
   "@context": [
-    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v1.0.jsonld",
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v2.1.jsonld",
     {
-      "caci": "https://caci.com/kairos/"
+      "cmu": "https://www.cmu.edu/",
+      "nist": "https://nist.gov/kairos/"
     }
   ],
-  "@id": "ibm:Submissions/TA2/Q3",
-  "ta2": true,
-  "task2": true,
-  "ceID": "ce1001",
-  "sdfVersion": "1.0",
-  "schemas": [
+  "@id": "cmu:Evaluation/GraphG/ce2013",
+  "ceID": "ce2013",
+  "instances": [
     {
-      "@id": "ibm:Schemas/AttackWithDBIED",
-      "super": "sbu:Schemas/AttackWithDBIED",
-      "name": "Attack with DBIED",
-      "description": "An event scenario that results in an DBIED attack",
-      "comment": "This is an attempt to show was TA2 Task 2 output should look like.  However, it was adapted from a Quizlet 3 schema and Graph G, so is somewhat out of date.  Graph G has evolved since this example, and the references may be off.  But it still should provide a basic template for TA2 Task 2 output.",
-      "version": "sbu/caci-11.18.2020 / caci-11.18.2020",
-      "confidence": "1.0",
-      "steps": [
-        {
-          "@id": "ibm:Schemas/AttackWithDBIED/Steps/Get_drone_1",
-          "@type": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified",
-          "name": "Get drone",
-          "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/Get_drone_1",
-          "comment": "provenance is \"n/a\" because the event was not found in the documents.",
-          "provenance": "n/a",
-          "participants": [
-            {
-              "name": "giver",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Get_drone_1/giver",
-              "role": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified/Slots/Giver",
-              "entityTypes": [
-                "kairos:Primitives/Entities/PER",
-                "kairos:Primitives/Entities/ORG",
-                "kairos:Primitives/Entities/GPE",
-                "kairos:Primitives/Entities/SID"
-              ]
-            },
-            {
-              "name": "acquirer",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Get_drone_1/acquirer",
-              "role": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified/Slots/Recipient",
-              "entityTypes": [
-                "kairos:Primitives/Entities/PER",
-                "kairos:Primitives/Entities/ORG",
-                "kairos:Primitives/Entities/GPE",
-                "kairos:Primitives/Entities/SID"
-              ],
-              "values": []
-            },
-            {
-              "name": "drone",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Get_drone_1/drone",
-              "role": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified/Slots/AcquiredEntity",
-              "entityTypes": [
-                "kairos:Primitives/Entities/BAL",
-                "kairos:Primitives/Entities/COM",
-                "kairos:Primitives/Entities/FAC",
-                "kairos:Primitives/Entities/LOC",
-                "kairos:Primitives/Entities/MON",
-                "kairos:Primitives/Entities/VEH",
-                "kairos:Primitives/Entities/WEA",
-                "kairos:Primitives/Entities/AML",
-                "kairos:Primitives/Entities/PTH",
-                "kairos:Primitives/Entities/PLA",
-                "kairos:Primitives/Entities/ABS",
-                "kairos:Primitives/Entities/NAT",
-                "kairos:Primitives/Entities/GPE",
-                "kairos:Primitives/Entities/ORG"
-              ],
-              "values": []
-            },
-            {
-              "name": "pay",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Get_drone_1/pay",
-              "role": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified/Slots/PaymentBarter",
-              "entityTypes": [
-                "kairos:Primitives/Entities/BAL",
-                "kairos:Primitives/Entities/COM",
-                "kairos:Primitives/Entities/FAC",
-                "kairos:Primitives/Entities/LOC",
-                "kairos:Primitives/Entities/MON",
-                "kairos:Primitives/Entities/VEH",
-                "kairos:Primitives/Entities/WEA",
-                "kairos:Primitives/Entities/AML",
-                "kairos:Primitives/Entities/PTH",
-                "kairos:Primitives/Entities/PLA",
-                "kairos:Primitives/Entities/ABS",
-                "kairos:Primitives/Entities/NAT",
-                "kairos:Primitives/Entities/GPE",
-                "kairos:Primitives/Entities/ORG"
-              ]
-            },
-            {
-              "name": "beneficiary",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Get_drone_1/beneficiary",
-              "role": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified/Slots/Beneficiary",
-              "entityTypes": [
-                "kairos:Primitives/Entities/PER",
-                "kairos:Primitives/Entities/ORG",
-                "kairos:Primitives/Entities/GPE",
-                "kairos:Primitives/Entities/SID"
-              ]
-            },
-            {
-              "name": "Place",
-              "@id": "ibm:Place_66jJ4CJ",
-              "role": "kairos:Primitives/Events/Transaction.ExchangeBuySell.Unspecified/Slots/Place",
-              "entityTypes": [
-                "kairos:Primitives/Entities/LOC",
-                "kairos:Primitives/Entities/GPE",
-                "kairos:Primitives/Entities/FAC"
-              ]
-            }
-          ]
-        },
-        {
-          "@id": "ibm:Schemas/AttackWithDBIED/Steps/BuildDBIED_1",
-          "@type": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified",
-          "name": "Build a DBIED",
-          "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/BuildDBIED_1",
-          "comment": "Because this step was found in the documents (Graph G), we specify the step ID from Graph G as provenance.",
-          "provenance": "VP1001.00030",
-          "temporal": [
-            {
-              "latestStartTime": "2018-08-04Txx:xx:xx"
-            },
-            {
-              "latestEndTime": "2018-08-04Txx:xx:xx"
-            }
-          ],
-          "participants": [
-            {
-              "name": "agent",
-              "aka": "attacker",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/BuildDBIED_1/agent",
-              "role": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified/Slots/ManufacturerAssembler",
-              "entityTypes": [
-                "kairos:Primitives/Entities/PER",
-                "kairos:Primitives/Entities/ORG",
-                "kairos:Primitives/Entities/GPE",
-                "kairos:Primitives/Entities/SID"
-              ],
-              "values": []
-            },
-            {
-              "name": "bomb",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/BuildDBIED_1/bomb",
-              "role": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified/Slots/Artifact",
-              "entityTypes": [
-                "kairos:Primitives/Entities/MON",
-                "kairos:Primitives/Entities/BAL",
-                "kairos:Primitives/Entities/COM",
-                "kairos:Primitives/Entities/VEH",
-                "kairos:Primitives/Entities/WEA",
-                "kairos:Primitives/Entities/FAC",
-                "kairos:Primitives/Entities/PTH"
-              ],
-              "values": [
-                {
-                  "comment": "Any argument that was found in Graph G specifies the participant id from Graph G as provenance.",
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/bomb",
-                  "provenance": "AR1001.0062"
-                }
-              ]
-            },
-            {
-              "name": "components",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/BuildDBIED_1/components",
-              "role": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified/Slots/Components",
-              "entityTypes": [
-                "kairos:Primitives/Entities/COM",
-                "kairos:Primitives/Entities/VEH",
-                "kairos:Primitives/Entities/WEA",
-                "kairos:Primitives/Entities/PTH"
-              ],
-              "values": [
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/components",
-                  "provenance": "AR1001.0061"
-                }
-              ]
-            },
-            {
-              "name": "instrument",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/BuildDBIED_1/instrument",
-              "role": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified/Slots/Instrument",
-              "entityTypes": [
-                "kairos:Primitives/Entities/COM",
-                "kairos:Primitives/Entities/INF"
-              ]
-            },
-            {
-              "name": "place",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/BuildDBIED_1/place",
-              "role": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified/Slots/Place",
-              "entityTypes": [
-                "kairos:Primitives/Entities/LOC",
-                "kairos:Primitives/Entities/GPE",
-                "kairos:Primitives/Entities/FAC"
-              ]
-            }
-          ]
-        },
-        {
-          "@id": "ibm:Schemas/AttackWithDBIED/Steps/BuildIED_1",
-          "@type": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified",
-          "name": "Build an IED",
-          "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/BuildIED_1",
-          "provenance": "n/a",
-          "participants": [
-            {
-              "name": "agent",
-              "aka": "attacker",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/BuildIED_1/agent",
-              "role": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified/Slots/ManufacturerAssembler",
-              "entityTypes": [
-                "kairos:Primitives/Entities/PER",
-                "kairos:Primitives/Entities/ORG",
-                "kairos:Primitives/Entities/GPE",
-                "kairos:Primitives/Entities/SID"
-              ],
-              "values": []
-            },
-            {
-              "name": "bomb",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/BuildIED_1/bomb",
-              "role": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified/Slots/Artifact",
-              "entityTypes": [
-                "kairos:Primitives/Entities/MON",
-                "kairos:Primitives/Entities/BAL",
-                "kairos:Primitives/Entities/COM",
-                "kairos:Primitives/Entities/VEH",
-                "kairos:Primitives/Entities/WEA",
-                "kairos:Primitives/Entities/FAC",
-                "kairos:Primitives/Entities/PTH"
-              ],
-              "values": []
-            },
-            {
-              "name": "components",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/BuildIED_1/components",
-              "role": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified/Slots/Components",
-              "entityTypes": [
-                "kairos:Primitives/Entities/COM",
-                "kairos:Primitives/Entities/VEH",
-                "kairos:Primitives/Entities/WEA",
-                "kairos:Primitives/Entities/PTH"
-              ]
-            },
-            {
-              "name": "instrument",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/BuildIED_1/instrument",
-              "role": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified/Slots/Instrument",
-              "entityTypes": [
-                "kairos:Primitives/Entities/COM",
-                "kairos:Primitives/Entities/INF"
-              ]
-            },
-            {
-              "name": "place",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/BuildIED_1/place",
-              "role": "kairos:Primitives/Events/ArtifactExistence.ManufactureAssemble.Unspecified/Slots/Place",
-              "entityTypes": [
-                "kairos:Primitives/Entities/LOC",
-                "kairos:Primitives/Entities/GPE",
-                "kairos:Primitives/Entities/FAC"
-              ]
-            }
-          ]
-        },
-        {
-          "@id": "ibm:Schemas/AttackWithDBIED/Steps/Transport_1",
-          "@type": "kairos:Primitives/Events/Movement.Transportation.Unspecified",
-          "name": "IED transport",
-          "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/Transport_1",
-          "provenance": "VP1001.00034",
-          "temporal": [
-            {
-              "earliestStartTime": "2018-08-04T17:xx:xx"
-            },
-            {
-              "latestStartTime": "2018-08-04T17:xx:xx"
-            },
-            {
-              "earliestEndTime": "2018-08-04T17:xx:xx"
-            },
-            {
-              "latestEndTime": "2018-08-04T17:xx:xx"
-            }
-          ],
-          "participants": [
-            {
-              "name": "from",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/from",
-              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Origin",
-              "entityTypes": [
-                "kairos:Primitives/Entities/LOC",
-                "kairos:Primitives/Entities/FAC",
-                "kairos:Primitives/Entities/GPE"
-              ]
-            },
-            {
-              "name": "to",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/to",
-              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Destination",
-              "entityTypes": [
-                "kairos:Primitives/Entities/LOC",
-                "kairos:Primitives/Entities/FAC",
-                "kairos:Primitives/Entities/GPE"
-              ],
-              "values": [
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/stage",
-                  "provenance": "AR1001.0077"
-                }
-              ]
-            },
-            {
-              "name": "agent",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/agent",
-              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Transporter",
-              "entityTypes": [
-                "kairos:Primitives/Entities/PER",
-                "kairos:Primitives/Entities/ORG",
-                "kairos:Primitives/Entities/GPE",
-                "kairos:Primitives/Entities/SID"
-              ],
-              "values": [
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/transporter",
-                  "provenance": "AR1001.0078"
-                }
-              ]
-            },
-            {
-              "name": "vehicle",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/vehicle",
-              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Vehicle",
-              "entityTypes": "kairos:Primitives/Entities/VEH",
-              "values": [
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/drone1",
-                  "provenance": "AR1001.0075"
-                }
-              ]
-            },
-            {
-              "name": "object",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Transport_1/object",
-              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/PassengerArtifact",
-              "entityTypes": [
-                "kairos:Primitives/Entities/PER",
-                "kairos:Primitives/Entities/BAL",
-                "kairos:Primitives/Entities/COM",
-                "kairos:Primitives/Entities/FAC",
-                "kairos:Primitives/Entities/LOC",
-                "kairos:Primitives/Entities/MON",
-                "kairos:Primitives/Entities/VEH",
-                "kairos:Primitives/Entities/WEA",
-                "kairos:Primitives/Entities/AML",
-                "kairos:Primitives/Entities/PTH",
-                "kairos:Primitives/Entities/PLA",
-                "kairos:Primitives/Entities/BOD",
-                "kairos:Primitives/Entities/NAT"
-              ],
-              "values": [
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/components",
-                  "provenance": "AR1001.0076"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "@id": "ibm:Schemas/AttackWithDBIED/Steps/Explode_1",
-          "@type": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode",
-          "name": "Explode",
-          "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/Explode_1",
-          "provenance": "VP1001.00037",
-          "temporal": [
-            {
-              "earliestStartTime": "2018-08-04T17:41:xx"
-            },
-            {
-              "latestStartTime": "2018-08-04T17:41:xx"
-            },
-            {
-              "earliestEndTime": "2018-08-04T17:41:xx"
-            },
-            {
-              "latestEndTime": "2018-08-04T17:41:xx"
-            }
-          ],
-          "participants": [
-            {
-              "name": "agent",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/agent",
-              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Attacker",
-              "entityTypes": [
-                "kairos:Primitives/Entities/PER",
-                "kairos:Primitives/Entities/ORG",
-                "kairos:Primitives/Entities/GPE",
-                "kairos:Primitives/Entities/SID"
-              ],
-              "values": []
-            },
-            {
-              "name": "device",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/device",
-              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/ExplosiveDevice",
-              "entityTypes": [
-                "kairos:Primitives/Entities/WEA",
-                "kairos:Primitives/Entities/COM"
-              ],
-              "values": [
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/components",
-                  "provenance": "AR1001.0089"
-                }
-              ]
-            },
-            {
-              "name": "means",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/means",
-              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Instrument",
-              "entityTypes": [
-                "kairos:Primitives/Entities/WEA",
-                "kairos:Primitives/Entities/COM"
-              ]
-            },
-            {
-              "name": "place",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/place",
-              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Place",
-              "entityTypes": [
-                "kairos:Primitives/Entities/LOC",
-                "kairos:Primitives/Entities/GPE",
-                "kairos:Primitives/Entities/FAC"
-              ],
-              "values": [
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/place",
-                  "provenance": "AR1001.0090"
-                }
-              ]
-            },
-            {
-              "name": "target",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Explode_1/target",
-              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Target",
-              "entityTypes": [
-                "kairos:Primitives/Entities/LOC",
-                "kairos:Primitives/Entities/GPE",
-                "kairos:Primitives/Entities/FAC",
-                "kairos:Primitives/Entities/PER",
-                "kairos:Primitives/Entities/COM",
-                "kairos:Primitives/Entities/VEH",
-                "kairos:Primitives/Entities/WEA",
-                "kairos:Primitives/Entities/SID",
-                "kairos:Primitives/Entities/AML",
-                "kairos:Primitives/Entities/PLA",
-                "kairos:Primitives/Entities/NAT"
-              ],
-              "values": [
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/target",
-                  "provenance": "AR1001.0094"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "@id": "ibm:Schemas/AttackWithDBIED/Steps/Attack_with_bomb_1",
-          "@type": "kairos:Primitives/Events/Conflict.Attack.Unspecified",
-          "name": "Attack with a bomb",
-          "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/Attack_with_bomb_1",
-          "provenance": "n/a",
-          "participants": [
-            {
-              "name": "attacker",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/attacker",
-              "role": "kairos:Primitives/Events/Conflict.Attack.Unspecified/Slots/Attacker",
-              "entityTypes": [
-                "kairos:Primitives/Entities/PER",
-                "kairos:Primitives/Entities/ORG",
-                "kairos:Primitives/Entities/GPE",
-                "kairos:Primitives/Entities/SID",
-                "kairos:Primitives/Entities/AML"
-              ],
-              "values": []
-            },
-            {
-              "name": "target",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/target",
-              "role": "kairos:Primitives/Events/Conflict.Attack.Unspecified/Slots/Target",
-              "entityTypes": [
-                "kairos:Primitives/Entities/LOC",
-                "kairos:Primitives/Entities/GPE",
-                "kairos:Primitives/Entities/FAC",
-                "kairos:Primitives/Entities/PER",
-                "kairos:Primitives/Entities/COM",
-                "kairos:Primitives/Entities/VEH",
-                "kairos:Primitives/Entities/WEA",
-                "kairos:Primitives/Entities/SID",
-                "kairos:Primitives/Entities/AML",
-                "kairos:Primitives/Entities/PLA",
-                "kairos:Primitives/Entities/NAT"
-              ]
-            },
-            {
-              "name": "means",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/means",
-              "role": "kairos:Primitives/Events/Conflict.Attack.Unspecified/Slots/Instrument",
-              "entityTypes": [
-                "kairos:Primitives/Entities/COM",
-                "kairos:Primitives/Entities/VEH",
-                "kairos:Primitives/Entities/WEA",
-                "kairos:Primitives/Entities/PTH"
-              ],
-              "values": []
-            },
-            {
-              "name": "place",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Attack_with_bomb_1/place",
-              "role": "kairos:Primitives/Events/Conflict.Attack.Unspecified/Slots/Place",
-              "entityTypes": [
-                "kairos:Primitives/Entities/FAC",
-                "kairos:Primitives/Entities/LOC",
-                "kairos:Primitives/Entities/GPE"
-              ],
-              "values": []
-            }
-          ]
-        },
-        {
-          "@id": "ibm:Schemas/AttackWithDBIED/Steps/Die_1",
-          "@type": "kairos:Primitives/Events/Life.Die.Unspecified",
-          "name": "Die from an attack",
-          "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/Die_1",
-          "provenance": "n/a",
-          "participants": [
-            {
-              "name": "victim",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Die_1/victim",
-              "role": "kairos:Primitives/Events/Life.Die.Unspecified/Slots/Victim",
-              "entityTypes": [
-                "kairos:Primitives/Entities/PER",
-                "kairos:Primitives/Entities/AML"
-              ]
-            },
-            {
-              "name": "place",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Die_1/Place",
-              "role": "kairos:Primitives/Events/Life.Die.Unspecified/Slots/Place",
-              "entityTypes": [
-                "kairos:Primitives/Entities/FAC",
-                "kairos:Primitives/Entities/LOC",
-                "kairos:Primitives/Entities/GPE"
-              ]
-            },
-            {
-              "name": "killer",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Die_1/Killer",
-              "role": "kairos:Primitives/Events/Life.Die.Unspecified/Slots/Killer",
-              "entityTypes": [
-                "kairos:Primitives/Entities/PER",
-                "kairos:Primitives/Entities/ORG",
-                "kairos:Primitives/Entities/GPE",
-                "kairos:Primitives/Entities/SID",
-                "kairos:Primitives/Entities/AML"
-              ]
-            },
-            {
-              "name": "medicalcause",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Die_1/MedicalCause",
-              "role": "kairos:Primitives/Events/Life.Die.Unspecified/Slots/MedicalIssue",
-              "entityTypes": "kairos:Primitives/Entities/MHI"
-            }
-          ]
-        },
-        {
-          "@id": "ibm:Schemas/AttackWithDBIED/Steps/Injured_1",
-          "@type": "kairos:Primitives/Events/Life.Injure.Unspecified",
-          "name": "Injure from an attack",
-          "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/Injured_1",
-          "provenance": "VP1001.00052",
-          "temporal": [
-            {
-              "earliestStartTime": "2018-08-04T17:41:xx"
-            },
-            {
-              "latestStartTime": "2018-08-04T17:41:xx"
-            },
-            {
-              "earliestEndTime": "2018-08-04T17:41:xx"
-            },
-            {
-              "latestEndTime": "2018-08-04T17:41:xx"
-            }
-          ],
-          "participants": [
-            {
-              "name": "victim",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Injured_1/victim",
-              "role": "kairos:Primitives/Events/Life.Injure.Unspecified/Slots/Victim",
-              "entityTypes": [
-                "kairos:Primitives/Entities/PER",
-                "kairos:Primitives/Entities/AML"
-              ],
-              "values": [
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/victim",
-                  "provenance": "AR1001.0150"
-                }
-              ]
-            },
-            {
-              "name": "injurer",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Injured_1/agent",
-              "role": "kairos:Primitives/Events/Life.Injure.Unspecified/Slots/Injurer",
-              "entityTypes": [
-                "kairos:Primitives/Entities/PER",
-                "kairos:Primitives/Entities/ORG",
-                "kairos:Primitives/Entities/GPE",
-                "kairos:Primitives/Entities/SID",
-                "kairos:Primitives/Entities/AML"
-              ]
-            },
-            {
-              "name": "instrument",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Injured_1/instrument",
-              "role": "kairos:Primitives/Events/Life.Injure.Unspecified/Slots/Instrument",
-              "entityTypes": [
-                "kairos:Primitives/Entities/WEA",
-                "kairos:Primitives/Entities/COM",
-                "kairos:Primitives/Entities/BAL",
-                "kairos:Primitives/Entities/FAC",
-                "kairos:Primitives/Entities/VEH",
-                "kairos:Primitives/Entities/MON"
-              ],
-              "values": [
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/components",
-                  "provenance": "AR1001.0151"
-                }
-              ]
-            },
-            {
-              "name": "body_part",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Injured_1/body_part",
-              "role": "kairos:Primitives/Events/Life.Injure.Unspecified/Slots/BodyPart",
-              "entityTypes": "kairos:Primitives/Entities/BOD"
-            },
-            {
-              "name": "Victim",
-              "@id": "ibm:Victim_WH6ySTj",
-              "role": "kairos:Primitives/Events/Life.Injure.Unspecified/Slots/Victim",
-              "entityTypes": [
-                "kairos:Primitives/Entities/PER",
-                "kairos:Primitives/Entities/AML"
-              ]
-            },
-            {
-              "name": "MedicalCondition",
-              "@id": "ibm:MedicalCondition_Hpa5K8e",
-              "role": "kairos:Primitives/Events/Life.Injure.Unspecified/Slots/MedicalCondition",
-              "entityTypes": "kairos:Primitives/Entities/MHI"
-            },
-            {
-              "name": "Place",
-              "@id": "ibm:Place_ckVuOLs",
-              "role": "kairos:Primitives/Events/Life.Injure.Unspecified/Slots/Place",
-              "entityTypes": [
-                "kairos:Primitives/Entities/LOC",
-                "kairos:Primitives/Entities/GPE",
-                "kairos:Primitives/Entities/FAC"
-              ]
-            }
-          ]
-        },
-        {
-          "@id": "ibm:Schemas/AttackWithDBIED/Steps/Damage_1",
-          "@type": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Damage",
-          "name": "Damage of a thing",
-          "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/Damage_1",
-          "provenance": "VP1001.00051",
-          "temporal": [
-            {
-              "earliestStartTime": "2018-08-04T17:4x:xx"
-            },
-            {
-              "latestStartTime": "2018-08-04T17:4x:xx"
-            },
-            {
-              "earliestEndTime": "2018-08-04T17:4x:xx"
-            },
-            {
-              "latestEndTime": "2018-08-04T17:4x:xx"
-            }
-          ],
-          "participants": [
-            {
-              "name": "damager",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Damage_1/damager",
-              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Damage/Slots/Damager",
-              "entityTypes": [
-                "kairos:Primitives/Entities/PER",
-                "kairos:Primitives/Entities/ORG",
-                "kairos:Primitives/Entities/GPE",
-                "kairos:Primitives/Entities/SID"
-              ]
-            },
-            {
-              "name": "artifact",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Damage_1/artifact",
-              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Damage/Slots/Artifact",
-              "entityTypes": [
-                "kairos:Primitives/Entities/BAL",
-                "kairos:Primitives/Entities/COM",
-                "kairos:Primitives/Entities/FAC",
-                "kairos:Primitives/Entities/LOC",
-                "kairos:Primitives/Entities/MON",
-                "kairos:Primitives/Entities/VEH",
-                "kairos:Primitives/Entities/WEA",
-                "kairos:Primitives/Entities/PTH",
-                "kairos:Primitives/Entities/NAT"
-              ],
-              "values": [
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/place2",
-                  "provenance": "AR1001.0146"
-                }
-              ]
-            },
-            {
-              "name": "means",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Damage_1/means",
-              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Damage/Slots/Instrument",
-              "entityTypes": [
-                "kairos:Primitives/Entities/COM",
-                "kairos:Primitives/Entities/VEH",
-                "kairos:Primitives/Entities/WEA"
-              ],
-              "values": [
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/components",
-                  "provenance": "AR1001.0147"
-                }
-              ]
-            },
-            {
-              "name": "place",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Damage_1/place",
-              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Damage/Slots/Place",
-              "entityTypes": [
-                "kairos:Primitives/Entities/LOC",
-                "kairos:Primitives/Entities/FAC",
-                "kairos:Primitives/Entities/GPE"
-              ],
-              "values": [
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/place",
-                  "provenance": "AR1001.0148"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "@id": "ibm:Schemas/AttackWithDBIED/Steps/Destroy_1",
-          "@type": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Destroy",
-          "name": "Destroy a thing",
-          "ta1ref": "sbu:Schemas/AttackWithDBIED/Steps/Destroy_1",
-          "provenance": "n/a",
-          "participants": [
-            {
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Destroy_1/agent",
-              "name": "destroyer",
-              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Destroy/Slots/Destroyer",
-              "entityTypes": [
-                "kairos:Primitives/Entities/PER",
-                "kairos:Primitives/Entities/ORG",
-                "kairos:Primitives/Entities/GPE",
-                "kairos:Primitives/Entities/SID"
-              ]
-            },
-            {
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Destroy_1/atifact",
-              "name": "artifact",
-              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Destroy/Slots/Artifact",
-              "entityTypes": [
-                "kairos:Primitives/Entities/BAL",
-                "kairos:Primitives/Entities/COM",
-                "kairos:Primitives/Entities/FAC",
-                "kairos:Primitives/Entities/LOC",
-                "kairos:Primitives/Entities/MON",
-                "kairos:Primitives/Entities/VEH",
-                "kairos:Primitives/Entities/WEA",
-                "kairos:Primitives/Entities/PTH",
-                "kairos:Primitives/Entities/NAT"
-              ]
-            },
-            {
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Destroy_1/means",
-              "name": "means",
-              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Destroy/Slots/Instrument",
-              "entityTypes": [
-                "kairos:Primitives/Entities/COM",
-                "kairos:Primitives/Entities/VEH",
-                "kairos:Primitives/Entities/WEA"
-              ]
-            },
-            {
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/Destroy_1/place",
-              "name": "place",
-              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.Destroy/Slots/Place",
-              "entityTypes": [
-                "kairos:Primitives/Entities/LOC",
-                "kairos:Primitives/Entities/FAC",
-                "kairos:Primitives/Entities/GPE"
-              ]
-            }
-          ]
-        },
-        {
-          "@id": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00005",
-          "name": "Juan Manuel Santos and Julio Borges collaborated on drone attack",
-          "@type": "kairos:Primitives/Events/Contact.Contact.Unspecified",
-          "comment": "Steps from Graph G that are not matched to the schema will have ta1ref of \"kairos:NULL\".",
-          "ta1ref": "kairos:NULL",
-          "provenance": "VP1001.00005",
-          "modality": "hedged",
-          "temporal": [
-            {
-              "latestStartTime": "2018-08-04Txx:xx:xx"
-            },
-            {
-              "latestEndTime": "2018-08-04Txx:xx:xx"
-            }
-          ],
-          "participants": [
-            {
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00005/AR1001.0009",
-              "name": "Participant",
-              "role": "kairos:Primitives/Events/Contact.Contact.Unspecified/Slots/Participant",
-              "entityTypes": "kairos:Primitives/Entities/PER",
-              "values": [
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/jm-santos",
-                  "provenance": "AR1001.0009"
-                },
-                {
-                  "comment": "This second argument filler could also be represented by an additional Participant.",
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/j-borges",
-                  "provenance": "AR1001.0010"
-                }
-              ]
-            },
-            {
-              "name": "Topic",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00005/VP1001.00037",
-              "role": "kairos:Primitives/Events/Contact.Contact.Unspecified/Slots/Topic",
-              "entityTypes": "kairos:Primitives/Entities/EVENT",
-              "values": [
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/explosion1",
-                  "provenance": "VP1001.00037"
-                },
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/explosion2",
-                  "provenance": "VP1001.00050"
-                }
-              ]
-            },
-            {
-              "name": "Place",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00005/Place",
-              "role": "kairos:Primitives/Events/Contact.Contact.Unspecified/Slots/Place",
-              "entityTypes": [
-                "kairos:Primitives/Entities/LOC",
-                "kairos:Primitives/Entities/GPE",
-                "kairos:Primitives/Entities/FAC"
-              ]
-            }
-          ]
-        },
-        {
-          "@id": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00035",
-          "name": "Drones are disoriented with radio signal inhibitors",
-          "@type": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.DisableDefuse",
-          "ta1ref": "kairos:NULL",
-          "provenance": "VP1001.00035",
-          "temporal": [
-            {
-              "earliestStartTime": "2018-08-04T17:xx:xx"
-            },
-            {
-              "latestStartTime": "2018-08-04T17:xx:xx"
-            },
-            {
-              "earliestEndTime": "2018-08-04T17:xx:xx"
-            },
-            {
-              "latestEndTime": "2018-08-04T17:xx:xx"
-            }
-          ],
-          "participants": [
-            {
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00035/AR1001.0079",
-              "name": "Artifact",
-              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.DisableDefuse/Slots/Artifact",
-              "entityTypes": "kairos:Primitives/Entities/VEH",
-              "values": [
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/bomb",
-                  "provenance": "AR1001.0079"
-                }
-              ]
-            },
-            {
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00035/AR1001.0080",
-              "name": "Place",
-              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.DisableDefuse/Slots/Place",
-              "entityTypes": "kairos:Primitives/Entities/GPE",
-              "values": [
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/place",
-                  "provenance": "AR1001.0080"
-                }
-              ]
-            },
-            {
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00035/AR1001.0081",
-              "name": "Place",
-              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.DisableDefuse/Slots/Place",
-              "entityTypes": "kairos:Primitives/Entities/LOC",
-              "values": [
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/location",
-                  "provenance": "AR1001.0081"
-                }
-              ]
-            },
-            {
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00035/AR1001.0082",
-              "name": "radio signal inhibitors",
-              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.DisableDefuse/Slots/Instrument",
-              "entityTypes": "kairos:Primitives/Entities/COM",
-              "values": [
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/radio-inhibitors",
-                  "provenance": "AR1001.0082"
-                }
-              ]
-            },
-            {
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00035/AR1001.0083",
-              "name": "Disabler",
-              "role": "kairos:Primitives/Events/ArtifactExistence.DamageDestroyDisableDismantle.DisableDefuse/Slots/Disabler",
-              "entityTypes": "kairos:Primitives/Entities/ORG",
-              "values": [
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/venezuelan-intelligence",
-                  "provenance": "AR1001.0083"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "@id": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00048",
-          "name": "Drone is diverted toward nearby apartment building",
-          "@type": "kairos:Primitives/Events/Movement.Transportation.Unspecified",
-          "ta1ref": "kairos:NULL",
-          "provenance": "VP1001.00048",
-          "temporal": [
-            {
-              "earliestStartTime": "2018-08-04T17:xx:xx"
-            },
-            {
-              "latestStartTime": "2018-08-04T17:xx:xx"
-            },
-            {
-              "earliestEndTime": "2018-08-04T17:xx:xx"
-            },
-            {
-              "latestEndTime": "2018-08-04T17:xx:xx"
-            }
-          ],
-          "participants": [
-            {
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00048/AR1001.0134",
-              "name": "Vehicle",
-              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Vehicle",
-              "entityTypes": "kairos:Primitives/Entities/VEH",
-              "values": [
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/drone2",
-                  "provenance": "AR1001.0134"
-                }
-              ]
-            },
-            {
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00048/AR1001.0135",
-              "name": "Destination",
-              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Destination",
-              "entityTypes": "kairos:Primitives/Entities/FAC",
-              "values": [
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/place2",
-                  "provenance": "AR1001.0135"
-                }
-              ]
-            },
-            {
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00048/AR1001.0136",
-              "name": "C4 explosives",
-              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/PassengerArtifact",
-              "entityTypes": "kairos:Primitives/Entities/WEA",
-              "values": [
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/components",
-                  "provenance": "AR1001.0136"
-                }
-              ]
-            },
-            {
-              "name": "Transporter",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00048/Transporter",
-              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Transporter",
-              "entityTypes": [
-                "kairos:Primitives/Entities/PER",
-                "kairos:Primitives/Entities/ORG",
-                "kairos:Primitives/Entities/GPE",
-                "kairos:Primitives/Entities/SID"
-              ],
-              "values": []
-            },
-            {
-              "name": "Origin",
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00048/Origin",
-              "role": "kairos:Primitives/Events/Movement.Transportation.Unspecified/Slots/Origin",
-              "entityTypes": [
-                "kairos:Primitives/Entities/LOC",
-                "kairos:Primitives/Entities/GPE",
-                "kairos:Primitives/Entities/FAC"
-              ],
-              "values": []
-            }
-          ]
-        },
-        {
-          "@id": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00049",
-          "name": "Drone crashes into apartment building",
-          "@type": "kairos:Primitives/Events/Disaster.Crash.Unspecified",
-          "ta1ref": "kairos:NULL",
-          "provenance": "VP1001.00049",
-          "temporal": [
-            {
-              "earliestStartTime": "2018-08-04T17:4x:xx"
-            },
-            {
-              "latestStartTime": "2018-08-04T17:4x:xx"
-            },
-            {
-              "earliestEndTime": "2018-08-04T17:4x:xx"
-            },
-            {
-              "latestEndTime": "2018-08-04T17:4x:xx"
-            }
-          ],
-          "participants": [
-            {
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00049/AR1001.0137",
-              "name": "Vehicle",
-              "role": "kairos:Primitives/Events/Disaster.Crash.Unspecified/Slots/Vehicle",
-              "entityTypes": "kairos:Primitives/Entities/VEH",
-              "values": [
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/drone2",
-                  "provenance": "AR1001.0137"
-                }
-              ]
-            },
-            {
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00049/AR1001.0138",
-              "name": "CrashObject",
-              "role": "kairos:Primitives/Events/Disaster.Crash.Unspecified/Slots/CrashObject",
-              "entityTypes": "kairos:Primitives/Entities/FAC",
-              "values": [
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/place2",
-                  "provenance": "AR1001.0138"
-                }
-              ]
-            },
-            {
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00049/AR1001.0139",
-              "name": "Place",
-              "role": "kairos:Primitives/Events/Disaster.Crash.Unspecified/Slots/Place",
-              "entityTypes": [
-                "kairos:Primitives/Entities/GPE",
-                "kairos:Primitives/Entities/LOC"
-              ],
-              "values": [
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/place",
-                  "provenance": "AR1001.0139"
-                },
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/location",
-                  "provenance": "AR1001.0140"
-                }
-              ]
-            },
-            {
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00049/DriverPassenger",
-              "name": "DriverPassenger",
-              "role": "kairos:Primitives/Events/Disaster.Crash.Unspecified/Slots/DriverPassenger",
-              "entityTypes": "kairos:Primitives/Entities/PER",
-              "values": []
-            }
-          ]
-        },
-        {
-          "@id": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00050",
-          "name": "Drone explodes at nearby apartment building",
-          "@type": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode",
-          "ta1ref": "kairos:NULL",
-          "provenance": "VP1001.00050",
-          "temporal": [
-            {
-              "earliestStartTime": "2018-08-04T17:4x:xx"
-            },
-            {
-              "latestStartTime": "2018-08-04T17:4x:xx"
-            },
-            {
-              "earliestEndTime": "2018-08-04T17:4x:xx"
-            },
-            {
-              "latestEndTime": "2018-08-04T17:4x:xx"
-            }
-          ],
-          "participants": [
-            {
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00050/AR1001.0141",
-              "name": "ExplosiveDevice",
-              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/ExplosiveDevice",
-              "entityTypes": "kairos:Primitives/Entities/WEA",
-              "values": [
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/components",
-                  "provenance": "AR1001.0141"
-                }
-              ]
-            },
-            {
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00050/AR1001.0142",
-              "name": "Instrument",
-              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Instrument",
-              "entityTypes": "kairos:Primitives/Entities/WEA",
-              "values": [
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/drone2",
-                  "provenance": "AR1001.0142"
-                }
-              ]
-            },
-            {
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00050/AR1001.0143",
-              "name": "Place",
-              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Place",
-              "entityTypes": "kairos:Primitives/Entities/FAC",
-              "values": [
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/place2",
-                  "provenance": "AR1001.0143"
-                }
-              ]
-            },
-            {
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00050/AR1001.0144/AR1001.0145",
-              "name": "Place",
-              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Place",
-              "entityTypes": [
-                "kairos:Primitives/Entities/GPE",
-                "kairos:Primitives/Entities/LOC"
-              ],
-              "values": [
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/place",
-                  "provenance": "AR1001.0144"
-                },
-                {
-                  "entity": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/location",
-                  "provenance": "AR1001.0145"
-                }
-              ]
-            },
-            {
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00050/Attacker",
-              "name": "Attacker",
-              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Attacker",
-              "entityTypes": [
-                "kairos:Primitives/Entities/PER",
-                "kairos:Primitives/Entities/ORG",
-                "kairos:Primitives/Entities/GPE",
-                "kairos:Primitives/Entities/SID"
-              ],
-              "values": []
-            },
-            {
-              "@id": "ibm:Schemas/AttackWithDBIED/Slots/VP1001.00050/Target",
-              "name": "Target",
-              "role": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode/Slots/Target",
-              "entityTypes": [
-                "kairos:Primitives/Entities/LOC",
-                "kairos:Primitives/Entities/GPE",
-                "kairos:Primitives/Entities/FAC",
-                "kairos:Primitives/Entities/PER",
-                "kairos:Primitives/Entities/COM",
-                "kairos:Primitives/Entities/VEH",
-                "kairos:Primitives/Entities/WEA",
-                "kairos:Primitives/Entities/SID",
-                "kairos:Primitives/Entities/AML",
-                "kairos:Primitives/Entities/PLA",
-                "kairos:Primitives/Entities/NAT"
-              ],
-              "values": []
-            }
-          ]
-        }
-      ],
-      "order": [
-        {
-          "ta1ref": "sbu:Schemas/AttackWithDBIED/Order/dbied1_requirements",
-          "before": [
-            "ibm:Schemas/AttackWithDBIED/Steps/Get_drone_1",
-            "ibm:Schemas/AttackWithDBIED/Steps/BuildIED_1"
-          ],
-          "after": "ibm:Schemas/AttackWithDBIED/Steps/BuildDBIED_1",
-          "flag": "precondition"
-        },
-        {
-          "ta1ref": "sbu:Schemas/AttackWithDBIED/Order/ied_b4_transport",
-          "before": "ibm:Schemas/AttackWithDBIED/Steps/BuildIED_1",
-          "after": "ibm:Schemas/AttackWithDBIED/Steps/Transport_1"
-        },
-        {
-          "ta1ref": "sbu:Schemas/AttackWithDBIED/Order/ied_b4_explode",
-          "before": "ibm:Schemas/AttackWithDBIED/Steps/BuildIED_1",
-          "after": "ibm:Schemas/AttackWithDBIED/Steps/Explode_1",
-          "flags": "precondition"
-        },
-        {
-          "ta1ref": "sbu:Schemas/AttackWithDBIED/Order/explode_b4_attack",
-          "before": [
-            "ibm:Schemas/AttackWithDBIED/Steps/BuildIED_1",
-            "ibm:Schemas/AttackWithDBIED/Steps/Transport_1",
-            "ibm:Schemas/AttackWithDBIED/Steps/Explode_1"
-          ],
-          "after": "ibm:Schemas/AttackWithDBIED/Steps/Attack_with_bomb_1",
-          "flags": "precondition"
-        },
-        {
-          "ta1ref": "sbu:Schemas/AttackWithDBIED/Order/attack_b4_damage",
-          "before": "ibm:Schemas/AttackWithDBIED/Steps/Attack_with_bomb_1",
-          "after": [
-            "ibm:Schemas/AttackWithDBIED/Steps/Die_1",
-            "ibm:Schemas/AttackWithDBIED/Steps/Injured_1",
-            "ibm:Schemas/AttackWithDBIED/Steps/Damage_1",
-            "ibm:Schemas/AttackWithDBIED/Steps/Destroy_1"
-          ],
-          "flags": "precondition"
-        },
-        {
-          "comment": "Order relations introduced by TA2 should also have a ta1ref of \"kairos:NULL\".",
-          "ta1ref": "kairos:NULL",
-          "before": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00005",
-          "after": "ibm:Schemas/AttackWithDBIED/Steps/BuildDBIED_1",
-          "flags": "precondition"
-        },
-        {
-          "ta1ref": "kairos:NULL",
-          "before": "ibm:Schemas/AttackWithDBIED/Steps/BuildDBIED_1",
-          "after": "ibm:Schemas/AttackWithDBIED/Steps/Transport_1",
-          "flags": "precondition"
-        },
-        {
-          "ta1ref": "kairos:NULL",
-          "before": "ibm:Schemas/AttackWithDBIED/Steps/Transport_1",
-          "after": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00035",
-          "flags": "precondition"
-        },
-        {
-          "ta1ref": "kairos:NULL",
-          "before": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00035",
-          "after": "ibm:Schemas/AttackWithDBIED/Steps/Explode_1",
-          "flags": "precondition"
-        },
-        {
-          "ta1ref": "kairos:NULL",
-          "before": "ibm:Schemas/AttackWithDBIED/Steps/Explode_1",
-          "after": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00048",
-          "flags": "precondition"
-        },
-        {
-          "ta1ref": "kairos:NULL",
-          "before": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00048",
-          "after": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00049",
-          "flags": "precondition"
-        },
-        {
-          "ta1ref": "kairos:NULL",
-          "before": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00049",
-          "after": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00050",
-          "flags": "precondition"
-        },
-        {
-          "ta1ref": "kairos:NULL",
-          "before": "ibm:Schemas/AttackWithDBIED/Steps/VP1001.00050",
-          "after": "ibm:Schemas/AttackWithDBIED/Steps/Damage_1",
-          "flags": "precondition"
-        },
-        {
-          "ta1ref": "kairos:NULL",
-          "before": "ibm:Schemas/AttackWithDBIED/Steps/Damage_1",
-          "after": "ibm:Schemas/AttackWithDBIED/Steps/Injured_1",
-          "flags": "precondition"
-        }
-      ],
+      "@id": "cmu:Instances/00001/nistEvaluationGraphG",
+      "confidence": 0.36,
       "entities": [
         {
-          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/bomb",
-          "name": "drones",
-          "entityTypes": "kairos:Primitives/Entities/VEH"
+          "@id": "cmu:Entities/00000/facility",
+          "name": "facility",
+          "qlabel": "facility",
+          "qnode": "wd:Q13226383"
         },
         {
-          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/components",
-          "name": "C4 explosives",
-          "entityTypes": "kairos:Primitives/Entities/WEA"
+          "@id": "cmu:Entities/00001/government_agency",
+          "name": "government_agency",
+          "qlabel": "government agency",
+          "qnode": "wd:Q327333"
         },
         {
-          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/stage",
-          "name": "the stage where Maduro is speaking",
-          "entityTypes": "kairos:Primitives/Entities/FAC"
+          "@id": "cmu:Entities/00002/company",
+          "name": "company",
+          "qlabel": "company",
+          "qnode": "wd:Q783794"
         },
         {
-          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/transporter",
-          "name": "2 drone operators",
-          "entityTypes": "kairos:Primitives/Entities/PER"
+          "@id": "cmu:Entities/00003/victim",
+          "name": "victim",
+          "qlabel": "victim",
+          "qnode": "wd:Q1851760"
         },
         {
-          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/drone1",
-          "name": "the drone that exploded near the stage where Maduro was speaking",
-          "entityTypes": "kairos:Primitives/Entities/VEH"
+          "@id": "cmu:Entities/00004/employee",
+          "name": "employee",
+          "qlabel": "employee",
+          "qnode": "wd:Q703534"
         },
         {
-          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/place",
-          "name": "Caracas",
-          "entityTypes": "kairos:Primitives/Entities/GPE"
+          "@id": "cmu:Entities/00005/judge",
+          "name": "judge",
+          "qlabel": "judge",
+          "qnode": "wd:Q16533"
         },
         {
-          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/target",
-          "name": "Nicolás Maduro",
-          "entityTypes": "kairos:Primitives/Entities/PER"
+          "@id": "cmu:Entities/00006/cash",
+          "name": "cash",
+          "qlabel": "cash",
+          "qnode": "wd:Q693464"
         },
         {
-          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/victim",
-          "name": "7 soldiers",
-          "entityTypes": "kairos:Primitives/Entities/PER"
+          "@id": "cmu:Entities/00007/cashier",
+          "name": "cashier",
+          "qlabel": "cashier",
+          "qnode": "wd:Q1735282"
         },
         {
-          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/place2",
-          "name": "a nearby apartment building",
-          "entityTypes": "kairos:Primitives/Entities/FAC"
+          "@id": "cmu:Entities/00008/consumer",
+          "name": "consumer",
+          "qlabel": "consumer",
+          "qnode": "wd:Q22855"
         },
         {
-          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/jm-santos",
-          "name": "Juan Manuel Santos",
-          "entityTypes": "kairos:Primitives/Entities/PER"
+          "@id": "cmu:Entities/00009/disinfectant",
+          "name": "disinfectant",
+          "qlabel": "disinfectant",
+          "qnode": "wd:Q73984"
         },
         {
-          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/j-borges",
-          "name": "Julio Borges",
-          "entityTypes": "kairos:Primitives/Entities/PER"
+          "@id": "cmu:Entities/00010/drinking_water",
+          "name": "drinking_water",
+          "qlabel": "drinking water",
+          "qnode": "wd:Q7892"
         },
         {
-          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/location",
-          "name": "downtown Caracas",
-          "entityTypes": "kairos:Primitives/Entities/LOC"
+          "@id": "cmu:Entities/00011/contaminant",
+          "name": "contaminant",
+          "qlabel": "contaminant",
+          "qnode": "wd:Q2995424"
         },
         {
-          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/radio-inhibitors",
-          "name": "radio signal inhibitors",
-          "entityTypes": "kairos:Primitives/Entities/COM"
+          "@id": "cmu:Entities/00012/victim",
+          "name": "victim",
+          "qlabel": "person",
+          "qnode": "wd:Q215627"
         },
         {
-          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/venezuelan-intelligence",
-          "name": "Venezuelan intelligence",
-          "entityTypes": "kairos:Primitives/Entities/ORG"
+          "@id": "cmu:Entities/00013/health_professional",
+          "name": "health professional",
+          "qlabel": "health professional",
+          "qnode": "wd:Q11974939"
         },
         {
-          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/drone2",
-          "name": "the drone that crashed into the apartment building",
-          "entityTypes": "kairos:Primitives/Entities/VEH"
+          "@id": "cmu:Entities/00014/human",
+          "name": "human",
+          "qlabel": "human",
+          "qnode": "wd:Q5"
         },
         {
-          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/explosion1",
-          "name": "Drone explodes near the stage where Maduro is speaking",
-          "entityTypes": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode"
+          "@id": "cmu:Entities/00015/pathogen",
+          "name": "pathogen",
+          "qlabel": "pathogen",
+          "qnode": "wd:Q170065"
         },
         {
-          "@id": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/explosion2",
-          "name": "Drone explodes at nearby apartment building",
-          "entityTypes": "kairos:Primitives/Events/Conflict.Attack.DetonateExplode"
+          "@id": "cmu:Entities/00016/health_department",
+          "name": "health_department",
+          "qlabel": "health department",
+          "qnode": "wd:Q1312371"
+        },
+        {
+          "@id": "cmu:Entities/00017/business",
+          "name": "business",
+          "qlabel": "business",
+          "qnode": "wd:Q4830453"
+        },
+        {
+          "@id": "cmu:Entities/00018/victim",
+          "name": "victim",
+          "qlabel": "victim",
+          "qnode": "wd:Q1851760"
+        },
+        {
+          "@id": "cmu:Entities/00019/health_professional",
+          "name": "health_professional",
+          "qlabel": "health professional",
+          "qnode": "wd:Q11974939"
+        },
+        {
+          "@id": "cmu:Entities/00020/pathogen",
+          "name": "pathogen",
+          "qlabel": "pathogen",
+          "qnode": "wd:Q170065"
+        },
+        {
+          "@id": "cmu:Entities/00021/facility",
+          "name": "facility",
+          "qlabel": "facility",
+          "qnode": "wd:Q13226383"
+        },
+        {
+          "@id": "cmu:Entities/00022/victim",
+          "name": "victim",
+          "qlabel": "victim",
+          "qnode": "wd:Q1851760"
+        },
+        {
+          "@id": "cmu:Entities/00023/food",
+          "name": "food",
+          "qlabel": "food",
+          "qnode": "wd:Q2095"
+        },
+        {
+          "@id": "cmu:Entities/00024/health_department",
+          "name": "health_department",
+          "qlabel": "health department",
+          "qnode": "wd:Q1312371"
+        },
+        {
+          "@id": "cmu:Entities/00025/government_agency",
+          "name": "government_agency",
+          "qlabel": "government agency",
+          "qnode": "wd:Q327333"
+        },
+        {
+          "@id": "cmu:Entities/00026/infectious_disease",
+          "name": "infectious_disease",
+          "qlabel": "infectious disease",
+          "qnode": "wd:Q18123741"
+        },
+        {
+          "@id": "cmu:Entities/00027/health_professional",
+          "name": "health_professional",
+          "qlabel": "health professional",
+          "qnode": "wd:Q11974939"
+        },
+        {
+          "@id": "cmu:Entities/00028/check",
+          "name": "check",
+          "qlabel": "cheque",
+          "qnode": "wd:Q80042"
+        },
+        {
+          "@id": "cmu:Entities/00029/cashier",
+          "name": "cashier",
+          "qlabel": "cashier",
+          "qnode": "wd:Q1735282"
+        },
+        {
+          "@id": "cmu:Entities/00030/consumer",
+          "name": "consumer",
+          "qlabel": "consumer",
+          "qnode": "wd:Q22855"
+        },
+        {
+          "@id": "cmu:Entities/00031/fire",
+          "name": "fire",
+          "qlabel": "fire",
+          "qnode": "wd:Q3196"
+        },
+        {
+          "@id": "cmu:Entities/00032/authority",
+          "name": "authority",
+          "qlabel": "authority",
+          "qnode": "wd:Q174834"
+        },
+        {
+          "@id": "cmu:Entities/00033/people",
+          "name": "people",
+          "qlabel": "People",
+          "qnode": "wd:Q33659"
+        },
+        {
+          "@id": "cmu:Entities/00034/evacuation",
+          "name": "evacuation",
+          "qlabel": "emergency evacuation",
+          "qnode": "wd:Q606332"
+        },
+        {
+          "@id": "cmu:Entities/00035/property",
+          "name": "property",
+          "qlabel": "real estate",
+          "qnode": "wd:Q10494269"
+        },
+        {
+          "@id": "cmu:Entities/00036/firefighter",
+          "name": "firefighter",
+          "qlabel": "firefighter",
+          "qnode": "wd:Q107711"
+        },
+        {
+          "@id": "cmu:Entities/00037/victim",
+          "name": "victim",
+          "qlabel": "victim",
+          "qnode": "wd:Q1851760"
+        },
+        {
+          "@id": "cmu:Entities/00038/contaminant",
+          "name": "contaminant",
+          "qlabel": "contaminant",
+          "qnode": "wd:Q2995424"
+        },
+        {
+          "@id": "cmu:Entities/00039/contaminant",
+          "name": "contaminant",
+          "qlabel": "contaminant",
+          "qnode": "wd:Q2995424"
+        },
+        {
+          "@id": "cmu:Entities/00040/victim",
+          "name": "victim",
+          "qlabel": "victim",
+          "qnode": "wd:Q1851760"
+        },
+        {
+          "@id": "cmu:Entities/00041/infectious_disease",
+          "name": "infectious disease",
+          "qlabel": "infectious disease",
+          "qnode": "wd:Q18123741"
+        },
+        {
+          "@id": "cmu:Entities/00042/drinking_water",
+          "name": "drinking_water",
+          "qlabel": "drinking water",
+          "qnode": "wd:Q7892"
+        },
+        {
+          "@id": "cmu:Entities/00043/artificial_object",
+          "name": "artificial object",
+          "qlabel": "artificial entity",
+          "qnode": "wd:Q16686448"
+        },
+        {
+          "@id": "cmu:Entities/00044/water_distribution_system",
+          "name": "water_distribution system",
+          "qlabel": "water distribution system",
+          "qnode": "wd:Q2551228"
+        },
+        {
+          "@id": "cmu:Entities/00045/victim",
+          "name": "victim",
+          "qlabel": "victim",
+          "qnode": "wd:Q1851760"
+        },
+        {
+          "@id": "cmu:Entities/00046/health_department",
+          "name": "health_department",
+          "qlabel": "health department",
+          "qnode": "wd:Q1312371"
+        },
+        {
+          "@id": "cmu:Entities/00047/infectious_disease",
+          "name": "infectious_disease",
+          "qlabel": "infectious disease",
+          "qnode": "wd:Q18123741"
+        },
+        {
+          "@id": "cmu:Entities/00048/drinking_water",
+          "name": "drinking_water",
+          "qlabel": "drinking water",
+          "qnode": "wd:Q7892"
+        },
+        {
+          "@id": "cmu:Entities/00049/health_professional",
+          "name": "health_professional",
+          "qlabel": "health professional",
+          "qnode": "wd:Q11974939"
+        },
+        {
+          "@id": "cmu:Entities/00050/government_agency",
+          "name": "government_agency",
+          "qlabel": "government agency",
+          "qnode": "wd:Q327333"
+        },
+        {
+          "@id": "cmu:Entities/00051/contaminant",
+          "name": "contaminant",
+          "qlabel": "contaminant",
+          "qnode": "wd:Q2995424"
+        },
+        {
+          "@id": "cmu:Entities/00052/money",
+          "name": "money",
+          "qlabel": "money",
+          "qnode": "wd:Q1368"
+        },
+        {
+          "@id": "cmu:Entities/00053/credit_card",
+          "name": "credit_card",
+          "qlabel": "credit card",
+          "qnode": "wd:Q161380"
+        },
+        {
+          "@id": "cmu:Entities/00054/cash",
+          "name": "cash",
+          "qlabel": "cash",
+          "qnode": "wd:Q693464"
+        },
+        {
+          "@id": "cmu:Entities/00055/cashier",
+          "name": "cashier",
+          "qlabel": "cashier",
+          "qnode": "wd:Q1735282"
+        },
+        {
+          "@id": "cmu:Entities/00056/payment_terminal",
+          "name": "payment_terminal",
+          "qlabel": "payment terminal",
+          "qnode": "wd:Q605108"
+        },
+        {
+          "@id": "cmu:Entities/00057/check",
+          "name": "check",
+          "qlabel": "cheque",
+          "qnode": "wd:Q80042"
+        },
+        {
+          "@id": "cmu:Entities/00058/smartphone",
+          "name": "smartphone",
+          "qlabel": "smartphone",
+          "qnode": "wd:Q22645"
+        },
+        {
+          "@id": "cmu:Entities/00059/consumer",
+          "name": "consumer",
+          "qlabel": "consumer",
+          "qnode": "wd:Q22855"
+        },
+        {
+          "@id": "cmu:Entities/00060/goods",
+          "name": "goods",
+          "qlabel": "good",
+          "qnode": "wd:Q28877"
+        },
+        {
+          "@id": "cmu:Entities/00061/plane",
+          "name": "plane",
+          "qlabel": "airplane",
+          "qnode": "wd:Q197"
+        },
+        {
+          "@id": "cmu:Entities/00062/survivor",
+          "name": "survivor",
+          "qlabel": "Survivor",
+          "qnode": "wd:Q755975"
+        },
+        {
+          "@id": "cmu:Entities/00063/disaster",
+          "name": "disaster",
+          "qlabel": "disaster",
+          "qnode": "wd:Q3839081"
+        },
+        {
+          "@id": "cmu:Entities/00064/people",
+          "name": "people",
+          "qlabel": "People",
+          "qnode": "wd:Q33659"
+        },
+        {
+          "@id": "cmu:Entities/00065/aircrew",
+          "name": "aircrew",
+          "qlabel": "aircrew",
+          "qnode": "wd:Q373021"
+        },
+        {
+          "@id": "cmu:Entities/00066/bad_weather",
+          "name": "bad_weather",
+          "qlabel": "bad weather",
+          "qnode": "wd:Q1615323"
+        },
+        {
+          "@id": "cmu:Entities/00067/rescue_squad",
+          "name": "rescue_squad",
+          "qlabel": "rescue squad",
+          "qnode": "wd:Q2492313"
+        },
+        {
+          "@id": "cmu:Entities/00068/goods",
+          "name": "goods",
+          "qlabel": "good",
+          "qnode": "wd:Q28877"
+        },
+        {
+          "@id": "cmu:Entities/00069/money",
+          "name": "money",
+          "qlabel": "money",
+          "qnode": "wd:Q1368"
+        },
+        {
+          "@id": "cmu:Entities/00070/website",
+          "name": "website",
+          "qlabel": "website",
+          "qnode": "wd:Q35127"
+        },
+        {
+          "@id": "cmu:Entities/00071/residence",
+          "name": "residence",
+          "qlabel": "residence",
+          "qnode": "wd:Q699405"
+        },
+        {
+          "@id": "cmu:Entities/00072/motor_vehicle",
+          "name": "motor vehicle",
+          "qlabel": "motor vehicle",
+          "qnode": "wd:Q752870"
+        },
+        {
+          "@id": "cmu:Entities/00073/store",
+          "name": "store",
+          "qlabel": "shop",
+          "qnode": "wd:Q213441"
+        },
+        {
+          "@id": "cmu:Entities/00074/consumer",
+          "name": "consumer",
+          "qlabel": "consumer",
+          "qnode": "wd:Q22855"
+        },
+        {
+          "@id": "cmu:Entities/00075/explosion",
+          "name": "explosion",
+          "qlabel": "explosion",
+          "qnode": "wd:Q179057"
+        },
+        {
+          "@id": "cmu:Entities/00076/miner",
+          "name": "miner",
+          "qlabel": "miner",
+          "qnode": "wd:Q820037"
+        },
+        {
+          "@id": "cmu:Entities/00077/family",
+          "name": "family",
+          "qlabel": "family",
+          "qnode": "wd:Q8436"
+        },
+        {
+          "@id": "cmu:Entities/00078/funeral",
+          "name": "funeral",
+          "qlabel": "funeral",
+          "qnode": "wd:Q201676"
+        },
+        {
+          "@id": "cmu:Entities/00079/letter",
+          "name": "letter",
+          "qlabel": "letter",
+          "qnode": "wd:Q9788"
+        },
+        {
+          "@id": "cmu:Entities/00080/mine",
+          "name": "mine",
+          "qlabel": "mine",
+          "qnode": "wd:Q820477"
+        },
+        {
+          "@id": "cmu:Entities/00081/poisonous_gas",
+          "name": "poisonous_gas",
+          "qlabel": "poisonous gas",
+          "qnode": "wd:Q671512"
+        },
+        {
+          "@id": "cmu:Entities/00082/mourner",
+          "name": "mourner",
+          "qlabel": "mourner",
+          "qnode": "wd:Q17139718"
+        },
+        {
+          "@id": "cmu:Entities/00083/electronic_payment",
+          "name": "electronic_payment",
+          "qlabel": "electronic payment",
+          "qnode": "wd:Q6501095"
+        },
+        {
+          "@id": "cmu:Entities/00084/payment_service_provider",
+          "name": "payment_service provider",
+          "qlabel": "payment service provider",
+          "qnode": "wd:Q1956140"
+        },
+        {
+          "@id": "cmu:Entities/00085/goods",
+          "name": "goods",
+          "qlabel": "good",
+          "qnode": "wd:Q28877"
+        },
+        {
+          "@id": "cmu:Entities/00086/goods",
+          "name": "goods",
+          "qlabel": "good",
+          "qnode": "wd:Q28877"
+        },
+        {
+          "@id": "cmu:Entities/00087/money",
+          "name": "money",
+          "qlabel": "money",
+          "qnode": "wd:Q1368"
+        },
+        {
+          "@id": "cmu:Entities/00088/store",
+          "name": "store",
+          "qlabel": "shop",
+          "qnode": "wd:Q213441"
+        },
+        {
+          "@id": "cmu:Entities/00089/consumer",
+          "name": "consumer",
+          "qlabel": "consumer",
+          "qnode": "wd:Q22855"
+        },
+        {
+          "@id": "cmu:Entities/00090/credit_card",
+          "name": "credit_card",
+          "qlabel": "credit card",
+          "qnode": "wd:Q161380"
+        },
+        {
+          "@id": "cmu:Entities/00091/payment_terminal",
+          "name": "payment terminal",
+          "qlabel": "payment terminal",
+          "qnode": "wd:Q605108"
+        },
+        {
+          "@id": "cmu:Entities/00092/receipt",
+          "name": "receipt",
+          "qlabel": "receipt",
+          "qnode": "wd:Q330190"
+        },
+        {
+          "@id": "cmu:Entities/00093/cashier",
+          "name": "cashier",
+          "qlabel": "cashier",
+          "qnode": "wd:Q1735282"
+        },
+        {
+          "@id": "cmu:Entities/00094/customer",
+          "name": "customer",
+          "qlabel": "customer",
+          "qnode": "wd:Q852835"
+        },
+        {
+          "@id": "cmu:Entities/00095/application",
+          "name": "application",
+          "qlabel": "application",
+          "qnode": "wd:Q166142"
+        },
+        {
+          "@id": "cmu:Entities/00096/payment_service_provider",
+          "name": "payment service provider",
+          "qlabel": "payment service provider",
+          "qnode": "wd:Q1956140"
+        },
+        {
+          "@id": "cmu:Entities/00097/payment_method",
+          "name": "payment method",
+          "qlabel": "payment method",
+          "qnode": "wd:Q1912682"
+        },
+        {
+          "@id": "cmu:Entities/00098/consumer",
+          "name": "consumer",
+          "qlabel": "consumer",
+          "qnode": "wd:Q22855"
+        },
+        {
+          "@id": "cmu:Entities/00099/facility",
+          "name": "facility",
+          "qlabel": "facility",
+          "qnode": "wd:Q13226383"
+        },
+        {
+          "@id": "cmu:Entities/00100/concrete_object",
+          "name": "concrete_object",
+          "qlabel": "concrete object",
+          "qnode": "wd:Q4406616"
+        },
+        {
+          "@id": "cmu:Entities/00101/facility",
+          "name": "facility",
+          "qlabel": "facility",
+          "qnode": "wd:Q13226383"
+        },
+        {
+          "@id": "cmu:Entities/00102/pathogen",
+          "name": "pathogen",
+          "qlabel": "pathogen",
+          "qnode": "wd:Q170065"
+        },
+        {
+          "@id": "cmu:Entities/00103/cleaning_tool",
+          "name": "cleaning_tool",
+          "qlabel": "cleaning tool",
+          "qnode": "wd:Q26270576"
+        },
+        {
+          "@id": "cmu:Entities/00104/health_department",
+          "name": "health_department",
+          "qlabel": "health department",
+          "qnode": "wd:Q1312371"
+        },
+        {
+          "@id": "cmu:Entities/00105/application",
+          "name": "application",
+          "qlabel": "application",
+          "qnode": "wd:Q166142"
+        },
+        {
+          "@id": "cmu:Entities/00106/smartphone",
+          "name": "smartphone",
+          "qlabel": "smartphone",
+          "qnode": "wd:Q22645"
+        },
+        {
+          "@id": "cmu:Entities/00107/payment_terminal",
+          "name": "payment_terminal",
+          "qlabel": "payment terminal",
+          "qnode": "wd:Q605108"
+        },
+        {
+          "@id": "cmu:Entities/00108/consumer",
+          "name": "consumer",
+          "qlabel": "consumer",
+          "qnode": "wd:Q22855"
+        },
+        {
+          "@id": "cmu:Entities/00109/pathogen",
+          "name": "pathogen",
+          "qlabel": "pathogen",
+          "qnode": "wd:Q170065"
+        },
+        {
+          "@id": "cmu:Entities/00110/person",
+          "name": "person",
+          "qlabel": "person",
+          "qnode": "wd:Q215627"
+        },
+        {
+          "@id": "cmu:Entities/00111/health_department",
+          "name": "health_department",
+          "qlabel": "health department",
+          "qnode": "wd:Q1312371"
+        },
+        {
+          "@id": "cmu:Entities/00112/infectious_disease",
+          "name": "infectious_disease",
+          "qlabel": "infectious disease",
+          "qnode": "wd:Q18123741"
+        },
+        {
+          "@id": "cmu:Entities/00113/health_professional",
+          "name": "health_professional",
+          "qlabel": "health professional",
+          "qnode": "wd:Q11974939"
+        },
+        {
+          "@id": "cmu:Entities/00114/government_agency",
+          "name": "government_agency",
+          "qlabel": "government agency",
+          "qnode": "wd:Q327333"
+        },
+        {
+          "@id": "cmu:Entities/00115/feces",
+          "name": "feces",
+          "qlabel": "feces",
+          "qnode": "wd:Q496"
+        },
+        {
+          "@id": "cmu:Entities/00116/facility",
+          "name": "facility",
+          "qlabel": "facility",
+          "qnode": "wd:Q13226383"
+        },
+        {
+          "@id": "cmu:Entities/00117/business",
+          "name": "business",
+          "qlabel": "business",
+          "qnode": "wd:Q4830453"
+        },
+        {
+          "@id": "cmu:Entities/00118/money",
+          "name": "money",
+          "qlabel": "money",
+          "qnode": "wd:Q1368"
+        },
+        {
+          "@id": "cmu:Entities/00119/customer",
+          "name": "customer",
+          "qlabel": "customer",
+          "qnode": "wd:Q852835"
+        },
+        {
+          "@id": "cmu:Entities/00120/food",
+          "name": "food",
+          "qlabel": "food",
+          "qnode": "wd:Q2095"
+        },
+        {
+          "@id": "cmu:Entities/00121/pathogen",
+          "name": "pathogen",
+          "qlabel": "pathogen",
+          "qnode": "wd:Q170065"
+        },
+        {
+          "@id": "cmu:Entities/00122/health_department",
+          "name": "health_department",
+          "qlabel": "health department",
+          "qnode": "wd:Q1312371"
+        },
+        {
+          "@id": "cmu:Entities/00123/person",
+          "name": "person",
+          "qlabel": "person",
+          "qnode": "wd:Q215627"
+        },
+        {
+          "@id": "cmu:Entities/00124/pathogen",
+          "name": "pathogen",
+          "qlabel": "pathogen",
+          "qnode": "wd:Q170065"
+        },
+        {
+          "@id": "cmu:Entities/00125/feces",
+          "name": "feces",
+          "qlabel": "feces",
+          "qnode": "wd:Q496"
+        },
+        {
+          "@id": "cmu:Entities/00126/infectious_disease",
+          "name": "infectious_disease",
+          "qlabel": "infectious disease",
+          "qnode": "wd:Q18123741"
+        },
+        {
+          "@id": "cmu:Entities/00127/food",
+          "name": "food",
+          "qlabel": "food",
+          "qnode": "wd:Q2095"
+        },
+        {
+          "@id": "cmu:Entities/00128/consumer",
+          "name": "consumer",
+          "qlabel": "consumer",
+          "qnode": "wd:Q22855"
+        },
+        {
+          "@id": "cmu:Entities/00129/pathogen",
+          "name": "pathogen",
+          "qlabel": "pathogen",
+          "qnode": "wd:Q170065"
+        },
+        {
+          "@id": "cmu:Entities/00130/foodborne_illness",
+          "name": "foodborne illness",
+          "qlabel": "foodborne illness",
+          "qnode": "wd:Q272002"
+        },
+        {
+          "@id": "cmu:Entities/00131/food_industry",
+          "name": "food industry",
+          "qlabel": "food industry",
+          "qnode": "wd:Q540912"
+        },
+        {
+          "@id": "cmu:Entities/00132/restaurant",
+          "name": "restaurant",
+          "qlabel": "restaurant",
+          "qnode": "wd:Q11707"
+        },
+        {
+          "@id": "cmu:Entities/00133/facility",
+          "name": "facility",
+          "qlabel": "facility",
+          "qnode": "wd:Q13226383"
+        },
+        {
+          "@id": "cmu:Entities/00134/company",
+          "name": "company",
+          "qlabel": "company",
+          "qnode": "wd:Q783794"
+        },
+        {
+          "@id": "cmu:Entities/00135/victim",
+          "name": "victim",
+          "qlabel": "victim",
+          "qnode": "wd:Q1851760"
+        },
+        {
+          "@id": "cmu:Entities/00136/employee",
+          "name": "employee",
+          "qlabel": "employee",
+          "qnode": "wd:Q703534"
+        },
+        {
+          "@id": "cmu:Entities/00137/judge",
+          "name": "judge",
+          "qlabel": "judge",
+          "qnode": "wd:Q16533"
+        },
+        {
+          "@id": "cmu:Entities/00138/concrete_object",
+          "name": "concrete_object",
+          "qlabel": "concrete object",
+          "qnode": "wd:Q4406616"
+        },
+        {
+          "@id": "cmu:Entities/00139/consumer",
+          "name": "consumer",
+          "qlabel": "consumer",
+          "qnode": "wd:Q22855"
+        },
+        {
+          "@id": "cmu:Entities/00140/foodborne_illness",
+          "name": "foodborne illness",
+          "qlabel": "foodborne illness",
+          "qnode": "wd:Q272002"
+        },
+        {
+          "@id": "cmu:Entities/00141/food_industry",
+          "name": "food industry",
+          "qlabel": "food industry",
+          "qnode": "wd:Q540912"
+        },
+        {
+          "@id": "cmu:Entities/00142/restaurant",
+          "name": "restaurant",
+          "qlabel": "restaurant",
+          "qnode": "wd:Q11707"
+        },
+        {
+          "@id": "cmu:Entities/00143/facility",
+          "name": "facility",
+          "qlabel": "facility",
+          "qnode": "wd:Q13226383"
+        },
+        {
+          "@id": "cmu:Entities/00144/company",
+          "name": "company",
+          "qlabel": "company",
+          "qnode": "wd:Q783794"
+        },
+        {
+          "@id": "cmu:Entities/00145/victim",
+          "name": "victim",
+          "qlabel": "victim",
+          "qnode": "wd:Q1851760"
+        },
+        {
+          "@id": "cmu:Entities/00146/employee",
+          "name": "employee",
+          "qlabel": "employee",
+          "qnode": "wd:Q703534"
+        },
+        {
+          "@id": "cmu:Entities/00147/judge",
+          "name": "judge",
+          "qlabel": "judge",
+          "qnode": "wd:Q16533"
+        },
+        {
+          "@id": "cmu:Entities/00148/disinfectant",
+          "name": "disinfectant",
+          "qlabel": "disinfectant",
+          "qnode": "wd:Q73984"
+        },
+        {
+          "@id": "cmu:Entities/00149/victim",
+          "name": "victim",
+          "qlabel": "victim",
+          "qnode": "wd:Q1851760"
+        },
+        {
+          "@id": "cmu:Entities/00150/infectious_disease",
+          "name": "infectious disease",
+          "qlabel": "infectious disease",
+          "qnode": "wd:Q18123741"
+        },
+        {
+          "@id": "cmu:Entities/00151/artificial_object",
+          "name": "artificial object",
+          "qlabel": "artificial entity",
+          "qnode": "wd:Q16686448"
+        },
+        {
+          "@id": "cmu:Entities/00152/water_distribution_system",
+          "name": "water_distribution system",
+          "qlabel": "water distribution system",
+          "qnode": "wd:Q2551228"
+        },
+        {
+          "@id": "cmu:Entities/00153/application",
+          "name": "application",
+          "qlabel": "application",
+          "qnode": "wd:Q166142"
+        },
+        {
+          "@id": "cmu:Entities/00154/payment_method",
+          "name": "payment method",
+          "qlabel": "payment method",
+          "qnode": "wd:Q1912682"
+        },
+        {
+          "@id": "cmu:Entities/00155/consumer",
+          "name": "consumer",
+          "qlabel": "consumer",
+          "qnode": "wd:Q22855"
+        },
+        {
+          "@id": "cmu:Entities/00156/facility",
+          "name": "facility",
+          "qlabel": "facility",
+          "qnode": "wd:Q13226383"
+        },
+        {
+          "@id": "cmu:Entities/00157/company",
+          "name": "company",
+          "qlabel": "company",
+          "qnode": "wd:Q783794"
+        },
+        {
+          "@id": "cmu:Entities/00158/victim",
+          "name": "victim",
+          "qlabel": "victim",
+          "qnode": "wd:Q1851760"
+        },
+        {
+          "@id": "cmu:Entities/00159/employee",
+          "name": "employee",
+          "qlabel": "employee",
+          "qnode": "wd:Q703534"
+        },
+        {
+          "@id": "cmu:Entities/00160/judge",
+          "name": "judge",
+          "qlabel": "judge",
+          "qnode": "wd:Q16533"
+        },
+        {
+          "@id": "cmu:Entities/00161/person",
+          "name": "person",
+          "qlabel": "person",
+          "qnode": "wd:Q215627"
+        },
+        {
+          "@id": "cmu:Entities/00162/infectious_disease",
+          "name": "infectious_disease",
+          "qlabel": "infectious disease",
+          "qnode": "wd:Q18123741"
+        },
+        {
+          "@id": "cmu:Entities/00163/application",
+          "name": "application",
+          "qlabel": "application",
+          "qnode": "wd:Q166142"
+        },
+        {
+          "@id": "cmu:Entities/00164/payment_method",
+          "name": "payment method",
+          "qlabel": "payment method",
+          "qnode": "wd:Q1912682"
+        },
+        {
+          "@id": "cmu:Entities/00165/consumer",
+          "name": "consumer",
+          "qlabel": "consumer",
+          "qnode": "wd:Q22855"
+        },
+        {
+          "@id": "cmu:Entities/90384/EE2013.000740",
+          "name": "Lobsters tainted with cholera",
+          "ta2qlabel": "lobster",
+          "ta2qnode": "wd:Q61864890"
+        },
+        {
+          "@id": "cmu:Entities/90399/EE2013.000905",
+          "name": "Pedernales",
+          "ta2qlabel": "Pedernales",
+          "ta2qnode": "wd:Q2552137"
+        },
+        {
+          "@id": "cmu:Entities/90331/EE2013.000125",
+          "name": "A catering company",
+          "ta2qlabel": "catering",
+          "ta2qnode": "wd:Q777754"
+        },
+        {
+          "@id": "cmu:Entities/90380/EE2013.000696",
+          "name": "Ice used at the wedding",
+          "ta2qlabel": "ice",
+          "ta2qnode": "wd:Q23392"
+        },
+        {
+          "@id": "cmu:Entities/90370/EE2013.000575",
+          "name": "Food served at the wedding",
+          "ta2qlabel": "food",
+          "ta2qnode": "wd:Q2095"
+        },
+        {
+          "@id": "cmu:Entities/90363/EE2013.000493",
+          "name": "Drinks served at the wedding",
+          "ta2qlabel": "drink",
+          "ta2qnode": "wd:Q40050"
+        },
+        {
+          "@id": "cmu:Entities/90350/EE2013.000345",
+          "name": "Casa de Campo resort complex",
+          "ta2qlabel": "Casa de Campo, Dominican Republic",
+          "ta2qnode": "wd:Q2033262"
+        },
+        {
+          "@id": "cmu:Entities/90393/EE2013.000839",
+          "name": "More than 300 wedding guests",
+          "ta2qlabel": "guest",
+          "ta2qnode": "wd:Q18089644"
+        },
+        {
+          "@id": "cmu:Entities/90330/EE2013.000114",
+          "name": "A 30-year-old Massachusetts man",
+          "ta2qlabel": "sick_person",
+          "ta2qnode": "wd:Q12722854"
+        },
+        {
+          "@id": "cmu:Entities/90338/EE2013.000202",
+          "name": "A Massachusetts woman",
+          "ta2qlabel": "sick_person",
+          "ta2qnode": "wd:Q12722854"
+        },
+        {
+          "@id": "cmu:Entities/90334/EE2013.000158",
+          "name": "A father",
+          "ta2qlabel": "sick_person",
+          "ta2qnode": "wd:Q12722854"
+        },
+        {
+          "@id": "cmu:Entities/90417/EE2013.001103",
+          "name": "Three children",
+          "ta2qlabel": "sick_person",
+          "ta2qnode": "wd:Q12722854"
         }
       ],
-      "entityRelations": [
+      "events": [
         {
-          "relationSubject": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/target",
-          "provenance": "provided by v0.92 Graph G",
-          "relations": [
+          "@id": "cmu:Events/00291/exchange_of_goods",
+          "confidence": 0.82,
+          "modality": [],
+          "name": "exchange of goods",
+          "participants": [
             {
-              "@id": "ibm:Schemas/AttackWithDBIED/Relations/MKFhb04UHRZPj",
-              "ta1ref": "sbu:Schemas/AttackWithDBIED/Relations/MKFhb04UHRZPj",
-              "name": "Nicolas Maduro is president of Venezuela",
-              "comment": "This relation was not in the original schema, but was added so TA2 can use a TA1 relation.",
-              "relationPredicate": "kairos:Primitives/Relations/OrganizationAffiliation.Leadership.HeadOfState",
-              "relationObject": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/place",
-              "provenance": "provided by v0.92 Graph G",
-              "relationProvenance": "RR1001.00001"
+              "@id": "cmu:Participants/00717/business",
+              "entity": "cmu:Entities/00117/business",
+              "roleName": "A0_pag",
+              "values": {
+                "provenance": "LDC-Annotation",
+                "ta2entity": "cmu:Entities/90331/EE2013.000125"
+              }
+            },
+            {
+              "@id": "cmu:Participants/00718/business",
+              "entity": "cmu:Entities/00117/business",
+              "roleName": "A2_com"
+            },
+            {
+              "@id": "cmu:Participants/00719/money",
+              "entity": "cmu:Entities/00118/money",
+              "roleName": "A3_ppt"
+            },
+            {
+              "@id": "cmu:Participants/00720/business",
+              "entity": "cmu:Entities/00117/business",
+              "roleName": "AM_loc"
+            },
+            {
+              "@id": "cmu:Participants/00721/food",
+              "entity": "cmu:Entities/00120/food",
+              "roleName": "A1_ppt"
+            },
+            {
+              "@id": "cmu:Participants/00722/customer",
+              "entity": "cmu:Entities/00119/customer",
+              "roleName": "A0_pag"
             }
-          ]
+          ],
+          "provenance": "VP2013.007649",
+          "qlabel": "exchange of goods",
+          "qnode": "wd:Q21651837",
+          "ta1explanation": "customer purchases contaminated food from a business, such as a store or restaurant",
+          "ta1ref": "cmu:Events/00291/exchange_of_goods",
+          "ta2qlabel": "exchange_of_goods",
+          "ta2qnode": "wiki:Q21651837",
+          "temporal": {
+            "latestEndTime": "2011-01-22T23:59:59",
+            "latestStartTime": "2011-01-22T23:59:59"
+          }
         },
         {
-          "relationSubject": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/place2",
-          "provenance": "provided by v0.92 Graph G",
-          "relations": [
+          "@id": "cmu:Events/00292/ingestion",
+          "confidence": 0.95,
+          "modality": [],
+          "name": "ingestion",
+          "participants": [
             {
-              "@id": "ibm:Schemas/AttackWithDBIED/Relations/foobar",
-              "ta1ref": "kairos:NULL",
-              "name": "The apartment building damaged by the drone is near the stage where Maduro was speaking",
-              "comment": "This relation was in Graph G, but not matched to a TA1 relation.",
-              "relationPredicate": "kairos:Primitives/Relations/Physical.LocatedNear.Unspecified",
-              "relationObject": "ibm:Schemas/Instantiated/AttackWithDBIED/Entities/stage",
-              "provenance": "provided by v0.92 Graph G",
-              "relationProvenance": "RR1001.00017"
+              "@id": "cmu:Participants/00723/customer",
+              "entity": "cmu:Entities/00119/customer",
+              "roleName": "A0_pag",
+              "values": {
+                "provenance": "LDC-Annotation",
+                "ta2entity": "cmu:Entities/90330/EE2013.000114"
+              }
+            },
+            {
+              "@id": "cmu:Participants/00724/pathogen",
+              "entity": "cmu:Entities/00121/pathogen",
+              "roleName": "A1_ppt",
+              "values": {
+                "provenance": "LDC-Annotation",
+                "ta2entity": "cmu:Entities/90338/EE2013.000202"
+              }
             }
-          ]
+          ],
+          "provenance": "VP2013.000433",
+          "qlabel": "ingestion",
+          "qnode": "wd:Q1663054",
+          "ta1explanation": "customer consumes food that has been contaminated with a pathogen",
+          "ta1ref": "cmu:Events/00292/ingestion",
+          "ta2qlabel": "ingestion",
+          "ta2qnode": "wiki:Q1663054",
+          "temporal": {
+            "earliestEndTime": "2011-01-22T00:00:00",
+            "earliestStartTime": "2011-01-22T00:00:00",
+            "latestEndTime": "2011-01-22T23:59:59",
+            "latestStartTime": "2011-01-22T23:59:59"
+          }
+        },
+        {
+          "@id": "cmu:Events/00293/disease",
+          "confidence": 0.68,
+          "modality": [],
+          "name": "disease",
+          "participants": [
+            {
+              "@id": "cmu:Participants/00725/customer",
+              "entity": "cmu:Entities/00119/customer",
+              "roleName": "A1_ppt",
+              "values": {
+                "provenance": "LDC-Annotation",
+                "ta2entity": "cmu:Entities/90380/EE2013.000696"
+              }
+            },
+            {
+              "@id": "cmu:Participants/00726/pathogen",
+              "entity": "cmu:Entities/00121/pathogen",
+              "roleName": "AM_cau"
+            }
+          ],
+          "provenance": "VP2013.005699",
+          "qlabel": "disease",
+          "qnode": "wd:Q12136",
+          "ta1explanation": "customer becomes ill from consuming a pathogen",
+          "ta1ref": "cmu:Events/00293/disease",
+          "ta2qlabel": "travel",
+          "ta2qnode": "wiki:Q61509",
+          "temporal": {
+            "earliestEndTime": "2011-01-22T00:00:00",
+            "latestEndTime": "2011-01-22T23:59:59",
+            "latestStartTime": "2011-01-22T23:59:59"
+          }
+        },
+        {
+          "@id": "cmu:Events/00294/communication",
+          "confidence": 0.45,
+          "name": "communication",
+          "participants": [
+            {
+              "@id": "cmu:Participants/00727/business",
+              "entity": "cmu:Entities/00117/business",
+              "roleName": "A0_pag",
+              "values": {
+                "provenance": "LDC-Annotation",
+                "ta2entity": "cmu:Entities/90331/EE2013.000125"
+              }
+            },
+            {
+              "@id": "cmu:Participants/00728/health_department",
+              "entity": "cmu:Entities/00122/health_department",
+              "roleName": "A2_com",
+              "values": {
+                "confidence": 0.45,
+                "provenance": "cmu:Provenance/00000",
+                "ta2entity": "cmu:Entities/90331/EE2013.000125"
+              }
+            }
+          ],
+          "predictionProvenance": [
+            "cmu:Entities/90331/EE2013.000125",
+            "cmu:Events/00291/exchange_of_goods",
+            "cmu:Events/00292/ingestion"
+          ],
+          "qlabel": "communication",
+          "qnode": "wd:Q11024",
+          "ta1explanation": "company reports illnesses to health department",
+          "ta1ref": "cmu:Events/00294/communication"
+        },
+        {
+          "@id": "cmu:Events/00295/temporarily_closed",
+          "confidence": 0,
+          "name": "temporarily closed",
+          "participants": [
+            {
+              "@id": "cmu:Participants/00729/business",
+              "entity": "cmu:Entities/00117/business",
+              "roleName": "A1_ppt",
+              "values": {
+                "provenance": "LDC-Annotation",
+                "ta2entity": "cmu:Entities/90331/EE2013.000125"
+              }
+            }
+          ],
+          "predictionProvenance": [
+            "cmu:Entities/90350/EE2013.000345",
+            "cmu:Events/00291/exchange_of_goods",
+            "cmu:Events/00292/ingestion"
+          ],
+          "qlabel": "temporarily closed",
+          "qnode": "wd:Q55653430",
+          "ta1explanation": "business is shut down or temporarily closed",
+          "ta1ref": "cmu:Events/00295/temporarily_closed"
+        },
+        {
+          "@id": "cmu:Events/00296/reopen",
+          "confidence": 0,
+          "name": "reopen",
+          "participants": [
+            {
+              "@id": "cmu:Participants/00730/business",
+              "entity": "cmu:Entities/00117/business",
+              "roleName": "A1_ppt",
+              "values": {
+                "provenance": "LDC-Annotation",
+                "ta2entity": "cmu:Entities/90331/EE2013.000125"
+              }
+            }
+          ],
+          "predictionProvenance": [
+            "cmu:Entities/90350/EE2013.000345",
+            "cmu:Events/00291/exchange_of_goods",
+            "cmu:Events/00292/ingestion"
+          ],
+          "qlabel": "reopening",
+          "qnode": "wd:Q16571590",
+          "ta1explanation": "business is reopened",
+          "ta1ref": "cmu:Events/00296/reopen"
+        },
+        {
+          "@id": "cmu:Events/00297/food_poisoning_outbreak",
+          "children": [
+            {
+              "child": "cmu:Events/00291/exchange_of_goods",
+              "importance": 0.527,
+              "outlinks": [
+                "cmu:Events/00292/ingestion"
+              ]
+            },
+            {
+              "child": "cmu:Events/00292/ingestion",
+              "importance": 0.554,
+              "outlinks": [
+                "cmu:Events/00293/disease"
+              ]
+            },
+            {
+              "child": "cmu:Events/00293/disease",
+              "importance": 1,
+              "outlinks": [
+                "cmu:Events/00294/communication"
+              ]
+            },
+            {
+              "child": "cmu:Events/00294/communication",
+              "importance": 0.804,
+              "outlinks": [
+                "cmu:Events/00295/temporarily_closed"
+              ]
+            },
+            {
+              "child": "cmu:Events/00295/temporarily_closed",
+              "importance": 0.5,
+              "outlinks": [
+                "cmu:Events/00296/reopen"
+              ]
+            },
+            {
+              "child": "cmu:Events/00296/reopen",
+              "importance": 0.5,
+              "outlinks": []
+            }
+          ],
+          "children_gate": "and",
+          "confidence": 0.01,
+          "name": "food poisoning outbreak",
+          "participants": [],
+          "predictionProvenance": "cmu:Events/00297/food_poisoning_outbreak",
+          "ta1explanation": "spread of a foodborne infectious disease to a large number of people in a given population",
+          "ta1ref": "cmu:Events/00297/food_poisoning_outbreak"
+        },
+        {
+          "@id": "cmu:Events/90038/VP2013.007649",
+          "description": "The catering company bought the contaminated lobsters in Pedernales",
+          "name": "exchange_of_goods",
+          "participants": [
+            {
+              "@id": "cmu:Participants/90240/AR2013.000353",
+              "entity": "kairos:NULL",
+              "roleName": "A1_ppt_theme_thing_being_traded",
+              "values": {
+                "provenance": "LDC-Annotation",
+                "ta2entity": "cmu:Entities/90384/EE2013.000740"
+              }
+            },
+            {
+              "@id": "cmu:Participants/90241/AR2013.000358",
+              "entity": "kairos:NULL",
+              "roleName": "AM_loc__location",
+              "values": {
+                "provenance": "LDC-Annotation",
+                "ta2entity": "cmu:Entities/90399/EE2013.000905"
+              }
+            },
+            {
+              "@id": "cmu:Participants/90242/AR2013.000828",
+              "entity": "kairos:NULL",
+              "roleName": "A2_com_co_agent_other_exchanger",
+              "values": {
+                "provenance": "LDC-Annotation",
+                "ta2entity": "cmu:Entities/90331/EE2013.000125"
+              }
+            }
+          ],
+          "provenance": "VP2013.007649",
+          "ta1explanation": "From Graph G.",
+          "ta1ref": "kairos:NULL",
+          "ta2qlabel": "exchange_of_goods",
+          "ta2qnode": "wd:Q21651837",
+          "temporal": {
+            "latestEndTime": "2011-01-22T23:59:59",
+            "latestStartTime": "2011-01-22T23:59:59"
+          }
+        },
+        {
+          "@id": "cmu:Events/90028/VP2013.005699",
+          "description": "The contaminated lobster and other food, drinks, and ice served at the wedding were provided by the catering company at Casa de Campo",
+          "name": "travel",
+          "participants": [
+            {
+              "@id": "cmu:Participants/90200/AR2013.000828",
+              "entity": "kairos:NULL",
+              "roleName": "A0_pag_agent_transporter",
+              "values": {
+                "provenance": "LDC-Annotation",
+                "ta2entity": "cmu:Entities/90331/EE2013.000125"
+              }
+            },
+            {
+              "@id": "cmu:Participants/90201/AR2013.005694",
+              "entity": "kairos:NULL",
+              "roleName": "A1_ppt_theme_thing_transported",
+              "values": {
+                "provenance": "LDC-Annotation",
+                "ta2entity": "cmu:Entities/90380/EE2013.000696"
+              }
+            },
+            {
+              "@id": "cmu:Participants/90202/AR2013.005684",
+              "entity": "kairos:NULL",
+              "roleName": "A1_ppt_theme_thing_transported",
+              "values": {
+                "provenance": "LDC-Annotation",
+                "ta2entity": "cmu:Entities/90370/EE2013.000575"
+              }
+            },
+            {
+              "@id": "cmu:Participants/90203/AR2013.005689",
+              "entity": "kairos:NULL",
+              "roleName": "A1_ppt_theme_thing_transported",
+              "values": {
+                "provenance": "LDC-Annotation",
+                "ta2entity": "cmu:Entities/90363/EE2013.000493"
+              }
+            },
+            {
+              "@id": "cmu:Participants/90204/AR2013.000023",
+              "entity": "kairos:NULL",
+              "roleName": "A3_gol_destination_destination",
+              "values": {
+                "provenance": "LDC-Annotation",
+                "ta2entity": "cmu:Entities/90350/EE2013.000345"
+              }
+            },
+            {
+              "@id": "cmu:Participants/90205/AR2013.000353",
+              "entity": "kairos:NULL",
+              "roleName": "A1_ppt_theme_thing_transported",
+              "values": {
+                "provenance": "LDC-Annotation",
+                "ta2entity": "cmu:Entities/90384/EE2013.000740"
+              }
+            }
+          ],
+          "provenance": "VP2013.005699",
+          "ta1explanation": "From Graph G.",
+          "ta1ref": "kairos:NULL",
+          "ta2qlabel": "travel",
+          "ta2qnode": "wd:Q61509",
+          "temporal": {
+            "earliestEndTime": "2011-01-22T00:00:00",
+            "latestEndTime": "2011-01-22T23:59:59",
+            "latestStartTime": "2011-01-22T23:59:59"
+          }
+        },
+        {
+          "@id": "cmu:Events/90006/VP2013.000433",
+          "description": "More than 300 wedding guests, including a 30-year-old Massachusetts man and others, ate lobster contaminated with cholera at Casa de Campo",
+          "name": "ingestion",
+          "participants": [
+            {
+              "@id": "cmu:Participants/90100/AR2013.004039",
+              "entity": "kairos:NULL",
+              "roleName": "A0_pag_agent_eater",
+              "values": {
+                "provenance": "LDC-Annotation",
+                "ta2entity": "cmu:Entities/90393/EE2013.000839"
+              }
+            },
+            {
+              "@id": "cmu:Participants/90101/AR2013.000353",
+              "entity": "kairos:NULL",
+              "roleName": "A1_ppt_patient_entity_ingested",
+              "values": {
+                "provenance": "LDC-Annotation",
+                "ta2entity": "cmu:Entities/90384/EE2013.000740"
+              }
+            },
+            {
+              "@id": "cmu:Participants/90102/AR2013.000023",
+              "entity": "kairos:NULL",
+              "roleName": "AM_loc__location",
+              "values": {
+                "provenance": "LDC-Annotation",
+                "ta2entity": "cmu:Entities/90350/EE2013.000345"
+              }
+            },
+            {
+              "@id": "cmu:Participants/90103/AR2013.001954",
+              "entity": "kairos:NULL",
+              "roleName": "A0_pag_agent_eater",
+              "values": {
+                "provenance": "LDC-Annotation",
+                "ta2entity": "cmu:Entities/90330/EE2013.000114"
+              }
+            },
+            {
+              "@id": "cmu:Participants/90104/AR2013.002524",
+              "entity": "kairos:NULL",
+              "roleName": "A0_pag_agent_eater",
+              "values": {
+                "provenance": "LDC-Annotation",
+                "ta2entity": "cmu:Entities/90338/EE2013.000202"
+              }
+            },
+            {
+              "@id": "cmu:Participants/90105/AR2013.002694",
+              "entity": "kairos:NULL",
+              "roleName": "A0_pag_agent_eater",
+              "values": {
+                "provenance": "LDC-Annotation",
+                "ta2entity": "cmu:Entities/90334/EE2013.000158"
+              }
+            },
+            {
+              "@id": "cmu:Participants/90106/AR2013.002699",
+              "entity": "kairos:NULL",
+              "roleName": "A0_pag_agent_eater",
+              "values": {
+                "provenance": "LDC-Annotation",
+                "ta2entity": "cmu:Entities/90417/EE2013.001103"
+              }
+            }
+          ],
+          "provenance": "VP2013.000433",
+          "ta1explanation": "From Graph G.",
+          "ta1ref": "kairos:NULL",
+          "ta2qlabel": "ingestion",
+          "ta2qnode": "wd:Q1663054",
+          "temporal": {
+            "earliestEndTime": "2011-01-22T00:00:00",
+            "earliestStartTime": "2011-01-22T00:00:00",
+            "latestEndTime": "2011-01-22T23:59:59",
+            "latestStartTime": "2011-01-22T23:59:59"
+          }
         }
-      ]
+      ],
+      "name": "exchange_of_goods",
+      "relations": [
+        {
+          "@id": "cmu:Relations/50019/GraphG-cmu:Events/90038/VP2013.007649-Bef-cmu:Events/90028/VP2013.005699",
+          "name": "nist:Events/90038/VP2013.007649 happens before nist:Events/90028/VP2013.005699",
+          "relationObject": "cmu:Events/90028/VP2013.005699",
+          "relationObject_prov": "LDC-Temporal-Annotation",
+          "relationPredicate": "wd:Q79030196",
+          "relationProvenance": "LDC-Annotation",
+          "relationSubject": "cmu:Events/90038/VP2013.007649",
+          "relationSubject_prov": "LDC-Temporal-Annotation",
+          "ta1ref": "kairos:NULL"
+        },
+        {
+          "@id": "cmu:Relations/50020/GraphG-cmu:Events/90038/VP2013.007649-Bef-cmu:Events/90006/VP2013.000433",
+          "name": "nist:Events/90038/VP2013.007649 happens before nist:Events/90006/VP2013.000433",
+          "relationObject": "cmu:Events/90006/VP2013.000433",
+          "relationObject_prov": "LDC-Temporal-Annotation",
+          "relationPredicate": "wd:Q79030196",
+          "relationProvenance": "LDC-Annotation",
+          "relationSubject": "cmu:Events/90038/VP2013.007649",
+          "relationSubject_prov": "LDC-Temporal-Annotation",
+          "ta1ref": "kairos:NULL"
+        },
+        {
+          "@id": "cmu:Relations/50027/GraphG-cmu:Events/90028/VP2013.005699-Bef-cmu:Events/90006/VP2013.000433",
+          "name": "nist:Events/90028/VP2013.005699 happens before nist:Events/90006/VP2013.000433",
+          "relationObject": "cmu:Events/90006/VP2013.000433",
+          "relationObject_prov": "LDC-Temporal-Annotation",
+          "relationPredicate": "wd:Q79030196",
+          "relationProvenance": "LDC-Annotation",
+          "relationSubject": "cmu:Events/90028/VP2013.005699",
+          "relationSubject_prov": "LDC-Temporal-Annotation",
+          "ta1ref": "kairos:NULL"
+        },
+        {
+          "@id": "cmu:Relations/00030/schema-cmu:Events/00291/exchange_of_goods-BEFORE-cmu:Events/00292/ingestion",
+          "name": "cmu:Events/00291/exchange_of_goods happens before cmu:Events/00292/ingestion",
+          "relationObject": "cmu:Events/00292/ingestion",
+          "relationPredicate": "wd:Q79030196",
+          "relationSubject": "cmu:Events/00291/exchange_of_goods",
+          "ta1ref": "cmu:Relations/00030/schema-cmu:Events/00291/exchange_of_goods-BEFORE-cmu:Events/00292/ingestion",
+          "confidence": 1
+        },
+        {
+          "@id": "cmu:Relations/00031/schema-cmu:Events/00292/ingestion-BEFORE-cmu:Events/00293/disease",
+          "name": "cmu:Events/00292/ingestion happens before cmu:Events/00293/disease",
+          "relationObject": "cmu:Events/00293/disease",
+          "relationPredicate": "wd:Q79030196",
+          "relationSubject": "cmu:Events/00292/ingestion",
+          "ta1ref": "cmu:Relations/00031/schema-cmu:Events/00292/ingestion-BEFORE-cmu:Events/00293/disease",
+          "confidence": 1
+        },
+        {
+          "@id": "cmu:Relations/00032/schema-cmu:Events/00293/disease-BEFORE-cmu:Events/00294/communication",
+          "name": "cmu:Events/00293/disease happens before cmu:Events/00294/communication",
+          "relationObject": "cmu:Events/00294/communication",
+          "relationPredicate": "wd:Q79030196",
+          "relationSubject": "cmu:Events/00293/disease",
+          "ta1ref": "cmu:Relations/00032/schema-cmu:Events/00293/disease-BEFORE-cmu:Events/00294/communication",
+          "confidence": 1
+        },
+        {
+          "@id": "cmu:Relations/00033/schema-cmu:Events/00294/communication-BEFORE-cmu:Events/00295/temporarily_closed",
+          "name": "cmu:Events/00294/communication happens before cmu:Events/00295/temporarily_closed",
+          "relationObject": "cmu:Events/00295/temporarily_closed",
+          "relationPredicate": "wd:Q79030196",
+          "relationSubject": "cmu:Events/00294/communication",
+          "ta1ref": "cmu:Relations/00033/schema-cmu:Events/00294/communication-BEFORE-cmu:Events/00295/temporarily_closed",
+          "confidence": 1
+        },
+        {
+          "@id": "cmu:Relations/00034/schema-cmu:Events/00295/temporarily_closed-BEFORE-cmu:Events/00296/reopen",
+          "name": "cmu:Events/00295/temporarily_closed happens before cmu:Events/00296/reopen",
+          "relationObject": "cmu:Events/00296/reopen",
+          "relationPredicate": "wd:Q79030196",
+          "relationSubject": "cmu:Events/00295/temporarily_closed",
+          "ta1ref": "cmu:Relations/00034/schema-cmu:Events/00295/temporarily_closed-BEFORE-cmu:Events/00296/reopen",
+          "confidence": 1
+        }
+      ],
+      "ta1ref": "cmu:Events/00291/exchange_of_goods"
     }
-  ]
+  ],
+  "sdfVersion": "2.1",
+  "ta2": true,
+  "task2": true,
+  "version": "cmu-v0"
 }

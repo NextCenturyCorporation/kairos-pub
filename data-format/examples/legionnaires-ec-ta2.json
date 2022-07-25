@@ -1,6 +1,6 @@
 {
   "@context": [
-    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v2.0.jsonld",
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v2.1.jsonld",
     {
       "caci_ta1": "https://caci.com/kairos/ta1/",
       "caci_ta2": "https://caci.com/kairos/ta2/",
@@ -9,8 +9,8 @@
     }
   ],
   "@id": "caci_ta2:Submissions/TA2/12345",
-  "sdfVersion": "2.0",
-  "version": "caci-03.17.2022 / caci-03.17.2022",
+  "sdfVersion": "2.1",
+  "version": "caci-07.15.2022 / caci-07.15.2022",
   "ceID": "ce1002",
   "ta2": true,
   "task2": false,
@@ -22,10 +22,93 @@
     {
       "@id": "caci_ta2:Instances/00001/disease-outbreak",
       "ta1ref": "caci_ta1:Submissions/TA1/12345",
-      "name": "Disease outbreak",
+      "name": "Disease outbreak with hierarchy",
       "description": "Event complex for a disease outbreak",
       "confidence": 0.8,
       "events": [
+        {
+          "@id": "caci_ta2:Events/00001/pathogen-progression",
+          "ta1ref": "caci_ta1:Events/00001/pathogen-progression",
+          "name": "Pathogen progression",
+          "description": "Schema for the progression of a pathogen",
+          "privateData": {
+            "comment": "Performers can place any keys/values they wish here.  Large amounts of private data will be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum.",
+            "my_key": "my value",
+            "giant_bitstring": "s3://caci-kairos/privateData/DiseaseOutbreak/ec-bitstring.gz"
+          },
+          "confidence": 0.9,
+          "provenance": "caci_ta2:Provenance/00002/",
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00001/pathogen-progression",
+              "comment": "Role names are not validated.  You can use roles from the KOWG, the DWD overlay, or UMR non-lexical roles",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00001/pathogen",
+              "values": {
+                "ta2entity": "caci_ta2:Entities/00002/Legionella",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 0.7
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00002/pathogen-progression",
+              "roleName": "A1-Patient",
+              "entity": "caci_ta2:Entities/00005/patient",
+              "values": {
+                "ta2entity": "caci_ta2:Entities/00006/Ray_Brennan",
+                "provenance": "caci_ta2:Provenance/00012/",
+                "confidence": 0.9
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00003/pathogen-progression",
+              "roleName": "A2-Environment",
+              "entity": "caci_ta2:Entities/00003/society",
+              "values": {
+                "ta2entity": "caci_ta2:Entities/00004/American_society",
+                "provenance": "caci_ta2:Provenance/00012/",
+                "confidence": 0.5,
+                "modality": "generic"
+              }
+            }
+          ],
+          "children_gate": "and",
+          "children": [
+            {
+              "child": "caci_ta2:Events/00002/pathogen-come-into-being",
+              "comment": [
+                "Semantics of optional is that if it is set to true, then the event is optional.  If it is set to false OR MISSING, the event is mandatory. TA1 systems decide whether an event its optional or not.",
+                "Importance is local to a parent's children, and do not need to be consistent across instantiations or performers.",
+                "Think of outlinks as the next node (or nodes) in a succession of nodes."
+              ],
+              "optional": true,
+              "importance": 0.3,
+              "outlinks": "caci_ta2:Events/00003/pathogen-replicate"
+            },
+            {
+              "child": "caci_ta2:Events/00003/pathogen-replicate",
+              "outlinks": "caci_ta2:Events/00004/pathogen-spread"
+            },
+            {
+              "child": "caci_ta2:Events/00004/pathogen-spread"
+            }
+          ],
+          "relations": [
+            {
+              "@id": "caci_ta2:Relations/00001/pathogen-progression",
+              "ta1ref": "caci_ta1:Relations/00001/pathogen-progression",
+              "comment": "Note that relation triples (with relationPredicates taken from DWD relations) can be defined in any event node.  By convention, they should only define relations between child event nodes and/or the node where the relation is defined. This is a silly yet illustrative example.",
+              "name": "patient is a member of society",
+              "relationSubject": "caci_ta2:Entities/00006/Ray_Brennan",
+              "relationPredicate": "wdt:P463",
+              "relationObject": "caci_ta2:Entities/00004/American_society",
+              "relationProvenance": "caci_ta2:Provenance/00101/",
+              "relationSubject_prov": "caci_ta2:Provenance/00012/",
+              "relationObject_prov": "caci_ta2:Provenance/00013/",
+              "confidence": 1
+            }
+          ]
+        },
         {
           "@id": "caci_ta2:Events/00002/pathogen-come-into-being",
           "ta1ref": "caci_ta1:Events/00002/pathogen-come-into-being",
@@ -78,6 +161,68 @@
               }
             }
           ]
+        },
+        {
+          "@id": "caci_ta2:Events/00004/pathogen-spread",
+          "ta1ref": "caci_ta1:Events/00004/pathogen-spread",
+          "name": "Spread",
+          "description": "Schema in which a pathogen propagates/spreads",
+          "ta1explanation": "ta1explanations are optional in hierarchy event nodes (those with children).",
+          "confidence": 0.85,
+          "predictionProvenance": [
+            "caci_ta2:Events/00006/pathogen-infect-patient",
+            "caci_ta2:Events/00007/pathogen-live-in-body"
+          ],
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00005/pathogen-spread",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00001/pathogen",
+              "values": {
+                "ta2entity": "caci_ta2:Entities/00002/Legionella",
+                "provenance": "caci_ta2:Provenance/00011/",
+                "confidence": 0.9
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00006/pathogen-spread",
+              "roleName": "A1-Patient",
+              "entity": "caci_ta2:Entities/00005/patient",
+              "values": {
+                "ta2entity": "caci_ta2:Entities/00006/Ray_Brennan",
+                "provenance": "caci_ta2:Provenance/00011/",
+                "confidence": 0.9
+              }
+            }
+          ],
+          "children_gate": "and",
+          "children": [
+            {
+              "child": "caci_ta2:Events/00005/pathogen-escape",
+              "optional": true,
+              "outlinks": "caci_ta2:Events/00006/pathogen-infect-patient"
+            },
+            {
+              "child": "caci_ta2:Events/00006/pathogen-infect-patient",
+              "outlinks": "caci_ta2:Events/00007/pathogen-live-in-body"
+            },
+            {
+              "child": "caci_ta2:Events/00007/pathogen-live-in-body",
+              "outlinks": "caci_ta2:Events/00008/pathogen-continue"
+            },
+            {
+              "child": "caci_ta2:Events/00008/pathogen-continue"
+            }
+          ],
+          "relations": {
+            "@id": "caci_ta2:Relations/00050/",
+            "comment": "Neither provenance nor ta1ref is required for temporal relations.",
+            "name": "pathogen-infect-patient is before pathogen-live-in-body",
+            "relationSubject": "caci_ta2:Events/00006/pathogen-infect-patient",
+            "relationPredicate": "wd:Q79030196",
+            "relationObject": "caci_ta2:Events/00007/pathogen-live-in-body",
+            "confidence": 0.85
+          }
         },
         {
           "@id": "caci_ta2:Events/00005/pathogen-escape",
@@ -226,6 +371,48 @@
           ]
         },
         {
+          "@id": "caci_ta2:Events/00008/pathogen-continue",
+          "ta1ref": "caci_ta1:Events/00008/pathogen-continue",
+          "name": "Continue",
+          "description": "Schema in which further spreading or a decrease in the prevalence of a pathogen occurs",
+          "predictionProvenance": [
+            "caci_ta2:Events/00004/pathogen-spread"
+          ],
+          "confidence": 1,
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00013/pathogen-continue",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00001/pathogen",
+              "values": {
+                "ta2entity": "caci_ta2:Entities/00002/Legionella",
+                "provenance": "caci_ta2:Provenance/00011/",
+                "confidence": 0.9
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00014/pathogen-continue",
+              "roleName": "A1-Patient",
+              "entity": "caci_ta2:Entities/00003/society",
+              "values": {
+                "ta2entity": "caci_ta2:Entities/00004/American_society",
+                "provenance": "caci_ta2:Provenance/00012/",
+                "confidence": 0.5,
+                "modality": "generic"
+              }
+            }
+          ],
+          "children_gate": "xor",
+          "children": [
+            {
+              "child": "caci_ta2:Events/00004/pathogen-spread"
+            },
+            {
+              "child": "caci_ta2:Events/00009/pathogen-decrease"
+            }
+          ]
+        },
+        {
           "@id": "caci_ta2:Events/00009/pathogen-decrease",
           "ta1ref": "caci_ta1:Events/00009/pathogen-decrease",
           "name": "Decrease in society",
@@ -253,6 +440,91 @@
               "@id": "caci_ta2:Participants/00016/pathogen-decrease",
               "roleName": "X1-Location",
               "entity": "caci_ta2:Entities/00003/society"
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00010/patient-progression",
+          "ta1ref": "caci_ta1:Events/00010/patient-progression",
+          "name": "Patient progression",
+          "description": "Schema for the progression of a patient",
+          "provenance": [
+            "caci_ta2:Provenance/00002/",
+            "caci_ta2:Provenance/00001/"
+          ],
+          "confidence": [
+            1,
+            0.9
+          ],
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00017/patient-progression",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00009/patient-1",
+              "values": {
+                "ta2entity": "caci_ta2:Entities/00006/Ray_Brennan",
+                "provenance": "caci_ta2:Provenance/00012/",
+                "confidence": 0.9
+              }
+            }
+          ],
+          "children_gate": "and",
+          "children": [
+            {
+              "child": "caci_ta2:Events/00011/patient-travels-to-contaminant",
+              "optional": true,
+              "importance": 0.3,
+              "outlinks": "caci_ta2:Events/00012/patient-contract-disease"
+            },
+            {
+              "child": "caci_ta2:Events/00012/patient-contract-disease",
+              "optional": true,
+              "importance": 0.5,
+              "outlinks": "caci_ta2:Events/00013/patient-get-sick"
+            },
+            {
+              "child": "caci_ta2:Events/00013/patient-get-sick",
+              "outlinks": "caci_ta2:Events/00014/patient-diagnosed"
+            },
+            {
+              "child": "caci_ta2:Events/00014/patient-diagnosed",
+              "outlinks": "caci_ta2:Events/00015/patient-be-treated"
+            },
+            {
+              "child": "caci_ta2:Events/00015/patient-be-treated",
+              "outlinks": "caci_ta2:Events/00016/patient-change-life-pattern"
+            },
+            {
+              "child": "caci_ta2:Events/00016/patient-change-life-pattern",
+              "optional": true,
+              "importance": 0.1,
+              "outlinks": "caci_ta2:Events/00017/patient-get-meds"
+            },
+            {
+              "child": "caci_ta2:Events/00017/patient-get-meds",
+              "outlinks": "caci_ta2:Events/00018/patient-continue"
+            },
+            {
+              "child": "caci_ta2:Events/00018/patient-continue"
+            }
+          ],
+          "relations": [
+            {
+              "@id": "caci_ta2:Relations/00051/",
+              "comment": "Neither provenance nor ta1ref is required for temporal relations.",
+              "name": "patient-travels-to-contaminant is before patient-get-sick",
+              "relationSubject": "caci_ta2:Events/00011/patient-travels-to-contaminant",
+              "relationPredicate": "wd:Q79030196",
+              "relationObject": "caci_ta2:Events/00013/patient-get-sick",
+              "confidence": 0.9
+            },
+            {
+              "@id": "caci_ta2:Relations/00052/",
+              "name": "patient-get-meds is before patient-dies",
+              "relationSubject": "caci_ta2:Events/00017/patient-get-meds",
+              "relationPredicate": "wd:Q79030196",
+              "relationObject": "caci_ta2:Events/00019/patient-die",
+              "confidence": 1
             }
           ]
         },
@@ -501,6 +773,32 @@
           ]
         },
         {
+          "@id": "caci_ta2:Events/00018/patient-continue",
+          "ta1ref": "caci_ta1:Events/00018/patient-continue",
+          "name": "Continue",
+          "description": "Schema for the continuation of an illness in patient(s), improvement or death",
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00030/patient-continue",
+              "roleName": "A1-Patient",
+              "entity": "caci_ta2:Entities/00009/patient-1",
+              "values": {
+                "ta2entity": "caci_ta2:Entities/00006/Ray_Brennan",
+                "provenance": "caci_ta2:Provenance/00012/",
+                "confidence": 0.9
+              }
+            }
+          ],
+          "confidence": 1,
+          "provenance": "caci_ta2:Provenance/00002/",
+          "children_gate": "xor",
+          "children": [
+            {
+              "child": "caci_ta2:Events/00019/patient-die"
+            }
+          ]
+        },
+        {
           "@id": "caci_ta2:Events/00019/patient-die",
           "ta1ref": "caci_ta1:Events/00019/patient-die",
           "name": "The patient dies",
@@ -522,6 +820,89 @@
               }
             }
           ]
+        },
+        {
+          "@id": "caci_ta2:Events/00021/epidemiologist-response",
+          "ta1ref": "caci_ta1:Events/00021/epidemiologist-response",
+          "description": "Schema in which an epidemiologist responds to an outbreak",
+          "name": "Epidemiologist response",
+          "confidence": 1,
+          "predictionProvenance": [
+            "caci_ta2:Events/00022/learn-about-disease",
+            "caci_ta2:Events/00023/investigate-cluster",
+            "caci_ta2:Events/00024/announce-outbreak",
+            "caci_ta2:Events/00025/investigate-origin-propagation",
+            "caci_ta2:Events/00026/research-antidote",
+            "caci_ta2:Events/00027/epidemiologist-educate",
+            "caci_ta2:Events/00031/epidemiologist-publish"
+          ],
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00032/epidemiologist-response",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00013/epidemiologist",
+              "values": {
+                "ta2entity": "caci_ta2:Entities/00025/PA_Health_Dept",
+                "provenance": "caci_ta2:Provenance/00012/",
+                "confidence": 0.7
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00033/epidemiologist-response",
+              "roleName": "A1-Disease",
+              "entity": "caci_ta2:Entities/00014/disease"
+            }
+          ],
+          "children_gate": "and",
+          "children": [
+            {
+              "child": "caci_ta2:Events/00022/learn-about-disease",
+              "optional": true,
+              "importance": 0.3,
+              "outlinks": "caci_ta2:Events/00023/investigate-cluster"
+            },
+            {
+              "child": "caci_ta2:Events/00023/investigate-cluster",
+              "optional": true,
+              "importance": 0.3,
+              "comment": "Repeatable events need to be expanded by TA2 as distinct events at instantiation time.",
+              "repeatable": true,
+              "outlinks": "caci_ta2:Events/00024/announce-outbreak"
+            },
+            {
+              "child": "caci_ta2:Events/00024/announce-outbreak",
+              "outlinks": "caci_ta2:Events/00025/investigate-origin-propagation"
+            },
+            {
+              "child": "caci_ta2:Events/00025/investigate-origin-propagation",
+              "optional": true,
+              "importance": 0.5,
+              "outlinks": "caci_ta2:Events/00026/research-antidote"
+            },
+            {
+              "child": "caci_ta2:Events/00026/research-antidote",
+              "importance": 0.4,
+              "outlinks": "caci_ta2:Events/00027/epidemiologist-educate"
+            },
+            {
+              "child": "caci_ta2:Events/00027/epidemiologist-educate",
+              "optional": true,
+              "importance": 0.7
+            },
+            {
+              "child": "caci_ta2:Events/00031/epidemiologist-publish",
+              "comment": "This is an extra-relevant that TA2 placed in the hierarchy."
+            }
+          ],
+          "relations": {
+            "@id": "caci_ta2:Relations/00053/",
+            "comment": "Even though this is a temporal relation between child events involving an extra-relevant event, neither provenance nor ta1ref is  required.",
+            "name": "epidemiologist-educate is before epidemiologist-publish",
+            "relationSubject": "caci_ta2:Events/00027/epidemiologist-educate",
+            "relationPredicate": "wd:Q79030196",
+            "relationObject": "caci_ta2:Events/00031/epidemiologist-publish",
+            "confidence": 0.65
+          }
         },
         {
           "@id": "caci_ta2:Events/00022/learn-about-disease",
@@ -657,10 +1038,7 @@
           "qnode": "wd:Q2752427",
           "qlabel": "medical research",
           "confidence": 0.5,
-          "predictionProvenance": [
-            "caci_ta2:Events/00031/epidemiologist-publish",
-            "caci_ta2:Entities/00025/PA_Health_Dept"
-          ],
+          "provenance": "caci_ta2:Provenance/00001/",
           "participants": [
             {
               "@id": "caci_ta2:Participants/00042/epidemiologist",
@@ -676,6 +1054,69 @@
               "@id": "caci_ta2:Participants/00043/research-antidote",
               "roleName": "A1-Antidote",
               "entity": "caci_ta2:Entities/00018/antidote"
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00027/epidemiologist-educate",
+          "ta1ref": "caci_ta1:Events/00027/epidemiologist-educate",
+          "name": "Educate",
+          "description": "Schema in which epidemiologists carry out their educational mission",
+          "qnode": "wd:Q8434",
+          "qlabel": "education",
+          "confidence": 1,
+          "predictionProvenance": [
+            "caci_ta2:Events/00028/educate-healthcare",
+            "caci_ta2:Events/00029/educate-manufacturer",
+            "caci_ta2:Events/00030/educate-authority"
+          ],
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00044/epidemiologist-educate",
+              "roleName": "A0-pag_agent_teacher",
+              "entity": "caci_ta2:Entities/00013/epidemiologist",
+              "values": {
+                "ta2entity": "caci_ta2:Entities/00025/PA_Health_Dept",
+                "provenance": "caci_ta2:Provenance/00012/",
+                "confidence": 0.7
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00045/epidemiologist-educate",
+              "roleName": "A1-PPT_topic_subject",
+              "entity": "caci_ta2:Entities/00014/disease"
+            },
+            {
+              "@id": "caci_ta2:Participants/00046/epidemiologist-educate",
+              "comment": "Just like in Phase I, multiple participants can share the same role.",
+              "roleName": "A2-gol_recipient_student",
+              "entity": "caci_ta2:Entities/00019/healthcare-sector"
+            },
+            {
+              "@id": "caci_ta2:Participants/00047/epidemiologist-educate",
+              "roleName": "A2-gol_recipient_student",
+              "entity": "caci_ta2:Entities/00020/manufacturer"
+            },
+            {
+              "@id": "caci_ta2:Participants/00048/epidemiologist-educate",
+              "roleName": "A2-gol_recipient_student",
+              "entity": "caci_ta2:Entities/00021/authority"
+            }
+          ],
+          "children_gate": "and",
+          "children": [
+            {
+              "child": "caci_ta2:Events/00028/educate-healthcare",
+              "importance": 0.8
+            },
+            {
+              "child": "caci_ta2:Events/00029/educate-manufacturer",
+              "importance": 0.4,
+              "optional": true
+            },
+            {
+              "child": "caci_ta2:Events/00030/educate-authority",
+              "importance": 0.8
             }
           ]
         },
@@ -901,7 +1342,8 @@
           "@id": "caci_ta2:Entities/00005/patient",
           "name": "Patient",
           "qnode": "wd:Q181600",
-          "qlabel": "patient"
+          "qlabel": "patient",
+          "centrality": 1
         },
         {
           "@id": "caci_ta2:Entities/00006/Ray_Brennan",
@@ -932,7 +1374,7 @@
         {
           "@id": "caci_ta2:Entities/00009/patient-1",
           "name": "Patient",
-          "qnode": "wd:Q23806",
+          "qnode": "wd:Q181600",
           "qlabel": "patient"
         },
         {
@@ -1061,7 +1503,8 @@
           "name": "patient from pathogen-progression schema has an equivalence relation to the patient in the patient-progression schema",
           "relationSubject": "caci_ta2:Entities/00005/patient",
           "relationPredicate": "wd:Q26161438",
-          "relationObject": "caci_ta2:Entities/00009/patient-1"
+          "relationObject": "caci_ta2:Entities/00009/patient-1",
+          "centrality": 0.9
         },
         {
           "@id": "caci_ta2:Relations/00005/",
@@ -1194,7 +1637,7 @@
         "mediaType is an IANA Media Type.",
         "'offset' and 'length' are in characters."
       ],
-      "childID": "K0C03N4OJ",
+      "childID": "L0C04GM35",
       "mediaType": "text/plain",
       "offset": 27,
       "length": 76
@@ -1209,8 +1652,8 @@
         "'boundingBox' dimensions are in pixels",
         "For images, 'boundingBox' is required."
       ],
-      "childID": "K0C03N4OK",
-      "parentIDs": "K0C03N4OL",
+      "childID": "L0C04GJ61",
+      "parentIDs": "L0C04GL30",
       "mediaType": "image/png",
       "boundingBox": [
         100,
@@ -1225,8 +1668,8 @@
         " *Videos -- key frames* ",
         "'keyframes' is an array of LDC-supplied key frame IDs."
       ],
-      "childID": "K0C03N4OM",
-      "parentIDs": "K0C03N4ON",
+      "childID": "L0C04GI8W",
+      "parentIDs": "L0C04GKY2",
       "mediaType": "video/mpeg",
       "keyframes": [
         60,
@@ -1247,7 +1690,7 @@
         "'startTime' and 'endTime are in seconds."
       ],
       "childID": "K0C03N4OO",
-      "parentIDs": "K0C03N4OP",
+      "parentIDs": "L0C04GKY2",
       "mediaType": "audio/wav",
       "startTime": 2.56,
       "endTime": 5.12
@@ -1258,8 +1701,8 @@
         " *Videos -- time range* ",
         "'startTime' and 'endTime are in seconds."
       ],
-      "childID": "K0C03N4OM",
-      "parentIDs": "K0C03N4ON",
+      "childID": "L0C04GI8W",
+      "parentIDs": "L0C04GKY2",
       "mediaType": "video/mpeg",
       "startTime": 2.56,
       "endTime": 5.12,
@@ -1272,14 +1715,14 @@
     },
     {
       "provenanceID": "caci_ta2:Provenance/00013/",
-      "childID": "K0C03N4OZ",
+      "childID": "L0C04GM35",
       "mediaType": "text/plain",
       "offset": 5,
       "length": 21
     },
     {
       "provenanceID": "caci_ta2:Provenance/00101/",
-      "childID": "K0C03N4TZ",
+      "childID": "L0C04GM35",
       "mediaType": "text/plain",
       "offset": 5,
       "length": 21

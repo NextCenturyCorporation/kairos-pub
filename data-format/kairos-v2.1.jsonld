@@ -1,11 +1,16 @@
 {
   "@context": {
+    "@version": "1.1",
+    "@protected": true,
     "schema": "http://schema.org/",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "kairos": "https://kairos-sdf.s3.amazonaws.com/context/kairos/",
     "wd": "https://www.wikidata.org/entity/",
     "wdt": "https://www.wikidata.org/prop/direct/",
-    "dwd": "https://dwd.isi.edu/browser/",
+    "dwd": {
+      "@id": "https://dwd.isi.edu/browser/",
+      "@protected": false
+    },
     "sdfVersion": "kairos:sdfVersion",
     "ta2": {
       "@id": "kairos:ta2",

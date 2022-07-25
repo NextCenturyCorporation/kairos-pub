@@ -1,1010 +1,813 @@
 {
     "@context": [
-        "https://kairos-sdf.s3.amazonaws.com/context/kairos-v1.3.1.jsonld",
+        "https://kairos-sdf.s3.amazonaws.com/context/kairos-v2.1.jsonld",
         {
             "nist": "https://nist.gov/kairos/"
         }
     ],
-    "@id": "nist:Quizlet8/GraphG/ce2002abridged",
-    "sdfVersion": "1.3.1",
-    "version": "nist:Quizlet8GraphG:v2021.12.07",
+    "@id": "nist:Phase2a/GraphG/ce2013",
+    "sdfVersion": "2.1",
+    "version": "nist:Phase2aGraphG:v2022.07.15",
     "ta2": true,
     "task2": true,
-    "ceID": "ce2002abridged",
+    "ceID": "ce2013",
     "instances": [
         {
-            "@id": "nist:Instances/00001/nistQuizlet8GraphG",
-            "name": "nist:Quizlet8/GraphGce2002abridged",
+            "@id": "nist:Instances/00001/nistPhase2aGraphG",
+            "name": "nist:Phase2a/GraphGce2013",
             "confidence": 1,
             "ta1ref": "kairos::NULL",
-            "schemaInstantiations": [
-                "nist:Events/00002/nist-GraphG-ce2002abridged-root"
-            ],
             "events": [
                 {
-                    "@id": "nist:Events/00002/nist-GraphG-ce2002abridged-root",
-                    "name": "nist:GraphG/ce2002abridged/root",
-                    "description": "Root Event for Graph G Complex Event for ce2002abridged",
+                    "@id": "nist:Events/00002/nist-GraphG-ce2013-root",
+                    "name": "nist:GraphG/ce2013/root",
+                    "description": "Root Event for Graph G Complex Event for ce2013",
                     "ta1ref": "kairos:NULL",
                     "ta1explanation": "NIST-Constructed Root Node.",
-                    "provenance": "NIST-Constructed root node",
+                    "provenance": "NIST-Constructed-root-node",
                     "ta2qnode": "wd:Q3241045",
                     "ta2qlabel": "disease_outbreak",
                     "children_gate": "and",
                     "children": [
                         {
-                            "child": "nist:Events/00113/VP2002.005164",
+                            "child": "nist:Events/00043/VP2013.008884",
                             "optional": "true",
                             "importance": 1
                         },
                         {
-                            "child": "nist:Events/00025/VP2002.000990",
+                            "child": "nist:Events/00021/VP2013.003959",
                             "optional": "true",
                             "importance": 1
                         },
                         {
-                            "child": "nist:Events/00026/VP2002.001019",
+                            "child": "nist:Events/00038/VP2013.007649",
                             "optional": "true",
                             "importance": 1
                         },
                         {
-                            "child": "nist:Events/00028/VP2002.001091",
+                            "child": "nist:Events/00028/VP2013.005699",
                             "optional": "true",
                             "importance": 1
                         },
                         {
-                            "child": "nist:Events/00078/VP2002.003535",
+                            "child": "nist:Events/00006/VP2013.000433",
                             "optional": "true",
                             "importance": 1
                         },
                         {
-                            "child": "nist:Events/00024/VP2002.000919",
+                            "child": "nist:Events/00017/VP2013.002204",
                             "optional": "true",
                             "importance": 1
                         },
                         {
-                            "child": "nist:Events/00030/VP2002.001163",
+                            "child": "nist:Events/00015/VP2013.001959",
                             "optional": "true",
                             "importance": 1
                         },
                         {
-                            "child": "nist:Events/00106/VP2002.004920",
+                            "child": "nist:Events/00016/VP2013.001999",
                             "optional": "true",
                             "importance": 1
                         },
                         {
-                            "child": "nist:Events/00042/VP2002.001604",
+                            "child": "nist:Events/00018/VP2013.002484",
+                            "optional": "false",
+                            "importance": 1
+                        },
+                        {
+                            "child": "nist:Events/00013/VP2013.001689",
                             "optional": "true",
                             "importance": 1
                         },
                         {
-                            "child": "nist:Events/00112/VP2002.005139",
-                            "optional": "true",
-                            "importance": 1
-                        },
-                        {
-                            "child": "nist:Events/00023/VP2002.000799",
-                            "optional": "true",
-                            "importance": 1
-                        },
-                        {
-                            "child": "nist:Events/00039/VP2002.001505",
-                            "optional": "true",
-                            "importance": 1
-                        },
-                        {
-                            "child": "nist:Events/00114/VP2002.005196",
-                            "optional": "true",
-                            "importance": 1
-                        },
-                        {
-                            "child": "nist:Events/00123/VP2002.005599",
-                            "optional": "true",
-                            "importance": 1
-                        },
-                        {
-                            "child": "nist:Events/00076/VP2002.003453",
-                            "optional": "true",
-                            "importance": 1
-                        },
-                        {
-                            "child": "nist:Events/00055/VP2002.002215",
-                            "optional": "true",
-                            "importance": 1
-                        },
-                        {
-                            "child": "nist:Events/00029/VP2002.001123",
-                            "optional": "true",
-                            "importance": 1
-                        },
-                        {
-                            "child": "nist:Events/00059/VP2002.002391",
+                            "child": "nist:Events/00039/VP2013.007849",
                             "optional": "true",
                             "importance": 1
                         }
                     ]
                 },
                 {
-                    "@id": "nist:Events/00113/VP2002.005164",
-                    "name": "compliance",
-                    "description": "The Powell Chipotle violated three food safety guidelines in February 2019",
-                    "ta2qnode": "wd:Q1399332",
-                    "ta2qlabel": "compliance",
+                    "@id": "nist:Events/00043/VP2013.008884",
+                    "name": "contamination",
+                    "description": "The lobsters were contaminated with cholera in Haiti",
+                    "ta2qnode": "wd:Q60528603",
+                    "ta2qlabel": "contamination",
                     "ta1ref": "kairos:NULL",
                     "ta1explanation": "From Graph G.",
-                    "provenance": "VP2002.005164",
-                    "modality": "negated",
+                    "provenance": "VP2013.008884",
                     "temporal": {
-                        "latestStartTime": "2019-02-xxTxx:xx:xx",
-                        "earliestEndTime": "2019-02-xxTxx:xx:xx"
+                        "latestStartTime": "2011-01-22T23:59:59",
+                        "latestEndTime": "2011-01-22T23:59:59"
                     },
                     "participants": [
                         {
-                            "@id": "nist:Participants/00552/AR2002.000027",
-                            "roleName": "AM-loc--",
+                            "@id": "nist:Participants/00286/AR2013.000353",
+                            "roleName": "A1_gol_destination_thing_becoming_contaminated",
                             "entity": "kairos:NULL",
                             "values": {
-                                "ta2entity": "nist:Entities/00674/EE2002.000007",
-                                "provenance": "LDC Annotation"
+                                "ta2entity": "nist:Entities/00384/EE2013.000740",
+                                "provenance": "LDC-Annotation"
                             }
                         },
                         {
-                            "@id": "nist:Participants/00553/AR2002.000204",
-                            "roleName": "A0-pag-x-complier",
+                            "@id": "nist:Participants/00287/AR2013.004704",
+                            "roleName": "A2_ppt_theme_contaminant",
                             "entity": "kairos:NULL",
                             "values": {
-                                "ta2entity": "nist:Entities/00674/EE2002.000007",
-                                "provenance": "LDC Annotation"
+                                "ta2entity": "nist:Entities/00427/EE2013.001213",
+                                "provenance": "LDC-Annotation"
                             }
                         },
                         {
-                            "@id": "nist:Participants/00554/AR2002.005185",
-                            "roleName": "A1-ppt-x-_complied-with",
+                            "@id": "nist:Participants/00288/AR2013.000043",
+                            "roleName": "AM_loc__location",
                             "entity": "kairos:NULL",
                             "values": {
-                                "ta2entity": "nist:Entities/00801/EE2002.000133",
-                                "provenance": "LDC Annotation"
+                                "ta2entity": "nist:Entities/00378/EE2013.000674",
+                                "provenance": "LDC-Annotation"
                             }
                         }
                     ]
                 },
                 {
-                    "@id": "nist:Events/00025/VP2002.000990",
+                    "@id": "nist:Events/00021/VP2013.003959",
+                    "name": "travel",
+                    "description": "Contaminated food from Haiti could enter the Dominican Republic",
+                    "ta2qnode": "wd:Q61509",
+                    "ta2qlabel": "travel",
+                    "ta1ref": "kairos:NULL",
+                    "ta1explanation": "From Graph G.",
+                    "provenance": "VP2013.003959",
+                    "modality": "irrealis",
+                    "temporal": {
+                        "latestStartTime": "2011-01-22T23:59:59"
+                    },
+                    "participants": [
+                        {
+                            "@id": "nist:Participants/00179/AR2013.003979",
+                            "roleName": "A1_ppt_theme_thing_transported",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00354/EE2013.000394",
+                                "provenance": "LDC-Annotation"
+                            }
+                        },
+                        {
+                            "@id": "nist:Participants/00180/AR2013.000043",
+                            "roleName": "A2_dir_source_initial_location",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00378/EE2013.000674",
+                                "provenance": "LDC-Annotation"
+                            }
+                        },
+                        {
+                            "@id": "nist:Participants/00181/AR2013.000033",
+                            "roleName": "A3_gol_destination_destination",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00360/EE2013.000460",
+                                "provenance": "LDC-Annotation"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "@id": "nist:Events/00038/VP2013.007649",
                     "name": "exchange_of_goods",
-                    "description": "Filip Syzller purchased three chicken tacos from Chipotle at the Powell Chipotle restaurant",
+                    "description": "The catering company bought the contaminated lobsters in Pedernales",
                     "ta2qnode": "wd:Q21651837",
                     "ta2qlabel": "exchange_of_goods",
                     "ta1ref": "kairos:NULL",
                     "ta1explanation": "From Graph G.",
-                    "provenance": "VP2002.000990",
+                    "provenance": "VP2013.007649",
                     "temporal": {
-                        "earliestStartTime": "2018-7-29T0:0:0",
-                        "latestStartTime": "2018-7-29T0:0:0",
-                        "earliestEndTime": "2018-7-29T0:0:0",
-                        "latestEndTime": "2018-7-29T0:0:0"
+                        "latestStartTime": "2011-01-22T23:59:59",
+                        "latestEndTime": "2011-01-22T23:59:59"
                     },
                     "participants": [
                         {
-                            "@id": "nist:Participants/00195/AR2002.000976",
-                            "roleName": "A2-com-co-agent-other_exchanger",
+                            "@id": "nist:Participants/00240/AR2013.000353",
+                            "roleName": "A1_ppt_theme_thing_being_traded",
                             "entity": "kairos:NULL",
                             "values": {
-                                "ta2entity": "nist:Entities/00708/EE2002.000041",
-                                "provenance": "LDC Annotation"
+                                "ta2entity": "nist:Entities/00384/EE2013.000740",
+                                "provenance": "LDC-Annotation"
                             }
                         },
                         {
-                            "@id": "nist:Participants/00196/AR2002.000204",
-                            "roleName": "A0-pag-agent-agent",
+                            "@id": "nist:Participants/00241/AR2013.000358",
+                            "roleName": "AM_loc__location",
                             "entity": "kairos:NULL",
                             "values": {
-                                "ta2entity": "nist:Entities/00674/EE2002.000007",
-                                "provenance": "LDC Annotation"
+                                "ta2entity": "nist:Entities/00399/EE2013.000905",
+                                "provenance": "LDC-Annotation"
                             }
                         },
                         {
-                            "@id": "nist:Participants/00197/AR2002.000983",
-                            "roleName": "A1-ppt-theme-thing_being_traded",
+                            "@id": "nist:Participants/00242/AR2013.000828",
+                            "roleName": "A2_com_co_agent_other_exchanger",
                             "entity": "kairos:NULL",
                             "values": {
-                                "ta2entity": "nist:Entities/00746/EE2002.000079",
-                                "provenance": "LDC Annotation"
-                            }
-                        },
-                        {
-                            "@id": "nist:Participants/00198/AR2002.000027",
-                            "roleName": "AM-loc--",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00674/EE2002.000007",
-                                "provenance": "LDC Annotation"
+                                "ta2entity": "nist:Entities/00331/EE2013.000125",
+                                "provenance": "LDC-Annotation"
                             }
                         }
                     ]
                 },
                 {
-                    "@id": "nist:Events/00026/VP2002.001019",
+                    "@id": "nist:Events/00028/VP2013.005699",
+                    "name": "travel",
+                    "description": "The contaminated lobster and other food, drinks, and ice served at the wedding were provided by the catering company at Casa de Campo",
+                    "ta2qnode": "wd:Q61509",
+                    "ta2qlabel": "travel",
+                    "ta1ref": "kairos:NULL",
+                    "ta1explanation": "From Graph G.",
+                    "provenance": "VP2013.005699",
+                    "temporal": {
+                        "latestStartTime": "2011-01-22T23:59:59",
+                        "earliestEndTime": "2011-01-22T00:00:00",
+                        "latestEndTime": "2011-01-22T23:59:59"
+                    },
+                    "participants": [
+                        {
+                            "@id": "nist:Participants/00200/AR2013.000828",
+                            "roleName": "A0_pag_agent_transporter",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00331/EE2013.000125",
+                                "provenance": "LDC-Annotation"
+                            }
+                        },
+                        {
+                            "@id": "nist:Participants/00201/AR2013.005694",
+                            "roleName": "A1_ppt_theme_thing_transported",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00380/EE2013.000696",
+                                "provenance": "LDC-Annotation"
+                            }
+                        },
+                        {
+                            "@id": "nist:Participants/00202/AR2013.005684",
+                            "roleName": "A1_ppt_theme_thing_transported",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00370/EE2013.000575",
+                                "provenance": "LDC-Annotation"
+                            }
+                        },
+                        {
+                            "@id": "nist:Participants/00203/AR2013.005689",
+                            "roleName": "A1_ppt_theme_thing_transported",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00363/EE2013.000493",
+                                "provenance": "LDC-Annotation"
+                            }
+                        },
+                        {
+                            "@id": "nist:Participants/00204/AR2013.000023",
+                            "roleName": "A3_gol_destination_destination",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00350/EE2013.000345",
+                                "provenance": "LDC-Annotation"
+                            }
+                        },
+                        {
+                            "@id": "nist:Participants/00205/AR2013.000353",
+                            "roleName": "A1_ppt_theme_thing_transported",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00384/EE2013.000740",
+                                "provenance": "LDC-Annotation"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "@id": "nist:Events/00006/VP2013.000433",
+                    "name": "ingestion",
+                    "description": "More than 300 wedding guests, including a 30-year-old Massachusetts man and others, ate lobster contaminated with cholera at Casa de Campo",
+                    "ta2qnode": "wd:Q1663054",
+                    "ta2qlabel": "ingestion",
+                    "ta1ref": "kairos:NULL",
+                    "ta1explanation": "From Graph G.",
+                    "provenance": "VP2013.000433",
+                    "temporal": {
+                        "earliestStartTime": "2011-01-22T00:00:00",
+                        "latestStartTime": "2011-01-22T23:59:59",
+                        "earliestEndTime": "2011-01-22T00:00:00",
+                        "latestEndTime": "2011-01-22T23:59:59"
+                    },
+                    "participants": [
+                        {
+                            "@id": "nist:Participants/00100/AR2013.004039",
+                            "roleName": "A0_pag_agent_eater",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00393/EE2013.000839",
+                                "provenance": "LDC-Annotation"
+                            }
+                        },
+                        {
+                            "@id": "nist:Participants/00101/AR2013.000353",
+                            "roleName": "A1_ppt_patient_entity_ingested",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00384/EE2013.000740",
+                                "provenance": "LDC-Annotation"
+                            }
+                        },
+                        {
+                            "@id": "nist:Participants/00102/AR2013.000023",
+                            "roleName": "AM_loc__location",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00350/EE2013.000345",
+                                "provenance": "LDC-Annotation"
+                            }
+                        },
+                        {
+                            "@id": "nist:Participants/00103/AR2013.001954",
+                            "roleName": "A0_pag_agent_eater",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00330/EE2013.000114",
+                                "provenance": "LDC-Annotation"
+                            }
+                        },
+                        {
+                            "@id": "nist:Participants/00104/AR2013.002524",
+                            "roleName": "A0_pag_agent_eater",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00338/EE2013.000202",
+                                "provenance": "LDC-Annotation"
+                            }
+                        },
+                        {
+                            "@id": "nist:Participants/00105/AR2013.002694",
+                            "roleName": "A0_pag_agent_eater",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00334/EE2013.000158",
+                                "provenance": "LDC-Annotation"
+                            }
+                        },
+                        {
+                            "@id": "nist:Participants/00106/AR2013.002699",
+                            "roleName": "A0_pag_agent_eater",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00417/EE2013.001103",
+                                "provenance": "LDC-Annotation"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "@id": "nist:Events/00017/VP2013.002204",
                     "name": "disease",
-                    "description": "Filip Syzller became ill with nausea, headaches, hot flashes, and severe abdominal pain in Ohio",
+                    "description": "Dozens of wedding guests and others experienced cholera and other, related illnesses, but not fever or bloody stool, in Massachusetts and elsewhere",
                     "ta2qnode": "wd:Q12136",
                     "ta2qlabel": "disease",
                     "ta1ref": "kairos:NULL",
                     "ta1explanation": "From Graph G.",
-                    "provenance": "VP2002.001019",
+                    "provenance": "VP2013.002204",
                     "temporal": {
-                        "earliestStartTime": "2018-7-29T0:0:0"
+                        "earliestStartTime": "2011-01-22T00:00:00"
                     },
                     "participants": [
                         {
-                            "@id": "nist:Participants/00199/AR2002.000976",
-                            "roleName": "A1-ppt-x-sick/ill_one",
+                            "@id": "nist:Participants/00149/AR2013.002199",
+                            "roleName": "A1_ppt__sick/ill_one",
                             "entity": "kairos:NULL",
                             "values": {
-                                "ta2entity": "nist:Entities/00708/EE2002.000041",
-                                "provenance": "LDC Annotation"
+                                "ta2entity": "nist:Entities/00362/EE2013.000482",
+                                "provenance": "LDC-Annotation"
                             }
                         },
                         {
-                            "@id": "nist:Participants/00200/AR2002.001036",
-                            "roleName": "A2-cau-x-cause_or_disease",
+                            "@id": "nist:Participants/00150/AR2013.002189",
+                            "roleName": "A2_cau__cause_or_disease",
                             "entity": "kairos:NULL",
                             "values": {
-                                "ta2entity": "nist:Entities/00725/EE2002.000058",
-                                "provenance": "LDC Annotation"
+                                "ta2entity": "nist:Entities/00356/EE2013.000416",
+                                "provenance": "LDC-Annotation"
                             }
                         },
                         {
-                            "@id": "nist:Participants/00201/AR2002.002661",
-                            "roleName": "A2-cau-x-cause_or_disease",
+                            "@id": "nist:Participants/00151/AR2013.002194",
+                            "roleName": "A2_cau__cause_or_disease",
                             "entity": "kairos:NULL",
                             "values": {
-                                "ta2entity": "nist:Entities/00716/EE2002.000049",
-                                "provenance": "LDC Annotation"
+                                "ta2entity": "nist:Entities/00429/EE2013.001235",
+                                "provenance": "LDC-Annotation"
                             }
                         },
                         {
-                            "@id": "nist:Participants/00202/AR2002.002668",
-                            "roleName": "A2-cau-x-cause_or_disease",
+                            "@id": "nist:Participants/00152/AR2013.001954",
+                            "roleName": "A1_ppt__sick/ill_one",
                             "entity": "kairos:NULL",
                             "values": {
-                                "ta2entity": "nist:Entities/00718/EE2002.000051",
-                                "provenance": "LDC Annotation"
+                                "ta2entity": "nist:Entities/00330/EE2013.000114",
+                                "provenance": "LDC-Annotation"
                             }
                         },
                         {
-                            "@id": "nist:Participants/00203/AR2002.000081",
-                            "roleName": "AM-loc--",
+                            "@id": "nist:Participants/00153/AR2013.002694",
+                            "roleName": "A1_ppt__sick/ill_one",
                             "entity": "kairos:NULL",
                             "values": {
-                                "ta2entity": "nist:Entities/00728/EE2002.000061",
-                                "provenance": "LDC Annotation"
+                                "ta2entity": "nist:Entities/00334/EE2013.000158",
+                                "provenance": "LDC-Annotation"
                             }
                         },
                         {
-                            "@id": "nist:Participants/00204/AR2002.005424",
-                            "roleName": "A2-cau-x-cause_or_disease",
+                            "@id": "nist:Participants/00154/AR2013.002699",
+                            "roleName": "A1_ppt__sick/ill_one",
                             "entity": "kairos:NULL",
                             "values": {
-                                "ta2entity": "nist:Entities/00794/EE2002.000126",
-                                "provenance": "LDC Annotation"
+                                "ta2entity": "nist:Entities/00417/EE2013.001103",
+                                "provenance": "LDC-Annotation"
+                            }
+                        },
+                        {
+                            "@id": "nist:Participants/00155/AR2013.000038",
+                            "roleName": "A2_cau__cause_or_disease",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00353/EE2013.000383",
+                                "provenance": "LDC-Annotation"
+                            }
+                        },
+                        {
+                            "@id": "nist:Participants/00156/AR2013.002034",
+                            "roleName": "AM_loc__location",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00387/EE2013.000773",
+                                "provenance": "LDC-Annotation"
+                            }
+                        },
+                        {
+                            "@id": "nist:Participants/00157/AR2013.002324",
+                            "roleName": "A2_cau__cause_or_disease",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00369/EE2013.000564",
+                                "provenance": "LDC-Annotation"
+                            }
+                        },
+                        {
+                            "@id": "nist:Participants/00158/AR2013.002329",
+                            "roleName": "A2_cau__cause_or_disease",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00346/EE2013.000301",
+                                "provenance": "LDC-Annotation"
+                            }
+                        },
+                        {
+                            "@id": "nist:Participants/00159/AR2013.006514",
+                            "roleName": "A1_ppt__sick/ill_one",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00324/EE2013.000048",
+                                "provenance": "LDC-Annotation"
+                            }
+                        },
+                        {
+                            "@id": "nist:Participants/00160/AR2013.006564",
+                            "roleName": "A1_ppt__sick/ill_one",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00326/EE2013.000070",
+                                "provenance": "LDC-Annotation"
+                            }
+                        },
+                        {
+                            "@id": "nist:Participants/00161/AR2013.006554",
+                            "roleName": "A1_ppt__sick/ill_one",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00323/EE2013.000037",
+                                "provenance": "LDC-Annotation"
+                            }
+                        },
+                        {
+                            "@id": "nist:Participants/00162/AR2013.003724",
+                            "roleName": "AM_loc__location",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00407/EE2013.000993",
+                                "provenance": "LDC-Annotation"
+                            }
+                        },
+                        {
+                            "@id": "nist:Participants/00163/AR2013.001899",
+                            "roleName": "AM_loc__location",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00396/EE2013.000872",
+                                "provenance": "LDC-Annotation"
+                            }
+                        },
+                        {
+                            "@id": "nist:Participants/00164/AR2013.001894",
+                            "roleName": "AM_loc__location",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00347/EE2013.000312",
+                                "provenance": "LDC-Annotation"
+                            }
+                        },
+                        {
+                            "@id": "nist:Participants/00165/AR2013.007114",
+                            "roleName": "A1_ppt__sick/ill_one",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00416/EE2013.001092",
+                                "provenance": "LDC-Annotation"
+                            }
+                        },
+                        {
+                            "@id": "nist:Participants/00166/AR2013.000103",
+                            "roleName": "A1_ppt__sick/ill_one",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00368/EE2013.000553",
+                                "provenance": "LDC-Annotation"
+                            }
+                        },
+                        {
+                            "@id": "nist:Participants/00167/AR2013.000033",
+                            "roleName": "AM_loc__location",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00360/EE2013.000460",
+                                "provenance": "LDC-Annotation"
+                            }
+                        },
+                        {
+                            "@id": "nist:Participants/00168/AR2013.000113",
+                            "roleName": "A1_ppt__sick/ill_one",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00374/EE2013.000630",
+                                "provenance": "LDC-Annotation"
+                            }
+                        },
+                        {
+                            "@id": "nist:Participants/00169/AR2013.003764",
+                            "roleName": "AM_loc__location",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00390/EE2013.000806",
+                                "provenance": "LDC-Annotation"
+                            }
+                        },
+                        {
+                            "@id": "nist:Participants/00170/AR2013.002524",
+                            "roleName": "A1_ppt__sick/ill_one",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00338/EE2013.000202",
+                                "provenance": "LDC-Annotation"
                             }
                         }
                     ]
                 },
                 {
-                    "@id": "nist:Events/00028/VP2002.001091",
-                    "name": "command",
-                    "description": "Filip Szyller asked Chipotle Mexican Grill, Inc. for at least $25,000 in Delaware County",
-                    "ta2qnode": "wd:Q1665268",
-                    "ta2qlabel": "command",
+                    "@id": "nist:Events/00015/VP2013.001959",
+                    "name": "travel",
+                    "description": "A 30-year-old man went to the emergency room of Massachusetts General Hospital",
+                    "ta2qnode": "wd:Q61509",
+                    "ta2qlabel": "travel",
                     "ta1ref": "kairos:NULL",
                     "ta1explanation": "From Graph G.",
-                    "provenance": "VP2002.001091",
+                    "provenance": "VP2013.001959",
                     "temporal": {
-                        "earliestStartTime": "2018-7-31T0:0:0",
-                        "latestStartTime": "2018-7-31T0:0:0",
-                        "earliestEndTime": "2018-7-31T0:0:0",
-                        "latestEndTime": "2018-7-31T0:0:0"
+                        "earliestStartTime": "2011-01-25T00:00:00",
+                        "latestStartTime": "2011-01-25T23:59:59",
+                        "earliestEndTime": "2011-01-25T00:00:00",
+                        "latestEndTime": "2011-01-25T23:59:59"
                     },
                     "participants": [
                         {
-                            "@id": "nist:Participants/00211/AR2002.000976",
-                            "roleName": "A0-pag-agent-xx",
+                            "@id": "nist:Participants/00143/AR2013.001954",
+                            "roleName": "A1_ppt_theme_thing_transported",
                             "entity": "kairos:NULL",
                             "values": {
-                                "ta2entity": "nist:Entities/00708/EE2002.000041",
-                                "provenance": "LDC Annotation"
+                                "ta2entity": "nist:Entities/00330/EE2013.000114",
+                                "provenance": "LDC-Annotation"
                             }
                         },
                         {
-                            "@id": "nist:Participants/00212/AR2002.001112",
-                            "roleName": "AM-loc--",
+                            "@id": "nist:Participants/00144/AR2013.001949",
+                            "roleName": "A3_gol_destination_destination",
                             "entity": "kairos:NULL",
                             "values": {
-                                "ta2entity": "nist:Entities/00700/EE2002.000033",
-                                "provenance": "LDC Annotation"
-                            }
-                        },
-                        {
-                            "@id": "nist:Participants/00213/VP2002.001123",
-                            "roleName": "Ax-ppt-topic-xx",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Events/00029/VP2002.001123",
-                                "provenance": "LDC Annotation"
-                            }
-                        },
-                        {
-                            "@id": "nist:Participants/00214/AR2002.000944",
-                            "roleName": "Ax-gol-recipient-xx",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00689/EE2002.000022",
-                                "provenance": "LDC Annotation"
+                                "ta2entity": "nist:Entities/00364/EE2013.000504",
+                                "provenance": "LDC-Annotation"
                             }
                         }
                     ]
                 },
                 {
-                    "@id": "nist:Events/00078/VP2002.003535",
-                    "name": "inquiry",
-                    "description": "Chipotle Mexican Grill, Inc. investigated the Powell Chipotle",
-                    "ta2qnode": "wd:Q21004260",
-                    "ta2qlabel": "inquiry",
+                    "@id": "nist:Events/00016/VP2013.001999",
+                    "name": "medical_diagnosis",
+                    "description": "A Massachusetts woman and a 30-year-old man were diagnosed with cholera in Massachusetts and at Massachusetts General Hospital",
+                    "ta2qnode": "wd:Q177719",
+                    "ta2qlabel": "medical_diagnosis",
                     "ta1ref": "kairos:NULL",
                     "ta1explanation": "From Graph G.",
-                    "provenance": "VP2002.003535",
+                    "provenance": "VP2013.001999",
                     "temporal": {
-                        "earliestStartTime": "2018-7-27T0:0:0",
-                        "latestEndTime": "2018-7-31T0:0:0"
+                        "earliestStartTime": "2011-01-25T00:00:00",
+                        "latestStartTime": "2011-01-25T23:59:59",
+                        "earliestEndTime": "2011-01-26T00:00:00",
+                        "latestEndTime": "2011-01-26T23:59:59"
                     },
                     "participants": [
                         {
-                            "@id": "nist:Participants/00395/AR2002.000204",
-                            "roleName": "A1-ppt-location-examined",
+                            "@id": "nist:Participants/00145/AR2013.000038",
+                            "roleName": "A2_prd_attribute_illness",
                             "entity": "kairos:NULL",
                             "values": {
-                                "ta2entity": "nist:Entities/00674/EE2002.000007",
-                                "provenance": "LDC Annotation"
+                                "ta2entity": "nist:Entities/00353/EE2013.000383",
+                                "provenance": "LDC-Annotation"
                             }
                         },
                         {
-                            "@id": "nist:Participants/00396/AR2002.000944",
-                            "roleName": "A0-pag-agent-examiner",
+                            "@id": "nist:Participants/00146/AR2013.002034",
+                            "roleName": "AM_loc__location",
                             "entity": "kairos:NULL",
                             "values": {
-                                "ta2entity": "nist:Entities/00689/EE2002.000022",
-                                "provenance": "LDC Annotation"
+                                "ta2entity": "nist:Entities/00387/EE2013.000773",
+                                "provenance": "LDC-Annotation"
                             }
                         },
                         {
-                            "@id": "nist:Participants/00397/AR2002.000027",
-                            "roleName": "AM-loc--",
+                            "@id": "nist:Participants/00147/AR2013.001954",
+                            "roleName": "A1_ppt_theme_patient",
                             "entity": "kairos:NULL",
                             "values": {
-                                "ta2entity": "nist:Entities/00674/EE2002.000007",
-                                "provenance": "LDC Annotation"
+                                "ta2entity": "nist:Entities/00330/EE2013.000114",
+                                "provenance": "LDC-Annotation"
+                            }
+                        },
+                        {
+                            "@id": "nist:Participants/00148/AR2013.001944",
+                            "roleName": "AM_loc__location",
+                            "entity": "kairos:NULL",
+                            "values": {
+                                "ta2entity": "nist:Entities/00388/EE2013.000784",
+                                "provenance": "LDC-Annotation"
                             }
                         }
                     ]
                 },
                 {
-                    "@id": "nist:Events/00024/VP2002.000919",
-                    "name": "collaboration",
-                    "description": "The Powell Chipotle is cooperating with the Delaware General Health Department in Delaware County",
-                    "ta2qnode": "wd:Q1145523",
-                    "ta2qlabel": "collaboration",
+                    "@id": "nist:Events/00018/VP2013.002484",
+                    "name": "travel",
+                    "description": "A 30-year-old Massachusetts man went home from Massachusetts General Hospital",
+                    "ta2qnode": "wd:Q61509",
+                    "ta2qlabel": "travel",
                     "ta1ref": "kairos:NULL",
                     "ta1explanation": "From Graph G.",
-                    "provenance": "VP2002.000919",
+                    "provenance": "VP2013.002484",
                     "temporal": {
-                        "latestStartTime": "2018-7-30T0:0:0"
+                        "earliestStartTime": "2011-01-25T00:00:00",
+                        "latestStartTime": "2011-01-25T23:59:59",
+                        "earliestEndTime": "2011-01-25T00:00:00",
+                        "latestEndTime": "2011-01-25T23:59:59"
                     },
                     "participants": [
                         {
-                            "@id": "nist:Participants/00192/AR2002.000204",
-                            "roleName": "A0-pag-agent-focussed_party_",
+                            "@id": "nist:Participants/00171/AR2013.001954",
+                            "roleName": "A1_ppt_theme_thing_transported",
                             "entity": "kairos:NULL",
                             "values": {
-                                "ta2entity": "nist:Entities/00674/EE2002.000007",
-                                "provenance": "LDC Annotation"
+                                "ta2entity": "nist:Entities/00330/EE2013.000114",
+                                "provenance": "LDC-Annotation"
                             }
                         },
                         {
-                            "@id": "nist:Participants/00193/AR2002.000105",
-                            "roleName": "A1-com-co-agent-second_party",
+                            "@id": "nist:Participants/00172/AR2013.001944",
+                            "roleName": "A2_dir_source_initial_location",
                             "entity": "kairos:NULL",
                             "values": {
-                                "ta2entity": "nist:Entities/00701/EE2002.000034",
-                                "provenance": "LDC Annotation"
+                                "ta2entity": "nist:Entities/00388/EE2013.000784",
+                                "provenance": "LDC-Annotation"
                             }
                         },
                         {
-                            "@id": "nist:Participants/00194/AR2002.001112",
-                            "roleName": "AM-loc--",
+                            "@id": "nist:Participants/00173/AR2013.002519",
+                            "roleName": "A3_gol_destination_destination",
                             "entity": "kairos:NULL",
                             "values": {
-                                "ta2entity": "nist:Entities/00700/EE2002.000033",
-                                "provenance": "LDC Annotation"
+                                "ta2entity": "nist:Entities/00412/EE2013.001048",
+                                "provenance": "LDC-Annotation"
                             }
                         }
                     ]
                 },
                 {
-                    "@id": "nist:Events/00030/VP2002.001163",
-                    "name": "transport",
-                    "description": "Health officials went to the Powell Chipotle restaurant",
-                    "ta2qnode": "wd:Q7590",
-                    "ta2qlabel": "transport",
+                    "@id": "nist:Events/00013/VP2013.001689",
+                    "name": "destruction",
+                    "description": "The military was going to burn uncertified meat and seafood in the Dominican Republic",
+                    "ta2qnode": "wd:Q17781833",
+                    "ta2qlabel": "destruction",
                     "ta1ref": "kairos:NULL",
                     "ta1explanation": "From Graph G.",
-                    "provenance": "VP2002.001163",
-                    "temporal": {
-                        "earliestStartTime": "2018-7-30T0:0:0",
-                        "latestStartTime": "2018-7-30T0:0:0",
-                        "earliestEndTime": "2018-7-30T0:0:0",
-                        "latestEndTime": "2018-7-30T0:0:0"
-                    },
-                    "participants": [
-                        {
-                            "@id": "nist:Participants/00219/AR2002.000616",
-                            "roleName": "A0-pag-agent-xx",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00717/EE2002.000050",
-                                "provenance": "LDC Annotation"
-                            }
-                        },
-                        {
-                            "@id": "nist:Participants/00220/AR2002.000027",
-                            "roleName": "Ax-gol-x-destination",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00674/EE2002.000007",
-                                "provenance": "LDC Annotation"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "@id": "nist:Events/00106/VP2002.004920",
-                    "name": "exchange_of_goods",
-                    "description": "Delaware General Health District gave six stool samples to the CDC in the United States",
-                    "ta2qnode": "wd:Q21651837",
-                    "ta2qlabel": "exchange_of_goods",
-                    "ta1ref": "kairos:NULL",
-                    "ta1explanation": "From Graph G.",
-                    "provenance": "VP2002.004920",
-                    "temporal": {
-                        "earliestStartTime": "2018-7-31T0:0:0",
-                        "latestEndTime": "2018-8-8T0:0:0"
-                    },
-                    "participants": [
-                        {
-                            "@id": "nist:Participants/00524/AR2002.004933",
-                            "roleName": "A1-ppt-theme-thing_being_traded",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00795/EE2002.000127",
-                                "provenance": "LDC Annotation"
-                            }
-                        },
-                        {
-                            "@id": "nist:Participants/00525/AR2002.000105",
-                            "roleName": "A0-pag-agent-agent",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00701/EE2002.000034",
-                                "provenance": "LDC Annotation"
-                            }
-                        },
-                        {
-                            "@id": "nist:Participants/00526/AR2002.001617",
-                            "roleName": "A2-com-co-agent-other_exchanger",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00685/EE2002.000017",
-                                "provenance": "LDC Annotation"
-                            }
-                        },
-                        {
-                            "@id": "nist:Participants/00527/AR2002.001832",
-                            "roleName": "AM-loc--",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00748/EE2002.000081",
-                                "provenance": "LDC Annotation"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "@id": "nist:Events/00042/VP2002.001604",
-                    "name": "estimation_process",
-                    "description": "CDC test results show that 5 of 6 stool samples tested positive for Clostridium perfringens in the United States",
-                    "ta2qnode": "wd:Q791801",
-                    "ta2qlabel": "estimation_process",
-                    "ta1ref": "kairos:NULL",
-                    "ta1explanation": "From Graph G.",
-                    "provenance": "VP2002.001604",
-                    "temporal": {
-                        "earliestStartTime": "2018-7-31T0:0:0",
-                        "latestEndTime": "2018-8-8T0:0:0"
-                    },
-                    "participants": [
-                        {
-                            "@id": "nist:Participants/00262/AR2002.001624",
-                            "roleName": "A1-ppt-theme-thing_estimated",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00670/EE2002.000003",
-                                "provenance": "LDC Annotation"
-                            }
-                        },
-                        {
-                            "@id": "nist:Participants/00263/AR2002.001617",
-                            "roleName": "A0-pag-agent-estimator",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00685/EE2002.000017",
-                                "provenance": "LDC Annotation"
-                            }
-                        },
-                        {
-                            "@id": "nist:Participants/00264/AR2002.001631",
-                            "roleName": "---",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00695/EE2002.000028",
-                                "provenance": "LDC Annotation"
-                            }
-                        },
-                        {
-                            "@id": "nist:Participants/00265/AR2002.001650",
-                            "roleName": "A2-prd-value-estimated-to-be",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00731/EE2002.000064",
-                                "provenance": "LDC Annotation"
-                            }
-                        },
-                        {
-                            "@id": "nist:Participants/00266/AR2002.001832",
-                            "roleName": "AM-loc--",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00748/EE2002.000081",
-                                "provenance": "LDC Annotation"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "@id": "nist:Events/00112/VP2002.005139",
-                    "name": "observation",
-                    "description": "Delaware General Health District inspected the Powell Chipotle and found that it violated three food safety guidelines in February 2019",
-                    "ta2qnode": "wd:Q193181",
-                    "ta2qlabel": "observation",
-                    "ta1ref": "kairos:NULL",
-                    "ta1explanation": "From Graph G.",
-                    "provenance": "VP2002.005139",
-                    "temporal": {
-                        "earliestStartTime": "2019-02-xxTxx:xx:xx",
-                        "latestStartTime": "2019-02-xxTxx:xx:xx",
-                        "earliestEndTime": "2019-02-xxTxx:xx:xx",
-                        "latestEndTime": "2019-02-xxTxx:xx:xx"
-                    },
-                    "participants": [
-                        {
-                            "@id": "nist:Participants/00548/AR2002.000105",
-                            "roleName": "A0-ppt-experiencer-observer",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00701/EE2002.000034",
-                                "provenance": "LDC Annotation"
-                            }
-                        },
-                        {
-                            "@id": "nist:Participants/00549/VP2002.005164",
-                            "roleName": "A1-pag-stimulus-thing_looked_at",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Events/00113/VP2002.005164",
-                                "provenance": "LDC Annotation"
-                            }
-                        },
-                        {
-                            "@id": "nist:Participants/00550/AR2002.000027",
-                            "roleName": "AM-loc--",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00674/EE2002.000007",
-                                "provenance": "LDC Annotation"
-                            }
-                        },
-                        {
-                            "@id": "nist:Participants/00551/AR2002.000204",
-                            "roleName": "A1-pag-stimulus-thing_looked_at",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00674/EE2002.000007",
-                                "provenance": "LDC Annotation"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "@id": "nist:Events/00023/VP2002.000799",
-                    "name": "transport",
-                    "description": "Chipotle removed all exposed food and single-use equipment from the Powell Chipotle restaurant",
-                    "ta2qnode": "wd:Q7590",
-                    "ta2qlabel": "transport",
-                    "ta1ref": "kairos:NULL",
-                    "ta1explanation": "From Graph G.",
-                    "provenance": "VP2002.000799",
-                    "temporal": {
-                        "earliestStartTime": "2018-7-30T0:0:0",
-                        "latestStartTime": "2018-7-30T0:0:0",
-                        "earliestEndTime": "2018-7-30T0:0:0",
-                        "latestEndTime": "2018-7-30T0:0:0"
-                    },
-                    "participants": [
-                        {
-                            "@id": "nist:Participants/00188/AR2002.000204",
-                            "roleName": "A0-pag-agent-xx",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00674/EE2002.000007",
-                                "provenance": "LDC Annotation"
-                            }
-                        },
-                        {
-                            "@id": "nist:Participants/00189/AR2002.000816",
-                            "roleName": "A1-ppt-x-xx",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00678/EE2002.000010",
-                                "provenance": "LDC Annotation"
-                            }
-                        },
-                        {
-                            "@id": "nist:Participants/00190/AR2002.000027",
-                            "roleName": "Ax-dir--",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00674/EE2002.000007",
-                                "provenance": "LDC Annotation"
-                            }
-                        },
-                        {
-                            "@id": "nist:Participants/00191/AR2002.002748",
-                            "roleName": "A1-ppt-x-xx",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00738/EE2002.000071",
-                                "provenance": "LDC Annotation"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "@id": "nist:Events/00039/VP2002.001505",
-                    "name": "disinfection",
-                    "description": "Chipotle sanitized the Powell Chipotle restaurant at 9733 Sawmill Parkway",
-                    "ta2qnode": "wd:Q66869562",
-                    "ta2qlabel": "disinfection",
-                    "ta1ref": "kairos:NULL",
-                    "ta1explanation": "From Graph G.",
-                    "provenance": "VP2002.001505",
-                    "temporal": {
-                        "earliestStartTime": "2018-7-30T0:0:0",
-                        "latestStartTime": "2018-7-30T0:0:0",
-                        "earliestEndTime": "2018-7-30T0:0:0",
-                        "latestEndTime": "2018-7-30T0:0:0"
-                    },
-                    "participants": [
-                        {
-                            "@id": "nist:Participants/00247/AR2002.000204",
-                            "roleName": "A0-pag-x-cleaner",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00674/EE2002.000007",
-                                "provenance": "LDC Annotation"
-                            }
-                        },
-                        {
-                            "@id": "nist:Participants/00248/AR2002.000027",
-                            "roleName": "A1-ppt-x-thing_made_clean",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00674/EE2002.000007",
-                                "provenance": "LDC Annotation"
-                            }
-                        },
-                        {
-                            "@id": "nist:Participants/00249/AR2002.000866",
-                            "roleName": "AM-loc--",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00672/EE2002.000005",
-                                "provenance": "LDC Annotation"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "@id": "nist:Events/00114/VP2002.005196",
-                    "name": "compliance",
-                    "description": "The Powell Chipotle remedied its three violations in February 2019",
-                    "ta2qnode": "wd:Q1399332",
-                    "ta2qlabel": "compliance",
-                    "ta1ref": "kairos:NULL",
-                    "ta1explanation": "From Graph G.",
-                    "provenance": "VP2002.005196",
-                    "temporal": {
-                        "earliestStartTime": "2019-02-xxTxx:xx:xx",
-                        "earliestEndTime": "2019-02-xxTxx:xx:xx"
-                    },
-                    "participants": [
-                        {
-                            "@id": "nist:Participants/00555/AR2002.000204",
-                            "roleName": "A0-pag-x-complier",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00674/EE2002.000007",
-                                "provenance": "LDC Annotation"
-                            }
-                        },
-                        {
-                            "@id": "nist:Participants/00556/AR2002.005185",
-                            "roleName": "A1-ppt-x-_complied-with",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00801/EE2002.000133",
-                                "provenance": "LDC Annotation"
-                            }
-                        },
-                        {
-                            "@id": "nist:Participants/00557/AR2002.000027",
-                            "roleName": "AM-loc--",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00674/EE2002.000007",
-                                "provenance": "LDC Annotation"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "@id": "nist:Events/00123/VP2002.005599",
-                    "name": "exchange_of_goods",
-                    "description": "The Powell Chipotle reopened its restaurant",
-                    "ta2qnode": "wd:Q21651837",
-                    "ta2qlabel": "exchange_of_goods",
-                    "ta1ref": "kairos:NULL",
-                    "ta1explanation": "From Graph G.",
-                    "provenance": "VP2002.005599",
-                    "temporal": {
-                        "earliestStartTime": "2018-7-31T0:0:0",
-                        "latestStartTime": "2018-7-31T0:0:0"
-                    },
-                    "participants": [
-                        {
-                            "@id": "nist:Participants/00580/AR2002.000204",
-                            "roleName": "A0-pag-agent-agent",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00674/EE2002.000007",
-                                "provenance": "LDC Annotation"
-                            }
-                        },
-                        {
-                            "@id": "nist:Participants/00581/AR2002.000027",
-                            "roleName": "AM-loc--",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00674/EE2002.000007",
-                                "provenance": "LDC Annotation"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "@id": "nist:Events/00076/VP2002.003453",
-                    "name": "announcement",
-                    "description": "The Delaware General Health Department cited the Powell Chipotle for not maintaining the proper temperature for some food items",
-                    "ta2qnode": "wd:Q567303",
-                    "ta2qlabel": "announcement",
-                    "ta1ref": "kairos:NULL",
-                    "ta1explanation": "From Graph G.",
-                    "provenance": "VP2002.003453",
-                    "temporal": {
-                        "earliestStartTime": "2018-7-26T0:0:0",
-                        "latestStartTime": "2018-7-26T0:0:0",
-                        "earliestEndTime": "2018-7-26T0:0:0",
-                        "latestEndTime": "2018-7-26T0:0:0"
-                    },
-                    "participants": [
-                        {
-                            "@id": "nist:Participants/00388/AR2002.000105",
-                            "roleName": "A0-pag-agent-announcer",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00701/EE2002.000034",
-                                "provenance": "LDC Annotation"
-                            }
-                        },
-                        {
-                            "@id": "nist:Participants/00389/AR2002.000204",
-                            "roleName": "A2-gol-recipient-hearer",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00674/EE2002.000007",
-                                "provenance": "LDC Annotation"
-                            }
-                        },
-                        {
-                            "@id": "nist:Participants/00390/AR2002.000129",
-                            "roleName": "AM-loc--",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00732/EE2002.000065",
-                                "provenance": "LDC Annotation"
-                            }
-                        },
-                        {
-                            "@id": "nist:Participants/00391/VP2002.002391",
-                            "roleName": "A1-ppt-topic-utterance",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Events/00059/VP2002.002391",
-                                "provenance": "LDC Annotation"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "@id": "nist:Events/00055/VP2002.002215",
-                    "name": "exchange_of_goods",
-                    "description": "Chipotle Mexican Grill, Inc. will pay a $25 million criminal fine to the Department of Justice in the United States",
-                    "ta2qnode": "wd:Q21651837",
-                    "ta2qlabel": "exchange_of_goods",
-                    "ta1ref": "kairos:NULL",
-                    "ta1explanation": "From Graph G.",
-                    "provenance": "VP2002.002215",
+                    "provenance": "VP2013.001689",
                     "modality": "irrealis",
                     "temporal": {
-                        "earliestStartTime": "2020-4-21T0:0:0"
+                        "earliestStartTime": "2011-02-14T00:00:00",
+                        "latestStartTime": "2011-02-14T23:59:59"
                     },
                     "participants": [
                         {
-                            "@id": "nist:Participants/00309/AR2002.000944",
-                            "roleName": "A0-pag-agent-agent",
+                            "@id": "nist:Participants/00136/AR2013.001719",
+                            "roleName": "A0_pag_agent_destroyer",
                             "entity": "kairos:NULL",
                             "values": {
-                                "ta2entity": "nist:Entities/00689/EE2002.000022",
-                                "provenance": "LDC Annotation"
+                                "ta2entity": "nist:Entities/00409/EE2013.001015",
+                                "provenance": "LDC-Annotation"
                             }
                         },
                         {
-                            "@id": "nist:Participants/00310/AR2002.002232",
-                            "roleName": "A1-ppt-theme-thing_being_traded",
+                            "@id": "nist:Participants/00137/AR2013.001679",
+                            "roleName": "A1_ppt_patient_thing_destroyed",
                             "entity": "kairos:NULL",
                             "values": {
-                                "ta2entity": "nist:Entities/00673/EE2002.000006",
-                                "provenance": "LDC Annotation"
+                                "ta2entity": "nist:Entities/00418/EE2013.001114",
+                                "provenance": "LDC-Annotation"
                             }
                         },
                         {
-                            "@id": "nist:Participants/00311/AR2002.002047",
-                            "roleName": "A2-com-co-agent-other_exchanger",
+                            "@id": "nist:Participants/00138/AR2013.000033",
+                            "roleName": "AM_loc__location",
                             "entity": "kairos:NULL",
                             "values": {
-                                "ta2entity": "nist:Entities/00702/EE2002.000035",
-                                "provenance": "LDC Annotation"
+                                "ta2entity": "nist:Entities/00360/EE2013.000460",
+                                "provenance": "LDC-Annotation"
                             }
                         },
                         {
-                            "@id": "nist:Participants/00312/AR2002.001832",
-                            "roleName": "AM-loc--",
+                            "@id": "nist:Participants/00139/AR2013.001684",
+                            "roleName": "A1_ppt_patient_thing_destroyed",
                             "entity": "kairos:NULL",
                             "values": {
-                                "ta2entity": "nist:Entities/00748/EE2002.000081",
-                                "provenance": "LDC Annotation"
+                                "ta2entity": "nist:Entities/00419/EE2013.001125",
+                                "provenance": "LDC-Annotation"
                             }
                         }
                     ]
                 },
                 {
-                    "@id": "nist:Events/00029/VP2002.001123",
-                    "name": "exchange_of_goods",
-                    "description": "Filip Syzller wants at least $25,000 from Chipotle Mexican Grill, Inc. in Delaware County",
-                    "ta2qnode": "wd:Q21651837",
-                    "ta2qlabel": "exchange_of_goods",
+                    "@id": "nist:Events/00039/VP2013.007849",
+                    "name": "prevention",
+                    "description": "The Ministry of Health was going to prevent food contaminated with cholera from entering the Dominican Republic",
+                    "ta2qnode": "wd:Q1717246",
+                    "ta2qlabel": "prevention",
                     "ta1ref": "kairos:NULL",
                     "ta1explanation": "From Graph G.",
-                    "provenance": "VP2002.001123",
+                    "provenance": "VP2013.007849",
                     "modality": "irrealis",
-                    "temporal": {},
-                    "participants": [
-                        {
-                            "@id": "nist:Participants/00215/AR2002.000976",
-                            "roleName": "A2-com-co-agent-other_exchanger",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00708/EE2002.000041",
-                                "provenance": "LDC Annotation"
-                            }
-                        },
-                        {
-                            "@id": "nist:Participants/00216/AR2002.001112",
-                            "roleName": "AM-loc--",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00700/EE2002.000033",
-                                "provenance": "LDC Annotation"
-                            }
-                        },
-                        {
-                            "@id": "nist:Participants/00217/AR2002.001148",
-                            "roleName": "A1-ppt-theme-thing_being_traded",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00681/EE2002.000013",
-                                "provenance": "LDC Annotation"
-                            }
-                        },
-                        {
-                            "@id": "nist:Participants/00218/AR2002.000944",
-                            "roleName": "A0-pag-agent-agent",
-                            "entity": "kairos:NULL",
-                            "values": {
-                                "ta2entity": "nist:Entities/00689/EE2002.000022",
-                                "provenance": "LDC Annotation"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "@id": "nist:Events/00059/VP2002.002391",
-                    "name": "compliance",
-                    "description": "Chipotle violated local food regulations, including those specific to time and temperature controls for lettuce and beans, in the Powell Chipotle restaurant",
-                    "ta2qnode": "wd:Q1399332",
-                    "ta2qlabel": "compliance",
-                    "ta1ref": "kairos:NULL",
-                    "ta1explanation": "From Graph G.",
-                    "provenance": "VP2002.002391",
-                    "modality": "negated",
                     "temporal": {
-                        "latestStartTime": "2018-7-26T0:0:0",
-                        "latestEndTime": "2018-7-31T0:0:0"
+                        "earliestStartTime": "2011-02-21T00:00:00",
+                        "latestStartTime": "2011-02-21T23:59:59"
                     },
                     "participants": [
                         {
-                            "@id": "nist:Participants/00331/AR2002.002408",
-                            "roleName": "A1-ppt-x-_complied-with",
+                            "@id": "nist:Participants/00243/AR2013.006844",
+                            "roleName": "A0_pag_agent_agent",
                             "entity": "kairos:NULL",
                             "values": {
-                                "ta2entity": "nist:Entities/00729/EE2002.000062",
-                                "provenance": "LDC Annotation"
+                                "ta2entity": "nist:Entities/00391/EE2013.000817",
+                                "provenance": "LDC-Annotation"
                             }
                         },
                         {
-                            "@id": "nist:Participants/00332/AR2002.000027",
-                            "roleName": "AM-loc--",
+                            "@id": "nist:Participants/00244/VP2013.003959",
+                            "roleName": "A1_ppt_theme_theme",
                             "entity": "kairos:NULL",
                             "values": {
-                                "ta2entity": "nist:Entities/00674/EE2002.000007",
-                                "provenance": "LDC Annotation"
+                                "ta2entity": "nist:Events/00021/VP2013.003959",
+                                "provenance": "LDC-Annotation"
                             }
                         },
                         {
-                            "@id": "nist:Participants/00333/AR2002.000204",
-                            "roleName": "A0-pag-x-complier",
+                            "@id": "nist:Participants/00245/AR2013.000033",
+                            "roleName": "AM_loc__location",
                             "entity": "kairos:NULL",
                             "values": {
-                                "ta2entity": "nist:Entities/00674/EE2002.000007",
-                                "provenance": "LDC Annotation"
+                                "ta2entity": "nist:Entities/00360/EE2013.000460",
+                                "provenance": "LDC-Annotation"
                             }
                         }
                     ]
@@ -1012,970 +815,906 @@
             ],
             "entities": [
                 {
-                    "@id": "nist:Entities/00674/EE2002.000007",
-                    "name": "A Chipotle restaurant in Powell, Ohio (FAC)",
-                    "ta2qnode": "wd:Q11707",
-                    "ta2qlabel": "restaurant"
+                    "@id": "nist:Entities/00384/EE2013.000740",
+                    "name": "Lobsters tainted with cholera",
+                    "ta2qnode": "wd:Q61864890",
+                    "ta2qlabel": "lobster"
                 },
                 {
-                    "@id": "nist:Entities/00801/EE2002.000133",
-                    "name": "Three food safety guidelines",
-                    "ta2qnode": "wd:Q909821",
-                    "ta2qlabel": "food safety"
+                    "@id": "nist:Entities/00427/EE2013.001213",
+                    "name": "Vibrio cholerae",
+                    "ta2qnode": "wd:Q160821",
+                    "ta2qlabel": "Vibrio cholerae"
                 },
                 {
-                    "@id": "nist:Entities/00708/EE2002.000041",
-                    "name": "Filip Syzller",
-                    "ta2qnode": "wd:Q468489",
-                    "ta2qlabel": "plaintiff"
+                    "@id": "nist:Entities/00378/EE2013.000674",
+                    "name": "Haiti",
+                    "ta2qnode": "wd:Q790",
+                    "ta2qlabel": "Haiti"
                 },
                 {
-                    "@id": "nist:Entities/00746/EE2002.000079",
-                    "name": "Three chicken tacos",
-                    "ta2qnode": "wd:Q191655",
-                    "ta2qlabel": "taco"
-                },
-                {
-                    "@id": "nist:Entities/00725/EE2002.000058",
-                    "name": "Nausea",
-                    "ta2qnode": "wd:Q186889",
-                    "ta2qlabel": "nausea"
-                },
-                {
-                    "@id": "nist:Entities/00716/EE2002.000049",
-                    "name": "Headaches",
-                    "ta2qnode": "wd:Q86",
-                    "ta2qlabel": "headache"
-                },
-                {
-                    "@id": "nist:Entities/00718/EE2002.000051",
-                    "name": "Hot flashes",
-                    "ta2qnode": "wd:Q1858291",
-                    "ta2qlabel": "hot flash"
-                },
-                {
-                    "@id": "nist:Entities/00728/EE2002.000061",
-                    "name": "Ohio",
-                    "ta2qnode": "wd:Q1397",
-                    "ta2qlabel": "Ohio"
-                },
-                {
-                    "@id": "nist:Entities/00794/EE2002.000126",
-                    "name": "Severe abdominal pain",
-                    "ta2qnode": "wd:Q183425",
-                    "ta2qlabel": "abdominal pain"
-                },
-                {
-                    "@id": "nist:Entities/00700/EE2002.000033",
-                    "name": "Delaware County",
-                    "ta2qnode": "wd:Q485524",
-                    "ta2qlabel": "Delaware County"
-                },
-                {
-                    "@id": "nist:Entities/00689/EE2002.000022",
-                    "name": "Chipotle Mexican Grill, Inc.",
-                    "ta2qnode": "wd:Q465751",
-                    "ta2qlabel": "Chipotle Mexican Grill"
-                },
-                {
-                    "@id": "nist:Entities/00701/EE2002.000034",
-                    "name": "Delaware General Health District",
-                    "ta2qnode": "wd:Q1312371",
-                    "ta2qlabel": "health department"
-                },
-                {
-                    "@id": "nist:Entities/00717/EE2002.000050",
-                    "name": "Health officials",
-                    "ta2qnode": "wd:Q11974939",
-                    "ta2qlabel": "health_professional"
-                },
-                {
-                    "@id": "nist:Entities/00795/EE2002.000127",
-                    "name": "Six stool samples",
-                    "ta2qnode": "wd:Q496",
-                    "ta2qlabel": "feces"
-                },
-                {
-                    "@id": "nist:Entities/00685/EE2002.000017",
-                    "name": "Centers for Disease Control and Prevention (CDC)",
-                    "ta2qnode": "wd:Q583725",
-                    "ta2qlabel": "Centers for Disease Control and Prevention"
-                },
-                {
-                    "@id": "nist:Entities/00748/EE2002.000081",
-                    "name": "United States",
-                    "ta2qnode": "wd:Q30",
-                    "ta2qlabel": "United States of America"
-                },
-                {
-                    "@id": "nist:Entities/00670/EE2002.000003",
-                    "name": "5 of 6 stool samples",
-                    "ta2qnode": "wd:Q496",
-                    "ta2qlabel": "feces"
-                },
-                {
-                    "@id": "nist:Entities/00695/EE2002.000028",
-                    "name": "Clostridium perfringens",
-                    "ta2qnode": "wd:Q309465",
-                    "ta2qlabel": "Clostridium perfringens"
-                },
-                {
-                    "@id": "nist:Entities/00731/EE2002.000064",
-                    "name": "Positive",
-                    "ta2qnode": "wd:Q91615379",
-                    "ta2qlabel": "test result"
-                },
-                {
-                    "@id": "nist:Entities/00678/EE2002.000010",
-                    "name": "All exposed foods",
+                    "@id": "nist:Entities/00354/EE2013.000394",
+                    "name": "Cholera-contaminated food",
                     "ta2qnode": "wd:Q2095",
                     "ta2qlabel": "food"
                 },
                 {
-                    "@id": "nist:Entities/00738/EE2002.000071",
-                    "name": "Single-use equipment",
-                    "ta2qnode": "wd:Q1194058",
-                    "ta2qlabel": "disposable product"
+                    "@id": "nist:Entities/00360/EE2013.000460",
+                    "name": "Dominican Republic",
+                    "ta2qnode": "wd:Q786",
+                    "ta2qlabel": "Dominican Republic"
                 },
                 {
-                    "@id": "nist:Entities/00672/EE2002.000005",
-                    "name": "9733 Sawmill Parkway",
-                    "ta2qnode": "wd:Q319608",
-                    "ta2qlabel": "postal_address"
+                    "@id": "nist:Entities/00399/EE2013.000905",
+                    "name": "Pedernales",
+                    "ta2qnode": "wd:Q2552137",
+                    "ta2qlabel": "Pedernales"
                 },
                 {
-                    "@id": "nist:Entities/00732/EE2002.000065",
-                    "name": "Powell",
-                    "ta2qnode": "wd:Q2233834",
-                    "ta2qlabel": "Powell"
+                    "@id": "nist:Entities/00331/EE2013.000125",
+                    "name": "A catering company",
+                    "ta2qnode": "wd:Q777754",
+                    "ta2qlabel": "catering"
                 },
                 {
-                    "@id": "nist:Entities/00673/EE2002.000006",
-                    "name": "A $25 million fine",
-                    "ta2qnode": "wd:Q1243001",
-                    "ta2qlabel": "fine"
+                    "@id": "nist:Entities/00380/EE2013.000696",
+                    "name": "Ice used at the wedding",
+                    "ta2qnode": "wd:Q23392",
+                    "ta2qlabel": "ice"
                 },
                 {
-                    "@id": "nist:Entities/00702/EE2002.000035",
-                    "name": "Department of Justice",
-                    "ta2qnode": "wd:Q1553390",
-                    "ta2qlabel": "United States Department of Justice"
+                    "@id": "nist:Entities/00370/EE2013.000575",
+                    "name": "Food served at the wedding",
+                    "ta2qnode": "wd:Q2095",
+                    "ta2qlabel": "food"
                 },
                 {
-                    "@id": "nist:Entities/00681/EE2002.000013",
-                    "name": "At least $25,000 (for Syzller)",
-                    "ta2qnode": "wd:Q1368",
-                    "ta2qlabel": "money"
+                    "@id": "nist:Entities/00363/EE2013.000493",
+                    "name": "Drinks served at the wedding",
+                    "ta2qnode": "wd:Q40050",
+                    "ta2qlabel": "drink"
                 },
                 {
-                    "@id": "nist:Entities/00729/EE2002.000062",
-                    "name": "Ohio food regulations, including those specific to time and temperature controls for lettuce and beans",
-                    "ta2qnode": "wd:Q16661688",
-                    "ta2qlabel": "food legislation"
+                    "@id": "nist:Entities/00350/EE2013.000345",
+                    "name": "Casa de Campo resort complex",
+                    "ta2qnode": "wd:Q2033262",
+                    "ta2qlabel": "Casa de Campo, Dominican Republic"
+                },
+                {
+                    "@id": "nist:Entities/00393/EE2013.000839",
+                    "name": "More than 300 wedding guests",
+                    "ta2qnode": "wd:Q18089644",
+                    "ta2qlabel": "guest"
+                },
+                {
+                    "@id": "nist:Entities/00330/EE2013.000114",
+                    "name": "A 30-year-old Massachusetts man",
+                    "ta2qnode": "wd:Q12722854",
+                    "ta2qlabel": "sick_person"
+                },
+                {
+                    "@id": "nist:Entities/00338/EE2013.000202",
+                    "name": "A Massachusetts woman",
+                    "ta2qnode": "wd:Q12722854",
+                    "ta2qlabel": "sick_person"
+                },
+                {
+                    "@id": "nist:Entities/00334/EE2013.000158",
+                    "name": "A father",
+                    "ta2qnode": "wd:Q12722854",
+                    "ta2qlabel": "sick_person"
+                },
+                {
+                    "@id": "nist:Entities/00417/EE2013.001103",
+                    "name": "Three children",
+                    "ta2qnode": "wd:Q12722854",
+                    "ta2qlabel": "sick_person"
+                },
+                {
+                    "@id": "nist:Entities/00362/EE2013.000482",
+                    "name": "Dozens of wedding guests",
+                    "ta2qnode": "wd:Q18089644",
+                    "ta2qlabel": "guest"
+                },
+                {
+                    "@id": "nist:Entities/00356/EE2013.000416",
+                    "name": "Diarrhea",
+                    "ta2qnode": "wd:Q40878",
+                    "ta2qlabel": "diarrhea"
+                },
+                {
+                    "@id": "nist:Entities/00429/EE2013.001235",
+                    "name": "Vomiting",
+                    "ta2qnode": "wd:Q127076",
+                    "ta2qlabel": "vomiting"
+                },
+                {
+                    "@id": "nist:Entities/00353/EE2013.000383",
+                    "name": "Cholera",
+                    "ta2qnode": "wd:Q12090",
+                    "ta2qlabel": "cholera"
+                },
+                {
+                    "@id": "nist:Entities/00387/EE2013.000773",
+                    "name": "Massachusetts",
+                    "ta2qnode": "wd:Q771",
+                    "ta2qlabel": "Massachusetts"
+                },
+                {
+                    "@id": "nist:Entities/00369/EE2013.000564",
+                    "name": "Fever",
+                    "ta2qnode": "wd:Q38933",
+                    "ta2qlabel": "fever"
+                },
+                {
+                    "@id": "nist:Entities/00346/EE2013.000301",
+                    "name": "Bloody stool",
+                    "ta2qnode": "wd:Q1214063",
+                    "ta2qlabel": "blood in stool"
+                },
+                {
+                    "@id": "nist:Entities/00324/EE2013.000048",
+                    "name": "2 people from Spain",
+                    "ta2qnode": "wd:Q12722854",
+                    "ta2qlabel": "sick_person"
+                },
+                {
+                    "@id": "nist:Entities/00326/EE2013.000070",
+                    "name": "3 people",
+                    "ta2qnode": "wd:Q12722854",
+                    "ta2qlabel": "sick_person"
+                },
+                {
+                    "@id": "nist:Entities/00323/EE2013.000037",
+                    "name": "2 people from Boston",
+                    "ta2qnode": "wd:Q12722854",
+                    "ta2qlabel": "sick_person"
+                },
+                {
+                    "@id": "nist:Entities/00407/EE2013.000993",
+                    "name": "Spain",
+                    "ta2qnode": "wd:Q29",
+                    "ta2qlabel": "Spain"
+                },
+                {
+                    "@id": "nist:Entities/00396/EE2013.000872",
+                    "name": "New York",
+                    "ta2qnode": "wd:Q60",
+                    "ta2qlabel": "New York City"
+                },
+                {
+                    "@id": "nist:Entities/00347/EE2013.000312",
+                    "name": "Boston",
+                    "ta2qnode": "wd:Q100",
+                    "ta2qlabel": "Boston"
+                },
+                {
+                    "@id": "nist:Entities/00416/EE2013.001092",
+                    "name": "The son of a female Casa de Campo employee",
+                    "ta2qnode": "wd:Q12722854",
+                    "ta2qlabel": "sick_person"
+                },
+                {
+                    "@id": "nist:Entities/00368/EE2013.000553",
+                    "name": "Fernando Hazoury",
+                    "ta2qnode": "wd:Q12722854",
+                    "ta2qlabel": "sick_person"
+                },
+                {
+                    "@id": "nist:Entities/00374/EE2013.000630",
+                    "name": "Guests from Mexico",
+                    "ta2qnode": "wd:Q18089644",
+                    "ta2qlabel": "guest"
+                },
+                {
+                    "@id": "nist:Entities/00390/EE2013.000806",
+                    "name": "Mexico",
+                    "ta2qnode": "wd:Q96",
+                    "ta2qlabel": "Mexico"
+                },
+                {
+                    "@id": "nist:Entities/00364/EE2013.000504",
+                    "name": "Emergency room of Massachusetts General Hospital",
+                    "ta2qnode": "wd:Q1295316",
+                    "ta2qlabel": "emergency department"
+                },
+                {
+                    "@id": "nist:Entities/00388/EE2013.000784",
+                    "name": "Massachusetts General Hospital",
+                    "ta2qnode": "wd:Q126412",
+                    "ta2qlabel": "Massachusetts General Hospital"
+                },
+                {
+                    "@id": "nist:Entities/00412/EE2013.001048",
+                    "name": "The home of a 30-year-old Massachusetts man",
+                    "ta2qnode": "wd:Q7743",
+                    "ta2qlabel": "home"
+                },
+                {
+                    "@id": "nist:Entities/00409/EE2013.001015",
+                    "name": "The Dominican military",
+                    "ta2qnode": "wd:Q436714",
+                    "ta2qlabel": "Armed Forces of the Dominican Republic"
+                },
+                {
+                    "@id": "nist:Entities/00418/EE2013.001114",
+                    "name": "Uncertified meat",
+                    "ta2qnode": "wd:Q10990",
+                    "ta2qlabel": "meat"
+                },
+                {
+                    "@id": "nist:Entities/00419/EE2013.001125",
+                    "name": "Uncertified seafood",
+                    "ta2qnode": "wd:Q192935",
+                    "ta2qlabel": "seafood"
+                },
+                {
+                    "@id": "nist:Entities/00391/EE2013.000817",
+                    "name": "Ministry of Public Health of the Dominican Republic",
+                    "ta2qnode": "wd:Q98582748",
+                    "ta2qlabel": "Ministry of Public Health"
+                },
+                {
+                    "@id": "nist:Entities/00381/EE2013.000707",
+                    "name": "Improperly cooked",
+                    "ta2qnode": "wd:Q101822647",
+                    "ta2qlabel": "food handling"
+                },
+                {
+                    "@id": "nist:Entities/00382/EE2013.000718",
+                    "name": "Improperly refrigerated",
+                    "ta2qnode": "wd:Q101822647",
+                    "ta2qlabel": "food handling"
                 }
             ],
             "relations": [
                 {
-                    "@id": "nist:Relations/00808/RR2002.000955",
-                    "name": "The Powell Chipotle is a subsidiary of Chipotle Mexican Grill, Inc.",
-                    "relationSubject": "nist:Entities/00674/EE2002.000007",
-                    "relationSubject_prov": "AR2002.000204",
-                    "relationPredicate": "EMPTY_TBD",
-                    "relationObject": "nist:Entities/00689/EE2002.000022",
-                    "relationObject_prov": "AR2002.000944",
-                    "relationProvenance": "LDC Annotation",
+                    "@id": "nist:Relations/00433/RR2013.000278",
+                    "name": "The Casa de Campo resort complex was located in the Dominican Republic",
+                    "relationSubject": "nist:Entities/00350/EE2013.000345",
+                    "relationSubject_prov": "AR2013.000023",
+                    "relationPredicate": "P276",
+                    "relationObject": "nist:Entities/00399/EE2013.000905",
+                    "relationObject_prov": "AR2013.000358",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50000/GraphG-nist:Events/00076/VP2002.003453-Bef-nist:Events/00078/VP2002.003535",
-                    "name": "nist:Events/00076/VP2002.003453 happens before nist:Events/00078/VP2002.003535",
-                    "relationSubject": "nist:Events/00076/VP2002.003453",
-                    "relationSubject_prov": "LDC Temporal Annotation",
-                    "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00078/VP2002.003535",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
-                    "ta1ref": "kairos:NULL"
-                },
-                {
-                    "@id": "nist:Relations/50001/GraphG-nist:Events/00076/VP2002.003453-Bef-nist:Events/00025/VP2002.000990",
-                    "name": "nist:Events/00076/VP2002.003453 happens before nist:Events/00025/VP2002.000990",
-                    "relationSubject": "nist:Events/00076/VP2002.003453",
-                    "relationSubject_prov": "LDC Temporal Annotation",
-                    "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00025/VP2002.000990",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
-                    "ta1ref": "kairos:NULL"
-                },
-                {
-                    "@id": "nist:Relations/50002/GraphG-nist:Events/00076/VP2002.003453-Bef-nist:Events/00026/VP2002.001019",
-                    "name": "nist:Events/00076/VP2002.003453 happens before nist:Events/00026/VP2002.001019",
-                    "relationSubject": "nist:Events/00076/VP2002.003453",
-                    "relationSubject_prov": "LDC Temporal Annotation",
-                    "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00026/VP2002.001019",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
-                    "ta1ref": "kairos:NULL"
-                },
-                {
-                    "@id": "nist:Relations/50003/GraphG-nist:Events/00076/VP2002.003453-Bef-nist:Events/00024/VP2002.000919",
-                    "name": "nist:Events/00076/VP2002.003453 happens before nist:Events/00024/VP2002.000919",
-                    "relationSubject": "nist:Events/00076/VP2002.003453",
-                    "relationSubject_prov": "LDC Temporal Annotation",
-                    "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00024/VP2002.000919",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
-                    "ta1ref": "kairos:NULL"
-                },
-                {
-                    "@id": "nist:Relations/50004/GraphG-nist:Events/00076/VP2002.003453-Bef-nist:Events/00023/VP2002.000799",
-                    "name": "nist:Events/00076/VP2002.003453 happens before nist:Events/00023/VP2002.000799",
-                    "relationSubject": "nist:Events/00076/VP2002.003453",
-                    "relationSubject_prov": "LDC Temporal Annotation",
-                    "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00023/VP2002.000799",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
-                    "ta1ref": "kairos:NULL"
-                },
-                {
-                    "@id": "nist:Relations/50005/GraphG-nist:Events/00076/VP2002.003453-Bef-nist:Events/00039/VP2002.001505",
-                    "name": "nist:Events/00076/VP2002.003453 happens before nist:Events/00039/VP2002.001505",
-                    "relationSubject": "nist:Events/00076/VP2002.003453",
-                    "relationSubject_prov": "LDC Temporal Annotation",
-                    "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00039/VP2002.001505",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
-                    "ta1ref": "kairos:NULL"
-                },
-                {
-                    "@id": "nist:Relations/50006/GraphG-nist:Events/00076/VP2002.003453-Bef-nist:Events/00030/VP2002.001163",
-                    "name": "nist:Events/00076/VP2002.003453 happens before nist:Events/00030/VP2002.001163",
-                    "relationSubject": "nist:Events/00076/VP2002.003453",
-                    "relationSubject_prov": "LDC Temporal Annotation",
-                    "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00030/VP2002.001163",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
-                    "ta1ref": "kairos:NULL"
-                },
-                {
-                    "@id": "nist:Relations/50007/GraphG-nist:Events/00076/VP2002.003453-Bef-nist:Events/00106/VP2002.004920",
-                    "name": "nist:Events/00076/VP2002.003453 happens before nist:Events/00106/VP2002.004920",
-                    "relationSubject": "nist:Events/00076/VP2002.003453",
-                    "relationSubject_prov": "LDC Temporal Annotation",
-                    "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00106/VP2002.004920",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "@id": "nist:Relations/00435/RR2013.000538",
+                    "name": "Pedernales was near Haiti",
+                    "relationSubject": "nist:Entities/00399/EE2013.000905",
+                    "relationSubject_prov": "AR2013.000358",
+                    "relationPredicate": "P276",
+                    "relationObject": "nist:Entities/00378/EE2013.000674",
+                    "relationObject_prov": "AR2013.000043",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50008/GraphG-nist:Events/00076/VP2002.003453-Bef-nist:Events/00042/VP2002.001604",
-                    "name": "nist:Events/00076/VP2002.003453 happens before nist:Events/00042/VP2002.001604",
-                    "relationSubject": "nist:Events/00076/VP2002.003453",
-                    "relationSubject_prov": "LDC Temporal Annotation",
-                    "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00042/VP2002.001604",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
-                    "ta1ref": "kairos:NULL"
-                },
-                {
-                    "@id": "nist:Relations/50009/GraphG-nist:Events/00076/VP2002.003453-Bef-nist:Events/00028/VP2002.001091",
-                    "name": "nist:Events/00076/VP2002.003453 happens before nist:Events/00028/VP2002.001091",
-                    "relationSubject": "nist:Events/00076/VP2002.003453",
-                    "relationSubject_prov": "LDC Temporal Annotation",
-                    "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00028/VP2002.001091",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
-                    "ta1ref": "kairos:NULL"
-                },
-                {
-                    "@id": "nist:Relations/50010/GraphG-nist:Events/00076/VP2002.003453-Bef-nist:Events/00123/VP2002.005599",
-                    "name": "nist:Events/00076/VP2002.003453 happens before nist:Events/00123/VP2002.005599",
-                    "relationSubject": "nist:Events/00076/VP2002.003453",
-                    "relationSubject_prov": "LDC Temporal Annotation",
-                    "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00123/VP2002.005599",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
-                    "ta1ref": "kairos:NULL"
-                },
-                {
-                    "@id": "nist:Relations/50011/GraphG-nist:Events/00076/VP2002.003453-Bef-nist:Events/00113/VP2002.005164",
-                    "name": "nist:Events/00076/VP2002.003453 happens before nist:Events/00113/VP2002.005164",
-                    "relationSubject": "nist:Events/00076/VP2002.003453",
-                    "relationSubject_prov": "LDC Temporal Annotation",
-                    "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00113/VP2002.005164",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
-                    "ta1ref": "kairos:NULL"
-                },
-                {
-                    "@id": "nist:Relations/50012/GraphG-nist:Events/00076/VP2002.003453-Bef-nist:Events/00112/VP2002.005139",
-                    "name": "nist:Events/00076/VP2002.003453 happens before nist:Events/00112/VP2002.005139",
-                    "relationSubject": "nist:Events/00076/VP2002.003453",
-                    "relationSubject_prov": "LDC Temporal Annotation",
-                    "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00112/VP2002.005139",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
-                    "ta1ref": "kairos:NULL"
-                },
-                {
-                    "@id": "nist:Relations/50013/GraphG-nist:Events/00076/VP2002.003453-Bef-nist:Events/00114/VP2002.005196",
-                    "name": "nist:Events/00076/VP2002.003453 happens before nist:Events/00114/VP2002.005196",
-                    "relationSubject": "nist:Events/00076/VP2002.003453",
-                    "relationSubject_prov": "LDC Temporal Annotation",
-                    "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00114/VP2002.005196",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
-                    "ta1ref": "kairos:NULL"
-                },
-                {
-                    "@id": "nist:Relations/50014/GraphG-nist:Events/00076/VP2002.003453-Bef-nist:Events/00055/VP2002.002215",
-                    "name": "nist:Events/00076/VP2002.003453 happens before nist:Events/00055/VP2002.002215",
-                    "relationSubject": "nist:Events/00076/VP2002.003453",
-                    "relationSubject_prov": "LDC Temporal Annotation",
-                    "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00055/VP2002.002215",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
-                    "ta1ref": "kairos:NULL"
-                },
-                {
-                    "@id": "nist:Relations/50015/GraphG-nist:Events/00025/VP2002.000990-Bef-nist:Events/00026/VP2002.001019",
-                    "name": "nist:Events/00025/VP2002.000990 happens before nist:Events/00026/VP2002.001019",
-                    "relationSubject": "nist:Events/00025/VP2002.000990",
-                    "relationSubject_prov": "LDC Temporal Annotation",
-                    "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00026/VP2002.001019",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "@id": "nist:Relations/00441/RR2013.006959",
+                    "name": "The contaminated lobsters were not properly cooked",
+                    "relationSubject": "nist:Entities/00384/EE2013.000740",
+                    "relationSubject_prov": "AR2013.000353",
+                    "relationPredicate": "P1552",
+                    "relationObject": "nist:Entities/00381/EE2013.000707",
+                    "relationObject_prov": "AR2013.006954",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50016/GraphG-nist:Events/00025/VP2002.000990-Bef-nist:Events/00024/VP2002.000919",
-                    "name": "nist:Events/00025/VP2002.000990 happens before nist:Events/00024/VP2002.000919",
-                    "relationSubject": "nist:Events/00025/VP2002.000990",
-                    "relationSubject_prov": "LDC Temporal Annotation",
-                    "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00024/VP2002.000919",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "@id": "nist:Relations/00442/RR2013.006999",
+                    "name": "The contaminated lobsters were not properly refrigerated",
+                    "relationSubject": "nist:Entities/00384/EE2013.000740",
+                    "relationSubject_prov": "AR2013.000353",
+                    "relationPredicate": "P1552",
+                    "relationObject": "nist:Entities/00382/EE2013.000718",
+                    "relationObject_prov": "AR2013.006994",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50017/GraphG-nist:Events/00025/VP2002.000990-Bef-nist:Events/00023/VP2002.000799",
-                    "name": "nist:Events/00025/VP2002.000990 happens before nist:Events/00023/VP2002.000799",
-                    "relationSubject": "nist:Events/00025/VP2002.000990",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50000/GraphG-nist:Events/00043/VP2013.008884-Bef-nist:Events/00021/VP2013.003959",
+                    "name": "nist:Events/00043/VP2013.008884 happens before nist:Events/00021/VP2013.003959",
+                    "relationSubject": "nist:Events/00043/VP2013.008884",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00023/VP2002.000799",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00021/VP2013.003959",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50018/GraphG-nist:Events/00025/VP2002.000990-Bef-nist:Events/00039/VP2002.001505",
-                    "name": "nist:Events/00025/VP2002.000990 happens before nist:Events/00039/VP2002.001505",
-                    "relationSubject": "nist:Events/00025/VP2002.000990",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50001/GraphG-nist:Events/00043/VP2013.008884-Bef-nist:Events/00038/VP2013.007649",
+                    "name": "nist:Events/00043/VP2013.008884 happens before nist:Events/00038/VP2013.007649",
+                    "relationSubject": "nist:Events/00043/VP2013.008884",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00039/VP2002.001505",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00038/VP2013.007649",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50019/GraphG-nist:Events/00025/VP2002.000990-Bef-nist:Events/00030/VP2002.001163",
-                    "name": "nist:Events/00025/VP2002.000990 happens before nist:Events/00030/VP2002.001163",
-                    "relationSubject": "nist:Events/00025/VP2002.000990",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50002/GraphG-nist:Events/00043/VP2013.008884-Bef-nist:Events/00028/VP2013.005699",
+                    "name": "nist:Events/00043/VP2013.008884 happens before nist:Events/00028/VP2013.005699",
+                    "relationSubject": "nist:Events/00043/VP2013.008884",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00030/VP2002.001163",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00028/VP2013.005699",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50020/GraphG-nist:Events/00025/VP2002.000990-Bef-nist:Events/00106/VP2002.004920",
-                    "name": "nist:Events/00025/VP2002.000990 happens before nist:Events/00106/VP2002.004920",
-                    "relationSubject": "nist:Events/00025/VP2002.000990",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50003/GraphG-nist:Events/00043/VP2013.008884-Bef-nist:Events/00006/VP2013.000433",
+                    "name": "nist:Events/00043/VP2013.008884 happens before nist:Events/00006/VP2013.000433",
+                    "relationSubject": "nist:Events/00043/VP2013.008884",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00106/VP2002.004920",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00006/VP2013.000433",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50021/GraphG-nist:Events/00025/VP2002.000990-Bef-nist:Events/00042/VP2002.001604",
-                    "name": "nist:Events/00025/VP2002.000990 happens before nist:Events/00042/VP2002.001604",
-                    "relationSubject": "nist:Events/00025/VP2002.000990",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50004/GraphG-nist:Events/00043/VP2013.008884-Bef-nist:Events/00017/VP2013.002204",
+                    "name": "nist:Events/00043/VP2013.008884 happens before nist:Events/00017/VP2013.002204",
+                    "relationSubject": "nist:Events/00043/VP2013.008884",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00042/VP2002.001604",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00017/VP2013.002204",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50022/GraphG-nist:Events/00025/VP2002.000990-Bef-nist:Events/00028/VP2002.001091",
-                    "name": "nist:Events/00025/VP2002.000990 happens before nist:Events/00028/VP2002.001091",
-                    "relationSubject": "nist:Events/00025/VP2002.000990",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50005/GraphG-nist:Events/00043/VP2013.008884-Bef-nist:Events/00015/VP2013.001959",
+                    "name": "nist:Events/00043/VP2013.008884 happens before nist:Events/00015/VP2013.001959",
+                    "relationSubject": "nist:Events/00043/VP2013.008884",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00028/VP2002.001091",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00015/VP2013.001959",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50023/GraphG-nist:Events/00025/VP2002.000990-Bef-nist:Events/00123/VP2002.005599",
-                    "name": "nist:Events/00025/VP2002.000990 happens before nist:Events/00123/VP2002.005599",
-                    "relationSubject": "nist:Events/00025/VP2002.000990",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50006/GraphG-nist:Events/00043/VP2013.008884-Bef-nist:Events/00016/VP2013.001999",
+                    "name": "nist:Events/00043/VP2013.008884 happens before nist:Events/00016/VP2013.001999",
+                    "relationSubject": "nist:Events/00043/VP2013.008884",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00123/VP2002.005599",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00016/VP2013.001999",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50024/GraphG-nist:Events/00025/VP2002.000990-Bef-nist:Events/00113/VP2002.005164",
-                    "name": "nist:Events/00025/VP2002.000990 happens before nist:Events/00113/VP2002.005164",
-                    "relationSubject": "nist:Events/00025/VP2002.000990",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50007/GraphG-nist:Events/00043/VP2013.008884-Bef-nist:Events/00018/VP2013.002484",
+                    "name": "nist:Events/00043/VP2013.008884 happens before nist:Events/00018/VP2013.002484",
+                    "relationSubject": "nist:Events/00043/VP2013.008884",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00113/VP2002.005164",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00018/VP2013.002484",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50025/GraphG-nist:Events/00025/VP2002.000990-Bef-nist:Events/00112/VP2002.005139",
-                    "name": "nist:Events/00025/VP2002.000990 happens before nist:Events/00112/VP2002.005139",
-                    "relationSubject": "nist:Events/00025/VP2002.000990",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50008/GraphG-nist:Events/00043/VP2013.008884-Bef-nist:Events/00013/VP2013.001689",
+                    "name": "nist:Events/00043/VP2013.008884 happens before nist:Events/00013/VP2013.001689",
+                    "relationSubject": "nist:Events/00043/VP2013.008884",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00112/VP2002.005139",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00013/VP2013.001689",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50026/GraphG-nist:Events/00025/VP2002.000990-Bef-nist:Events/00114/VP2002.005196",
-                    "name": "nist:Events/00025/VP2002.000990 happens before nist:Events/00114/VP2002.005196",
-                    "relationSubject": "nist:Events/00025/VP2002.000990",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50009/GraphG-nist:Events/00043/VP2013.008884-Bef-nist:Events/00039/VP2013.007849",
+                    "name": "nist:Events/00043/VP2013.008884 happens before nist:Events/00039/VP2013.007849",
+                    "relationSubject": "nist:Events/00043/VP2013.008884",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00114/VP2002.005196",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00039/VP2013.007849",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50027/GraphG-nist:Events/00025/VP2002.000990-Bef-nist:Events/00055/VP2002.002215",
-                    "name": "nist:Events/00025/VP2002.000990 happens before nist:Events/00055/VP2002.002215",
-                    "relationSubject": "nist:Events/00025/VP2002.000990",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50010/GraphG-nist:Events/00021/VP2013.003959-Bef-nist:Events/00038/VP2013.007649",
+                    "name": "nist:Events/00021/VP2013.003959 happens before nist:Events/00038/VP2013.007649",
+                    "relationSubject": "nist:Events/00021/VP2013.003959",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00055/VP2002.002215",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00038/VP2013.007649",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50028/GraphG-nist:Events/00023/VP2002.000799-Bef-nist:Events/00106/VP2002.004920",
-                    "name": "nist:Events/00023/VP2002.000799 happens before nist:Events/00106/VP2002.004920",
-                    "relationSubject": "nist:Events/00023/VP2002.000799",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50011/GraphG-nist:Events/00021/VP2013.003959-Bef-nist:Events/00028/VP2013.005699",
+                    "name": "nist:Events/00021/VP2013.003959 happens before nist:Events/00028/VP2013.005699",
+                    "relationSubject": "nist:Events/00021/VP2013.003959",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00106/VP2002.004920",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00028/VP2013.005699",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50029/GraphG-nist:Events/00023/VP2002.000799-Bef-nist:Events/00042/VP2002.001604",
-                    "name": "nist:Events/00023/VP2002.000799 happens before nist:Events/00042/VP2002.001604",
-                    "relationSubject": "nist:Events/00023/VP2002.000799",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50012/GraphG-nist:Events/00021/VP2013.003959-Bef-nist:Events/00006/VP2013.000433",
+                    "name": "nist:Events/00021/VP2013.003959 happens before nist:Events/00006/VP2013.000433",
+                    "relationSubject": "nist:Events/00021/VP2013.003959",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00042/VP2002.001604",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00006/VP2013.000433",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50030/GraphG-nist:Events/00023/VP2002.000799-Bef-nist:Events/00028/VP2002.001091",
-                    "name": "nist:Events/00023/VP2002.000799 happens before nist:Events/00028/VP2002.001091",
-                    "relationSubject": "nist:Events/00023/VP2002.000799",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50013/GraphG-nist:Events/00021/VP2013.003959-Bef-nist:Events/00017/VP2013.002204",
+                    "name": "nist:Events/00021/VP2013.003959 happens before nist:Events/00017/VP2013.002204",
+                    "relationSubject": "nist:Events/00021/VP2013.003959",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00028/VP2002.001091",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00017/VP2013.002204",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50031/GraphG-nist:Events/00023/VP2002.000799-Bef-nist:Events/00123/VP2002.005599",
-                    "name": "nist:Events/00023/VP2002.000799 happens before nist:Events/00123/VP2002.005599",
-                    "relationSubject": "nist:Events/00023/VP2002.000799",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50014/GraphG-nist:Events/00021/VP2013.003959-Bef-nist:Events/00015/VP2013.001959",
+                    "name": "nist:Events/00021/VP2013.003959 happens before nist:Events/00015/VP2013.001959",
+                    "relationSubject": "nist:Events/00021/VP2013.003959",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00123/VP2002.005599",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00015/VP2013.001959",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50032/GraphG-nist:Events/00023/VP2002.000799-Bef-nist:Events/00113/VP2002.005164",
-                    "name": "nist:Events/00023/VP2002.000799 happens before nist:Events/00113/VP2002.005164",
-                    "relationSubject": "nist:Events/00023/VP2002.000799",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50015/GraphG-nist:Events/00021/VP2013.003959-Bef-nist:Events/00016/VP2013.001999",
+                    "name": "nist:Events/00021/VP2013.003959 happens before nist:Events/00016/VP2013.001999",
+                    "relationSubject": "nist:Events/00021/VP2013.003959",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00113/VP2002.005164",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00016/VP2013.001999",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50033/GraphG-nist:Events/00023/VP2002.000799-Bef-nist:Events/00112/VP2002.005139",
-                    "name": "nist:Events/00023/VP2002.000799 happens before nist:Events/00112/VP2002.005139",
-                    "relationSubject": "nist:Events/00023/VP2002.000799",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50016/GraphG-nist:Events/00021/VP2013.003959-Bef-nist:Events/00018/VP2013.002484",
+                    "name": "nist:Events/00021/VP2013.003959 happens before nist:Events/00018/VP2013.002484",
+                    "relationSubject": "nist:Events/00021/VP2013.003959",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00112/VP2002.005139",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00018/VP2013.002484",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50034/GraphG-nist:Events/00023/VP2002.000799-Bef-nist:Events/00114/VP2002.005196",
-                    "name": "nist:Events/00023/VP2002.000799 happens before nist:Events/00114/VP2002.005196",
-                    "relationSubject": "nist:Events/00023/VP2002.000799",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50017/GraphG-nist:Events/00021/VP2013.003959-Bef-nist:Events/00013/VP2013.001689",
+                    "name": "nist:Events/00021/VP2013.003959 happens before nist:Events/00013/VP2013.001689",
+                    "relationSubject": "nist:Events/00021/VP2013.003959",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00114/VP2002.005196",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00013/VP2013.001689",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50035/GraphG-nist:Events/00023/VP2002.000799-Bef-nist:Events/00055/VP2002.002215",
-                    "name": "nist:Events/00023/VP2002.000799 happens before nist:Events/00055/VP2002.002215",
-                    "relationSubject": "nist:Events/00023/VP2002.000799",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50018/GraphG-nist:Events/00021/VP2013.003959-Bef-nist:Events/00039/VP2013.007849",
+                    "name": "nist:Events/00021/VP2013.003959 happens before nist:Events/00039/VP2013.007849",
+                    "relationSubject": "nist:Events/00021/VP2013.003959",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00055/VP2002.002215",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00039/VP2013.007849",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50036/GraphG-nist:Events/00039/VP2002.001505-Bef-nist:Events/00106/VP2002.004920",
-                    "name": "nist:Events/00039/VP2002.001505 happens before nist:Events/00106/VP2002.004920",
-                    "relationSubject": "nist:Events/00039/VP2002.001505",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50019/GraphG-nist:Events/00038/VP2013.007649-Bef-nist:Events/00028/VP2013.005699",
+                    "name": "nist:Events/00038/VP2013.007649 happens before nist:Events/00028/VP2013.005699",
+                    "relationSubject": "nist:Events/00038/VP2013.007649",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00106/VP2002.004920",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00028/VP2013.005699",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50037/GraphG-nist:Events/00039/VP2002.001505-Bef-nist:Events/00042/VP2002.001604",
-                    "name": "nist:Events/00039/VP2002.001505 happens before nist:Events/00042/VP2002.001604",
-                    "relationSubject": "nist:Events/00039/VP2002.001505",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50020/GraphG-nist:Events/00038/VP2013.007649-Bef-nist:Events/00006/VP2013.000433",
+                    "name": "nist:Events/00038/VP2013.007649 happens before nist:Events/00006/VP2013.000433",
+                    "relationSubject": "nist:Events/00038/VP2013.007649",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00042/VP2002.001604",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00006/VP2013.000433",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50038/GraphG-nist:Events/00039/VP2002.001505-Bef-nist:Events/00028/VP2002.001091",
-                    "name": "nist:Events/00039/VP2002.001505 happens before nist:Events/00028/VP2002.001091",
-                    "relationSubject": "nist:Events/00039/VP2002.001505",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50021/GraphG-nist:Events/00038/VP2013.007649-Bef-nist:Events/00017/VP2013.002204",
+                    "name": "nist:Events/00038/VP2013.007649 happens before nist:Events/00017/VP2013.002204",
+                    "relationSubject": "nist:Events/00038/VP2013.007649",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00028/VP2002.001091",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00017/VP2013.002204",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50039/GraphG-nist:Events/00039/VP2002.001505-Bef-nist:Events/00123/VP2002.005599",
-                    "name": "nist:Events/00039/VP2002.001505 happens before nist:Events/00123/VP2002.005599",
-                    "relationSubject": "nist:Events/00039/VP2002.001505",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50022/GraphG-nist:Events/00038/VP2013.007649-Bef-nist:Events/00015/VP2013.001959",
+                    "name": "nist:Events/00038/VP2013.007649 happens before nist:Events/00015/VP2013.001959",
+                    "relationSubject": "nist:Events/00038/VP2013.007649",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00123/VP2002.005599",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00015/VP2013.001959",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50040/GraphG-nist:Events/00039/VP2002.001505-Bef-nist:Events/00113/VP2002.005164",
-                    "name": "nist:Events/00039/VP2002.001505 happens before nist:Events/00113/VP2002.005164",
-                    "relationSubject": "nist:Events/00039/VP2002.001505",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50023/GraphG-nist:Events/00038/VP2013.007649-Bef-nist:Events/00016/VP2013.001999",
+                    "name": "nist:Events/00038/VP2013.007649 happens before nist:Events/00016/VP2013.001999",
+                    "relationSubject": "nist:Events/00038/VP2013.007649",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00113/VP2002.005164",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00016/VP2013.001999",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50041/GraphG-nist:Events/00039/VP2002.001505-Bef-nist:Events/00112/VP2002.005139",
-                    "name": "nist:Events/00039/VP2002.001505 happens before nist:Events/00112/VP2002.005139",
-                    "relationSubject": "nist:Events/00039/VP2002.001505",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50024/GraphG-nist:Events/00038/VP2013.007649-Bef-nist:Events/00018/VP2013.002484",
+                    "name": "nist:Events/00038/VP2013.007649 happens before nist:Events/00018/VP2013.002484",
+                    "relationSubject": "nist:Events/00038/VP2013.007649",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00112/VP2002.005139",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00018/VP2013.002484",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50042/GraphG-nist:Events/00039/VP2002.001505-Bef-nist:Events/00114/VP2002.005196",
-                    "name": "nist:Events/00039/VP2002.001505 happens before nist:Events/00114/VP2002.005196",
-                    "relationSubject": "nist:Events/00039/VP2002.001505",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50025/GraphG-nist:Events/00038/VP2013.007649-Bef-nist:Events/00013/VP2013.001689",
+                    "name": "nist:Events/00038/VP2013.007649 happens before nist:Events/00013/VP2013.001689",
+                    "relationSubject": "nist:Events/00038/VP2013.007649",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00114/VP2002.005196",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00013/VP2013.001689",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50043/GraphG-nist:Events/00039/VP2002.001505-Bef-nist:Events/00055/VP2002.002215",
-                    "name": "nist:Events/00039/VP2002.001505 happens before nist:Events/00055/VP2002.002215",
-                    "relationSubject": "nist:Events/00039/VP2002.001505",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50026/GraphG-nist:Events/00038/VP2013.007649-Bef-nist:Events/00039/VP2013.007849",
+                    "name": "nist:Events/00038/VP2013.007649 happens before nist:Events/00039/VP2013.007849",
+                    "relationSubject": "nist:Events/00038/VP2013.007649",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00055/VP2002.002215",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00039/VP2013.007849",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50044/GraphG-nist:Events/00030/VP2002.001163-Bef-nist:Events/00106/VP2002.004920",
-                    "name": "nist:Events/00030/VP2002.001163 happens before nist:Events/00106/VP2002.004920",
-                    "relationSubject": "nist:Events/00030/VP2002.001163",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50027/GraphG-nist:Events/00028/VP2013.005699-Bef-nist:Events/00006/VP2013.000433",
+                    "name": "nist:Events/00028/VP2013.005699 happens before nist:Events/00006/VP2013.000433",
+                    "relationSubject": "nist:Events/00028/VP2013.005699",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00106/VP2002.004920",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00006/VP2013.000433",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50045/GraphG-nist:Events/00030/VP2002.001163-Bef-nist:Events/00042/VP2002.001604",
-                    "name": "nist:Events/00030/VP2002.001163 happens before nist:Events/00042/VP2002.001604",
-                    "relationSubject": "nist:Events/00030/VP2002.001163",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50028/GraphG-nist:Events/00028/VP2013.005699-Bef-nist:Events/00017/VP2013.002204",
+                    "name": "nist:Events/00028/VP2013.005699 happens before nist:Events/00017/VP2013.002204",
+                    "relationSubject": "nist:Events/00028/VP2013.005699",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00042/VP2002.001604",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00017/VP2013.002204",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50046/GraphG-nist:Events/00030/VP2002.001163-Bef-nist:Events/00028/VP2002.001091",
-                    "name": "nist:Events/00030/VP2002.001163 happens before nist:Events/00028/VP2002.001091",
-                    "relationSubject": "nist:Events/00030/VP2002.001163",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50029/GraphG-nist:Events/00028/VP2013.005699-Bef-nist:Events/00015/VP2013.001959",
+                    "name": "nist:Events/00028/VP2013.005699 happens before nist:Events/00015/VP2013.001959",
+                    "relationSubject": "nist:Events/00028/VP2013.005699",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00028/VP2002.001091",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00015/VP2013.001959",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50047/GraphG-nist:Events/00030/VP2002.001163-Bef-nist:Events/00123/VP2002.005599",
-                    "name": "nist:Events/00030/VP2002.001163 happens before nist:Events/00123/VP2002.005599",
-                    "relationSubject": "nist:Events/00030/VP2002.001163",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50030/GraphG-nist:Events/00028/VP2013.005699-Bef-nist:Events/00016/VP2013.001999",
+                    "name": "nist:Events/00028/VP2013.005699 happens before nist:Events/00016/VP2013.001999",
+                    "relationSubject": "nist:Events/00028/VP2013.005699",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00123/VP2002.005599",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00016/VP2013.001999",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50048/GraphG-nist:Events/00030/VP2002.001163-Bef-nist:Events/00113/VP2002.005164",
-                    "name": "nist:Events/00030/VP2002.001163 happens before nist:Events/00113/VP2002.005164",
-                    "relationSubject": "nist:Events/00030/VP2002.001163",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50031/GraphG-nist:Events/00028/VP2013.005699-Bef-nist:Events/00018/VP2013.002484",
+                    "name": "nist:Events/00028/VP2013.005699 happens before nist:Events/00018/VP2013.002484",
+                    "relationSubject": "nist:Events/00028/VP2013.005699",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00113/VP2002.005164",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00018/VP2013.002484",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50049/GraphG-nist:Events/00030/VP2002.001163-Bef-nist:Events/00112/VP2002.005139",
-                    "name": "nist:Events/00030/VP2002.001163 happens before nist:Events/00112/VP2002.005139",
-                    "relationSubject": "nist:Events/00030/VP2002.001163",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50032/GraphG-nist:Events/00028/VP2013.005699-Bef-nist:Events/00013/VP2013.001689",
+                    "name": "nist:Events/00028/VP2013.005699 happens before nist:Events/00013/VP2013.001689",
+                    "relationSubject": "nist:Events/00028/VP2013.005699",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00112/VP2002.005139",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00013/VP2013.001689",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50050/GraphG-nist:Events/00030/VP2002.001163-Bef-nist:Events/00114/VP2002.005196",
-                    "name": "nist:Events/00030/VP2002.001163 happens before nist:Events/00114/VP2002.005196",
-                    "relationSubject": "nist:Events/00030/VP2002.001163",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50033/GraphG-nist:Events/00028/VP2013.005699-Bef-nist:Events/00039/VP2013.007849",
+                    "name": "nist:Events/00028/VP2013.005699 happens before nist:Events/00039/VP2013.007849",
+                    "relationSubject": "nist:Events/00028/VP2013.005699",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00114/VP2002.005196",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00039/VP2013.007849",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50051/GraphG-nist:Events/00030/VP2002.001163-Bef-nist:Events/00055/VP2002.002215",
-                    "name": "nist:Events/00030/VP2002.001163 happens before nist:Events/00055/VP2002.002215",
-                    "relationSubject": "nist:Events/00030/VP2002.001163",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50034/GraphG-nist:Events/00006/VP2013.000433-Bef-nist:Events/00017/VP2013.002204",
+                    "name": "nist:Events/00006/VP2013.000433 happens before nist:Events/00017/VP2013.002204",
+                    "relationSubject": "nist:Events/00006/VP2013.000433",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00055/VP2002.002215",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00017/VP2013.002204",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50052/GraphG-nist:Events/00028/VP2002.001091-Bef-nist:Events/00106/VP2002.004920",
-                    "name": "nist:Events/00028/VP2002.001091 happens before nist:Events/00106/VP2002.004920",
-                    "relationSubject": "nist:Events/00028/VP2002.001091",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50035/GraphG-nist:Events/00006/VP2013.000433-Bef-nist:Events/00015/VP2013.001959",
+                    "name": "nist:Events/00006/VP2013.000433 happens before nist:Events/00015/VP2013.001959",
+                    "relationSubject": "nist:Events/00006/VP2013.000433",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00106/VP2002.004920",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00015/VP2013.001959",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50053/GraphG-nist:Events/00028/VP2002.001091-Bef-nist:Events/00042/VP2002.001604",
-                    "name": "nist:Events/00028/VP2002.001091 happens before nist:Events/00042/VP2002.001604",
-                    "relationSubject": "nist:Events/00028/VP2002.001091",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50036/GraphG-nist:Events/00006/VP2013.000433-Bef-nist:Events/00016/VP2013.001999",
+                    "name": "nist:Events/00006/VP2013.000433 happens before nist:Events/00016/VP2013.001999",
+                    "relationSubject": "nist:Events/00006/VP2013.000433",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00042/VP2002.001604",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00016/VP2013.001999",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50054/GraphG-nist:Events/00028/VP2002.001091-Bef-nist:Events/00123/VP2002.005599",
-                    "name": "nist:Events/00028/VP2002.001091 happens before nist:Events/00123/VP2002.005599",
-                    "relationSubject": "nist:Events/00028/VP2002.001091",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50037/GraphG-nist:Events/00006/VP2013.000433-Bef-nist:Events/00018/VP2013.002484",
+                    "name": "nist:Events/00006/VP2013.000433 happens before nist:Events/00018/VP2013.002484",
+                    "relationSubject": "nist:Events/00006/VP2013.000433",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00123/VP2002.005599",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00018/VP2013.002484",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50055/GraphG-nist:Events/00028/VP2002.001091-Bef-nist:Events/00113/VP2002.005164",
-                    "name": "nist:Events/00028/VP2002.001091 happens before nist:Events/00113/VP2002.005164",
-                    "relationSubject": "nist:Events/00028/VP2002.001091",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50038/GraphG-nist:Events/00006/VP2013.000433-Bef-nist:Events/00013/VP2013.001689",
+                    "name": "nist:Events/00006/VP2013.000433 happens before nist:Events/00013/VP2013.001689",
+                    "relationSubject": "nist:Events/00006/VP2013.000433",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00113/VP2002.005164",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00013/VP2013.001689",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50056/GraphG-nist:Events/00028/VP2002.001091-Bef-nist:Events/00112/VP2002.005139",
-                    "name": "nist:Events/00028/VP2002.001091 happens before nist:Events/00112/VP2002.005139",
-                    "relationSubject": "nist:Events/00028/VP2002.001091",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50039/GraphG-nist:Events/00006/VP2013.000433-Bef-nist:Events/00039/VP2013.007849",
+                    "name": "nist:Events/00006/VP2013.000433 happens before nist:Events/00039/VP2013.007849",
+                    "relationSubject": "nist:Events/00006/VP2013.000433",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00112/VP2002.005139",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00039/VP2013.007849",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50057/GraphG-nist:Events/00028/VP2002.001091-Bef-nist:Events/00114/VP2002.005196",
-                    "name": "nist:Events/00028/VP2002.001091 happens before nist:Events/00114/VP2002.005196",
-                    "relationSubject": "nist:Events/00028/VP2002.001091",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50040/GraphG-nist:Events/00017/VP2013.002204-Bef-nist:Events/00015/VP2013.001959",
+                    "name": "nist:Events/00017/VP2013.002204 happens before nist:Events/00015/VP2013.001959",
+                    "relationSubject": "nist:Events/00017/VP2013.002204",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00114/VP2002.005196",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00015/VP2013.001959",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50058/GraphG-nist:Events/00028/VP2002.001091-Bef-nist:Events/00055/VP2002.002215",
-                    "name": "nist:Events/00028/VP2002.001091 happens before nist:Events/00055/VP2002.002215",
-                    "relationSubject": "nist:Events/00028/VP2002.001091",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50041/GraphG-nist:Events/00017/VP2013.002204-Bef-nist:Events/00016/VP2013.001999",
+                    "name": "nist:Events/00017/VP2013.002204 happens before nist:Events/00016/VP2013.001999",
+                    "relationSubject": "nist:Events/00017/VP2013.002204",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00055/VP2002.002215",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00016/VP2013.001999",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50059/GraphG-nist:Events/00123/VP2002.005599-Bef-nist:Events/00106/VP2002.004920",
-                    "name": "nist:Events/00123/VP2002.005599 happens before nist:Events/00106/VP2002.004920",
-                    "relationSubject": "nist:Events/00123/VP2002.005599",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50042/GraphG-nist:Events/00017/VP2013.002204-Bef-nist:Events/00018/VP2013.002484",
+                    "name": "nist:Events/00017/VP2013.002204 happens before nist:Events/00018/VP2013.002484",
+                    "relationSubject": "nist:Events/00017/VP2013.002204",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00106/VP2002.004920",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00018/VP2013.002484",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50060/GraphG-nist:Events/00123/VP2002.005599-Bef-nist:Events/00042/VP2002.001604",
-                    "name": "nist:Events/00123/VP2002.005599 happens before nist:Events/00042/VP2002.001604",
-                    "relationSubject": "nist:Events/00123/VP2002.005599",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50043/GraphG-nist:Events/00017/VP2013.002204-Bef-nist:Events/00013/VP2013.001689",
+                    "name": "nist:Events/00017/VP2013.002204 happens before nist:Events/00013/VP2013.001689",
+                    "relationSubject": "nist:Events/00017/VP2013.002204",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00042/VP2002.001604",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00013/VP2013.001689",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50061/GraphG-nist:Events/00123/VP2002.005599-Bef-nist:Events/00028/VP2002.001091",
-                    "name": "nist:Events/00123/VP2002.005599 happens before nist:Events/00028/VP2002.001091",
-                    "relationSubject": "nist:Events/00123/VP2002.005599",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50044/GraphG-nist:Events/00017/VP2013.002204-Bef-nist:Events/00039/VP2013.007849",
+                    "name": "nist:Events/00017/VP2013.002204 happens before nist:Events/00039/VP2013.007849",
+                    "relationSubject": "nist:Events/00017/VP2013.002204",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00028/VP2002.001091",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00039/VP2013.007849",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50062/GraphG-nist:Events/00123/VP2002.005599-Bef-nist:Events/00113/VP2002.005164",
-                    "name": "nist:Events/00123/VP2002.005599 happens before nist:Events/00113/VP2002.005164",
-                    "relationSubject": "nist:Events/00123/VP2002.005599",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50045/GraphG-nist:Events/00015/VP2013.001959-Bef-nist:Events/00016/VP2013.001999",
+                    "name": "nist:Events/00015/VP2013.001959 happens before nist:Events/00016/VP2013.001999",
+                    "relationSubject": "nist:Events/00015/VP2013.001959",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00113/VP2002.005164",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00016/VP2013.001999",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50063/GraphG-nist:Events/00123/VP2002.005599-Bef-nist:Events/00112/VP2002.005139",
-                    "name": "nist:Events/00123/VP2002.005599 happens before nist:Events/00112/VP2002.005139",
-                    "relationSubject": "nist:Events/00123/VP2002.005599",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50046/GraphG-nist:Events/00015/VP2013.001959-Bef-nist:Events/00018/VP2013.002484",
+                    "name": "nist:Events/00015/VP2013.001959 happens before nist:Events/00018/VP2013.002484",
+                    "relationSubject": "nist:Events/00015/VP2013.001959",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00112/VP2002.005139",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00018/VP2013.002484",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50064/GraphG-nist:Events/00123/VP2002.005599-Bef-nist:Events/00114/VP2002.005196",
-                    "name": "nist:Events/00123/VP2002.005599 happens before nist:Events/00114/VP2002.005196",
-                    "relationSubject": "nist:Events/00123/VP2002.005599",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50047/GraphG-nist:Events/00015/VP2013.001959-Bef-nist:Events/00013/VP2013.001689",
+                    "name": "nist:Events/00015/VP2013.001959 happens before nist:Events/00013/VP2013.001689",
+                    "relationSubject": "nist:Events/00015/VP2013.001959",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00114/VP2002.005196",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00013/VP2013.001689",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50065/GraphG-nist:Events/00123/VP2002.005599-Bef-nist:Events/00055/VP2002.002215",
-                    "name": "nist:Events/00123/VP2002.005599 happens before nist:Events/00055/VP2002.002215",
-                    "relationSubject": "nist:Events/00123/VP2002.005599",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50048/GraphG-nist:Events/00015/VP2013.001959-Bef-nist:Events/00039/VP2013.007849",
+                    "name": "nist:Events/00015/VP2013.001959 happens before nist:Events/00039/VP2013.007849",
+                    "relationSubject": "nist:Events/00015/VP2013.001959",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00055/VP2002.002215",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00039/VP2013.007849",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50066/GraphG-nist:Events/00113/VP2002.005164-Bef-nist:Events/00112/VP2002.005139",
-                    "name": "nist:Events/00113/VP2002.005164 happens before nist:Events/00112/VP2002.005139",
-                    "relationSubject": "nist:Events/00113/VP2002.005164",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50049/GraphG-nist:Events/00016/VP2013.001999-Bef-nist:Events/00018/VP2013.002484",
+                    "name": "nist:Events/00016/VP2013.001999 happens before nist:Events/00018/VP2013.002484",
+                    "relationSubject": "nist:Events/00016/VP2013.001999",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00112/VP2002.005139",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00018/VP2013.002484",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50067/GraphG-nist:Events/00113/VP2002.005164-Bef-nist:Events/00114/VP2002.005196",
-                    "name": "nist:Events/00113/VP2002.005164 happens before nist:Events/00114/VP2002.005196",
-                    "relationSubject": "nist:Events/00113/VP2002.005164",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50050/GraphG-nist:Events/00016/VP2013.001999-Bef-nist:Events/00013/VP2013.001689",
+                    "name": "nist:Events/00016/VP2013.001999 happens before nist:Events/00013/VP2013.001689",
+                    "relationSubject": "nist:Events/00016/VP2013.001999",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00114/VP2002.005196",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00013/VP2013.001689",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50068/GraphG-nist:Events/00113/VP2002.005164-Bef-nist:Events/00055/VP2002.002215",
-                    "name": "nist:Events/00113/VP2002.005164 happens before nist:Events/00055/VP2002.002215",
-                    "relationSubject": "nist:Events/00113/VP2002.005164",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50051/GraphG-nist:Events/00016/VP2013.001999-Bef-nist:Events/00039/VP2013.007849",
+                    "name": "nist:Events/00016/VP2013.001999 happens before nist:Events/00039/VP2013.007849",
+                    "relationSubject": "nist:Events/00016/VP2013.001999",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00055/VP2002.002215",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00039/VP2013.007849",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50069/GraphG-nist:Events/00112/VP2002.005139-Bef-nist:Events/00114/VP2002.005196",
-                    "name": "nist:Events/00112/VP2002.005139 happens before nist:Events/00114/VP2002.005196",
-                    "relationSubject": "nist:Events/00112/VP2002.005139",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50052/GraphG-nist:Events/00018/VP2013.002484-Bef-nist:Events/00013/VP2013.001689",
+                    "name": "nist:Events/00018/VP2013.002484 happens before nist:Events/00013/VP2013.001689",
+                    "relationSubject": "nist:Events/00018/VP2013.002484",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00114/VP2002.005196",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00013/VP2013.001689",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50070/GraphG-nist:Events/00112/VP2002.005139-Bef-nist:Events/00055/VP2002.002215",
-                    "name": "nist:Events/00112/VP2002.005139 happens before nist:Events/00055/VP2002.002215",
-                    "relationSubject": "nist:Events/00112/VP2002.005139",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50053/GraphG-nist:Events/00018/VP2013.002484-Bef-nist:Events/00039/VP2013.007849",
+                    "name": "nist:Events/00018/VP2013.002484 happens before nist:Events/00039/VP2013.007849",
+                    "relationSubject": "nist:Events/00018/VP2013.002484",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00055/VP2002.002215",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00039/VP2013.007849",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 },
                 {
-                    "@id": "nist:Relations/50071/GraphG-nist:Events/00114/VP2002.005196-Bef-nist:Events/00055/VP2002.002215",
-                    "name": "nist:Events/00114/VP2002.005196 happens before nist:Events/00055/VP2002.002215",
-                    "relationSubject": "nist:Events/00114/VP2002.005196",
-                    "relationSubject_prov": "LDC Temporal Annotation",
+                    "@id": "nist:Relations/50054/GraphG-nist:Events/00013/VP2013.001689-Bef-nist:Events/00039/VP2013.007849",
+                    "name": "nist:Events/00013/VP2013.001689 happens before nist:Events/00039/VP2013.007849",
+                    "relationSubject": "nist:Events/00013/VP2013.001689",
+                    "relationSubject_prov": "LDC-Temporal-Annotation",
                     "relationPredicate": "wd:Q79030196",
-                    "relationObject": "nist:Events/00055/VP2002.002215",
-                    "relationObject_prov": "LDC Temporal Annotation",
-                    "relationProvenance": "LDC Annotation",
+                    "relationObject": "nist:Events/00039/VP2013.007849",
+                    "relationObject_prov": "LDC-Temporal-Annotation",
+                    "relationProvenance": "LDC-Annotation",
                     "ta1ref": "kairos:NULL"
                 }
             ]
