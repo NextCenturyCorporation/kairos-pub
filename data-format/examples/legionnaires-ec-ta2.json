@@ -1,41 +1,49 @@
 {
   "@context": [
-    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v2.1.jsonld",
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v2.3.jsonld",
     {
-      "caci_ta1": "https://caci.com/kairos/ta1/",
-      "caci_ta2": "https://caci.com/kairos/ta2/",
-      "my_key": "caci_ta2:my_key",
-      "giant_bitstring": "caci_ta2:giant_bitstring"
+      "caci_ta2": "https://caci.com/kairos/ta2/"
     }
   ],
   "@id": "caci_ta2:Submissions/TA2/12345",
-  "sdfVersion": "2.1",
-  "version": "caci-08.25.2022 / caci-08.25.2022",
+  "sdfVersion": "2.3",
+  "version": "caci-09.28.2022 / caci-09.28.2022",
   "ceID": "ce1002",
-  "ta2": true,
   "task2": false,
   "comment": [
-    "Example provides representation of E. Hovy's Event Complex schema layout for a disease outbreak.",
-    "This is the TA2 example."
+    "Example provides representation of an instantiation of E. Hovy's Event Complex schema layout for a disease outbreak.",
+    "Please note that in Phase 2b, TA2 performers are expected to output a single complex event, not an event complex of several complex events with different protagonist viewpoints."
   ],
   "instances": [
     {
       "@id": "caci_ta2:Instances/00001/disease-outbreak",
-      "ta1ref": "caci_ta1:Submissions/TA1/12345",
-      "name": "Disease outbreak with hierarchy",
-      "description": "Event complex for a disease outbreak",
+      "ta1ref": "SC10001",
+      "name": "Legionnaire's Disease outbreak",
+      "description": "Instantiation of 'Disease Outbreak' schema with Legionella pathogen",
       "confidence": 0.8,
       "events": [
         {
+          "@id": "caci_ta2:Events/00000/disease-outbreak",
+          "ta1ref": "EV00000",
+          "name": "Disease Outbreak",
+          "description": "Legionnaire's Disease outbreak",
+          "isTopLevel": true,
+          "confidence": 0.9,
+          "provenance": "caci_ta2:Provenance/00002/",
+          "children_gate": "and",
+          "subgroup_events": [
+            "caci_ta2:Events/00001/pathogen-progression",
+            "caci_ta2:Events/00010/patient-progression",
+            "caci_ta2:Events/00021/epidemiologist-response",
+            "caci_ta2:Events/00032/healthworker-response"
+          ]
+        },
+        {
           "@id": "caci_ta2:Events/00001/pathogen-progression",
-          "ta1ref": "caci_ta1:Events/00001/pathogen-progression",
+          "ta1ref": "EV00001",
           "name": "Pathogen progression",
           "description": "Schema for the progression of a pathogen",
-          "privateData": {
-            "comment": "Performers can place any keys/values they wish here.  Large amounts of private data will be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum.",
-            "my_key": "my value",
-            "giant_bitstring": "s3://kairos-sdf.s3.amazonaws.com/privateData/caci/ec-bitstring.gz"
-          },
+          "parent": "caci_ta2:Events/00000/disease-outbreak",
           "confidence": 0.9,
           "provenance": "caci_ta2:Provenance/00002/",
           "participants": [
@@ -80,31 +88,19 @@
             }
           ],
           "children_gate": "and",
-          "children": [
-            {
-              "child": "caci_ta2:Events/00002/pathogen-come-into-being",
-              "comment": [
-                "Semantics of optional is that if it is set to true, then the event is optional.  If it is set to false OR MISSING, the event is mandatory. TA1 systems decide whether an event its optional or not.",
-                "Importance is local to a parent's children, and do not need to be consistent across instantiations or performers."
-              ],
-              "optional": true,
-              "importance": 0.3
-            },
-            {
-              "child": "caci_ta2:Events/00003/pathogen-replicate"
-            },
-            {
-              "child": "caci_ta2:Events/00004/pathogen-spread"
-            }
+          "subgroup_events": [
+            "caci_ta2:Events/00002/pathogen-come-into-being",
+            "caci_ta2:Events/00003/pathogen-replicate",
+            "caci_ta2:Events/00004/pathogen-spread"
           ],
           "relations": [
             {
               "@id": "caci_ta2:Relations/00001/pathogen-progression",
-              "ta1ref": "caci_ta1:Relations/00001/pathogen-progression",
-              "comment": "Note that relation triples (with relationPredicates taken from DWD relations) can be defined in any event node.  By convention, they should only define relations between child event nodes and/or the node where the relation is defined. This is a silly yet illustrative example.",
+              "ta1ref": "RE00001",
+              "comment": "Note that relation triples (with wd_nodes taken from DWD relations) can be defined in any event node.  By convention, they should only define relations between child event nodes and/or the node where the relation is defined. This is a silly yet illustrative example.",
               "name": "patient is a member of society",
               "relationSubject": "caci_ta2:Entities/00006/Ray_Brennan",
-              "relationPredicate": "wdt:P39",
+              "wd_node": "wdt:P39",
               "wd_label": "position held",
               "wd_description": "subject currently or formerly holds the object position or public office",
               "relationObject": "caci_ta2:Entities/00004/American_society",
@@ -112,42 +108,21 @@
               "relationSubject_prov": "caci_ta2:Provenance/00012/",
               "relationObject_prov": "caci_ta2:Provenance/00013/",
               "confidence": 1
-            },
-            {
-              "@id": "caci_ta2:Relations/00002/",
-              "ta1ref": "caci_ta1:Relations/00002/",
-              "comment": "Temporal relations must be taken from a subset of Wikidata temporal relations (see the SDF documentation).",
-              "name": "Come into being before Replicate",
-              "relationSubject": "caci_ta2:Events/00002/pathogen-come-into-being",
-              "relationPredicate": "wd:Q79030196",
-              "wd_label": "before",
-              "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
-              "relationObject": "caci_ta2:Events/00003/pathogen-replicate",
-              "confidence": 0.8
-            },
-            {
-              "@id": "caci_ta2:Relations/00003/",
-              "ta1ref": "caci_ta1:Relations/00003/",
-              "name": "Replicate before Spread",
-              "relationSubject": "caci_ta2:Events/00003/pathogen-replicate",
-              "relationPredicate": "wd:Q79030196",
-              "wd_label": "before",
-              "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
-              "relationObject": "caci_ta2:Events/00004/pathogen-spread"
             }
           ]
         },
         {
           "@id": "caci_ta2:Events/00002/pathogen-come-into-being",
-          "ta1ref": "caci_ta1:Events/00002/pathogen-come-into-being",
+          "ta1ref": "EV00002",
           "name": "Come into being",
           "description": "Event type in which a pathogen comes into being",
-          "ta1explanation": "Justification of the event, propagated from TA1.",
+          "parent": "caci_ta2:Events/00001/pathogen-progression",
           "wd_node": "wd:Q468777",
           "wd_label": "existence",
           "wd_description": "ability of an entity to interact with physical or mental reality",
           "comment": "If a schema event is not found in the documents or Graph G, then it is a prediction.  TA2 must specify predictionProvenance and confidence in the prediction. If the only reason the event is predicted is that it's in the schema, then specify the event @id as predictionProvenance.",
           "confidence": 0.25,
+          "outlinks": "caci_ta2:Events/00003/pathogen-replicate",
           "predictionProvenance": [
             "caci_ta2:Events/00002/pathogen-come-into-being",
             "caci_ta2:Entities/00002/Legionella"
@@ -168,14 +143,15 @@
         },
         {
           "@id": "caci_ta2:Events/00003/pathogen-replicate",
-          "ta1ref": "caci_ta1:Events/00003/pathogen-replicate",
+          "ta1ref": "EV00003",
           "name": "Replicate",
           "description": "Event type in which a pathogen replicates",
-          "ta1explanation": "Justification of the event, propagated from TA1.",
+          "parent": "caci_ta2:Events/00001/pathogen-progression",
           "wd_node": "wd:Q23013246",
           "wd_label": "copy",
           "wd_description": "duplicate of information or an artifact based on an instance of that information or artifact",
           "confidence": 0.25,
+          "outlinks": "caci_ta2:Events/00004/pathogen-spread",
           "predictionProvenance": [
             "caci_ta2:Events/00003/pathogen-replicate",
             "caci_ta2:Entities/00002/Legionella"
@@ -196,10 +172,10 @@
         },
         {
           "@id": "caci_ta2:Events/00004/pathogen-spread",
-          "ta1ref": "caci_ta1:Events/00004/pathogen-spread",
+          "ta1ref": "EV00004",
           "name": "Spread",
           "description": "Schema in which a pathogen propagates/spreads",
-          "ta1explanation": "ta1explanations are optional in hierarchy event nodes (those with children).",
+          "parent": "caci_ta2:Events/00001/pathogen-progression",
           "confidence": 0.85,
           "predictionProvenance": [
             "caci_ta2:Events/00006/pathogen-infect-patient",
@@ -230,63 +206,19 @@
             }
           ],
           "children_gate": "and",
-          "children": [
-            {
-              "child": "caci_ta2:Events/00005/pathogen-escape",
-              "optional": true
-            },
-            {
-              "child": "caci_ta2:Events/00006/pathogen-infect-patient"
-            },
-            {
-              "child": "caci_ta2:Events/00007/pathogen-live-in-body"
-            },
-            {
-              "child": "caci_ta2:Events/00008/pathogen-continue"
-            }
-          ],
-          "relations": [
-            {
-              "@id": "caci_ta2:Relations/00004/",
-              "ta1ref": "caci_ta1:Relations/00004/",
-              "name": "Escape before Infect",
-              "relationSubject": "caci_ta2:Events/00005/pathogen-escape",
-              "relationPredicate": "wd:Q79030196",
-              "wd_label": "before",
-              "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
-              "relationObject": "caci_ta2:Events/00006/pathogen-infect-patient",
-              "confidence": 0.8
-            },
-            {
-              "@id": "caci_ta2:Relations/00005/",
-              "ta1ref": "caci_ta1:Relations/00005/",
-              "comment": "Confidence is required to instantiate a TA1 relation; provenance is not required for temporal relations.",
-              "name": "Infect before Live in Body",
-              "relationSubject": "caci_ta2:Events/00006/pathogen-infect-patient",
-              "relationPredicate": "wd:Q79030196",
-              "wd_label": "before",
-              "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
-              "relationObject": "caci_ta2:Events/00007/pathogen-live-in-body",
-              "confidence": 0.85
-            },
-            {
-              "@id": "caci_ta2:Relations/00006/",
-              "ta1ref": "caci_ta1:Relations/00006/",
-              "name": "Live in Body before Continue",
-              "relationSubject": "caci_ta2:Events/00007/pathogen-live-in-body",
-              "relationPredicate": "wd:Q79030196",
-              "wd_label": "before",
-              "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
-              "relationObject": "caci_ta2:Events/00008/pathogen-continue"
-            }
+          "subgroup_events": [
+            "caci_ta2:Events/00005/pathogen-escape",
+            "caci_ta2:Events/00006/pathogen-infect-patient",
+            "caci_ta2:Events/00007/pathogen-live-in-body",
+            "caci_ta2:Events/00008/pathogen-continue"
           ]
         },
         {
           "@id": "caci_ta2:Events/00005/pathogen-escape",
-          "ta1ref": "caci_ta1:Events/00005/pathogen-escape",
+          "ta1ref": "EV00005",
           "name": "Escape",
           "description": "Event type in which a pathogen escapes from a body or reservoir",
-          "ta1explanation": "Justification of the event, propagated from TA1.",
+          "parent": "caci_ta2:Events/00004/pathogen-spread",
           "comment": "Union of escape (response to distress) and go (to move from a place to another that is further away)",
           "wd_node": [
             "wd:Q19279529",
@@ -301,6 +233,7 @@
             "response to distress"
           ],
           "confidence": 0.25,
+          "outlinks": "caci_ta2:Events/00006/pathogen-infect-patient",
           "predictionProvenance": [
             "caci_ta2:Events/00005/pathogen-escape",
             "caci_ta2:Entities/00002/Legionella",
@@ -333,15 +266,16 @@
         },
         {
           "@id": "caci_ta2:Events/00006/pathogen-infect-patient",
-          "ta1ref": "caci_ta1:Events/00006/pathogen-infect-patient",
+          "ta1ref": "EV00006",
           "name": "Patient exposed to pathogen",
           "description": "Event type in which a pathogen infects a patient",
-          "ta1explanation": "Justification of the event, propagated from TA1.",
+          "parent": "caci_ta2:Events/00004/pathogen-spread",
           "wd_node": "wd:Q166231",
           "wd_label": "infection",
           "wd_description": "invasion of and multiplication in a host by disease-causing pathogens or organisms, and the reaction of host tissues",
           "provenance": "caci_ta2:Provenance/00001/",
           "confidence": 0.9,
+          "outlinks": "caci_ta2:Events/00007/pathogen-live-in-body",
           "modality": [
             "hedged",
             "negated",
@@ -405,16 +339,17 @@
         },
         {
           "@id": "caci_ta2:Events/00007/pathogen-live-in-body",
-          "ta1ref": "caci_ta1:Events/00007/pathogen-live-in-body",
+          "ta1ref": "EV00007",
           "name": "The pathogen lived in the patient's body",
           "description": "Event type in which a pathogen lives in the body of a patient",
-          "ta1explanation": "Justification of the event, propagated from TA1.",
+          "parent": "caci_ta2:Events/00004/pathogen-spread",
           "comment": "This is clearly a bad mapping, but shows that even leaf nodes (verbs) are not constrained to the KOWG events or event pool.",
           "wd_node": "wd:Q3",
           "wd_label": "life",
           "wd_description": "matter capable of extracting energy from the environment for replication",
           "provenance": "caci_ta2:Provenance/00002/",
           "confidence": 0.8,
+          "outlinks": "caci_ta2:Events/00008/pathogen-continue",
           "participants": [
             {
               "@id": "caci_ta2:Participants/00011/pathogen-live-in-body",
@@ -442,12 +377,11 @@
         },
         {
           "@id": "caci_ta2:Events/00008/pathogen-continue",
-          "ta1ref": "caci_ta1:Events/00008/pathogen-continue",
+          "ta1ref": "EV00008",
           "name": "Continue",
           "description": "Schema in which further spreading or a decrease in the prevalence of a pathogen occurs",
-          "predictionProvenance": [
-            "caci_ta2:Events/00004/pathogen-spread"
-          ],
+          "parent": "caci_ta2:Events/00004/pathogen-spread",
+          "predictionProvenance": "caci_ta2:Events/00004/pathogen-spread",
           "confidence": 1,
           "participants": [
             {
@@ -475,21 +409,17 @@
             }
           ],
           "children_gate": "xor",
-          "children": [
-            {
-              "child": "caci_ta2:Events/00004/pathogen-spread"
-            },
-            {
-              "child": "caci_ta2:Events/00009/pathogen-decrease"
-            }
+          "subgroup_events": [
+            "caci_ta2:Events/00004/pathogen-spread",
+            "caci_ta2:Events/00009/pathogen-decrease"
           ]
         },
         {
           "@id": "caci_ta2:Events/00009/pathogen-decrease",
-          "ta1ref": "caci_ta1:Events/00009/pathogen-decrease",
+          "ta1ref": "EV00009",
           "name": "Decrease in society",
           "description": "Event type in which a pathogen decreases in society",
-          "ta1explanation": "Justification of the event, propagated from TA1.",
+          "parent": "caci_ta2:Events/00008/pathogen-continue",
           "wd_node": "wd:Q47496130",
           "wd_label": "reduction",
           "wd_description": "decrease in a quantity",
@@ -519,9 +449,10 @@
         },
         {
           "@id": "caci_ta2:Events/00010/patient-progression",
-          "ta1ref": "caci_ta1:Events/00010/patient-progression",
+          "ta1ref": "EV00010",
           "name": "Patient progression",
           "description": "Schema for the progression of a patient",
+          "parent": "caci_ta2:Events/00000/disease-outbreak",
           "provenance": [
             "caci_ta2:Provenance/00002/",
             "caci_ta2:Provenance/00001/"
@@ -544,145 +475,29 @@
             }
           ],
           "children_gate": "and",
-          "children": [
-            {
-              "child": "caci_ta2:Events/00011/patient-travels-to-contaminant",
-              "optional": true,
-              "importance": 0.3
-            },
-            {
-              "child": "caci_ta2:Events/00012/patient-contract-disease",
-              "optional": true,
-              "importance": 0.5
-            },
-            {
-              "child": "caci_ta2:Events/00013/patient-get-sick"
-            },
-            {
-              "child": "caci_ta2:Events/00014/patient-diagnosed"
-            },
-            {
-              "child": "caci_ta2:Events/00015/patient-be-treated"
-            },
-            {
-              "child": "caci_ta2:Events/00016/patient-change-life-pattern",
-              "optional": true,
-              "importance": 0.1
-            },
-            {
-              "child": "caci_ta2:Events/00017/patient-get-meds"
-            },
-            {
-              "child": "caci_ta2:Events/00018/patient-continue"
-            }
-          ],
-          "relations": [
-            {
-              "@id": "caci_ta2:Relations/00007/",
-              "ta1ref": "caci_ta1:Relations/00007/",
-              "name": "Travel before Contract disease",
-              "relationSubject": "caci_ta2:Events/00011/patient-travels-to-contaminant",
-              "relationPredicate": "wd:Q79030196",
-              "wd_label": "before",
-              "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
-              "relationObject": "caci_ta2:Events/00012/patient-contract-disease"
-            },
-            {
-              "@id": "caci_ta2:Relations/00008/",
-              "ta1ref": "caci_ta1:Relations/00008/",
-              "name": "Contract disease before Get sick",
-              "relationSubject": "caci_ta2:Events/00012/patient-contract-disease",
-              "relationPredicate": "wd:Q79030196",
-              "wd_label": "before",
-              "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
-              "relationObject": "caci_ta2:Events/00013/patient-get-sick"
-            },
-            {
-              "@id": "caci_ta2:Relations/00009/",
-              "ta1ref": "caci_ta1:Relations/00009/",
-              "name": "Get sick before Diagnosis",
-              "relationSubject": "caci_ta2:Events/00013/patient-get-sick",
-              "relationPredicate": "wd:Q79030196",
-              "wd_label": "before",
-              "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
-              "relationObject": "caci_ta2:Events/00014/patient-diagnosed"
-            },
-            {
-              "@id": "caci_ta2:Relations/00010/",
-              "ta1ref": "caci_ta1:Relations/00010/",
-              "name": "Diagnosis before Treatment",
-              "relationSubject": "caci_ta2:Events/00014/patient-diagnosed",
-              "relationPredicate": "wd:Q79030196",
-              "wd_label": "before",
-              "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
-              "relationObject": "caci_ta2:Events/00015/patient-be-treated"
-            },
-            {
-              "@id": "caci_ta2:Relations/00011/",
-              "ta1ref": "caci_ta1:Relations/00011/",
-              "name": "Treatment before Compliance",
-              "relationSubject": "caci_ta2:Events/00015/patient-be-treated",
-              "relationPredicate": "wd:Q79030196",
-              "wd_label": "before",
-              "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
-              "relationObject": "caci_ta2:Events/00016/patient-change-life-pattern"
-            },
-            {
-              "@id": "caci_ta2:Relations/00012/",
-              "ta1ref": "caci_ta1:Relations/00012/",
-              "name": "Compliance before Get medication",
-              "relationSubject": "caci_ta2:Events/00016/patient-change-life-pattern",
-              "relationPredicate": "wd:Q79030196",
-              "wd_label": "before",
-              "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
-              "relationObject": "caci_ta2:Events/00017/patient-get-meds"
-            },
-            {
-              "@id": "caci_ta2:Relations/00013/",
-              "ta1ref": "caci_ta1:Relations/00013/",
-              "name": "Get medication before Continue",
-              "relationSubject": "caci_ta2:Events/00017/patient-get-meds",
-              "relationPredicate": "wd:Q79030196",
-              "wd_label": "before",
-              "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
-              "relationObject": "caci_ta2:Events/00018/patient-continue"
-            },
-            {
-              "@id": "caci_ta2:Relations/00014/",
-              "comment": "If TA2 detects a temporal relation in Graph G not in the schema, then set ta1ref to 'kairos:NULL'",
-              "ta1ref": "kairos:NULL",
-              "name": "Travel is before Get sick",
-              "relationSubject": "caci_ta2:Events/00011/patient-travels-to-contaminant",
-              "relationPredicate": "wd:Q79030196",
-              "wd_label": "before",
-              "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
-              "relationObject": "caci_ta2:Events/00013/patient-get-sick",
-              "confidence": 0.9
-            },
-            {
-              "@id": "caci_ta2:Relations/00015/",
-              "ta1ref": "kairos:NULL",
-              "name": "patient-get-meds is before patient-dies",
-              "relationSubject": "caci_ta2:Events/00017/patient-get-meds",
-              "relationPredicate": "wd:Q79030196",
-              "wd_label": "before",
-              "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
-              "relationObject": "caci_ta2:Events/00019/patient-die",
-              "confidence": 1
-            }
+          "subgroup_events": [
+            "caci_ta2:Events/00011/patient-travels-to-contaminant",
+            "caci_ta2:Events/00012/patient-contract-disease",
+            "caci_ta2:Events/00013/patient-get-sick",
+            "caci_ta2:Events/00014/patient-diagnosed",
+            "caci_ta2:Events/00015/patient-be-treated",
+            "caci_ta2:Events/00016/patient-change-life-pattern",
+            "caci_ta2:Events/00017/patient-get-meds",
+            "caci_ta2:Events/00018/patient-continue"
           ]
         },
         {
           "@id": "caci_ta2:Events/00011/patient-travels-to-contaminant",
-          "ta1ref": "caci_ta1:Events/00011/patient-travels-to-contaminant",
+          "ta1ref": "EV00011",
           "name": "The patient traveled to the location of the contaminant",
           "description": "Event type in which patient(s) travel to contaminated location/facility",
-          "ta1explanation": "Justification of the event, propagated from TA1.",
+          "parent": "caci_ta2:Events/00010/patient-progression",
           "wd_node": "wd:Q61509",
           "wd_label": "travel",
           "wd_description": "movement of people between geographical locations",
           "provenance": "caci_ta2:Provenance/00002/",
           "confidence": 0.5,
+          "outlinks": "caci_ta2:Events/00012/patient-contract-disease",
           "participants": [
             {
               "@id": "caci_ta2:Participants/00018/patient-travels-to-contaminant",
@@ -710,14 +525,15 @@
         },
         {
           "@id": "caci_ta2:Events/00012/patient-contract-disease",
-          "ta1ref": "caci_ta1:Events/00012/patient-contract-disease",
+          "ta1ref": "EV00012",
           "name": "Contract disease",
           "description": "Event type in which patient(s) contract(s) disease",
-          "ta1explanation": "Justification of the event, propagated from TA1.",
+          "parent": "caci_ta2:Events/00010/patient-progression",
           "wd_node": "wd:Q166231",
           "wd_label": "infection",
           "wd_description": "invasion of and multiplication in a host by disease-causing pathogens or organisms, and the reaction of host tissues",
           "confidence": 0.7,
+          "outlinks": "caci_ta2:Events/00013/patient-get-sick",
           "predictionProvenance": [
             "caci_ta2:Events/00013/patient-get-sick",
             "caci_ta2:Relations/00027/patient-lives-in-PA",
@@ -744,15 +560,16 @@
         },
         {
           "@id": "caci_ta2:Events/00013/patient-get-sick",
-          "ta1ref": "caci_ta1:Events/00013/patient-get-sick",
+          "ta1ref": "EV00013",
           "name": "The patient gets sick",
           "description": "Event type in which patient(s) get(s) sick",
-          "ta1explanation": "Justification of the event, propagated from TA1.",
+          "parent": "caci_ta2:Events/00010/patient-progression",
           "wd_node": "wd:Q12136",
           "wd_label": "disease",
           "wd_description": "abnormal condition negatively affecting organisms",
           "provenance": "caci_ta2:Provenance/00002/",
           "confidence": 0.8,
+          "outlinks": "caci_ta2:Events/00014/patient-diagnosed",
           "participants": [
             {
               "@id": "caci_ta2:Participants/00022/patient-get-sick",
@@ -769,14 +586,15 @@
         },
         {
           "@id": "caci_ta2:Events/00014/patient-diagnosed",
-          "ta1ref": "caci_ta1:Events/00014/patient-diagnosed",
+          "ta1ref": "EV00014",
           "name": "Diagnosis",
           "description": "Event type in which patient(s) get(s) diagnosed",
-          "ta1explanation": "Justification of the event, propagated from TA1.",
+          "parent": "caci_ta2:Events/00010/patient-progression",
           "wd_node": "wd:Q177719",
           "wd_label": "medical diagnosis",
           "wd_description": "process to determine or identify a disease or disorder, which would account for a person's symptoms and signs",
           "confidence": 0.8,
+          "outlinks": "caci_ta2:Events/00015/patient-be-treated",
           "predictionProvenance": [
             "caci_ta2:Events/00013/patient-get-sick",
             "caci_ta2:Events/00015/patient-be-treated",
@@ -794,7 +612,7 @@
               "@id": "caci_ta2:Participants/00024/patient-diagnosed",
               "roleName": "A1-ppt_theme_patient",
               "entity": "caci_ta2:Entities/00009/patient-1",
-              "comment": "Each value/filler must have a unique @id.",
+              "comment": "Multiple fillers must be expressed as multiple values objects.  Each value must have a unique @id.",
               "values": [
                 {
                   "@id": "caci_ta2:Values/00023/",
@@ -815,14 +633,15 @@
         },
         {
           "@id": "caci_ta2:Events/00015/patient-be-treated",
-          "ta1ref": "caci_ta1:Events/00015/patient-be-treated",
+          "ta1ref": "EV00015",
           "name": "Treatment",
           "description": "Event type in which patient(s) is/are treated",
-          "ta1explanation": "Justification of the event, propagated from TA1.",
+          "parent": "caci_ta2:Events/00010/patient-progression",
           "wd_node": "wd:Q179661",
           "wd_label": "treatment",
           "wd_description": "attempted medical remediation of a health problem, usually following a diagnosis",
           "confidence": 0.8,
+          "outlinks": "caci_ta2:Events/00016/patient-change-life-pattern",
           "predictionProvenance": [
             "caci_ta2:Events/00013/patient-get-sick",
             "caci_ta2:Events/00017/patient-get-meds",
@@ -850,10 +669,10 @@
         },
         {
           "@id": "caci_ta2:Events/00016/patient-change-life-pattern",
-          "ta1ref": "caci_ta1:Events/00016/patient-change-life-pattern",
+          "ta1ref": "EV00016",
           "name": "Compliance",
           "description": "Event type in which life pattern changes",
-          "ta1explanation": "Justification of the event, propagated from TA1.",
+          "parent": "caci_ta2:Events/00010/patient-progression",
           "comment": "Multiple wd_nodes should be specified as lists, not as \"wd:Q1399332 | wd:Q67004728\"",
           "wd_node": [
             "wd:Q1399332",
@@ -868,6 +687,7 @@
             "extent to which the patient follows prescribed treatment responsibly, in the broader sense including both medication and appointments"
           ],
           "confidence": 0.25,
+          "outlinks": "caci_ta2:Events/00017/patient-get-meds",
           "predictionProvenance": [
             "caci_ta2:Events/00016/patient-change-life-pattern",
             "caci_ta2:Entities/00006/Ray_Brennan"
@@ -888,15 +708,16 @@
         },
         {
           "@id": "caci_ta2:Events/00017/patient-get-meds",
-          "ta1ref": "caci_ta1:Events/00017/patient-get-meds",
+          "ta1ref": "EV00017",
           "name": "Patients get medication",
           "description": "Event type in which patient(s) receive(s) vaccine or other medication",
-          "ta1explanation": "Justification of the event, propagated from TA1.",
+          "parent": "caci_ta2:Events/00010/patient-progression",
           "comment": "vaccination (inoculation) is different from treatment with medications",
           "wd_node": "wd:Q192995",
           "wd_label": "vaccination",
           "wd_description": "administration of a vaccine to protect against disease",
           "confidence": 0.7,
+          "outlinks": "caci_ta2:Events/00018/patient-continue",
           "provenance": "caci_ta2:Provenance/00001/",
           "participants": [
             {
@@ -937,9 +758,10 @@
         },
         {
           "@id": "caci_ta2:Events/00018/patient-continue",
-          "ta1ref": "caci_ta1:Events/00018/patient-continue",
+          "ta1ref": "EV00018",
           "name": "Continue",
           "description": "Schema for the continuation of an illness in patient(s), improvement or death",
+          "parent": "caci_ta2:Events/00010/patient-progression",
           "participants": [
             {
               "@id": "caci_ta2:Participants/00030/patient-continue",
@@ -955,19 +777,16 @@
           ],
           "confidence": 1,
           "provenance": "caci_ta2:Provenance/00002/",
+          "comment": "TA2 could have removed patient-continue (00018) and made patient-die (00019) a sibling and outlink of patient-get-meds (00017).",
           "children_gate": "xor",
-          "children": [
-            {
-              "child": "caci_ta2:Events/00019/patient-die"
-            }
-          ]
+          "subgroup_events": "caci_ta2:Events/00019/patient-die"
         },
         {
           "@id": "caci_ta2:Events/00019/patient-die",
-          "ta1ref": "caci_ta1:Events/00019/patient-die",
+          "ta1ref": "EV00019",
           "name": "The patient dies",
           "description": "Mr. Ray Brennan died at his home three days after the convention ended of an apparent heart attack.",
-          "ta1explanation": "Justification of the event, propagated from TA1.",
+          "parent": "caci_ta2:Events/00018/patient-continue",
           "wd_node": "wd:Q4",
           "wd_label": "death",
           "wd_description": "permanent cessation of vital functions",
@@ -989,9 +808,10 @@
         },
         {
           "@id": "caci_ta2:Events/00021/epidemiologist-response",
-          "ta1ref": "caci_ta1:Events/00021/epidemiologist-response",
-          "description": "Schema in which an epidemiologist responds to an outbreak",
+          "ta1ref": "EV00021",
           "name": "Epidemiologist response",
+          "description": "Schema in which an epidemiologist responds to an outbreak",
+          "parent": "caci_ta2:Events/00000/disease-outbreak",
           "confidence": 1,
           "predictionProvenance": [
             "caci_ta2:Events/00022/learn-about-disease",
@@ -1021,116 +841,28 @@
             }
           ],
           "children_gate": "and",
-          "children": [
-            {
-              "child": "caci_ta2:Events/00022/learn-about-disease",
-              "optional": true,
-              "importance": 0.3
-            },
-            {
-              "child": "caci_ta2:Events/00023/investigate-cluster",
-              "optional": true,
-              "importance": 0.3,
-              "comment": "Repeatable events need to be expanded by TA2 as distinct events at instantiation time.",
-              "repeatable": true
-            },
-            {
-              "child": "caci_ta2:Events/00024/announce-outbreak"
-            },
-            {
-              "child": "caci_ta2:Events/00025/investigate-origin-propagation",
-              "optional": true,
-              "importance": 0.5
-            },
-            {
-              "child": "caci_ta2:Events/00026/research-antidote",
-              "importance": 0.4
-            },
-            {
-              "child": "caci_ta2:Events/00027/epidemiologist-educate",
-              "optional": true,
-              "importance": 0.7
-            },
-            {
-              "child": "caci_ta2:Events/00031/epidemiologist-publish",
-              "comment": "This is an extra-relevant that TA2 placed in the hierarchy."
-            }
-          ],
-          "relations": [
-            {
-              "@id": "caci_ta2:Relations/00016/",
-              "ta1ref": "caci_ta1:Relations/00014/",
-              "name": "Learn before Investigate",
-              "relationSubject": "caci_ta2:Events/00022/learn-about-disease",
-              "relationPredicate": "wd:Q79030196",
-              "wd_label": "before",
-              "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
-              "relationObject": "caci_ta2:Events/00023/investigate-cluster"
-            },
-            {
-              "@id": "caci_ta2:Relations/00017/",
-              "ta1ref": "caci_ta1:Relations/00015/",
-              "name": "Investigate before Announce",
-              "relationSubject": "caci_ta2:Events/00023/investigate-cluster",
-              "relationPredicate": "wd:Q79030196",
-              "wd_label": "before",
-              "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
-              "relationObject": "caci_ta2:Events/00024/announce-outbreak"
-            },
-            {
-              "@id": "caci_ta2:Relations/00018/",
-              "ta1ref": "caci_ta1:Relations/00016/",
-              "name": "Announce before Research",
-              "relationSubject": "caci_ta2:Events/00024/announce-outbreak",
-              "relationPredicate": "wd:Q79030196",
-              "wd_label": "before",
-              "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
-              "relationObject": "caci_ta2:Events/00025/investigate-origin-propagation"
-            },
-            {
-              "@id": "caci_ta2:Relations/00019/",
-              "ta1ref": "caci_ta1:Relations/00017/",
-              "name": "Research before Research",
-              "relationSubject": "caci_ta2:Events/00025/investigate-origin-propagation",
-              "relationPredicate": "wd:Q79030196",
-              "wd_label": "before",
-              "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
-              "relationObject": "caci_ta2:Events/00026/research-antidote"
-            },
-            {
-              "@id": "caci_ta2:Relations/00020/",
-              "ta1ref": "caci_ta1:Relations/00018/",
-              "name": "Research before Educate",
-              "relationSubject": "caci_ta2:Events/00026/research-antidote",
-              "relationPredicate": "wd:Q79030196",
-              "wd_label": "before",
-              "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
-              "relationObject": "caci_ta2:Events/00027/epidemiologist-educate"
-            },
-            {
-              "@id": "caci_ta2:Relations/00021/",
-              "ta1ref": "kairos:NULL",
-              "comment": "Even though this is a temporal relation between child events involving an extra-relevant event, provenance is not required.",
-              "name": "epidemiologist-educate is before epidemiologist-publish",
-              "relationSubject": "caci_ta2:Events/00027/epidemiologist-educate",
-              "relationPredicate": "wd:Q79030196",
-              "wd_label": "before",
-              "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
-              "relationObject": "caci_ta2:Events/00031/epidemiologist-publish",
-              "confidence": 0.65
-            }
+          "comment": "Events/00031/epidemiologist-publish is an extra-relevant that TA2 placed in the hierarchy.",
+          "subgroup_events": [
+            "caci_ta2:Events/00022/learn-about-disease",
+            "caci_ta2:Events/00023/investigate-cluster",
+            "caci_ta2:Events/00024/announce-outbreak",
+            "caci_ta2:Events/00025/investigate-origin-propagation",
+            "caci_ta2:Events/00026/research-antidote",
+            "caci_ta2:Events/00027/epidemiologist-educate",
+            "caci_ta2:Events/00031/epidemiologist-publish"
           ]
         },
         {
           "@id": "caci_ta2:Events/00022/learn-about-disease",
-          "ta1ref": "caci_ta1:Events/00022/learn-about-disease",
+          "ta1ref": "EV00022",
           "name": "Learn",
           "description": "Event type in which epidemiologists learn about a disease",
-          "ta1explanation": "Justification of the event, propagated from TA1.",
+          "parent": "caci_ta2:Events/00021/epidemiologist-response",
           "wd_node": "wd:Q12772819",
           "wd_label": "discovery",
           "wd_description": "act of detecting something new",
           "confidence": 0.25,
+          "outlinks": "caci_ta2:Events/00023/investigate-cluster",
           "predictionProvenance": [
             "caci_ta2:Events/00022/learn-about-disease",
             "caci_ta2:Entities/00025/PA_Health_Dept"
@@ -1156,14 +888,17 @@
         },
         {
           "@id": "caci_ta2:Events/00023/investigate-cluster",
-          "ta1ref": "caci_ta1:Events/00023/investigate-cluster",
+          "ta1ref": "EV00023",
           "name": "Investigate",
           "description": "Event type in which epidemiologists investigate clusters",
-          "ta1explanation": "Justification of the event, propagated from TA1.",
+          "parent": "caci_ta2:Events/00021/epidemiologist-response",
+          "comment": "Multiple occurrences of repeatable events need to be expanded by TA2 as distinct events in the instantiation, but the repeatable keyword should remain whether or not the event is instantiated.",
+          "repeatable": true,
           "wd_node": "wd:Q1298668",
           "wd_label": "research project",
           "wd_description": "project of one or more scientists or an institute or a scientific society",
           "confidence": 0.25,
+          "outlinks": "caci_ta2:Events/00024/announce-outbreak",
           "predictionProvenance": [
             "caci_ta2:Events/00023/investigate-cluster",
             "caci_ta2:Entities/00025/PA_Health_Dept"
@@ -1189,14 +924,15 @@
         },
         {
           "@id": "caci_ta2:Events/00024/announce-outbreak",
-          "ta1ref": "caci_ta1:Events/00024/announce-outbreak",
+          "ta1ref": "EV00024",
           "name": "Announce",
           "description": "Event type in which epidemiologists announce outbreak",
-          "ta1explanation": "Justification of the event, propagated from TA1.",
+          "parent": "caci_ta2:Events/00021/epidemiologist-response",
           "wd_node": "wd:Q52947181",
           "wd_label": "public statement",
           "wd_description": "statement made for a public audience",
           "confidence": 0.25,
+          "outlinks": "caci_ta2:Events/00025/investigate-origin-propagation",
           "predictionProvenance": [
             "caci_ta2:Events/00024/announce-outbreak",
             "caci_ta2:Entities/00025/PA_Health_Dept"
@@ -1222,14 +958,15 @@
         },
         {
           "@id": "caci_ta2:Events/00025/investigate-origin-propagation",
-          "ta1ref": "caci_ta1:Events/00025/investigate-origin-propagation",
+          "ta1ref": "EV00025",
           "name": "Research",
           "description": "Event type in which epidemiologists investigate the origins and propagation of a disease",
-          "ta1explanation": "Justification of the event, propagated from TA1.",
+          "parent": "caci_ta2:Events/00021/epidemiologist-response",
           "wd_node": "wd:Q2752427",
           "wd_label": "medical research",
           "wd_description": "research involving fundamental scientific principles that may apply to a preclinical understanding – to clinical research, which involves studies of people who may be subjects in clinical trials",
           "confidence": 0.25,
+          "outlinks": "caci_ta2:Events/00026/research-antidote",
           "predictionProvenance": [
             "caci_ta2:Events/00025/investigate-origin-propagation",
             "caci_ta2:Entities/00025/PA_Health_Dept"
@@ -1255,15 +992,16 @@
         },
         {
           "@id": "caci_ta2:Events/00026/research-antidote",
-          "ta1ref": "caci_ta1:Events/00026/research-antidote",
+          "ta1ref": "EV00026",
           "name": "Research",
           "description": "Event type in which epidemiologists research vaccines and other antidotes for a disease",
-          "ta1explanation": "Justification of the event, propagated from TA1.",
+          "parent": "caci_ta2:Events/00021/epidemiologist-response",
           "comment": "WD does not distinguish investigation of the origin from vaccine or treatment research",
           "wd_node": "wd:Q2752427",
           "wd_label": "medical research",
           "wd_description": "research involving fundamental scientific principles that may apply to a preclinical understanding – to clinical research, which involves studies of people who may be subjects in clinical trials",
           "confidence": 0.5,
+          "outlinks": "caci_ta2:Events/00027/epidemiologist-educate",
           "provenance": "caci_ta2:Provenance/00001/",
           "participants": [
             {
@@ -1286,13 +1024,15 @@
         },
         {
           "@id": "caci_ta2:Events/00027/epidemiologist-educate",
-          "ta1ref": "caci_ta1:Events/00027/epidemiologist-educate",
+          "ta1ref": "EV00027",
           "name": "Educate",
           "description": "Schema in which epidemiologists carry out their educational mission",
+          "parent": "caci_ta2:Events/00021/epidemiologist-response",
           "wd_node": "wd:Q8434",
           "wd_label": "education",
           "wd_description": "transmission of knowledge and skills",
           "confidence": 1,
+          "outlinks": "caci_ta2:Events/00031/epidemiologist-publish",
           "predictionProvenance": [
             "caci_ta2:Events/00028/educate-healthcare",
             "caci_ta2:Events/00029/educate-manufacturer",
@@ -1333,28 +1073,18 @@
             }
           ],
           "children_gate": "and",
-          "children": [
-            {
-              "child": "caci_ta2:Events/00028/educate-healthcare",
-              "importance": 0.8
-            },
-            {
-              "child": "caci_ta2:Events/00029/educate-manufacturer",
-              "importance": 0.4,
-              "optional": true
-            },
-            {
-              "child": "caci_ta2:Events/00030/educate-authority",
-              "importance": 0.8
-            }
+          "subgroup_events": [
+            "caci_ta2:Events/00028/educate-healthcare",
+            "caci_ta2:Events/00029/educate-manufacturer",
+            "caci_ta2:Events/00030/educate-authority"
           ]
         },
         {
           "@id": "caci_ta2:Events/00028/educate-healthcare",
-          "ta1ref": "caci_ta1:Events/00028/educate-healthcare",
+          "ta1ref": "EV00028",
           "name": "Educate",
           "description": "Event types in which epidemiologists educate healthcare workers",
-          "ta1explanation": "Justification of the event, propagated from TA1.",
+          "parent": "caci_ta2:Events/00027/epidemiologist-educate",
           "wd_node": "wd:Q8434",
           "wd_label": "education",
           "wd_description": "transmission of knowledge and skills",
@@ -1389,10 +1119,10 @@
         },
         {
           "@id": "caci_ta2:Events/00029/educate-manufacturer",
-          "ta1ref": "caci_ta1:Events/00029/educate-manufacturer",
+          "ta1ref": "EV00029",
           "name": "Educate",
           "description": "Event type in which epidemiologists educate pharmaceutical manufacturers",
-          "ta1explanation": "Justification of the event, propagated from TA1.",
+          "parent": "caci_ta2:Events/00027/epidemiologist-educate",
           "wd_node": "wd:Q8434",
           "wd_label": "education",
           "wd_description": "transmission of knowledge and skills",
@@ -1427,10 +1157,10 @@
         },
         {
           "@id": "caci_ta2:Events/00030/educate-authority",
-          "ta1ref": "caci_ta1:Events/00030/educate-authority",
+          "ta1ref": "EV00030",
           "name": "Educate",
           "description": "Event type in which epidemiologists educate government authorities",
-          "ta1explanation": "Justification of the event, propagated from TA1.",
+          "parent": "caci_ta2:Events/00027/epidemiologist-educate",
           "wd_node": "wd:Q8434",
           "wd_label": "education",
           "wd_description": "transmission of knowledge and skills",
@@ -1465,11 +1195,11 @@
         },
         {
           "@id": "caci_ta2:Events/00031/epidemiologist-publish",
-          "ta1ref": "kairos:NULL",
+          "ta1ref": "none",
           "comment": "TA2 can add extra-relevant events (found in the documents but not in the schema); use 'kairos:NULL' for ta1ref.",
           "name": "Publish results",
           "description": "Epidemiologists publish research results",
-          "ta1explanation": "extra-relevant event",
+          "parent": "caci_ta2:Events/00021/epidemiologist-response",
           "ta2wd_node": "wd:Q52947181",
           "ta2wd_label": "public statement",
           "ta2wd_description": "statement made for a public audience",
@@ -1503,51 +1233,15 @@
         },
         {
           "@id": "caci_ta2:Events/00032/healthworker-response",
-          "ta1ref": "caci_ta1:Events/00031/healthworker-response",
+          "ta1ref": "EV00031",
           "name": "Health worker response",
           "description": "Schema for the response of a health worker to a health crisis",
-          "ta1explanation": "Justification of the event, propagated from TA1.",
+          "parent": "caci_ta2:Events/00000/disease-outbreak",
           "comment": "Content not filled in",
           "wd_node": "wd:foobar",
           "wd_label": "foobar",
           "confidence": 0,
           "predictionProvenance": "caci_ta2:Events/00032/healthworker-response"
-        },
-        {
-          "@id": "caci_ta2:Events/00033/authority-response",
-          "ta1ref": "caci_ta1:Events/00032/authority-response",
-          "name": "Authority response",
-          "description": "Schema for the response of an authority to a health crisis",
-          "ta1explanation": "Justification of the event, propagated from TA1.",
-          "comment": "Content not filled in",
-          "wd_node": "wd:foobar",
-          "wd_label": "foobar",
-          "confidence": 0,
-          "predictionProvenance": "caci_ta2:Events/00033/authority-response"
-        },
-        {
-          "@id": "caci_ta2:Events/00034/manufacturer-do-involvement",
-          "ta1ref": "caci_ta1:Events/00033/manufacturer-do-involvement",
-          "name": "Manufacturer DO involvement",
-          "description": "Schema for the involvement of a pharmaceutical manufacturer in a disease outbreak",
-          "ta1explanation": "Justification of the event, propagated from TA1.",
-          "comment": "Content not filled in",
-          "wd_node": "wd:foobar",
-          "wd_label": "foobar",
-          "confidence": 0,
-          "predictionProvenance": "caci_ta2:Events/00034/manufacturer-do-involvement"
-        },
-        {
-          "@id": "caci_ta2:Events/00035/business-do-response",
-          "ta1ref": "caci_ta1:Events/00034/business-do-response",
-          "name": "Business response",
-          "description": "Schema for the response of a business to a disease outbreak",
-          "ta1explanation": "Justification of the event, propagated from TA1.",
-          "comment": "Content not filled in",
-          "wd_node": "wd:foobar",
-          "wd_label": "foobar",
-          "confidence": 0,
-          "predictionProvenance": "caci_ta2:Events/00035/business-do-response"
         }
       ],
       "entities": [
@@ -1743,35 +1437,35 @@
       "relations": [
         {
           "@id": "caci_ta2:Relations/00022/",
-          "ta1ref": "caci_ta1:Relations/00019/",
+          "ta1ref": "RE00019",
           "comment": [
             "This is a TA1 relation that was not found in the documents.  Don't specify confidence or provenance.",
             "It doesn't really make sense to instantiate these equivalence relations, as it will be borne out by instantiated entities."
           ],
           "name": "pathogen from pathogen-progression schema has an equivalence relation to the pathogen in the patient-progression schema",
           "relationSubject": "caci_ta2:Entities/00001/pathogen",
-          "relationPredicate": "wd:Q26161438",
+          "wd_node": "wd:Q26161438",
           "wd_label": "approximately equal to",
           "wd_description": "closeness in value, meaning or effect; relation in which difference can be neglected for practical purposes",
           "relationObject": "caci_ta2:Entities/00011/pathogen-1"
         },
         {
           "@id": "caci_ta2:Relations/00023/",
-          "ta1ref": "caci_ta1:Relations/00020/",
+          "ta1ref": "RE00020",
           "name": "pathogen from pathogen-progression schema has an equivalence relation to the pathogen in the epidemiologist response schema",
           "relationSubject": "caci_ta2:Entities/00001/pathogen",
-          "relationPredicate": "wd:Q26161438",
+          "wd_node": "wd:Q26161438",
           "wd_label": "approximately equal to",
           "wd_description": "closeness in value, meaning or effect; relation in which difference can be neglected for practical purposes",
           "relationObject": "caci_ta2:Entities/00016/pathogen-2"
         },
         {
           "@id": "caci_ta2:Relations/00024/",
-          "ta1ref": "caci_ta1:Relations/00021/",
+          "ta1ref": "RE00021",
           "comment": "This is a TA1 relation that was not found in the documents.  Don't specify confidence or provenance.",
           "name": "patient from pathogen-progression schema has an equivalence relation to the patient in the patient-progression schema",
           "relationSubject": "caci_ta2:Entities/00005/patient",
-          "relationPredicate": "wd:Q26161438",
+          "wd_node": "wd:Q26161438",
           "wd_label": "approximately equal to",
           "wd_description": "closeness in value, meaning or effect; relation in which difference can be neglected for practical purposes",
           "relationObject": "caci_ta2:Entities/00009/patient-1",
@@ -1779,10 +1473,10 @@
         },
         {
           "@id": "caci_ta2:Relations/00025/",
-          "ta1ref": "caci_ta1:Relations/00022/",
+          "ta1ref": "RE00022",
           "comment": "relation names (labels) are helpful to human assessors, but are not required at this point.",
           "relationSubject": "caci_ta2:Events/00006/pathogen-infect-patient",
-          "relationPredicate": "wd:Q26161438",
+          "wd_node": "wd:Q26161438",
           "wd_label": "approximately equal to",
           "wd_description": "closeness in value, meaning or effect; relation in which difference can be neglected for practical purposes",
           "relationObject": "caci_ta2:Events/00012/patient-contract-disease",
@@ -1793,10 +1487,10 @@
         },
         {
           "@id": "caci_ta2:Relations/00026/",
-          "ta1ref": "caci_ta1:Relations/00024/",
+          "ta1ref": "RE00024",
           "name": "'Live in body' event from the pathogen-progression schema has an equivalence relation to the 'Patient gets sick' event from the patient-progression schema",
           "relationSubject": "caci_ta2:Events/00007/pathogen-live-in-body",
-          "relationPredicate": "wd:Q26161438",
+          "wd_node": "wd:Q26161438",
           "wd_label": "approximately equal to",
           "wd_description": "closeness in value, meaning or effect; relation in which difference can be neglected for practical purposes",
           "relationObject": "caci_ta2:Events/00013/patient-get-sick",
@@ -1807,11 +1501,11 @@
         },
         {
           "@id": "caci_ta2:Relations/00027/patient-lives-in-PA",
-          "ta1ref": "kairos:NULL",
+          "ta1ref": "none",
           "comment": "TA2 can add extra-relevant relations (found in the documents but not in the schema); use 'kairos:NULL' for ta1ref. P551 is 'residence'.",
           "name": "Patient resided in location of contaminant.",
           "relationSubject": "caci_ta2:Entities/00006/Ray_Brennan",
-          "relationPredicate": "wdt:P551",
+          "wd_node": "wdt:P551",
           "wd_label": "residence",
           "wd_description": "the place where the person is or has been, resident",
           "relationObject": "caci_ta2:Entities/00024/Philadelphia",
@@ -1820,48 +1514,54 @@
           "relationObject_prov": "caci_ta2:Provenance/00013/",
           "modality": "hedged",
           "confidence": 0.7
-        },
-        {
-          "@id": "caci_ta2:Relations/00028/",
-          "ta1ref": "kairos:NULL",
-          "name": "Replicate before Escape",
-          "relationSubject": "caci_ta2:Events/00003/pathogen-replicate",
-          "relationPredicate": "wd:Q79030196",
-          "wd_label": "before",
-          "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
-          "relationObject": "caci_ta2:Events/00005/pathogen-escape",
-          "confidence": 0.8
         }
       ]
     },
     {
       "@id": "caci_ta2:Instances/00002/disease-outbreak-variant",
-      "ta1ref": "caci_ta1:Submissions/TA1/12345",
+      "ta1ref": "SC10001",
       "name": "Disease outbreak (variant)",
       "confidence": 0.5,
       "comment": "Not all of these schemas are implemented here. Note that 5-digit integers in IDs are independent of other instance.",
       "events": [
         {
+          "@id": "caci_ta2:Events/00000/disease-outbreak",
+          "ta1ref": "EV00000",
+          "name": "Disease Outbreak",
+          "description": "Legionnaire's Disease outbreak",
+          "isTopLevel": true,
+          "confidence": 1,
+          "provenance": "caci_ta2:Provenance/00001/",
+          "children_gate": "and",
+          "subgroup_events": [
+            "caci_ta2:Events/00001/pathogen-progression",
+            "caci_ta2:Events/00002/patient-progression"
+          ]
+        },
+        {
           "@id": "caci_ta2:Events/00001/pathogen-progression",
-          "ta1ref": "caci_ta1:Events/00001/pathogen-progression",
+          "ta1ref": "EV00001",
           "name": "Pathogen progression",
           "description": "Schema for the progression of a pathogen",
-          "ta1explanation": "Justification of the event, propagated from TA1.",
+          "parent": "caci_ta2:Events/00000/disease-outbreak",
           "comment": "Rest of definition is omitted.",
           "wd_node": "wd:foobar",
           "wd_label": "foobar",
+          "wd_description": "foobar",
           "confidence": 1,
+          "outlink": "caci_ta2:Events/00002/patient-progression",
           "provenance": "caci_ta2:Provenance/00001/"
         },
         {
           "@id": "caci_ta2:Events/00002/patient-progression",
-          "ta1ref": "caci_ta1:Events/00002/patient-progression",
+          "ta1ref": "EV00002",
           "name": "Patient progression",
           "description": "Schema from the progression of a patient",
-          "ta1explanation": "Justification of the event, propagated from TA1.",
+          "parent": "caci_ta2:Events/00000/disease-outbreak",
           "comment": "Rest of definition is omitted.",
           "wd_node": "wd:foobar",
           "wd_label": "foobar",
+          "wd_description": "foobar",
           "confidence": 1,
           "provenance": "caci_ta2:Provenance/00001/"
         }
@@ -1876,10 +1576,12 @@
       "comment": [
         " *Text documents* ",
         "'childID' is an LDC child_id. It is the ID of the document/artifact",
+        "'parentIDs' is a list of documents that are parent to 'childID.",
         "mediaType is an IANA Media Type.",
         "'offset' and 'length' are in characters."
       ],
       "childID": "L0C04GM35",
+      "parentIDs": "L0C04GM2E",
       "mediaType": "text/plain",
       "offset": 27,
       "length": 76
@@ -1891,8 +1593,7 @@
         "'parentIDs' is a list of documents that are parent to 'childID.",
         "'parentIDs' can be a list because a single image/video/etc. can be embedded in more than one parent document.",
         "'parentIDs' is redundant since the same information is present in the LDC-provided parent_children.tab.",
-        "'boundingBox' dimensions are in pixels",
-        "For images, 'boundingBox' is required."
+        "'boundingBox' dimensions are in pixels"
       ],
       "childID": "L0C04GJ61",
       "parentIDs": "L0C04GL30",
@@ -1908,11 +1609,14 @@
       "provenanceID": "caci_ta2:Provenance/00003/",
       "comment": [
         " *Videos -- key frames* ",
-        "'keyframes' is an array of LDC-supplied key frame IDs."
+        "'startTime' and 'endTime are in seconds.",
+        "'keyframes' is an optional array of key frame IDs, but startTime and endTime are still required."
       ],
       "childID": "L0C04GI8W",
       "parentIDs": "L0C04GKY2",
       "mediaType": "video/mpeg",
+      "startTime": 2.56,
+      "endTime": 5.12,
       "keyframes": [
         60,
         61,
@@ -1958,6 +1662,7 @@
     {
       "provenanceID": "caci_ta2:Provenance/00013/",
       "childID": "L0C04GM35",
+      "parentIDs": "L0C04GM2E",
       "mediaType": "text/plain",
       "offset": 5,
       "length": 21
@@ -1965,6 +1670,7 @@
     {
       "provenanceID": "caci_ta2:Provenance/00101/",
       "childID": "L0C04GM35",
+      "parentIDs": "L0C04GM2E",
       "mediaType": "text/plain",
       "offset": 5,
       "length": 21
