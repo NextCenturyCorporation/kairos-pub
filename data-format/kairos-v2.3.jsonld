@@ -49,7 +49,6 @@
       "@id": "kairos:reference",
       "@type": "@id"
     },
-    "privateData": "kairos:privateData",
     "ta1explanation": "kairos:ta1explanation",
     "minDuration": {
       "@id": "kairos:minDuration",
@@ -87,10 +86,7 @@
       "@id": "kairos:absoluteTime",
       "@type": "xsd:dateTime"
     },
-    "ta1ref": {
-      "@id": "kairos:ta1ref",
-      "@type": "@id"
-    },
+    "ta1ref": "kairos:ta1ref",
     "NULL": "kairos:NULL",
     "modality": "kairos:modality",
     "child": {
@@ -101,6 +97,26 @@
       "@id": "kairos:children",
       "@container": "@list"
     },
+    "parent": {
+      "@id": "kairos:parent",
+      "@type": "@id"
+    },
+    "outlinks": {
+      "@id": "kairos:outlinks",
+      "@type": "@id",
+      "@container": "@list"
+    },
+    "subgroup_events": {
+      "@id": "kairos:subgroup_events",
+      "@type": "@id",
+      "@container": "@list"
+    },
+    "isTopLevel": {
+      "@id": "kairos:isTopLevel",
+      "@type": "xsd:boolean"
+    },
+    "origName": "kairos:origName",
+    "origDescription": "kairos:origDescription",
     "optional": {
       "@id": "kairos:optional",
       "@type": "xsd:boolean"
@@ -118,18 +134,17 @@
       "@type": "xsd:boolean"
     },
     "children_gate": "kairos:children_gate",
-    "outlinks": {
-      "@id": "kairos:outlinks",
+    "wd_node": {
+      "@id": "kairos:wd_node",
       "@type": "@id",
       "@container": "@list"
     },
-    "qnode": {
-      "@id": "kairos:qnode",
-      "@type": "@id",
+    "wd_label": {
+      "@id": "kairos:wd_label",
       "@container": "@list"
     },
-    "qlabel": {
-      "@id": "kairos:qlabel",
+    "wd_description": {
+      "@id": "kairos:wd_description",
       "@container": "@list"
     },
     "participants": {
@@ -162,10 +177,6 @@
       "@type": "@id",
       "@container": "@list"
     },
-    "relationPredicate": {
-      "@id": "kairos:relationPredicate",
-      "@type": "@id"
-    },
     "relationProvenance": {
       "@id": "kairos:relationProvenance",
       "@type": "@id",
@@ -180,13 +191,17 @@
       "@id": "kairos:relationObject_prov",
       "@container": "@list"
     },
-    "ta2qnode": {
-      "@id": "kairos:ta2qnode",
+    "ta2wd_node": {
+      "@id": "kairos:ta2wd_node",
       "@type": "@id",
       "@container": "@list"
     },
-    "ta2qlabel": {
-      "@id": "kairos:ta2qlabel",
+    "ta2wd_label": {
+      "@id": "kairos:ta2wd_label",
+      "@container": "@list"
+    },
+    "ta2wd_description": {
+      "@id": "kairos:ta2wd_description",
       "@container": "@list"
     },
     "confidence": {

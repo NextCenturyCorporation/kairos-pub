@@ -1,6 +1,6 @@
 {
   "@context": [
-    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v2.1.jsonld",
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v2.2.jsonld",
     {
       "caci_ta1": "https://caci.com/kairos/ta1/",
       "my_key": "caci_ta1:my_key",
@@ -8,8 +8,8 @@
     }
   ],
   "@id": "caci_ta1:Submissions/TA1/12345",
-  "sdfVersion": "2.1",
-  "version": "caci-08.25.2022",
+  "sdfVersion": "2.2",
+  "version": "caci-10.14.2022",
   "ta2": false,
   "comment": [
     "Example provides representation of E. Hovy's Event Complex schema layout for a disease outbreak.",
@@ -22,7 +22,7 @@
       "description": "Schema for the progression of a pathogen",
       "goal": "Optional freeform string, playground for TA1s",
       "privateData": {
-        "comment": "Performers can place any keys/values they wish here.  Large amounts of private data will be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum.",
+        "comment": "Performers can place any keys/values they wish here.  Note that TA2 will need to remove it from their SDF output.",
         "my_key": "my value",
         "giant_bitstring": "s3://kairos-sdf.s3.amazonaws.com/privateData/caci/ec-bitstring.gz"
       },
@@ -42,7 +42,7 @@
           "@id": "caci_ta1:Participants/00003/pathogen-progression",
           "roleName": "A2-Environment",
           "comment": "participants can optionally take a wd_node to clarify the role of the argument in the event.",
-          "wd_node": "Q2249676",
+          "wd_node": "wd:Q2249676",
           "wd_label": "environment",
           "wd_description": "surrounding of an organism or population",
           "entity": "caci_ta1:Entities/00002/society"
@@ -52,7 +52,7 @@
       "children": [
         {
           "child": "caci_ta1:Events/00002/pathogen-come-into-being",
-          "comment": "Semantics of optional is that if it is set to true, then the event is optional.  If it is set to false OR MISSING, the event is mandatory. TA1 systems decide whether an event its optional or not.",
+          "comment": "Semantics of optional and importance is defined by TA1.",
           "optional": true,
           "importance": 0.3
         },
@@ -66,10 +66,10 @@
       "relations": [
         {
           "@id": "caci_ta1:Relations/00001/pathogen-progression",
-          "comment": "Note that relation triples (with relationPredicates taken from Wikidata) can be defined in any event node.  By convention, relations place in an event should only define relations between child event nodes and/or the node where the relation is defined. This is a silly yet illustrative example.",
+          "comment": "Note that relation triples (with wd_nodes taken from Wikidata) can be defined in any event node.  By convention, relations place in an event should only define relations between child event nodes and/or the node where the relation is defined. This is a silly yet illustrative example.",
           "name": "patient is a member of society",
           "relationSubject": "caci_ta1:Entities/00003/patient",
-          "relationPredicate": "wdt:P39",
+          "wd_node": "wdt:P39",
           "wd_label": "position held",
           "wd_description": "subject currently or formerly holds the object position or public office",
           "relationObject": "caci_ta1:Entities/00002/society"
@@ -78,7 +78,7 @@
           "@id": "caci_ta1:Relations/00002/",
           "name": "Come into being before Replicate",
           "relationSubject": "caci_ta1:Events/00002/pathogen-come-into-being",
-          "relationPredicate": "wd:Q79030196",
+          "wd_node": "wd:Q79030196",
           "wd_label": "before",
           "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
           "relationObject": "caci_ta1:Events/00003/pathogen-replicate"
@@ -87,7 +87,7 @@
           "@id": "caci_ta1:Relations/00003/",
           "name": "Replicate before Spread",
           "relationSubject": "caci_ta1:Events/00003/pathogen-replicate",
-          "relationPredicate": "wd:Q79030196",
+          "wd_node": "wd:Q79030196",
           "wd_label": "before",
           "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
           "relationObject": "caci_ta1:Events/00004/pathogen-spread"
@@ -98,7 +98,7 @@
       "@id": "caci_ta1:Events/00002/pathogen-come-into-being",
       "name": "Come into being",
       "description": "Event type in which a pathogen comes into being",
-      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
       "wd_node": "wd:Q468777",
       "wd_label": "existence",
       "wd_description": "ability of an entity to interact with physical or mental reality",
@@ -114,7 +114,7 @@
       "@id": "caci_ta1:Events/00003/pathogen-replicate",
       "name": "Replicate",
       "description": "Event type in which a pathogen replicates",
-      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
       "wd_node": "wd:Q23013246",
       "wd_label": "copy",
       "wd_description": "duplicate of information or an artifact based on an instance of that information or artifact",
@@ -130,7 +130,6 @@
       "@id": "caci_ta1:Events/00004/pathogen-spread",
       "name": "Spread",
       "description": "Schema in which a pathogen propagates/spreads",
-      "ta1explanation": "ta1explanations are optional in hierarchy event nodes (those with children).",
       "participants": [
         {
           "@id": "caci_ta1:Participants/00006/pathogen-spread",
@@ -164,7 +163,7 @@
           "@id": "caci_ta1:Relations/00004/",
           "name": "Escape before Infect",
           "relationSubject": "caci_ta1:Events/00005/pathogen-escape",
-          "relationPredicate": "wd:Q79030196",
+          "wd_node": "wd:Q79030196",
           "wd_label": "before",
           "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
           "relationObject": "caci_ta1:Events/00006/pathogen-infect-patient"
@@ -173,7 +172,7 @@
           "@id": "caci_ta1:Relations/00005/",
           "name": "Infect before Live in Body",
           "relationSubject": "caci_ta1:Events/00006/pathogen-infect-patient",
-          "relationPredicate": "wd:Q79030196",
+          "wd_node": "wd:Q79030196",
           "wd_label": "before",
           "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
           "relationObject": "caci_ta1:Events/00007/pathogen-live-in-body"
@@ -182,7 +181,7 @@
           "@id": "caci_ta1:Relations/00006/",
           "name": "Live in Body before Continue",
           "relationSubject": "caci_ta1:Events/00007/pathogen-live-in-body",
-          "relationPredicate": "wd:Q79030196",
+          "wd_node": "wd:Q79030196",
           "wd_label": "before",
           "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
           "relationObject": "caci_ta1:Events/00008/pathogen-continue"
@@ -193,7 +192,7 @@
       "@id": "caci_ta1:Events/00005/pathogen-escape",
       "name": "Escape body",
       "description": "Event type in which a pathogen escapes from a body or reservoir",
-      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
       "comment": "Union of escape (response to distress) and go (to move from a place to another that is further away)",
       "wd_node": [
         "wd:Q19279529",
@@ -224,14 +223,13 @@
       "@id": "caci_ta1:Events/00006/pathogen-infect-patient",
       "name": "Infect",
       "description": "Event type in which a pathogen infects a patient",
-      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
       "wd_node": "wd:Q166231",
       "wd_label": "infection",
       "wd_description": "invasion of and multiplication in a host by disease-causing pathogens or organisms, and the reaction of host tissues",
       "participants": [
         {
           "@id": "caci_ta1:Participants/00010/pathogen-infect-patient",
-          "comment": "Note that when we use an event from the KOWG/XPO, we use its role names as documented in XPO spreadsheets.",
           "roleName": "A1-gol_thing_becoming_infected",
           "entity": "caci_ta1:Entities/00003/patient"
         },
@@ -246,8 +244,7 @@
       "@id": "caci_ta1:Events/00007/pathogen-live-in-body",
       "name": "Live in body",
       "description": "Event type in which a pathogen lives in the body of a patient",
-      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
-      "comment": "This is clearly a bad mapping, but shows that even leaf nodes (verbs) are not constrained to the KOWG events or event pool.",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
       "wd_node": "wd:Q3",
       "wd_label": "life",
       "wd_description": "matter capable of extracting energy from the environment for replication",
@@ -295,7 +292,7 @@
       "@id": "caci_ta1:Events/00009/pathogen-decrease",
       "name": "Decrease in society",
       "description": "Event type in which a pathogen decreases in society",
-      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
       "wd_node": "wd:Q47496130",
       "wd_label": "reduction",
       "wd_description": "decrease in a quantity",
@@ -361,7 +358,7 @@
           "@id": "caci_ta1:Relations/00007/",
           "name": "Travel before Contract disease",
           "relationSubject": "caci_ta1:Events/00011/patient-travels-to-contaminant",
-          "relationPredicate": "wd:Q79030196",
+          "wd_node": "wd:Q79030196",
           "wd_label": "before",
           "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
           "relationObject": "caci_ta1:Events/00012/patient-contract-disease"
@@ -370,7 +367,7 @@
           "@id": "caci_ta1:Relations/00008/",
           "name": "Contract disease before Get sick",
           "relationSubject": "caci_ta1:Events/00012/patient-contract-disease",
-          "relationPredicate": "wd:Q79030196",
+          "wd_node": "wd:Q79030196",
           "wd_label": "before",
           "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
           "relationObject": "caci_ta1:Events/00013/patient-get-sick"
@@ -379,7 +376,7 @@
           "@id": "caci_ta1:Relations/00009/",
           "name": "Get sick before Diagnosis",
           "relationSubject": "caci_ta1:Events/00013/patient-get-sick",
-          "relationPredicate": "wd:Q79030196",
+          "wd_node": "wd:Q79030196",
           "wd_label": "before",
           "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
           "relationObject": "caci_ta1:Events/00014/patient-diagnosed"
@@ -388,7 +385,7 @@
           "@id": "caci_ta1:Relations/00010/",
           "name": "Diagnosis before Treatment",
           "relationSubject": "caci_ta1:Events/00014/patient-diagnosed",
-          "relationPredicate": "wd:Q79030196",
+          "wd_node": "wd:Q79030196",
           "wd_label": "before",
           "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
           "relationObject": "caci_ta1:Events/00015/patient-be-treated"
@@ -397,7 +394,7 @@
           "@id": "caci_ta1:Relations/00011/",
           "name": "Treatment before Compliance",
           "relationSubject": "caci_ta1:Events/00015/patient-be-treated",
-          "relationPredicate": "wd:Q79030196",
+          "wd_node": "wd:Q79030196",
           "wd_label": "before",
           "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
           "relationObject": "caci_ta1:Events/00016/patient-change-life-pattern"
@@ -406,7 +403,7 @@
           "@id": "caci_ta1:Relations/00012/",
           "name": "Compliance before Get medication",
           "relationSubject": "caci_ta1:Events/00016/patient-change-life-pattern",
-          "relationPredicate": "wd:Q79030196",
+          "wd_node": "wd:Q79030196",
           "wd_label": "before",
           "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
           "relationObject": "caci_ta1:Events/00017/patient-get-meds"
@@ -415,7 +412,7 @@
           "@id": "caci_ta1:Relations/00013/",
           "name": "Get medication before Continue",
           "relationSubject": "caci_ta1:Events/00017/patient-get-meds",
-          "relationPredicate": "wd:Q79030196",
+          "wd_node": "wd:Q79030196",
           "wd_label": "before",
           "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
           "relationObject": "caci_ta1:Events/00018/patient-continue"
@@ -426,7 +423,7 @@
       "@id": "caci_ta1:Events/00011/patient-travels-to-contaminant",
       "name": "Travel",
       "description": "Event type in which patient(s) travel to contaminated location/facility",
-      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
       "wd_node": "wd:Q61509",
       "wd_label": "travel",
       "wd_description": "movement of people between geographical locations",
@@ -447,7 +444,7 @@
       "@id": "caci_ta1:Events/00012/patient-contract-disease",
       "name": "Contract disease",
       "description": "Event type in which patient(s) contract(s) disease",
-      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
       "wd_node": "wd:Q166231",
       "wd_label": "infection",
       "wd_description": "invasion of and multiplication in a host by disease-causing pathogens or organisms, and the reaction of host tissues",
@@ -468,7 +465,7 @@
       "@id": "caci_ta1:Events/00013/patient-get-sick",
       "name": "Get sick",
       "description": "Event type in which patient(s) get(s) sick",
-      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
       "wd_node": "wd:Q12136",
       "wd_label": "disease",
       "wd_description": "abnormal condition negatively affecting organisms",
@@ -484,7 +481,7 @@
       "@id": "caci_ta1:Events/00014/patient-diagnosed",
       "name": "Diagnosis",
       "description": "Event type in which patient(s) get(s) diagnosed",
-      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
       "wd_node": "wd:Q177719",
       "wd_label": "medical diagnosis",
       "wd_description": "process to determine or identify a disease or disorder, which would account for a person's symptoms and signs",
@@ -505,7 +502,7 @@
       "@id": "caci_ta1:Events/00015/patient-be-treated",
       "name": "Treatment",
       "description": "Event type in which patient(s) is/are treated",
-      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
       "wd_node": "wd:Q179661",
       "wd_label": "treatment",
       "wd_description": "attempted medical remediation of a health problem, usually following a diagnosis",
@@ -526,7 +523,7 @@
       "@id": "caci_ta1:Events/00016/patient-change-life-pattern",
       "name": "Compliance",
       "description": "Event type in which life pattern changes",
-      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
       "comment": "Multiple wd_nodes should be specified as lists, not as \"wd:Q1399332 | wd:Q67004728\"",
       "wd_node": [
         "wd:Q1399332",
@@ -552,7 +549,7 @@
       "@id": "caci_ta1:Events/00017/patient-get-meds",
       "name": "Get medication",
       "description": "Event type in which patient(s) receive(s) vaccine or other medication",
-      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
       "comment": "vaccination (innoculation) is different from treatment with medications",
       "wd_node": "wd:Q192995",
       "wd_label": "vaccination",
@@ -600,7 +597,7 @@
       "@id": "caci_ta1:Events/00019/patient-die",
       "name": "Death",
       "description": "Event type in which patient(s) die(s)",
-      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
       "wd_node": "wd:Q4",
       "wd_label": "death",
       "wd_description": "permanent cessation of vital functions",
@@ -616,7 +613,7 @@
       "@id": "caci_ta1:Events/00020/patient-improve",
       "name": "Improvement",
       "description": "Event type in which patient's condition improves",
-      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
       "wd_node": "wd:Q1595418",
       "wd_label": "remedy",
       "wd_description": "substance or procedure that ends a medical condition",
@@ -655,7 +652,7 @@
           "child": "caci_ta1:Events/00023/investigate-cluster",
           "optional": true,
           "importance": 0.3,
-          "comment": "Repeatable events need to be expanded by TA2 as distinct events at instantiation time.",
+          "comment": "Instantiations of repeatable events need to be expanded by TA2 as distinct events at instantiation time.",
           "repeatable": true
         },
         {
@@ -681,7 +678,7 @@
           "@id": "caci_ta1:Relations/00014/",
           "name": "Learn before Investigate",
           "relationSubject": "caci_ta1:Events/00022/learn-about-disease",
-          "relationPredicate": "wd:Q79030196",
+          "wd_node": "wd:Q79030196",
           "wd_label": "before",
           "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
           "relationObject": "caci_ta1:Events/00023/investigate-cluster"
@@ -690,7 +687,7 @@
           "@id": "caci_ta1:Relations/00015/",
           "name": "Investigate before Announce",
           "relationSubject": "caci_ta1:Events/00023/investigate-cluster",
-          "relationPredicate": "wd:Q79030196",
+          "wd_node": "wd:Q79030196",
           "wd_label": "before",
           "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
           "relationObject": "caci_ta1:Events/00024/announce-outbreak"
@@ -699,7 +696,7 @@
           "@id": "caci_ta1:Relations/00016/",
           "name": "Announce before Research",
           "relationSubject": "caci_ta1:Events/00024/announce-outbreak",
-          "relationPredicate": "wd:Q79030196",
+          "wd_node": "wd:Q79030196",
           "wd_label": "before",
           "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
           "relationObject": "caci_ta1:Events/00025/investigate-origin-propagation"
@@ -708,7 +705,7 @@
           "@id": "caci_ta1:Relations/00017/",
           "name": "Research before Research",
           "relationSubject": "caci_ta1:Events/00025/investigate-origin-propagation",
-          "relationPredicate": "wd:Q79030196",
+          "wd_node": "wd:Q79030196",
           "wd_label": "before",
           "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
           "relationObject": "caci_ta1:Events/00026/research-antidote"
@@ -717,7 +714,7 @@
           "@id": "caci_ta1:Relations/00018/",
           "name": "Research before Educate",
           "relationSubject": "caci_ta1:Events/00026/research-antidote",
-          "relationPredicate": "wd:Q79030196",
+          "wd_node": "wd:Q79030196",
           "wd_label": "before",
           "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
           "relationObject": "caci_ta1:Events/00027/epidemiologist-educate"
@@ -728,7 +725,7 @@
       "@id": "caci_ta1:Events/00022/learn-about-disease",
       "name": "Learn",
       "description": "Event type in which epidemiologists learn about a disease",
-      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
       "wd_node": "wd:Q12772819",
       "wd_label": "discovery",
       "wd_description": "act of detecting something new",
@@ -749,7 +746,7 @@
       "@id": "caci_ta1:Events/00023/investigate-cluster",
       "name": "Investigate",
       "description": "Event type in which epidemiologists investigate clusters",
-      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
       "wd_node": "wd:Q1298668",
       "wd_label": "research project",
       "wd_description": "project of one or more scientists or an institute or a scientific society",
@@ -770,7 +767,7 @@
       "@id": "caci_ta1:Events/00024/announce-outbreak",
       "name": "Announce",
       "description": "Event type in which epidemiologists announce outbreak",
-      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
       "wd_node": "wd:Q52947181",
       "wd_label": "public statement",
       "wd_description": "statement made for a public audience",
@@ -791,7 +788,7 @@
       "@id": "caci_ta1:Events/00025/investigate-origin-propagation",
       "name": "Research",
       "description": "Event type in which epidemiologists investigate the origins and propagation of a disease",
-      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
       "wd_node": "wd:Q2752427",
       "wd_label": "medical research",
       "wd_description": "research involving fundamental scientific principles that may apply to a preclinical understanding – to clinical research, which involves studies of people who may be subjects in clinical trials",
@@ -812,7 +809,7 @@
       "@id": "caci_ta1:Events/00026/research-antidote",
       "name": "Research",
       "description": "Event type in which epidemiologists research vaccines and other antidotes for a disease",
-      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
       "comment": "WD does not distinguish investigation of the origin from vaccine or treatment research",
       "wd_node": "wd:Q2752427",
       "wd_label": "medical research",
@@ -850,7 +847,7 @@
         },
         {
           "@id": "caci_ta1:Participants/00049/epidemiologist-educate",
-          "comment": "Just like in Phase I, multiple participants can share the same role.",
+          "comment": "Multiple participants can share the same role, but they must link to different entities.",
           "roleName": "A2-gol_recipient_student",
           "entity": "caci_ta1:Entities/00014/healthcare-sector"
         },
@@ -886,7 +883,7 @@
       "@id": "caci_ta1:Events/00028/educate-healthcare",
       "name": "Educate",
       "description": "Event types in which epidemiologists educate healthcare workers",
-      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
       "wd_node": "wd:Q8434",
       "wd_label": "education",
       "wd_description": "transmission of knowledge and skills",
@@ -912,7 +909,7 @@
       "@id": "caci_ta1:Events/00029/educate-manufacturer",
       "name": "Educate",
       "description": "Event type in which epidemiologists educate pharmaceutical manufacturers",
-      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
       "wd_node": "wd:Q8434",
       "wd_label": "education",
       "wd_description": "transmission of knowledge and skills",
@@ -938,7 +935,7 @@
       "@id": "caci_ta1:Events/00030/educate-authority",
       "name": "Educate",
       "description": "Event type in which epidemiologists educate government authorities",
-      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
       "wd_node": "wd:Q8434",
       "wd_label": "education",
       "wd_description": "transmission of knowledge and skills",
@@ -964,7 +961,7 @@
       "@id": "caci_ta1:Events/00031/healthworker-response",
       "name": "Health worker response",
       "description": "Schema for the response of a health worker to a health crisis",
-      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
       "comment": "Content not filled in",
       "wd_node": "wd:foobar",
       "wd_label": "foobar",
@@ -974,27 +971,7 @@
       "@id": "caci_ta1:Events/00032/authority-response",
       "name": "Authority response",
       "description": "Schema for the response of an authority to a health crisis",
-      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
-      "comment": "Content not filled in",
-      "wd_node": "wd:foobar",
-      "wd_label": "foobar",
-      "wd_description": "foobar"
-    },
-    {
-      "@id": "caci_ta1:Events/00033/manufacturer-do-involvement",
-      "name": "Manufacturer DO involvement",
-      "description": "Schema for the involvement of a pharmaceutical manufacturer in a disease outbreak",
-      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
-      "comment": "Content not filled in",
-      "wd_node": "wd:foobar",
-      "wd_label": "foobar",
-      "wd_description": "foobar"
-    },
-    {
-      "@id": "caci_ta1:Events/00034/business-do-response",
-      "name": "Business response",
-      "description": "Schema for the response of a business to a disease outbreak",
-      "ta1explanation": "Justification of the event, preferably grounded in the schema source, so that assessors can determine reasonableness.",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
       "comment": "Content not filled in",
       "wd_node": "wd:foobar",
       "wd_label": "foobar",
@@ -1131,7 +1108,7 @@
       "@id": "caci_ta1:Relations/00019/",
       "name": "pathogen from pathogen-progression schema has an equivalence relation to the pathogen in the patient-progression schema",
       "relationSubject": "caci_ta1:Entities/00001/pathogen",
-      "relationPredicate": "wd:Q26161438",
+      "wd_node": "wd:Q26161438",
       "wd_label": "approximately equal to",
       "wd_description": "closeness in value, meaning or effect; relation in which difference can be neglected for practical purposes",
       "relationObject": "caci_ta1:Entities/00006/pathogen-1"
@@ -1140,7 +1117,7 @@
       "@id": "caci_ta1:Relations/00020/",
       "name": "pathogen from pathogen-progression schema has an equivalence relation to the pathogen in the epidemiologist response schema",
       "relationSubject": "caci_ta1:Entities/00001/pathogen",
-      "relationPredicate": "wd:Q26161438",
+      "wd_node": "wd:Q26161438",
       "wd_label": "approximately equal to",
       "wd_description": "closeness in value, meaning or effect; relation in which difference can be neglected for practical purposes",
       "relationObject": "caci_ta1:Entities/00011/pathogen-2"
@@ -1149,7 +1126,7 @@
       "@id": "caci_ta1:Relations/00021/",
       "name": "patient from pathogen-progression schema has an equivalence relation to the patient in the patient-progression schema",
       "relationSubject": "caci_ta1:Entities/00003/patient",
-      "relationPredicate": "wd:Q26161438",
+      "wd_node": "wd:Q26161438",
       "wd_label": "approximately equal to",
       "wd_description": "closeness in value, meaning or effect; relation in which difference can be neglected for practical purposes",
       "relationObject": "caci_ta1:Entities/00004/patient-1",
@@ -1159,7 +1136,7 @@
       "@id": "caci_ta1:Relations/00022/",
       "comment": "relation names (labels) are helpful to human assessors, but are not required at this point.",
       "relationSubject": "caci_ta1:Events/00006/pathogen-infect-patient",
-      "relationPredicate": "wd:Q26161438",
+      "wd_node": "wd:Q26161438",
       "wd_label": "approximately equal to",
       "wd_description": "closeness in value, meaning or effect; relation in which difference can be neglected for practical purposes",
       "relationObject": "caci_ta1:Events/00012/patient-contract-disease"
@@ -1169,23 +1146,21 @@
       "name": "The pathogen progression schema overlaps the other schemas.",
       "comment": "Temporal relations must be taken from a subset of Wikidata temporal relations (see the SDF documentation).",
       "relationSubject": "caci_ta1:Events/00001/pathogen-progression",
-      "relationPredicate": "wd:Q65560376",
+      "wd_node": "wd:Q65560376",
       "wd_label": "partial coincidence",
       "wd_description": "general phenomenon where distinct entities (such as regions of space, events, or sequences) overlap in extent",
       "relationObject": [
         "caci_ta1:Events/00010/patient-progression",
         "caci_ta1:Events/00031/healthworker-response",
         "caci_ta1:Events/00021/epidemiologist-response",
-        "caci_ta1:Events/00032/authority-response",
-        "caci_ta1:Events/00033/manufacturer-do-involvement",
-        "caci_ta1:Events/00034/business-do-response"
+        "caci_ta1:Events/00032/authority-response"
       ]
     },
     {
       "@id": "caci_ta1:Relations/00024/",
       "name": "'Live in body' event from the pathogen-progression schema has an equivalence relation to the 'Patient gets sick' event from the patient-progression schema",
       "relationSubject": "caci_ta1:Events/00007/pathogen-live-in-body",
-      "relationPredicate": "wd:Q26161438",
+      "wd_node": "wd:Q26161438",
       "wd_label": "approximately equal to",
       "wd_description": "closeness in value, meaning or effect; relation in which difference can be neglected for practical purposes",
       "relationObject": "caci_ta1:Events/00013/patient-get-sick"

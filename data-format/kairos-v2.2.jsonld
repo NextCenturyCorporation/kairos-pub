@@ -118,18 +118,17 @@
       "@type": "xsd:boolean"
     },
     "children_gate": "kairos:children_gate",
-    "outlinks": {
-      "@id": "kairos:outlinks",
+    "wd_node": {
+      "@id": "kairos:wd_node",
       "@type": "@id",
       "@container": "@list"
     },
-    "qnode": {
-      "@id": "kairos:qnode",
-      "@type": "@id",
+    "wd_label": {
+      "@id": "kairos:wd_label",
       "@container": "@list"
     },
-    "qlabel": {
-      "@id": "kairos:qlabel",
+    "wd_description": {
+      "@id": "kairos:wd_description",
       "@container": "@list"
     },
     "participants": {
@@ -162,10 +161,6 @@
       "@type": "@id",
       "@container": "@list"
     },
-    "relationPredicate": {
-      "@id": "kairos:relationPredicate",
-      "@type": "@id"
-    },
     "relationProvenance": {
       "@id": "kairos:relationProvenance",
       "@type": "@id",
@@ -180,13 +175,17 @@
       "@id": "kairos:relationObject_prov",
       "@container": "@list"
     },
-    "ta2qnode": {
-      "@id": "kairos:ta2qnode",
+    "ta2wd_node": {
+      "@id": "kairos:ta2wd_node",
       "@type": "@id",
       "@container": "@list"
     },
-    "ta2qlabel": {
-      "@id": "kairos:ta2qlabel",
+    "ta2wd_label": {
+      "@id": "kairos:ta2wd_label",
+      "@container": "@list"
+    },
+    "ta2wd_description": {
+      "@id": "kairos:ta2wd_description",
       "@container": "@list"
     },
     "confidence": {
