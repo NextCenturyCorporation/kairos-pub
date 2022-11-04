@@ -1,0 +1,2733 @@
+{
+  "@context": [
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v2.3.jsonld",
+    {
+      "caci_ta2": "https://caci.com/kairos/ta2/"
+    }
+  ],
+  "@id": "caci_ta2:Submissions/TA2/12345",
+  "sdfVersion": "2.3",
+  "version": "caci-10.27.2022 / caci-10.27.2022",
+  "ceID": "ce1002",
+  "task2": false,
+  "comment": [
+    "Example provides an instantiation of an IED Attack schema."
+  ],
+  "instances": [
+    {
+      "@id": "caci_ta2:Instances/00001/ied-attack",
+      "ta1ref": "SC10001",
+      "name": "Possible Times Square IED Attack",
+      "description": "Attackers detonate an IED at Times Square",
+      "confidence": 1,
+      "events": [
+        {
+          "@id": "caci_ta2:Events/00000/ied-attack",
+          "ta1ref": "EV00000",
+          "name": "IED Attack",
+          "description": "Attackers detonate an IED at a domestic location",
+          "isTopLevel": true,
+          "confidence": 1,
+          "children_gate": "and",
+          "subgroup_events": [
+            "caci_ta2:Events/00001/prep",
+            "caci_ta2:Events/00006/bomb",
+            "caci_ta2:Events/00020/detonate",
+            "caci_ta2:Events/00021/damage",
+            "caci_ta2:Events/00025/consequence",
+            "caci_ta2:Events/00038/contact",
+            "caci_ta2:Events/00039/contact"
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00001/prep",
+          "ta1ref": "EV00001",
+          "name": "Prep",
+          "description": "The attacker prepares for IED attack",
+          "parent": "caci_ta2:Events/00000/ied-attack",
+          "outlinks": "caci_ta2:Events/00006/bomb",
+          "confidence": 1,
+          "children_gate": "or",
+          "subgroup_events": [
+            "caci_ta2:Events/00002/travel",
+            "caci_ta2:Events/00003/study",
+            "caci_ta2:Events/00004/contact",
+            "caci_ta2:Events/00005/travel",
+            "caci_ta2:Events/00036/unrest"
+          ],
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00001/prep",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00019/attacker",
+              "values": {
+                "@id": "caci_ta2:Values/00001/",
+                "ta2entity": "caci_ta2:Entities/00001/tom",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00002/travel",
+          "ta1ref": "EV00002",
+          "name": "Travel",
+          "description": "The attacker travels to IED prep location",
+          "parent": "caci_ta2:Events/00001/prep",
+          "outlinks": "caci_ta2:Events/00003/study",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "confidence": 1,
+          "provenance": "caci_ta2:Provenance/00001/",
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00002/travel",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00019/attacker",
+              "values": {
+                "@id": "caci_ta2:Values/00002/",
+                "ta2entity": "caci_ta2:Entities/00001/tom",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00003/travel",
+              "roleName": "A1-Vehicle",
+              "entity": "caci_ta2:Entities/00020/vehicle",
+              "values": {
+                "@id": "caci_ta2:Values/00003/",
+                "ta2entity": "caci_ta2:Entities/00002/plane",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00004/travel",
+              "roleName": "A1-Vehicle",
+              "entity": "caci_ta2:Entities/00021/domestic-location",
+              "values": {
+                "@id": "caci_ta2:Values/00004/",
+                "ta2entity": "caci_ta2:Entities/00003/nyc",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00005/travel",
+              "roleName": "A1-Vehicle",
+              "entity": "caci_ta2:Entities/00022/foreign-location",
+              "values": {
+                "@id": "caci_ta2:Values/00005/",
+                "ta2entity": "caci_ta2:Entities/00004/baghdad",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00003/study",
+          "ta1ref": "EV00003",
+          "name": "Study",
+          "description": "The attacker studies bomb-making",
+          "parent": "caci_ta2:Events/00001/prep",
+          "outlinks": "caci_ta2:Events/00004/contact",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "confidence": 1,
+          "provenance": "caci_ta2:Provenance/00001/",
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00006/study",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00019/attacker",
+              "values": {
+                "@id": "caci_ta2:Values/00006/",
+                "ta2entity": "caci_ta2:Entities/00001/tom",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00007/study",
+              "roleName": "A1-School",
+              "entity": "caci_ta2:Entities/00023/school",
+              "values": {
+                "@id": "caci_ta2:Values/00007/",
+                "ta2entity": "caci_ta2:Entities/00005/x-school",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00008/study",
+              "roleName": "A1-Vehicle",
+              "entity": "caci_ta2:Entities/00024/subject-matter",
+              "values": {
+                "@id": "caci_ta2:Values/00008/",
+                "ta2entity": "caci_ta2:Entities/00006/bomb-making",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00009/study",
+              "roleName": "A1-Vehicle",
+              "entity": "caci_ta2:Entities/00022/foreign-location",
+              "values": {
+                "@id": "caci_ta2:Values/00009/",
+                "ta2entity": "caci_ta2:Entities/00004/baghdad",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00004/contact",
+          "ta1ref": "EV00004",
+          "name": "Contact",
+          "description": "The attacker contacts co-conspirators",
+          "parent": "caci_ta2:Events/00001/prep",
+          "outlinks": "caci_ta2:Events/00005/travel",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "confidence": 1,
+          "predictionProvenance": [
+            "caci_ta2:Relations/00001/friends",
+            "caci_ta2:Relations/00002/friends"
+          ],
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00010/contact",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00019/attacker",
+              "values": {
+                "@id": "caci_ta2:Values/00010/",
+                "ta2entity": "caci_ta2:Entities/00001/tom",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00011/contact",
+              "roleName": "A1-Participant",
+              "entity": "caci_ta2:Entities/00036/co-conspirator",
+              "values": [
+                {
+                  "@id": "caci_ta2:Values/00011/",
+                  "ta2entity": "caci_ta2:Entities/00007/dick",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.8
+                },
+                {
+                  "@id": "caci_ta2:Values/00012/",
+                  "ta2entity": "caci_ta2:Entities/00008/harry",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.8
+                }
+              ]
+            },
+            {
+              "@id": "caci_ta2:Participants/00012/contact",
+              "roleName": "A2-Instrument",
+              "entity": "caci_ta2:Entities/00048/device"
+            },
+            {
+              "@id": "caci_ta2:Participants/00013/contact",
+              "roleName": "A3-Topic",
+              "entity": "caci_ta2:Entities/00024/subject-matter",
+              "values": {
+                "@id": "caci_ta2:Values/00013/",
+                "ta2entity": "caci_ta2:Entities/00006/bomb-making",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00005/travel",
+          "ta1ref": "EV00005",
+          "name": "Travel",
+          "description": "The attacker travels to general attack location",
+          "parent": "caci_ta2:Events/00001/prep",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "confidence": 1,
+          "predictionProvenance": "caci_ta2:Events/00005/travel",
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00014/travel",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00019/attacker",
+              "values": {
+                "@id": "caci_ta2:Values/00014/",
+                "ta2entity": "caci_ta2:Entities/00001/tom",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00015/travel",
+              "roleName": "A1-Vehicle",
+              "entity": "caci_ta2:Entities/00020/vehicle",
+              "values": {
+                "@id": "caci_ta2:Values/00015/",
+                "ta2entity": "caci_ta2:Entities/00002/plane",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00016/travel",
+              "roleName": "A1-Vehicle",
+              "entity": "caci_ta2:Entities/00022/foreign-location",
+              "values": {
+                "@id": "caci_ta2:Values/00016/",
+                "ta2entity": "caci_ta2:Entities/00004/baghdad",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00017/travel",
+              "roleName": "A1-Vehicle",
+              "entity": "caci_ta2:Entities/00021/domestic-location",
+              "values": {
+                "@id": "caci_ta2:Values/00017/",
+                "ta2entity": "caci_ta2:Entities/00003/nyc",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00006/bomb",
+          "ta1ref": "EV00006",
+          "name": "Bomb",
+          "description": "The attacker makes and places a bomb",
+          "parent": "caci_ta2:Events/00000/ied-attack",
+          "outlinks": [
+            "caci_ta2:Events/00020/detonate",
+            "caci_ta2:Events/00038/contact"
+          ],
+          "confidence": 1,
+          "children_gate": "and",
+          "subgroup_events": [
+            "caci_ta2:Events/00007/make",
+            "caci_ta2:Events/00017/place"
+          ],
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00018/bomb",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00019/attacker",
+              "values": [
+                {
+                  "@id": "caci_ta2:Values/00018/",
+                  "ta2entity": "caci_ta2:Entities/00001/tom",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 1
+                },
+                {
+                  "@id": "caci_ta2:Values/00019/",
+                  "ta2entity": "caci_ta2:Entities/00007/dick",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.5
+                },
+                {
+                  "@id": "caci_ta2:Values/00020/",
+                  "ta2entity": "caci_ta2:Entities/00008/harry",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.7
+                }
+              ]
+            },
+            {
+              "@id": "caci_ta2:Participants/00019/bomb",
+              "roleName": "A1-Object",
+              "entity": "caci_ta2:Entities/00037/ied",
+              "values": {
+                "@id": "caci_ta2:Values/00021/",
+                "ta2entity": "caci_ta2:Entities/00009/bomb",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00020/bomb",
+              "roleName": "A2-Receptacle",
+              "entity": "caci_ta2:Entities/00025/container",
+              "values": {
+                "@id": "caci_ta2:Values/00022/",
+                "ta2entity": "caci_ta2:Entities/00010/backpack",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00007/make",
+          "ta1ref": "EV00007",
+          "name": "Make",
+          "description": "The attacker makes a bomb",
+          "parent": "caci_ta2:Events/00006/bomb",
+          "outlinks": "caci_ta2:Events/00017/place",
+          "confidence": 1,
+          "children_gate": "and",
+          "subgroup_events": [
+            "caci_ta2:Events/00008/acquire",
+            "caci_ta2:Events/00014/mix",
+            "caci_ta2:Events/00015/assemble",
+            "caci_ta2:Events/00016/put"
+          ],
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00021/make",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00019/attacker",
+              "values": [
+                {
+                  "@id": "caci_ta2:Values/00023/",
+                  "ta2entity": "caci_ta2:Entities/00001/tom",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 1
+                },
+                {
+                  "@id": "caci_ta2:Values/00024/",
+                  "ta2entity": "caci_ta2:Entities/00007/dick",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 1
+                }
+              ]
+            },
+            {
+              "@id": "caci_ta2:Participants/00022/make",
+              "roleName": "A1-Product",
+              "entity": "caci_ta2:Entities/00037/ied",
+              "values": [
+                {
+                  "@id": "caci_ta2:Values/00025/",
+                  "ta2entity": "caci_ta2:Entities/00009/bomb",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 1
+                }
+              ]
+            },
+            {
+              "@id": "caci_ta2:Participants/00023/make",
+              "roleName": "A2-Receptacle",
+              "entity": "caci_ta2:Entities/00025/container",
+              "values": [
+                {
+                  "@id": "caci_ta2:Values/00026/",
+                  "ta2entity": "caci_ta2:Entities/00010/backpack",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 1
+                }
+              ]
+            },
+            {
+              "@id": "caci_ta2:Participants/00024/make",
+              "roleName": "A3-Location",
+              "entity": "caci_ta2:Entities/00026/location1",
+              "values": {
+                "@id": "caci_ta2:Values/00027/",
+                "ta2entity": "caci_ta2:Entities/00038/bronx",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00008/acquire",
+          "ta1ref": "EV00008",
+          "name": "Acquire",
+          "description": "The attacker acquires components",
+          "parent": "caci_ta2:Events/00007/make",
+          "outlinks": "caci_ta2:Events/00014/mix",
+          "confidence": 1,
+          "children_gate": "or",
+          "subgroup_events": [
+            "caci_ta2:Events/00009/buy",
+            "caci_ta2:Events/00010/buy",
+            "caci_ta2:Events/00011/find",
+            "caci_ta2:Events/00012/steal",
+            "caci_ta2:Events/00013/rent"
+          ],
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00025/acquire",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00019/attacker",
+              "values": [
+                {
+                  "@id": "caci_ta2:Values/00028/",
+                  "ta2entity": "caci_ta2:Entities/00001/tom",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 1
+                },
+                {
+                  "@id": "caci_ta2:Values/00029/",
+                  "ta2entity": "caci_ta2:Entities/00007/dick",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 1
+                }
+              ]
+            },
+            {
+              "@id": "caci_ta2:Participants/00026/acquire",
+              "roleName": "A1-Object",
+              "entity": "caci_ta2:Entities/00028/component",
+              "values": [
+                {
+                  "@id": "caci_ta2:Values/00030/",
+                  "ta2entity": "caci_ta2:Entities/00011/fertilizer",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 1
+                },
+                {
+                  "@id": "caci_ta2:Values/00031/",
+                  "ta2entity": "caci_ta2:Entities/00014/acetone",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 1
+                },
+                {
+                  "@id": "caci_ta2:Values/00032/",
+                  "ta2entity": "caci_ta2:Entities/00039/smokeless-powder",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 1
+                }
+              ]
+            },
+            {
+              "@id": "caci_ta2:Participants/00027/acquire",
+              "roleName": "A2-Location",
+              "entity": "caci_ta2:Entities/00026/location1",
+              "values": [
+                {
+                  "@id": "caci_ta2:Values/00033/",
+                  "ta2entity": "caci_ta2:Entities/00013/brooklyn",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 1
+                },
+                {
+                  "@id": "caci_ta2:Values/00034/",
+                  "ta2entity": "caci_ta2:Entities/00038/bronx",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00009/buy",
+          "ta1ref": "EV00009",
+          "name": "Buy",
+          "description": "An attacker purchases a component",
+          "parent": "caci_ta2:Events/00008/acquire",
+          "outlinks": "caci_ta2:Events/00012/steal",
+          "repeatable": true,
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "confidence": 1,
+          "provenance": "caci_ta2:Provenance/00013/",
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00028/buy",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00027/purchaser",
+              "values": {
+                "@id": "caci_ta2:Values/00035/",
+                "ta2entity": "caci_ta2:Entities/00001/tom",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00029/buy",
+              "roleName": "A1-Object",
+              "entity": "caci_ta2:Entities/00028/component",
+              "values": {
+                "@id": "caci_ta2:Values/00036/",
+                "ta2entity": "caci_ta2:Entities/00011/fertilizer",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00030/buy",
+              "roleName": "A2-Vendor",
+              "entity": "caci_ta2:Entities/00029/merchant",
+              "values": {
+                "@id": "caci_ta2:Values/00037/",
+                "ta2entity": "caci_ta2:Entities/00012/home-depot",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00031/buy",
+              "roleName": "A2-Location",
+              "entity": "caci_ta2:Entities/00026/location1",
+              "values": {
+                "@id": "caci_ta2:Values/00038/",
+                "ta2entity": "caci_ta2:Entities/00013/brooklyn",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00010/buy",
+          "ta1ref": "EV00009",
+          "name": "Buy",
+          "description": "An attacker purchases a component",
+          "parent": "caci_ta2:Events/00008/acquire",
+          "outlinks": "caci_ta2:Events/00012/steal",
+          "repeatable": true,
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "confidence": 1,
+          "provenance": "caci_ta2:Provenance/00013/",
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00032/buy",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00027/purchaser",
+              "values": {
+                "@id": "caci_ta2:Values/00039/",
+                "ta2entity": "caci_ta2:Entities/00001/tom",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00033/buy",
+              "roleName": "A1-Object",
+              "entity": "caci_ta2:Entities/00028/component",
+              "values": {
+                "@id": "caci_ta2:Values/00040/",
+                "ta2entity": "caci_ta2:Entities/00039/smokeless-powder",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00034/buy",
+              "roleName": "A2-Vendor",
+              "entity": "caci_ta2:Entities/00029/merchant",
+              "values": {
+                "@id": "caci_ta2:Values/00041/",
+                "ta2entity": "caci_ta2:Entities/00040/brooklyn-ammoworks",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00035/buy",
+              "roleName": "A2-Location",
+              "entity": "caci_ta2:Entities/00026/location1",
+              "values": {
+                "@id": "caci_ta2:Values/00042/",
+                "ta2entity": "caci_ta2:Entities/00013/brooklyn",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00011/find",
+          "ta1ref": "EV00010",
+          "name": "Find",
+          "description": "An attacker finds a component",
+          "parent": "caci_ta2:Events/00008/acquire",
+          "repeatable": true,
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "confidence": 0.3,
+          "predictionProvenance": [
+            "caci_ta2:Events/00009/buy",
+            "caci_ta2:Events/00010/buy",
+            "caci_ta2:Events/00012/steal",
+            "caci_ta2:Entities/00001/tom",
+            "caci_ta2:Entities/00007/dick"
+          ],
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00036/find",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00041/finder",
+              "values": [
+                {
+                  "@id": "caci_ta2:Values/00043/",
+                  "ta2entity": "caci_ta2:Entities/00001/tom",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 1
+                },
+                {
+                  "@id": "caci_ta2:Values/00044/",
+                  "ta2entity": "caci_ta2:Entities/00007/dick",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 1
+                }
+              ]
+            },
+            {
+              "@id": "caci_ta2:Participants/00037/find",
+              "roleName": "A1-Object",
+              "entity": "caci_ta2:Entities/00028/component"
+            },
+            {
+              "@id": "caci_ta2:Participants/00038/find",
+              "roleName": "A2-Location",
+              "entity": "caci_ta2:Entities/00026/location1",
+              "values": [
+                {
+                  "@id": "caci_ta2:Values/00045/",
+                  "ta2entity": "caci_ta2:Entities/00013/brooklyn",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.5
+                },
+                {
+                  "@id": "caci_ta2:Values/00046/",
+                  "ta2entity": "caci_ta2:Entities/00038/bronx",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00012/steal",
+          "ta1ref": "EV00011",
+          "name": "Steal",
+          "description": "An attacker steals a component",
+          "parent": "caci_ta2:Events/00008/acquire",
+          "repeatable": true,
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "confidence": 1,
+          "provenance": "caci_ta2:Provenance/00013/",
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00039/steal",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00030/thief",
+              "values": {
+                "@id": "caci_ta2:Values/00047/",
+                "ta2entity": "caci_ta2:Entities/00007/dick",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00040/steal",
+              "roleName": "A1-Object",
+              "entity": "caci_ta2:Entities/00031/stolen-object",
+              "values": {
+                "@id": "caci_ta2:Values/00048/",
+                "ta2entity": "caci_ta2:Entities/00014/acetone",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00041/steal",
+              "roleName": "A2-Location",
+              "entity": "caci_ta2:Entities/00034/location2",
+              "values": {
+                "@id": "caci_ta2:Values/00049/",
+                "ta2entity": "caci_ta2:Entities/00015/home",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00042/steal",
+              "roleName": "A2-Location",
+              "entity": "caci_ta2:Entities/00026/location1",
+              "values": {
+                "@id": "caci_ta2:Values/00050/",
+                "ta2entity": "caci_ta2:Entities/00038/bronx",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00013/rent",
+          "ta1ref": "EV00012",
+          "name": "Rent",
+          "description": "An attacker rents a component",
+          "parent": "caci_ta2:Events/00008/acquire",
+          "repeatable": true,
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "confidence": 0.3,
+          "predictionProvenance": [
+            "caci_ta2:Events/00009/buy",
+            "caci_ta2:Events/00010/buy",
+            "caci_ta2:Events/00012/steal",
+            "caci_ta2:Entities/00001/tom",
+            "caci_ta2:Entities/00007/dick"
+          ],
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00043/rent",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00042/renter",
+              "values": [
+                {
+                  "@id": "caci_ta2:Values/00051/",
+                  "ta2entity": "caci_ta2:Entities/00001/tom",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 1
+                },
+                {
+                  "@id": "caci_ta2:Values/00052/",
+                  "ta2entity": "caci_ta2:Entities/00007/dick",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 1
+                }
+              ]
+            },
+            {
+              "@id": "caci_ta2:Participants/00044/rent",
+              "roleName": "A1-Object",
+              "entity": "caci_ta2:Entities/00028/component"
+            },
+            {
+              "@id": "caci_ta2:Participants/00045/rent",
+              "roleName": "A2-Location",
+              "entity": "caci_ta2:Entities/00026/location1",
+              "values": [
+                {
+                  "@id": "caci_ta2:Values/00053/",
+                  "ta2entity": "caci_ta2:Entities/00013/brooklyn",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.5
+                },
+                {
+                  "@id": "caci_ta2:Values/00054/",
+                  "ta2entity": "caci_ta2:Entities/00038/bronx",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00014/mix",
+          "ta1ref": "EV00013",
+          "name": "Mix",
+          "description": "An agent mixes components",
+          "parent": "caci_ta2:Events/00007/make",
+          "outlinks": "caci_ta2:Events/00015/assemble",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "confidence": 0.3,
+          "provenance": "caci_ta2:Provenance/00013/",
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00046/mix",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00043/mixer",
+              "values": {
+                "@id": "caci_ta2:Values/00055/",
+                "ta2entity": "caci_ta2:Entities/00007/dick",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00047/mix",
+              "roleName": "A1-Object",
+              "entity": "caci_ta2:Entities/00028/component",
+              "values": [
+                {
+                  "@id": "caci_ta2:Values/00056/",
+                  "ta2entity": "caci_ta2:Entities/00011/fertilizer",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 1
+                },
+                {
+                  "@id": "caci_ta2:Values/00057/",
+                  "ta2entity": "caci_ta2:Entities/00014/acetone",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 1
+                }
+              ]
+            },
+            {
+              "@id": "caci_ta2:Participants/00048/mix",
+              "roleName": "A1-Product",
+              "entity": "caci_ta2:Entities/00033/mixture",
+              "values": {
+                "@id": "caci_ta2:Values/00058/",
+                "ta2entity": "caci_ta2:Entities/00016/mixture",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00049/mix",
+              "roleName": "A2-Location",
+              "entity": "caci_ta2:Entities/00026/location1",
+              "values": [
+                {
+                  "@id": "caci_ta2:Values/00059/",
+                  "ta2entity": "caci_ta2:Entities/00015/home",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.5
+                },
+                {
+                  "@id": "caci_ta2:Values/00060/",
+                  "ta2entity": "caci_ta2:Entities/00038/bronx",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00015/assemble",
+          "ta1ref": "EV00014",
+          "name": "Assemble",
+          "description": "An agent assembles the ied",
+          "parent": "caci_ta2:Events/00007/make",
+          "outlinks": "caci_ta2:Events/00016/put",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "confidence": 0.5,
+          "predictionProvenance": [
+            "caci_ta2:Events/00014/mix",
+            "caci_ta2:Events/00016/put",
+            "caci_ta2:Entities/00007/dick"
+          ],
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00050/assemble",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00019/attacker",
+              "values": {
+                "@id": "caci_ta2:Values/00061/",
+                "ta2entity": "caci_ta2:Entities/00007/dick",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 0.9
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00051/assemble",
+              "roleName": "A1-Object",
+              "entity": "caci_ta2:Entities/00028/component",
+              "values": [
+                {
+                  "@id": "caci_ta2:Values/00062/",
+                  "ta2entity": "caci_ta2:Entities/00016/mixture",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.9
+                },
+                {
+                  "@id": "caci_ta2:Values/00063/",
+                  "ta2entity": "caci_ta2:Entities/00039/smokeless-powder",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.7
+                }
+              ]
+            },
+            {
+              "@id": "caci_ta2:Participants/00052/assemble",
+              "roleName": "A1-Product",
+              "entity": "caci_ta2:Entities/00037/ied",
+              "values": {
+                "@id": "caci_ta2:Values/00064/",
+                "ta2entity": "caci_ta2:Entities/00009/bomb",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 0.9
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00053/assemble",
+              "roleName": "A2-Location",
+              "entity": "caci_ta2:Entities/00026/location1",
+              "values": [
+                {
+                  "@id": "caci_ta2:Values/00065/",
+                  "ta2entity": "caci_ta2:Entities/00013/brooklyn",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.4
+                },
+                {
+                  "@id": "caci_ta2:Values/00066/",
+                  "ta2entity": "caci_ta2:Entities/00038/bronx",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.8
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00016/put",
+          "ta1ref": "EV00015",
+          "name": "Put",
+          "description": "An agent puts the ied in a container",
+          "parent": "caci_ta2:Events/00007/make",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "confidence": 1,
+          "provenance": "caci_ta2:Provenance/00013/",
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00054/put",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00019/attacker",
+              "values": {
+                "@id": "caci_ta2:Values/00067/",
+                "ta2entity": "caci_ta2:Entities/00007/dick",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00055/put",
+              "roleName": "A1-Object",
+              "entity": "caci_ta2:Entities/00037/ied",
+              "values": {
+                "@id": "caci_ta2:Values/00068/",
+                "ta2entity": "caci_ta2:Entities/00009/bomb",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00056/put",
+              "roleName": "A1-Container",
+              "entity": "caci_ta2:Entities/00025/container",
+              "values": {
+                "@id": "caci_ta2:Values/00069/",
+                "ta2entity": "caci_ta2:Entities/00010/backpack",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00057/put",
+              "roleName": "A2-Location",
+              "entity": "caci_ta2:Entities/00026/location1",
+              "values": {
+                "@id": "caci_ta2:Values/00070/",
+                "ta2entity": "caci_ta2:Entities/00038/bronx",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 0.5
+              }
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00017/place",
+          "ta1ref": "EV00016",
+          "name": "Place",
+          "description": "The attacker places the IED at the attack site",
+          "parent": "caci_ta2:Events/00006/bomb",
+          "confidence": 1,
+          "comment": "Provenance is not required in hierarchical events, but there's no other way to distinguish (and show) predicted vs. detected hierarchy nodes.  This will need to be addressed somehow-- worse case, we can look at children, and if any children are predicted, then the parent is predicted (otherwise detected).",
+          "provenance": "caci_ta2:Provenance/00013/",
+          "children_gate": "and",
+          "subgroup_events": [
+            "caci_ta2:Events/00018/transport",
+            "caci_ta2:Events/00019/place",
+            "caci_ta2:Events/00037/load"
+          ],
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00058/place",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00019/attacker",
+              "values": [
+                {
+                  "@id": "caci_ta2:Values/00071/",
+                  "ta2entity": "caci_ta2:Entities/00007/dick",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 1
+                },
+                {
+                  "@id": "caci_ta2:Values/00072/",
+                  "ta2entity": "caci_ta2:Entities/00008/harry",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 1
+                }
+              ]
+            },
+            {
+              "@id": "caci_ta2:Participants/00059/place",
+              "roleName": "A1-Object",
+              "entity": "caci_ta2:Entities/00025/container",
+              "values": {
+                "@id": "caci_ta2:Values/00073/",
+                "ta2entity": "caci_ta2:Entities/00010/backpack",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00060/place",
+              "roleName": "A2-Location",
+              "entity": "caci_ta2:Entities/00044/attack-site",
+              "values": {
+                "@id": "caci_ta2:Values/00074/",
+                "ta2entity": "caci_ta2:Entities/00017/times-square",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00018/transport",
+          "ta1ref": "EV00017",
+          "name": "Transport",
+          "description": "An agent transports the container to the attack site",
+          "parent": "caci_ta2:Events/00017/place",
+          "outlinks": "caci_ta2:Events/00019/place",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "confidence": 1,
+          "provenance": "caci_ta2:Provenance/00013/",
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00061/transport",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00019/attacker",
+              "values": [
+                {
+                  "@id": "caci_ta2:Values/00075/",
+                  "ta2entity": "caci_ta2:Entities/00007/dick",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 1
+                },
+                {
+                  "@id": "caci_ta2:Values/00076/",
+                  "ta2entity": "caci_ta2:Entities/00008/harry",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 1
+                }
+              ]
+            },
+            {
+              "@id": "caci_ta2:Participants/00062/transport",
+              "roleName": "A1-Container",
+              "entity": "caci_ta2:Entities/00025/container",
+              "values": {
+                "@id": "caci_ta2:Values/00077/",
+                "ta2entity": "caci_ta2:Entities/00010/backpack",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00063/transport",
+              "roleName": "A2-Vehicle",
+              "entity": "caci_ta2:Entities/00020/vehicle",
+              "values": {
+                "@id": "caci_ta2:Values/00078/",
+                "ta2entity": "caci_ta2:Entities/00018/truck",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00064/transport",
+              "roleName": "A3-Origin",
+              "entity": "caci_ta2:Entities/00026/location1",
+              "values": {
+                "@id": "caci_ta2:Values/00079/",
+                "ta2entity": "caci_ta2:Entities/00038/bronx",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 0.5
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00065/transport",
+              "roleName": "A3-Destination",
+              "entity": "caci_ta2:Entities/00044/attack-site",
+              "values": {
+                "@id": "caci_ta2:Values/00080/",
+                "ta2entity": "caci_ta2:Entities/00017/times-square",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00019/place",
+          "ta1ref": "EV00018",
+          "name": "Place",
+          "description": "An agent places the container at the attack site",
+          "parent": "caci_ta2:Events/00017/place",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "confidence": 1,
+          "provenance": "caci_ta2:Provenance/00013/",
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00066/place",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00019/attacker",
+              "values": {
+                "@id": "caci_ta2:Values/00081/",
+                "ta2entity": "caci_ta2:Entities/00008/harry",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00067/place",
+              "roleName": "A1-Container",
+              "entity": "caci_ta2:Entities/00025/container",
+              "values": {
+                "@id": "caci_ta2:Values/00082/",
+                "ta2entity": "caci_ta2:Entities/00010/backpack",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00068/place",
+              "roleName": "A2-Location",
+              "entity": "caci_ta2:Entities/00044/attack-site",
+              "values": {
+                "@id": "caci_ta2:Values/00083/",
+                "ta2entity": "caci_ta2:Entities/00017/times-square",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00020/detonate",
+          "ta1ref": "EV00019",
+          "name": "Detonate",
+          "description": "An ied explodes at the attack site",
+          "parent": "caci_ta2:Events/00000/ied-attack",
+          "outlinks": "caci_ta2:Events/00021/damage",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "ta2wd_node": "wd:Q2013",
+          "ta2wd_label": "Wikidata",
+          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "confidence": 0.7,
+          "predictionProvenance": [
+            "caci_ta2:Events/00001/prep",
+            "caci_ta2:Events/00008/acquire",
+            "caci_ta2:Events/00016/put",
+            "caci_ta2:Events/00017/place"
+          ],
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00069/detonate",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00019/attacker",
+              "values": [
+                {
+                  "@id": "caci_ta2:Values/00084/",
+                  "ta2entity": "caci_ta2:Entities/00001/tom",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.8
+                },
+                {
+                  "@id": "caci_ta2:Values/00085/",
+                  "ta2entity": "caci_ta2:Entities/00007/dick",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.5
+                },
+                {
+                  "@id": "caci_ta2:Values/00086/",
+                  "ta2entity": "caci_ta2:Entities/00008/harry",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.6
+                }
+              ]
+            },
+            {
+              "@id": "caci_ta2:Participants/00070/detonate",
+              "roleName": "A1-Explosive",
+              "entity": "caci_ta2:Entities/00037/ied",
+              "values": {
+                "@id": "caci_ta2:Values/00087/",
+                "ta2entity": "caci_ta2:Entities/00009/bomb",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00071/detonate",
+              "roleName": "A2-Location",
+              "entity": "caci_ta2:Entities/00044/attack-site",
+              "values": {
+                "@id": "caci_ta2:Values/00088/",
+                "ta2entity": "caci_ta2:Entities/00017/times-square",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 0.9
+              }
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00021/damage",
+          "ta1ref": "EV00020",
+          "name": "Damage",
+          "description": "The IED detonation causes damage",
+          "parent": "caci_ta2:Events/00000/ied-attack",
+          "outlinks": "caci_ta2:Events/00025/consequence",
+          "confidence": 0.7,
+          "children_gate": "or",
+          "subgroup_events": [
+            "caci_ta2:Events/00022/destroy",
+            "caci_ta2:Events/00023/injure",
+            "caci_ta2:Events/00024/die"
+          ],
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00072/damage",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00037/ied",
+              "values": {
+                "@id": "caci_ta2:Values/00089/",
+                "ta2entity": "caci_ta2:Entities/00009/bomb",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00073/damage",
+              "roleName": "A1-Target",
+              "entity": "caci_ta2:Entities/00045/victim"
+            },
+            {
+              "@id": "caci_ta2:Participants/00074/damage",
+              "roleName": "A2-Location",
+              "entity": "caci_ta2:Entities/00044/attack-site",
+              "values": {
+                "@id": "caci_ta2:Values/00090/",
+                "ta2entity": "caci_ta2:Entities/00017/times-square",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 0.9
+              }
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00022/destroy",
+          "ta1ref": "EV00021",
+          "name": "Destroy",
+          "description": "The IED destroys an object",
+          "parent": "caci_ta2:Events/00021/damage",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "confidence": 0.7,
+          "predictionProvenance": "caci_ta2:Events/00022/destroy",
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00075/destroy",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00037/ied",
+              "values": {
+                "@id": "caci_ta2:Values/00091/",
+                "ta2entity": "caci_ta2:Entities/00009/bomb",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00076/destroy",
+              "roleName": "A1-Target",
+              "entity": "caci_ta2:Entities/00046/destroyed-object"
+            },
+            {
+              "@id": "caci_ta2:Participants/00077/destroy",
+              "roleName": "A2-Location",
+              "entity": "caci_ta2:Entities/00044/attack-site",
+              "values": {
+                "@id": "caci_ta2:Values/00092/",
+                "ta2entity": "caci_ta2:Entities/00017/times-square",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 0.9
+              }
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00023/injure",
+          "ta1ref": "EV00022",
+          "name": "Injure",
+          "description": "The IED injures victims",
+          "parent": "caci_ta2:Events/00021/damage",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "confidence": 0.7,
+          "predictionProvenance": "caci_ta2:Events/00023/injure",
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00078/injure",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00037/ied",
+              "values": {
+                "@id": "caci_ta2:Values/00093/",
+                "ta2entity": "caci_ta2:Entities/00009/bomb",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00079/injure",
+              "roleName": "A1-Target",
+              "entity": "caci_ta2:Entities/00045/victim"
+            },
+            {
+              "@id": "caci_ta2:Participants/00080/injure",
+              "roleName": "A2-Location",
+              "entity": "caci_ta2:Entities/00044/attack-site",
+              "values": {
+                "@id": "caci_ta2:Values/00094/",
+                "ta2entity": "caci_ta2:Entities/00017/times-square",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 0.9
+              }
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00024/die",
+          "ta1ref": "EV00023",
+          "name": "Die",
+          "description": "The IED kills victims",
+          "parent": "caci_ta2:Events/00021/damage",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "confidence": 0.7,
+          "predictionProvenance": "caci_ta2:Events/00024/die",
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00081/die",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00037/ied",
+              "values": {
+                "@id": "caci_ta2:Values/00095/",
+                "ta2entity": "caci_ta2:Entities/00009/bomb",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00082/die",
+              "roleName": "A1-Target",
+              "entity": "caci_ta2:Entities/00045/victim"
+            },
+            {
+              "@id": "caci_ta2:Participants/00083/die",
+              "roleName": "A2-Location",
+              "entity": "caci_ta2:Entities/00044/attack-site",
+              "values": {
+                "@id": "caci_ta2:Values/00096/",
+                "ta2entity": "caci_ta2:Entities/00017/times-square",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 0.9
+              }
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00025/consequence",
+          "ta1ref": "EV00024",
+          "name": "Consequence",
+          "description": "Consequences to the attacker",
+          "parent": "caci_ta2:Events/00000/ied-attack",
+          "confidence": 0.7,
+          "children_gate": "xor",
+          "subgroup_events": [
+            "caci_ta2:Events/00026/escape",
+            "caci_ta2:Events/00027/justice"
+          ],
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00084/consequence",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00019/attacker",
+              "values": [
+                {
+                  "@id": "caci_ta2:Values/00097/",
+                  "ta2entity": "caci_ta2:Entities/00001/tom",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.8
+                },
+                {
+                  "@id": "caci_ta2:Values/00098/",
+                  "ta2entity": "caci_ta2:Entities/00007/dick",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.5
+                },
+                {
+                  "@id": "caci_ta2:Values/00099/",
+                  "ta2entity": "caci_ta2:Entities/00008/harry",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.6
+                }
+              ]
+            },
+            {
+              "@id": "caci_ta2:Participants/00085/consequence",
+              "roleName": "A1-Location",
+              "entity": "caci_ta2:Entities/00044/attack-site",
+              "values": {
+                "@id": "caci_ta2:Values/00100/",
+                "ta2entity": "caci_ta2:Entities/00017/times-square",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 0.9
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00086/consequence",
+              "roleName": "A1-Location",
+              "entity": "caci_ta2:Entities/00047/capture-location"
+            }
+          ],
+          "relations": {
+            "@id": "caci_ta2:Relations/00000/capture-location",
+            "ta1ref": "RE00000",
+            "name": "Capture location is near attack site.",
+            "relationSubject": "caci_ta2:Entities/00047/capture-location",
+            "wd_node": "wd:Q21818619",
+            "wd_label": "near",
+            "wd_description": "approximate location – should be used with qualifier P1480 to indicate the source specified a value and explicitly stated that value is close in proximity, but specify no precision information. For example, \"born near Dallas\"",
+            "relationObject": "caci_ta2:Entities/00044/attack-site"
+          }
+        },
+        {
+          "@id": "caci_ta2:Events/00026/escape",
+          "ta1ref": "EV00025",
+          "name": "Escape",
+          "description": "Attacker escapes the attack scene",
+          "parent": "caci_ta2:Events/00025/consequence",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "confidence": 0.4,
+          "predictionProvenance": "caci_ta2:Events/00026/escape",
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00087/escape",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00019/attacker",
+              "values": [
+                {
+                  "@id": "caci_ta2:Values/00101/",
+                  "ta2entity": "caci_ta2:Entities/00001/tom",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.8
+                },
+                {
+                  "@id": "caci_ta2:Values/00102/",
+                  "ta2entity": "caci_ta2:Entities/00007/dick",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.5
+                },
+                {
+                  "@id": "caci_ta2:Values/00103/",
+                  "ta2entity": "caci_ta2:Entities/00008/harry",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.6
+                }
+              ]
+            },
+            {
+              "@id": "caci_ta2:Participants/00088/escape",
+              "roleName": "A1-Location",
+              "entity": "caci_ta2:Entities/00044/attack-site",
+              "values": {
+                "@id": "caci_ta2:Values/00104/",
+                "ta2entity": "caci_ta2:Entities/00017/times-square",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 0.9
+              }
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00027/justice",
+          "ta1ref": "EV00026",
+          "name": "Justice",
+          "description": "The attacker is brought to justice",
+          "parent": "caci_ta2:Events/00025/consequence",
+          "confidence": 0.7,
+          "children_gate": "and",
+          "subgroup_events": [
+            "caci_ta2:Events/00028/capture",
+            "caci_ta2:Events/00029/indict",
+            "caci_ta2:Events/00030/try",
+            "caci_ta2:Events/00031/judgment"
+          ],
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00089/justice",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00019/attacker",
+              "values": [
+                {
+                  "@id": "caci_ta2:Values/00105/",
+                  "ta2entity": "caci_ta2:Entities/00001/tom",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.8
+                },
+                {
+                  "@id": "caci_ta2:Values/00106/",
+                  "ta2entity": "caci_ta2:Entities/00007/dick",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.5
+                },
+                {
+                  "@id": "caci_ta2:Values/00107/",
+                  "ta2entity": "caci_ta2:Entities/00008/harry",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.6
+                }
+              ]
+            },
+            {
+              "@id": "caci_ta2:Participants/00090/justice",
+              "roleName": "A1-Location",
+              "entity": "caci_ta2:Entities/00047/capture-location"
+            },
+            {
+              "@id": "caci_ta2:Participants/99999/justice",
+              "roleName": "A1-Location",
+              "entity": "caci_ta2:Entities/00049/court"
+            },
+            {
+              "@id": "caci_ta2:Participants/00091/justice",
+              "roleName": "A1-Location",
+              "entity": "caci_ta2:Entities/00050/prison"
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00028/capture",
+          "ta1ref": "EV00027",
+          "name": "Capture",
+          "description": "Attacker is captured by authorities",
+          "parent": "caci_ta2:Events/00027/justice",
+          "outlinks": "caci_ta2:Events/00029/indict",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "confidence": 0.6,
+          "predictionProvenance": "caci_ta2:Events/00028/capture",
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00092/capture",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00019/attacker",
+              "values": [
+                {
+                  "@id": "caci_ta2:Values/00108/",
+                  "ta2entity": "caci_ta2:Entities/00001/tom",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.8
+                },
+                {
+                  "@id": "caci_ta2:Values/00109/",
+                  "ta2entity": "caci_ta2:Entities/00007/dick",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.5
+                },
+                {
+                  "@id": "caci_ta2:Values/00110/",
+                  "ta2entity": "caci_ta2:Entities/00008/harry",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.6
+                }
+              ]
+            },
+            {
+              "@id": "caci_ta2:Participants/00093/capture",
+              "roleName": "A1-Location",
+              "entity": "caci_ta2:Entities/00047/capture-location"
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00029/indict",
+          "ta1ref": "EV00028",
+          "name": "Indict",
+          "description": "Attacker is indicted for the attack",
+          "parent": "caci_ta2:Events/00027/justice",
+          "outlinks": "caci_ta2:Events/00030/try",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "confidence": 0.6,
+          "predictionProvenance": "caci_ta2:Events/00029/indict",
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00094/indict",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00019/attacker",
+              "values": [
+                {
+                  "@id": "caci_ta2:Values/00111/",
+                  "ta2entity": "caci_ta2:Entities/00001/tom",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.8
+                },
+                {
+                  "@id": "caci_ta2:Values/00112/",
+                  "ta2entity": "caci_ta2:Entities/00007/dick",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.5
+                },
+                {
+                  "@id": "caci_ta2:Values/00113/",
+                  "ta2entity": "caci_ta2:Entities/00008/harry",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.6
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00030/try",
+          "ta1ref": "EV00029",
+          "name": "Try",
+          "description": "Attacker is tried for his crimes",
+          "parent": "caci_ta2:Events/00025/consequence",
+          "outlinks": "caci_ta2:Events/00031/judgment",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "confidence": 0.6,
+          "predictionProvenance": "caci_ta2:Events/00030/try",
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00095/try",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00019/attacker",
+              "values": [
+                {
+                  "@id": "caci_ta2:Values/00114/",
+                  "ta2entity": "caci_ta2:Entities/00001/tom",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.8
+                },
+                {
+                  "@id": "caci_ta2:Values/00115/",
+                  "ta2entity": "caci_ta2:Entities/00007/dick",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.5
+                },
+                {
+                  "@id": "caci_ta2:Values/00116/",
+                  "ta2entity": "caci_ta2:Entities/00008/harry",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.6
+                }
+              ]
+            },
+            {
+              "@id": "caci_ta2:Participants/00096/try",
+              "roleName": "A1-Location",
+              "entity": "caci_ta2:Entities/00049/court"
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00031/judgment",
+          "ta1ref": "EV00030",
+          "name": "Judgment",
+          "description": "Judgement is rendered to the attacker",
+          "parent": "caci_ta2:Events/00027/justice",
+          "confidence": 0.7,
+          "children_gate": "xor",
+          "subgroup_events": [
+            "caci_ta2:Events/00032/exonerate",
+            "caci_ta2:Events/00033/convict"
+          ],
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00097/judgment",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00019/attacker",
+              "values": [
+                {
+                  "@id": "caci_ta2:Values/00117/",
+                  "ta2entity": "caci_ta2:Entities/00001/tom",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.8
+                },
+                {
+                  "@id": "caci_ta2:Values/00118/",
+                  "ta2entity": "caci_ta2:Entities/00007/dick",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.5
+                },
+                {
+                  "@id": "caci_ta2:Values/00119/",
+                  "ta2entity": "caci_ta2:Entities/00008/harry",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.6
+                }
+              ]
+            },
+            {
+              "@id": "caci_ta2:Participants/00098/judgment",
+              "roleName": "A1-Location",
+              "entity": "caci_ta2:Entities/00049/court"
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00032/exonerate",
+          "ta1ref": "EV00031",
+          "name": "Exonerate",
+          "description": "The attacker is found not guilty",
+          "parent": "caci_ta2:Events/00031/judgment",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "confidence": 0.3,
+          "predictionProvenance": "caci_ta2:Events/00032/exonerate",
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00099/exonerate",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00019/attacker",
+              "values": [
+                {
+                  "@id": "caci_ta2:Values/00120/",
+                  "ta2entity": "caci_ta2:Entities/00001/tom",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.8
+                },
+                {
+                  "@id": "caci_ta2:Values/00121/",
+                  "ta2entity": "caci_ta2:Entities/00007/dick",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.5
+                },
+                {
+                  "@id": "caci_ta2:Values/00122/",
+                  "ta2entity": "caci_ta2:Entities/00008/harry",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.6
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00033/convict",
+          "ta1ref": "EV00032",
+          "name": "Convict",
+          "description": "The attacker is found guilty",
+          "parent": "caci_ta2:Events/00031/judgment",
+          "confidence": 0.7,
+          "children_gate": "and",
+          "subgroup_events": [
+            "caci_ta2:Events/00034/convict",
+            "caci_ta2:Events/00035/imprison"
+          ],
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00100/convict",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00019/attacker",
+              "values": [
+                {
+                  "@id": "caci_ta2:Values/00123/",
+                  "ta2entity": "caci_ta2:Entities/00001/tom",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.8
+                },
+                {
+                  "@id": "caci_ta2:Values/00124/",
+                  "ta2entity": "caci_ta2:Entities/00007/dick",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.5
+                },
+                {
+                  "@id": "caci_ta2:Values/00125/",
+                  "ta2entity": "caci_ta2:Entities/00008/harry",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.6
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00034/convict",
+          "ta1ref": "EV00033",
+          "name": "Convict",
+          "description": "The attacker is found guilty",
+          "parent": "caci_ta2:Events/00033/convict",
+          "outlinks": "caci_ta2:Events/00035/imprison",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "confidence": 0.7,
+          "predictionProvenance": "caci_ta2:Events/00034/convict",
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00101/convict",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00019/attacker",
+              "values": [
+                {
+                  "@id": "caci_ta2:Values/00126/",
+                  "ta2entity": "caci_ta2:Entities/00001/tom",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.8
+                },
+                {
+                  "@id": "caci_ta2:Values/00127/",
+                  "ta2entity": "caci_ta2:Entities/00007/dick",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.5
+                },
+                {
+                  "@id": "caci_ta2:Values/00128/",
+                  "ta2entity": "caci_ta2:Entities/00008/harry",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.6
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00035/imprison",
+          "ta1ref": "EV00034",
+          "name": "Imprison",
+          "description": "The attacker is sent to prison",
+          "parent": "caci_ta2:Events/00033/convict",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "confidence": 0.7,
+          "predictionProvenance": "caci_ta2:Events/00035/imprison",
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00102/imprison",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00019/attacker",
+              "values": [
+                {
+                  "@id": "caci_ta2:Values/00129/",
+                  "ta2entity": "caci_ta2:Entities/00001/tom",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.8
+                },
+                {
+                  "@id": "caci_ta2:Values/00130/",
+                  "ta2entity": "caci_ta2:Entities/00007/dick",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.5
+                },
+                {
+                  "@id": "caci_ta2:Values/00131/",
+                  "ta2entity": "caci_ta2:Entities/00008/harry",
+                  "provenance": "caci_ta2:Provenance/00013/",
+                  "confidence": 0.6
+                }
+              ]
+            },
+            {
+              "@id": "caci_ta2:Participants/00103/imprison",
+              "roleName": "A1-Location",
+              "entity": "caci_ta2:Entities/00050/prison"
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00036/unrest",
+          "ta1ref": "none",
+          "name": "Unrest",
+          "description": "Political unrest in the attacker's city",
+          "parent": "caci_ta2:Events/00001/prep",
+          "outlinks": "caci_ta2:Events/00003/study",
+          "wd_node": "wd:Q7897387",
+          "wd_label": "unrest",
+          "wd_description": "sociopolitical turbulence and discontent, may involve riots",
+          "confidence": 0.7,
+          "provenance": "caci_ta2:Provenance/00013/",
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00104/unrest",
+              "roleName": "A2-Location",
+              "entity": "kairos:NULL",
+              "values": {
+                "@id": "caci_ta2:Values/00132/",
+                "ta2entity": "caci_ta2:Entities/00004/baghdad",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00037/load",
+          "ta1ref": "none",
+          "name": "Load",
+          "description": "An agent loads the container into the vehicle",
+          "parent": "caci_ta2:Events/00017/place",
+          "outlinks": "caci_ta2:Events/00018/transport",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "confidence": 1,
+          "provenance": "caci_ta2:Provenance/00013/",
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00105/load",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00019/attacker",
+              "values": {
+                "@id": "caci_ta2:Values/00133/",
+                "ta2entity": "caci_ta2:Entities/00008/harry",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00106/load",
+              "roleName": "A1-Container",
+              "entity": "caci_ta2:Entities/00025/container",
+              "values": {
+                "@id": "caci_ta2:Values/00134/",
+                "ta2entity": "caci_ta2:Entities/00010/backpack",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00107/load",
+              "roleName": "A2-Vehicle",
+              "entity": "caci_ta2:Entities/00020/vehicle",
+              "values": {
+                "@id": "caci_ta2:Values/00135/",
+                "ta2entity": "caci_ta2:Entities/00018/truck",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00108/load",
+              "roleName": "A3-Location",
+              "entity": "caci_ta2:Entities/00026/location1",
+              "values": {
+                "@id": "caci_ta2:Values/00136/",
+                "ta2entity": "caci_ta2:Entities/00038/bronx",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00038/contact",
+          "ta1ref": "none",
+          "name": "Contact",
+          "description": "The attacker contacts a co-conspirator",
+          "parent": "caci_ta2:Events/00000/ied-attack",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "confidence": 0.9,
+          "provenance": "caci_ta2:Provenance/00013/",
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00109/contact",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00019/attacker",
+              "values": {
+                "@id": "caci_ta2:Values/00137/",
+                "ta2entity": "caci_ta2:Entities/00001/tom",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00110/contact",
+              "roleName": "A1-Participant",
+              "entity": "caci_ta2:Entities/00036/co-conspirator",
+              "values": {
+                "@id": "caci_ta2:Values/00138/",
+                "ta2entity": "caci_ta2:Entities/00007/dick",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 0.8
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00111/contact",
+              "roleName": "A2-Instrument",
+              "entity": "caci_ta2:Entities/00048/device"
+            },
+            {
+              "@id": "caci_ta2:Participants/00112/contact",
+              "roleName": "A3-Topic",
+              "entity": "caci_ta2:Entities/00024/subject-matter",
+              "values": {
+                "@id": "caci_ta2:Values/00139/",
+                "ta2entity": "caci_ta2:Events/00020/detonate",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 0.9
+              }
+            }
+          ]
+        },
+        {
+          "@id": "caci_ta2:Events/00039/contact",
+          "ta1ref": "none",
+          "name": "Contact",
+          "description": "The attacker contacts a co-conspirator",
+          "parent": "caci_ta2:Events/00000/ied-attack",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "confidence": 0.7,
+          "provenance": "caci_ta2:Provenance/00013/",
+          "participants": [
+            {
+              "@id": "caci_ta2:Participants/00113/contact",
+              "roleName": "A0-Agent",
+              "entity": "caci_ta2:Entities/00019/attacker",
+              "values": {
+                "@id": "caci_ta2:Values/00140/",
+                "ta2entity": "caci_ta2:Entities/00001/tom",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00114/contact",
+              "roleName": "A1-Participant",
+              "entity": "caci_ta2:Entities/00036/co-conspirator",
+              "values": {
+                "@id": "caci_ta2:Values/00141/",
+                "ta2entity": "caci_ta2:Entities/00008/harry",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 1
+              }
+            },
+            {
+              "@id": "caci_ta2:Participants/00115/contact",
+              "roleName": "A2-Instrument",
+              "entity": "caci_ta2:Entities/00048/device"
+            },
+            {
+              "@id": "caci_ta2:Participants/00116/contact",
+              "roleName": "A3-Topic",
+              "entity": "caci_ta2:Entities/00024/subject-matter",
+              "values": {
+                "@id": "caci_ta2:Values/00142/",
+                "ta2entity": "caci_ta2:Events/00020/detonate",
+                "provenance": "caci_ta2:Provenance/00013/",
+                "confidence": 0.8
+              }
+            }
+          ]
+        }
+      ],
+      "entities": [
+        {
+          "@id": "caci_ta2:Entities/00001/tom",
+          "name": "Tom",
+          "ta2wd_node": "wd:Q2013",
+          "ta2wd_label": "Wikidata",
+          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00002/plane",
+          "name": "plane",
+          "ta2wd_node": "wd:Q2013",
+          "ta2wd_label": "Wikidata",
+          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00003/nyc",
+          "name": "New York City",
+          "ta2wd_node": "wd:Q2013",
+          "ta2wd_label": "Wikidata",
+          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00004/baghdad",
+          "name": "Baghdad",
+          "ta2wd_node": [
+            "wd:Q2013",
+            "wd:Q1530"
+          ],
+          "ta2wd_label": [
+            "Wikidata",
+            "Baghdad"
+          ],
+          "ta2wd_description": [
+            "free knowledge graph hosted by Wikimedia and edited by volunteers",
+            "capital city of Iraq"
+          ]
+        },
+        {
+          "@id": "caci_ta2:Entities/00005/x-school",
+          "name": "X-school",
+          "ta2wd_node": "wd:Q2013",
+          "ta2wd_label": "Wikidata",
+          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00006/bomb-making",
+          "name": "bomb-making",
+          "ta2wd_node": "wd:Q2013",
+          "ta2wd_label": "Wikidata",
+          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00007/dick",
+          "name": "Dick",
+          "ta2wd_node": "wd:Q2013",
+          "ta2wd_label": "Wikidata",
+          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00008/harry",
+          "name": "Harry",
+          "ta2wd_node": "wd:Q2013",
+          "ta2wd_label": "Wikidata",
+          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00009/bomb",
+          "name": "bomb",
+          "ta2wd_node": "wd:Q2013",
+          "ta2wd_label": "Wikidata",
+          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00010/backpack",
+          "name": "backpack",
+          "ta2wd_node": "wd:Q2013",
+          "ta2wd_label": "Wikidata",
+          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00011/fertilizer",
+          "name": "fertilizer",
+          "ta2wd_node": "wd:Q2013",
+          "ta2wd_label": "Wikidata",
+          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00012/home-depot",
+          "name": "Home Depot",
+          "ta2wd_node": "wd:Q12140",
+          "ta2wd_label": "medication",
+          "ta2wd_description": "substance used to diagnose, cure, treat, or prevent disease"
+        },
+        {
+          "@id": "caci_ta2:Entities/00013/brooklyn",
+          "name": "Brooklyn",
+          "ta2wd_node": "wd:Q2013",
+          "ta2wd_label": "Wikidata",
+          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00014/acetone",
+          "name": "acetone",
+          "ta2wd_node": "wd:Q2013",
+          "ta2wd_label": "Wikidata",
+          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00015/home",
+          "name": "home",
+          "ta2wd_node": "wd:Q2013",
+          "ta2wd_label": "Wikidata",
+          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00016/mixture",
+          "name": "mixture",
+          "ta2wd_node": "wd:Q2013",
+          "ta2wd_label": "Wikidata",
+          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00017/times-square",
+          "name": "Times Square, NYC",
+          "ta2wd_node": "wd:Q2013",
+          "ta2wd_label": "Wikidata",
+          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00018/truck",
+          "name": "truck",
+          "ta2wd_node": "wd:Q2013",
+          "ta2wd_label": "Wikidata",
+          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00019/attacker",
+          "name": "attacker",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00020/vehicle",
+          "name": "vehicle",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00021/domestic-location",
+          "name": "domestic location",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00022/foreign-location",
+          "name": "foreign location",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00023/school",
+          "name": "school",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00024/subject-matter",
+          "name": "subject matter",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00025/container",
+          "name": "container",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00026/location1",
+          "name": "location",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00027/purchaser",
+          "name": "purchaser",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00028/component",
+          "name": "component",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00029/merchant",
+          "name": "merchant",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00030/thief",
+          "name": "thief",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00031/stolen-object",
+          "name": "stolen object",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00032/theft-location",
+          "name": "theft location",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00033/mixture",
+          "name": "mixture",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00034/location2",
+          "name": "location",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00035/vehicle2",
+          "name": "vehicle",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00036/co-conspirator",
+          "name": "co-conspirator",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00037/ied",
+          "name": "IED",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00038/bronx",
+          "name": "Bronx",
+          "ta2wd_node": "wd:Q2013",
+          "ta2wd_label": "Wikidata",
+          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00039/smokeless-powder",
+          "name": "smokeless powder",
+          "ta2wd_node": "wd:Q2013",
+          "ta2wd_label": "Wikidata",
+          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00040/brooklyn-ammoworks",
+          "name": "Brooklyn Ammoworks",
+          "ta2wd_node": "wd:Q2013",
+          "ta2wd_label": "Wikidata",
+          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00041/finder",
+          "name": "finder",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00042/renter",
+          "name": "renter",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00043/mixer",
+          "name": "mixer",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00044/attack-site",
+          "name": "attack site",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00045/victim",
+          "name": "victim",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00046/destroyed-object",
+          "name": "destroyed object",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00047/capture-location",
+          "name": "capture location",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00048/device",
+          "name": "device",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00049/court",
+          "name": "court",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00050/prison",
+          "name": "prison",
+          "wd_node": "wd:Q2013",
+          "wd_label": "Wikidata",
+          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        }
+      ],
+      "relations": [
+        {
+          "@id": "caci_ta2:Relations/00001/friends",
+          "ta1ref": "RE00001",
+          "name": "attacker is friends with co-conspirators",
+          "relationSubject": "caci_ta2:Entities/00001/tom",
+          "wd_node": "wd:Q491",
+          "wd_label": "friendship",
+          "wd_description": "relationship between people who have mutual affection for each other",
+          "relationObject": "caci_ta2:Entities/00007/dick",
+          "relationProvenance": "caci_ta2:Provenance/00101/",
+          "relationSubject_prov": "caci_ta2:Provenance/00012/",
+          "relationObject_prov": "caci_ta2:Provenance/00013/",
+          "confidence": 0.8
+        },
+        {
+          "@id": "caci_ta2:Relations/00002/friends",
+          "ta1ref": "RE00001",
+          "name": "attacker is friends with co-conspirators",
+          "relationSubject": "caci_ta2:Entities/00001/tom",
+          "wd_node": "wd:Q491",
+          "wd_label": "friendship",
+          "wd_description": "relationship between people who have mutual affection for each other",
+          "relationObject": "caci_ta2:Entities/00008/harry",
+          "relationProvenance": "caci_ta2:Provenance/00101/",
+          "relationSubject_prov": "caci_ta2:Provenance/00012/",
+          "relationObject_prov": "caci_ta2:Provenance/00013/",
+          "confidence": 0.8
+        },
+        {
+          "@id": "caci_ta2:Relations/00003/attacker-residence",
+          "ta1ref": "RE00002",
+          "name": "Attacker resides in the foreign location.",
+          "relationSubject": "caci_ta2:Entities/00019/attacker",
+          "wd_node": "wdt:P551",
+          "wd_label": "residence",
+          "wd_description": "the place where the person is or has been, resident",
+          "relationObject": "caci_ta2:Entities/00022/foreign-location",
+          "modality": "hedged"
+        },
+        {
+          "@id": "caci_ta2:Relations/00004/",
+          "ta1ref": "RE00003",
+          "name": "attacker is often the same as the purchaser",
+          "relationSubject": "caci_ta2:Entities/00001/tom",
+          "wd_node": "wd:Q26161438",
+          "wd_label": "approximately equal to",
+          "wd_description": "closeness in value, meaning or effect; relation in which difference can be neglected for practical purposes",
+          "relationObject": "caci_ta2:Entities/00027/purchaser",
+          "relationProvenance": "caci_ta2:Provenance/00101/",
+          "relationSubject_prov": "caci_ta2:Provenance/00012/",
+          "relationObject_prov": "caci_ta2:Provenance/00013/",
+          "confidence": 0.8
+        },
+        {
+          "@id": "caci_ta2:Relations/00005/",
+          "ta1ref": "RE00004",
+          "name": "attacker is often the same as the renter",
+          "relationSubject": "caci_ta2:Entities/00019/attacker",
+          "wd_node": "wd:Q26161438",
+          "wd_label": "approximately equal to",
+          "wd_description": "closeness in value, meaning or effect; relation in which difference can be neglected for practical purposes",
+          "relationObject": "caci_ta2:Entities/00042/renter"
+        },
+        {
+          "@id": "caci_ta2:Relations/00006/",
+          "ta1ref": "RE00005",
+          "name": "attacker is often be the same as the finder",
+          "relationSubject": "caci_ta2:Entities/00019/attacker",
+          "wd_node": "wd:Q26161438",
+          "wd_label": "approximately equal to",
+          "wd_description": "closeness in value, meaning or effect; relation in which difference can be neglected for practical purposes",
+          "relationObject": "caci_ta2:Entities/00041/finder"
+        },
+        {
+          "@id": "caci_ta2:Relations/00007/",
+          "ta1ref": "RE00006",
+          "name": "attacker is often the same as the mixer",
+          "relationSubject": "caci_ta2:Entities/00007/dick",
+          "wd_node": "wd:Q26161438",
+          "wd_label": "approximately equal to",
+          "wd_description": "closeness in value, meaning or effect; relation in which difference can be neglected for practical purposes",
+          "relationObject": "caci_ta2:Entities/00043/mixer",
+          "relationProvenance": "caci_ta2:Provenance/00101/",
+          "relationSubject_prov": "caci_ta2:Provenance/00012/",
+          "relationObject_prov": "caci_ta2:Provenance/00013/",
+          "confidence": 0.9
+        }
+      ]
+    }
+  ],
+  "provenanceData": [
+    {
+      "provenanceID": "caci_ta2:Provenance/00001/",
+      "comment": [
+        " *Text documents* ",
+        "'childID' is an LDC child_id. It is the ID of the document/artifact",
+        "'parentIDs' is a list of documents that are parent to 'childID.",
+        "mediaType is an IANA Media Type.",
+        "'offset' and 'length' are in characters."
+      ],
+      "childID": "L0C04GM35",
+      "parentIDs": "L0C04GM2E",
+      "mediaType": "text/plain",
+      "offset": 27,
+      "length": 76
+    },
+    {
+      "provenanceID": "caci_ta2:Provenance/00002/",
+      "comment": [
+        " *Images* ",
+        "'parentIDs' is a list of documents that are parent to 'childID.",
+        "'parentIDs' can be a list because a single image/video/etc. can be embedded in more than one parent document.",
+        "'parentIDs' is redundant since the same information is present in the LDC-provided parent_children.tab.",
+        "'boundingBox' dimensions are in pixels"
+      ],
+      "childID": "L0C04GJ61",
+      "parentIDs": "L0C04GL30",
+      "mediaType": "image/png",
+      "boundingBox": [
+        100,
+        101,
+        200,
+        201
+      ]
+    },
+    {
+      "provenanceID": "caci_ta2:Provenance/00003/",
+      "comment": [
+        " *Videos -- key frames* ",
+        "'startTime' and 'endTime are in seconds.",
+        "'keyframes' is an optional array of key frame IDs, but startTime and endTime are still required."
+      ],
+      "childID": "L0C04GI8W",
+      "parentIDs": "L0C04GKY2",
+      "mediaType": "video/mpeg",
+      "startTime": 2.56,
+      "endTime": 5.12,
+      "keyframes": [
+        60,
+        61,
+        62
+      ],
+      "boundingBox": [
+        100,
+        101,
+        200,
+        201
+      ]
+    },
+    {
+      "provenanceID": "caci_ta2:Provenance/00011/",
+      "comment": [
+        " *Audio recordings* ",
+        "'startTime' and 'endTime are in seconds."
+      ],
+      "childID": "K0C03N4OO",
+      "parentIDs": "L0C04GKY2",
+      "mediaType": "audio/wav",
+      "startTime": 2.56,
+      "endTime": 5.12
+    },
+    {
+      "provenanceID": "caci_ta2:Provenance/00012/",
+      "comment": [
+        " *Videos -- time range* ",
+        "'startTime' and 'endTime are in seconds."
+      ],
+      "childID": "L0C04GI8W",
+      "parentIDs": "L0C04GKY2",
+      "mediaType": "video/mpeg",
+      "startTime": 2.56,
+      "endTime": 5.12,
+      "boundingBox": [
+        100,
+        101,
+        200,
+        201
+      ]
+    },
+    {
+      "provenanceID": "caci_ta2:Provenance/00013/",
+      "childID": "L0C04GM35",
+      "parentIDs": "L0C04GM2E",
+      "mediaType": "text/plain",
+      "offset": 5,
+      "length": 21
+    },
+    {
+      "provenanceID": "caci_ta2:Provenance/00101/",
+      "childID": "L0C04GM35",
+      "parentIDs": "L0C04GM2E",
+      "mediaType": "text/plain",
+      "offset": 5,
+      "length": 21
+    }
+  ]
+}
