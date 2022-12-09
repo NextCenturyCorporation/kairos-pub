@@ -7,7 +7,7 @@
   ],
   "@id": "caci_ta2:Submissions/TA2/12345",
   "sdfVersion": "2.3",
-  "version": "caci-10.14.2022 / caci-10.14.2022",
+  "version": "caci-10.14.2022 / caci-12.01.2022",
   "ceID": "ce1002",
   "task2": false,
   "comment": [
@@ -27,6 +27,7 @@
           "ta1ref": "EV00000",
           "name": "Disease Outbreak",
           "description": "Legionnaire's Disease outbreak",
+          "parent": "kairos:NULL",
           "isTopLevel": true,
           "confidence": 0.9,
           "provenance": "caci_ta2:Provenance/00002/",
@@ -1242,7 +1243,12 @@
           "wd_label": "foobar",
           "wd_description": "foobar",
           "confidence": 0,
-          "predictionProvenance": "caci_ta2:Events/00032/healthworker-response"
+          "predictionProvenance": "caci_ta2:Events/00032/healthworker-response",
+          "participants": {
+            "@id": "caci_ta2:Participants/00060/healthworker-response",
+            "roleName": "A0-Agent",
+            "entity": "caci_ta2:Entities/00010/medical-professional"
+          }
         }
       ],
       "entities": [
@@ -1531,6 +1537,7 @@
           "ta1ref": "EV00000",
           "name": "Disease Outbreak",
           "description": "Legionnaire's Disease outbreak",
+          "parent": "kairos:NULL",
           "isTopLevel": true,
           "confidence": 1,
           "provenance": "caci_ta2:Provenance/00001/",
@@ -1552,7 +1559,12 @@
           "wd_description": "foobar",
           "confidence": 1,
           "outlinks": "caci_ta2:Events/00002/patient-progression",
-          "provenance": "caci_ta2:Provenance/00001/"
+          "provenance": "caci_ta2:Provenance/00001/",
+          "participants": {
+            "@id": "caci_ta2:Participants/00001/",
+            "roleName": "A0-Agent",
+            "entity": "caci_ta2:Entities/00001/"
+          }
         },
         {
           "@id": "caci_ta2:Events/00002/patient-progression",
@@ -1565,10 +1577,21 @@
           "wd_label": "foobar",
           "wd_description": "foobar",
           "confidence": 1,
-          "provenance": "caci_ta2:Provenance/00001/"
+          "provenance": "caci_ta2:Provenance/00001/",
+          "participants": {
+            "@id": "caci_ta2:Participants/00002/",
+            "roleName": "A0-Agent",
+            "entity": "caci_ta2:Entities/00001/"
+          }
         }
       ],
-      "entities": [],
+      "entities": {
+        "@id": "caci_ta2:Entities/00001/",
+        "name": "foobar",
+        "wd_node": "wd:foobar",
+        "wd_label": "foobar",
+        "wd_description": "foobar"
+      },
       "relations": []
     }
   ],

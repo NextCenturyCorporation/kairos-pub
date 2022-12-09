@@ -1,6 +1,6 @@
 {
   "@context": [
-    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v2.2.jsonld",
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v2.3.jsonld",
     {
       "caci_ta1": "https://caci.com/kairos/ta1/",
       "my_key": "caci_ta1:my_key",
@@ -8,8 +8,8 @@
     }
   ],
   "@id": "caci_ta1:Submissions/TA1/12345",
-  "sdfVersion": "2.2",
-  "version": "caci-10.14.2022",
+  "sdfVersion": "2.3",
+  "version": "caci-12.01.2022",
   "ta2": false,
   "comment": [
     "Example provides representation of E. Hovy's Event Complex schema layout for a disease outbreak.",
@@ -965,7 +965,12 @@
       "comment": "Content not filled in",
       "wd_node": "wd:foobar",
       "wd_label": "foobar",
-      "wd_description": "foobar"
+      "wd_description": "foobar",
+      "participants": {
+        "@id": "caci_ta1:Participants/00061/",
+        "roleName": "A0-pag_agent_doctor",
+        "entity": "caci_ta1:Entities/00005/medical-professional"
+      }
     },
     {
       "@id": "caci_ta1:Events/00032/authority-response",
@@ -975,7 +980,12 @@
       "comment": "Content not filled in",
       "wd_node": "wd:foobar",
       "wd_label": "foobar",
-      "wd_description": "foobar"
+      "wd_description": "foobar",
+      "participants": {
+        "@id": "caci_ta1:Participants/00062/",
+        "roleName": "A0-Agent",
+        "entity": "caci_ta1:Entities/00016/authority"
+      }
     }
   ],
   "entities": [

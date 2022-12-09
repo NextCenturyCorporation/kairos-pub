@@ -7,7 +7,7 @@
   ],
   "@id": "caci_ta2:Submissions/TA2/12345",
   "sdfVersion": "2.3",
-  "version": "caci-10.27.2022 / caci-10.27.2022",
+  "version": "caci-10.27.2022 / caci-12.06.2022",
   "ceID": "ce1002",
   "task2": false,
   "comment": [
@@ -26,6 +26,7 @@
           "ta1ref": "EV00000",
           "name": "IED Attack",
           "description": "Attackers detonate an IED at a domestic location",
+          "parent": "kairos:NULL",
           "isTopLevel": true,
           "confidence": 1,
           "children_gate": "and",
@@ -99,14 +100,14 @@
               "entity": "caci_ta2:Entities/00020/vehicle",
               "values": {
                 "@id": "caci_ta2:Values/00003/",
-                "ta2entity": "caci_ta2:Entities/00002/plane",
+                "ta2entity": "caci_ta2:Entities/00002/outbound-plane",
                 "provenance": "caci_ta2:Provenance/00013/",
                 "confidence": 1
               }
             },
             {
               "@id": "caci_ta2:Participants/00004/travel",
-              "roleName": "A1-Vehicle",
+              "roleName": "A2-Location",
               "entity": "caci_ta2:Entities/00021/domestic-location",
               "values": {
                 "@id": "caci_ta2:Values/00004/",
@@ -117,7 +118,7 @@
             },
             {
               "@id": "caci_ta2:Participants/00005/travel",
-              "roleName": "A1-Vehicle",
+              "roleName": "A3-Location",
               "entity": "caci_ta2:Entities/00022/foreign-location",
               "values": {
                 "@id": "caci_ta2:Values/00005/",
@@ -280,14 +281,14 @@
               "entity": "caci_ta2:Entities/00020/vehicle",
               "values": {
                 "@id": "caci_ta2:Values/00015/",
-                "ta2entity": "caci_ta2:Entities/00002/plane",
+                "ta2entity": "caci_ta2:Entities/00051/inbound-plane",
                 "provenance": "caci_ta2:Provenance/00013/",
                 "confidence": 1
               }
             },
             {
               "@id": "caci_ta2:Participants/00016/travel",
-              "roleName": "A1-Vehicle",
+              "roleName": "A2-Location",
               "entity": "caci_ta2:Entities/00022/foreign-location",
               "values": {
                 "@id": "caci_ta2:Values/00016/",
@@ -298,7 +299,7 @@
             },
             {
               "@id": "caci_ta2:Participants/00017/travel",
-              "roleName": "A1-Vehicle",
+              "roleName": "A3-Location",
               "entity": "caci_ta2:Entities/00021/domestic-location",
               "values": {
                 "@id": "caci_ta2:Values/00017/",
@@ -1734,7 +1735,7 @@
           "ta1ref": "EV00029",
           "name": "Try",
           "description": "Attacker is tried for his crimes",
-          "parent": "caci_ta2:Events/00025/consequence",
+          "parent": "caci_ta2:Events/00027/justice",
           "outlinks": "caci_ta2:Events/00031/judgment",
           "wd_node": "wd:Q2013",
           "wd_label": "Wikidata",
@@ -1989,9 +1990,9 @@
           "description": "Political unrest in the attacker's city",
           "parent": "caci_ta2:Events/00001/prep",
           "outlinks": "caci_ta2:Events/00003/study",
-          "wd_node": "wd:Q7897387",
-          "wd_label": "unrest",
-          "wd_description": "sociopolitical turbulence and discontent, may involve riots",
+          "ta2wd_node": "wd:Q7897387",
+          "ta2wd_label": "unrest",
+          "ta2wd_description": "sociopolitical turbulence and discontent, may involve riots",
           "confidence": 0.7,
           "provenance": "caci_ta2:Provenance/00013/",
           "participants": [
@@ -2015,9 +2016,9 @@
           "description": "An agent loads the container into the vehicle",
           "parent": "caci_ta2:Events/00017/place",
           "outlinks": "caci_ta2:Events/00018/transport",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "ta2wd_node": "wd:Q2013",
+          "ta2wd_label": "Wikidata",
+          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
           "confidence": 1,
           "provenance": "caci_ta2:Provenance/00013/",
           "participants": [
@@ -2073,9 +2074,9 @@
           "name": "Contact",
           "description": "The attacker contacts a co-conspirator",
           "parent": "caci_ta2:Events/00000/ied-attack",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "ta2wd_node": "wd:Q2013",
+          "ta2wd_label": "Wikidata",
+          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
           "confidence": 0.9,
           "provenance": "caci_ta2:Provenance/00013/",
           "participants": [
@@ -2125,9 +2126,9 @@
           "name": "Contact",
           "description": "The attacker contacts a co-conspirator",
           "parent": "caci_ta2:Events/00000/ied-attack",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "ta2wd_node": "wd:Q2013",
+          "ta2wd_label": "Wikidata",
+          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
           "confidence": 0.7,
           "provenance": "caci_ta2:Provenance/00013/",
           "participants": [
@@ -2181,7 +2182,7 @@
           "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
         },
         {
-          "@id": "caci_ta2:Entities/00002/plane",
+          "@id": "caci_ta2:Entities/00002/outbound-plane",
           "name": "plane",
           "ta2wd_node": "wd:Q2013",
           "ta2wd_label": "Wikidata",
@@ -2531,6 +2532,13 @@
           "wd_node": "wd:Q2013",
           "wd_label": "Wikidata",
           "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+        },
+        {
+          "@id": "caci_ta2:Entities/00051/inbound-plane",
+          "name": "plane",
+          "ta2wd_node": "wd:Q2013",
+          "ta2wd_label": "Wikidata",
+          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
         }
       ],
       "relations": [
@@ -2616,6 +2624,34 @@
           "wd_label": "approximately equal to",
           "wd_description": "closeness in value, meaning or effect; relation in which difference can be neglected for practical purposes",
           "relationObject": "caci_ta2:Entities/00043/mixer",
+          "relationProvenance": "caci_ta2:Provenance/00101/",
+          "relationSubject_prov": "caci_ta2:Provenance/00012/",
+          "relationObject_prov": "caci_ta2:Provenance/00013/",
+          "confidence": 0.9
+        },
+        {
+          "@id": "caci_ta2:Relations/00008/attacker-residence",
+          "ta1ref": "none",
+          "name": "Tom resides in the Bronx.",
+          "relationSubject": "caci_ta2:Entities/00001/tom",
+          "wd_node": "wdt:P551",
+          "wd_label": "residence",
+          "wd_description": "the place where the person is or has been, resident",
+          "relationObject": "caci_ta2:Entities/00038/bronx",
+          "relationProvenance": "caci_ta2:Provenance/00101/",
+          "relationSubject_prov": "caci_ta2:Provenance/00012/",
+          "relationObject_prov": "caci_ta2:Provenance/00013/",
+          "confidence": 1.0
+        },
+        {
+          "@id": "caci_ta2:Relations/00009/attacker-residence",
+          "ta1ref": "none",
+          "name": "Dick resides in the Bronx.",
+          "relationSubject": "caci_ta2:Entities/00007/dick",
+          "wd_node": "wdt:P551",
+          "wd_label": "residence",
+          "wd_description": "the place where the person is or has been, resident",
+          "relationObject": "caci_ta2:Entities/00038/bronx",
           "relationProvenance": "caci_ta2:Provenance/00101/",
           "relationSubject_prov": "caci_ta2:Provenance/00012/",
           "relationObject_prov": "caci_ta2:Provenance/00013/",
