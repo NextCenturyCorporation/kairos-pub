@@ -177,6 +177,7 @@
           "name": "Spread",
           "description": "Schema in which a pathogen propagates/spreads",
           "parent": "caci_ta2:Events/00001/pathogen-progression",
+          "repeatable": true,
           "confidence": 0.85,
           "predictionProvenance": [
             "caci_ta2:Events/00006/pathogen-infect-patient",
@@ -410,10 +411,8 @@
             }
           ],
           "children_gate": "xor",
-          "subgroup_events": [
-            "caci_ta2:Events/00004/pathogen-spread",
-            "caci_ta2:Events/00009/pathogen-decrease"
-          ]
+          "comment": "In the original schema, continue had pathogen-spread as a child, but that causes a cycle.",
+          "subgroup_events": "caci_ta2:Events/00009/pathogen-decrease"
         },
         {
           "@id": "caci_ta2:Events/00009/pathogen-decrease",
@@ -1559,7 +1558,7 @@
           "wd_description": "foobar",
           "confidence": 1,
           "outlinks": "caci_ta2:Events/00002/patient-progression",
-          "provenance": "caci_ta2:Provenance/00001/",
+          "predictionProvenance": "caci_ta2:Events/00001/pathogen-progression",
           "participants": {
             "@id": "caci_ta2:Participants/00001/",
             "roleName": "A0-Agent",
@@ -1577,7 +1576,7 @@
           "wd_label": "foobar",
           "wd_description": "foobar",
           "confidence": 1,
-          "provenance": "caci_ta2:Provenance/00001/",
+          "predictionProvenance": "caci_ta2:Events/00002/patient-progression",
           "participants": {
             "@id": "caci_ta2:Participants/00002/",
             "roleName": "A0-Agent",
