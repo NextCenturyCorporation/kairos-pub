@@ -7,7 +7,7 @@
   ],
   "@id": "caci_ta2:Submissions/TA2/12345",
   "sdfVersion": "2.3",
-  "version": "caci-10.27.2022 / caci-12.06.2022",
+  "version": "caci-10.27.2022 / caci-02.10.2023",
   "ceID": "ce1002",
   "task2": false,
   "comment": [
@@ -77,9 +77,9 @@
           "description": "The attacker travels to IED prep location",
           "parent": "caci_ta2:Events/00001/prep",
           "outlinks": "caci_ta2:Events/00003/study",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "wd_node": "wd:Q61509",
+          "wd_label": "travel",
+          "wd_description": "movement of people between geographical locations",
           "confidence": 1,
           "provenance": "caci_ta2:Provenance/00001/",
           "participants": [
@@ -136,9 +136,9 @@
           "description": "The attacker studies bomb-making",
           "parent": "caci_ta2:Events/00001/prep",
           "outlinks": "caci_ta2:Events/00004/contact",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "wd_node": "wd:Q1782301",
+          "wd_label": "study",
+          "wd_description": "examining written materials for the purpose of learning",
           "confidence": 1,
           "provenance": "caci_ta2:Provenance/00001/",
           "participants": [
@@ -166,7 +166,7 @@
             },
             {
               "@id": "caci_ta2:Participants/00008/study",
-              "roleName": "A1-Vehicle",
+              "roleName": "A2-Topic",
               "entity": "caci_ta2:Entities/00024/subject-matter",
               "values": {
                 "@id": "caci_ta2:Values/00008/",
@@ -177,7 +177,7 @@
             },
             {
               "@id": "caci_ta2:Participants/00009/study",
-              "roleName": "A1-Vehicle",
+              "roleName": "A3-Location",
               "entity": "caci_ta2:Entities/00022/foreign-location",
               "values": {
                 "@id": "caci_ta2:Values/00009/",
@@ -195,9 +195,9 @@
           "description": "The attacker contacts co-conspirators",
           "parent": "caci_ta2:Events/00001/prep",
           "outlinks": "caci_ta2:Events/00005/travel",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "wd_node": "wd:Q21075777",
+          "wd_label": "contact",
+          "wd_description": "personal connection between two or more people",
           "confidence": 1,
           "predictionProvenance": [
             "caci_ta2:Relations/00001/friends",
@@ -258,9 +258,9 @@
           "name": "Travel",
           "description": "The attacker travels to general attack location",
           "parent": "caci_ta2:Events/00001/prep",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "wd_node": "wd:Q61509",
+          "wd_label": "travel",
+          "wd_description": "movement of people between geographical locations",
           "confidence": 1,
           "predictionProvenance": "caci_ta2:Events/00005/travel",
           "participants": [
@@ -540,9 +540,9 @@
           "parent": "caci_ta2:Events/00008/acquire",
           "outlinks": "caci_ta2:Events/00012/steal",
           "repeatable": true,
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "wd_node": "wd:Q1369832",
+          "wd_label": "purchasing",
+          "wd_description": "acquisition of goods or services by fiduciary exchange",
           "confidence": 1,
           "provenance": "caci_ta2:Provenance/00013/",
           "participants": [
@@ -581,7 +581,7 @@
             },
             {
               "@id": "caci_ta2:Participants/00031/buy",
-              "roleName": "A2-Location",
+              "roleName": "A3-Location",
               "entity": "caci_ta2:Entities/00026/location1",
               "values": {
                 "@id": "caci_ta2:Values/00038/",
@@ -600,9 +600,9 @@
           "parent": "caci_ta2:Events/00008/acquire",
           "outlinks": "caci_ta2:Events/00012/steal",
           "repeatable": true,
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "wd_node": "wd:Q1369832",
+          "wd_label": "purchasing",
+          "wd_description": "acquisition of goods or services by fiduciary exchange",
           "confidence": 1,
           "provenance": "caci_ta2:Provenance/00013/",
           "participants": [
@@ -641,7 +641,7 @@
             },
             {
               "@id": "caci_ta2:Participants/00035/buy",
-              "roleName": "A2-Location",
+              "roleName": "A3-Location",
               "entity": "caci_ta2:Entities/00026/location1",
               "values": {
                 "@id": "caci_ta2:Values/00042/",
@@ -659,9 +659,9 @@
           "description": "An attacker finds a component",
           "parent": "caci_ta2:Events/00008/acquire",
           "repeatable": true,
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "wd_node": "wd:Q37112258",
+          "wd_label": "finding",
+          "wd_description": "process of locating or identifying something",
           "confidence": 0.3,
           "predictionProvenance": [
             "caci_ta2:Events/00009/buy",
@@ -723,9 +723,9 @@
           "description": "An attacker steals a component",
           "parent": "caci_ta2:Events/00008/acquire",
           "repeatable": true,
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "wd_node": "wd:Q2727213",
+          "wd_label": "theft",
+          "wd_description": "act of taking another's property without permission or consent",
           "confidence": 1,
           "provenance": "caci_ta2:Provenance/00013/",
           "participants": [
@@ -782,9 +782,9 @@
           "description": "An attacker rents a component",
           "parent": "caci_ta2:Events/00008/acquire",
           "repeatable": true,
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "wd_node": "wd:Q157171",
+          "wd_label": "renting",
+          "wd_description": "agreement where a payment is made for the temporary use of a good, service or property owned by another",
           "confidence": 0.3,
           "predictionProvenance": [
             "caci_ta2:Events/00009/buy",
@@ -846,9 +846,9 @@
           "description": "An agent mixes components",
           "parent": "caci_ta2:Events/00007/make",
           "outlinks": "caci_ta2:Events/00015/assemble",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "wd_node": "wd:Q379697",
+          "wd_label": "mixing",
+          "wd_description": "process of mechanically manipulating a heterogeneous mixture to make it more homogeneous",
           "confidence": 0.3,
           "provenance": "caci_ta2:Provenance/00013/",
           "participants": [
@@ -884,7 +884,7 @@
             },
             {
               "@id": "caci_ta2:Participants/00048/mix",
-              "roleName": "A1-Product",
+              "roleName": "A2-Product",
               "entity": "caci_ta2:Entities/00033/mixture",
               "values": {
                 "@id": "caci_ta2:Values/00058/",
@@ -895,7 +895,7 @@
             },
             {
               "@id": "caci_ta2:Participants/00049/mix",
-              "roleName": "A2-Location",
+              "roleName": "A3-Location",
               "entity": "caci_ta2:Entities/00026/location1",
               "values": [
                 {
@@ -921,9 +921,9 @@
           "description": "An agent assembles the ied",
           "parent": "caci_ta2:Events/00007/make",
           "outlinks": "caci_ta2:Events/00016/put",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "wd_node": "wd:Q3625549",
+          "wd_label": "assembly",
+          "wd_description": "act of combining components in manufacturing",
           "confidence": 0.5,
           "predictionProvenance": [
             "caci_ta2:Events/00014/mix",
@@ -963,7 +963,7 @@
             },
             {
               "@id": "caci_ta2:Participants/00052/assemble",
-              "roleName": "A1-Product",
+              "roleName": "A2-Product",
               "entity": "caci_ta2:Entities/00037/ied",
               "values": {
                 "@id": "caci_ta2:Values/00064/",
@@ -974,7 +974,7 @@
             },
             {
               "@id": "caci_ta2:Participants/00053/assemble",
-              "roleName": "A2-Location",
+              "roleName": "A3-Location",
               "entity": "caci_ta2:Entities/00026/location1",
               "values": [
                 {
@@ -999,9 +999,9 @@
           "name": "Put",
           "description": "An agent puts the ied in a container",
           "parent": "caci_ta2:Events/00007/make",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "wd_node": "wd:Q69990763",
+          "wd_label": "insertion",
+          "wd_description": "putting one physical object inside another",
           "confidence": 1,
           "provenance": "caci_ta2:Provenance/00013/",
           "participants": [
@@ -1029,7 +1029,7 @@
             },
             {
               "@id": "caci_ta2:Participants/00056/put",
-              "roleName": "A1-Container",
+              "roleName": "A2-Container",
               "entity": "caci_ta2:Entities/00025/container",
               "values": {
                 "@id": "caci_ta2:Values/00069/",
@@ -1040,7 +1040,7 @@
             },
             {
               "@id": "caci_ta2:Participants/00057/put",
-              "roleName": "A2-Location",
+              "roleName": "A3-Location",
               "entity": "caci_ta2:Entities/00026/location1",
               "values": {
                 "@id": "caci_ta2:Values/00070/",
@@ -1117,9 +1117,9 @@
           "description": "An agent transports the container to the attack site",
           "parent": "caci_ta2:Events/00017/place",
           "outlinks": "caci_ta2:Events/00019/place",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "wd_node": "wd:Q7590",
+          "wd_label": "transport",
+          "wd_description": "human-directed movement of things or people between locations",
           "confidence": 1,
           "provenance": "caci_ta2:Provenance/00013/",
           "participants": [
@@ -1194,9 +1194,9 @@
           "name": "Place",
           "description": "An agent places the container at the attack site",
           "parent": "caci_ta2:Events/00017/place",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "wd_node": "wd:Q69990763",
+          "wd_label": "insertion",
+          "wd_description": "putting one physical object inside another",
           "confidence": 1,
           "provenance": "caci_ta2:Provenance/00013/",
           "participants": [
@@ -1242,12 +1242,12 @@
           "description": "An ied explodes at the attack site",
           "parent": "caci_ta2:Events/00000/ied-attack",
           "outlinks": "caci_ta2:Events/00021/damage",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
-          "ta2wd_node": "wd:Q2013",
-          "ta2wd_label": "Wikidata",
-          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "wd_node": "wd:Q786054",
+          "wd_label": "detonation",
+          "wd_description": "supersonic combustion of an explosive material",
+          "ta2wd_node": "wd:Q786054",
+          "ta2wd_label": "detonation",
+          "ta2wd_description": "supersonic combustion of an explosive material",
           "confidence": 0.7,
           "predictionProvenance": [
             "caci_ta2:Events/00001/prep",
@@ -1355,9 +1355,9 @@
           "name": "Destroy",
           "description": "The IED destroys an object",
           "parent": "caci_ta2:Events/00021/damage",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "wd_node": "wd:Q17781833",
+          "wd_label": "destruction",
+          "wd_description": "concept of damage to an object, system or an idea",
           "confidence": 0.7,
           "predictionProvenance": "caci_ta2:Events/00022/destroy",
           "participants": [
@@ -1396,9 +1396,9 @@
           "name": "Injure",
           "description": "The IED injures victims",
           "parent": "caci_ta2:Events/00021/damage",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "wd_node": "wd:Q193078",
+          "wd_label": "injury",
+          "wd_description": "physiological wound caused by an external source",
           "confidence": 0.7,
           "predictionProvenance": "caci_ta2:Events/00023/injure",
           "participants": [
@@ -1437,9 +1437,9 @@
           "name": "Die",
           "description": "The IED kills victims",
           "parent": "caci_ta2:Events/00021/damage",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "wd_node": "wd:Q844482",
+          "wd_label": "killing",
+          "wd_description": "act of killing a living being",
           "confidence": 0.7,
           "predictionProvenance": "caci_ta2:Events/00024/die",
           "participants": [
@@ -1544,9 +1544,9 @@
           "name": "Escape",
           "description": "Attacker escapes the attack scene",
           "parent": "caci_ta2:Events/00025/consequence",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "wd_node": "wd:Q50388354",
+          "wd_label": "escape",
+          "wd_description": "break free from confinement or control",
           "confidence": 0.4,
           "predictionProvenance": "caci_ta2:Events/00026/escape",
           "participants": [
@@ -1652,9 +1652,9 @@
           "description": "Attacker is captured by authorities",
           "parent": "caci_ta2:Events/00027/justice",
           "outlinks": "caci_ta2:Events/00029/indict",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "wd_node": "wd:Q17768966",
+          "wd_label": "capture",
+          "wd_description": "action of taking something by physical or legal force",
           "confidence": 0.6,
           "predictionProvenance": "caci_ta2:Events/00028/capture",
           "participants": [
@@ -1697,9 +1697,9 @@
           "description": "Attacker is indicted for the attack",
           "parent": "caci_ta2:Events/00027/justice",
           "outlinks": "caci_ta2:Events/00030/try",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "wd_node": "wd:Q329525",
+          "wd_label": "criminal charge",
+          "wd_description": "formal accusation of wrongdoing in common law",
           "confidence": 0.6,
           "predictionProvenance": "caci_ta2:Events/00029/indict",
           "participants": [
@@ -1737,9 +1737,9 @@
           "description": "Attacker is tried for his crimes",
           "parent": "caci_ta2:Events/00027/justice",
           "outlinks": "caci_ta2:Events/00031/judgment",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "wd_node": "wd:Q8016240",
+          "wd_label": "trial",
+          "wd_description": "coming together of parties to a dispute, to present information in a tribunal",
           "confidence": 0.6,
           "predictionProvenance": "caci_ta2:Events/00030/try",
           "participants": [
@@ -1826,9 +1826,9 @@
           "name": "Exonerate",
           "description": "The attacker is found not guilty",
           "parent": "caci_ta2:Events/00031/judgment",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "wd_node": "wd:Q1454723",
+          "wd_label": "acquittal",
+          "wd_description": "legal result of a verdict of not guilty",
           "confidence": 0.3,
           "predictionProvenance": "caci_ta2:Events/00032/exonerate",
           "participants": [
@@ -1906,9 +1906,9 @@
           "description": "The attacker is found guilty",
           "parent": "caci_ta2:Events/00033/convict",
           "outlinks": "caci_ta2:Events/00035/imprison",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "wd_node": "wd:Q2916183",
+          "wd_label": "conviction",
+          "wd_description": "verdict that results when a court of law finds a defendant guilty of a crime",
           "confidence": 0.7,
           "predictionProvenance": "caci_ta2:Events/00034/convict",
           "participants": [
@@ -1945,9 +1945,9 @@
           "name": "Imprison",
           "description": "The attacker is sent to prison",
           "parent": "caci_ta2:Events/00033/convict",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "wd_node": "wd:Q853735",
+          "wd_label": "incarceration",
+          "wd_description": "detention of a person",
           "confidence": 0.7,
           "predictionProvenance": "caci_ta2:Events/00035/imprison",
           "participants": [
@@ -1998,7 +1998,7 @@
           "participants": [
             {
               "@id": "caci_ta2:Participants/00104/unrest",
-              "roleName": "A2-Location",
+              "roleName": "A1-Location",
               "entity": "kairos:NULL",
               "values": {
                 "@id": "caci_ta2:Values/00132/",
@@ -2016,9 +2016,9 @@
           "description": "An agent loads the container into the vehicle",
           "parent": "caci_ta2:Events/00017/place",
           "outlinks": "caci_ta2:Events/00018/transport",
-          "ta2wd_node": "wd:Q2013",
-          "ta2wd_label": "Wikidata",
-          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "ta2wd_node": "wd:Q69466762",
+          "ta2wd_label": "loading",
+          "ta2wd_description": "lifting a load up or putting it into something",
           "confidence": 1,
           "provenance": "caci_ta2:Provenance/00013/",
           "participants": [
@@ -2074,9 +2074,9 @@
           "name": "Contact",
           "description": "The attacker contacts a co-conspirator",
           "parent": "caci_ta2:Events/00000/ied-attack",
-          "ta2wd_node": "wd:Q2013",
-          "ta2wd_label": "Wikidata",
-          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "ta2wd_node": "wd:Q21075777",
+          "ta2wd_label": "contact",
+          "ta2wd_description": "personal connection between two or more people",
           "confidence": 0.9,
           "provenance": "caci_ta2:Provenance/00013/",
           "participants": [
@@ -2126,9 +2126,9 @@
           "name": "Contact",
           "description": "The attacker contacts a co-conspirator",
           "parent": "caci_ta2:Events/00000/ied-attack",
-          "ta2wd_node": "wd:Q2013",
-          "ta2wd_label": "Wikidata",
-          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers",
+          "ta2wd_node": "wd:Q21075777",
+          "ta2wd_label": "contact",
+          "ta2wd_description": "personal connection between two or more people",
           "confidence": 0.7,
           "provenance": "caci_ta2:Provenance/00013/",
           "participants": [
@@ -2177,88 +2177,79 @@
         {
           "@id": "caci_ta2:Entities/00001/tom",
           "name": "Tom",
-          "ta2wd_node": "wd:Q2013",
-          "ta2wd_label": "Wikidata",
-          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "ta2wd_node": "wd:Q24229398",
+          "ta2wd_label": "agent",
+          "ta2wd_description": "distinct and identifiable entity capable of performing actions"
         },
         {
           "@id": "caci_ta2:Entities/00002/outbound-plane",
           "name": "plane",
-          "ta2wd_node": "wd:Q2013",
-          "ta2wd_label": "Wikidata",
-          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "ta2wd_node": "wd:Q197",
+          "ta2wd_label": "airplane",
+          "ta2wd_description": "powered fixed-wing aircraft"
         },
         {
           "@id": "caci_ta2:Entities/00003/nyc",
           "name": "New York City",
-          "ta2wd_node": "wd:Q2013",
-          "ta2wd_label": "Wikidata",
-          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "ta2wd_node": "wd:Q60",
+          "ta2wd_label": "New York City",
+          "ta2wd_description": "most populous city in the United States of America"
         },
         {
           "@id": "caci_ta2:Entities/00004/baghdad",
           "name": "Baghdad",
-          "ta2wd_node": [
-            "wd:Q2013",
-            "wd:Q1530"
-          ],
-          "ta2wd_label": [
-            "Wikidata",
-            "Baghdad"
-          ],
-          "ta2wd_description": [
-            "free knowledge graph hosted by Wikimedia and edited by volunteers",
-            "capital city of Iraq"
-          ]
+          "ta2wd_node": "wd:Q1530",
+          "ta2wd_label": "Baghdad",
+          "ta2wd_description": "capital city of Iraq"
         },
         {
           "@id": "caci_ta2:Entities/00005/x-school",
           "name": "X-school",
-          "ta2wd_node": "wd:Q2013",
-          "ta2wd_label": "Wikidata",
-          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "ta2wd_node": "wd:Q3914",
+          "ta2wd_label": "school",
+          "ta2wd_description": "institution for the education of students by teachers"
         },
         {
           "@id": "caci_ta2:Entities/00006/bomb-making",
           "name": "bomb-making",
-          "ta2wd_node": "wd:Q2013",
-          "ta2wd_label": "Wikidata",
-          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "ta2wd_node": "wd:Q4940397",
+          "ta2wd_label": "Bomb-making instructions on the internet",
+          "ta2wd_description": "sharing of bomb production methods on the Internet"
         },
         {
           "@id": "caci_ta2:Entities/00007/dick",
           "name": "Dick",
-          "ta2wd_node": "wd:Q2013",
-          "ta2wd_label": "Wikidata",
-          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "ta2wd_node": "wd:Q706884",
+          "ta2wd_label": "accomplice",
+          "ta2wd_description": "person who actively participates in the commission of a crime, even if they take no part in the actual criminal offense, with the other perpetrators"
         },
         {
           "@id": "caci_ta2:Entities/00008/harry",
           "name": "Harry",
-          "ta2wd_node": "wd:Q2013",
-          "ta2wd_label": "Wikidata",
-          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "ta2wd_node": "wd:Q706884",
+          "ta2wd_label": "accomplice",
+          "ta2wd_description": "person who actively participates in the commission of a crime, even if they take no part in the actual criminal offense, with the other perpetrators"
         },
         {
           "@id": "caci_ta2:Entities/00009/bomb",
           "name": "bomb",
-          "ta2wd_node": "wd:Q2013",
-          "ta2wd_label": "Wikidata",
-          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "ta2wd_node": "wd:Q1249453",
+          "ta2wd_label": "improvised explosive device",
+          "ta2wd_description": "homemade bomb"
         },
         {
           "@id": "caci_ta2:Entities/00010/backpack",
           "name": "backpack",
-          "ta2wd_node": "wd:Q2013",
-          "ta2wd_label": "Wikidata",
-          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "ta2wd_node": "wd:Q5843",
+          "ta2wd_label": "backpack",
+          "ta2wd_description": "bag carried on one's back"
         },
         {
           "@id": "caci_ta2:Entities/00011/fertilizer",
           "name": "fertilizer",
-          "ta2wd_node": "wd:Q2013",
-          "ta2wd_label": "Wikidata",
-          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "ta2wd_node": "wd:Q83323",
+          "ta2wd_label": "fertilizer",
+          "ta2wd_description": "material of natural or synthetic origin (other than liming materials) applied to soils or to plants to supply essential nutrients"
         },
         {
           "@id": "caci_ta2:Entities/00012/home-depot",
@@ -2270,275 +2261,277 @@
         {
           "@id": "caci_ta2:Entities/00013/brooklyn",
           "name": "Brooklyn",
-          "ta2wd_node": "wd:Q2013",
-          "ta2wd_label": "Wikidata",
-          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "ta2wd_node": "wd:Q18419",
+          "ta2wd_label": "Brooklyn",
+          "ta2wd_description": "borough of New York City, New York, United States"
         },
         {
           "@id": "caci_ta2:Entities/00014/acetone",
           "name": "acetone",
-          "ta2wd_node": "wd:Q2013",
-          "ta2wd_label": "Wikidata",
-          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "ta2wd_node": "wd:Q49546",
+          "ta2wd_label": "acetone",
+          "ta2wd_description": "chemical compound"
         },
         {
           "@id": "caci_ta2:Entities/00015/home",
           "name": "home",
-          "ta2wd_node": "wd:Q2013",
-          "ta2wd_label": "Wikidata",
-          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "ta2wd_node": [
+            "wd:Q7743",
+            "wd:Q699405"
+          ],
+          "ta2wd_label": [
+            "home",
+            "residence"
+          ],
+          "ta2wd_description": [
+            "dwelling-place used as a permanent or semi-permanent residence",
+            "self-contained unit of accommodation (house, apartment, mobile home, houseboat or other structure) used as a home"
+          ]
         },
         {
           "@id": "caci_ta2:Entities/00016/mixture",
           "name": "mixture",
-          "ta2wd_node": "wd:Q2013",
-          "ta2wd_label": "Wikidata",
-          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "ta2wd_node": "wd:Q169336",
+          "ta2wd_label": "mixture",
+          "ta2wd_description": "substance formed when two or more constituents are physically combined together"
         },
         {
           "@id": "caci_ta2:Entities/00017/times-square",
           "name": "Times Square, NYC",
-          "ta2wd_node": "wd:Q2013",
-          "ta2wd_label": "Wikidata",
-          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "ta2wd_node": "wd:Q11259",
+          "ta2wd_label": "Times Square",
+          "ta2wd_description": "neighborhood and square in Manhattan, New York City, United States"
         },
         {
           "@id": "caci_ta2:Entities/00018/truck",
           "name": "truck",
-          "ta2wd_node": "wd:Q2013",
-          "ta2wd_label": "Wikidata",
-          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "ta2wd_node": "wd:Q43193",
+          "ta2wd_label": "truck",
+          "ta2wd_description": "commercial or utilitarian large motor vehicle"
         },
         {
           "@id": "caci_ta2:Entities/00019/attacker",
           "name": "attacker",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "wd_node": "wd:Q31924059",
+          "wd_label": "attacker",
+          "wd_description": "entity which initiates an armed attack upon another entity"
         },
         {
           "@id": "caci_ta2:Entities/00020/vehicle",
           "name": "vehicle",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "wd_node": "wd:Q42889",
+          "wd_label": "vehicle",
+          "wd_description": "mobile machine that transports people, animals or cargo whether it has an engine or not, such as a bike, a car, another land vehicle (including wheeled and tracked vehicles), an aircraft or a watercraft"
         },
         {
           "@id": "caci_ta2:Entities/00021/domestic-location",
           "name": "domestic location",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "wd_node": "wd:Q2221906",
+          "wd_label": "geographic location",
+          "wd_description": "point or an area on something's surface or elsewhere"
         },
         {
           "@id": "caci_ta2:Entities/00022/foreign-location",
           "name": "foreign location",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "wd_node": "wd:Q2221906",
+          "wd_label": "geographic location",
+          "wd_description": "point or an area on something's surface or elsewhere"
         },
         {
           "@id": "caci_ta2:Entities/00023/school",
           "name": "school",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "wd_node": "wd:Q3914",
+          "wd_label": "school",
+          "wd_description": "institution for the education of students by teachers"
         },
         {
           "@id": "caci_ta2:Entities/00024/subject-matter",
           "name": "subject matter",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "wd_node": "wd:Q27891660",
+          "wd_label": "topic of a work",
+          "wd_description": ""
         },
         {
           "@id": "caci_ta2:Entities/00025/container",
           "name": "container",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "wd_node": "wd:Q987767",
+          "wd_label": "container",
+          "wd_description": "any receptacle for holding a product used in storage, packaging, and shipping"
         },
         {
           "@id": "caci_ta2:Entities/00026/location1",
           "name": "location",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "wd_node": "wd:Q2221906",
+          "wd_label": "geographic location",
+          "wd_description": "point or an area on something's surface or elsewhere"
         },
         {
           "@id": "caci_ta2:Entities/00027/purchaser",
           "name": "purchaser",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "wd_node": "wd:Q1308239",
+          "wd_label": "buyer",
+          "wd_description": "person acquiring a benefit in exchange for money"
         },
         {
           "@id": "caci_ta2:Entities/00028/component",
           "name": "component",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "wd_node": "wd:Q1310239",
+          "wd_label": "component",
+          "wd_description": "smaller, self-contained part of technical entity consisting of components"
         },
         {
           "@id": "caci_ta2:Entities/00029/merchant",
           "name": "merchant",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "wd_node": "wd:Q215536",
+          "wd_label": "merchant",
+          "wd_description": "businessperson who trades in commodities that were produced by others"
         },
         {
           "@id": "caci_ta2:Entities/00030/thief",
           "name": "thief",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "wd_node": "wd:Q3562775",
+          "wd_label": "thief",
+          "wd_description": "person who carries out thefts"
         },
         {
           "@id": "caci_ta2:Entities/00031/stolen-object",
           "name": "stolen object",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "wd_node": "wd:Q114050918",
+          "wd_label": "stolen property",
+          "wd_description": ""
         },
         {
           "@id": "caci_ta2:Entities/00032/theft-location",
           "name": "theft location",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "wd_node": "wd:Q2221906",
+          "wd_label": "geographic location",
+          "wd_description": "point or an area on something's surface or elsewhere"
         },
         {
           "@id": "caci_ta2:Entities/00033/mixture",
           "name": "mixture",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "wd_node": "wd:Q169336",
+          "wd_label": "mixture",
+          "wd_description": "substance formed when two or more constituents are physically combined together"
         },
         {
           "@id": "caci_ta2:Entities/00034/location2",
           "name": "location",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
-        },
-        {
-          "@id": "caci_ta2:Entities/00035/vehicle2",
-          "name": "vehicle",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "wd_node": "wd:Q2221906",
+          "wd_label": "geographic location",
+          "wd_description": "point or an area on something's surface or elsewhere"
         },
         {
           "@id": "caci_ta2:Entities/00036/co-conspirator",
           "name": "co-conspirator",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "wd_node": "wd:Q706884",
+          "wd_label": "accomplice",
+          "wd_description": "person who actively participates in the commission of a crime, even if they take no part in the actual criminal offense, with the other perpetrators"
         },
         {
           "@id": "caci_ta2:Entities/00037/ied",
           "name": "IED",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "wd_node": "wd:Q1249453",
+          "wd_label": "improvised explosive device",
+          "wd_description": "homemade bomb"
         },
         {
           "@id": "caci_ta2:Entities/00038/bronx",
           "name": "Bronx",
-          "ta2wd_node": "wd:Q2013",
-          "ta2wd_label": "Wikidata",
-          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "ta2wd_node": "wd:Q18426",
+          "ta2wd_label": "The Bronx",
+          "ta2wd_description": "borough of New York City, United States"
         },
         {
           "@id": "caci_ta2:Entities/00039/smokeless-powder",
           "name": "smokeless powder",
-          "ta2wd_node": "wd:Q2013",
-          "ta2wd_label": "Wikidata",
-          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "ta2wd_node": "wd:Q901722",
+          "ta2wd_label": "smokeless powder",
+          "ta2wd_description": "propellant used in firearms and artillery"
         },
         {
           "@id": "caci_ta2:Entities/00040/brooklyn-ammoworks",
           "name": "Brooklyn Ammoworks",
-          "ta2wd_node": "wd:Q2013",
-          "ta2wd_label": "Wikidata",
-          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "ta2wd_node": "wd:Q57334497",
+          "ta2wd_label": "retail outlet",
+          "ta2wd_description": "individual store which sells goods to consumers"
         },
         {
           "@id": "caci_ta2:Entities/00041/finder",
           "name": "finder",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "wd_node": "wd:Q215627",
+          "wd_label": "person",
+          "wd_description": "being that has certain capacities or attributes constituting personhood (avoid use with P31; use Q5 for humans)"
         },
         {
           "@id": "caci_ta2:Entities/00042/renter",
           "name": "renter",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "wd_node": "wd:Q45574934",
+          "wd_label": "lessee",
+          "wd_description": "person or entity that holds the lease of a property"
         },
         {
           "@id": "caci_ta2:Entities/00043/mixer",
           "name": "mixer",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "wd_node": "wd:Q215627",
+          "wd_label": "person",
+          "wd_description": "being that has certain capacities or attributes constituting personhood (avoid use with P31; use Q5 for humans)"
         },
         {
           "@id": "caci_ta2:Entities/00044/attack-site",
           "name": "attack site",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "wd_node": "wd:Q2221906",
+          "wd_label": "geographic location",
+          "wd_description": "point or an area on something's surface or elsewhere"
         },
         {
           "@id": "caci_ta2:Entities/00045/victim",
           "name": "victim",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "wd_node": "wd:Q1851760",
+          "wd_label": "victim",
+          "wd_description": "person who suffers as a result of a crime or other event"
         },
         {
           "@id": "caci_ta2:Entities/00046/destroyed-object",
           "name": "destroyed object",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "wd_node": "wd:Q19860854",
+          "wd_label": "destroyed building or structure",
+          "wd_description": "building or structure that has been demolished or destroyed"
         },
         {
           "@id": "caci_ta2:Entities/00047/capture-location",
           "name": "capture location",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "wd_node": "wd:Q2221906",
+          "wd_label": "geographic location",
+          "wd_description": "point or an area on something's surface or elsewhere"
         },
         {
           "@id": "caci_ta2:Entities/00048/device",
           "name": "device",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "wd_node": "wd:Q2858615",
+          "wd_label": "electronic machine",
+          "wd_description": "electric device where the main functionality is provided by electronic circuits"
         },
         {
           "@id": "caci_ta2:Entities/00049/court",
           "name": "court",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "wd_node": "wd:Q41487",
+          "wd_label": "court",
+          "wd_description": "judicial institution with the authority to resolve legal disputes"
         },
         {
           "@id": "caci_ta2:Entities/00050/prison",
           "name": "prison",
-          "wd_node": "wd:Q2013",
-          "wd_label": "Wikidata",
-          "wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "wd_node": "wd:Q40357",
+          "wd_label": "prison",
+          "wd_description": "place in which people legally are physically confined and usually deprived of a range of personal freedoms"
         },
         {
           "@id": "caci_ta2:Entities/00051/inbound-plane",
           "name": "plane",
-          "ta2wd_node": "wd:Q2013",
-          "ta2wd_label": "Wikidata",
-          "ta2wd_description": "free knowledge graph hosted by Wikimedia and edited by volunteers"
+          "ta2wd_node": "wd:Q197",
+          "ta2wd_label": "airplane",
+          "ta2wd_description": "powered fixed-wing aircraft"
         }
       ],
       "relations": [
@@ -2641,7 +2634,7 @@
           "relationProvenance": "caci_ta2:Provenance/00101/",
           "relationSubject_prov": "caci_ta2:Provenance/00012/",
           "relationObject_prov": "caci_ta2:Provenance/00013/",
-          "confidence": 1.0
+          "confidence": 1
         },
         {
           "@id": "caci_ta2:Relations/00009/attacker-residence",
