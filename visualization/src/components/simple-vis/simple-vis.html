@@ -1,0 +1,132 @@
+<div>
+  <v-container class="ma-2 pa-4 pt-8" fluid>
+    <v-overlay v-if="loading">
+      <span class="outPopUp">
+        <v-progress-circular indeterminate color="primary" :size="100" :width="15"> </v-progress-circular>
+      </span>
+    </v-overlay>
+    <v-row class="ml-2 mr-0 pt-0">
+      <v-col col="4">
+        <v-file-input v-model="files" multiple type="file" :accept="acceptedFileTypes" outlined chips show-size label="Click here to select a file to visualize"></v-file-input>
+      </v-col>
+      <v-col>
+        <v-btn @click.stop="onFileUpload()" color="button" dark>
+          <span><v-icon> </v-icon> Visualize </span>
+        </v-btn>
+      </v-col>
+    </v-row>
+    <v-row class="ml-2 mr-0 pt-0">
+      <v-col class="" cols="3">
+        <v-btn @click.stop="expandAll()" color="button" dark>
+          <span><v-icon> </v-icon> Expand All </span>
+        </v-btn>
+        &nbsp;
+        <v-btn @click.stop="collapseAll()" color="button" dark>
+          <span><v-icon> </v-icon> Collapse All </span>
+        </v-btn>
+      </v-col>
+      <v-col class="text-right" cols="5"> </v-col>
+      <v-col class="" cols="2">
+        <v-range-slider v-bind="$attrs" v-on:change="filterConfidence" min="0" max="1" step=".1" label="Confidence" color="black" thumber-color="$vuetify.theme.themes[theme].backdrops.lighten1" thumb-label="always" v-model="defaultConfidence" hint="Highlight Confidences within range"></v-range-slider>
+      </v-col>
+      <v-col class="" cols="2">
+        <v-text-field v-model="search" v-bind="$attrs" v-on:change="searchDiagram" append-icon="search" label="Search" single-line hide-details class="shrink"></v-text-field>
+      </v-col>
+    </v-row>
+    <v-row class="ml-0 mr-2 pt-0">
+      <v-col cols="9">
+        <v-card color="backdrops lighten-1">
+          <v-card-title class="px-n3 pa-0 pl-5">{{ selectedComplex }}</v-card-title>
+          <v-divider></v-divider>
+          <div id="visualization" style="height: 750px;" class="text-light"></div>
+        </v-card>
+        <v-container class="pt-6" fluid>
+          <v-row color="backdrops lighten-1">
+            <v-card
+              style="width:40%;
+            flex-direction: column;"
+              color="backdrops lighten-1"
+            >
+              <v-card-title class="px-n3 pa-0 pl-5">Arguments</v-card-title>
+              <v-divider></v-divider>
+              <v-card-text
+                style="flex-grow: 1;
+            overflow: auto;"
+              >
+                <v-chip-group column multiple v-model="selectedArgs" @change="filterArguments">
+                  <v-chip v-for="(argument, argIndex) in participantArgs" :key="argIndex" filter outlined small>
+                    {{ argument.name }} ({{ argument.count }})
+                  </v-chip>
+                </v-chip-group>
+              </v-card-text>
+            </v-card>
+            <v-card class="pb-5" style="width: 60%;" color="backdrops lighten-1">
+              <v-card-title class="px-n3 pa-0 pl-5">Relations{{ relationsFound }}</v-card-title>
+              <v-divider></v-divider>
+              <vis class="ml-4" style="border-width: 1px; border-color:black;border-style: solid;background-color: white;"></vis>
+            </v-card>
+          </v-row>
+        </v-container>
+      </v-col>
+      <v-col cols="3" class="pl-1">
+        <v-card class="" color="backdrops lighten-1">
+          <v-card-title class="px-n3 pa-0 pl-3">Legend</v-card-title>
+          <v-divider></v-divider>
+          <v-container>
+            <v-row>
+              <v-col>Events</v-col>
+            </v-row>
+            <v-row>
+              <v-col v-if="categoryPresent('detected')" cols="4" md=""><span class="box pr-3" :style="getBackgroundColor('detected')"></span>&nbsp;Detected</v-col>
+              <v-col v-if="categoryPresent('additional')" cols="4" md=""><span class="box" :style="getBackgroundColor('additional')"></span>&nbsp;Source-only</v-col>
+              <v-col v-if="categoryPresent('alternate')" cols="4" md=""><span class="box" :style="getBackgroundColor('alternate')"></span>&nbsp;Alternate</v-col>
+            </v-row>
+            <v-row>
+              <v-col v-if="categoryPresent('missing')" cols="4" md=""><span class="box" :style="getBackgroundColor('missing')"></span>&nbsp;Missing</v-col>
+              <v-col v-if="categoryPresent('predicted')" cols="4" md=""><span class="box" :style="getBackgroundColor('predicted')"></span>&nbsp;Predicted</v-col>
+              <v-col v-if="categoryPresent('unknown')" cols="4" md=""><span class="box" :style="getBackgroundColor('unknown')"></span>&nbsp;Order unknown / unimportant</v-col>
+            </v-row>
+          </v-container>
+        </v-card>
+
+        <v-card class="" color="backdrops lighten-1">
+          <v-card-title class="px-n3 pa-0 pl-3">
+            Details
+          </v-card-title>
+          <v-divider></v-divider>
+          <v-card-text>
+            <span>Event Name:</span><br />
+            {{ selectedEvent.text }} <br /><br />
+            <span>Description:</span><br />
+            {{ selectedEvent.description}} <br />
+          </v-card-text>
+        </v-card>
+        <v-card class="" color="backdrops lighten-1">
+          <v-card-title class="px-n3 pa-0 pl-3">
+            Overview
+          </v-card-title>
+          <v-divider></v-divider>
+          <div id="overviewVis" style="height: 350px;" class="text-light"></div>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
+  <v-dialog v-model="editModal" max-width="1000px" class="elevation-0" :retain-focus="false">
+    <v-card color="backdrops" class="px-8">
+      <v-card-title class="">
+        <strong></strong> {{ selectedEvent.text }}
+        <v-spacer></v-spacer>
+        <v-btn text small @click.stop="editModal = false"><v-icon> close </v-icon></v-btn>
+      </v-card-title>
+      <v-divider></v-divider>
+      <v-spacer></v-spacer>
+      <v-textarea persistent label="Additional Notes:" rows="5" prepend-icon="mdi-comment" v-model="additionalNotes"></v-textarea>
+      <v-divider></v-divider>
+      <v-spacer></v-spacer>
+      <v-row class="ma-1">
+        <v-col cols="10"></v-col>
+        <!-- <v-col cols="2"><v-btn color="button" @click.stop="saveData" class="">Save & Close</v-btn></v-col> -->
+      </v-row>
+    </v-card>
+  </v-dialog>
+</div>
