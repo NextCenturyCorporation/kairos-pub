@@ -8,8 +8,7 @@
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
-    "lint:file": "eslint 'src/**' 'tests/**' --config .eslintrc.js --output-file=./reports/eslint-report.json --format=json",
-    "postinstall": "bash ./gradlew "
+    "lint:file": "eslint 'src/**' 'tests/**' --config .eslintrc.js --output-file=./reports/eslint-report.json --format=json"
   },
   "dependencies": {
     "@types/bluebird": "^3.5.36",
