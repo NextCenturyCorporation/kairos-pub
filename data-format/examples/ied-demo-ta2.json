@@ -7,7 +7,7 @@
   ],
   "@id": "caci_ta2:Submissions/TA2/12345",
   "sdfVersion": "2.3",
-  "version": "caci-10.27.2022 / caci-02.10.2023",
+  "version": "caci-10.27.2022 / caci-05.09.2023",
   "ceID": "ce1002",
   "task2": false,
   "comment": [
@@ -64,7 +64,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00001/",
                 "ta2entity": "caci_ta2:Entities/00001/tom",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00011/",
                 "confidence": 1
               }
             }
@@ -90,7 +90,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00002/",
                 "ta2entity": "caci_ta2:Entities/00001/tom",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00001/",
                 "confidence": 1
               }
             },
@@ -101,7 +101,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00003/",
                 "ta2entity": "caci_ta2:Entities/00002/outbound-plane",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00001/",
                 "confidence": 1
               }
             },
@@ -112,7 +112,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00004/",
                 "ta2entity": "caci_ta2:Entities/00003/nyc",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00001/",
                 "confidence": 1
               }
             },
@@ -123,9 +123,17 @@
               "values": {
                 "@id": "caci_ta2:Values/00005/",
                 "ta2entity": "caci_ta2:Entities/00004/baghdad",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00001/",
                 "confidence": 1
               }
+            }
+          ],
+          "temporal": [
+            {
+              "comment": "Temporal variables can be combined into one object if they have the same confidence",
+              "earliestStartTime": "2010-06-01T00:00:00",
+              "latestStartTime": "2011-01-31T00:00:00",
+              "confidence": 0.7
             }
           ]
         },
@@ -140,7 +148,7 @@
           "wd_label": "study",
           "wd_description": "examining written materials for the purpose of learning",
           "confidence": 1,
-          "provenance": "caci_ta2:Provenance/00001/",
+          "provenance": "caci_ta2:Provenance/00002/",
           "participants": [
             {
               "@id": "caci_ta2:Participants/00006/study",
@@ -149,7 +157,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00006/",
                 "ta2entity": "caci_ta2:Entities/00001/tom",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00002/",
                 "confidence": 1
               }
             },
@@ -160,7 +168,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00007/",
                 "ta2entity": "caci_ta2:Entities/00005/x-school",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00011/",
                 "confidence": 1
               }
             },
@@ -171,7 +179,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00008/",
                 "ta2entity": "caci_ta2:Entities/00006/bomb-making",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00101/",
                 "confidence": 1
               }
             },
@@ -182,7 +190,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00009/",
                 "ta2entity": "caci_ta2:Entities/00004/baghdad",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00002/",
                 "confidence": 1
               }
             }
@@ -211,7 +219,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00010/",
                 "ta2entity": "caci_ta2:Entities/00001/tom",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00003/",
                 "confidence": 1
               }
             },
@@ -223,13 +231,13 @@
                 {
                   "@id": "caci_ta2:Values/00011/",
                   "ta2entity": "caci_ta2:Entities/00007/dick",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.8
                 },
                 {
                   "@id": "caci_ta2:Values/00012/",
                   "ta2entity": "caci_ta2:Entities/00008/harry",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.8
                 }
               ]
@@ -246,7 +254,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00013/",
                 "ta2entity": "caci_ta2:Entities/00006/bomb-making",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00003/",
                 "confidence": 1
               }
             }
@@ -271,7 +279,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00014/",
                 "ta2entity": "caci_ta2:Entities/00001/tom",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00003/",
                 "confidence": 1
               }
             },
@@ -282,7 +290,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00015/",
                 "ta2entity": "caci_ta2:Entities/00051/inbound-plane",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00003/",
                 "confidence": 1
               }
             },
@@ -293,7 +301,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00016/",
                 "ta2entity": "caci_ta2:Entities/00004/baghdad",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00003/",
                 "confidence": 1
               }
             },
@@ -304,7 +312,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00017/",
                 "ta2entity": "caci_ta2:Entities/00003/nyc",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00003/",
                 "confidence": 1
               }
             }
@@ -335,19 +343,19 @@
                 {
                   "@id": "caci_ta2:Values/00018/",
                   "ta2entity": "caci_ta2:Entities/00001/tom",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00101/",
                   "confidence": 1
                 },
                 {
                   "@id": "caci_ta2:Values/00019/",
                   "ta2entity": "caci_ta2:Entities/00007/dick",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00011/",
                   "confidence": 0.5
                 },
                 {
                   "@id": "caci_ta2:Values/00020/",
                   "ta2entity": "caci_ta2:Entities/00008/harry",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00002/",
                   "confidence": 0.7
                 }
               ]
@@ -359,7 +367,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00021/",
                 "ta2entity": "caci_ta2:Entities/00009/bomb",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00101/",
                 "confidence": 1
               }
             },
@@ -370,7 +378,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00022/",
                 "ta2entity": "caci_ta2:Entities/00010/backpack",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00011/",
                 "confidence": 1
               }
             }
@@ -400,13 +408,13 @@
                 {
                   "@id": "caci_ta2:Values/00023/",
                   "ta2entity": "caci_ta2:Entities/00001/tom",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00002/",
                   "confidence": 1
                 },
                 {
                   "@id": "caci_ta2:Values/00024/",
                   "ta2entity": "caci_ta2:Entities/00007/dick",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00101/",
                   "confidence": 1
                 }
               ]
@@ -419,7 +427,7 @@
                 {
                   "@id": "caci_ta2:Values/00025/",
                   "ta2entity": "caci_ta2:Entities/00009/bomb",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00011/",
                   "confidence": 1
                 }
               ]
@@ -432,7 +440,7 @@
                 {
                   "@id": "caci_ta2:Values/00026/",
                   "ta2entity": "caci_ta2:Entities/00010/backpack",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00002/",
                   "confidence": 1
                 }
               ]
@@ -444,7 +452,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00027/",
                 "ta2entity": "caci_ta2:Entities/00038/bronx",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00101/",
                 "confidence": 1
               }
             }
@@ -475,13 +483,13 @@
                 {
                   "@id": "caci_ta2:Values/00028/",
                   "ta2entity": "caci_ta2:Entities/00001/tom",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00011/",
                   "confidence": 1
                 },
                 {
                   "@id": "caci_ta2:Values/00029/",
                   "ta2entity": "caci_ta2:Entities/00007/dick",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00002/",
                   "confidence": 1
                 }
               ]
@@ -494,19 +502,19 @@
                 {
                   "@id": "caci_ta2:Values/00030/",
                   "ta2entity": "caci_ta2:Entities/00011/fertilizer",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00101/",
                   "confidence": 1
                 },
                 {
                   "@id": "caci_ta2:Values/00031/",
                   "ta2entity": "caci_ta2:Entities/00014/acetone",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00011/",
                   "confidence": 1
                 },
                 {
                   "@id": "caci_ta2:Values/00032/",
                   "ta2entity": "caci_ta2:Entities/00039/smokeless-powder",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00002/",
                   "confidence": 1
                 }
               ]
@@ -519,13 +527,13 @@
                 {
                   "@id": "caci_ta2:Values/00033/",
                   "ta2entity": "caci_ta2:Entities/00013/brooklyn",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00101/",
                   "confidence": 1
                 },
                 {
                   "@id": "caci_ta2:Values/00034/",
                   "ta2entity": "caci_ta2:Entities/00038/bronx",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00011/",
                   "confidence": 1
                 }
               ]
@@ -544,7 +552,7 @@
           "wd_label": "purchasing",
           "wd_description": "acquisition of goods or services by fiduciary exchange",
           "confidence": 1,
-          "provenance": "caci_ta2:Provenance/00013/",
+          "provenance": "caci_ta2:Provenance/00011/",
           "participants": [
             {
               "@id": "caci_ta2:Participants/00028/buy",
@@ -553,7 +561,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00035/",
                 "ta2entity": "caci_ta2:Entities/00001/tom",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00002/",
                 "confidence": 1
               }
             },
@@ -564,7 +572,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00036/",
                 "ta2entity": "caci_ta2:Entities/00011/fertilizer",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00101/",
                 "confidence": 1
               }
             },
@@ -575,7 +583,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00037/",
                 "ta2entity": "caci_ta2:Entities/00012/home-depot",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00011/",
                 "confidence": 1
               }
             },
@@ -586,9 +594,15 @@
               "values": {
                 "@id": "caci_ta2:Values/00038/",
                 "ta2entity": "caci_ta2:Entities/00013/brooklyn",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00002/",
                 "confidence": 1
               }
+            }
+          ],
+          "temporal": [
+            {
+              "earliestStartTime": "2010-08-10T00:00:00",
+              "confidence": 0.7
             }
           ]
         },
@@ -604,7 +618,7 @@
           "wd_label": "purchasing",
           "wd_description": "acquisition of goods or services by fiduciary exchange",
           "confidence": 1,
-          "provenance": "caci_ta2:Provenance/00013/",
+          "provenance": "caci_ta2:Provenance/00011/",
           "participants": [
             {
               "@id": "caci_ta2:Participants/00032/buy",
@@ -613,7 +627,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00039/",
                 "ta2entity": "caci_ta2:Entities/00001/tom",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00101/",
                 "confidence": 1
               }
             },
@@ -624,7 +638,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00040/",
                 "ta2entity": "caci_ta2:Entities/00039/smokeless-powder",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00011/",
                 "confidence": 1
               }
             },
@@ -635,7 +649,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00041/",
                 "ta2entity": "caci_ta2:Entities/00040/brooklyn-ammoworks",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00002/",
                 "confidence": 1
               }
             },
@@ -646,9 +660,15 @@
               "values": {
                 "@id": "caci_ta2:Values/00042/",
                 "ta2entity": "caci_ta2:Entities/00013/brooklyn",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00101/",
                 "confidence": 1
               }
+            }
+          ],
+          "temporal": [
+            {
+              "absoluteTime": "2010-08-01T00:00:00",
+              "confidence": 1
             }
           ]
         },
@@ -679,13 +699,13 @@
                 {
                   "@id": "caci_ta2:Values/00043/",
                   "ta2entity": "caci_ta2:Entities/00001/tom",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 1
                 },
                 {
                   "@id": "caci_ta2:Values/00044/",
                   "ta2entity": "caci_ta2:Entities/00007/dick",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 1
                 }
               ]
@@ -703,13 +723,13 @@
                 {
                   "@id": "caci_ta2:Values/00045/",
                   "ta2entity": "caci_ta2:Entities/00013/brooklyn",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.5
                 },
                 {
                   "@id": "caci_ta2:Values/00046/",
                   "ta2entity": "caci_ta2:Entities/00038/bronx",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.5
                 }
               ]
@@ -727,7 +747,7 @@
           "wd_label": "theft",
           "wd_description": "act of taking another's property without permission or consent",
           "confidence": 1,
-          "provenance": "caci_ta2:Provenance/00013/",
+          "provenance": "caci_ta2:Provenance/00012/",
           "participants": [
             {
               "@id": "caci_ta2:Participants/00039/steal",
@@ -736,7 +756,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00047/",
                 "ta2entity": "caci_ta2:Entities/00007/dick",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00012/",
                 "confidence": 1
               }
             },
@@ -747,7 +767,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00048/",
                 "ta2entity": "caci_ta2:Entities/00014/acetone",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00012/",
                 "confidence": 1
               }
             },
@@ -758,7 +778,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00049/",
                 "ta2entity": "caci_ta2:Entities/00015/home",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00012/",
                 "confidence": 1
               }
             },
@@ -769,7 +789,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00050/",
                 "ta2entity": "caci_ta2:Entities/00038/bronx",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00012/",
                 "confidence": 1
               }
             }
@@ -802,13 +822,13 @@
                 {
                   "@id": "caci_ta2:Values/00051/",
                   "ta2entity": "caci_ta2:Entities/00001/tom",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 1
                 },
                 {
                   "@id": "caci_ta2:Values/00052/",
                   "ta2entity": "caci_ta2:Entities/00007/dick",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 1
                 }
               ]
@@ -826,13 +846,13 @@
                 {
                   "@id": "caci_ta2:Values/00053/",
                   "ta2entity": "caci_ta2:Entities/00013/brooklyn",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.5
                 },
                 {
                   "@id": "caci_ta2:Values/00054/",
                   "ta2entity": "caci_ta2:Entities/00038/bronx",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.5
                 }
               ]
@@ -850,7 +870,7 @@
           "wd_label": "mixing",
           "wd_description": "process of mechanically manipulating a heterogeneous mixture to make it more homogeneous",
           "confidence": 0.3,
-          "provenance": "caci_ta2:Provenance/00013/",
+          "provenance": "caci_ta2:Provenance/00101/",
           "participants": [
             {
               "@id": "caci_ta2:Participants/00046/mix",
@@ -877,7 +897,7 @@
                 {
                   "@id": "caci_ta2:Values/00057/",
                   "ta2entity": "caci_ta2:Entities/00014/acetone",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00101/",
                   "confidence": 1
                 }
               ]
@@ -907,7 +927,7 @@
                 {
                   "@id": "caci_ta2:Values/00060/",
                   "ta2entity": "caci_ta2:Entities/00038/bronx",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00101/",
                   "confidence": 0.5
                 }
               ]
@@ -938,7 +958,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00061/",
                 "ta2entity": "caci_ta2:Entities/00007/dick",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00003/",
                 "confidence": 0.9
               }
             },
@@ -950,13 +970,13 @@
                 {
                   "@id": "caci_ta2:Values/00062/",
                   "ta2entity": "caci_ta2:Entities/00016/mixture",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.9
                 },
                 {
                   "@id": "caci_ta2:Values/00063/",
                   "ta2entity": "caci_ta2:Entities/00039/smokeless-powder",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.7
                 }
               ]
@@ -968,7 +988,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00064/",
                 "ta2entity": "caci_ta2:Entities/00009/bomb",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00003/",
                 "confidence": 0.9
               }
             },
@@ -980,13 +1000,13 @@
                 {
                   "@id": "caci_ta2:Values/00065/",
                   "ta2entity": "caci_ta2:Entities/00013/brooklyn",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.4
                 },
                 {
                   "@id": "caci_ta2:Values/00066/",
                   "ta2entity": "caci_ta2:Entities/00038/bronx",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.8
                 }
               ]
@@ -1023,7 +1043,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00068/",
                 "ta2entity": "caci_ta2:Entities/00009/bomb",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00101/",
                 "confidence": 1
               }
             },
@@ -1059,7 +1079,7 @@
           "parent": "caci_ta2:Events/00006/bomb",
           "confidence": 1,
           "comment": "Provenance is not required in hierarchical events, but there's no other way to distinguish (and show) predicted vs. detected hierarchy nodes.  This will need to be addressed somehow-- worse case, we can look at children, and if any children are predicted, then the parent is predicted (otherwise detected).",
-          "provenance": "caci_ta2:Provenance/00013/",
+          "provenance": "caci_ta2:Provenance/00101/",
           "children_gate": "and",
           "subgroup_events": [
             "caci_ta2:Events/00018/transport",
@@ -1075,7 +1095,7 @@
                 {
                   "@id": "caci_ta2:Values/00071/",
                   "ta2entity": "caci_ta2:Entities/00007/dick",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00101/",
                   "confidence": 1
                 },
                 {
@@ -1104,7 +1124,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00074/",
                 "ta2entity": "caci_ta2:Entities/00017/times-square",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00101/",
                 "confidence": 1
               }
             }
@@ -1137,7 +1157,7 @@
                 {
                   "@id": "caci_ta2:Values/00076/",
                   "ta2entity": "caci_ta2:Entities/00008/harry",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00101/",
                   "confidence": 1
                 }
               ]
@@ -1171,7 +1191,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00079/",
                 "ta2entity": "caci_ta2:Entities/00038/bronx",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00101/",
                 "confidence": 0.5
               }
             },
@@ -1198,7 +1218,7 @@
           "wd_label": "insertion",
           "wd_description": "putting one physical object inside another",
           "confidence": 1,
-          "provenance": "caci_ta2:Provenance/00013/",
+          "provenance": "caci_ta2:Provenance/00101/",
           "participants": [
             {
               "@id": "caci_ta2:Participants/00066/place",
@@ -1218,7 +1238,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00082/",
                 "ta2entity": "caci_ta2:Entities/00010/backpack",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00101/",
                 "confidence": 1
               }
             },
@@ -1264,19 +1284,19 @@
                 {
                   "@id": "caci_ta2:Values/00084/",
                   "ta2entity": "caci_ta2:Entities/00001/tom",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.8
                 },
                 {
                   "@id": "caci_ta2:Values/00085/",
                   "ta2entity": "caci_ta2:Entities/00007/dick",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.5
                 },
                 {
                   "@id": "caci_ta2:Values/00086/",
                   "ta2entity": "caci_ta2:Entities/00008/harry",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.6
                 }
               ]
@@ -1299,7 +1319,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00088/",
                 "ta2entity": "caci_ta2:Entities/00017/times-square",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00101/",
                 "confidence": 0.9
               }
             }
@@ -1347,6 +1367,48 @@
                 "confidence": 0.9
               }
             }
+          ],
+          "relations": [
+            {
+              "@id": "caci_ta2:Relations/00011/",
+              "ta1ref": "RE00011",
+              "name": "destroy overlaps with injure",
+              "relationSubject": "caci_ta2:Events/00022/destroy",
+              "wd_node": "wd:Q65560376",
+              "wd_label": "partial coincidence",
+              "wd_description": "general phenomenon where distinct entities (such as regions of space, events, or sequences) overlap in extent",
+              "relationObject": "caci_ta2:Events/00023/injure"
+            },
+            {
+              "@id": "caci_ta2:Relations/00012/",
+              "ta1ref": "RE00012",
+              "name": "damage contains destroy",
+              "relationSubject": "caci_ta2:Events/00021/damage",
+              "wd_node": "wdt:P4330",
+              "wd_label": "contains",
+              "wd_description": "item or substance located within this item but not part of it",
+              "relationObject": "caci_ta2:Events/00022/destroy"
+            },
+            {
+              "@id": "caci_ta2:Relations/00013/",
+              "ta1ref": "RE00012",
+              "name": "damage contains injure",
+              "relationSubject": "caci_ta2:Events/00021/damage",
+              "wd_node": "wdt:P4330",
+              "wd_label": "contains",
+              "wd_description": "item or substance located within this item but not part of it",
+              "relationObject": "caci_ta2:Events/00023/injure"
+            },
+            {
+              "@id": "caci_ta2:Relations/00014/",
+              "ta1ref": "RE00012",
+              "name": "damage contains die",
+              "relationSubject": "caci_ta2:Events/00021/damage",
+              "wd_node": "wdt:P4330",
+              "wd_label": "contains",
+              "wd_description": "item or substance located within this item but not part of it",
+              "relationObject": "caci_ta2:Events/00024/die"
+            }
           ]
         },
         {
@@ -1368,7 +1430,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00091/",
                 "ta2entity": "caci_ta2:Entities/00009/bomb",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00003/",
                 "confidence": 1
               }
             },
@@ -1384,7 +1446,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00092/",
                 "ta2entity": "caci_ta2:Entities/00017/times-square",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00003/",
                 "confidence": 0.9
               }
             }
@@ -1409,7 +1471,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00093/",
                 "ta2entity": "caci_ta2:Entities/00009/bomb",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00003/",
                 "confidence": 1
               }
             },
@@ -1425,7 +1487,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00094/",
                 "ta2entity": "caci_ta2:Entities/00017/times-square",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00003/",
                 "confidence": 0.9
               }
             }
@@ -1450,7 +1512,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00095/",
                 "ta2entity": "caci_ta2:Entities/00009/bomb",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00003/",
                 "confidence": 1
               }
             },
@@ -1466,7 +1528,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00096/",
                 "ta2entity": "caci_ta2:Entities/00017/times-square",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00003/",
                 "confidence": 0.9
               }
             }
@@ -1493,19 +1555,19 @@
                 {
                   "@id": "caci_ta2:Values/00097/",
                   "ta2entity": "caci_ta2:Entities/00001/tom",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.8
                 },
                 {
                   "@id": "caci_ta2:Values/00098/",
                   "ta2entity": "caci_ta2:Entities/00007/dick",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.5
                 },
                 {
                   "@id": "caci_ta2:Values/00099/",
                   "ta2entity": "caci_ta2:Entities/00008/harry",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.6
                 }
               ]
@@ -1517,7 +1579,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00100/",
                 "ta2entity": "caci_ta2:Entities/00017/times-square",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00003/",
                 "confidence": 0.9
               }
             },
@@ -1558,19 +1620,19 @@
                 {
                   "@id": "caci_ta2:Values/00101/",
                   "ta2entity": "caci_ta2:Entities/00001/tom",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.8
                 },
                 {
                   "@id": "caci_ta2:Values/00102/",
                   "ta2entity": "caci_ta2:Entities/00007/dick",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.5
                 },
                 {
                   "@id": "caci_ta2:Values/00103/",
                   "ta2entity": "caci_ta2:Entities/00008/harry",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.6
                 }
               ]
@@ -1582,7 +1644,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00104/",
                 "ta2entity": "caci_ta2:Entities/00017/times-square",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00003/",
                 "confidence": 0.9
               }
             }
@@ -1611,19 +1673,19 @@
                 {
                   "@id": "caci_ta2:Values/00105/",
                   "ta2entity": "caci_ta2:Entities/00001/tom",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.8
                 },
                 {
                   "@id": "caci_ta2:Values/00106/",
                   "ta2entity": "caci_ta2:Entities/00007/dick",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.5
                 },
                 {
                   "@id": "caci_ta2:Values/00107/",
                   "ta2entity": "caci_ta2:Entities/00008/harry",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.6
                 }
               ]
@@ -1666,19 +1728,19 @@
                 {
                   "@id": "caci_ta2:Values/00108/",
                   "ta2entity": "caci_ta2:Entities/00001/tom",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.8
                 },
                 {
                   "@id": "caci_ta2:Values/00109/",
                   "ta2entity": "caci_ta2:Entities/00007/dick",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.5
                 },
                 {
                   "@id": "caci_ta2:Values/00110/",
                   "ta2entity": "caci_ta2:Entities/00008/harry",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.6
                 }
               ]
@@ -1711,19 +1773,19 @@
                 {
                   "@id": "caci_ta2:Values/00111/",
                   "ta2entity": "caci_ta2:Entities/00001/tom",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.8
                 },
                 {
                   "@id": "caci_ta2:Values/00112/",
                   "ta2entity": "caci_ta2:Entities/00007/dick",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.5
                 },
                 {
                   "@id": "caci_ta2:Values/00113/",
                   "ta2entity": "caci_ta2:Entities/00008/harry",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.6
                 }
               ]
@@ -1751,19 +1813,19 @@
                 {
                   "@id": "caci_ta2:Values/00114/",
                   "ta2entity": "caci_ta2:Entities/00001/tom",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.8
                 },
                 {
                   "@id": "caci_ta2:Values/00115/",
                   "ta2entity": "caci_ta2:Entities/00007/dick",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.5
                 },
                 {
                   "@id": "caci_ta2:Values/00116/",
                   "ta2entity": "caci_ta2:Entities/00008/harry",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.6
                 }
               ]
@@ -1796,19 +1858,19 @@
                 {
                   "@id": "caci_ta2:Values/00117/",
                   "ta2entity": "caci_ta2:Entities/00001/tom",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.8
                 },
                 {
                   "@id": "caci_ta2:Values/00118/",
                   "ta2entity": "caci_ta2:Entities/00007/dick",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.5
                 },
                 {
                   "@id": "caci_ta2:Values/00119/",
                   "ta2entity": "caci_ta2:Entities/00008/harry",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.6
                 }
               ]
@@ -1840,19 +1902,19 @@
                 {
                   "@id": "caci_ta2:Values/00120/",
                   "ta2entity": "caci_ta2:Entities/00001/tom",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.8
                 },
                 {
                   "@id": "caci_ta2:Values/00121/",
                   "ta2entity": "caci_ta2:Entities/00007/dick",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.5
                 },
                 {
                   "@id": "caci_ta2:Values/00122/",
                   "ta2entity": "caci_ta2:Entities/00008/harry",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.6
                 }
               ]
@@ -1880,19 +1942,19 @@
                 {
                   "@id": "caci_ta2:Values/00123/",
                   "ta2entity": "caci_ta2:Entities/00001/tom",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.8
                 },
                 {
                   "@id": "caci_ta2:Values/00124/",
                   "ta2entity": "caci_ta2:Entities/00007/dick",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.5
                 },
                 {
                   "@id": "caci_ta2:Values/00125/",
                   "ta2entity": "caci_ta2:Entities/00008/harry",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.6
                 }
               ]
@@ -1920,19 +1982,19 @@
                 {
                   "@id": "caci_ta2:Values/00126/",
                   "ta2entity": "caci_ta2:Entities/00001/tom",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.8
                 },
                 {
                   "@id": "caci_ta2:Values/00127/",
                   "ta2entity": "caci_ta2:Entities/00007/dick",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.5
                 },
                 {
                   "@id": "caci_ta2:Values/00128/",
                   "ta2entity": "caci_ta2:Entities/00008/harry",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.6
                 }
               ]
@@ -1959,19 +2021,19 @@
                 {
                   "@id": "caci_ta2:Values/00129/",
                   "ta2entity": "caci_ta2:Entities/00001/tom",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.8
                 },
                 {
                   "@id": "caci_ta2:Values/00130/",
                   "ta2entity": "caci_ta2:Entities/00007/dick",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.5
                 },
                 {
                   "@id": "caci_ta2:Values/00131/",
                   "ta2entity": "caci_ta2:Entities/00008/harry",
-                  "provenance": "caci_ta2:Provenance/00013/",
+                  "provenance": "caci_ta2:Provenance/00003/",
                   "confidence": 0.6
                 }
               ]
@@ -2007,6 +2069,14 @@
                 "confidence": 1
               }
             }
+          ],
+          "temporal": [
+            {
+              "comment": "Temporal variables can be combined into one object if they have the same confidence",
+              "earliestStartTime": "2010-01-01T00:00:00",
+              "latestStartTime": "2010-12-31T00:00:00",
+              "confidence": 0.7
+            }
           ]
         },
         {
@@ -2020,7 +2090,7 @@
           "ta2wd_label": "loading",
           "ta2wd_description": "lifting a load up or putting it into something",
           "confidence": 1,
-          "provenance": "caci_ta2:Provenance/00013/",
+          "provenance": "caci_ta2:Provenance/00101/",
           "participants": [
             {
               "@id": "caci_ta2:Participants/00105/load",
@@ -2029,7 +2099,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00133/",
                 "ta2entity": "caci_ta2:Entities/00008/harry",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00101/",
                 "confidence": 1
               }
             },
@@ -2062,7 +2132,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00136/",
                 "ta2entity": "caci_ta2:Entities/00038/bronx",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00101/",
                 "confidence": 1
               }
             }
@@ -2098,7 +2168,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00138/",
                 "ta2entity": "caci_ta2:Entities/00007/dick",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00101/",
                 "confidence": 0.8
               }
             },
@@ -2139,7 +2209,7 @@
               "values": {
                 "@id": "caci_ta2:Values/00140/",
                 "ta2entity": "caci_ta2:Entities/00001/tom",
-                "provenance": "caci_ta2:Provenance/00013/",
+                "provenance": "caci_ta2:Provenance/00101/",
                 "confidence": 1
               }
             },
@@ -2666,6 +2736,7 @@
       "childID": "L0C04GM35",
       "parentIDs": "L0C04GM2E",
       "mediaType": "text/plain",
+      "sourceURL": "https://www.rome2rio.com/s/New-York/Baghdad",
       "offset": 27,
       "length": 76
     },
@@ -2681,6 +2752,7 @@
       "childID": "L0C04GJ61",
       "parentIDs": "L0C04GL30",
       "mediaType": "image/png",
+      "sourceURL": "https://cco.ndu.edu/PRISM/PRISM-Volume-6-no-2/Article/839011/right-wing-extremism-and-terrorism-in-europe-current-developments-and-issues-fo/",
       "boundingBox": [
         100,
         101,
@@ -2698,6 +2770,7 @@
       "childID": "L0C04GI8W",
       "parentIDs": "L0C04GKY2",
       "mediaType": "video/mpeg",
+      "sourceURL": "https://en.wikipedia.org/wiki/Key_frame",
       "startTime": 2.56,
       "endTime": 5.12,
       "keyframes": [
@@ -2721,6 +2794,7 @@
       "childID": "K0C03N4OO",
       "parentIDs": "L0C04GKY2",
       "mediaType": "audio/wav",
+      "sourceURL": "https://www.dhs.gov/see-something-say-something/recognize-the-signs",
       "startTime": 2.56,
       "endTime": 5.12
     },
@@ -2733,6 +2807,7 @@
       "childID": "L0C04GI8W",
       "parentIDs": "L0C04GKY2",
       "mediaType": "video/mpeg",
+      "sourceURL": "https://youtu.be/S64raEGx9zU",
       "startTime": 2.56,
       "endTime": 5.12,
       "boundingBox": [
@@ -2747,6 +2822,7 @@
       "childID": "L0C04GM35",
       "parentIDs": "L0C04GM2E",
       "mediaType": "text/plain",
+      "sourceURL": "https://www.cfr.org/global-conflict-tracker/conflict/political-instability-iraq",
       "offset": 5,
       "length": 21
     },
@@ -2755,6 +2831,7 @@
       "childID": "L0C04GM35",
       "parentIDs": "L0C04GM2E",
       "mediaType": "text/plain",
+      "sourceURL": "https://www.dhs.gov/xlibrary/assets/prep_ied_fact_sheet.pdf",
       "offset": 5,
       "length": 21
     }

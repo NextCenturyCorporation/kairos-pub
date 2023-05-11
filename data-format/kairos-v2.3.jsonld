@@ -210,6 +210,7 @@
       "@container": "@list"
     },
     "provenanceData": "kairos:provenanceData",
+    "sourceURL": "kairos:sourceURL",
     "mediaType": "kairos:mediaType",
     "childID": "kairos:childID",
     "parentIDs": "kairos:parentIDs",

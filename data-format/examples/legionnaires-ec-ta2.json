@@ -7,7 +7,7 @@
   ],
   "@id": "caci_ta2:Submissions/TA2/12345",
   "sdfVersion": "2.3",
-  "version": "caci-10.14.2022 / caci-12.01.2022",
+  "version": "caci-10.14.2022 / caci-03.24.2023",
   "ceID": "ce1002",
   "task2": false,
   "comment": [
@@ -841,7 +841,7 @@
             }
           ],
           "children_gate": "and",
-          "comment": "Events/00031/epidemiologist-publish is an extra-relevant that TA2 placed in the hierarchy.",
+          "comment": "Events/00031/epidemiologist-publish is a source-only event that TA2 placed in the hierarchy.",
           "subgroup_events": [
             "caci_ta2:Events/00022/learn-about-disease",
             "caci_ta2:Events/00023/investigate-cluster",
@@ -1196,7 +1196,7 @@
         {
           "@id": "caci_ta2:Events/00031/epidemiologist-publish",
           "ta1ref": "none",
-          "comment": "TA2 can add extra-relevant events (found in the documents but not in the schema); use 'kairos:NULL' for ta1ref.",
+          "comment": "TA2 can add source-only events (found in the documents but not in the schema); \"use none\" for ta1ref.",
           "name": "Publish results",
           "description": "Epidemiologists publish research results",
           "parent": "caci_ta2:Events/00021/epidemiologist-response",
@@ -1220,7 +1220,7 @@
             {
               "@id": "caci_ta2:Participants/00059/epidemiologist-findings",
               "roleName": "A1-Findings",
-              "comment": "entity keyword for extra-relevant events can be kairos:NULL, since there is no TA1 entity.",
+              "comment": "entity keyword for source-only events can be kairos:NULL, since there is no TA1 entity.",
               "entity": "kairos:NULL",
               "values": {
                 "@id": "caci_ta2:Values/00042/",
@@ -1285,8 +1285,7 @@
           "name": "Patient",
           "wd_node": "wd:Q181600",
           "wd_label": "patient",
-          "wd_description": "person who takes a medical treatment or is subject of a case study",
-          "centrality": 1
+          "wd_description": "person who takes a medical treatment or is subject of a case study"
         },
         {
           "@id": "caci_ta2:Entities/00006/Ray_Brennan",
@@ -1475,8 +1474,7 @@
           "wd_node": "wd:Q26161438",
           "wd_label": "approximately equal to",
           "wd_description": "closeness in value, meaning or effect; relation in which difference can be neglected for practical purposes",
-          "relationObject": "caci_ta2:Entities/00009/patient-1",
-          "centrality": 0.9
+          "relationObject": "caci_ta2:Entities/00009/patient-1"
         },
         {
           "@id": "caci_ta2:Relations/00025/",
@@ -1509,7 +1507,7 @@
         {
           "@id": "caci_ta2:Relations/00027/patient-lives-in-PA",
           "ta1ref": "none",
-          "comment": "TA2 can add extra-relevant relations (found in the documents but not in the schema); use 'kairos:NULL' for ta1ref. P551 is 'residence'.",
+          "comment": "TA2 can add source-only relations (found in the documents but not in the schema); use \"none\" for ta1ref. P551 is 'residence'.",
           "name": "Patient resided in location of contaminant.",
           "relationSubject": "caci_ta2:Entities/00006/Ray_Brennan",
           "wd_node": "wdt:P551",
