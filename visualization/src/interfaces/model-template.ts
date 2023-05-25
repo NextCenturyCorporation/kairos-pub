@@ -8,12 +8,16 @@ export interface ModelTemplate {
   text: string;
   group: string;
   parent: string;
+  parentDisplayName: string;
+  childrenDisplayNames: string;
+  childrenList: Array<any>;
   isTreeExpanded: boolean;
   visible: boolean;
   isGroup: boolean;
   description: string;
   confidence: number;
   category: string;
+  categoryStatus: string;
   critical: boolean;
   startTime: number;
   endTime: number;
@@ -36,4 +40,8 @@ export interface ModelTemplate {
   opacity: number;
   expanded: boolean;
   additionalNotes: string;
+  customTable: Array<any>;
+  repeatable: boolean;
+  origName: string;
+  origDescription: string;
 }

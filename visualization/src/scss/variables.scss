@@ -39,3 +39,19 @@ tbody tr:nth-of-type(odd) {
     border: 1px solid black;
     clear: both;
   }
+
+  .ellipsis {
+    width: 500px;
+    display: inline-block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.ellipsis:hover {
+    white-space: normal;
+  }
+
+  .capitalize {
+    text-transform: capitalize;
+  }

@@ -1,14 +1,5 @@
-<template>  
-  <v-app class="v-app-css">
-    <v-main id="app">
-       <vis-container></vis-container>
-    </v-main>
-  </v-app>
-</template>
-
-<script lang="ts">
-import VisContainer from "./components/vis-container/vis-container.vue";
-
+<script  lang="ts">
+import VisContainer from './components/vis-container/vis-container.vue'
 export default {
   components :{
     VisContainer: VisContainer
@@ -16,6 +7,13 @@ export default {
 }
 </script>
 
+<template>
+  <v-app class="v-app-css">
+    <v-main id="app">
+      <vis-container></vis-container>
+    </v-main>
+  </v-app>
+</template>
 <!--App initialized by main.ts -->
 <style>
 /* --tableBackground will refer to whatever --tableBackground is set to in the component

@@ -1,4 +1,4 @@
-import { LinkTemplate } from "../../interfaces/vis-link-template";
+import type { LinkTemplate } from "../../interfaces/link-template";
 
 export class ParserCommons {
   static getKairosReference(type: string) {
@@ -6,7 +6,7 @@ export class ParserCommons {
   }
 
   static resetLink() {
-    let link: LinkTemplate = {
+    const link: LinkTemplate = {
       to: "",
       from: "",
       text: "",
@@ -17,9 +17,9 @@ export class ParserCommons {
   }
 
   static createGraphNameList(rawData: any): Array<string> {
-    var parsedResults: string[] = [];
+    const parsedResults: string[] = [];
     if (rawData) {
-      for (let binding of rawData.results.bindings) {
+      for (const binding of rawData.results.bindings) {
         parsedResults.push(binding.g.value);
       }
     }
@@ -27,9 +27,9 @@ export class ParserCommons {
   }
 
   static createEventComplexList(rawData: any): Array<any> {
-    var parsedResults: any[] = [];
+    const parsedResults: any[] = [];
     if (rawData && rawData.results) {
-      for (let binding of rawData.results.bindings) {
+      for (const binding of rawData.results.bindings) {
         parsedResults.push(binding.o);
       }
     }
@@ -37,8 +37,8 @@ export class ParserCommons {
   }
 
   static lookupGenIdFirst(conf: string, lookupType: string, jsonData: any): any {
-    for (let data of jsonData) {
-      var currentObj = data;
+    for (const data of jsonData) {
+      const currentObj = data;
       if (currentObj["@id"] === conf) {
         return currentObj["http://www.w3.org/1999/02/22-rdf-syntax-ns#first"][0][lookupType];
       }
@@ -48,8 +48,8 @@ export class ParserCommons {
 
   static getRelationReference(node:any, rawData:any): any {
     for (let i = 0; i < node.relations.length; i++) {
-      let subject = node.relations[i][ParserCommons.getKairosReference("relationSubject")] ? node.relations[i][ParserCommons.getKairosReference("relationSubject")][0]["@id"] : null;
-      let object = node.relations[i][ParserCommons.getKairosReference("relationObject")] ? node.relations[i][ParserCommons.getKairosReference("relationObject")][0]["@id"] : null;
+      const subject = node.relations[i][ParserCommons.getKairosReference("relationSubject")] ? node.relations[i][ParserCommons.getKairosReference("relationSubject")][0]["@id"] : null;
+      const object = node.relations[i][ParserCommons.getKairosReference("relationObject")] ? node.relations[i][ParserCommons.getKairosReference("relationObject")][0]["@id"] : null;
       
       // Remove and bad relations to avoid issues later on
       if (!subject || !object) {
@@ -58,7 +58,7 @@ export class ParserCommons {
       }
 
       if (subject.includes("Events/") || object.includes("Events/")) {
-        for (let data of rawData[ParserCommons.getKairosReference("events")][0]["@list"]) {
+        for (const data of rawData[ParserCommons.getKairosReference("events")][0]["@list"]) {
           if (subject === data["@id"]) {
             node.relations[i][ParserCommons.getKairosReference("relationSubject")][0]["@id"] = data["http://schema.org/name"][0]["@value"];
           }
@@ -68,7 +68,7 @@ export class ParserCommons {
         }
       } 
       if (subject.includes("Entities/") || object.includes("Entities/")) {
-        for (let data of (rawData[ParserCommons.getKairosReference("entities")] ? rawData[ParserCommons.getKairosReference("entities")] : [])) {
+        for (const data of (rawData[ParserCommons.getKairosReference("entities")] ? rawData[ParserCommons.getKairosReference("entities")] : [])) {
           if (subject === data["@id"]) {
             node.relations[i][ParserCommons.getKairosReference("relationSubject")][0]["@id"] = data["http://schema.org/name"][0]["@value"];
           }

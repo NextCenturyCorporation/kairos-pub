@@ -1,9 +1,8 @@
 import { FramedSDF21Simple } from "./visualization-parsers/framed-sdf-2-3-simple"
 import { ParserCommons } from "./visualization-parsers/parser-commons";
 import * as jsonld from "jsonld";
-import * as frame from "../assets/framed.json";
-import * as context from "../assets/context.json";
-
+import frame from "../assets/framed.json";
+import context from "../assets/context.json";
 
 /**
  * @name Class: visualizationParser
@@ -15,10 +14,10 @@ export class visualizationParser {
   // Find version and get parser
   
   static async transformData(jsonData: any): Promise<any> {
-    var framedData: any = frame;
+    const framedData: any = frame;
     // Replace context
     [jsonData][0]["@context"] = context["@context"];
-    const result = await jsonld.frame(jsonData, framedData.default);
+    const result = await jsonld.frame(jsonData, framedData);
     const expand = await jsonld.expand(jsonData);
     return FramedSDF21Simple.parse(expand);
   }
