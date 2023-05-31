@@ -87,9 +87,6 @@ export class FramedSDF21Simple {
             model.entityId = data[ParserCommons.getKairosReference("entity")]
               ? data[ParserCommons.getKairosReference("entity")][0]["@id"]
               : "";
-            model.ta1Explanation =  data[ParserCommons.getKairosReference("ta1explanation")]
-            ? data[ParserCommons.getKairosReference("ta1explanation")][0]["@value"]
-            : "";
             model.relations = data[ParserCommons.getKairosReference("relations")]
             ? data[ParserCommons.getKairosReference("relations")]
             : [];
@@ -337,7 +334,6 @@ export class FramedSDF21Simple {
           linkedQLabelId: ""
         },
         comment: [],
-        ta1Explanation: "",
         relations: [],
         childrenGate: "",
         isParent: false,

@@ -2084,6 +2084,8 @@
           "ta1ref": "none",
           "name": "Load",
           "description": "An agent loads the container into the vehicle",
+          "origName": "Cargar",
+          "origDescription": "Un agente carga el contenedor en el vehículo",
           "parent": "caci_ta2:Events/00017/place",
           "outlinks": "caci_ta2:Events/00018/transport",
           "ta2wd_node": "wd:Q69466762",
