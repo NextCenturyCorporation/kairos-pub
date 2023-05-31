@@ -30,7 +30,6 @@ export interface ModelTemplate {
   argumentString: string;
   qnode: any;
   comment: Array<any>;
-  ta1Explanation: string;
   relations: Array<any>;
   childrenGate: string;
   isParent: boolean;
