@@ -132,7 +132,6 @@ export default defineComponent({
         startTime: 0,
         status: false,
         subgroupEvents: [],
-        ta1Explanation: "",
         text: "",
         toSpot: "left",
         visible: true,
