@@ -7,28 +7,64 @@ This is a standalone prototype meant for internal use.  Please see the `LICENSE.
 
 ## Project setup
 
-The project was developed and tested with node v16.19.0.  It may work with other versions of Node.js, but does not currently work with the latest release.
+The project was developed and tested with node v18.16.0.  It may work with other versions of Node.js, but does not currently work with the latest release.
 
 To set up the project, you will need the following tools:
 
--   [nodejs 16.19.0](https://nodejs.org/download/release/v16.19.0/)
+-   [nodejs 18.16.0 LTS](https://nodejs.org/en)
     -   this comes with npm command line tool
 -   [vue-cli](https://cli.vuejs.org/)
     -   after npm is installed, vue-cli can be installed via the following command:
     ```
     npm install -g @vue/cli
     ```
+## Recommended IDE Setup
+
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+
+## Type Support for `.vue` Imports in TS
+
+TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+
+If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+
+1. Disable the built-in TypeScript Extension
+    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
+    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
+2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+
+## Customize configuration
+
+See [Vite Configuration Reference](https://vitejs.dev/config/).
+
+### GoJS license key
+
+If you have a current GoJS license key, you can set `VITE_APP_GOJS_LICENSE_KEY` in the `.env` file to a quoted string value containing the key.  Without this setting, you will see a watermark in the Visualization component indicating you're using an evaluation license of GoJS.
+
+## Project Setup
 
 After you have the tools, check out the repo from Git. Change to the top level folder. Then run the following command:
 
-```
+```sh
 npm install
 ```
 
 ### Compiles and hot-reloads for development
 
+```sh
+npm run dev
 ```
-npm run serve
+
+### Type-Check, Compile and Minify for Production
+
+```
+npm run build
+```
+
+### deploys ./dist/ to https://validation.kairos.nextcentury.com/visualizer
+
+```
+npm run deploy
 ```
 
 ### In case the code does not seem to be using the correct version of dependencies correctly
@@ -38,7 +74,33 @@ npm run serve
 npm ci
 ```
 
-### Customize configuration
+### Run Unit Tests with [Vitest](https://vitest.dev/)
+
+```sh
+npm run test:unit
+```
+
+### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
+
+```sh
+npm run test:e2e:dev
+```
+
+This runs the end-to-end tests against the Vite development server.
+It is much faster than the production build.
+
+But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
+
+```sh
+npm run build
+npm run test:e2e
+```
+
+### Lint with [ESLint](https://eslint.org/)
+
+```sh
+npm run lint
+```
 
 ## context.json
 File Location: `moirai-visualization\src\assets\context.json`

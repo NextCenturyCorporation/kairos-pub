@@ -50,7 +50,6 @@
       "@id": "kairos:reference",
       "@type": "@id"
     },
-    "ta1explanation": "kairos:ta1explanation",
     "minDuration": {
       "@id": "kairos:minDuration",
       "@type": "xsd:duration"

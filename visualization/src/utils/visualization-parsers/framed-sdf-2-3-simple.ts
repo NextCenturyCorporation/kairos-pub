@@ -1,6 +1,6 @@
-import { ModelTemplate } from "../../interfaces/vis-node-template";
-import { ParsedData } from "../../interfaces/vis-parser-data-object";
-import { LinkTemplate } from "../../interfaces/vis-link-template";
+import type { ModelTemplate } from "../../interfaces/model-template";
+import type { ParsedData } from "../../interfaces/parsed-data";
+import type { LinkTemplate } from "../../interfaces/link-template";
 import { ParserCommons } from "./parser-commons";
 import * as go from "gojs";
 
@@ -9,11 +9,14 @@ export class FramedSDF21Simple {
   private static groupSuffix = "-caci-group";
 
     static parse(jsonData: any): any {
-      var runtime = true;
-        let parsedData: ParsedData = {
+        var map;
+        let runtime = true;
+        const parsedData: ParsedData = {
           moduleLinks: [],
           moduleNodes: [],
-          framedRaw: {}
+          framedRaw: {},
+          participantsAcrossEvents: new Map<String,Array<String>>(),
+          participantsAcrossRelations: new Map
         };
     
         let link: LinkTemplate = {
@@ -26,8 +29,8 @@ export class FramedSDF21Simple {
 
         parsedData.framedRaw = jsonData[0][ParserCommons.getKairosReference("instances")][0];
 
-        for (let data of parsedData.framedRaw[ParserCommons.getKairosReference("events")][0]["@list"]) {
-            var genericEventIncrement = 1;
+        for (const data of parsedData.framedRaw[ParserCommons.getKairosReference("events")][0]["@list"]) {
+            let genericEventIncrement = 1;
             let model: ModelTemplate = this.resetModel();
 
             // Skip records with no ID
@@ -35,8 +38,9 @@ export class FramedSDF21Simple {
               continue;
 
             model.category = this.getCategory(data);
+            model.categoryStatus = model.category;
             model.key = data["@id"];
-            var repeatable = data[ParserCommons.getKairosReference("repeatable")] ? data[ParserCommons.getKairosReference("repeatable")][0]["@value"] : false as boolean;
+            const repeatable = data[ParserCommons.getKairosReference("repeatable")] ? data[ParserCommons.getKairosReference("repeatable")][0]["@value"] : false as boolean;
             model.text = data["http://schema.org/name"]
               ? data["http://schema.org/name"][0]["@value"] + (repeatable ? " *" : "")
               : "Event " + genericEventIncrement++;
@@ -52,21 +56,37 @@ export class FramedSDF21Simple {
             model.comment = data[ParserCommons.getKairosReference("comment")]
               ? data[ParserCommons.getKairosReference("comment")][0]["@list"]
               : "";
-            model.qnode.name = data[ParserCommons.getKairosReference("qnode")]
-              ? data[ParserCommons.getKairosReference("qnode")][0]["@list"]
-              : [];
-            model.qnode.label = data[ParserCommons.getKairosReference("qlabel")]
-              ? data[ParserCommons.getKairosReference("qlabel")][0]["@list"]
-              : [];
+              // ta2wd_node first then wd_node else none
+            model.qnode.name = data[ParserCommons.getKairosReference("ta2wd_node")]
+              ? data[ParserCommons.getKairosReference("ta2wd_node")][0]["@list"]
+              : null;
+            if (!model.qnode.name) {
+              model.qnode.name = data[ParserCommons.getKairosReference("wd_node")]
+              ? data[ParserCommons.getKairosReference("wd_node")][0]["@list"]
+              : [{"@id":"None", "@value": "None"}];
+            }
+            model.qnode.label = data[ParserCommons.getKairosReference("ta2wd_label")]
+              ? data[ParserCommons.getKairosReference("ta2wd_label")][0]["@list"]
+              : null;
+            if (!model.qnode.label) {
+              model.qnode.label = data[ParserCommons.getKairosReference("wd_label")]
+              ? data[ParserCommons.getKairosReference("wd_label")][0]["@list"]
+              : [{"@id":"None", "@value": "None"}];
+            }
+            model.qnode.description = data[ParserCommons.getKairosReference("ta2wd_description")]
+              ? data[ParserCommons.getKairosReference("ta2wd_description")][0]["@list"]
+              : null;
+            if (!model.qnode.description) {
+              model.qnode.description = data[ParserCommons.getKairosReference("wd_description")]
+              ? data[ParserCommons.getKairosReference("wd_description")][0]["@list"]
+              : [{"@id":"None", "@value": "None"}];
+            }
             model.endTime = data[ParserCommons.getKairosReference("endTime")]
               ? data[ParserCommons.getKairosReference("endTime")][0]["@value"]
               : "";
             model.entityId = data[ParserCommons.getKairosReference("entity")]
               ? data[ParserCommons.getKairosReference("entity")][0]["@id"]
               : "";
-            model.ta1Explanation =  data[ParserCommons.getKairosReference("ta1explanation")]
-            ? data[ParserCommons.getKairosReference("ta1explanation")][0]["@value"]
-            : "";
             model.relations = data[ParserCommons.getKairosReference("relations")]
             ? data[ParserCommons.getKairosReference("relations")]
             : [];
@@ -78,6 +98,12 @@ export class FramedSDF21Simple {
             : [];
             model.additionalNotes = data[ParserCommons.getKairosReference("additionalNotes")] ?
             data[ParserCommons.getKairosReference("additionalNotes")][0]["@value"] : "";
+            model.repeatable = data[ParserCommons.getKairosReference("repeatable")] ?
+            data[ParserCommons.getKairosReference("repeatable")][0]["@value"] : false;
+            model.origName = data[ParserCommons.getKairosReference("origName")] ?
+            data[ParserCommons.getKairosReference("origName")][0]["@value"] : "";
+            model.origDescription = data[ParserCommons.getKairosReference("origDescription")] ?
+            data[ParserCommons.getKairosReference("origDescription")][0]["@value"] : "";
             // Get Relation reference names
             model = ParserCommons.getRelationReference(model, parsedData.framedRaw);
 
@@ -87,7 +113,7 @@ export class FramedSDF21Simple {
             model.subgroupEvents = data[ParserCommons.getKairosReference("subgroup_events")]
             ? data[ParserCommons.getKairosReference("subgroup_events")][0]["@list"]
             : [];
-            
+            model.childrenList = model.subgroupEvents;
             
             model.childrenGate = getChildrenGate(data[ParserCommons.getKairosReference("children_gate")])
 
@@ -98,7 +124,7 @@ export class FramedSDF21Simple {
             }
             
             if (data[ParserCommons.getKairosReference("outlinks")]) {
-              for (let outlink of data[ParserCommons.getKairosReference("outlinks")][0]["@list"]) {
+              for (const outlink of data[ParserCommons.getKairosReference("outlinks")][0]["@list"]) {
                 link = ParserCommons.resetLink();
                 link.from = model.key;
                 link.to = outlink["@id"];
@@ -107,30 +133,39 @@ export class FramedSDF21Simple {
               }
             }
 
-            // Create copy and de-reference children from original
-            if (model.subgroupEvents.length > 0 && this.rootNode.key !== model.key) {
-                var copy =this.createDeepCopy(model);
-                parsedData.moduleNodes.push(copy);
-
-                link = ParserCommons.resetLink();
-                link.from = model.key;
-                link.to = copy.key;
-                link.category = "noarrow";
-                parsedData.moduleLinks.push(link);
-               
-                model.subgroupEvents = [];
-                model.isParent = true;
-            }
-            
-
           // Creates a 'floating' node for every event
-          var argumentNode = this.createArgumentNode(model, parsedData.framedRaw);
+          const argumentNode = this.createArgumentNode(model, parsedData.framedRaw);
           if (argumentNode) {
             model.argumentString = argumentNode.text;
             model.arguments = argumentNode.arguments;
+            model.customTable = argumentNode.customTable;
+            for (let argument of model.arguments) {
+              if (!parsedData.participantsAcrossEvents.get(argument.id)){
+                parsedData.participantsAcrossEvents.set(argument.id,[model.text]);
+              } else {
+                var results = parsedData.participantsAcrossEvents.get(argument.id);
+                results.push(model.text);
+                parsedData.participantsAcrossEvents.set(argument.id,results);
+              }
+            }
           }
 
-          if (this.rootNode.key !== model.key) {
+          // Create copy and de-reference children from original
+          if (model.subgroupEvents.length > 0 && (!this.rootNode || this.rootNode.key !== model.key)) {
+            const copy =this.createDeepCopy(model);
+            parsedData.moduleNodes.push(copy);
+
+            link = ParserCommons.resetLink();
+            link.from = model.key;
+            link.to = copy.key;
+            link.category = "noarrow";
+            parsedData.moduleLinks.push(link);
+           
+            model.subgroupEvents = [];
+            model.isParent = true;
+        }
+
+          if (!this.rootNode || this.rootNode.key !== model.key) {
             parsedData.moduleNodes.push(model);
           } else {
             model.isGroup = true;
@@ -140,7 +175,7 @@ export class FramedSDF21Simple {
         }
         // Let the top level (under root) be visible
         for (let i =0; i < parsedData.moduleNodes.length; i++) {
-          if (parsedData.moduleNodes[i].parent === this.rootNode.key) {
+          if (parsedData.moduleNodes[i].parent === this.rootNode.key && !parsedData.moduleNodes[i].key.includes(this.groupSuffix)) {
             parsedData.moduleNodes[i].visible = true;
           }
           if (parsedData.moduleNodes[i].childrenGate != "" && parsedData.moduleNodes[i].key.includes(this.groupSuffix)) {
@@ -164,8 +199,8 @@ export class FramedSDF21Simple {
 
     static getChildGate(model: ModelTemplate, modelList: Array<ModelTemplate>): String {
       if  (model.subgroupEvents.length > 0) {
-        for (let subList of model.subgroupEvents) {
-          for (let child of modelList) {
+        for (const subList of model.subgroupEvents) {
+          for (const child of modelList) {
             if (subList["@id"] === child.key && child.category !== "predicted") {
               return "";
             }
@@ -176,38 +211,78 @@ export class FramedSDF21Simple {
     }
 
     static createArgumentNode(model: any, raw: any): any {
-      var argumentNode = this.resetModel();
-      var entityList = [] as Array<any>;
-      var argumentsList = [];
-      var stringResult = "";
-      for (let participant of model.participants) {
+      const argumentNode = this.resetModel();
+      let entityList = [] as Array<any>;
+      const argumentsList = [] as Array<any>;
+      let stringResult = "";
+      let customList = [] as Array<any>;
+      let index = 1;
+      let keyIndex = 0;
+      let entityLimitCounter = 0;
+      const entityLimit = 20;
+      const argumentLengthLimit = 25;
+
+      for (const participant of model.participants) {
+        let customTableElement = {
+          roleName: "" as String,
+          lookup: "" as String,
+          values: [] as Array<any>
+        }
+        customTableElement.roleName = participant[ParserCommons.getKairosReference("roleName")] ? participant[ParserCommons.getKairosReference("roleName")][0]["@value"] :"Role-" + index;
+        customTableElement.lookup = participant[ParserCommons.getKairosReference("roleName")] ? participant[ParserCommons.getKairosReference("roleName")][0]["@value"] : "lookup-" + index++;
         entityList= [];
         if (participant[ParserCommons.getKairosReference("values")]) {
-              for (let entry of participant[ParserCommons.getKairosReference("values")]) {
+              for (const entry of participant[ParserCommons.getKairosReference("values")]) {
                 if (entry[ParserCommons.getKairosReference("ta2entity")] && entry[ParserCommons.getKairosReference("ta2entity")][0]["@id"].includes("/Entities/")) {
-                  for (let entity of raw[ParserCommons.getKairosReference("entities")]) {
+                  for (const entity of raw[ParserCommons.getKairosReference("entities")]) {
                     if ( entity["@id"] === entry[ParserCommons.getKairosReference("ta2entity")][0]["@id"] && entity["http://schema.org/name"]) {
                       entityList.push(entity["http://schema.org/name"][0]["@value"]);
                       argumentsList.push({id: entity["@id"], name: entity["http://schema.org/name"][0]["@value"]});
+                      customTableElement.values.push(
+                        {
+                        key: keyIndex++,
+                        id: entity["@id"], name: entity["http://schema.org/name"][0]["@value"], 
+                        confidence: entry[ParserCommons.getKairosReference("confidence")] ? entry[ParserCommons.getKairosReference("confidence")][0]["@list"][0]["@value"] : 0,
+                        roleName: participant[ParserCommons.getKairosReference("roleName")] ? participant[ParserCommons.getKairosReference("roleName")][0]["@value"] :"Role-" + index,
+                        lookup: participant[ParserCommons.getKairosReference("roleName")] ? participant[ParserCommons.getKairosReference("roleName")][0]["@value"] : "lookup-" + index++});
+                      
                     }
                   } 
                 } else {
-                  for (let data of raw[ParserCommons.getKairosReference("events")][0]["@list"]) { 
+                  for (const data of raw[ParserCommons.getKairosReference("events")][0]["@list"]) { 
                     if (entry[ParserCommons.getKairosReference("ta2entity")] && data["@id"] === entry[ParserCommons.getKairosReference("ta2entity")][0]["@id"] && data["http://schema.org/name"]) {
                       entityList.push(data["http://schema.org/name"][0]["@value"]);
                       argumentsList.push({id: data["@id"], name: data["http://schema.org/name"][0]["@value"]});
+                      customTableElement.values.push({
+                      key: keyIndex++,
+                      id: data["@id"], name: data["http://schema.org/name"][0]["@value"], 
+                      confidence: entry[ParserCommons.getKairosReference("confidence")] ? entry[ParserCommons.getKairosReference("confidence")][0]["@list"][0]["@value"] : 0,
+                      roleName: participant[ParserCommons.getKairosReference("roleName")] ? participant[ParserCommons.getKairosReference("roleName")][0]["@value"] :"Role-" + index,
+                      lookup: participant[ParserCommons.getKairosReference("roleName")] ? participant[ParserCommons.getKairosReference("roleName")][0]["@value"] : "lookup-" + index++});
                     }
                   }
                 } 
               }
-              if (entityList.length > 0)
-                stringResult += entityList.join(", ") + "\n";
+
+              // This limits the total number of arguments shown. 
+              // GOJS can't handle ellipsis logic when there are a bunch of newlines.
+              // If there are more than 20 add ellipsis to last one and remove the rest.
+              if (entityLimitCounter <= entityLimit && entityList.length > 0) {
+                var joinString = entityList.join(", ") + "\n";
+                stringResult += joinString.length > argumentLengthLimit ? joinString.substring(0, argumentLengthLimit) + "...\n" : joinString;
+                entityLimitCounter++;
+              }
+              if (customTableElement.roleName)
+                customList.push(customTableElement);
         }
       }
+     
+     
+
       if (stringResult !== "") {
         argumentNode.text = stringResult.replace(/\n$/, "");
         argumentNode.arguments = argumentsList;
-        // argumentNode.group = model.parent.key === this.rootNode.key ? model.parent : model.parent + this.groupSuffix;
+        argumentNode.customTable = customList;
         return argumentNode;
       }
       return null;
@@ -229,6 +304,9 @@ export class FramedSDF21Simple {
     static resetModel(): ModelTemplate{
       return  {
         parent:"",
+        parentDisplayName: "",
+        childrenDisplayNames: "",
+        childrenList: [],
         key: "",
         text: "",
         group: "",
@@ -238,6 +316,7 @@ export class FramedSDF21Simple {
         description: "",
         confidence: 0,
         category: "",
+        categoryStatus: "",
         critical: true,
         startTime: 0,
         endTime: 0,
@@ -255,7 +334,6 @@ export class FramedSDF21Simple {
           linkedQLabelId: ""
         },
         comment: [],
-        ta1Explanation: "",
         relations: [],
         childrenGate: "",
         isParent: false,
@@ -264,15 +342,27 @@ export class FramedSDF21Simple {
         layer: 0,
         opacity: 1,
         expanded: false,
-        additionalNotes: ""
+        additionalNotes: "",
+        customTable: [],
+        repeatable: false,
+        origName: "",
+        origDescription: ""
       };
     }
 
     static createDeepCopy(node: any): any {
-      let model = this.resetModel();
+      const model = this.resetModel();
       model.key = node.key + this.groupSuffix;
       model.subgroupEvents = node.subgroupEvents;
+      model.childrenList = node.childrenList;
+      model.qnode.name = node.qnode.name;
+      model.qnode.label = node.qnode.label;
+      model.qnode.description = node.qnode.description;
+      model.confidence = node.confidence;
+      model.parent = node.parent;
+      model.categoryStatus = node.categoryStatus;
       model.isGroup = true;
+      model.customTable = node.customTable;
       model.childrenGate = node.childrenGate;
       model.text = node.text;
       model.description = node.description;
@@ -282,9 +372,9 @@ export class FramedSDF21Simple {
     }
 
     static checkForOrphanedNodes(node: any, parsedData: any): any {
-      var allOrhpaned = false;
-      for (let event of node.subgroupEvents) {
-        var objIndex = parsedData.moduleLinks.findIndex((obj: { from: any, to: any }) => obj.from == event["@id"] && !obj.to.includes(this.groupSuffix));
+      let allOrhpaned = false;
+      for (const event of node.subgroupEvents) {
+        const objIndex = parsedData.moduleLinks.findIndex((obj: { from: any, to: any }) => obj.from == event["@id"] && !obj.to.includes(this.groupSuffix));
         if (objIndex >= 0) {
           // set to false and just stop looping
           allOrhpaned = false;
@@ -299,8 +389,8 @@ export class FramedSDF21Simple {
 }
 
 function getChildrenGate(child: any): string {
-  var validArray= ["AND", "OR", "XOR"];
-  var value = child ?  child[0]["@value"].toUpperCase()  : "";
+  const validArray= ["AND", "OR", "XOR"];
+  const value = child ?  child[0]["@value"].toUpperCase()  : "";
   if (!validArray.includes(value))
     return "";
   return "(" + value + ")";

@@ -7,30 +7,36 @@
     </v-overlay>
     <v-row class="ml-2 mr-0 pt-0">
       <v-col col="4">
-        <v-file-input v-model="files" multiple type="file" :accept="acceptedFileTypes" outlined chips show-size label="Click here to select a file to visualize"></v-file-input>
+        <v-file-input v-model="files" multiple type="file" :accept="acceptedFileTypes" outlined chips show-size
+          label="Click here to select a file to visualize"></v-file-input>
       </v-col>
       <v-col>
-        <v-btn @click.stop="onFileUpload()" color="button" dark>
-          <span><v-icon> </v-icon> Visualize </span>
+        <v-btn @click.stop="onFileUpload()" color="blue" dark>
+          <span>Visualize</span>
         </v-btn>
       </v-col>
     </v-row>
-    <v-row class="ml-2 mr-0 pt-0">
-      <v-col class="" cols="3">
-        <v-btn @click.stop="expandAll()" color="button" dark>
-          <span><v-icon> </v-icon> Expand All </span>
+    <v-row class="ml-2 mr-0 pt-0" justify="end">
+      <v-col class="" cols="2">
+        <v-btn size="small" @click.stop="expandAll()" color="blue" dark>
+          <span>Expand All</span>
         </v-btn>
         &nbsp;
-        <v-btn @click.stop="collapseAll()" color="button" dark>
-          <span><v-icon> </v-icon> Collapse All </span>
+        <v-btn size="small" @click.stop="collapseAll()" color="blue" dark>
+          <span>Collapse All</span>
         </v-btn>
+       
       </v-col>
-      <v-col class="text-right" cols="5"> </v-col>
+      <v-col class="pa-0" cols="2"> <v-switch label="Show Arguments" color="blue" hide-details v-model="argumentToggle"  v-on:change="toggleArguments"></v-switch></v-col>
+      <v-col class="text-right" cols="4"></v-col>
       <v-col class="" cols="2">
-        <v-range-slider v-bind="$attrs" v-on:change="filterConfidence" min="0" max="1" step=".1" label="Confidence" color="black" thumber-color="$vuetify.theme.themes[theme].backdrops.lighten1" thumb-label="always" v-model="defaultConfidence" hint="Highlight Confidences within range"></v-range-slider>
+        <v-range-slider v-bind="$attrs" min="0" max="1" step=".1" label="Confidence"
+          color="black" thumber-color="$vuetify.theme.themes[theme].backdrops.lighten1" thumb-label="always"
+          v-model="defaultConfidence" messages="Highlight Confidences within range"></v-range-slider>
       </v-col>
       <v-col class="" cols="2">
-        <v-text-field v-model="search" v-bind="$attrs" v-on:change="searchDiagram" append-icon="search" label="Search" single-line hide-details class="shrink"></v-text-field>
+        <v-text-field v-model="search" v-bind="$attrs" v-on:change="searchDiagram" append-inner-icon="mdi-magnify" label="Search" @click:append-inner="searchDiagram"
+          single-line hide-details class="shrink"></v-text-field>
       </v-col>
     </v-row>
     <v-row class="ml-0 mr-2 pt-0">
@@ -42,28 +48,23 @@
         </v-card>
         <v-container class="pt-6" fluid>
           <v-row color="backdrops lighten-1">
-            <v-card
-              style="width:40%;
-            flex-direction: column;"
-              color="backdrops lighten-1"
-            >
+            <v-card style="width:40%;
+            flex-direction: column;" color="backdrops lighten-1">
               <v-card-title class="px-n3 pa-0 pl-5">Arguments</v-card-title>
               <v-divider></v-divider>
-              <v-card-text
-                style="flex-grow: 1;
-            overflow: auto;"
-              >
-                <v-chip-group column multiple v-model="selectedArgs" @change="filterArguments">
+              <v-card-text style="flex-grow: 1;
+            overflow: auto;">
+                <v-chip-group column multiple v-model="selectedArgs" @click="filterArguments">
                   <v-chip v-for="(argument, argIndex) in participantArgs" :key="argIndex" filter outlined small>
                     {{ argument.name }} ({{ argument.count }})
                   </v-chip>
                 </v-chip-group>
               </v-card-text>
             </v-card>
-            <v-card class="pb-5" style="width: 60%;" color="backdrops lighten-1">
+            <v-card class="pb-5" style="width: 60%; height: 400px;" color="backdrops lighten-1">
               <v-card-title class="px-n3 pa-0 pl-5">Relations{{ relationsFound }}</v-card-title>
               <v-divider></v-divider>
-              <vis class="ml-4" style="border-width: 1px; border-color:black;border-style: solid;background-color: white;"></vis>
+              <vis ref="relationDiagram" class="text-light"></vis>
             </v-card>
           </v-row>
         </v-container>
@@ -77,14 +78,20 @@
               <v-col>Events</v-col>
             </v-row>
             <v-row>
-              <v-col v-if="categoryPresent('detected')" cols="4" md=""><span class="box pr-3" :style="getBackgroundColor('detected')"></span>&nbsp;Detected</v-col>
-              <v-col v-if="categoryPresent('additional')" cols="4" md=""><span class="box" :style="getBackgroundColor('additional')"></span>&nbsp;Source-only</v-col>
-              <v-col v-if="categoryPresent('alternate')" cols="4" md=""><span class="box" :style="getBackgroundColor('alternate')"></span>&nbsp;Alternate</v-col>
+              <v-col v-if="categoryPresent('detected')" cols="4" md=""><span class="box pr-4"
+                  :style="getBackgroundColor('detected')"></span>&nbsp;Detected</v-col>
+              <v-col v-if="categoryPresent('additional')" cols="4" md=""><span class="box pr-4"
+                  :style="getBackgroundColor('additional')"></span>&nbsp;Source-only</v-col>
+              <v-col v-if="categoryPresent('alternate')" cols="4" md=""><span class="box pr-4"
+                  :style="getBackgroundColor('alternate')"></span>&nbsp;Alternate</v-col>
             </v-row>
             <v-row>
-              <v-col v-if="categoryPresent('missing')" cols="4" md=""><span class="box" :style="getBackgroundColor('missing')"></span>&nbsp;Missing</v-col>
-              <v-col v-if="categoryPresent('predicted')" cols="4" md=""><span class="box" :style="getBackgroundColor('predicted')"></span>&nbsp;Predicted</v-col>
-              <v-col v-if="categoryPresent('unknown')" cols="4" md=""><span class="box" :style="getBackgroundColor('unknown')"></span>&nbsp;Order unknown / unimportant</v-col>
+              <v-col v-if="categoryPresent('missing')" cols="4" md=""><span class="box pr-4"
+                  :style="getBackgroundColor('missing')"></span>&nbsp;Missing</v-col>
+              <v-col v-if="categoryPresent('predicted')" cols="4" md=""><span class="box pr-4"
+                  :style="getBackgroundColor('predicted')"></span>&nbsp;Predicted</v-col>
+              <v-col v-if="categoryPresent('unknown')" cols="4" md=""><span class="box pr-4"
+                  :style="getBackgroundColor('unknown')"></span>&nbsp;Order unknown / unimportant</v-col>
             </v-row>
           </v-container>
         </v-card>
@@ -111,22 +118,156 @@
       </v-col>
     </v-row>
   </v-container>
-  <v-dialog v-model="editModal" max-width="1000px" class="elevation-0" :retain-focus="false">
+  <v-dialog v-model="editModal" max-width="1500px" class="elevation-0" :retain-focus="false" scrollable>
     <v-card color="backdrops" class="px-8">
       <v-card-title class="">
-        <strong></strong> {{ selectedEvent.text }}
-        <v-spacer></v-spacer>
-        <v-btn text small @click.stop="editModal = false"><v-icon> close </v-icon></v-btn>
+        <v-row no-gutters>
+          <v-col md="10" align="left">
+            <strong>{{ selectedEvent.text }}</strong>
+          </v-col>
+          <v-col md="2" align="right">
+            <v-btn text small color="blue" @click.stop="editModal = false"><v-icon icon="mdi-close" size="x-large"></v-icon></v-btn>
+          </v-col>
+        </v-row>
       </v-card-title>
+      <v-tabs v-model="window">
+        <v-tab>
+          Event Details
+        </v-tab>
+        <v-tab v-if="selectedEvent.category != 'predicted'">
+          Provenance
+        </v-tab>
+        <v-tab v-if="!standAlone">
+          Additional Notes
+        </v-tab>
+      </v-tabs>
       <v-divider></v-divider>
       <v-spacer></v-spacer>
-      <v-textarea persistent label="Additional Notes:" rows="5" prepend-icon="mdi-comment" v-model="additionalNotes"></v-textarea>
-      <v-divider></v-divider>
-      <v-spacer></v-spacer>
-      <v-row class="ma-1">
-        <v-col cols="10"></v-col>
-        <!-- <v-col cols="2"><v-btn color="button" @click.stop="saveData" class="">Save & Close</v-btn></v-col> -->
-      </v-row>
+      <v-window v-model="window" class="">
+        <v-window-item :value="0">
+          <v-row no-gutters>
+            <v-col md="2" align="left">Description: </v-col>
+            <v-col align="left">{{ selectedEvent.description }}</v-col>
+          </v-row>
+          <v-row no-gutters>
+            <v-col md="2" align="left">Status: </v-col>
+            <v-col align="left" class="capitalize" v-if="selectedEvent.categoryStatus != 'additional'">{{ selectedEvent.categoryStatus }}</v-col>
+            <v-col align="left" class="capitalize" v-if="selectedEvent.categoryStatus === 'additional'">Source Only</v-col>
+          </v-row>
+          <v-row no-gutters v-if="selectedEvent.qnode.name != ''">
+            <v-col md="2" align="left">QNode: </v-col>
+            <v-col align="left">
+              <ul>
+                <li v-for="item in selectedEvent.qnode.name">
+                  <a :href='item["@id"]' target="_blank" v-if='item["@id"] != "None" && item["@id"].includes("https://")'>{{ item["@id"] }}</a>
+                  <span v-if='item["@id"] === "None" || !item["@id"].includes("https://")'>{{ item["@id"] }}</span>
+                </li>
+              </ul>
+            </v-col> 
+          </v-row>
+          <v-row no-gutters v-if="selectedEvent.qnode.label != ''">
+            <v-col md="2" align="left">QLabel: </v-col>
+            <v-col align="left">
+              <ul>
+                <li v-for="item in selectedEvent.qnode.label">{{ item["@value"] }}</li>
+              </ul>
+            </v-col>
+          </v-row>
+          <v-row no-gutters v-if="selectedEvent.qnode.description != ''">
+            <v-col md="2" align="left">QDescription: </v-col>
+            <v-col align="left">
+              <ul>
+                <li v-for="item in selectedEvent.qnode.description">{{ item["@value"] }}</li>
+              </ul>
+            </v-col>
+          </v-row>
+          <v-row no-gutters>
+            <v-col md="2" align="left">Confidence: </v-col>
+            <v-col align="left">{{ selectedEvent.confidence }}</v-col>
+          </v-row>
+          <v-row no-gutters v-if="selectedEvent.repeatable">
+            <v-col md="2" align="left">Repeatable: </v-col>
+            <v-col align="left">{{ selectedEvent.repeatable }}</v-col>
+          </v-row>
+          <v-row no-gutters v-if="selectedEvent.origName">
+            <v-col md="2" align="left">Untranslated Name: </v-col>
+            <v-col align="left"> {{selectedEvent.origName}} </v-col>
+          </v-row>
+          <v-row no-gutters v-if="selectedEvent.origDescription">
+            <v-col md="2" align="left">Untranslated Description: </v-col>
+            <v-col align="left"> {{selectedEvent.origDescription}} </v-col>
+          </v-row>
+          <v-row dense>
+            <v-col md="2" align="left">Parent Event: </v-col>
+            <v-col align="left"> {{selectedEvent.parentDisplayName}} </v-col>
+          </v-row>
+          <v-row no-gutters v-if="selectedEvent.childrenDisplayNames">
+            <v-col md="2" align="left">Children: </v-col>
+            <v-col align="left">
+              <span class="ellipsis"> {{selectedEvent.childrenDisplayNames.replaceAll(",",", ") }} </span>
+            </v-col>
+          </v-row>
+          <v-row no-gutters>
+            <v-col md="2" align="left">Instance: </v-col>
+            <v-col align="left">
+              {{selectedComplex}}
+            </v-col>
+          </v-row>
+          <v-row class="ma-1 pb-2 pt-2">
+            <v-col md="12">
+              <v-table v-if="participantsTable.length > 0" height="500" fixed-header class="primary">
+                <thead>
+                  <tr >
+                    <th class="text-center" style="background-color:#0288D1">
+                      <v-tooltip activator="parent" location="top" v-if="selectedEvent.category != 'additional'" text="The role the argument plays in the event, as determined by the system."></v-tooltip>
+                      <v-tooltip activator="parent" location="top" v-if="selectedEvent.category == 'additional'" text="The role the argument plays in the event, as defined in the schema"></v-tooltip>
+                      <b>Role Name</b>
+                    </th>
+                    <th class="text-center" style="background-color:#0288D1">
+                      <v-tooltip activator="parent" location="top" text="Entity from the source that fills the argument role"></v-tooltip>
+                      <b>Argument Filler (Confidence)</b>
+                    </th>
+                    <th class="text-center" style="background-color:#0288D1">
+                      <v-tooltip activator="parent" location="top" text="Events in which this argument participates"></v-tooltip>
+                      <b>Events</b>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    v-for="item in participantsTable"
+                    :key="item.roleName"
+                  >
+                    <td class="text-center">{{ item.roleName }}</td>
+                    <td class="text-center"> 
+                      <div v-for="value in item.values">
+                        {{ value.name }}&nbsp;&nbsp;({{ value.confidence }})
+                      </div >
+                    </td>
+                    <td class="text-center"> 
+                        <span class="ellipsis">  {{ getEventsForParticipants(item.values).replaceAll(",",", ") }}</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </v-table>
+            </v-col>
+          </v-row>
+        </v-window-item>
+        <v-window-item :value="1" v-if="selectedEvent.category != 'predicted'">
+          <v-row class="ma-1 pb-2 pt-2">
+            <v-col>This will display event provenance from the source documents.</v-col>
+          </v-row>
+        </v-window-item>
+        <v-window-item :value="2" v-if="!standAlone">
+          <v-textarea persistent label="Additional Notes:" rows="5" prepend-icon="mdi-comment" v-model="additionalNotes"></v-textarea>
+          <v-divider></v-divider>
+          <v-spacer></v-spacer>
+          <v-row class="ma-1">
+            <v-col cols="10"></v-col>
+            <v-col cols="2"><v-btn color="blue" @click.stop="saveData" class="">Save & Close</v-btn></v-col>
+          </v-row>
+        </v-window-item>
+      </v-window>
     </v-card>
   </v-dialog>
 </div>
