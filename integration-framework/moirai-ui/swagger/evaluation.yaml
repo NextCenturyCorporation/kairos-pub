@@ -1,0 +1,570 @@
+openapi: 3.0.0
+info:
+  title: Moirai Zeus Ui API
+  description: This is the API for ui controls,
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+tags:
+  - name: Evaluation
+    description: Endpoints for ui feature management.
+  - name: Experiment
+    description: Experiment represents endpoints handling new / exiting experiments
+security:
+  - bearerAuth: []
+paths:
+  /evaluation/config:
+    get:
+      tags:
+        - Evaluation
+      summary: retrieves Evaluations
+      description: retrieves Evaluations
+      operationId: getEvaluations
+      responses:
+        200:
+          description: Saved evaluations
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/evaluation'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+    post:
+      tags:
+        - Evaluation
+      summary: saves new Evaluation info
+      description: saves new Evaluations
+      operationId: newEvaluation
+      requestBody:
+        description: Evaluation to save
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/evaluation'
+      responses:
+        200:
+          description: okay
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        404:
+          description: Not Found. Invalid input, object ID
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+    put:
+      tags:
+        - Evaluation
+      summary: updates existing Evaluation info
+      description: updates existing Evaluation
+      operationId: updateEvaluation
+      requestBody:
+        description: Evaluation to save
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/evaluation'
+      responses:
+        200:
+          description: okay
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        404:
+          description: Not Found. Invalid input, object ID
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /evaluation/config/{id}:
+    delete:
+      tags:
+        - Evaluation
+      summary: delete existing Evaluation info
+      description: deletes existing Evaluation
+      operationId: deleteEvaluation
+      parameters:
+        - name: id
+          in: path
+          description: evaluation id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: okay
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        404:
+          description: Not Found. Invalid input, object ID
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /experiment/manage:
+    post:
+      tags:
+        - Experiment
+      summary: saves Experiment info
+      description: saves Experiments
+      operationId: saveOrUpdateExperiment
+      requestBody:
+        description: experiment to save
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/experiment'
+      responses:
+        200:
+          description: okay
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        404:
+          description: Not Found. Invalid input, object ID
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+    get:
+      tags:
+        - Experiment
+      summary: retrieves Experiments
+      description: retrieves Experiments
+      operationId: retrieveExperiments
+      responses:
+        200:
+          description: Experiment to save
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/experiment'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+    delete:
+      tags:
+        - Experiment
+      summary: delete Experiment
+      description: delete Experiment
+      operationId: deleteExperiment
+      parameters:
+        - name: id
+          in: query
+          description: Experiment id of Experiment to delete
+          required: true
+          schema:
+           type: 'string'
+      responses:
+        200:
+          description: deletion affirmation
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        404:
+          description: Not found
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /experiment/k8s/status:
+    get:
+      tags:
+        - Experiment
+      summary: Get status of kubernetes env
+      description: get service by parameter list
+      operationId: getK8sStatus
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Invalid credentials.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /experiment/enclave/env:
+    post:
+      tags:
+        - Experiment
+      summary: Creates the performer evaluation enviornment needed to run k8s experiments
+      description: Provisions environment for k8s experiments
+      operationId: createK8sEnv
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Unauthorized.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        409:
+          description: An existing provision for this user already exists
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+    delete:
+      tags:
+        - Experiment
+      summary: Terminates k8s environment
+      description: tears down k8s environment for performer experiments
+      operationId: terminateK8sEnv
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Unauthorized.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /experiment/enclave/nodegroups:
+    post:
+      tags:
+        - Experiment
+      summary: Provisions an kubernetes node groups for running experiments
+      description: Provisions an Node Group Instance
+      operationId: createNodeGroups
+      requestBody:
+        description: Terminates clotho with the selected parameters
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEnclaveRequest'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Unauthorized.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        409:
+          description: An existing provision for this user already exists
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+    delete:
+      tags:
+        - Experiment
+      summary: Terminates Node groups for a performers experiments.
+      description: terminates node groups for experiments
+      operationId: terminateNodeGroups
+      requestBody:
+        description: 
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createEnclaveRequest'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Unauthorized.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /experiment/aws/nodetypes:
+    get:
+      tags:
+        - Experiment
+      summary: retrieves ec2 instances allowed for k8s node groups dedicated to k8s Node types.
+      description: node types
+      operationId: retrieveK8sNodeTypes
+      responses:
+        200:
+          description: Ec2 instance sizes for node groups.
+          content:
+             'application/json':
+                schema:
+                  $ref: '#/components/schemas/nodeTypeResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        404:
+          description: Not found
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    stringResponse:
+      type: object
+      properties:
+        value:
+          type: string
+          example: "Success"
+    dataset:
+      type: object
+      x-jpaEntity: true
+      required:
+        - id
+        - names
+        - allowedTypes
+      properties:
+        id:
+          type: string
+          example:
+          x-jpaIdField: true
+          x-generatedId: true
+        name:
+          type: string
+          example: "TA 1"
+        enabled:
+          type: boolean
+        download:
+          type: boolean
+        allowedTypes:
+          type: string
+        versionFiles:
+          type: boolean
+          example: "false"
+        upload:
+          type: boolean
+          example: "true"
+        startDate:
+          type: string
+          format: date-time
+          example: "2020-01-01T17:32:28Z"
+        endDate:
+          type: string
+          format: date-time
+          example: "2020-01-01T17:32:28Z"
+    evaluation:
+      type: object
+      x-jpaEntity: true
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: string
+          example: ""
+          x-jpaIdField: true
+          x-generatedId: true
+        name:
+          type: string
+          example: "eval1"
+        creationDate:
+          type: string
+          format: date-time
+          example: "2020-01-01T17:32:28Z"
+        datasets:
+          type: array
+          items:
+            $ref: '#/components/schemas/dataset'
+          x-lazyOneToMany: true
+          x-joinTable:
+            joinValue: name = "evaluation_dataset",
+              joinColumns = { @JoinColumn(name = "evaluation_id") },
+              inverseJoinColumns = { @JoinColumn(name = "dataset_id") }
+        experiments:
+          type: array
+          items:
+            $ref: '#/components/schemas/experiment'
+          x-lazyOneToMany: true
+          x-joinTable:
+            joinValue: name = "evaluation_experiments",
+              joinColumns = { @JoinColumn(name = "evaluation_id") },
+              inverseJoinColumns = { @JoinColumn(name = "experiment_id") }
+    experiment:
+      type: object
+      x-jpaEntity: true
+      required:
+        - id
+        - name
+        - value
+      properties:
+        id:
+          type: string
+          example: ""
+          x-jpaIdField: true
+          x-generatedId: true
+        name:
+          type: string
+          example: "Experiment name"
+        value:
+          x-jpaColOverride:
+            overrideValue: length=10000
+          type: string
+          example: "JSON String"
+        commissionDate:
+          type: string
+          format: date-time
+          example: "2020-01-01"
+        kickOffDate:
+          type: string
+          format: date-time
+          example: "2020-01-01"
+        programName:
+          type: string
+          example: ""
+        status:
+          type: string
+          example: ""
+        runId:
+          type: string
+          example: ""
+        experimentRuns:
+          type: array
+          items:
+            $ref: '#/components/schemas/experimentRun'
+          x-lazyOneToMany: true
+          x-cascade-all: true
+    experimentRun:
+      type: object
+      x-jpaEntity: true
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: string
+          example: ""
+          x-jpaIdField: true
+          x-generatedId: true
+        name:
+          type: string
+          example: "Experiment name"
+        startTime:
+          type: string
+          format: date-time
+        completeTime:
+          type: string
+          format: date-time
+        config:
+          x-jpaColOverride:
+            overrideValue: length=10000
+          type: string
+          example: "JSON String"
+        status:
+          type: string
+        error:
+          type: string
+        attempt:
+          type: integer
+    createEnclaveRequest:
+      type: object
+      x-jpaEntity: false
+      required:
+        - experimentId
+      properties:
+        experimentId:
+          type: string
+    nodeTypeResponse:
+      type: object
+      x-jpaEntity: false
+      properties:
+        cpuTypes:
+          type: array
+          items:
+            type: string
+        gpuTypes:
+          type: array
+          items:
+            type: string

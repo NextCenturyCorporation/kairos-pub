@@ -1,0 +1,25 @@
+<!--Used by Welcome.vue-->
+
+<div class="Welcome">
+  <v-card class="mx-auto extra-x-padding" max-width="90%" min-height="600" color="backdrops lighten-1">
+    <v-card-title class="text-h4 justify-center pt-12" :class="headerBackgroundColor">Welcome to MOIRAI</v-card-title>
+    <v-card-subtitle class="text-center text-h6 font-weight-regular pb-6">The common interface for KAIROS</v-card-subtitle>
+    <v-card-text class="primary--text text-subtitle-1 font-weight-regular">
+      <v-divider></v-divider><v-divider></v-divider><br />
+      Multimodal Open Interfaces for Reasoning by Artiﬁcial Intelligence (MOIRAI) is the integration framework and access interface for DARPA’s KAIROS program. It collects services, data, and visualizations for each program performer type under a common access portal deployed inthe cloud atop scaled graph computing and data streaming technologies.
+      <br /><br />
+      MOIRAI offers comprehensive commitment to KAIROS with a unified effort for not only TA3 System Integration and User Interface but also TA4 Data Creation for Development and Evaluation.
+      <br /><br />
+      <br /><br />
+      Major navigational elements are found by clicking on the hamburger menu in the top left corner of the screen. Here you can access program references, results from evaluations, and additional resources your team will need. <br />
+      <br />
+      For additional support contact
+      <a href="mailto:darren.gemoets@caci.com">darren.gemoets@caci.com</a> or visit our
+      <router-link :to="'support'">
+        FAQ
+      </router-link>
+      page
+      <br /><br />
+    </v-card-text>
+  </v-card>
+</div>

@@ -1,0 +1,50 @@
+<!--Used by file-viewer.vue-->
+<div class="FileViewer">
+  <v-data-table
+    :items="tableData"
+    no-results-text="No matching Files found"
+    no-data-text="No Files available"
+    loading-text="Loading Files... Please wait"
+    :style="{
+        background: $vuetify.theme.themes[theme].backdrops.lighten1
+      }"
+    :headers="headers"
+    :sort-by="sortBy"
+    :sort-desc="[false]"
+    :search="search"
+    :loading="tableLoadingFlag"
+    item-key="name"
+  >
+    <template v-slot:item.publicAccess="{ item }">
+      <v-switch v-model="item.publicAccess" :disabled="!canChangeSubmit(item)" @change="changeAccess(item)"></v-switch>
+    </template>
+    <template v-slot:item.view="{ item }">
+      <v-icon v-if="isDownloadAllowed(item)" @click="displayFile(item)"> visibility </v-icon>
+    </template>
+    <template v-slot:item.delete="{ item }">
+      <!-- Retain focus attribute fixes bug in Vuetify
+        for any v-dialog in a v-for-->
+      <v-dialog v-model="deleteFileDialog" class="elevation-0" max-width="600px" :retain-focus="false">
+        <template v-slot:activator="{ on }">
+          <v-icon v-on="on" @click="selectFile(item)" :disabled="!canDelete(item)"> delete </v-icon>
+        </template>
+        <v-card color="backdrops">
+          <v-card-title v-if="selectedFile">
+            Delete "{{ selectedFile.filename }}"?
+          </v-card-title>
+          <v-card-text>
+            Deleting a file will permanently remove it from your account. You will no longer be able to access this file.
+          </v-card-text>
+          <v-card-actions>
+            <v-btn text small @click="deleteFileDialog = false"> Cancel </v-btn>
+            <v-spacer></v-spacer>
+            <v-btn color="error" depressed @click="deleteFileConfirmed()">Delete</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </template>
+    <template v-slot:item.download="{ item }">
+      <v-icon @click="downloadFile(item)" :disabled="!isDownloadAllowed(item)"> get_app </v-icon>
+    </template>
+  </v-data-table>
+</div>

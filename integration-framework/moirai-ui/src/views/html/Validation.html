@@ -1,0 +1,31 @@
+<!--Used by FilesUpload.vue-->
+<div class="Validation">
+  <v-tabs class="mb-4" v-model="window">
+    <v-tab>Input</v-tab>
+    <v-tab>Output</v-tab>
+    <v-tabs-slider></v-tabs-slider>
+  </v-tabs>
+  <v-window v-model="window">
+    <v-window-item :value="0">
+      <v-container
+        :style="{
+          background: $vuetify.theme.themes[theme].backdrops.lighten1
+        }"
+        class="pa-15"
+      >
+        <v-row>
+          <v-file-input v-model="files" multiple type="file" :accept="acceptedFileTypes" outlined chips show-size label="Click here to select a file" @change="onFileUpload"></v-file-input>
+        </v-row>
+        <v-row>
+          <v-textarea prepend-icon="empty-icon" outlined label="Json Data" auto-grow v-model="jsonInput"></v-textarea>
+          <v-btn :disabled="!hasJsonInput()" @click="validate" class="ml-3">Validate</v-btn>
+        </v-row>
+      </v-container>
+    </v-window-item>
+    <v-window-item :value="1">
+      <div class="mx-16">
+        <v-data-table :items="tableData" no-results-text="No warnings found" no-data-text="No warnings available" loading-text="Loading... Please wait" :headers="headers" item-key="name"> </v-data-table>
+      </div>
+    </v-window-item>
+  </v-window>
+</div>

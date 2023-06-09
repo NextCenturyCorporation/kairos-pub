@@ -1,0 +1,118 @@
+<!--Used by App.vue-->
+<v-app class="v-app-css">
+  <v-app-bar app :style="`background-image: radial-gradient(${currentTheme.headerBar.lighten1} 10%, ${currentTheme.headerBar.base} 100%)`" v-resize="onResize">
+    <v-row align="center">
+      <v-col>
+        <v-row align="center">
+          <v-app-bar-nav-icon class="white--text" v-if="isLoggedIn()" @click.stop="getNavLinks()"> </v-app-bar-nav-icon>
+          <v-toolbar-title v-if="isLoggedIn()">
+            <div class="text-h5 white--text font-weight-regular ml-4">
+              {{ this.$router.currentRoute.name }}
+            </div>
+          </v-toolbar-title>
+        </v-row>
+      </v-col>
+      <v-col>
+        <v-row justify="center">
+          <router-link :to="homePageRoute" style="text-decoration: none;">
+            <div>
+              <v-img :src="require('@/assets/logo.png')" max-height="60" max-width="220" contain></v-img>
+            </div>
+          </router-link>
+        </v-row>
+      </v-col>
+      <v-col offset="0">
+        <v-row justify="end">
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on }">
+              <v-btn to="/support" text v-on="on">
+                <span class="mr-2 white--text text-subtitle-1 font-weight-medium" :class="shrunkWindow ? 'd-none' : ''">SUPPORT</span>
+                <v-icon color="white">question_answer</v-icon>
+              </v-btn>
+            </template>
+            <span>Find out more about our support</span>
+          </v-tooltip>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on }">
+              <v-btn href="https://nextcentury.atlassian.net/wiki/spaces/KAIRC/overview" target="_blank" text v-on="on">
+                <span class="mr-2 white--text text-subtitle-1 font-weight-medium" :class="shrunkWindow ? 'd-none' : ''">KAIROS</span>
+                <v-icon color="white">description</v-icon>
+              </v-btn>
+            </template>
+            <span>Documentation</span>
+          </v-tooltip>
+        </v-row>
+      </v-col>
+    </v-row>
+  </v-app-bar>
+
+  <v-main>
+    <v-alert v-if="assumed()" color="orange" type="info" class="mt-n1">
+      You are currently logged in as <strong>{{ name() }}</strong>, to return to your admin account
+      <v-btn @click="backToPreviousUser()" color="white" class="ml-n3" text>click here <v-icon>cloud_sync</v-icon> </v-btn>
+    </v-alert>
+    <router-view></router-view>
+  </v-main>
+  <v-navigation-drawer v-model="drawer" app temporary class="backdrops lighten-1" overlay-color="dropShadow">
+    <v-layout column fill-height>
+      <v-list dense>
+        <v-list-item>
+          <v-list-item-avatar>
+            <v-img :src="getCurrentUser().profileImage"></v-img>
+          </v-list-item-avatar>
+          <v-list-item-title>{{ getCurrentUser().teamName }}</v-list-item-title>
+
+          <v-btn icon @click.stop="drawer = !drawer" color="primary">
+            <v-icon>chevron_left</v-icon>
+          </v-btn>
+        </v-list-item>
+        <v-divider></v-divider>
+        <v-list-group v-if="navLink.subLinks && navLink.show" :group="navLink.text" no-action v-for="navLink in navLinks" :key="navLink.text" :class="navLink.class">
+          <v-list-item slot="activator" :class="navLink.class">
+            <v-list-item-icon>
+              <v-icon>{{ navLink.icon }}</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>{{ navLink.text }}</v-list-item-title>
+          </v-list-item>
+          <v-list-item class="pl-14" v-for="sub in navLink.subLinks" :key="sub.text" :to="sub.route">
+            <v-list-item-title>{{ sub.text }}</v-list-item-title>
+          </v-list-item>
+        </v-list-group>
+        <v-list-item to="navLink.route" :class="navLink.class" v-if="!navLink.subLinks" v-for="navLink in navLinks" :key="navLink.text" :to="navLink.route">
+          <v-list-item-icon>
+            <v-icon>{{ navLink.icon }}</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>{{ navLink.text }}</v-list-item-title>
+        </v-list-item>
+      </v-list>
+      <v-spacer></v-spacer>
+      <v-list>
+        <v-list-item @click="logout()">
+          <v-list-item-icon>
+            <v-icon>exit_to_app</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>Logout</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-layout>
+  </v-navigation-drawer>
+
+  <v-snackbar v-model="snackbar" :timeout="6000" color="backdrops lighten-1">
+    <span :class="alternateText" class="text-md-body-1 font-weight-medium">{{ $store.state.loginPageSnackbarMessage }}</span>
+    <v-btn color="button" class="btn-right px-0 ml-3" text @click="snackbar = false">
+      Close
+    </v-btn>
+  </v-snackbar>
+  <v-snackbar v-model="errorSnackbar" :timeout="10000" color="backdrops lighten-1">
+    <span class="red--text text--lighten-1 text-md-body-1 font-weight-medium">{{ $store.state.loginPageSnackbarMessage }}</span>
+    <v-btn color="button" class="btn-right px-0 ml-6" text @click="errorSnackbar = false">
+      Close
+    </v-btn>
+  </v-snackbar>
+  <v-snackbar v-model="inactivitySnackbar" :timeout="300000" color="backdrops lighten-1">
+    <span class="red--text text--lighten-1 text-md-body-1 font-weight-medium">You have been inactive for over 15 minutes, and will be automatically logged out momentarily.</span>
+    <v-btn color="button" class="btn-right px-0 ml-6" text @click="refreshLogin()">
+      Click to stay logged in
+    </v-btn>
+  </v-snackbar>
+</v-app>

@@ -1,0 +1,185 @@
+<!-- Used by Docker.vue-->
+<div class="Docker mx-16">
+  <v-card v-if="registry" min-height="600" color="backdrops lighten-1">
+    <v-card-title class="title font-weight-regular"> URI: <code>{{registry.endpoint}}</code> </v-card-title>
+    <v-card-title class="title font-weight-regular">
+      <v-btn color="button" depressed @click="openPushCommandsDialog" class="white--text pr-3 pl-3 mr-2"> View push commands </v-btn>
+      <v-btn color="button" depressed @click="openPasswordEntryDialog" class="white--text pr-2 pl-2 ml-2 mr-3"> Change password </v-btn>
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on }">
+          <v-icon class="v-icon--refresh" text v-on="on" :disabled="tableLoadingFlag" @click="refreshRegistry()">
+            refresh
+          </v-icon>
+        </template>
+        <span>Refresh</span>
+      </v-tooltip>
+      <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
+      <v-text-field class="v-text-field--search" v-model="search" append-icon="search" label="Search" hide-details></v-text-field>
+    </v-card-title>
+    <v-divider></v-divider>
+    <v-spacer></v-spacer>
+
+    <v-card-text>
+      <v-data-table
+        :style="{
+            background: $vuetify.theme.themes[theme].backdrops.lighten1
+          }"
+        :headers="headers"
+        :items="tableData"
+        no-results-text="No matching Docker images found"
+        no-data-text="No Docker images available"
+        :sort-by="['lastModified']"
+        :sort-desc="[false]"
+        multi-sort
+        :search="search"
+        :loading="tableLoadingFlag"
+        loading-text="Loading Docker images... Please wait"
+        item-key="name"
+      >
+        <template v-slot:expanded-item="{ item }">
+          <td :colspan="headers.length">
+            DROP DOWN
+          </td>
+        </template>
+        <template v-slot:item.lastModified="{ item }">
+          {{ getTime(item.lastModified) }}
+        </template>
+        <template v-slot:item.dockerimagelocation="{ item }">
+          <span @click="toClipboard(item.dockerimagelocation)">
+            <v-icon>
+              content_copy
+            </v-icon>
+            Copy URI
+          </span>
+        </template>
+        <template v-slot:item.digest="{ item }">
+          <span @click="toClipboard(item.digest)">
+            <v-icon>
+              content_copy
+            </v-icon>
+            Copy digest
+          </span>
+        </template>
+        <template v-slot:item.delete="{ item }">
+          <v-dialog v-model="deleteDockerDialog" max-width="600px">
+            <template v-slot:activator="{ on }">
+              <v-icon :disabled="tableLoadingFlag" v-on="on" @click="selectImage(item)">
+                delete
+              </v-icon>
+            </template>
+            <v-card>
+              <v-card-title>
+                Delete {{item.name}}:{{item.tag}}
+              </v-card-title>
+              <v-card-text>
+                Deleting a Docker image will permanently remove it from the registry. You will no longer be able to access this image.
+              </v-card-text>
+              <v-card-actions>
+                <v-btn text small @click="deleteDockerDialog = false">
+                  Cancel
+                </v-btn>
+                <v-spacer></v-spacer>
+                <v-btn color="error" depressed @click="deleteImage()">
+                  Delete
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
+        </template>
+      </v-data-table>
+    </v-card-text>
+  </v-card>
+  <v-card v-if="!registry" class="mx-auto" max-width="1500" min-height="600" color="backdrops lighten-1">
+    <v-card-title class="title font-weight-regular">
+      No Docker Registry
+    </v-card-title>
+    <v-divider></v-divider>
+    <v-spacer></v-spacer>
+    <v-card-text>
+      <v-spacer></v-spacer>
+      <label>Click here to create a new docker registry </label>
+      <v-btn color="button" depressed @click="openPasswordEntryDialog" class="white--text"> Create </v-btn>
+    </v-card-text>
+  </v-card>
+  <v-dialog v-model="passwordEntryDialog" width="500">
+    <template v-slot:activator="{ on, attrs }"></template>
+    <v-card>
+      <v-card-title>
+        Enter password for docker registry
+      </v-card-title>
+      <v-text-field v-model="registryPassword" color="primary" label="Password" :type="'password'" required>
+        <v-icon class="mr-4" slot="prepend" color="primary">
+          lock
+        </v-icon>
+      </v-text-field>
+      <v-divider></v-divider>
+      <v-card-actions>
+        <v-btn text @click="closePasswordEntryDialog" color="buttonSecondary">
+          Reset
+        </v-btn>
+        <v-spacer></v-spacer>
+        <v-btn color="button" :disabled="!registryPassword" depressed @click="submitPassword" class="white--text">
+          Submit
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+  <v-dialog v-model="pushCommandsDialog" width="90%">
+    <template v-slot:activator="{ on, attrs }"></template>
+    <v-card>
+      <v-card-title>
+        Push commands for registry
+      </v-card-title>
+      <v-card-text>
+        <ol>
+          <li>
+            You can use the following command to login to your docker registry. You will be prompted for the registry's password.
+            <br />
+            <code>{{getLoginCommand()}}</code>
+            <br />
+            <v-subheader>Note: The password can by reset by clicking on the gear icon entering a new password, this password is shared by everyone on the team.</v-subheader>
+          </li>
+          <li>
+            Tag your local docker image so that you can push it to the registry.
+            <br />
+            <code>{{getTagCommand()}}</code>
+          </li>
+          <br />
+          <li>
+            Run the following command to push your newly tagged image to the registry.
+            <br />
+            <code>{{getPushCommand()}}</code>
+          </li>
+          <br />
+          <li>
+            Logout of the registry.
+            <br />
+            <code>{{getLogoutCommand()}}</code>
+          </li>
+          <br />
+          <li>
+            After pushing a new image you will need to click the refesh icon on the left side of the screen.
+          </li>
+        </ol>
+      </v-card-text>
+      <v-divider></v-divider>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn text @click="closePushCommandsDialog" color="buttonSecondary">
+          Close
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+  <v-snackbar v-model="deleteDockerSnackbar" :timeout="4000">
+    Docker Image Deleted!
+    <v-btn color="button" text @click="deleteDockerSnackbar = false">
+      Close
+    </v-btn>
+  </v-snackbar>
+</div>

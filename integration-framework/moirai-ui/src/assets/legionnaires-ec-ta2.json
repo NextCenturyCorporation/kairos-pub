@@ -1,0 +1,3659 @@
+[ {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218139663",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/childID" : [ {
+    "@value" : "K0C03N4OJ"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : " *Text documents* "
+    }, {
+      "@value" : "'childID' is an LDC child_id. It is the ID of the document/artifact"
+    }, {
+      "@value" : "mediaType is an IANA Media Type."
+    }, {
+      "@value" : "'offset' and 'length' are in characters."
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/length" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "76"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/mediaType" : [ {
+    "@value" : "text/plain"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/offset" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "27"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "Event1"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218139919",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/boundingBox" : [ {
+    "@list" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "100"
+    }, {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "101"
+    }, {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "200"
+    }, {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "201"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/childID" : [ {
+    "@value" : "K0C03N4OK"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : " *Images* "
+    }, {
+      "@value" : "'parentIDs' is a list of documents that are parent to 'childID."
+    }, {
+      "@value" : "'parentIDs' can be a list because a single image/video/etc. can be embedded in more than one parent document."
+    }, {
+      "@value" : "'parentIDs' is redundant since the same information is present in the LDC-provided parent_children.tab."
+    }, {
+      "@value" : "'boundingBox' dimensions are in pixels"
+    }, {
+      "@value" : "For images, 'boundingBox' is required."
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/mediaType" : [ {
+    "@value" : "image/png"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/parentIDs" : [ {
+    "@value" : "K0C03N4OL"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "Event2"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218140175",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/boundingBox" : [ {
+    "@list" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "100"
+    }, {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "101"
+    }, {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "200"
+    }, {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "201"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/childID" : [ {
+    "@value" : "K0C03N4OM"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : " *Videos -- key frames* "
+    }, {
+      "@value" : "'keyframes' is an array of LDC-supplied key frame IDs."
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/keyframes" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "62"
+  }, {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "61"
+  }, {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "60"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/mediaType" : [ {
+    "@value" : "video/mpeg"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/parentIDs" : [ {
+    "@value" : "K0C03N4ON"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "Event3"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218140431",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/childID" : [ {
+    "@value" : "K0C03N4OO"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : " *Audio recordings* "
+    }, {
+      "@value" : "'startTime' and 'endTime are in seconds."
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/endTime" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "5.12"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/mediaType" : [ {
+    "@value" : "audio/wav"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/parentIDs" : [ {
+    "@value" : "K0C03N4OP"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "Entity1"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/startTime" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "2.56"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218140687",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/boundingBox" : [ {
+    "@list" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "100"
+    }, {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "101"
+    }, {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "200"
+    }, {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "201"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/childID" : [ {
+    "@value" : "K0C03N4OM"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : " *Videos -- time range* "
+    }, {
+      "@value" : "'startTime' and 'endTime are in seconds."
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/endTime" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "5.12"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/mediaType" : [ {
+    "@value" : "video/mpeg"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/parentIDs" : [ {
+    "@value" : "K0C03N4ON"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "Entity2"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/startTime" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "2.56"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218140943",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/childID" : [ {
+    "@value" : "K0C03N4OZ"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/length" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "21"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/mediaType" : [ {
+    "@value" : "text/plain"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/offset" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "5"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "Entity3"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218141199",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/childID" : [ {
+    "@value" : "K0C03N4TZ"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/length" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "21"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/mediaType" : [ {
+    "@value" : "text/plain"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/offset" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+    "@value" : "5"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "Relation1"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218166543",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/child" : [ {
+    "@id" : "caci:TA2/Events/pathogen-come-into-being"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "Semantics of optional is that if it is set to true, then the event is optional.  If it is set to false OR MISSING, the event is mandatory. TA1 systems decide whether an event its optional or not."
+    }, {
+      "@value" : "Importance is local to a parent's children, and do not need to be consistent across instantiations or performers."
+    }, {
+      "@value" : "Think of outlinks as the next node (or nodes) in a succession of nodes."
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/importance" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.3"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/optional" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#boolean",
+    "@value" : "true"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/outlinks" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/pathogen-replicate"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218166799",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/child" : [ {
+    "@id" : "caci:TA2/Events/pathogen-replicate"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/outlinks" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/pathogen-spread"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218167055",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/child" : [ {
+    "@id" : "caci:TA2/Events/pathogen-spread"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218168079",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "Performers can place any keys/values they wish here.  Large amounts of private data will be stored on S3 and linked via a key in the map.  The intention is to validate the size (in bytes) of the object does not exceed a defined maximum."
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218172175",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/child" : [ {
+    "@id" : "caci:TA2/Events/pathogen-escape"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/optional" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#boolean",
+    "@value" : "true"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/outlinks" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/pathogen-infect-patient"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218172431",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/child" : [ {
+    "@id" : "caci:TA2/Events/pathogen-infect-patient"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/outlinks" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/pathogen-live-in-body"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218172687",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/child" : [ {
+    "@id" : "caci:TA2/Events/pathogen-live-in-body"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/outlinks" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/pathogen-continue"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218172943",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/child" : [ {
+    "@id" : "caci:TA2/Events/pathogen-continue"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218173967",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.7"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "Entity3"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta2entity" : [ {
+    "@id" : "caci:TA2/Entities/Legionella"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218174223",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.9"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "Entity2"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta2entity" : [ {
+    "@id" : "caci:TA2/Entities/Ray_Brennan"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218174479",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.5"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "Entity2"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta2entity" : [ {
+    "@id" : "caci:TA2/Entities/American_society"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218179087",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "TA1 optionally sets minDuration and maxDuration; TA2 sets duration, confidence, and optional provenance of this object"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.5"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/duration" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#duration",
+    "@value" : "P4D"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218179599",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "Temporal variables can be combined into one object if they have the same confidence"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.7"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/earliestEndTime" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#dateTime",
+    "@value" : "1976-07-23T23:59:59.000Z"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/earliestStartTime" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#dateTime",
+    "@value" : "1976-07-21T00:00:00.000Z"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218180111",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.8"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/latestEndTime" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#dateTime",
+    "@value" : "1976-07-23T23:59:59.000Z"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/latestStartTime" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#dateTime",
+    "@value" : "1976-07-23T00:00:00.000Z"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218182671",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/child" : [ {
+    "@id" : "caci:TA2/Events/pathogen-spread"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218182927",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/child" : [ {
+    "@id" : "caci:TA2/Events/pathogen-decrease"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218183695",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.9"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "Entity2"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta2entity" : [ {
+    "@id" : "caci:TA2/Entities/Ray_Brennan"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218183951",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.9"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "Entity1"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta2entity" : [ {
+    "@id" : "caci:TA2/Entities/Legionella"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218184719",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.9"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "Entity1"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta2entity" : [ {
+    "@id" : "caci:TA2/Entities/Legionella"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218184975",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.9"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "Entity2"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta2entity" : [ {
+    "@id" : "caci:TA2/Entities/Ray_Brennan"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218186767",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/child" : [ {
+    "@id" : "caci:TA2/Events/patient-travels-to-contaminant"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/importance" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.3"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/optional" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#boolean",
+    "@value" : "true"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/outlinks" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/patient-contract-disease"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218187023",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/child" : [ {
+    "@id" : "caci:TA2/Events/patient-contract-disease"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/importance" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.5"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/optional" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#boolean",
+    "@value" : "true"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/outlinks" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/patient-get-sick"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218187279",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/child" : [ {
+    "@id" : "caci:TA2/Events/patient-get-sick"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/outlinks" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/patient-diagnosed"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218187535",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/child" : [ {
+    "@id" : "caci:TA2/Events/patient-diagnosed"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/outlinks" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/patient-be-treated"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218187791",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/child" : [ {
+    "@id" : "caci:TA2/Events/patient-be-treated"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/outlinks" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/patient-change-life-pattern"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218188047",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/child" : [ {
+    "@id" : "caci:TA2/Events/patient-change-life-pattern"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/importance" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.1"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/optional" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#boolean",
+    "@value" : "true"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/outlinks" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/patient-get-meds"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218188303",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/child" : [ {
+    "@id" : "caci:TA2/Events/patient-get-meds"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/outlinks" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/patient-continue"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218188559",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/child" : [ {
+    "@id" : "caci:TA2/Events/patient-continue"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218194191",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.8"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/predictionProvenance" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/patient-get-sick"
+    }, {
+      "@id" : "caci:TA2/Events/patient-be-treated"
+    }, {
+      "@id" : "caci:TA2/Events/patient-get-meds"
+    }, {
+      "@id" : "caci:TA2/Relations/patient-lives-in-PA"
+    }, {
+      "@id" : "caci:TA2/Entities/Ray_Brennan"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218200847",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/child" : [ {
+    "@id" : "caci:TA2/Events/patient-improve"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218201103",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/child" : [ {
+    "@id" : "caci:TA2/Events/patient-die"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218201615",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.9"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "Entity2"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta2entity" : [ {
+    "@id" : "caci:TA2/Entities/Ray_Brennan"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218201871",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.8"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "Entity3"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta2entity" : [ {
+    "@id" : "caci:TA2/Entities/Philadelphia"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218202127",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.9"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "Entity2"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta2entity" : [ {
+    "@id" : "caci:TA2/Entities/Ray_Brennan"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218203919",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "Example of two argument fillers of the same event argument, with distinct provenance and confidence."
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.9"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "Entity3"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta2entity" : [ {
+    "@id" : "caci:TA2/Entities/Joe_Smith"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218204175",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "If there are two source justifications, include them in a list.  If LDC looks at provenance, it may only consider the first."
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.9"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "Entity3"
+  }, {
+    "@value" : "Entity2"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta2entity" : [ {
+    "@id" : "caci:TA2/Entities/Ray_Brennan"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218204943",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.9"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "Entity1"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta2entity" : [ {
+    "@id" : "caci:TA2/Entities/Legionella"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218207247",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.9"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "Entity2"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta2entity" : [ {
+    "@id" : "caci:TA2/Entities/Ray_Brennan"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218207759",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/child" : [ {
+    "@id" : "caci:TA2/Events/learn-about-disease"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/importance" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.3"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/optional" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#boolean",
+    "@value" : "true"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/outlinks" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/investigate-cluster"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218208015",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/child" : [ {
+    "@id" : "caci:TA2/Events/investigate-cluster"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "Repeatable events need to be expanded by TA2 as distinct events at instantiation time."
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/importance" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.3"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/optional" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#boolean",
+    "@value" : "true"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/outlinks" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/announce-outbreak"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/repeatable" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#boolean",
+    "@value" : "true"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218208271",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/child" : [ {
+    "@id" : "caci:TA2/Events/announce-outbreak"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/outlinks" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/investigate-origin-propagation"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218208527",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/child" : [ {
+    "@id" : "caci:TA2/Events/investigate-origin-propagation"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/importance" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.5"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/optional" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#boolean",
+    "@value" : "true"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/outlinks" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/research-antidote"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218208783",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/child" : [ {
+    "@id" : "caci:TA2/Events/research-antidote"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/importance" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.4"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/outlinks" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/epidemiologist-educate"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218209039",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/child" : [ {
+    "@id" : "caci:TA2/Events/epidemiologist-educate"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/importance" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.7"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/optional" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#boolean",
+    "@value" : "true"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/outlinks" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/epidemiologist-publish"
+    } ]
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218209295",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/child" : [ {
+    "@id" : "caci:TA2/Events/epidemiologist-publish"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/importance" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.4"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/optional" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#boolean",
+    "@value" : "true"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218218511",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/child" : [ {
+    "@id" : "caci:TA2/Events/educate-healthcare"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/importance" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.8"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218218767",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/child" : [ {
+    "@id" : "caci:TA2/Events/educate-manufacturer"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/importance" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.4"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/optional" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#boolean",
+    "@value" : "true"
+  } ]
+}, {
+  "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218219023",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/child" : [ {
+    "@id" : "caci:TA2/Events/educate-authority"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/importance" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.8"
+  } ]
+}, {
+  "@id" : "caci:Instance/TA2/00001",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Event complex for a disease outbreak"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Disease outbreak"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "Not all of these schemas are implemented here.  schemaInstatiations should be top-level TA1 events only."
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.8"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entities" : [ {
+    "@id" : "caci:TA2/Entities/manufacturer"
+  }, {
+    "@id" : "caci:TA2/Entities/Legionella"
+  }, {
+    "@id" : "caci:TA2/Entities/authority"
+  }, {
+    "@id" : "caci:TA2/Entities/findings"
+  }, {
+    "@id" : "caci:TA2/Entities/location"
+  }, {
+    "@id" : "caci:TA2/Entities/Philadelphia"
+  }, {
+    "@id" : "caci:TA2/Entities/pathogen"
+  }, {
+    "@id" : "caci:TA2/Entities/society"
+  }, {
+    "@id" : "caci:TA2/Entities/American_society"
+  }, {
+    "@id" : "caci:TA2/Entities/patient"
+  }, {
+    "@id" : "caci:TA2/Entities/Ray_Brennan"
+  }, {
+    "@id" : "caci:TA2/Entities/Joe_Smith"
+  }, {
+    "@id" : "caci:TA2/Entities/200advil"
+  }, {
+    "@id" : "caci:TA2/Entities/patient-1"
+  }, {
+    "@id" : "caci:TA2/Entities/medical-professional"
+  }, {
+    "@id" : "caci:TA2/Entities/pathogen-1"
+  }, {
+    "@id" : "caci:TA2/Entities/medication"
+  }, {
+    "@id" : "caci:TA2/Entities/epidemiologist"
+  }, {
+    "@id" : "caci:TA2/Entities/disease"
+  }, {
+    "@id" : "caci:TA2/Entities/cluster"
+  }, {
+    "@id" : "caci:TA2/Entities/pathogen-2"
+  }, {
+    "@id" : "caci:TA2/Entities/public"
+  }, {
+    "@id" : "caci:TA2/Entities/antidote"
+  }, {
+    "@id" : "caci:TA2/Entities/healthcare-sector"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/events" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/pathogen-progression"
+    }, {
+      "@id" : "caci:TA2/Events/pathogen-come-into-being"
+    }, {
+      "@id" : "caci:TA2/Events/pathogen-replicate"
+    }, {
+      "@id" : "caci:TA2/Events/pathogen-spread"
+    }, {
+      "@id" : "caci:TA2/Events/pathogen-escape"
+    }, {
+      "@id" : "caci:TA2/Events/pathogen-infect-patient"
+    }, {
+      "@id" : "caci:TA2/Events/pathogen-live-in-body"
+    }, {
+      "@id" : "caci:TA2/Events/pathogen-continue"
+    }, {
+      "@id" : "caci:TA2/Events/pathogen-decrease"
+    }, {
+      "@id" : "caci:TA2/Events/patient-progression"
+    }, {
+      "@id" : "caci:TA2/Events/patient-travels-to-contaminant"
+    }, {
+      "@id" : "caci:TA2/Events/patient-contract-disease"
+    }, {
+      "@id" : "caci:TA2/Events/patient-get-sick"
+    }, {
+      "@id" : "caci:TA2/Events/patient-diagnosed"
+    }, {
+      "@id" : "caci:TA2/Events/patient-be-treated"
+    }, {
+      "@id" : "caci:TA2/Events/patient-change-life-pattern"
+    }, {
+      "@id" : "caci:TA2/Events/patient-get-meds"
+    }, {
+      "@id" : "caci:TA2/Events/patient-continue"
+    }, {
+      "@id" : "caci:TA2/Events/patient-die"
+    }, {
+      "@id" : "caci:TA2/Events/patient-improve"
+    }, {
+      "@id" : "caci:TA2/Events/epidemiologist-response"
+    }, {
+      "@id" : "caci:TA2/Events/learn-about-disease"
+    }, {
+      "@id" : "caci:TA2/Events/investigate-cluster"
+    }, {
+      "@id" : "caci:TA2/Events/announce-outbreak"
+    }, {
+      "@id" : "caci:TA2/Events/investigate-origin-propagation"
+    }, {
+      "@id" : "caci:TA2/Events/research-antidote"
+    }, {
+      "@id" : "caci:TA2/Events/epidemiologist-educate"
+    }, {
+      "@id" : "caci:TA2/Events/educate-healthcare"
+    }, {
+      "@id" : "caci:TA2/Events/educate-manufacturer"
+    }, {
+      "@id" : "caci:TA2/Events/educate-authority"
+    }, {
+      "@id" : "caci:TA2/Events/epidemiologist-publish"
+    }, {
+      "@id" : "caci:TA2/Events/healthworker-response"
+    }, {
+      "@id" : "caci:TA2/Events/authority-response"
+    }, {
+      "@id" : "caci:TA2/Events/manufacturer-do-involvement"
+    }, {
+      "@id" : "caci:TA2/Events/business-do-response"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relations" : [ {
+    "@id" : "caci:TA2/Relations/relation1"
+  }, {
+    "@id" : "caci:TA2/Relations/relation2"
+  }, {
+    "@id" : "caci:TA2/Relations/relation3"
+  }, {
+    "@id" : "caci:TA2/Relations/relation4"
+  }, {
+    "@id" : "caci:TA2/Relations/patient-lives-in-PA"
+  }, {
+    "@id" : "caci:TA2/Relations/relation5a"
+  }, {
+    "@id" : "caci:TA2/Relations/relation5b"
+  }, {
+    "@id" : "caci:TA2/Relations/relation6"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/schemaInstantiations" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/pathogen-progression"
+    }, {
+      "@id" : "caci:TA2/Events/patient-progression"
+    }, {
+      "@id" : "caci:TA2/Events/healthworker-response"
+    }, {
+      "@id" : "caci:TA2/Events/epidemiologist-response"
+    }, {
+      "@id" : "caci:TA2/Events/authority-response"
+    }, {
+      "@id" : "caci:TA2/Events/manufacturer-do-involvement"
+    }, {
+      "@id" : "caci:TA2/Events/business-do-response"
+    } ]
+  } ]
+}, {
+  "@id" : "caci:Submissions/TA2/12345",
+  "http://schema.org/version" : [ {
+    "@value" : "caci-09.27.2021 / caci-10.04.2021"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ceID" : [ {
+    "@value" : "ce1002"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "Example provides representation of E. Hovy's Event Complex schema layout for a disease outbreak."
+    }, {
+      "@value" : "This is the TA2 example."
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/instances" : [ {
+    "@id" : "caci:Instance/TA2/00001"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenanceData" : [ {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218141199"
+  }, {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218140943"
+  }, {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218140687"
+  }, {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218140431"
+  }, {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218140175"
+  }, {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218139919"
+  }, {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218139663"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/sdfVersion" : [ {
+    "@value" : "1.2.1"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta2" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#boolean",
+    "@value" : "true"
+  } ]
+}, {
+  "@id" : "caci:TA2/Entities/200advil",
+  "http://schema.org/name" : [ {
+    "@value" : "200 mg Advil"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "This just shows how a specific dosage mentioned in the text can be its own real-world entity."
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta2qlabel" : [ {
+    "@list" : [ {
+      "@value" : "Advil"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta2qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q16240691"
+    } ]
+  } ]
+}, {
+  "@id" : "caci:TA2/Entities/American_society",
+  "http://schema.org/name" : [ {
+    "@value" : "American society"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta2qlabel" : [ {
+    "@list" : [ {
+      "@value" : "United States of America"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta2qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q30"
+    } ]
+  } ]
+}, {
+  "@id" : "caci:TA2/Entities/Joe_Smith",
+  "http://schema.org/name" : [ {
+    "@value" : "Joe Smith"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta2qlabel" : [ {
+    "@list" : [ {
+      "@value" : "patient"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta2qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q181600"
+    } ]
+  } ]
+}, {
+  "@id" : "caci:TA2/Entities/Legionella",
+  "http://schema.org/name" : [ {
+    "@value" : "Legionella pneumophila"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "TA2 adds name (human-readable handle from extraction) and extracted type/instance qnode."
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta2qlabel" : [ {
+    "@list" : [ {
+      "@value" : "Legionella pneumophila"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta2qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q147885"
+    } ]
+  } ]
+}, {
+  "@id" : "caci:TA2/Entities/Philadelphia",
+  "http://schema.org/name" : [ {
+    "@value" : "Philadelphia, PA"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta2qlabel" : [ {
+    "@list" : [ {
+      "@value" : "Philadelphia"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta2qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q1345"
+    } ]
+  } ]
+}, {
+  "@id" : "caci:TA2/Entities/Ray_Brennan",
+  "http://schema.org/name" : [ {
+    "@value" : "Ray Brennan"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "Additional qnodes/labels just show that a given person can be the patient from one schema and the attacker in another."
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta2qlabel" : [ {
+    "@list" : [ {
+      "@value" : "terrorist"
+    }, {
+      "@value" : "patient"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta2qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q14886050"
+    }, {
+      "@id" : "https://www.wikidata.org/wiki/Q181600"
+    } ]
+  } ]
+}, {
+  "@id" : "caci:TA2/Entities/antidote",
+  "http://schema.org/name" : [ {
+    "@value" : "Antidote"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "medication"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q12140"
+    } ]
+  } ]
+}, {
+  "@id" : "caci:TA2/Entities/authority",
+  "http://schema.org/name" : [ {
+    "@value" : "Government Authority"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "government organization"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q2659904"
+    } ]
+  } ]
+}, {
+  "@id" : "caci:TA2/Entities/cluster",
+  "http://schema.org/name" : [ {
+    "@value" : "Cluster"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "cluster"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q21157127"
+    } ]
+  } ]
+}, {
+  "@id" : "caci:TA2/Entities/disease",
+  "http://schema.org/name" : [ {
+    "@value" : "Disease"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "disease"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q12136"
+    } ]
+  } ]
+}, {
+  "@id" : "caci:TA2/Entities/epidemiologist",
+  "http://schema.org/name" : [ {
+    "@value" : "Epidemiologist"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "epidemiologist"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q13416803"
+    } ]
+  } ]
+}, {
+  "@id" : "caci:TA2/Entities/findings",
+  "http://schema.org/name" : [ {
+    "@value" : "Research Findings"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "study result"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q107296061"
+    } ]
+  } ]
+}, {
+  "@id" : "caci:TA2/Entities/healthcare-sector",
+  "http://schema.org/name" : [ {
+    "@value" : "Healthcare Sector"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "health care"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q31207"
+    } ]
+  } ]
+}, {
+  "@id" : "caci:TA2/Entities/location",
+  "http://schema.org/name" : [ {
+    "@value" : "Contaminant Location"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "geographic location"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q2221906"
+    } ]
+  } ]
+}, {
+  "@id" : "caci:TA2/Entities/manufacturer",
+  "http://schema.org/name" : [ {
+    "@value" : "Pharmaceutical Manfacturers"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "pharmaceutical industry"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q507443"
+    } ]
+  } ]
+}, {
+  "@id" : "caci:TA2/Entities/medical-professional",
+  "http://schema.org/name" : [ {
+    "@value" : "Medical Professional"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "health professional"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q11974939"
+    } ]
+  } ]
+}, {
+  "@id" : "caci:TA2/Entities/medication",
+  "http://schema.org/name" : [ {
+    "@value" : "Medication"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "medication"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q12140"
+    } ]
+  } ]
+}, {
+  "@id" : "caci:TA2/Entities/pathogen",
+  "http://schema.org/name" : [ {
+    "@value" : "Pathogen"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "pathogen"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q170065"
+    } ]
+  } ]
+}, {
+  "@id" : "caci:TA2/Entities/pathogen-1",
+  "http://schema.org/name" : [ {
+    "@value" : "Pathogen"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "pathogen"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q170065"
+    } ]
+  } ]
+}, {
+  "@id" : "caci:TA2/Entities/pathogen-2",
+  "http://schema.org/name" : [ {
+    "@value" : "Pathogen"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "pathogen"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q170065"
+    } ]
+  } ]
+}, {
+  "@id" : "caci:TA2/Entities/patient",
+  "http://schema.org/name" : [ {
+    "@value" : "Patient"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "patient"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q181600"
+    } ]
+  } ]
+}, {
+  "@id" : "caci:TA2/Entities/patient-1",
+  "http://schema.org/name" : [ {
+    "@value" : "Patient"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "patient"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q23806"
+    } ]
+  } ]
+}, {
+  "@id" : "caci:TA2/Entities/public",
+  "http://schema.org/name" : [ {
+    "@value" : "Public"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "public"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q2388316"
+    } ]
+  } ]
+}, {
+  "@id" : "caci:TA2/Entities/society",
+  "http://schema.org/name" : [ {
+    "@value" : "Society"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "society"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q8425"
+    } ]
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/announce-outbreak",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Event type in which epidemiologists announce outbreak"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Announce"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/announce-outbreak/1"
+    }, {
+      "@id" : "caci:TA2/Events/announce-outbreak/2"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "public statement"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q52947181"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/announce-outbreak"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/announce-outbreak/1",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/epidemiologist"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A0-pag_agent_announcer"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/announce-outbreak/2",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/public"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A2-gol_recipient_hearer"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/authority-response",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Schema for the response of an authority to a health crisis"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Authority response"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "Content not filled in"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "foobar"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/foobar"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/authority-response"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/business-do-response",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Schema for the response of a business to a disease outbreak"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Business response"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "Content not filled in"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "foobar"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/foobar"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/business-do-response"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/caci:TA2/Events/patient-change-life-pattern",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/medical-professional"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A0-pag_X_inoculator"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/come-into-being/1",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/pathogen"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A0-Agent"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/educate-authority",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Event type in wich epidemiologists educate government authorities"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Educate"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/educate-authority/1"
+    }, {
+      "@id" : "caci:TA2/Events/educate-authority/2"
+    }, {
+      "@id" : "caci:TA2/Events/educate-authority/3"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "education"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q8434"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/educate-authority"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/educate-authority/1",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/epidemiologist"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A0-pag_agent_teacher"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/educate-authority/2",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/disease"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A1-PPT_topic_subject"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/educate-authority/3",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/authority"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A2-gol_recipient_student"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/educate-healthcare",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Event types in which epidemiologists educate healthcare workers"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Educate"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/educate-healthcare/1"
+    }, {
+      "@id" : "caci:TA2/Events/educate-healthcare/2"
+    }, {
+      "@id" : "caci:TA2/Events/educate-healthcare/3"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "education"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q8434"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/educate-healthcare"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/educate-healthcare/1",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/epidemiologist"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A0-pag_agent_teacher"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/educate-healthcare/2",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/disease"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A1-PPT_topic_subject"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/educate-healthcare/3",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/healthcare-sector"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A2-gol_recipient_student"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/educate-manufacturer",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Event type in which epidemiologists educate pharmaceutical manufacturers"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Educate"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/educate-manufacturer/1"
+    }, {
+      "@id" : "caci:TA2/Events/educate-manufacturer/2"
+    }, {
+      "@id" : "caci:TA2/Events/educate-manufacturer/3"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "education"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q8434"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/educate-manufacturer"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/educate-manufacturer/1",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/epidemiologist"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A0-pag_agent_teacher"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/educate-manufacturer/2",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/disease"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A1-PPT_topic_subject"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/educate-manufacturer/3",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/manufacturer"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A2-gol_recipient_student"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/epidemiologist-educate",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Schema in which epidemiologists carry out their educational mission"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Educate"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/children" : [ {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218218511"
+  }, {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218218767"
+  }, {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218219023"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/outlink_gate" : [ {
+    "@value" : "and"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/epidemiologist-educate/1"
+    }, {
+      "@id" : "caci:TA2/Events/epidemiologist-educate/2"
+    }, {
+      "@id" : "caci:TA2/Events/epidemiologist-educate/3"
+    }, {
+      "@id" : "caci:TA2/Events/epidemiologist-educate/4"
+    }, {
+      "@id" : "caci:TA2/Events/epidemiologist-educate/5"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "education"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q8434"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/epidemiologist-educate"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/epidemiologist-educate/1",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/epidemiologist"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A0-pag_agent_teacher"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/epidemiologist-educate/2",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/disease"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A1-PPT_topic_subject"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/epidemiologist-educate/3",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "Just like in Phase I, multiple participants can share the same role."
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/healthcare-sector"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A2-gol_recipient_student"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/epidemiologist-educate/4",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/manufacturer"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A2-gol_recipient_student"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/epidemiologist-educate/5",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/authority"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A2-gol_recipient_student"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/epidemiologist-publish",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Event type in which epidemiologists publish research results"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Publish"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/epidemiologist-publish/1"
+    }, {
+      "@id" : "caci:TA2/Events/epidemiologist-publish/2"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "public statement"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q52947181"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA2/Events/epidemiologist-publish"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/epidemiologist-publish/1",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/epidemiologist"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A0-Agent"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/epidemiologist-publish/2",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/findings"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A1-Findings"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/epidemiologist-response",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Schema in which an epidemiologist responds to an outbreak"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Epidemiologist response"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/children" : [ {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218207759"
+  }, {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218208015"
+  }, {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218208271"
+  }, {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218208527"
+  }, {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218208783"
+  }, {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218209039"
+  }, {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218209295"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/outlink_gate" : [ {
+    "@value" : "and"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/epidemiologist-response/1"
+    }, {
+      "@id" : "caci:TA2/Events/epidemiologist-response/2"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/epidemiologist-response"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/epidemiologist-response/1",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/epidemiologist"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A0-Agent"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/epidemiologist-response/2",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/disease"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A1-Disease"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/healthworker-response",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Schema for the response of a health worker to a health crisis"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Health worker response"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "Content not filled in"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "foobar"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/foobar"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/healthworker-response"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/investigate-cluster",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Event type in which epidemiologists investigate clusters"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Investigate"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/investigate-cluster/1"
+    }, {
+      "@id" : "caci:TA2/Events/investigate-cluster/2"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "research project"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q1298668"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/investigate-cluster"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/investigate-cluster/1",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/epidemiologist"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A0-Agent"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/investigate-cluster/2",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/cluster"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A1-Cluster"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/investigate-origin-propagation",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Event type in which epidemiologists investigate the origins and propagation of a disease"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Research"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/investigate-origin-propagation/1"
+    }, {
+      "@id" : "caci:TA2/Events/investigate-origin-propagation/2"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "medical research"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q2752427"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/investigate-origin-propagation"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/investigate-origin-propagation/1",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/epidemiologist"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A0-Agent"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/investigate-origin-propagation/2",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/pathogen-2"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A1-Disease"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/learn-about-disease",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Event type in which epidemiologists learn about a disease"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Learn"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/learn-about-disease/1"
+    }, {
+      "@id" : "caci:TA2/Events/learn-about-disease/2"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "discovery"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q12772819"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/learn-about-disease"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/learn-about-disease/1",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/epidemiologist"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A0-Agent"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/learn-about-disease/2",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/disease"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A1-Disease"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/manufacturer-do-involvement",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Schema for the involvement of a pharmaceutical manufacturer in a disease outbreak"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Manufacturer DO involvement"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "Content not filled in"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "foobar"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/foobar"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/manufacturer-do-involvement"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/pathogen-come-into-being",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Event type in which a pathogen comes into being"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Come into being"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "If a schema event is not found in the documents or Graph G, then TA2 specifies a provenance of \"n/a\" and a confidence of 1.0."
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/come-into-being/1"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "existence"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q468777"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/pathogen-come-into-being"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/pathogen-continue",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Schema in which further spreading or a decrease in the prevalence of a pathogen occurs"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Continue"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/children" : [ {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218182671"
+  }, {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218182927"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/outlink_gate" : [ {
+    "@value" : "xor"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/pathogen-continue/1"
+    }, {
+      "@id" : "caci:TA2/Events/pathogen-continue/2"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/pathogen-continue"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/pathogen-continue/1",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/pathogen"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A0-Agent"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/pathogen-continue/2",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/society"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A1-Patient"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/pathogen-decrease",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Event type in which a pathogen decreases in society"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Decrease in society"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/pathogen-decrease/1"
+    }, {
+      "@id" : "caci:TA2/Events/pathogen-decrease/2"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "reduction"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q47496130"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/pathogen-decrease"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/pathogen-decrease/1",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/pathogen"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A0-Agent"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/pathogen-decrease/2",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/society"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A1-Patient"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/pathogen-escape",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Event type in which a pathogen escapes from a body or reservoir"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Escape"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "Union of escape (response to distress) and go (to move from a place to another that is further away)"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/pathogen-escape/1"
+    }, {
+      "@id" : "caci:TA2/Events/pathogen-escape/2"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "escape"
+    }, {
+      "@value" : "go"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q19279529"
+    }, {
+      "@id" : "https://www.wikidata.org/wiki/Q1430466"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/pathogen-escape"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/pathogen-escape/1",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/pathogen"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A0-Agent"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/pathogen-escape/2",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/patient"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A1-Patient"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/pathogen-infect-patient",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Event type in which a pathogen infects a patient"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Patient exposed to pathogen"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.9"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/modality" : [ {
+    "@value" : "irrealis"
+  }, {
+    "@value" : "generic"
+  }, {
+    "@value" : "negated"
+  }, {
+    "@value" : "hedged"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/pathogen-infect-patient/1"
+    }, {
+      "@id" : "caci:TA2/Events/pathogen-infect-patient/2"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "Event1"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "infection"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q166231"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/pathogen-infect-patient"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/temporal" : [ {
+    "@list" : [ {
+      "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218179087"
+    }, {
+      "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218179599"
+    }, {
+      "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218180111"
+    } ]
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/pathogen-infect-patient/1",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/patient"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A1-gol_thing_becoming_infected"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/values" : [ {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218183695"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/pathogen-infect-patient/2",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/pathogen"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A2-ppt_infectant"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/values" : [ {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218183951"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/pathogen-live-in-body",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Event type in which a pathogen lives in the body of a patient"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "The pathogen lived in the patient's body"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "This is clearly a bad mapping, but shows that even leaf nodes (verbs) are not constrained to the KOWG events or event pool."
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.8"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/pathogen-live-in-body/1"
+    }, {
+      "@id" : "caci:TA2/Events/pathogen-live-in-body/2"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "Event2"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "life"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q3"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/pathogen-live-in-body"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/pathogen-live-in-body/1",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/pathogen"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A0-Agent"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/values" : [ {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218184719"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/pathogen-live-in-body/2",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/patient"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A1-Patient"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/values" : [ {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218184975"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/pathogen-progression",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Schema for the progression of a pathogen"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Pathogen progression"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/children" : [ {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218166543"
+  }, {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218166799"
+  }, {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218167055"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.9"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/outlink_gate" : [ {
+    "@value" : "and"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/pathogen-progressions/1"
+    }, {
+      "@id" : "caci:TA2/Events/pathogen-progressions/2"
+    }, {
+      "@id" : "caci:TA2/Events/pathogen-progressions/3"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/privateData" : [ {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218168079"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "Event2"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relations" : [ {
+    "@id" : "caci:TA2/Relations/pathogen-progression/1"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/pathogen-progression"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/pathogen-progressions/1",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "Role names are not validated.  You can use roles from the KOWG, the DWD overlay, or UMR non-lexical roles"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/pathogen"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A0-Agent"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/values" : [ {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218173967"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/pathogen-progressions/2",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/patient-1"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A1-Patient"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/values" : [ {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218174223"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/pathogen-progressions/3",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/society"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A2-Environment"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/values" : [ {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218174479"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/pathogen-replicate",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Event type in which a pathogen replicates"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Replicate"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/pathogen"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/pathogen-replicate"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "copy"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q23013246"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A0-Agent"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/pathogen-replicate"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/pathogen-spread",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Schema in which a pathogen propogates/spreads"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Spread"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/children" : [ {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218172175"
+  }, {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218172431"
+  }, {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218172687"
+  }, {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218172943"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/outlink_gate" : [ {
+    "@value" : "and"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/pathogen-spread/1"
+    }, {
+      "@id" : "caci:TA2/Events/pathogen-spread/2"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/pathogen-spread"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/pathogen-spread/1",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/pathogen"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A0-Agent"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/pathogen-spread/2",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/patient-1"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A1-Patient"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/patient-be-treated",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Event type in which patient(s) is/are treated"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Treatment"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/patient-be-treated/1"
+    }, {
+      "@id" : "caci:TA2/Events/patient-be-treated/2"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "treatment"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q179661"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/patient-be-treated"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/patient-be-treated/1",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/medical-professional"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A0-pag_X_doctor"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/patient-be-treated/2",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/patient"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A1-ppt_X_patient"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/patient-change-life-pattern",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Event type in which life pattern changes"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Compliance"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "Multiple qnodes should be specified as lists, not as \"wiki:Q1399332 | wiki:Q67004728\""
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/patient-change-life-pattern/1"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "treatment adherence and compliance"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q1399332"
+    }, {
+      "@id" : "https://www.wikidata.org/wiki/Q67004728"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/patient-change-life-pattern"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/patient-change-life-pattern/1",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/patient"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A0-pag_X_complier"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/patient-continue",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Schema for the continuation of an illness in patient(s), improvement or death"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Continue"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/children" : [ {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218200847"
+  }, {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218201103"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/outlink_gate" : [ {
+    "@value" : "xor"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/patient-continue/1"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "Event2"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/patient-continue"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/patient-continue/1",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/patient"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A1-Patient"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/patient-contract-disease",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Event type in which patient(s) contract(s) disease"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Contract disease"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/patient-contract-disease/2"
+    }, {
+      "@id" : "caci:TA2/Events/patient-contract-disease/1"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "infection"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q166231"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/patient-contract-disease"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/patient-contract-disease/1",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/pathogen-1"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A2-ppt_infectant"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/patient-contract-disease/2",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/patient"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A1-gol_thing_becoming_infected"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/patient-diagnosed",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Event type in which patient(s) get(s) diagnosed"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Diagnosis"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/patient-diagnosed/1"
+    }, {
+      "@id" : "caci:TA2/Events/patient-diagnosed/2"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/predictions" : [ {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218194191"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "medical diagnosis"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q177719"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/patient-diagnosed"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/patient-diagnosed/1",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/medical-professional"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A0-pag_agent_doctor"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/patient-diagnosed/2",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/patient"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A1-ppt_theme_patient"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/patient-die",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Mr. Ray Brennan died at his home three days after the convention ended of an apparent heart attack."
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "The patient dies"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/patient-die/1"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "Event3"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "death"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q4"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/patient-die"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/patient-die/1",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/patient"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A1-ppt_the deceased"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/values" : [ {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218207247"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/patient-get-meds",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Event type in which patient(s) receive(s) vaccine or other medication"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Patients get medication"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "vaccination (inoculation) is different from treatment with medications"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.7"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/caci:TA2/Events/patient-change-life-pattern"
+    }, {
+      "@id" : "caci:TA2/Events/patient-get-meds/2"
+    }, {
+      "@id" : "caci:TA2/Events/patient-get-meds/3"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "Event1"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "vaccination"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q192995"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/patient-get-meds"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/patient-get-meds/2",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/patient"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A1-ppt_X_patient_inoculated"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/values" : [ {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218203919"
+  }, {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218204175"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/patient-get-meds/3",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/pathogen-1"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A2-ppt_X_inoculated_against"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/values" : [ {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218204943"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/patient-get-sick",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Event type in which patient(s) get(s) sick"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "The patient gets sick"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.8"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/patient-get-sick/1"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "Event2"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "disease"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q12136"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/patient-get-sick"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/patient-get-sick/1",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/patient"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A1-ppt_X_sick/ill_one"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/values" : [ {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218202127"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/patient-improve",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Event type in which patient's condition improves"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Improvement"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/patient"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/patient-improve"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "remedy"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q1595418"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A1-dir_Source_patient"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/patient-improve"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/patient-progression",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Schema for the progression of a patient"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Patient progression"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/children" : [ {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218186767"
+  }, {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218187023"
+  }, {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218187279"
+  }, {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218187535"
+  }, {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218187791"
+  }, {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218188047"
+  }, {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218188303"
+  }, {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218188559"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/outlink_gate" : [ {
+    "@value" : "and"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/patient-progression/001"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/patient-progression"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/patient-progression/001",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/patient"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A0-Agent"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/patient-travels-to-contaminant",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Event type in which patient(s) travel to contaminated location/facility"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "The patient traveled to the location of the contaminant"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.5"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/patient-travels-to-contaminant/1"
+    }, {
+      "@id" : "caci:TA2/Events/patient-travels-to-contaminant/2"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "Event2"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "travel"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q61509"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/patient-travels-to-contaminant"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/patient-travels-to-contaminant/1",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/patient"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A0-pag_agent_mover"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/values" : [ {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218201615"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/patient-travels-to-contaminant/2",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/location"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A2-GOL_X_destination"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/values" : [ {
+    "@id" : "_:genid-59c02d0a7ca34e789a29f5287221b1d0-b218201871"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/research-antidote",
+  "http://schema.org/description" : [ {
+    "@list" : [ {
+      "@value" : "Event type in which epidemiologists research vaccines and other antidotes for a disease"
+    } ]
+  } ],
+  "http://schema.org/name" : [ {
+    "@value" : "Research"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "WD does not distinguish investigation of the origin from vaccine or treatment research"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/participants" : [ {
+    "@list" : [ {
+      "@id" : "caci:TA2/Events/research-antidote/1"
+    }, {
+      "@id" : "caci:TA2/Events/research-antidote/2"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/provenance" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qlabel" : [ {
+    "@list" : [ {
+      "@value" : "medical research"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/qnode" : [ {
+    "@list" : [ {
+      "@id" : "https://www.wikidata.org/wiki/Q2752427"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Events/research-antidote"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/research-antidote/1",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/epidemiologist"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A0-Agent"
+  } ]
+}, {
+  "@id" : "caci:TA2/Events/research-antidote/2",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/entity" : [ {
+    "@id" : "caci:TA2/Entities/antidote"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/roleName" : [ {
+    "@value" : "A1-Antidote"
+  } ]
+}, {
+  "@id" : "caci:TA2/Relations/pathogen-progression/1",
+  "http://schema.org/name" : [ {
+    "@value" : "patient is a member of society"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "Note that relation triples (with relationPredicates taken from DWD relations) can be defined in any event node.  By convention, they should only define relations between child event nodes and/or the node where the relation is defined. This is a silly yet illustrative example."
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationObject" : [ {
+    "@id" : "caci:TA2/Entities/American_society"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationObject_prov" : [ {
+    "@value" : "Entity3"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationPredicate" : [ {
+    "@id" : "https://aaa-neptune-test-ingest.s3.amazonaws.com/P463"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationProvenance" : [ {
+    "@value" : "Relation1"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationSubject" : [ {
+    "@id" : "caci:TA2/Entities/Ray_Brennan"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationSubject_prov" : [ {
+    "@value" : "Entity2"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Relations/pathogen-progression/1"
+  } ]
+}, {
+  "@id" : "caci:TA2/Relations/patient-lives-in-PA",
+  "http://schema.org/name" : [ {
+    "@value" : "Patient resided in location of contaminant."
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "TA2 can add relations that it found in the documents but was not in the schema; use 'kairos:NULL' for ta1ref. P551 is 'residence'."
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.7"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationObject" : [ {
+    "@id" : "caci:TA2/Entities/Philadelphia"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationObject_prov" : [ {
+    "@value" : "Entity3"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationPredicate" : [ {
+    "@id" : "https://www.wikidata.org/wiki/P551"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationProvenance" : [ {
+    "@value" : "Relation1"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationSubject" : [ {
+    "@id" : "caci:TA2/Entities/Ray_Brennan"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationSubject_prov" : [ {
+    "@value" : "Entity2"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "https://kairos-sdf.s3.amazonaws.com/context/kairos/NULL"
+  } ]
+}, {
+  "@id" : "caci:TA2/Relations/relation1",
+  "http://schema.org/name" : [ {
+    "@value" : "pathogen from pathogen-progression schema has an equivalence relation to the pathogen in the patient-progression schema"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "This is a TA1 relation that was not found in the documents.  Set all three provenance fields to 'n/a'."
+    }, {
+      "@value" : "It doesn't really make sense to instantiate these equivalence relations, as it will be borne out by instantiated entities."
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationObject" : [ {
+    "@id" : "caci:TA2/Entities/pathogen-1"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationObject_prov" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationPredicate" : [ {
+    "@id" : "https://www.wikidata.org/wiki/Q26161438"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationProvenance" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationSubject" : [ {
+    "@id" : "caci:TA2/Entities/pathogen"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationSubject_prov" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Relations/relation1"
+  } ]
+}, {
+  "@id" : "caci:TA2/Relations/relation2",
+  "http://schema.org/name" : [ {
+    "@value" : "pathogen from pathogen-progression schema has an equivalence relation to the pathogen in the epidemiologist response schema"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "1.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationObject" : [ {
+    "@id" : "caci:TA2/Entities/pathogen-2"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationObject_prov" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationPredicate" : [ {
+    "@id" : "https://www.wikidata.org/wiki/Q26161438"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationProvenance" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationSubject" : [ {
+    "@id" : "caci:TA2/Entities/pathogen"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationSubject_prov" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Relations/relation2"
+  } ]
+}, {
+  "@id" : "caci:TA2/Relations/relation3",
+  "http://schema.org/name" : [ {
+    "@value" : "patient from patient-progression schema has an equivalence relation to the health-worker in the healthworker-response schema"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "This is a TA1 relation that was not found in the documents.  Set all three provenance fields to 'n/a'."
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.0"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationObject" : [ {
+    "@id" : "caci:TA2/Entities/patient-1"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationObject_prov" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationPredicate" : [ {
+    "@id" : "https://www.wikidata.org/wiki/Q26161438"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationProvenance" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationSubject" : [ {
+    "@id" : "caci:TA2/Entities/patient"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationSubject_prov" : [ {
+    "@value" : "n/a"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Relations/relation3"
+  } ]
+}, {
+  "@id" : "caci:TA2/Relations/relation4",
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "relation names (labels) are helpful to human assessors, but are not required at this point."
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.8"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationObject" : [ {
+    "@id" : "caci:TA2/Events/patient-contract-disease"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationObject_prov" : [ {
+    "@value" : "Entity3"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationPredicate" : [ {
+    "@id" : "https://www.wikidata.org/wiki/Q26161438"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationProvenance" : [ {
+    "@value" : "Relation1"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationSubject" : [ {
+    "@id" : "caci:TA2/Events/pathogen-infect-patient"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationSubject_prov" : [ {
+    "@value" : "Entity2"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Relations/relation4"
+  } ]
+}, {
+  "@id" : "caci:TA2/Relations/relation5a",
+  "http://schema.org/name" : [ {
+    "@value" : "The pathogen progression schema overlaps other schemas in the Event Complex"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "These are temporal relations between schemas in the Event Complex.  This is using the 'partial coincidence' relation from WD:  \"general phenomenon where distinct entities (such as regions of space, events, or sequences) overlap in extent\""
+    }, {
+      "@value" : "Note that TA2 needs to split up TA1 relations with multiple relationObjects because each one requires its own relationObject_prov."
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.8"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationObject" : [ {
+    "@id" : "caci:TA2/Events/patient-progression"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationObject_prov" : [ {
+    "@value" : "Entity3"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationPredicate" : [ {
+    "@id" : "https://www.wikidata.org/wiki/Q65560376"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationProvenance" : [ {
+    "@value" : "Relation1"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationSubject" : [ {
+    "@id" : "caci:TA2/Events/pathogen-progression"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationSubject_prov" : [ {
+    "@value" : "Entity2"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Relations/relation5"
+  } ]
+}, {
+  "@id" : "caci:TA2/Relations/relation5b",
+  "http://schema.org/name" : [ {
+    "@value" : "The pathogen progression schema overlaps other schemas in the Event Complex"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "Note that TA2 needs to split up TA1 relations with multiple relationObjects because each one requires its own relationObject_prov."
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.8"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationObject" : [ {
+    "@id" : "caci:TA2/Events/epidemiologist-response"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationObject_prov" : [ {
+    "@value" : "Entity3"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationPredicate" : [ {
+    "@id" : "https://www.wikidata.org/wiki/Q65560376"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationProvenance" : [ {
+    "@value" : "Relation1"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationSubject" : [ {
+    "@id" : "caci:TA2/Events/pathogen-progression"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationSubject_prov" : [ {
+    "@value" : "Entity2"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Relations/relation5"
+  } ]
+}, {
+  "@id" : "caci:TA2/Relations/relation6",
+  "http://schema.org/name" : [ {
+    "@value" : "'Live in body' event from the pathogen-progression schema has an equivalence relation to the 'Patient gets sick' event from the patient-progression schema"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/comment" : [ {
+    "@list" : [ {
+      "@value" : "TODO: add many more equivalence relations between schema-level entities (i.e., protagonists) and events within the complex, and maybe temporal relations among subevents in different schemas"
+    } ]
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/confidence" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#float",
+    "@value" : "0.8"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationObject" : [ {
+    "@id" : "caci:TA2/Events/patient-get-sick"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationObject_prov" : [ {
+    "@value" : "Entity3"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationPredicate" : [ {
+    "@id" : "https://www.wikidata.org/wiki/Q26161438"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationProvenance" : [ {
+    "@value" : "Relation1"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationSubject" : [ {
+    "@id" : "caci:TA2/Events/pathogen-live-in-body"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/relationSubject_prov" : [ {
+    "@value" : "Entity2"
+  } ],
+  "https://kairos-sdf.s3.amazonaws.com/context/kairos/ta1ref" : [ {
+    "@id" : "caci:TA1/Relations/relation6"
+  } ]
+} ]

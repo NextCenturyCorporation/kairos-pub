@@ -1,0 +1,123 @@
+<!--Used by evaluation-dataset-list.vue-->
+<!-- :style="{background: $vuetify.theme.themes[theme].backdrops.lighten1}" -->
+<div class="EvaluationDatasetList">
+  <div class="pa-2">
+    <v-btn block @click="newDataset()">
+      New dataset window in {{ evaluation.name }}
+    </v-btn>
+    <v-data-table :items="evaluation.datasets" no-results-text="No datasets" no-data-text="No Datasets Available" loading-text="Loading ..." :headers="headers" hide-default-footer>
+      <template v-slot:item.enabled="{ item }">
+        <v-switch v-model="item.enabled" @change="update()"></v-switch>
+      </template>
+
+      <template v-slot:item.versionFiles="{ item }">
+        <v-switch v-model="item.versionFiles" @change="update()"></v-switch>
+      </template>
+
+      <template v-slot:item.upload="{ item }">
+        <v-switch v-model="item.upload" @change="update()"></v-switch>
+      </template>
+
+      <template v-slot:item.download="{ item }">
+        <v-switch v-model="item.download" @change="update()"></v-switch>
+      </template>
+
+      <template v-slot:item.startDate="{ item }">
+        {{ dateInTimeZone(item.startDate) }}
+      </template>
+
+      <template v-slot:item.endDate="{ item }">
+        {{ dateInTimeZone(item.endDate) }}
+      </template>
+
+      <template v-slot:item.delete="{ item }">
+        <v-icon @click="deleteUploadWindow(item)"> delete </v-icon>
+      </template>
+    </v-data-table>
+  </div>
+
+  <v-dialog v-model="deleteUploadWindowDialog">
+    <v-card>
+      <v-card-title class="text-h5">
+        Delete upload window?
+      </v-card-title>
+      <v-card-text>Delete the upload window "{{selectedUploadWindowForDeletion && selectedUploadWindowForDeletion.name }}" from "{{ evaluation && evaluation.name }}". This action is not reversable.</v-card-text>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn text @click="cancelDeleteUploadWindow()">
+          Cancel
+        </v-btn>
+        <v-btn text @click="confirmDeleteUploadWindow()">
+          Ok
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+
+  <v-dialog v-model="uploadWindowDialog">
+    <v-card v-if="uploadWindowDataset">
+      <v-card-title class="text-h5">
+        New upload window
+      </v-card-title>
+      <tr>
+        <td>Name:</td>
+        <td>
+          <v-select :items="nameOptions" v-model="nameSelected"></v-select>
+          <v-text-field v-if="nameTextField" v-model="uploadWindowDataset.name"></v-text-field>
+        </td>
+      </tr>
+      <tr>
+        <td>Enabled:</td>
+        <td>
+          <v-switch v-model="uploadWindowDataset.enabled"></v-switch>
+        </td>
+      </tr>
+      <tr>
+        <td>AllowedTypes:</td>
+        <td>
+          <v-checkbox v-for="item in availableUploadFileTypes" :key="item.text" v-model="uploadWindowFileTypes" :label="item" :value="item"></v-checkbox>
+        </td>
+      </tr>
+      <tr>
+        <td>Version files:</td>
+        <td>
+          <v-switch v-model="uploadWindowDataset.versionFiles"></v-switch>
+        </td>
+      </tr>
+      <tr>
+        <td>Perfomers can upload:</td>
+        <td>
+          <v-switch v-model="uploadWindowDataset.upload"></v-switch>
+        </td>
+      </tr>
+      <tr>
+        <td>Perfomers can download:</td>
+        <td>
+          <v-switch v-model="uploadWindowDataset.download"></v-switch>
+        </td>
+      </tr>
+      <tr>
+        <td>Start date/time</td>
+        <td>
+          <date-picker width="100%" v-model="uploadWindowDataset.startDate" type="datetime" show-second="false" format="YYYY-MM-DD hh:mm a"></date-picker>
+        </td>
+      </tr>
+      <tr>
+        <td>End date/time</td>
+        <td>
+          <date-picker v-model="uploadWindowDataset.endDate" type="datetime" show-second="false" format="YYYY-MM-DD hh:mm a"></date-picker>
+        </td>
+      </tr>
+
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn text @click="cancelWindowUpload()">
+          Cancel
+        </v-btn>
+        <v-btn text @click="confirmWindowUpload()">
+          Ok
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+</div>

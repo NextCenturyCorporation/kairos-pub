@@ -1,0 +1,443 @@
+openapi: 3.0.0
+info:
+  title: Moirai Zeus Files API
+  description: This is the API for file managment,
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+tags:
+  - name: Files
+    description: Endpoints for file management.
+security:
+  - bearerAuth: []
+paths:
+  /files:
+    get:
+      tags:
+        - Files
+      summary: Gets files for user
+      description: retrieve file
+      operationId: getFiles
+      parameters:
+        - name: experiment
+          in: query
+          description: which experiment to get files for.
+          required: true
+          schema:
+            type: string
+            example: quizlet 3
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/storedFile'
+  /files/sync:
+    post:
+      tags:
+        - Files
+      summary: Sync s3 files to db
+      description: sync s3 files
+      operationId: syncFiles
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /files/{id}:
+    get:
+      tags:
+        - Files
+      summary: Retrieved a stored file
+      operationId: downloadFile
+      parameters:
+        - name: id
+          in: path
+          description: file id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: file binary information
+          content:
+            '*/*':
+              schema:
+                type: string
+                format: binary
+    put:
+      tags:
+        - Files
+      summary: Updates a stored file
+      operationId: updateFile
+      parameters:
+        - name: id
+          in: path
+          description: file id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update the file given the id
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/storedFile'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+    delete:
+      tags:
+        - Files
+      summary: deletes the corresponding file
+      description:
+      operationId: deleteFile
+      parameters:
+        - name: id
+          in: path
+          description: file id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: BAD
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        404:
+          description: NOT_FOUND
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /files/{id}/validate:
+    post:
+      tags:
+        - Files
+      summary: validate a stored file
+      operationId: validateFile
+      parameters:
+        - name: id
+          in: path
+          description: file id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /files/{id}/display:
+    get:
+      tags:
+        - Files
+      summary: display a stored file
+      operationId: displayFiles
+      parameters:
+        - name: id
+          in: path
+          description: file id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Update the file given the id
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/fileDisplayInfo'
+  /files/experiment:
+    get:
+      tags:
+        - Files
+      summary: Gets files for experiment
+      description: retrieve file
+      operationId: getFilesByExperiment
+      parameters:
+        - name: experiment
+          in: query
+          description: which experiment to get files for.
+          required: true
+          schema:
+            type: string
+            example: quizlet 3
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/storedFile'
+    post:
+      tags:
+        - Files
+      summary: Takes file content and path information as input and store the file on s3
+      description: upload file
+      operationId: handleUpload
+      requestBody:
+        description: File to upload
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/fileUploadRequest'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /files/experiment/snapshot:
+    post:
+      tags:
+        - Files
+      summary: Takes file content and path information as input and store the file on s3
+      description: upload file
+      operationId: experimentSnapshot
+      parameters:
+        - name: experiment
+          in: query
+          description: which experiment to take snapshot of.
+          required: true
+          schema:
+            type: string
+            example: quizlet 3
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        417:
+          description: List of files that were unable to be copied
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/storedFile'
+  /files/experiment/createFromSnapshot:
+    post:
+      tags:
+        - Files
+      summary: Takes files from an experiment content and path information as input and store the file on s3
+      description: upload file
+      operationId: copyExperimentFiles
+      parameters:
+        - name: snapshot
+          in: query
+          description: which snapshot to copy.
+          required: true
+          schema:
+            type: string
+            example: quizlet4_snap_1234
+        - name: experiment
+          in: query
+          description: which experiment to put files under.
+          required: true
+          schema:
+            type: string
+            example: dryrun
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /files/evaluation:
+    get:
+      tags:
+        - Files
+      summary: Gets files for evaluation
+      description: retrieve file
+      operationId: getFilesByEvaluation
+      parameters:
+        - name: evaluation
+          in: query
+          description: which evaluation to get files for.
+          required: true
+          schema:
+            type: string
+            example: quizlet 3
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/storedFile'
+  /files/validate:
+    post:
+      tags:
+        - Files
+      summary: Validate Input
+      description: validate input string
+      operationId: validateInput
+      requestBody:
+        description: Input to validate
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/validationRequest'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/validationResponse'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    stringResponse:
+      type: object
+      properties:
+        value:
+          type: string
+          example: "Success"
+    fileDisplayInfo:
+      type: object
+      required:
+        - fileId
+        - filename
+        - base
+        - validation
+        - humanReadable
+      properties:
+        fileId:
+          type: string
+        filename:
+          type: string
+        base:
+          type: string
+        validation:
+          type: string
+        humanReadable:
+          type: string
+    validationRequest:
+      type: object
+      required:
+        - input
+      properties:
+        input:
+          type: string
+    validationResponse:
+      type: object
+      properties:
+        errorsList:
+          type: array
+          items:
+            type: string
+        warningsList:
+          type: array
+          items:
+            type: string
+        fatalList:
+          type: array
+          items:
+            type: string
+    fileUploadRequest:
+      type: object
+      required:
+        - file
+        - filename
+        - experiment
+        - category
+      properties:
+        file:
+          type: string
+          format: binary
+        filename:
+          type: string
+        experiment:
+          type: string
+        category:
+          type: string
+        extraData:
+          type: string
+          example: '{"key":"value"}'
+        createHistory:
+          type: boolean
+          default: false
+    storedFile:
+      type: object
+      x-jpaEntity: true
+      required:
+        - id
+        - dateReceived
+        - owner
+        - filename
+        - extraData
+        - uri
+        - experiment
+        - category
+        - validationDone
+        - humanReadableDone
+        - publicAccess
+      properties:
+        id:
+          type: string
+          example:
+          x-jpaIdField: true
+          x-generatedId: true
+        dateReceived:
+          type: string
+          format: date
+          example: "2020-01-01"
+        owner:
+          type: string
+        filename:
+          type: string
+        extraData:
+          type: string
+        uri:
+          type: string
+        experiment:
+          type: string
+        category:
+          type: string
+        validationDone:
+          type: boolean
+        humanReadableDone:
+          type: boolean
+        publicAccess:
+          type: boolean
+        canSubmit:
+          type: boolean
+        display:
+          type: boolean
+          default: true
+          x-jpaColOverride:
+            overrideValue: "columnDefinition  = \"boolean default true\""

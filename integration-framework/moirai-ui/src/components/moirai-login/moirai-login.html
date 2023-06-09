@@ -1,0 +1,155 @@
+<div class="moirai-login">
+  <v-card class="mx-auto" max-width="600" color="backdrops lighten-1">
+    <v-window v-model="window">
+      <v-window-item :value="1">
+        <v-card-title class="title font-weight-regular justify-space-between">
+          <span>{{ loginTitle }}</span>
+        </v-card-title>
+
+        <v-card-text>
+          <v-form v-model="validLoginForm" ref="loginForm">
+            <v-text-field v-model="username" label="Username" color="primary" prepend-icon="person" required></v-text-field>
+            <v-text-field v-model="password" label="Password" color="primary" prepend-icon="lock" :append-icon="showPwd ? 'visibility' : 'visibility_off'" :type="showPwd ? 'text' : 'password'" @click:append="showPwd = ! showPwd" @keyup.enter="validLoginForm ? login() : null" required></v-text-field>
+          </v-form>
+        </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-actions>
+          <v-btn text small @click="resetForm(); window++">
+            Register
+          </v-btn>
+          <v-btn text small @click="resetForm(); window+=2">
+            Forgot Username
+          </v-btn>
+          <v-btn text small @click="resetForm(); window+=3">
+            Forgot Password
+          </v-btn>
+          <v-spacer></v-spacer>
+          <v-btn :loading="loading" :disabled="!validLoginForm" color="button" depressed @click="login()" class="white--text">
+            LOGIN
+          </v-btn>
+        </v-card-actions>
+      </v-window-item>
+      <v-window-item :value="2">
+        <v-card-title class="title font-weight-regular justify-space-between">
+          <span>{{ registerTitle }}</span>
+        </v-card-title>
+
+        <v-card-text>
+          <v-form v-model="validRegisterForm" ref="registerForm">
+            <v-text-field label="Username" color="primary" v-model="username" prepend-icon="person" :rules="usernameRules" required></v-text-field>
+            <v-text-field label="Password" type="password" color="primary" v-model="password" prepend-icon="lock" :append-icon="showPwd ? 'visibility' : 'visibility_off'" :type="showPwd ? 'text' : 'password'" @click:append="showPwd = ! showPwd" :rules="passwordRules" required></v-text-field>
+            <v-text-field label="Email" color="primary" v-model="emailAddress" prepend-icon="mail_outline" :rules="emailAddressRules" required></v-text-field>
+            <v-text-field label="Team Name" color="primary" v-model="teamName" prepend-icon="business" :rules="teamNameRules" required></v-text-field>
+            <v-select :items="this.$store.state.performerGroupOptions" label="Performer group" color="primary" v-model="performerGroup" multiple prepend-icon="group" :rules="performerGroupRules" required></v-select>
+          </v-form>
+        </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-actions>
+          <v-btn text small @click="viewLogin()">
+            Back
+          </v-btn>
+          <v-spacer></v-spacer>
+          <v-btn :loading="loading" :disabled="!validRegisterForm" color="button" depressed @click="register()" class="white--text">
+            Register
+          </v-btn>
+        </v-card-actions>
+      </v-window-item>
+      <v-window-item :value="3">
+        <v-card-title class="title font-weight-regular justify-space-between">
+          <span>{{ forgotUsernameTitle }}</span>
+        </v-card-title>
+
+        <v-card-text>
+          <v-form v-model="validForgotUsernameForm" ref="forgotUsernameForm">
+            <v-text-field label="Email" color="primary" v-model="emailAddress" prepend-icon="mail_outline" @keydown.enter.prevent @keyup.enter="validForgotUsernameForm ? forgotUsername() : null" :rules="emailAddressRules" required></v-text-field>
+          </v-form>
+        </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-actions>
+          <v-btn text small @click="viewLogin()">
+            Back
+          </v-btn>
+          <v-spacer></v-spacer>
+          <v-btn :loading="loading" :disabled="!validForgotUsernameForm" color="button" depressed @click="forgotUsername()" class="white--text">
+            Submit
+          </v-btn>
+        </v-card-actions>
+      </v-window-item>
+      <v-window-item :value="4">
+        <v-card-title class="title font-weight-regular justify-space-between">
+          <span>{{ forgotPasswordTitle }}</span>
+        </v-card-title>
+
+        <v-card-text>
+          <v-form v-model="validForgotPasswordForm" ref="forgotPasswordForm">
+            <v-text-field label="Username" color="primary" v-model="username" prepend-icon="person" @keydown.enter.prevent @keyup.enter="validForgotPasswordForm ? forgotPassword() : null" required></v-text-field>
+          </v-form>
+        </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-actions>
+          <v-btn text small @click="viewLogin()">
+            Back
+          </v-btn>
+          <v-spacer></v-spacer>
+          <v-btn :loading="loading" :disabled="!validForgotPasswordForm" color="button" depressed @click="forgotPassword()" class="white--text">
+            Submit
+          </v-btn>
+        </v-card-actions>
+      </v-window-item>
+      <v-window-item :value="5">
+        <v-card-title class="title font-weight-regular justify-space-between">
+          <span>{{ enterAccessCodeTitle }}</span>
+        </v-card-title>
+
+        <v-card-text>
+          <v-form v-model="validAccessCodeForm" ref="accessCodeForm">
+            <v-text-field label="Access Code" color="primary" v-model="accessCode" prepend-icon="vpn_key" @keydown.enter.prevent @keyup.enter="validAccessCodeForm ? resetPassword() : null" :rules="accessCodeRules" required></v-text-field>
+          </v-form>
+        </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-actions>
+          <v-btn text small @click="viewLogin()">
+            Back
+          </v-btn>
+          <v-spacer></v-spacer>
+          <v-btn :loading="loading" :disabled="!validAccessCodeForm" color="button" depressed @click="resetPassword()">
+            Submit
+          </v-btn>
+        </v-card-actions>
+      </v-window-item>
+      <v-window-item :value="6">
+        <v-card-title class="title font-weight-regular justify-space-between">
+          <span>{{ enterNewPasswordTitle }}</span>
+        </v-card-title>
+
+        <v-card-text>
+          <v-form v-model="validNewPasswordForm" ref="newPasswordForm">
+            <v-text-field label="New Password" color="primary" v-model="password" prepend-icon="lock" :append-icon="showPwd ? 'visibility' : 'visibility_off'" :type="showPwd ? 'text' : 'password'" @click:append="showPwd = ! showPwd" @keydown.enter.prevent @keyup.enter="validNewPasswordForm ? setPassword() : null" :rules="passwordRules" required></v-text-field>
+          </v-form>
+        </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-actions>
+          <v-btn text small @click="viewLogin()">
+            Back
+          </v-btn>
+          <v-spacer></v-spacer>
+          <v-btn :loading="loading" :disabled="!validNewPasswordForm" color="button" depressed @click="setPassword()">
+            Submit
+          </v-btn>
+        </v-card-actions>
+      </v-window-item>
+    </v-window>
+  </v-card>
+</div>

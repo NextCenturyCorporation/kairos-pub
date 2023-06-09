@@ -1,0 +1,15 @@
+<div class="Administrative">
+  <v-tabs v-model="window">
+    <v-tab>Feature Flags</v-tab>
+    <v-tab>System Settings</v-tab>
+    <v-tabs-slider></v-tabs-slider>
+  </v-tabs>
+  <v-window v-model="window" class="mx-16">
+    <v-window-item :value="0">
+      <modify-feature-flags ref="modifyFeatureFlags"></modify-feature-flags>
+    </v-window-item>
+    <v-window-item :value="1">
+      <system-settings ref="systemSettings"></system-settings>
+    </v-window-item>
+  </v-window>
+</div>

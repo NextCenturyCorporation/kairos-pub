@@ -1,0 +1,15 @@
+<div class="Administrative">
+  <v-tabs v-model="window">
+    <v-tab>User Management</v-tab>
+    <v-tab>Role/Permission Management</v-tab>
+    <v-tabs-slider></v-tabs-slider>
+  </v-tabs>
+  <v-window v-model="window" class="mx-16">
+    <v-window-item :value="0">
+      <edit-user-data ref="editUsersData"></edit-user-data>
+    </v-window-item>
+    <v-window-item :value="1">
+      <modify-role-display ref="modifyRoleDisplay"></modify-role-display>
+    </v-window-item>
+  </v-window>
+</div>

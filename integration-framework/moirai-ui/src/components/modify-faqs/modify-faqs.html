@@ -1,0 +1,258 @@
+<div class="Support mx-16">
+  <v-card class="pb-5" :style="cssVars" color="backdrops lighten-1">
+    <v-card-title :class="headingClasses">How can we help?</v-card-title>
+    <v-card class="mx-auto" max-width="60%" color="backdrops lighten-1" elevation="0">
+      <v-card-title class="mb=0 pb-0 pl-1" :class="headingClasses"
+        >Frequently Asked Questions (ADMIN)
+        <!--Add category button-->
+        <v-dialog v-model="addCategoryDialog" :overlay-color="currentTheme.dropShadow" class="elevation-0" max-width="600px" :retain-focus="false">
+          <template v-slot:activator="{ on }" v-slot:item.edit="{ item }">
+            <v-btn class="white--text ml-3" color="button" @click="addCategoryDialog = true, resetFAQDialogs()">Add Category</v-btn>
+          </template>
+          <v-card color="backdrops">
+            <v-card-title>
+              Add Category
+            </v-card-title>
+            <v-card-text>
+              <div>
+                <v-text-field v-model="newCategoryName" label="Category name" @keyup.enter="confirmCategoryAdd()" outlined required> </v-text-field>
+              </div>
+            </v-card-text>
+            <v-card-actions>
+              <v-btn text small @click="addCategoryDialog = false">
+                Cancel
+              </v-btn>
+              <v-spacer></v-spacer>
+              <!--Store edited text here-->
+              <v-btn color="button" depressed @click="confirmCategoryAdd()">
+                Add
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+
+        <!--Add Q/A button-->
+        <v-dialog v-model="addFAQDialog" :overlay-color="currentTheme.dropShadow" class="elevation-0" max-width="600px" :retain-focus="false">
+          <template v-slot:activator="{ on }" v-slot:item.edit="{ item }">
+            <v-btn class="white--text ml-3" color="button" @click="addFAQDialog = true, resetFAQDialogs()">Add FAQ</v-btn>
+          </template>
+          <v-card color="backdrops">
+            <v-card-title>
+              Add FAQ
+            </v-card-title>
+            <v-card-text>
+              <div>
+                <v-select label="Category" color="primary" v-model="selectedCategoryToEdit" prepend-icon="description" required return-object item-text="categoryName" :items="categories" clearable>
+                  <template slot="selection" slot-scope="data"> {{ data.item.categoryName }}<br /> </template>
+                </v-select>
+                <v-text-field v-model="newQuestion" :class="questionClasses" label="Question" outlined> </v-text-field>
+                <v-textarea v-model="newAnswer" :class="questionAnswerClasses" label="Answer" @keyup.enter="confirmFAQAdd()" required outlined auto-grow> </v-textarea>
+              </div>
+            </v-card-text>
+            <v-card-actions>
+              <v-btn text small @click="addFAQDialog = false">
+                Cancel
+              </v-btn>
+              <v-spacer></v-spacer>
+              <!--Store edited text here-->
+              <v-btn color="button" depressed @click="confirmFAQAdd()">
+                Add
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+        <!--Refresh button-->
+        <v-icon class="v-icon--refresh ml-3" @click="refreshCategories()">
+          refresh
+        </v-icon>
+      </v-card-title>
+      <v-expansion-panels flat accordion>
+        <draggable v-model="categories" style="margin: auto; width:100%;" @change="confirmCategorySort()" @start="drag=true" @end="drag=false">
+          <v-expansion-panel v-for="(category, categoryIndex) in categories" :key="category.listOrder">
+            <v-divider v-if="categoryIndex === 0"></v-divider>
+            <v-expansion-panel-header @click="updateReference(categoryIndex)" color="backdrops lighten-1">
+              <div>
+                {{ category.categoryName }}
+              </div>
+
+              <template v-slot:actions>
+                <v-icon>
+                  expand_more
+                </v-icon>
+                <v-menu bottom offset-y>
+                  <template v-slot:activator="{ on }">
+                    <v-icon v-on="on" style="transform: none;">
+                      more_vert
+                    </v-icon>
+                  </template>
+                  <v-list color="backdrops lighten-1">
+                    <!--Delete category button-->
+                    <v-list-item>
+                      <v-list-item-title>
+                        <v-dialog v-model="deletionDialog" :overlay-color="currentTheme.dropShadow" class="elevation-0" max-width="600px" :retain-focus="false">
+                          <template v-slot:activator="{ on }">
+                            <a v-on="on" @click="openCategoryDeletePanel(category.id, category)">
+                              Delete category
+                            </a>
+                          </template>
+                          <v-card color="backdrops">
+                            <v-card-title>
+                              Delete Category?
+                            </v-card-title>
+                            <v-card-text>
+                              Deleting a FAQ category will delete all of the questions within the category.
+                            </v-card-text>
+                            <v-card-actions>
+                              <v-spacer></v-spacer>
+                              <v-btn @click="deletionDialog = false">
+                                Cancel
+                              </v-btn>
+                              <v-btn color="error" depressed @click="confirmCategoryDelete()">
+                                Delete
+                              </v-btn>
+                            </v-card-actions>
+                          </v-card>
+                        </v-dialog>
+                      </v-list-item-title>
+                    </v-list-item>
+                    <!--Edit category button-->
+                    <v-list-item>
+                      <v-list-item-title>
+                        <v-dialog v-model="editDialog" :overlay-color="currentTheme.dropShadow" class="elevation-0" max-width="600px" :retain-focus="false">
+                          <template v-slot:activator="{ on }" v-slot:item.edit="{ item }">
+                            <a v-on="on" @click="openEditCategoryName(category)">
+                              Edit category
+                            </a>
+                          </template>
+                          <v-card color="backdrops">
+                            <v-card-title>
+                              Edit FAQ category
+                            </v-card-title>
+                            <v-card-text>
+                              <div>
+                                <v-text-field v-model="newCategoryName" @keyup.enter="confirmCategoryEdit()" required> </v-text-field>
+                              </div>
+                            </v-card-text>
+                            <v-card-actions>
+                              <v-spacer></v-spacer>
+                              <v-btn @click="editDialog = false">
+                                Cancel
+                              </v-btn>
+                              <!--Store edited text here-->
+                              <v-btn color="button" depressed @click="confirmCategoryEdit()">
+                                Confirm edit
+                              </v-btn>
+                            </v-card-actions>
+                          </v-card>
+                        </v-dialog>
+                      </v-list-item-title>
+                    </v-list-item>
+                    <!--Sort questions button (Only appears if there are >= 2 questions)-->
+                    <v-list-item v-if="category.faqs.length > 1">
+                      <v-list-item-title>
+                        <v-dialog v-model="sortFAQDialog" :overlay-color="currentTheme.dropShadow" class="elevation-0" max-width="600px" :retain-focus="false">
+                          <template v-slot:activator="{ on }" v-slot:item.edit="{ item }">
+                            <a v-on="on" @click="sortFAQDialog = true">
+                              Change FAQ order
+                            </a>
+                          </template>
+                          <v-card color="backdrops">
+                            <v-card-title>
+                              Change FAQ order
+                            </v-card-title>
+                            <v-card-text style="text-align: center;">
+                              <draggable v-model="category.faqs" group="people" class="mt-2 mb-2" style="width: auto; text-align: center;" @start="drag=true" @end="drag=false">
+                                <div class="list-group-item" v-for="faq in category.faqs" :key="faq.question">
+                                  <v-expansion-panel-header expand-icon="" color="backdrops lighten-1" class="mt-2 mb-2" style="color: white;">{{ faq.question }}</v-expansion-panel-header>
+                                </div>
+                              </draggable>
+                            </v-card-text>
+                            <v-card-actions>
+                              <v-btn text small @click="sortFAQDialog = false">
+                                Cancel
+                              </v-btn>
+                              <v-spacer></v-spacer>
+                              <!--Store updated category order-->
+                              <v-btn color="button" depressed @click="confirmFAQSort(category)">
+                                Confirm sort order
+                              </v-btn>
+                            </v-card-actions>
+                          </v-card>
+                        </v-dialog>
+                      </v-list-item-title>
+                    </v-list-item>
+                  </v-list>
+                </v-menu>
+              </template>
+            </v-expansion-panel-header>
+
+            <v-divider></v-divider>
+            <v-expansion-panel-content v-for="(faq, index) in category.faqs" :key="faq.listOrder" ref="item" color="backdrops lighten-1">
+              <div :class="questionClasses">
+                {{ faq.question }}
+
+                <!--FAQ edit button-->
+                <v-dialog v-model="FAQeditDialog" :overlay-color="currentTheme.dropShadow" class="elevation-0" max-width="600px" :retain-focus="false">
+                  <template v-slot:activator="{ on }" v-slot:item.edit="{ item }">
+                    <a v-on="on" @click="openEditFAQ(faq)" size="18">Edit FAQ</a>
+                  </template>
+                  <v-card color="backdrops">
+                    <v-card-title>
+                      Edit FAQ
+                    </v-card-title>
+                    <v-card-text>
+                      <div>
+                        <v-text-field v-model="newQuestion" :class="questionClasses" label="Question" outlined> </v-text-field>
+                        <v-textarea v-model="newAnswer" :class="questionAnswerClasses" label="Answer" @keyup.enter="confirmFAQEdit()" required outlined auto-grow> </v-textarea>
+                      </div>
+                    </v-card-text>
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+                      <v-btn @click="FAQeditDialog = false">
+                        Cancel
+                      </v-btn>
+                      <!--Store edited text here-->
+                      <v-btn color="button" depressed @click="confirmFAQEdit(faq)">
+                        Confirm edit
+                      </v-btn>
+                    </v-card-actions>
+                  </v-card>
+                </v-dialog>
+                |
+                <!--FAQ delete button-->
+                <v-dialog v-model="FAQdeletionDialog" :overlay-color="currentTheme.dropShadow" class="elevation-0" max-width="600px" :retain-focus="false">
+                  <template v-slot:activator="{ on }">
+                    <a v-on="on" @click="openFAQDeletePanel(faq, category)" size="18">
+                      Delete FAQ
+                    </a>
+                  </template>
+                  <v-card color="backdrops">
+                    <v-card-title>
+                      Delete Question?
+                    </v-card-title>
+                    <v-card-text :class="questionClasses">
+                      {{ newQuestion }}
+                      <p :class="questionAnswerClasses">{{ newAnswer }}</p>
+                    </v-card-text>
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+                      <v-btn @click="FAQdeletionDialog = false">
+                        Cancel
+                      </v-btn>
+                      <v-btn color="error" depressed @click="confirmFAQDelete()">
+                        Delete
+                      </v-btn>
+                    </v-card-actions>
+                  </v-card>
+                </v-dialog>
+              </div>
+              <p :class="questionAnswerClasses" v-html="faq.answer"></p>
+              <v-divider v-if="index + 1 < category.faqs.length"></v-divider>
+            </v-expansion-panel-content>
+            <v-divider v-if="category.status"></v-divider>
+          </v-expansion-panel>
+        </draggable>
+      </v-expansion-panels>
+    </v-card>
+  </v-card>
+</div>

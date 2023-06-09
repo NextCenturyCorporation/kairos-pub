@@ -1,0 +1,23 @@
+<!--Used by file-uploader.vue-->
+<div class="FileUploader">
+  <v-main>
+    <v-container>
+      <v-row v-if="categoryOptions">
+        <v-select :disabled="(categoryOptions.length == 0)" v-model="category" :items="categoryOptions" label="Category" color="primary" prepend-icon="fas fa-database" item-text="name" return-object required></v-select>
+      </v-row>
+
+      <v-row>
+        <v-file-input :disabled="(categoryOptions.length == 0)" v-model="files" multiple type="file" :accept="acceptedFileTypes" @change="onInputChange" outlined chips show-size label="Click here to select a file"></v-file-input>
+      </v-row>
+
+      <v-row v-for="(f, i) in filenames" :key="f.text">
+        <v-text-field v-model="filenames[i]" label="Filename"></v-text-field>
+      </v-row>
+
+      <v-row>
+        <v-spacer></v-spacer>
+        <v-btn :disabled="!hasFilesToUpload() || (categoryOptions && !category)" @click="onFileUpload">Upload</v-btn>
+      </v-row>
+    </v-container>
+  </v-main>
+</div>

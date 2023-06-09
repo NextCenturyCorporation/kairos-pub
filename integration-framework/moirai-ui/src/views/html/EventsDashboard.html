@@ -1,0 +1,106 @@
+<!--Used by EventsDashboard.vue-->
+
+<div class="EventsDashboard mx-16">
+  <v-card min-height="100" color="backdrops lighten-1">
+    <v-card-title class="text-h4 justify-center pt-12">This page is currently under construction.</v-card-title>
+    <v-card-text class="">
+      <v-card-actions class="justify-center">
+        <v-btn @click="getSampleData()" color="button">View sample Quizlet 6 JSON file</v-btn>
+      </v-card-actions>
+    </v-card-text>
+  </v-card>
+
+  <v-card class="mt-7" color="backdrops lighten-1">
+    <v-container>
+      <v-card-title>
+        <v-select class="mt-2 mr-5" label="Event" color="primary" :items="events" v-on:input="" clearable outlined></v-select>
+        Events Dashboard > { selectedEvent.name }
+        <v-spacer></v-spacer>
+        <v-btn>Filters</v-btn>
+      </v-card-title>
+    </v-container>
+  </v-card>
+
+  <v-container>
+    <v-row>
+      <v-col cols="10" sm="6" md="">
+        <v-card color="backdrops lighten-1">
+          <v-card-title>Event complex view</v-card-title>
+          <gantt class="left-container" @selected-task-updated="updateRelations" style="width: 1100px; height: 600px;" :tasks="tasks"> </gantt>
+        </v-card>
+        <v-card><v-card-text>Not shown:</v-card-text></v-card>
+        <v-container>
+          <v-row color="backdrops lighten-1">
+            <v-card class="pb-5" style="width: 60%;" color="backdrops lighten-1">
+              <v-card-title>Relations{{ relationsFound }}</v-card-title>
+              <vis class="ml-4" style="width:600px;height:200px;border-width: 1px; border-color:black;border-style: solid;background-color: white;"></vis>
+            </v-card>
+            <v-card
+              style="width:40%; height: 300px;display: flex !important;
+            flex-direction: column;"
+              color="backdrops lighten-1"
+            >
+              <v-card-title>Arguments</v-card-title>
+              <v-card-text
+                style="flex-grow: 1;
+              overflow: auto;"
+              >
+                <v-chip-group column multiple v-model="selectedArgs" @change="filterArguments">
+                  <v-chip v-for="(argument, argIndex) in args" :key="argIndex" filter outlined small>
+                    {{ argument.name }} ({{ argument.count }})
+                  </v-chip>
+                </v-chip-group>
+              </v-card-text>
+            </v-card>
+          </v-row>
+        </v-container>
+      </v-col>
+      <v-col cols="8" md="">
+        <v-card class="" color="backdrops lighten-1">
+          <v-card-title>Legend</v-card-title>
+          <v-container>
+            <v-row>
+              <v-col cols="9" md="5">Confidence Threshold</v-col>
+              <v-col cols="5" md="">Events</v-col>
+            </v-row>
+            <v-row>
+              <v-col cols="9" md="5">
+                <i class="material-icons mr-2">circle</i>= 1<br />
+                <i class="material-icons mr-2">circle</i>.999 - .75<br />
+                <i class="material-icons mr-2">circle</i>.7499 - 00
+              </v-col>
+              <v-col cols="9" md="">
+                <i class="material-icons mr-2">event_available</i>Order Known <i class="material-icons mr-2">report_problem</i>Predicted<br />
+                <i class="material-icons mr-2">help_center</i>Order unknown <i class="material-icons mr-2">highlight_alt</i>Alternate<br />
+                <i class="material-icons mr-2">add_box</i>Additional
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-card>
+
+        <v-card class="" color="backdrops lighten-1">
+          <v-card-title>
+            Details
+          </v-card-title>
+          <v-card-text>
+            <span style="color: white;">Event Complex_Step</span><br />
+            {{ selectedEvent.text }} <br /><br />
+            <span style="color: white;">Description</span><br />
+            {{ selectedEvent.description}} <br /><br />
+            <span style="color: white;">ID: </span>{{ selectedEvent.id }} <br /><br />
+            <span v-if="selectedEvent.parent != 0"><span style="color: white;">Parent ID: </span>{{ selectedEvent.parent }} <br /><br /></span>
+            <span style="color: white;">Start date: </span>{{ selectedEvent.start_date }}<br />
+            <span style="color: white;">Confidence: </span>{{ selectedEvent.progress }}<br /><br />
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
+  <v-card class="mx-auto extra-x-padding mt-5" color="backdrops lighten-1">
+    <div v-for="data in MockJSONData">
+      <v-card-text class="grey--text">
+        {{ data }}
+      </v-card-text>
+    </div>
+  </v-card>
+</div>

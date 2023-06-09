@@ -1,0 +1,65 @@
+<div id="ComplexList" class="ComplexList">
+  <v-container class="ma-0 pa-0" fluid>
+    <v-row class="pl-8 pt-4" align="center">
+      <v-col v-if="eventComplexView">
+        <h2>
+          <v-btn @click="eventComplexView = !eventComplexView"><v-icon class="mr-4" slot="prepend" color="primary">arrow_right_alt </v-icon> Back</v-btn>&nbsp;&nbsp;{{eventComplex}}
+        </h2>
+      </v-col>
+    </v-row>
+    <v-row class="pl-8 pt-4" align="center">
+      <v-col class="ma-0 pa-0" v-if="!eventComplexView">
+        <v-hover v-slot:default="{ hover }">
+          <v-select v-model="namedGraph" :items="listOfNamedGraphs" label="Graph group" color="primary" required nocache>
+            <v-icon class="mr-4" slot="prepend" color="primary">
+              help_center
+            </v-icon>
+          </v-select>
+        </v-hover>
+      </v-col>
+      <v-col class="ma-0 pa-0" v-if="!eventComplexView" style="float:left; position: relative;">
+        <v-btn :loading="loading" color="button" class="btn-right px-0 ml-3" @click.stop="getEventComplexList()">
+          &nbsp;&nbsp;Search&nbsp;&nbsp;
+        </v-btn>
+      </v-col>
+    </v-row>
+    <v-row v-if="!eventComplexView" class="pl-8 pr-8 pt-0 pb-0 ma-0" align="center">
+      <v-col align-center cols="12">
+        <v-card color="backdrops">
+          <v-card-title>
+            Complex Events
+            <v-spacer></v-spacer>
+            <v-text-field v-model="search" append-icon="search" label="Search" single-line hide-details class="shrink"></v-text-field>
+          </v-card-title>
+        </v-card>
+        <v-data-table
+          :items="eventComplexList"
+          no-results-text="No matching Event Complex"
+          no-data-text="No Events found"
+          loading-text="Loading User Data... Please wait"
+          :style="{
+            background: $vuetify.theme.themes[theme].backdrops.lighten1
+          }"
+          :headers="headers"
+          :sort-by="sortBy"
+          :sort-desc="[true]"
+          :search="search"
+          :loading="tableLoadingFlag"
+          item-key="value"
+        >
+          <template v-slot:item.vis="{ item }">
+            <v-btn id="item" color="button" class="btn-right px-0 ml-3" text @click.stop="getEventComplex(item)">
+              Visualize
+            </v-btn>
+          </template>
+        </v-data-table>
+      </v-col>
+      <v-col cols="3"></v-col>
+    </v-row>
+    <v-row class="pa-0 ma-0" v-if="eventComplexView">
+      <v-col>
+        <event-complex ref="eventComplex" :namedGraph="namedGraph" :eventComplex="eventComplex" :eventComplexId="eventComplexId"></event-complex>
+      </v-col>
+    </v-row>
+  </v-container>
+</div>

@@ -1,0 +1,107 @@
+<!--Used by edit-user-data.vue-->
+<div class="user-management">
+  <v-card color="backdrops">
+    <v-card-title>
+      User Accounts
+      <v-spacer></v-spacer>
+      <v-text-field v-model="search" append-icon="search" label="Search" single-line hide-details class="shrink"></v-text-field>
+    </v-card-title>
+  </v-card>
+  <v-data-table
+    :items="users"
+    no-results-text="No matching Users found"
+    no-data-text="No Users found"
+    loading-text="Loading User Data... Please wait"
+    :style="{
+        background: $vuetify.theme.themes[theme].backdrops.lighten1
+      }"
+    :headers="headers"
+    :sort-by="sortBy"
+    :sort-desc="[false]"
+    :search="search"
+    :loading="tableLoadingFlag"
+    item-key="username"
+  >
+    <template v-slot:item.assume="{ item }">
+      <v-btn id="item" color="button" class="btn-left" text @click.stop="assumeUser(item)">
+        assume
+      </v-btn>
+    </template>
+
+    <template v-slot:item.active="{ item }"> <span v-if="item.active">Active</span><span v-if="!item.active">Inactive</span> </template>
+    <template v-slot:item.edit="{ item }">
+      <v-btn id="item" color="button" class="btn-right px-0 ml-3" text @click.stop="openUserEditModal(item)">
+        Edit
+      </v-btn>
+    </template>
+  </v-data-table>
+  <v-dialog v-model="editUser" max-width="800px" class="mx-3 elevation-0" :retain-focus="false" persistent>
+    <v-form v-model="validUserForm">
+      <v-card color="backdrops" v-if="selectedUserToEdit" class="px-8">
+        <v-card-title>
+          User Account: {{ selectedUserToEdit.username }}
+        </v-card-title>
+        <v-row class="v-row--switch">
+          <v-col md="7">
+            <v-hover v-slot:default="{ hover }">
+              <v-text-field v-model="newEmailAddress" color="primary" label="Email" @blur="editEmailAddress == false" @keyup.enter="editEmailAddress = false" :rules="emailAddressRules" required>
+                <v-icon class="mr-4" slot="prepend" color="primary">
+                  mail_outline
+                </v-icon>
+                <v-icon v-if="hover" slot="append" color="primary" @click="editEmailAddress = !editEmailAddress">
+                  edit
+                </v-icon>
+              </v-text-field>
+            </v-hover>
+          </v-col>
+          <v-col md="3">
+            <v-text-field v-model="currentUserActivity" label="Email" solo flat readonly background-color="backdrops lighten-1">
+              <v-icon class="v-icon--switch" slot="prepend" color="primary">
+                account-cancel
+              </v-icon>
+            </v-text-field>
+          </v-col>
+          <v-col class="v-switch">
+            <v-switch v-model="toggleUserActivity" color="primary"></v-switch>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col>
+            <v-hover v-slot:default="{ hover }">
+              <v-select v-model="newPerformerGroup" multiple :items="performerGroupOptions" label="Performer group" color="primary" @blur="editPerformerGroup = false" :rules="performerGroupRules" required>
+                <v-icon class="mr-4" slot="prepend" color="primary">
+                  group
+                </v-icon>
+                <v-icon v-if="hover" slot="append" color="primary" @click="editPerformerGroup = !editPerformerGroup">
+                  edit
+                </v-icon>
+              </v-select>
+            </v-hover>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col>
+            <v-hover v-slot:default="{ hover }">
+              <v-select v-model="newRoles" multiple :items="roles" item-text="name" label="User Roles" color="primary" @blur="editRoles = false" return-object>
+                <template slot="selection" slot-scope="data">
+                  {{ data.item.name }}: {{ data.item.description }},
+                </template>
+                <v-icon class="mr-4" slot="prepend" color="primary">
+                  account_box
+                </v-icon>
+                <v-icon v-if="hover" slot="append" color="primary" @click="editRoles = !editRoles">
+                  edit
+                </v-icon>
+              </v-select>
+            </v-hover>
+          </v-col>
+        </v-row>
+        <v-card-actions>
+          <v-btn text small @click.stop="closeModal()"> Cancel </v-btn>
+          <v-spacer></v-spacer>
+          <v-btn color="button" depressed @click.stop="saveUser(selectedUserToEdit)" class="pl-1" dark>Save</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-form>
+  </v-dialog>
+</div>

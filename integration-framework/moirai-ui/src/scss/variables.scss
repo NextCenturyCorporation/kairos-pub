@@ -1,0 +1,41 @@
+$body-font-family: 'Open Sans';
+$heading-font-family: "Open Sans";
+$btn-font-weight: 600; 
+
+.v-dialog {
+    border-radius: 25px !important;
+}
+  
+tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, .05);
+}
+
+.passive-text-cst {
+    opacity: 0.5;
+    font-size: smaller;
+}
+
+.review-key {
+    opacity: 0.5;
+}
+
+.pre-max {
+    // max-height: 500px;
+}
+
+.btn-disabled-override {
+    color:white !important;
+}
+
+.override-padding-cst-l {
+    padding-left: 0px !important;
+}
+
+.box {
+    float: left;
+    height: 20px;
+    width: 20px;
+    margin-bottom: 15px;
+    border: 1px solid black;
+    clear: both;
+  }

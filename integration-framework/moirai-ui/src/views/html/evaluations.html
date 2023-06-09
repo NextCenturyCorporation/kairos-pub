@@ -1,0 +1,22 @@
+<div>
+  <v-card class="mx-auto" height="800">
+    <v-row class="fill-height" no-gutters>
+      <evaluation-list :evaluations="evaluations" @select-eval="selectEval" @create-evaluation="createEvaluation" @delete-evaluation="deleteEvaluation" @sync-evaluation="syncEvaluation"></evaluation-list>
+      <div v-if="selectedEval">
+        <v-tabs class="mb-4" v-model="window">
+          <v-tab>Datasets</v-tab>
+          <v-tab>Experiments</v-tab>
+          <v-tabs-slider></v-tabs-slider>
+        </v-tabs>
+        <v-window v-model="window">
+          <v-window-item :value="0">
+            <evaluation-dataset-list v-if="selectedEval" :evaluation="selectedEval" :timezone="timezone" @update-evaluation="updateEvaluation"></evaluation-dataset-list>
+          </v-window-item>
+          <v-window-item :value="1" class="mt-4">
+            <create-k8s-experiment :evaluation="selectedEval" :evaluationFiles="evaluationFiles" @update-evaluation="updateEvaluation"></create-k8s-experiment>
+          </v-window-item>
+        </v-window>
+      </div>
+    </v-row>
+  </v-card>
+</div>

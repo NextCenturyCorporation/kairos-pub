@@ -1,0 +1,116 @@
+<!--Used by edit-user-data.vue-->
+<div class="role-management">
+  <v-card color="backdrops">
+    <v-card-title>
+      Access Roles
+      <v-spacer></v-spacer>
+      <span style="padding-top: 10px; padding-right: 25px">
+        <v-btn id="item" @click.stop="openNewRoleModal()" color="button" class="pl-1" dark>
+          <span>Create New Role</span>
+        </v-btn>
+      </span>
+      <v-text-field v-model="search" append-icon="search" label="Search" single-line hide-details class="shrink"></v-text-field>
+    </v-card-title>
+  </v-card>
+  <v-data-table
+    :items="editRoles"
+    no-results-text="No matching Roles found"
+    no-data-text="No Roles found"
+    loading-text="Loading Role Data... Please wait"
+    :style="{
+          background: $vuetify.theme.themes[theme].backdrops.lighten1
+        }"
+    :headers="headers"
+    :sort-by="sortBy"
+    :sort-desc="[false]"
+    :search="search"
+    :loading="tableLoadingFlag"
+    item-key="name"
+  >
+    <template v-slot:item.permissions="{ item }">
+      <span v-for="(perm, index) in item.permissions"> {{ perm.name }} <span v-if="index+1 < item.permissions.length">, </span> </span>
+    </template>
+    <template v-slot:item.edit="{ item }">
+      <v-btn id="item" color="button" class="btn-right px-0 ml-3" :disabled="!canDeleteEdit(item)" text @click.stop="openEditRoleModel(item)">
+        Edit
+      </v-btn>
+    </template>
+    <template v-slot:item.delete="{ item }">
+      <v-icon @click="showDeleteModal(item)" :disabled="!canDeleteEdit(item)"> delete </v-icon>
+    </template>
+  </v-data-table>
+  <v-dialog v-model="editRole" max-width="800px" class="elevation-0" :retain-focus="false" persistent>
+    <v-form v-model="validRoleForm">
+      <v-card color="backdrops" v-if="selectedRoleToEdit" class="px-8">
+        <v-card-title class="px-n3">
+          Role Editor
+        </v-card-title>
+        <v-row class="v-row--switch">
+          <v-col md="5">
+            <v-hover v-slot:default="{ hover }">
+              <v-text-field v-model="newRoleName" color="primary" label="Name" @blur="editRoleName == false" @keyup.enter="editRoleName = false" :rules="roleNameRule" required>
+                <v-icon class="mr-4" slot="prepend" color="primary">
+                  subject
+                </v-icon>
+                <v-icon v-if="hover" slot="append" color="primary" @click="editRoleName = !editRoleName">
+                  edit
+                </v-icon>
+              </v-text-field>
+            </v-hover>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col md="11">
+            <v-hover v-slot:default="{ hover }">
+              <v-textarea v-model="newRoleDescription" color="primary" label="Description" @blur="editRoleDescription == false" @keyup.enter="editRoleDescription = false" :rules="roleDescriptionRule" required>
+                <v-icon class="mr-4" slot="prepend" color="primary">
+                  description
+                </v-icon>
+                <v-icon v-if="hover" slot="append" color="primary" @click="editRoleDescription = !editRoleDescription">
+                  edit
+                </v-icon>
+              </v-textarea>
+            </v-hover>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col md="11">
+            <v-hover v-slot:default="{ hover }">
+              <v-select v-model="newPermissions" multiple :items="permissions" item-text="name" label="Permissions" color="primary" @blur="editPermissions = false" return-object required>
+                <template slot="selection" slot-scope="data">
+                  {{ data.item.name }}: {{ data.item.description }} <br />
+                </template>
+                <v-icon class="mr-4" slot="prepend" color="primary">
+                  account_box
+                </v-icon>
+                <v-icon v-if="hover" slot="append" color="primary" @click="editPermissions = !editPermissions">
+                  edit
+                </v-icon>
+              </v-select>
+            </v-hover>
+          </v-col>
+        </v-row>
+        <v-card-actions>
+          <v-btn text small @click.stop="closeModal()"> Cancel </v-btn>
+          <v-spacer></v-spacer>
+          <v-btn color="button" depressed @click.stop="saveRole(selectedRoleToEdit)" class="pl-1" dark>Save</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-form>
+  </v-dialog>
+  <v-dialog v-model="deleteRole" max-width="800px" class="mx-3 elevation-0" :retain-focus="false" persistent>
+    <v-card color="backdrops" class="px-4">
+      <v-card-title v-if="selectedRoleToEdit">
+        Delete "{{ selectedRoleToEdit.name }}"?
+      </v-card-title>
+      <v-card-text>
+        Deleting a role will permanently remove it from all acoounts.
+      </v-card-text>
+      <v-card-actions>
+        <v-btn text small @click="deleteRole = false"> Cancel </v-btn>
+        <v-spacer></v-spacer>
+        <v-btn color="error" depressed @click="deleteRoleConfirmed()">Delete</v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+</div>

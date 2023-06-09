@@ -1,0 +1,106 @@
+<div class="system-settings">
+  <v-card color="backdrops">
+    <v-card-title>
+      System Settings
+      <v-spacer></v-spacer>
+      <span style="padding-top: 10px; padding-right: 25px">
+        <v-btn id="item" @click.stop="addSettingDialog = true, resetDialogs()" color="button" class="" dark>
+          <span>Create New Setting</span>
+        </v-btn>
+      </span>
+      <v-text-field v-model="search" append-icon="search" label="Search" single-line hide-details class="shrink"></v-text-field>
+    </v-card-title>
+  </v-card>
+  <v-data-table
+    :items="settings"
+    no-results-text="No matching settings found"
+    no-data-text="No settings found"
+    loading-text="Loading settings..."
+    :style="{
+            background: $vuetify.theme.themes[theme].backdrops.lighten1
+          }"
+    :headers="headers"
+    :sort-by="sortBy"
+    :sort-desc="[false]"
+    :search="search"
+    item-key="name"
+  >
+    <template v-slot:item.edit="{ item }">
+      <v-btn id="editItem" color="button" class="btn-right px-0 ml-3" text @click.stop="openDialog(item), editDialog = true">
+        Edit
+      </v-btn>
+    </template>
+    <template v-slot:item.delete="{ item }">
+      <v-btn id="deleteItem" color="button" class="btn-right px-0" text @click.stop="openDialog(item), deletionDialog = true">
+        Delete
+      </v-btn>
+    </template>
+  </v-data-table>
+  <!--Add setting dialog-->
+  <v-dialog v-model="addSettingDialog" :overlay-color="theme.dropShadow" class="elevation-0" max-width="600px" :retain-focus="false">
+    <v-card color="backdrops">
+      <v-card-title>
+        Add Setting
+      </v-card-title>
+      <v-card-text>
+        <div>
+          <v-text-field v-model="newSettingName" label="Setting name" outlined required> </v-text-field>
+          <v-text-field v-model="newSettingValue" label="Setting value" @keyup.enter="confirmSettingAdd()" outlined required> </v-text-field>
+        </div>
+      </v-card-text>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn @click="resetDialogs(), addSettingDialog = false;">
+          Cancel
+        </v-btn>
+        <v-btn color="button" depressed @click="confirmSettingAdd()">
+          Add
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+  <!--Edit setting dialog-->
+  <v-dialog v-model="editDialog" :overlay-color="theme.dropShadow" class="elevation-0" max-width="600px" :retain-focus="false">
+    <v-card color="backdrops">
+      <v-card-title>
+        Edit Setting
+      </v-card-title>
+      <v-card-text>
+        <div>
+          <v-text-field v-model="newSettingName" label="Name" required> </v-text-field>
+          <v-text-field v-model="newSettingValue" label="Value" @keyup.enter="confirmSettingEdit()" required> </v-text-field>
+        </div>
+      </v-card-text>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn @click="editDialog = false, resetDialogs()">
+          Cancel
+        </v-btn>
+        <!--Store edited text here-->
+        <v-btn color="button" depressed @click="confirmSettingEdit()">
+          Confirm edit
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+  <!--Delete setting dialog-->
+  <v-dialog v-model="deletionDialog" :overlay-color="theme.dropShadow" class="elevation-0" max-width="600px" :retain-focus="false">
+    <v-card color="backdrops">
+      <v-card-title>
+        Delete "{{ this.newSettingName }}"?
+      </v-card-title>
+      <v-card-text>
+        Deleting a setting will permanently remove it.
+      </v-card-text>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn @click="deletionDialog = false, resetDialogs()">
+          Cancel
+        </v-btn>
+        <v-btn color="error" depressed @click="confirmSettingDeletion()">
+          Delete
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+</div>

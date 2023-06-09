@@ -1,0 +1,10 @@
+<!--Used by file-display.vue-->
+<div class="FileDisplay">
+  <v-tabs v-model="tabidx">
+    <v-tab v-for="tab in getTabs()" :key="tab.text">{{tab}}</v-tab>
+    <v-tabs-slider></v-tabs-slider>
+  </v-tabs>
+  <div>
+    <pre>{{ getText() }}</pre>
+  </div>
+</div>

@@ -1,0 +1,182 @@
+<!--Used by Services.vue-->
+<div class="Services mx-16">
+  <v-card color="backdrops lighten-1">
+    <v-card-title class="title font-weight-regular">
+      <v-dialog v-model="requestServiceDialog" max-width="600px" :overlay-color="currentTheme.dropShadow">
+        <template v-slot:activator="{ on }">
+          <v-btn :disabled="tableLoadingFlag" v-on="on" @click="resetForm()" color="button" class="pl-1" dark>
+            <v-icon class="mr-1">add</v-icon>
+            <span> Add New</span>
+          </v-btn>
+        </template>
+        <v-card color="backdrops lighten-1">
+          <v-card-title>
+            Request Services
+          </v-card-title>
+          <v-card-text>
+            <v-form v-model="validRequestServiceForm" ref="requestServiceForm">
+              <v-row>
+                <v-text-field label="Name" color="primary" v-model="serviceName" prepend-icon="label" :rules="serviceNameRules" required></v-text-field>
+              </v-row>
+              <v-row>
+                <v-select :items="this.$store.state.typeOptions" label="Type" color="primary" v-model="inputType" prepend-icon="fas fa-database" :rules="typeRules" required></v-select>
+              </v-row>
+              <v-row>
+                <v-select :items="this.$store.state.subTypeOptions" label="Subtype" color="primary" v-model="inputSubType" prepend-icon="fas fa-database" :rules="typeRules" required></v-select>
+              </v-row>
+              <v-row>
+                <v-textarea label="Details" color="primary" v-model="inputDetails" prepend-icon="description" :rules="detailsRules" @keydown.enter.prevent @keyup.enter="validRequestServiceForm ? submitForm() : null" required></v-textarea>
+              </v-row>
+            </v-form>
+          </v-card-text>
+          <v-card-actions>
+            <v-btn text small @click="closeForm()">Close</v-btn>
+            <v-spacer></v-spacer>
+            <v-btn :disabled="!validRequestServiceForm" color="button" class="white--text" depressed @click="submitForm()">
+              Submit
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+      <v-icon class="v-icon--refresh ml-3" :disabled="tableLoadingFlag" @click="refreshServices()">
+        refresh
+      </v-icon>
+      <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
+      <v-text-field class="v-text-field--search mt-0 pt-1 mr-8" color="primary" v-model="search" append-icon="search" label="Search" hide-details></v-text-field>
+      <v-btn :disabled="false" @click="toggleFilterPanel" color="button" class="pl-1" ref="filterButton" dark>
+        <v-icon class="mr-1">filter_alt</v-icon>
+        <span>Filters</span>
+      </v-btn>
+    </v-card-title>
+    <v-divider ref="filterReplacementDiv" class=""></v-divider>
+    <v-card class="mx-4 pt-0 left-border d-none" ref="filterCard">
+      <v-card-text class="py-0">
+        <v-row align="center">
+          <span class="mr-7 ml-5">Filters: </span>
+          <v-text-field class="static-filter-field" label="name" v-model="nameFilter"></v-text-field>
+          <v-spacer></v-spacer>
+          <v-text-field class="static-filter-field" label="team" v-model="teamFilter"></v-text-field>
+          <v-spacer></v-spacer>
+          <v-text-field label="status" class="static-filter-field" v-model="statusFilter"></v-text-field>
+          <v-spacer></v-spacer>
+          <v-dialog ref="dateDialog" v-model="dateModal" persistent width="290px">
+            <template v-slot:activator="{ on }">
+              <v-text-field label="date" v-model="dateFilter" v-on="on" readonly></v-text-field>
+            </template>
+            <v-date-picker v-model="dateRange" range value="MM/DD/YYYY">
+              <v-btn text color="primary" @click="dateRange = []">Reset</v-btn>
+              <v-spacer></v-spacer>
+              <v-btn text color="primary" @click="$refs.dateDialog.save(dateFilter)">OK</v-btn>
+              <v-spacer></v-spacer>
+              <v-btn text color="primary" @click="dateModal = false">Cancel</v-btn>
+            </v-date-picker>
+          </v-dialog>
+
+          <v-spacer></v-spacer>
+          <v-select class="static-filter-field" label="type" clearable v-model="typeFilter" :items="this.$store.state.typeOptions"></v-select>
+          <v-spacer></v-spacer>
+          <v-select class="static-filter-field" label="access" v-model="accessFilter" :items="accesses" clearable></v-select>
+        </v-row>
+      </v-card-text>
+    </v-card>
+    <v-spacer></v-spacer>
+    <v-card-text>
+      <v-data-table :style="cssVars" :headers="headers" :items="tableData" no-results-text="No matching services found" no-data-text="No services available" :sort-by="['status', 'dateReceived']" :sort-desc="[false, false]" multi-sort :search="search" :loading="tableLoadingFlag" loading-text="Loading Services... Please wait" show-expand item-key="id" class="backdrops lighten-1">
+        <template v-slot:expanded-item="{ item }" colspan="5">
+          <td colspan="8" class="elevation-25 moduleBackdrop" :style="cssVars">
+            <v-row>
+              <v-col class="pt-3">
+                <v-card-title class="text-subtitle-2 pl-0 pt-3 pb-1" :class="alternateText">INTERFACES</v-card-title>
+                <v-divider></v-divider>
+                <v-list color="moduleBackdrop" v-for="endpoint in item.endpoints" :key="endpoint.name + endpoint.host">
+                  <v-list-item class="pl-0 mb-0">
+                    <v-list-item-content class="in pl-0">{{ endpoint.name }}</v-list-item-content>
+                  </v-list-item>
+                  <v-row class="pt-0 pb-0">
+                    <v-col cols="10" class="pt-0 pb-0">Host: <a :href="'http://' + endpoint.host" class="basicanchor">{{ endpoint.host }}</a></v-col>
+                  </v-row>
+                  <v-row class="pt-0 pb-0">
+                    <v-col cols="10" class="pt-0 pb-0">
+                      Port: {{ endpoint.port }}
+                    </v-col>
+                  </v-row>
+                  <br />
+                  <v-divider></v-divider>
+                  <v-row>
+                    <div class="d-flex justify-center pt-5 pl-5">
+                      <v-btn class="white--text mt-2 mb-4" medium color="button" @click="visualizationRoute(endpoint)">VISUALIZATION </v-btn>
+                    </div>
+                  </v-row>
+                </v-list>
+              </v-col>
+              <v-col class="pt-3">
+                <v-card-title class="text-subtitle-2 pl-0 pb-1 pt-3" :class="alternateText">DOWNLOADS</v-card-title>
+                <v-divider></v-divider>
+                <v-list color="moduleBackdrop" v-for="download in item.downloads" :key="download.name + download.uri">
+                  <v-list-item class="pl-0">
+                    <a class="basicanchor" :href="download.uri">{{ download.name }}</a>
+                  </v-list-item>
+                </v-list>
+              </v-col>
+              <v-col class="pt-3">
+                <v-card-title class="text-subtitle-2 mx-0 px-0 pb-1 pt-3" :class="alternateText">DETAILS</v-card-title>
+                <v-form v-model="validDetailsForms[item.id]">
+                  <v-divider></v-divider>
+                  <v-select color="primary" class="text-subtitle-2 mt-3" :value="item.access" v-model="onScreenDetails.access[item.id]" :items="accesses" :ref="`currentAccess-${item.id}`" label="Select" hint="Access for Service" persistent-hint @change="evaluateDetailsChange(item)"></v-select>
+                  <v-textarea auto-grow color="primary" :value="item.details" v-model="onScreenDetails.notes[item.id]" :ref="`currentNote-${item.id}`" class="mt-5 text-subtitle-2" outlined name="Notes" label="Notes" :rules="notesRules" hint="Add any notes here" rows="1" @input="evaluateDetailsChange(item)"></v-textarea>
+                </v-form>
+                <div class="text-right">
+                  <v-btn class="white--text mr-2" medium color="button" :disabled="!(detailsValuesChanged[item.id]) || !validDetailsForms[item.id]" @click="saveDetails(item)">Save</v-btn>
+                  <v-btn class="white--text mr-2" medium color="grey" @click="resetDetails(item)">Reset</v-btn>
+                </div>
+              </v-col>
+            </v-row>
+          </td>
+        </template>
+        <template v-slot:item.status="{ item }">
+          <v-chip :color="getStatusColor(item.status)" dark>
+            {{ item.status }}
+          </v-chip>
+        </template>
+        <template v-slot:item.dateReceived="{ item }">
+          <span>
+            {{ dateInTimeZone(item.dateReceived) }}
+          </span>
+        </template>
+        <template v-slot:item.action="{ item }">
+          <!-- Retain focus attribute fixes bug in Vuetify
+            for any v-dialog in a v-for-->
+          <v-dialog v-model="deleteServiceDialog" :overlay-color="currentTheme.dropShadow" class="elevation-0" max-width="600px" :retain-focus="false">
+            <template v-slot:activator="{ on }">
+              <v-icon :disabled="tableLoadingFlag" v-on="on" @click="deleteServiceRequest(item)">
+                delete
+              </v-icon>
+            </template>
+            <v-card color="backdrops">
+              <v-card-title>
+                Delete Service?
+              </v-card-title>
+              <v-card-text>
+                Deleting a service will permanently remove it from your account. You will no longer be able to access this service.
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn @click="deleteServiceDialog = false">
+                  Cancel
+                </v-btn>
+                <v-btn class="pl-2 mr-2" color="error" depressed @click="deleteServiceConfirmed()">
+                  Delete
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
+        </template>
+      </v-data-table>
+    </v-card-text>
+  </v-card>
+</div>

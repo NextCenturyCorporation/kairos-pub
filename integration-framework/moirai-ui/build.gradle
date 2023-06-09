@@ -1,0 +1,187 @@
+plugins {
+    id 'org.hidetake.swagger.generator' version '2.18.2'
+    id "com.moowork.node" version "1.3.1"
+    id "org.sonarqube" version "3.0"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    swaggerCodegen 'org.openapitools:openapi-generator-cli:4.3.1'
+}
+
+defaultTasks 'generateSwaggerCode'
+
+task swaggerClean(type: Delete) {
+    doFirst {
+        delete generatedApiDirectory+"/zeus-api"
+        delete generatedApiDirectory+"/files-api"
+        delete generatedApiDirectory+"/ui-api"
+        delete generatedApiDirectory+"/clotho-api"
+        delete generatedApiDirectory+"/evaluation-api"
+    }
+}
+generateSwaggerCode.dependsOn(swaggerClean)
+generateSwaggerCode.mustRunAfter(swaggerClean)
+
+swaggerSources {
+    moiraiUIBase {
+        inputFile = file('swagger/openapi.yaml')
+        code {
+            language = 'typescript-rxjs'
+            outputDir = file (generatedApiDirectory+"/zeus-api")
+        }
+    }
+    moiraiUIFiles {
+        inputFile = file('swagger/files.yaml')
+        code {
+            language = 'typescript-rxjs'
+            outputDir = file (generatedApiDirectory+"/zeus-files-api")
+        }
+    }
+    moiraiUIUI {
+        inputFile = file('swagger/ui.yaml')
+        code {
+            language = 'typescript-rxjs'
+            outputDir = file (generatedApiDirectory+"/zeus-ui-api")
+        }
+    }
+    clothoUI {
+        inputFile = file('swagger/clotho.yaml')
+        code {
+            language = 'typescript-rxjs'
+            outputDir = file (generatedApiDirectory+"/clotho-api")
+        }
+    }
+    evaluation {
+        inputFile = file('swagger/evaluation.yaml')
+        code {
+            language = 'typescript-rxjs'
+            outputDir = file (generatedApiDirectory+"/evaluation-api")
+        }
+    }
+}
+
+sonarqube {
+    properties {
+          property "sonar.projectKey", "$artifactId"
+          property "sonar.projectName", "$artifactId"
+          property "sonar.host.url", "$sonarqubeUrl"
+          property "sonar.sources", "src,tests"
+          property "sonar.login", "191e196b8161b6ad274e4a2d7256e8cd2ae5b22c"
+          property "sonar.exclusions", "**/generated/**/*,**/resources/**/*"
+          property "sonar.eslint.reportPaths=", "src,tests"
+    }
+}
+
+task npmBuild(type: NpmTask) {
+    args = ['run', 'build']
+}
+
+// Everything after this should most likely be kept in sync with the other gradle projects.
+// At some point they will be broken out and kept in a central place to be referenced.
+task buildDockerImage {
+    description 'Builds the Docker image.'
+    doLast {
+        // Concatenate the name and tag
+        String local_name_and_tag = dockerRepositoryName + ":" + version
+
+        // Build Zeus Image
+        String cacheCommand = project.hasProperty("no-cache") ? "--no-cache " : ""
+        println runCommand("docker build ${cacheCommand}-t $local_name_and_tag -f ./Dockerfile .")
+
+        // Cleans any dangling images from the build
+        // -f stand for force. Skips the prompt for confirmation
+        println runCommand("docker system prune -f")
+
+        if (project.hasProperty("skip-test")) {
+            println "Skipping Docker tests."
+        } else {
+            println runCommand("./runDockerTests.sh $local_name_and_tag")
+        }
+    }
+}
+
+task ECRLogin {
+    description 'Logs Docker into the ECR repo'
+    doLast {
+        String loginPassword = runCommand("aws ecr get-login-password --region us-east-1")
+        println runCommand("docker login --username AWS --password $loginPassword $dockerRegistryId")
+    }
+}
+
+task ECRLogout {
+    description 'Logs Docker out of the ECR repo'
+    doLast {
+        println runCommand("docker logout $dockerRegistryId")
+    }
+}
+
+task pushDockerImage(dependsOn: ECRLogin) {
+    description 'Pushes the Docker image to the ECR repo.'
+    doLast {
+        // Concatenate the name and tag
+        String local_name_and_tag = dockerRepositoryName + ":" + version
+        
+        // Set base values for naming the image, then concat
+        String image_name = project.hasProperty("image-name") ? project.getProperty("image-name") : getDockerImageName()
+        String image_tag = project.hasProperty("tag") ? project.getProperty("tag").toLowerCase() : "$version"
+        String image_name_and_tag = image_name + ":" + image_tag
+        image_name_and_tag = image_name_and_tag.toLowerCase()
+
+        // Main image
+        println "[pushDockerImage]: image_name_and_tag: $image_name_and_tag"
+        println runCommand("docker tag $local_name_and_tag $image_name_and_tag")
+        println runCommand("docker push $image_name_and_tag")
+
+        // Push as Latest
+        Boolean tag_latest = project.hasProperty("tag-latest") ? true : false
+        if (tag_latest) {
+            String image_name_latest = image_name + ":latest"
+            println "[pushDockerImage]: image_name_latest: $image_name_latest"
+            println runCommand("docker tag $local_name_and_tag $image_name_latest")
+            println runCommand("docker push $image_name_latest")
+        }
+
+        // Push to genesis
+        Boolean tag_genesis = project.hasProperty("tag-genesis") ? true : false
+        if (tag_genesis) {
+            String image_name_genesis = getGenesisImageName() + "-latest"
+            println "[pushDockerImage]: image_name_genesis: $image_name_genesis"
+            println runCommand("docker tag $local_name_and_tag $image_name_genesis")
+            println runCommand("docker push $image_name_genesis")
+        }
+    }
+}
+
+pushDockerImage.finalizedBy ECRLogout
+
+String getDockerImageName() {
+    "$dockerRegistryId/$dockerRepositoryName"
+}
+
+String getGenesisImageName() {
+    "$dockerRegistryId/genesis:$dockerRepositoryName"
+}
+
+String runCommand(String str) {
+    println "[runCommand]: ${str}"
+    String[] tstr = str.tokenize()
+    runCommand(tstr)
+}
+
+String runCommand(String... args) {
+    def proc = args.execute()
+    proc.waitFor()
+    String input = proc.in.readLines().join("\n")
+    String errors = "[runCommand ERROR]: "+proc.err.readLines().join("\n[ERROR]: ")
+
+    if (proc.exitValue() != 0) {
+        println input
+        println errors
+        throw new Error("Exit value: "+proc.exitValue()+"\n Error: "+errors);
+    }
+    "$input"
+}

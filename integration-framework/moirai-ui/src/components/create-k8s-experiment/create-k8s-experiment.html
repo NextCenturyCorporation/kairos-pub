@@ -1,0 +1,527 @@
+<div class="FileDisplay">
+  <v-spacer><br /></v-spacer>
+  <v-alert class="" v-if="isEnvAlive === 'Terminated'" dense type="warning">
+    Kubernetes environment for running experiments is currently offline, Please start to be able to run experiments.
+    <v-btn @click.stop="createK8sEnv()" color="button" dark>
+      <span><v-icon> add </v-icon> Start Kubernetes </span>
+    </v-btn>
+  </v-alert>
+  <v-alert class="" v-if="isEnvAlive === 'Pending'" dense type="info">
+    Kubernetes environment is working, This will take sometime.
+  </v-alert>
+  <v-alert class="" v-if="isEnvAlive === 'Active'" dense type="info">
+    Kubernetes environment for running experiments is Actively Running, when no longer in use please shutdown.
+    <v-btn @click.stop="destroyK8sEnv()" color="button" dark>
+      <span><v-icon> </v-icon> Stop Kubernetes </span>
+    </v-btn>
+  </v-alert>
+  <v-card color="backdrops">
+    <v-card-title>
+      <span style="padding-top: 10px; padding-right: 25px">
+        <v-btn @click.stop="openNewExpModal()" color="button" class="pl-1" dark>
+          <span><v-icon> add </v-icon> Create New</span>
+        </v-btn>
+      </span>
+      <v-spacer></v-spacer>
+      <v-text-field v-model="search" append-icon="search" label="Search" single-line hide-details class="shrink"></v-text-field>
+    </v-card-title>
+  </v-card>
+  <v-data-table
+    :items="experiments"
+    no-results-text="No matching Users found"
+    no-data-text="There are no experiments to view. Click “+ Create New” to add a new experiment. Once you have created the experiment, you can view its status from the list provided."
+    loading-text="Loading User Data... Please wait"
+    :style="{
+        background: $vuetify.theme.themes[theme].backdrops.lighten1
+      }"
+    :headers="headers"
+    :sort-by="sortBy"
+    :sort-desc="[false]"
+    :search="search"
+    :loading="tableLoadingFlag"
+    item-key="id"
+    show-expand
+  >
+    <template v-slot:item.commissionDate="{ item }">
+      <!-- Using v-if so blank if no date rather than "Invalid Date"-->
+      <td v-if="item.commissionDate">
+        {{standardToUserTime(item.commissionDate)}}
+      </td>
+    </template>
+
+    <template v-slot:item.status="{ item }">
+      <!-- Using v-if so blank if no date rather than "Invalid Date"-->
+      <td>
+        {{getExperimentRunningStatus(item)}}
+      </td>
+    </template>
+
+    <template v-slot:item.edit="{ item }">
+      <div class="text-center">
+        <v-menu open-on-click transition="slide-y-transition" right>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn v-bind="attrs" v-on="on">
+              <v-icon>more_horiz</v-icon>
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-item>
+              <v-list-item-title>
+                <v-btn text small @click.stop="openOverview(item)">
+                  Configuration Overview
+                </v-btn>
+              </v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title>
+                <v-btn text small :disabled="checkExperimentHasActiveRun(item)" @click.stop="runExperiment(item)">
+                  Run Experiment
+                </v-btn>
+              </v-list-item-title>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title>
+                <v-btn text small :disabled="checkExperimentHasActiveRun(item)" @click.stop="deleteExperiment(item)">
+                  Delete Experiment
+                </v-btn>
+              </v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </div>
+    </template>
+    <template v-slot:expanded-item="{ item }">
+      <td colspan="8" class="elevation-25 moduleBackdrop">
+        <v-data-table :headers="experimentRunHeader" :items="item.experimentRuns" item-key="name" :sort-by="['startTime']" :sort-desc="[true]" hide-default-footer>
+          <template v-slot:item.startTime="{ item }">
+            {{ standardToUserTime(item.startTime) }}
+          </template>
+          <template v-slot:item.completeTime="{ item }">
+            {{ standardToUserTime(item.completeTime) }}
+          </template>
+          <template v-slot:item.message="{ item }">
+            {{ getExperimentRunMessage(item) }}
+          </template>
+          <template v-slot:item.menu="{ item }">
+            <v-menu open-on-click transition="slide-y-transition" right>
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn v-bind="attrs" v-on="on">
+                  <v-icon>more_horiz</v-icon>
+                </v-btn>
+              </template>
+              <v-list>
+                <v-list-item>
+                  <v-list-item-title>
+                    <v-btn text small :disabled="experimentRunIsComplete(item)" @click.stop="stopExperiment(item)">
+                      Stop Experiment
+                    </v-btn>
+                  </v-list-item-title>
+                </v-list-item>
+                <v-list-item>
+                  <v-list-item-title>
+                    <v-btn text small :disabled="!experimentRunIsComplete(item)" @click.stop="deleteExperiment(item)">
+                      Delete Experiment
+                    </v-btn>
+                  </v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
+          </template>
+        </v-data-table>
+      </td>
+    </template>
+  </v-data-table>
+  <v-dialog v-model="experimentDialog" max-width="1250px" min-height="90%" class="elevation-0" :retain-focus="false" persistent>
+    <v-form v-model="validExperimentForm">
+      <v-card color="backdrops" class="px-8">
+        <v-card-title class="px-n3">
+          Create Experiment
+          <v-spacer></v-spacer>
+          <v-btn text small @click.stop="closeModal()"><v-icon> close </v-icon></v-btn>
+        </v-card-title>
+        <v-divider></v-divider>
+        <span v-if="step === 0">
+          <v-row class="ma-0 pt-0">
+            <v-col>
+              <strong> 1. Setup your experiment </strong>
+              <v-icon class="mr-4" slot="prepend" color="primary">arrow_right_alt </v-icon>
+              2. Pick your performers
+              <v-icon class="mr-4" slot="prepend" color="primary">arrow_right_alt</v-icon>
+              3. Provision Node Groups
+              <v-icon class="mr-4" slot="prepend" color="primary">arrow_right_alt</v-icon>
+              4. Confirm your details
+            </v-col>
+          </v-row>
+          <v-divider></v-divider>
+          <v-row>
+            <v-col class="ma-0">Select the parameters for your experiment. Click <strong>Next</strong> to then select the performers and corresponding details. </v-col>
+          </v-row>
+          <v-row>
+            <v-col md="2" pa="0"></v-col>
+            <v-col md="8" pa="0"><strong>Experiment Template</strong></v-col>
+          </v-row>
+          <v-row>
+            <v-col md="2" align="center" class="pa-0 ma-0">
+              Template
+            </v-col>
+            <v-col md="8" class="pa-0 ma-0">
+              <v-hover v-slot:default="{ hover }">
+                <v-select class="pa-0" v-model="existingExperiment" :items="experiments" item-text="name" label="" color="primary" return-object required clearable>
+                  <template slot="selection" slot-scope="data"> {{ data.item.name }}<br /> </template>
+                  <v-icon v-if="hover" slot="append" color="primary">
+                    edit
+                  </v-icon>
+                </v-select>
+              </v-hover>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col md="1" class="ma-0 pa-0"></v-col>
+            <v-col md="10" class="ma-0 pa-0">
+              <span class="passive-text-cst">If you would like to create an experiment from an existing template, select from the dropdown list above.</span>
+            </v-col>
+          </v-row>
+
+          <v-row>
+            <v-col md="2" class="ma-0"></v-col>
+            <v-col md="8" class="ma-0"><strong>Experiment Details</strong></v-col>
+          </v-row>
+          <v-row>
+            <v-col md="2" align="center" class="pa-0 ma-0">
+              Evaluation
+            </v-col>
+            <v-col md="8" class="pa-0 ma-0">
+              <v-select class="pa-0" :label="evaluation.name" color="primary" disabled> </v-select>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col md="2" align="center" class="pa-0 ma-0">
+              Task
+            </v-col>
+            <v-col md="8" class="pa-0 ma-0">
+              <v-hover v-slot:default="{ hover }">
+                <v-select class="pa-0" v-model="experimentConfigurations.type" :rules="experimentTypeRule" :items="getAvailableTasks()" color="primary">
+                  <v-icon v-if="hover" slot="append" color="primary">
+                    edit
+                  </v-icon>
+                </v-select>
+              </v-hover>
+            </v-col>
+          </v-row>
+          <br />
+          <v-divider></v-divider>
+          <v-card-actions>
+            <v-btn text small @click.stop="closeModal()"> Cancel </v-btn>
+            <v-spacer></v-spacer>
+            Step 1 of 5
+            <v-spacer></v-spacer>
+            <v-btn color="button" depressed @click.stop="nextTab()" class="pl-1 btn-disabled-override" :disabled="isDisabled()">Next</v-btn>
+          </v-card-actions>
+        </span>
+        <span v-if="step === 1">
+          <v-row class="ma-0">
+            <v-col>
+              1. Setup your experiment
+              <v-icon class="mr-4" slot="prepend" color="primary">arrow_right_alt</v-icon>
+              <strong> 2. Pick your performers </strong>
+              <v-icon class="mr-4" slot="prepend" color="primary">arrow_right_alt</v-icon>
+              3. Provision Node Groups
+              <v-icon class="mr-4" slot="prepend" color="primary">arrow_right_alt</v-icon>
+              4. Confirm your details
+            </v-col>
+          </v-row>
+          <v-divider></v-divider>
+          <v-row>
+            <v-col class="ma-0">Please add the performers you would like to include in your experiment. Once all of your performers have been added to the list below, click <strong>Next</strong> to continue. </v-col>
+          </v-row>
+          <v-divider></v-divider>
+          <v-row class="pt-3">
+            <v-col class="ma-0 pa-0" md="5">
+              <v-data-table
+                :items="formPerformers"
+                no-results-text="No performers"
+                no-data-text="No performers"
+                :style="{
+                    background: $vuetify.theme.themes[theme].backdrops.lighten1
+                  }"
+                :headers="performerHeaders"
+                :hide-default-footer="true"
+                item-key="performername"
+              >
+                <template v-slot:item.edit="{ item }">
+                  <v-btn color="button" class="btn-right px-0 ml-3" text @click.stop="editPerformer(item)">
+                    Edit
+                  </v-btn>
+                </template>
+                <template v-slot:item.delete="{ item }">
+                  <v-btn @click="deletePerformer(item)"><v-icon>delete </v-icon></v-btn>
+                </template>
+              </v-data-table>
+            </v-col>
+            <v-col v-if="!showPerformerOptions" class="ma-0 pa-0" md="6" align="center">
+              <span class="passive-text-cst">
+                To add another performer, click <br />
+                <strong>Add New</strong> and fill out the required fields.
+              </span>
+            </v-col>
+            <v-col v-if="showPerformerOptions" class="ma-0 pa-0" md="6" align="right">
+              <span>
+                <v-row>
+                  <v-col class="ma-0 pa-3" md="4" align="center"></v-col>
+                  <v-col class="ma-2 pa-0" align="left"><strong>Performer Selection</strong></v-col>
+                </v-row>
+                <v-row>
+                  <v-col class="ma-0 pa-3" md="4" align="center">Performer Name</v-col>
+                  <v-col class="ma-0 pa-0">
+                    <v-hover v-slot:default="{ hover }">
+                      <v-select class="pa-0" v-model="performerObj.performername" :items="getPerformers()" color="primary" required>
+                        <v-icon v-if="hover" slot="append" color="primary">
+                          edit
+                        </v-icon>
+                      </v-select>
+                    </v-hover>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col class="ma-0 pa-3" md="4" align="center">Schema Library</v-col>
+                  <v-col class="ma-0 pa-0">
+                    <v-hover v-slot:default="{ hover }">
+                      <v-select class="pa-0" v-model="performerObj.schemalibraries" multiple :items="getSchemaPerformers()" item-text="owner" item-value="uri" color="primary" required>
+                        <v-icon v-if="hover" slot="append" color="primary">
+                          edit
+                        </v-icon>
+                      </v-select>
+                    </v-hover>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col>Some description on what this page will accomplish</v-col>
+                </v-row>
+                <v-row>
+                  <v-col md="4" align="center" class="pa-3 ma-0">Image Port</v-col>
+                  <v-col align="left" class="pt-2 ma-0">
+                    <input style="border: 2px solid black; border-radius: 5px;" v-model="performerObj.service_port" placeholder="Docker port to expose" type="text" name="dockerPort" />
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col md="4" align="center" class="pa-3 ma-0">Compose File</v-col>
+                  <v-col align="left" class="pt-2 ma-0">
+                    <v-select v-model="performerObj.uri" :items="getComposeFiles()" item-text="filename" item-value="uri" />
+                  </v-col>
+                </v-row>
+              </span>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col class="ma-5 pa-1" md="5" align="right" v-if="!showPerformerOptions">
+              <v-btn @click.stop="showPerformerOptions = true" color="button" class="pl-1" dark>
+                <span><v-icon> add </v-icon>Add New</span>
+              </v-btn>
+            </v-col>
+            <v-col class="ma-5 pa-1" md="6" align="right" v-if="showPerformerOptions">
+              <v-btn text small @click.stop="cancelPerformerAddEdit()">
+                Cancel
+              </v-btn>
+            </v-col>
+            <v-col class="ma-5 pa-1" md="5" align="right" v-if="showPerformerOptions">
+              <v-btn color="button" depressed @click.stop="savePerformer()" class="pl-1 btn-disabled-override" :disabled="performerDisableSave()">Save</v-btn>
+            </v-col>
+          </v-row>
+          <v-divider></v-divider>
+          <v-card-actions>
+            <v-btn text small @click.stop="backTab()"> Back </v-btn>
+            <v-spacer></v-spacer>
+            Step 2 of 5
+            <v-spacer></v-spacer>
+            <v-btn color="button" depressed @click.stop="nextTab()" class="pl-1 btn-disabled-override" :disabled="isDisabled()">Next</v-btn>
+          </v-card-actions>
+        </span>
+
+        <span v-if="step === 2">
+          <v-row class="ma-0">
+            <v-col>
+              1. Setup your experiment
+              <v-icon class="mr-4" slot="prepend" color="primary">arrow_right_alt</v-icon>2. Pick your performers <v-icon class="mr-4" slot="prepend" color="primary">arrow_right_alt</v-icon><strong> 3. Provision Node Groups</strong><v-icon class="mr-4" slot="prepend" color="primary">arrow_right_alt</v-icon>4. Confirm your details
+            </v-col>
+          </v-row>
+
+          <v-divider></v-divider>
+          <v-row>
+            <v-col>Some description on what this page will accomplish</v-col>
+          </v-row>
+          <v-row>
+            <v-col md="4" align="">
+              CPU - Number of Nodes
+            </v-col>
+            <v-col md="8">
+              <v-select class="pa-0" v-model="cpuDesired" :items="nodeDesired" item-text="name" label="" color="primary" return-object required clearable>
+                <template slot="selection" slot-scope="data"> {{ data.item }}<br /> </template>
+              </v-select>
+            </v-col>
+            <v-col md="4" align="">
+              GPU - Number of Nodes
+            </v-col>
+            <v-col md="8">
+              <v-select class="pa-0" v-model="gpuDesired" :items="nodeDesired" item-text="name" label="" color="primary" return-object required clearable>
+                <template slot="selection" slot-scope="data"> {{ data.item }}<br /> </template>
+              </v-select>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col md="4" align="">
+              CPU - Type of Nodes
+            </v-col>
+            <v-col md="8">
+              <v-select class="pa-0" v-model="cpuType" :items="cpuNodeTypes" item-text="name" label="" color="primary" return-object required clearable>
+                <template slot="selection" slot-scope="data"> {{ data.item }}<br /> </template>
+              </v-select>
+            </v-col>
+            <v-col md="4" align="">
+              GPU - Type of Nodes
+            </v-col>
+            <v-col md="8">
+              <v-select class="pa-0" v-model="gpuType" :items="gpuNodeTypes" item-text="name" label="" color="primary" return-object required clearable>
+                <template slot="selection" slot-scope="data"> {{ data.item }}<br /> </template>
+              </v-select>
+            </v-col>
+          </v-row>
+          <v-divider></v-divider>
+          <v-card-actions>
+            <v-btn text small @click.stop="backTab()"> Back </v-btn>
+            <v-spacer></v-spacer>
+            Step 4 of 5
+            <v-spacer></v-spacer>
+            <v-btn color="button" depressed @click.stop="createPreview()" class="pl-1 white--text" :disabled="isDisabled()">Next</v-btn>
+          </v-card-actions>
+        </span>
+
+        <span v-if="step === 3">
+          <v-row class="ma-0">
+            <v-col>
+              1. Setup your experiment
+              <v-icon class="mr-4" slot="prepend" color="primary">arrow_right_alt</v-icon>2. Pick your performers
+              <v-icon class="mr-4" slot="prepend" color="primary">arrow_right_alt</v-icon>
+              3. Provision Node Groups<v-icon class="mr-4" slot="prepend" color="primary">arrow_right_alt</v-icon><strong> 4. Confirm your details</strong>
+            </v-col>
+          </v-row>
+          <v-divider></v-divider>
+          <v-row>
+            <v-col>Name your experiment and review the details before finalizing your experiment. To make changes click the <strong>Back</strong> button.</v-col>
+          </v-row>
+          <v-row>
+            <v-col class="ma-0 pa-0" md="4" align="left"><strong>Name your experiment</strong></v-col>
+          </v-row>
+          <v-row>
+            <v-col md="10" class="ma-0 pa-0">
+              <span class="passive-text-cst">Name created based on parameters set. Click in field box to edit name</span>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col class="ma-0 pa-0" md="5">
+              <v-hover v-slot:default="{ hover }">
+                <v-text-field class="pa-0" v-model="formExperimentName" color="primary" required>
+                  <v-icon v-if="hover" slot="append" color="primary">
+                    edit
+                  </v-icon>
+                </v-text-field>
+              </v-hover>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col class="ma-0 pa-1"><strong>Review</strong></v-col>
+            <v-col class="ma-0 pa-1" align="right"><a id="downloadJsonFilepre" href="#" @click.stop="downloadJson('pre')">Click to export JSON</a></v-col>
+          </v-row>
+          <v-row class="">
+            <v-col class="ma-2 pa-0">
+              <v-tabs v-model="window">
+                <v-tab>
+                  Text View
+                </v-tab>
+                <v-tab>
+                  JSON View
+                </v-tab>
+              </v-tabs>
+              <v-window v-model="window" class="">
+                <v-window-item :value="0">
+                  <v-row class="pt-2 ma-1">
+                    <v-col class="pa-0 ma-0"><strong>Experiment Details</strong></v-col>
+                  </v-row>
+                  <v-row class="ma-1">
+                    <v-col class="pa-0 ma-0 review-key" md="2">Program Name:</v-col>
+                    <v-col class="pa-0 ma-0" md="4">{{ programName }}</v-col>
+                  </v-row>
+                  <v-row class="ma-1">
+                    <v-col class="pa-0 ma-0 review-key" md="2">Experiment Name:</v-col>
+                    <v-col class="pa-0 ma-0" md="4">{{ programName }}</v-col>
+                  </v-row>
+                  <v-row class="ma-1">
+                    <v-col class="pa-0 ma-0 review-key" md="2">Type:</v-col>
+                    <v-col class="pa-0 ma-0" md="4">{{ experimentConfigurations.type }}</v-col>
+                  </v-row>
+                  <v-row class="ma-1">
+                    <v-col class="pa-0 ma-0 review-key" md="2">Kick Off:</v-col>
+                    <v-col class="pa-0 ma-0" md="4">{{ experimentConfigurations.kickOffDate }} {{formTime}}</v-col>
+                  </v-row>
+                  <v-row class="ma-1">
+                    <v-col md="2"></v-col>
+                  </v-row>
+                  <v-row class="ma-1">
+                    <v-col class="pa-0 ma-0"><strong>Producer Details</strong></v-col>
+                  </v-row>
+                  <span v-for="(f, i) in formPerformers">
+                    <v-row class="ma-1">
+                      <v-col class="pa-0 ma-0 review-key" md="2">Performer:</v-col>
+                      <v-col class="pa-0 ma-0" md="4">{{ formPerformers[i].performername }}</v-col>
+                    </v-row>
+                    <v-row class="ma-1">
+                      <v-col class="pa-0 ma-0 review-key" md="2">Schema Libraries:</v-col>
+                      <v-col class="pa-0 ma-0" md="4">{{ formPerformers[i].schemalibraries.toString() }}</v-col>
+                    </v-row>
+                    <v-row class="ma-1">
+                      <v-col class="pa-0 ma-0 review-key" md="2">Docker Mainifest Location:</v-col>
+                      <v-col class="pa-0 ma-0" md="4">{{ formPerformers[i].uri }}</v-col>
+                    </v-row>
+                    <v-row class="ma-1">
+                      <v-col md="2"></v-col>
+                    </v-row>
+                  </span>
+                </v-window-item>
+                <v-window-item :value="1">
+                  <pre class="pre-max">{{ previewDisplay }}</pre>
+                </v-window-item>
+              </v-window>
+            </v-col>
+          </v-row>
+          <v-divider></v-divider>
+          <v-card-actions>
+            <v-btn text small @click.stop="backTab()"> Back </v-btn>
+            <v-spacer></v-spacer>
+            Step 5 of 5
+            <v-spacer></v-spacer>
+            <v-btn color="button" depressed @click.stop="saveExperiment()" class="pl-1" dark>Save</v-btn>
+          </v-card-actions>
+        </span>
+      </v-card>
+    </v-form>
+  </v-dialog>
+  <v-dialog v-model="overviewDialog" max-width="1000px" class="elevation-0" :retain-focus="false" style="overflow-y: hidden !important;">
+    <v-card color="backdrops" class="px-8">
+      <v-card-title class="pl-0">
+        {{ previewExperiment.name }} Configurations
+        <v-spacer></v-spacer>
+        <v-btn text small @click.stop="overviewDialog = false"><v-icon> close </v-icon></v-btn>
+      </v-card-title>
+      <v-divider></v-divider>
+      <v-row class="pb-0">
+        <v-col class="ma-4 pa-0" align="left"><a id="downloadJsonFilepost" href="#" @click.stop="downloadJson('post')">Click to export JSON</a></v-col>
+      </v-row>
+      <v-row class="pt-0 mt-0">
+        <v-col class="ma-4 pa-0" align="left"><pre class="pre-max">{{ getOverview() }}</pre></v-col>
+      </v-row>
+      <v-divider></v-divider>
+      <v-card-actions>
+        <v-btn text small @click.stop="overviewDialog = false"> Close </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+</div>

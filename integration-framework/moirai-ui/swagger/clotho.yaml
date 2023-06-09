@@ -1,0 +1,1746 @@
+openapi: 3.0.0
+info:
+  title: MOIRAI Clotho API
+  description: This is the Clotho API for persisting and querying schema data
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: "2.3"
+tags:
+  - name: Graph
+    description: Generic endpoints for manipulating graphs.
+  - name: Schema
+    description: Endpoints for interacting with KAIROS specific classes.
+  - name: Query
+    description: Endpoints for querying the graph.
+paths:
+  /graph:
+    get:
+      tags:
+        - Graph
+      summary:
+        retrieve the graph
+      description: |
+        retrieve the entire graph
+      operationId: getGraph
+      responses:
+        '200':
+          description: result(s) the graph as vertices and edges
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/graph'
+        '204':
+          description: provided search criteria were valid but did not match any results in the database.
+          content:
+            text/plain:
+              schema:
+                type: string
+        '500':
+          description: An exception occurred on the server.
+          content:
+            text/plain:
+              schema:
+                type: string
+    post:
+      tags:
+        - Graph
+      summary: insert the edges and vertices of the graph
+      description: |
+        adds all the edges and vertices of the graph
+      operationId: insertGraph
+      parameters:
+        - name: overwrite
+          in: query
+          description: delete existing data?
+          required: false
+          schema:
+            type: boolean
+      requestBody:
+        description: json representing a map of key-val pairs to insert as properties to the Edge
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/graph'
+      responses:
+        '200':
+          description: the graph was inserted successfully.
+        '304':
+          description: the vertex could not be inserted. Return an error message pertaining to cause for failure.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/graph'
+        '500':
+          description: an exception occurred on the server.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/graph'
+  /graph/edge:
+    get:
+      tags:
+        - Graph
+      summary:
+        retrieve one or more edges
+      description: |
+        retrieve 1 or more edges matching the provided search criteria. All edges will belong to the same label.
+      operationId: getEdges
+      parameters:
+        - name: label
+          required: true
+          in: query
+          description: label value for edge
+          schema:
+            type: string
+            example: Project
+        - name: searchCriteria
+          in: query
+          description: a map of key-val pairs to use as search criteria on edges
+          schema:
+            type: string
+      responses:
+        '200':
+          description: result(s) matching the search criteria were found and returned
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/edge'
+        '204':
+          description: provided search criteria were valid but did not match any results in the database.
+          content:
+            text/plain:
+              schema:
+                type: string
+        '500':
+          description: An exception occurred on the server.
+          content:
+            text/plain:
+              schema:
+                type: string
+    post:
+      tags:
+        - Graph
+      summary: insert a new edge between two existing vertices
+      description: |
+        create a single new edge between two existing vertices identified through the API web-service request.
+      operationId: insertEdge
+      parameters:
+        - name: label
+          in: query
+          description: label/relationship-type
+          required: true
+          schema:
+            type: string
+            example: Precedes
+        - name: fromVertexID
+          in: query
+          description: ID of from vertex (outgoing edge)
+          required: true
+          schema:
+            type: string
+            example: 123
+        - name: toVertexID
+          in: query
+          description: ID of to vertex (incoming edge)
+          required: true
+          schema:
+            type: string
+            example: 456
+      requestBody:
+        description: json representing a map of key-val pairs to insert as properties to the Edge
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                type: string
+      responses:
+        '201':
+          description: the vertex was inserted successfully. Return the json-representation of the newly-created edge
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/edge'
+        '304':
+          description: the vertex could not be inserted. Return an error message pertaining to cause for failure.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/edge'
+        '500':
+          description: an exception occurred on the server.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/edge'
+    delete:
+      tags:
+        - Graph
+      summary:
+        delete one or more edges
+      description: |
+        delete 1 or more edges matching the provided search criteria. 
+      operationId: deleteEdges
+      parameters:
+        - name: ids
+          required: true
+          in: query
+          description: id value for edge
+          schema:
+            type: array
+            items:
+              type: string
+            example: [456]
+      responses:
+        '200':
+          description: result(s) matching the search criteria were found and returned
+          content:
+            application/json:
+              schema:
+                type: string
+        '404':
+          description: No Ege found to delete.
+          content:
+            text/plain:
+              schema:
+                type: string
+        '500':
+          description: An exception occurred on the server.
+          content:
+            text/plain:
+              schema:
+                type: string
+  /graph/vertex:
+    get:
+      tags:
+        - Graph
+      summary:
+        retrieve one or more vertices
+      description: |
+        retrieve 1 or more vertices matching the provided search criteria. All vertices will belong to the same label.
+      operationId: getVertices
+      parameters:
+        - name: label
+          required: true
+          in: query
+          description: label value for vertex
+          schema:
+            type: string
+            example: Project
+        - name: searchCriteria
+          in: query
+          description: a map of key-val pairs to use as search criteria on vertices
+          schema:
+            type: string
+      responses:
+        '200':
+          description: result(s) matching the search criteria were found and returned
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/vertex'
+        '204':
+          description: provided search criteria were valid but did not match any results in the database.
+          content:
+            text/plain:
+              schema:
+                type: string
+        '500':
+          description: An exception occurred on the server.
+          content:
+            text/plain:
+              schema:
+                type: string
+    post:
+      tags:
+        - Graph
+      summary: insert a single new vertex
+      description: |
+        create a single vertex with the provided properties/values and insert into graph.
+      operationId: insertVertex
+      parameters:
+        - name: label
+          in: query
+          description: label value for vertex
+          required: true
+          schema:
+            type: string
+            example: Person
+      requestBody:
+        description: json representing the key-val properties of the new vertex to add
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                type: string
+      responses:
+        '201':
+          description: the vertex was inserted successfully. Return the json-representation of the vertex.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/vertex'
+        '304':
+          description: the vertex could not be inserted. Return an error message pertaining to cause for failure.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/vertex'
+        '500':
+          description: an exception occurred on the server. Return an error message pertaining to the failure.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/vertex'
+    delete:
+      tags:
+        - Graph
+      summary:
+        delete one or more vertex
+      description: |
+        delete 1 or more vertices matching the provided search criteria. 
+      operationId: deleteVertices
+      parameters:
+        - name: ids
+          required: true
+          in: query
+          description: id value for vertex
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: result(s) matching the search criteria were found and returned
+          content:
+            application/json:
+              schema:
+                type: string
+        '404':
+          description: No Vertex to delete for id.
+          content:
+            text/plain:
+              schema:
+                type: string
+        '500':
+          description: An exception occurred on the server.
+          content:
+            text/plain:
+              schema:
+                type: string
+  /schema/entity:
+    post:
+      tags:
+        - Schema
+      summary: insert new entities
+      description: |
+        Create new entities identified through the API web-service request.
+      operationId: insertEntities
+      requestBody:
+        description: Entity items to add
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/entity'
+      responses:
+        201:
+          description: the entities were inserted successfully.
+          content:
+            'text/plain':
+              schema:
+                type: string
+        304:
+          description: the entities could not be inserted. Return an error message pertaining to cause for failure.
+        500:
+          description: an exception occurred on the server.
+    get:
+      tags:
+        - Schema
+      summary: Gets Entities
+      description: |
+        By passing in the appropriate options, you can search for
+        available Entities in the system
+      operationId: getEntities
+      parameters:
+        - name: name
+          in: query
+          description: name value for entities
+          schema:
+            type: string
+            example: Person
+        - name: searchCriteria
+          in: query
+          description: a map of key-val pairs to use as search criteria on entities
+          schema:
+            type: string
+      responses:
+        200:
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/entity'
+        400:
+          description: bad input parameter
+  /schema/event:
+    get:
+      tags:
+        - Schema
+      summary: retrieve all events matching the provided search-criteria
+      description: |
+        By passing in the appropriate options, you can search for
+        available events in the system
+      operationId: getEvents
+      parameters:
+        - name: searchCriteria
+          required: false
+          in: query
+          description: map of key-val pairs to use as search-criteria
+          schema:
+            type: string
+            example: name=transfer-cash
+      responses:
+        200:
+          description: search results matching criteria were returned
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/event'
+        204:
+          description: provided search criteria did not result in any matches
+        500:
+          description: an error occurred on the server while processing the request.
+    post:
+      tags:
+        - Schema
+      summary: add a new event to the graph
+      description: insert an entire event, its including role(s), into the database
+      operationId: insertEvents
+      requestBody:
+        description: event items to add
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/event'
+      responses:
+        201:
+          description: event created
+          content:
+            'text/plain':
+              schema:
+                type: string
+        400:
+          description: invalid input, object invalid
+        409:
+          description: an event with the same name already exists
+  /schema/event/{name}:
+    get:
+      tags:
+        - Schema
+      summary: retrieve the event vertex with the provided name
+      operationId: getEventByName
+      parameters:
+        - name: name
+          required: true
+          in: path
+          description: unique name of the event to retrieve
+          schema:
+            type: string
+      responses:
+        '200':
+          description: an event with the provided name was found and returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/event'
+        '204':
+          description: the provided name did not match any event in the database.
+        '500':
+          description: An exception occurred on the server
+          content:
+            text/plain:
+              schema:
+                type: string
+  /schema/schema:
+    get:
+      tags:
+        - Schema
+      summary: retrieves all schemas matching the provided search-criteria
+      description: |
+        By passing in the appropriate options, you can search for
+        available schemas in the system
+      operationId: getSchemata
+      parameters:
+        - name: searchCriteria
+          required: false
+          in: query
+          description: map of key-val pairs to use as search criteria for schema
+          schema:
+            type: string
+            example: name=transfer-money
+      responses:
+        200:
+          description: search results matching criteria were returned
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/schema'
+        204:
+          description: provided search criteria did not result in any matches.
+        500:
+          description: an error occurred on the server while processing the request.
+    post:
+      tags:
+        - Schema
+      summary: insert a new schema to the graph
+      description: Insert an entire schema, consisting of one or multiple roles associated, and a steps-sequence of events.
+      operationId: insertSchema
+      requestBody:
+        description: Schema item to insert
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/schema'
+      responses:
+        201:
+          description: schema created
+          content:
+            'text/plain':
+              schema:
+                type: string
+        400:
+          description: invalid input, object invalid
+        409:
+          description: an existing schema already exists
+  /query/sparql:
+    post:
+      tags:
+        - Query
+      summary: pass-through for sparql query
+      description: |
+        Pass through a sparql query to the database
+      operationId: sparqlQuery
+      requestBody:
+        description: Query to pass-through item to insert
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/sparqlQuery'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: pong
+        400:
+          description: invalid input, object invalid
+  /query/namedGraphs:
+    get:
+      tags:
+        - Query
+      summary: Retrieves all named graphs stored in the Database through Sparql.
+      description: gets all named graphs
+      operationId: getNamedGraphs
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: pong
+        400:
+          description: invalid input, object invalid
+        404:
+          description: No named graphs found.
+    delete:
+      tags:
+        - Query
+      summary: Deletes specified named graph and all data associated to it.
+      description: deletes a named graph and all data
+      operationId: deleteNamedGraph
+      parameters:
+        - name: namedGraph
+          required: true
+          in: query
+          description: Name of a graph hosted in Neptune DB
+          schema:
+            type: string
+            example: some graph name
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: pong
+        400:
+          description: invalid input, object invalid
+        404:
+          description: No named graphs found.
+  /query/graphoffset:
+    get:
+      tags:
+        - Query
+      summary: pass-through for getting elements of a named graph query
+      description: |
+        Pass through a named graph
+      operationId: getOffsetGraph
+      parameters:
+        - name: namedGraph
+          required: true
+          in: query
+          description: Name of a graph hosted in Neptune DB
+          schema:
+            type: string
+            example: some graph name
+        - name: limit
+          required: true
+          in: query
+          description: Integer offset
+          schema:
+            type: integer
+            example: 5000
+        - name: offset
+          required: true
+          in: query
+          description: Integer offset
+          schema:
+            type: integer
+            example: 5000
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: pong
+        400:
+          description: invalid input, object invalid
+        404:
+          description: No graph found with given name.
+  /query/graph:
+    get:
+      tags:
+        - Query
+      summary: pass-through for getting elements of a named graph query
+      description: |
+        Pass through a named graph
+      operationId: getSGraph
+      parameters:
+        - name: namedGraph
+          required: true
+          in: query
+          description: Name of a graph hosted in Neptune DB - limits to 1500 results
+          schema:
+            type: string
+            example: some graph name
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: pong
+        400:
+          description: invalid input, object invalid
+        404:
+          description: No graph found with given name.
+  /query/eventlist:
+    get:
+      tags:
+        - Query
+      summary: pass-through for getting elements of a schema
+      description: Get schema from named graph by name
+      operationId: getEventList
+      parameters:
+        - name: namedGraph
+          required: true
+          in: query
+          description: Name of a graph hosted in Neptune DB
+          schema:
+            type: string
+            example: graph:name
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: pong
+        400:
+          description: invalid input, object invalid
+        409:
+          description: No schema found with given name.
+  /query/eventtree:
+    get:
+      tags:
+        - Query
+      summary: pass-through for getting elements of an event
+      description: Get event tree from named graph by name
+      operationId: getEventTree
+      parameters:
+        - name: namedGraph
+          required: true
+          in: query
+          description: Name of a graph hosted in Neptune DB
+          schema:
+            type: string
+            example: graph:name
+        - name: eventName
+          required: true
+          in: query
+          description: Name of a event in Neptune DB
+          schema:
+            type: string
+            example: event:name
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: pong
+        400:
+          description: invalid input, object invalid
+        409:
+          description: No schema found with given name.
+  /query/saveOrUpdate:
+    get:
+      tags:
+        - Query
+      summary: Passes complete JSON object of a new or updated Event, Entitiy, Relation Object.
+      description: Persists data to the Neptune database.
+      operationId: saveOrUpdate
+      parameters:
+        - name: namedGraph
+          required: true
+          in: query
+          description: Name of a graph hosted in Neptune DB
+          schema:
+            type: string
+        - name: eventKey
+          required: true
+          in: query
+          description: Name of event key to update
+          schema:
+            type: string
+        - name: additionalInfo
+          required: true
+          in: query
+          description: Value to persist to key
+          schema:
+            type: string
+        - name: userName
+          required: true
+          in: query
+          description: User Name for logging
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: success
+        400:
+          description: invalid input, object invalid
+components:
+  schemas:
+    xsdDateTime:
+      type: string
+      pattern: ^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])(\.\d{1,3})?(Z|([+|-]([01][0-9]|2[0-3]):([0-5][0-9])))?$
+    errorLog:
+      type: object
+      required:
+        - fatalList
+        - errorsList
+        - warningsList
+      properties:
+        fatalList:
+          type: array
+          items:
+            type: string
+        errorsList:
+          type: array
+          items:
+            type: string
+        warningsList:
+          type: array
+          items:
+            type: string
+    jsonLdMap:
+      type: object
+      additionalProperties:
+        type: object
+    jsonLdRepresentation:
+      type: object
+      required:
+        - '@context'
+        - '@id'
+        - sdfVersion
+        - version
+      properties:
+        '@context':
+          type: object
+          x-python-name-prefix: "at_"
+        ceID:
+          type: string
+        comment:
+          type: array
+          items:
+            type: string
+        '@id':
+          type: string
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemaEvent'
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemaEntity'
+        relations:
+          type: array
+          items:
+            $ref: '#/components/schemas/relation'
+        instances:
+          type: array
+          items:
+            $ref: '#/components/schemas/instance'
+        provenanceData:
+          type: array
+          items:
+            $ref: '#/components/schemas/provenance'
+        version:
+          type: string
+        sdfVersion:
+          type: string
+        ta2:
+          type: boolean
+        task2:
+          type: boolean
+        parsingErrors:
+          type: array
+          items:
+            type: string
+    instance:
+      type: object
+      required:
+        - '@id'
+        - name
+        - confidence
+        - ta1ref
+      properties:
+        '@id':
+          type: string
+          x-python-name-prefix: "at_"
+        name:
+          type: string
+        confidence:
+          type: array
+          items:
+            type: number
+            format: float
+        description:
+          type: string
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemaEvent'
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemaEntity'
+        relations:
+          type: array
+          items:
+            $ref: '#/components/schemas/relation'
+        comment:
+          type: array
+          items:
+            type: string
+        ta1ref:
+          type: string
+    schemaEntity:
+      type: object
+      required:
+        - '@id'
+        - name
+      properties:
+        '@id':
+          type: string
+          x-python-name-prefix: "at_"
+        name:
+          type: string
+        wd_node:
+          type: array
+          items:
+            type: string
+        wd_label:
+          type: array
+          items:
+            type: string
+        wd_description:
+          type: array
+          items:
+            type: string
+        aka:
+          type: array
+          items:
+            type: string
+        comment:
+          type: array
+          items:
+            type: string
+        confidence:
+          type: array
+          items:
+            type: number
+            format: float
+        centrality:
+          type: number
+          format: float
+        reference:
+          type: array
+          items:
+            type: string
+        origName:
+          type: string
+        ta2wd_label:
+          type: array
+          items:
+            type: string
+        ta2wd_node:
+          type: array
+          items:
+            type: string
+        ta2wd_description:
+          type: array
+          items:
+            type: string
+    filler:
+      type: object
+      required:
+        - '@id'
+        - provenance
+        - ta2entity
+      properties:
+        '@id':
+          type: string
+          x-python-name-prefix: "at_"
+        ta2entity:
+          type: string
+        confidence:
+          type: array
+          items:
+            type: number
+            format: float
+        provenance:
+          type: array
+          items:
+            type: string
+        modality:
+          type: array
+          items:
+            type: string
+        comment:
+          type: array
+          items:
+            type: string
+    temporal:
+      type: object
+      properties:
+        '@id':
+          type: string
+          x-python-name-prefix: "at_"
+        comment:
+          type: array
+          items:
+            type: string
+        confidence:
+          type: array
+          items:
+            type: number
+            format: float
+        provenance:
+          type: array
+          items:
+            type: string
+        duration:
+          type: string #xsd:duration
+        earliestStartTime:
+          $ref: '#/components/schemas/xsdDateTime'
+        latestStartTime:
+          $ref: '#/components/schemas/xsdDateTime'
+        earliestEndTime:
+          $ref: '#/components/schemas/xsdDateTime'
+        latestEndTime:
+          $ref: '#/components/schemas/xsdDateTime'
+        absoluteTime:
+          $ref: '#/components/schemas/xsdDateTime'
+    schemaEvent:
+      type: object
+      required:
+        - name
+        - description
+        - parent
+        - '@id'
+      properties:
+        '@id':
+          type: string
+          x-python-name-prefix: "at_"
+        name:
+          type: string
+        comment:
+          type: array
+          items:
+            type: string
+        ta1ref:
+          type: string
+        aka:
+          type: array
+          items:
+            type: string
+        achieves:
+          type: string
+        requires:
+          type: string
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/child'
+        description:
+          type: string
+        goal:
+          type: string
+        instanceOf:
+          type: string
+        maxDuration:
+          type: string #xsd:duration
+        minDuration:
+          type: string #xsd:duration
+        modality:
+          type: array
+          items:
+            type: string
+        children_gate:
+          type: string
+        provenance:
+          type: array
+          items:
+            type: string
+        predictionProvenance:
+          type: array
+          items:
+            type: string
+        participants:
+          type: array
+          items:
+            $ref: '#/components/schemas/participant'
+        isTopLevel:
+          type: boolean
+        parent:
+          type: string
+        origName:
+          type: string
+        origDescription:
+          type: string
+        outlinks:
+          type: array
+          items:
+            type: string
+        repeatable:
+          type: boolean
+        subgroup_events:
+          type: array
+          items:
+            type: string
+        wd_node:
+          type: array
+          items:
+            type: string
+        wd_label:
+          type: array
+          items:
+            type: string
+        wd_description:
+          type: array
+          items:
+            type: string
+        ta2wd_node:
+          type: array
+          items:
+            type: string
+        ta2wd_label:
+          type: array
+          items:
+            type: string
+        ta2wd_description:
+          type: array
+          items:
+            type: string
+        reference:
+          type: array
+          items:
+            type: string
+        relations:
+          type: array
+          items:
+            $ref: '#/components/schemas/relation'
+        ta1explanation:
+          type: string
+        temporal:
+          type: array
+          items:
+            $ref: '#/components/schemas/temporal'
+        confidence:
+          type: array
+          items:
+            type: number
+            format: float
+        orderNumber:
+          type: string
+    participant:
+      type: object
+      required:
+        - '@id'
+        - entity
+        - roleName
+      properties:
+        '@id':
+          type: string
+          x-python-name-prefix: "at_"
+        entity:
+          type: string
+        roleName:
+          type: string
+        comment:
+          type: array
+          items:
+            type: string
+        wd_node:
+          type: array
+          items:
+            type: string
+        wd_label:
+          type: array
+          items:
+            type: string
+        wd_description:
+          type: array
+          items:
+            type: string
+        reference:
+          type: array
+          items:
+            type: string
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/filler'
+    child:
+      type: object
+      required:
+        - child
+      properties:
+        child:
+          type: string
+        comment:
+          type: array
+          items:
+            type: string
+        importance:
+          type: number
+          format: float
+        optional:
+          type: boolean
+        repeatable:
+          type: boolean
+    relation:
+      type: object
+      required:
+        - '@id'
+        - wd_node
+        - wd_label
+        - wd_description
+        - relationObject
+        - relationSubject
+      properties:
+        '@id':
+          type: string
+        name:
+          type: string
+        ta1ref:
+          type: string
+        relationProvenance:
+          type: array
+          items:
+            type: string
+        relationObject_prov:
+          type: array
+          items:
+            type: string
+        relationSubject_prov:
+          type: array
+          items:
+            type: string
+        centrality:
+          type: number
+          format: float
+        modality:
+          type: array
+          items:
+            type: string
+        wd_node:
+          type: array
+          items:
+            type: string
+        wd_label:
+          type: array
+          items:
+            type: string
+        wd_description:
+          type: array
+          items:
+            type: string
+        relationObject:
+          type: array
+          items:
+            type: string
+        relationSubject:
+          type: string
+        reference:
+          type: array
+          items:
+            type: string
+        comment:
+          type: array
+          items:
+            type: string
+        confidence:
+          type: array
+          items:
+            type: number
+            format: float
+    provenance:
+      type: object
+      required:
+        - provenanceID
+        - childID
+        - mediaType
+      properties:
+        provenanceID:
+          type: string
+        comment:
+          type: array
+          items:
+            type: string
+        startTime:
+          type: number
+          format: float
+        endTime:
+          type: number
+          format: float
+        childID:
+          type: string
+        parentIDs:
+          type: array
+          items:
+            type: string
+        mediaType:
+          type: string
+        offset:
+          type: integer
+          format: int32
+        length:
+          type: integer
+          format: int32
+        keyframes:
+          type: array
+          items:
+            type: integer
+            format: int32
+        boundingBox:
+          type: array
+          items:
+            type: integer
+            format: int32
+          x-python-name-prefix: "at_"
+    stepOrder:
+      type: object
+      properties:
+        comment:
+          type: array
+          items:
+            type: string
+        confidence:
+          type: number
+          format: float
+        provenance:
+          type: string
+        before:
+          type: array
+          items:
+            type: string
+        after:
+          type: array
+          items:
+            type: string
+        flags:
+          type: array
+          items:
+            type: string
+        container:
+          type: string
+        contained:
+          type: array
+          items:
+            type: string
+        overlaps:
+          type: array
+          items:
+            type: string
+    sparqlQuery:
+      required:
+        - queryString
+      properties:
+        queryString:
+          type: string
+          example: "SELECT ?schemaName ?rolePattern ?roleEntity WHERE { ?schema e:CONTAINS_ROLE ?role . ?schema v:name ?schemaName. ?role v:pattern ?rolePattern . ?role v:entity ?roleEntity . }"
+      type: object
+
+    # NOTE: Everything below this point is an artifact of currently unused Clotho code/functionality
+    schema:
+      type: object
+      required:
+        - name
+        - steps
+      properties:
+        '@id':
+          type: string
+          x-python-name-prefix: "at_"
+        '@type':
+          type: array
+          items:
+            type: string
+          x-python-name-prefix: "at_"
+        ceId:
+          type: string
+        supers:
+          type: array
+          items:
+            type: string
+        confidence:
+          type: number
+          format: float
+        comment:
+          type: array
+          items:
+            type: string
+        version:
+          type: string
+        sdfVersion:
+          type: string
+        name:
+          type: string
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemaEntity'
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/step'
+        stepOrders:
+          type: array
+          items:
+            $ref: '#/components/schemas/stepOrder'
+        entityRelations:
+          type: array
+          items:
+            $ref: '#/components/schemas/entityRelation'
+        slots:
+          type: array
+          items:
+            $ref: '#/components/schemas/slot'
+        description:
+          type: string
+        privateData:
+          type: object
+          additionalProperties:
+            type: string
+        provenanceData:
+          type: array
+          items:
+            $ref: '#/components/schemas/provenance'
+        systemError:
+          type: array
+          items:
+            type: string
+    graph:
+      type: object
+      required:
+        - vertexArray
+      properties:
+        vertexArray:
+          type: array
+          items:
+            $ref: '#/components/schemas/vertex'
+        edgeArray:
+          type: array
+          items:
+            $ref: '#/components/schemas/edge'
+    vertex:
+      allOf:
+        - $ref: '#/components/schemas/graphElementType'
+        - type: object
+    graphElementType:
+      type: object
+      properties:
+        id:
+          type: string
+        label:
+          type: string
+        propertiesMap:
+          type: object
+          additionalProperties:
+            type: string
+        error:
+          type: string
+    path:
+      type: object
+      properties:
+        path:
+          type: array
+          items:
+            $ref: '#/components/schemas/graphElementType'
+    edge:
+      allOf:
+        - $ref: '#/components/schemas/graphElementType'
+        - type: object
+          required:
+            - fromVertexID
+            - toVertexID
+            - label
+          properties:
+            fromVertexID:
+              type: string
+            toVertexID:
+              type: string
+    entity:
+      type: object
+      required:
+        - name
+        - '@id'
+      properties:
+        '@id':
+          type: string
+          x-python-name-prefix: "at_"
+        '@type':
+          type: array
+          items:
+            type: string
+          x-python-name-prefix: "at_"
+        name:
+          type: string
+        description:
+          type: string
+        systemError:
+          type: array
+          items:
+            type: string
+    step:
+      type: object
+      required:
+        - event
+      properties:
+        '@id':
+          type: string
+          x-python-name-prefix: "at_"
+        '@type':
+          type: array
+          items:
+            type: string
+          x-python-name-prefix: "at_"
+        confidence:
+          type: number
+          format: float
+        reference:
+          type: string
+        ta1Ref:
+          type: string
+        modality:
+          type: array
+          items:
+            type: string
+        provenance:
+          type: string
+        comment:
+          type: array
+          items:
+            type: string
+        aka:
+          type: array
+          items:
+            type: string
+        slots:
+          type: array
+          items:
+            $ref: '#/components/schemas/slot'
+        participants:
+          type: array
+          items:
+            $ref: '#/components/schemas/slot'
+        temporals:
+          type: array
+          items:
+            $ref: '#/components/schemas/temporal'
+        maxDuration:
+          type: string
+        minDuration:
+          type: string
+        privateData:
+          type: object
+          additionalProperties:
+            type: string
+        systemError:
+          type: array
+          items:
+            type: string
+        name:
+          type: string
+        schemaID:
+          type: string
+          example: 13
+        schema:
+          type: string
+          example: bombing-raid
+        achieves:
+          type: string
+        requires:
+          type: string
+        orderAssignment:
+          type: string
+        eventID:
+          type: string
+          example: 124
+        event:
+          type: string
+          example: grind(?p,?s)
+        order:
+          type: array
+          items:
+            $ref: '#/components/schemas/stepOrder'
+    slot:
+      type: object
+      required:
+        - '@id'
+      properties:
+        '@id':
+          type: string
+          x-python-name-prefix: "at_"
+        name:
+          type: string
+        supers:
+          type: array
+          items:
+            type: string
+        role:
+          type: string
+        roleName:
+          type: string
+        argIndex:
+          type: integer
+        entityTypes:
+          type: array
+          items:
+            type: string
+        entityTypesAnd:
+          type: array
+          items:
+            type: string
+        entityTypesOr:
+          type: array
+          items:
+            type: string
+        aka:
+          type: array
+          items:
+            type: string
+        comment:
+          type: array
+          items:
+            type: string
+        reference:
+          type: string
+        refVar:
+          type: string
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/slotValue'
+        privateData:
+          type: object
+          additionalProperties:
+            type: string
+        systemError:
+          type: array
+          items:
+            type: string
+    slotValue:
+      type: object
+      required:
+        - confidence
+        - value
+      properties:
+        id:
+          type: string
+        entityId:
+          type: string
+        name:
+          type: string
+        mediaType:
+          type: string
+        confidence:
+          type: number
+          format: float
+        provenance:
+          type: array
+          items:
+            type: string
+        modality:
+          type: array
+          items:
+            type: string
+        comment:
+          type: array
+          items:
+            type: string
+        entityTypes:
+          type: array
+          items:
+            type: string
+        entityTypesAnd:
+          type: array
+          items:
+            type: string
+        entityTypesOr:
+          type: array
+          items:
+            type: string
+        privateData:
+          type: object
+          additionalProperties:
+            type: string
+        systemError:
+          type: array
+          items:
+            type: string
+    event:
+      type: object
+      required:
+        - name
+        - '@id'
+      properties:
+        '@id':
+          type: string
+          x-python-name-prefix: "at_"
+        name:
+          type: string
+        version:
+          type: string
+        description:
+          type: string
+        comment:
+          type: array
+          items:
+            type: string
+        slots:
+          type: array
+          items:
+            $ref: '#/components/schemas/slot'
+        aka:
+          type: array
+          items:
+            type: string
+        reference:
+          type: string
+        supers:
+          type: array
+          items:
+            type: string
+        maxDuration:
+          type: string #xsd:duration
+        minDuration:
+          type: string #xsd:duration
+        template:
+          type: string
+        privateData:
+          type: object
+          additionalProperties:
+            type: string
+        systemError:
+          type: array
+          items:
+            type: string
+    entityRelation:
+      type: object
+      required:
+        - relationSubject
+        - relations
+      properties:
+        relationSubject:
+          type: string
+        arg1Filler:
+          type: string
+        arg1EntityTypes:
+          type: array
+          items:
+            type: string
+        provenance:
+          type: array
+          items:
+            type: string
+        comment:
+          type: array
+          items:
+            type: string
+        refVar:
+          type: string
+        relations:
+          type: array
+          items:
+            $ref: '#/components/schemas/relation'
+        privateData:
+          type: object
+          additionalProperties:
+            type: string

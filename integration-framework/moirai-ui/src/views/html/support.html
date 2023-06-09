@@ -1,0 +1,61 @@
+<div class="Support mx-16">
+  <v-card :style="cssVars" color="backdrops lighten-1">
+    <v-card-title :class="headingClasses">How can we help?</v-card-title>
+    <v-card class="mx-auto" max-width="60%" color="backdrops lighten-1" elevation="0">
+      <v-card-title class="pl-1" :class="headingClasses">Frequently Asked Questions </v-card-title>
+      <v-expansion-panels flat accordion class="mb-10">
+        <v-expansion-panel v-for="(category, categoryIndex) in categories" :key="category.id">
+          <v-divider v-if="categoryIndex === 0"></v-divider>
+          <v-expansion-panel-header @click="updateReference(categoryIndex)" color="backdrops lighten-1">
+            <div>
+              {{ category.categoryName }}
+            </div>
+          </v-expansion-panel-header>
+          <v-divider></v-divider>
+          <v-expansion-panel-content v-for="(faq, index) in category.faqs" :key="faq.question" ref="item" color="backdrops lighten-1">
+            <div :class="questionClasses">
+              {{ faq.question }}
+            </div>
+            <p :class="questionAnswerClasses" v-html="faq.answer"></p>
+            <v-divider v-if="index + 1 < category.faqs.length"></v-divider>
+          </v-expansion-panel-content>
+          <v-divider v-if="category.status"></v-divider>
+        </v-expansion-panel>
+      </v-expansion-panels>
+
+      <v-card class="text-center mx-auto pt-4 pb-4" color="backdrops lighten-1" outlined>
+        Did not find what you were looking for?
+        <v-dialog v-model="contactUsDialog" max-width="600px" :overlay-color="currentTheme.dropShadow">
+          <template v-slot:activator="{ on }">
+            <v-btn class="ml-5" v-on="on" @click="resetForm()" color="success" dark>
+              <span>Contact Us</span>
+            </v-btn>
+          </template>
+          <v-card color="backdrops lighten-1">
+            <v-card-title>
+              Contact Us
+            </v-card-title>
+            <v-card-text>
+              <v-form v-model="validContactForm" ref="contactUsForm">
+                <v-row>
+                  <v-text-field label="Topic *" color="primary" v-model="topic" prepend-icon="chat_bubble_outline" :rules="topicRules" required></v-text-field>
+                </v-row>
+                <v-row>
+                  <v-textarea label="Message *" color="primary" v-model="message" prepend-icon="description" :rules="messageRules" @keydown.enter.prevent @keyup.enter="validContactForm ? submitForm() : null" auto-grow required></v-textarea>
+                </v-row>
+                <!--Captcha here?-->
+              </v-form>
+            </v-card-text>
+            <v-card-actions>
+              <v-btn text small @click="closeForm()">Close</v-btn>
+              <v-spacer></v-spacer>
+              <v-btn :disabled="!validContactForm" color="button" class="white--text" depressed @click="submitForm()">
+                Submit
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+      </v-card>
+    </v-card>
+  </v-card>
+</div>

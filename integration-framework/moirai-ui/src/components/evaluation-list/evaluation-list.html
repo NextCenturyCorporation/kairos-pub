@@ -1,0 +1,67 @@
+<!--Used by evaluation-list.vue-->
+<div class="EvaluationList">
+  <v-navigation-drawer permanent>
+    <v-list dense nav>
+      <v-list-item-group v-model="selectedIndex" color="primary">
+        <v-list-item v-for="item in evaluations" :key="item.id" link>
+          <v-list-item-content @click="$emit('select-eval',item)">
+            <v-list-item-title>{{item.name}}</v-list-item-title>
+          </v-list-item-content>
+
+          <v-list-item-icon>
+            <v-icon @click="deleteEvaluation(item)">delete</v-icon>
+          </v-list-item-icon>
+        </v-list-item>
+      </v-list-item-group>
+    </v-list>
+
+    <template v-slot:append>
+      <div class="pa-2" block>
+        <v-btn block @click="createEvaluation()">
+          New Evaluation
+        </v-btn>
+        <v-btn block @click="syncEvaluation()">
+          <v-icon>sync</v-icon>
+          Sync Files
+        </v-btn>
+      </div>
+    </template>
+  </v-navigation-drawer>
+
+  <v-dialog v-model="createEvalDialog">
+    <v-card v-if="newEval">
+      <v-card-title class="text-h5">
+        Create new evaluation
+      </v-card-title>
+
+      <v-text-field v-model="newEval.name"></v-text-field>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn text @click="cancelCreateEvaluation()">
+          Cancel
+        </v-btn>
+        <v-btn text @click="confirmCreateEvaluation()">
+          Ok
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+
+  <v-dialog v-model="deleteEvalDialog">
+    <v-card>
+      <v-card-title class="text-h5">
+        Delete evaluation?
+      </v-card-title>
+      <v-card-text>Delete the evaluation "{{ selectedEvalForDeletion && selectedEvalForDeletion.name }}". This action is not reversable.</v-card-text>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn text @click="cancelDeleteEvaluation()">
+          Cancel
+        </v-btn>
+        <v-btn text @click="confirmDeleteEvaluation()">
+          Ok
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+</div>

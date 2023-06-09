@@ -1,0 +1,40 @@
+<!--Used by FilesUpload.vue-->
+<div class="FilesUpload">
+  <v-tabs class="mb-4" v-model="window">
+    <v-tab>Upload</v-tab>
+    <v-tab>My Files</v-tab>
+    <v-tab>Public Files</v-tab>
+    <v-tabs-slider></v-tabs-slider>
+  </v-tabs>
+  <div class="mx-16">
+    <v-card :style="cssVars" color="">
+      <v-card-text>
+        <v-select label="Submission" color="primary" v-model="selectedSubmission" required return-object :items="submissionNames" v-on:input="updateSubmission()" clearable>
+          <template slot="selection" slot-scope="data"> {{ data.item }}<br /> </template>
+        </v-select>
+      </v-card-text>
+    </v-card>
+    <v-window v-model="window">
+      <v-window-item :value="0">
+        <file-uploader ref="fileuploader" :categoryOptions="categoryOptions" @file-uploads="uploadFiles"></file-uploader>
+      </v-window-item>
+      <v-window-item :value="1" class="mt-4">
+        <file-viewer ref="myFileviewer" :tableData="myFiles" :allowDelete="true" :allowAccessChange="true" @file-delete="deleteFile" @file-update="updateFile" :changableCategories="categoryOptions" :downloadableCategories="myDownloadableCategories" @file-display="displayFile"></file-viewer>
+      </v-window-item>
+      <v-window-item :value="2" class="mt-4">
+        <file-viewer ref="publicFileviewer" :tableData="publicFiles" :downloadableCategories="publicDownloadableCategories" @file-display="displayFile"></file-viewer>
+      </v-window-item>
+    </v-window>
+    <v-dialog v-model="viewFileDialog" class="elevation-0" max-width="90%" :retain-focus="false">
+      <v-card color="backdrops">
+        <v-card-title v-if="fileDisplayInfo">
+          {{ fileDisplayInfo.filename }}
+          <v-spacer></v-spacer>
+          <v-btn text small @click="stopDisplayFile()"> close </v-btn>
+        </v-card-title>
+        <v-spacer></v-spacer>
+        <file-display :fileInfo="fileDisplayInfo"></file-display>
+      </v-card>
+    </v-dialog>
+  </div>
+</div>

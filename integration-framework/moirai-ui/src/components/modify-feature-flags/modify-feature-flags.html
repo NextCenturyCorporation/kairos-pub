@@ -1,0 +1,182 @@
+<div class="feature-flags-management">
+  <v-card color="backdrops">
+    <v-card-title>
+      Feature Flags
+      <v-spacer></v-spacer>
+      <v-btn color="button" class="mt-4 mr-3" @click.stop="openCreateFeatureFlag()">
+        Create new feature flag
+      </v-btn>
+      <v-text-field v-model="search" append-icon="search" label="Search" single-line hide-details class="shrink ml-4"></v-text-field>
+    </v-card-title>
+  </v-card>
+  <v-data-table
+    :items="featureFlags"
+    no-results-text="No matching feature flags found"
+    no-data-text="No feature flags found"
+    loading-text="Loading feature flag data... Please wait"
+    :style="{
+            background: $vuetify.theme.themes[theme].backdrops.lighten1
+          }"
+    :headers="headers"
+    :sort-by="sortBy"
+    :sort-desc="[false]"
+    :search="search"
+    :loading="tableLoadingFlag"
+    item-key="name"
+    show-expand
+  >
+    <template v-slot:item.createNew="{ item }">
+      <v-btn id="item" color="button" class="btn-right px-0 ml-3" text @click.stop="openCreateNewOverride(item)">
+        Create New Override
+      </v-btn>
+    </template>
+    <template v-slot:item.delete="{ item }">
+      <v-icon @click.stop="openFeatureFlagDelete(item)"> delete </v-icon>
+    </template>
+    <template v-slot:expanded-item="{ item }" colspan="5">
+      <td colspan="8" class="elevation-25 moduleBackdrop">
+        <v-row>
+          <v-col class="pt-0">
+            <v-row class="pt-10 pb-0">
+              <v-col cols="1" md="4" class="pt-0 pb-0">Override Name</v-col>
+              <v-col cols="2" md="2" class="pt-0 pb-0">Start Date Range</v-col>
+              <v-col cols="3" md="2" class="pt-0 pb-0">End Date Range</v-col>
+              <v-col cols="4" md="2" class="pt-0 pb-0">Override Value</v-col>
+              <v-col class="pt-0 pb-0">Actions</v-col>
+            </v-row>
+            <br />
+            <v-divider></v-divider>
+            <v-list color="moduleBackdrop" v-for="override in item.overrides" :key="override.id" dense v-if="item.overrides.length > 0">
+              <v-row justify="center" class="pt-7 pb-5">
+                <v-col cols="1" md="4" class="pt-0 pb-0 pl-5">
+                  {{ override.name }}
+                </v-col>
+                <v-col cols="2" md="2" class="pt-0 pb-0 pl-5">
+                  {{ standardToUserTime(override.startDate) }}
+                </v-col>
+                <v-col cols="3" md="2" class="pt-0 pb-0 pl-5">
+                  {{ standardToUserTime(override.endDate) }}
+                </v-col>
+                <v-col cols="3" md="2" class="pt-0 pb-0 pl-5">
+                  {{ override.override }}
+                </v-col>
+                <v-col class="pt-0 pb-0">
+                  <v-btn id="item" color="button" class="btn-right px-0 ml-0" text @click.stop="openEditOverride(item, override)">
+                    Edit
+                  </v-btn>
+                  <v-icon @click="openOverrideDelete(item, override)"> delete </v-icon>
+                </v-col>
+              </v-row>
+            </v-list>
+            <span v-else>No Overrides</span>
+          </v-col>
+        </v-row>
+      </td>
+    </template>
+  </v-data-table>
+  <v-dialog v-model="editOverride" max-width="800px" class="elevation-0" :retain-focus="false" persistent>
+    <v-form v-model="validOverrideForm">
+      <v-card color="backdrops" class="px-8">
+        <v-card-title class="px-n3">
+          Override Editor
+        </v-card-title>
+        <v-row class="v-row--switch">
+          <v-col md="7">
+            <v-hover v-slot:default="{ hover }">
+              <v-text-field v-model="newOverrideName" color="primary" label="Name" @blur="editName == false" @keyup.enter="editName = false" required>
+                <v-icon class="mr-4" slot="prepend" color="primary">
+                  subject
+                </v-icon>
+                <v-icon v-if="hover" slot="append" color="primary" @click="editName = !editName">
+                  edit
+                </v-icon>
+              </v-text-field>
+            </v-hover>
+          </v-col>
+          <v-col class="v-switch">
+            <v-switch v-model="newOverrideStatus" id="override-status" inset :label="`Override Value: ${newOverrideStatus.toString()}`"></v-switch>
+          </v-col>
+        </v-row>
+        <v-row class="v-row--switch">
+          <v-col md="6">
+            <label for="startDate-datepicker">Start date range</label>
+            <v-date-picker id="startDate-datepicker" v-model="localStartDate" class="mb-2"></v-date-picker>
+          </v-col>
+          <v-col md="6">
+            <label for="startTime-timepicker">Start time</label>
+            <v-time-picker id="" v-model="localStartTime"></v-time-picker>
+          </v-col>
+        </v-row>
+        <v-row class="v-row--switch">
+          <v-col md="6">
+            <label for="endDate-datepicker">End date range</label>
+            <v-date-picker id="endDate-datepicker" v-model="localEndDate" class="mb-2"></v-date-picker>
+          </v-col>
+          <v-col md="6">
+            <label for="endTime-timepicker">End time</label>
+            <v-time-picker id="" v-model="localEndTime"></v-time-picker>
+          </v-col>
+        </v-row>
+        <v-card-actions>
+          <v-btn text small @click.stop="editOverride = false"> Cancel </v-btn>
+          <v-spacer></v-spacer>
+          <v-btn color="button" depressed @click.stop="saveAndUpdateDisplay()" class="pl-1" dark>Save</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-form>
+  </v-dialog>
+  <!--Delete override dialog-->
+  <v-dialog v-model="deleteOverride" max-width="800px" class="mx-3 elevation-0" :retain-focus="false" persistent>
+    <v-card color="backdrops" class="px-4">
+      <v-card-title v-if="selectedOverrideToEdit">
+        Delete "{{ selectedOverrideToEdit.name }}"?
+      </v-card-title>
+      <v-card-text>
+        Deleting an override will permanently remove it.
+      </v-card-text>
+      <v-card-actions>
+        <v-btn text small @click="deleteOverride = false"> Cancel </v-btn>
+        <v-spacer></v-spacer>
+        <v-btn color="error" depressed @click="deleteOverrideConfirmed()">Delete</v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+  <!--Create feature flag dialog-->
+  <v-dialog v-model="creatingNewFeatureFlag" max-width="800px" class="mx-3 elevation-0" :retain-focus="false" persistent>
+    <v-card color="backdrops" class="px-4">
+      <v-card-title>
+        Create New Feature Flag
+      </v-card-title>
+      <v-card-text class="mt-3">
+        <v-text-field v-model="newFeatureFlagName" label="Feature flag name" outlined required> </v-text-field>
+        <v-switch v-model="newFeatureFlagStatus" label="Status"> </v-switch>
+        {{ newFeatureFlagStatus }}
+      </v-card-text>
+      <v-card-actions>
+        <v-btn text small @click="creatingNewFeatureFlag = false"> Cancel </v-btn>
+        <v-spacer></v-spacer>
+        <v-btn color="button" depressed @click="saveFeatureFlag()">Create feature flag</v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+  <!--Delete feature flag dialog-->
+  <v-dialog v-model="deletingFeatureFlag" :overlay-color="theme.dropShadow" class="elevation-0" max-width="600px" :retain-focus="false">
+    <v-card color="backdrops">
+      <v-card-title>
+        Delete "{{ newFeatureFlagName }}"?
+      </v-card-title>
+      <v-card-text>
+        Deleting a feature flag will permanently remove it.
+      </v-card-text>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn @click="deletingFeatureFlag = false">
+          Cancel
+        </v-btn>
+        <v-btn color="error" depressed @click="confirmFeatureFlagDelete()">
+          Delete
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+</div>
