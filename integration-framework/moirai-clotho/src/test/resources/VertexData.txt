@@ -1,0 +1,12 @@
+*** label, name, role, location
+PERSON, Daniel, developer, VA
+PERSON, Ryan, developer, MD
+PERSON, Larry, tech-lead, MD
+PERSON, Will, developer, MD
+PERSON, Darren, developer, MD
+PERSON, Kevin, developer, VA
+PERSON, Eddie, tech-lead, VA
+
+*** label, name, client
+PROJECT, KAIROS, DARPA
+PROJECT, AIDA, DARPA

@@ -1,0 +1,68 @@
+#!/bin/bash
+#
+# An example hook script to verify what is about to be committed.
+# Called by "git commit" with no arguments.  The hook should
+# exit with non-zero status after issuing an appropriate message if
+# it wants to stop the commit.
+#
+# To enable this hook, rename this file to "pre-commit".
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+if git rev-parse --verify HEAD >/dev/null 2>&1
+then
+	against=HEAD
+else
+	# Initial commit: diff against an empty tree object
+	against=$(git hash-object -t tree /dev/null)
+fi
+
+changed_files="$(git diff --name-only --cached)"
+files_to_lint="$(for file in $changed_files
+do
+  if [[ $file == *".java" ]];
+  then
+    echo $file
+  fi
+done)"
+
+if [ "${#files_to_lint[@]}" != 0 ] && [ "$files_to_lint" != "" ];
+then
+  validationCommand="java -Dsamedir="$DIR/../checkstyle" -jar config/checkstyle-*.jar -c config/checkstyle/checkstyle.xml $files_to_lint"
+  output=$($validationCommand 2>&1)
+
+  unlinted_files=()
+  while read -r line;
+  do
+    if [[ $line != *"ERROR"* ]];
+    then
+      echo "$line"
+    else
+      filename=$(echo $line | awk -F ' ' '{print $2}' | awk -F ':' '{print $1}')
+        unlinted_files+=("$filename")
+    fi
+  done <<< "$(printf "$output\n")"
+
+  unique_unlinted_files=($(echo "${unlinted_files[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
+
+  if [ "${#unique_unlinted_files[@]}" == 0 ];
+  then
+      echo "linting successful"
+    while IFS= read -r line
+    do
+      echo "$line"
+    done < "config/githooks/thumbs-up.txt"
+  else
+      printf "\nCommit failed because the following files contain lint errors.\n"
+    for file in "${unique_unlinted_files[@]}"
+    do
+      printf "  * $file\n"
+    done
+
+    printf "\nRun './gradlew checkstyleMain' to see all linting errors\n\n"
+    printf "\nRun './gradlew removeGitHooks' to temporarily remove this check and allow commiting\n\n"
+    exit -1
+  fi
+else
+  echo "No files need linting"
+fi

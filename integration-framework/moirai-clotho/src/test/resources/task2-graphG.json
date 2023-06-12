@@ -1,0 +1,1162 @@
+{
+  "@context": [
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v2.3.jsonld",
+    {
+      "nist": "https://nist.gov/kairos/"
+    }
+  ],
+  "@id": "nist:Submissions/Phase2b/GraphG/ce2013",
+  "sdfVersion": "2.3",
+  "version": "nist:Phase2bGraphG:vDryRun1",
+  "ta2": true,
+  "task2": true,
+  "ceID": "ce2013",
+  "instances": [
+    {
+      "@id": "nist:Instances/00001/nistPhase2bGraphG",
+      "name": "nist:Phase2b/GraphGce2013",
+      "confidence": 1,
+      "ta1ref": "SC02013",
+      "events": [
+        {
+          "@id": "nist:Events/00002/nist-GraphG-ce2013-root",
+          "name": "nist:GraphG/ce2013/root",
+          "description": "Root Event for Graph G Complex Event for ce2013",
+          "ta1ref": "none",
+          "provenance": "nist:Events/00002/nist-GraphG-ce2013-root",
+          "ta2wd_node": "wd:Q3241045",
+          "ta2wd_label": "disease_outbreak",
+          "ta2wd_description": "sudden increase in occurrences of a disease in a particular time and place",
+          "parent": "kairos:NULL",
+          "isTopLevel": "true",
+          "children_gate": "and",
+          "subgroup_events": [
+            "nist:Events/00043/VP2013.008884",
+            "nist:Events/00021/VP2013.003959",
+            "nist:Events/00038/VP2013.007649",
+            "nist:Events/00028/VP2013.005699",
+            "nist:Events/00006/VP2013.000433",
+            "nist:Events/00017/VP2013.002204",
+            "nist:Events/00015/VP2013.001959",
+            "nist:Events/00016/VP2013.001999",
+            "nist:Events/00018/VP2013.002484",
+            "nist:Events/00013/VP2013.001689",
+            "nist:Events/00039/VP2013.007849"
+          ]
+        },
+        {
+          "@id": "nist:Events/00043/VP2013.008884",
+          "name": "contamination",
+          "description": "The lobsters were contaminated with cholera in Haiti",
+          "ta2wd_node": "wd:Q60528603",
+          "ta2wd_label": "contamination",
+          "ta2wd_description": "presence of an unwanted constituent, harmful substance or impurity in a material, physical body, or environment",
+          "ta1ref": "none",
+          "ta1explanation": "From Graph G.",
+          "parent": "nist:Events/00002/nist-GraphG-ce2013-root",
+          "provenance": "VP2013.008884",
+          "temporal": {
+            "latestStartTime": "2011-01-22T23:59:59",
+            "latestEndTime": "2011-01-22T23:59:59"
+          },
+          "participants": [
+            {
+              "@id": "nist:Participants/00286/AR2013.000353",
+              "roleName": "A1_gol_destination_thing_becoming_contaminated",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00563/AR2013.000353",
+                  "ta2entity": "nist:Entities/00661/EE2013.000740",
+                  "provenance": "nist:Values/00563/AR2013.000353"
+                }
+              ]
+            },
+            {
+              "@id": "nist:Participants/00287/AR2013.004704",
+              "roleName": "A2_ppt_theme_contaminant",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00564/AR2013.004704",
+                  "ta2entity": "nist:Entities/00704/EE2013.001213",
+                  "provenance": "nist:Values/00564/AR2013.004704"
+                }
+              ]
+            },
+            {
+              "@id": "nist:Participants/00288/AR2013.000043",
+              "roleName": "AM_loc__location",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00565/AR2013.000043",
+                  "ta2entity": "nist:Entities/00655/EE2013.000674",
+                  "provenance": "nist:Values/00565/AR2013.000043"
+                }
+              ]
+            }
+          ],
+          "outlinks": [
+            "nist:Events/00021/VP2013.003959"
+          ]
+        },
+        {
+          "@id": "nist:Events/00021/VP2013.003959",
+          "name": "travel",
+          "description": "Contaminated food from Haiti could enter the Dominican Republic",
+          "ta2wd_node": "wd:Q61509",
+          "ta2wd_label": "travel",
+          "ta2wd_description": "movement of people between geographical locations",
+          "ta1ref": "none",
+          "parent": "nist:Events/00002/nist-GraphG-ce2013-root",
+          "provenance": "VP2013.003959",
+          "modality": "irrealis",
+          "temporal": {
+            "latestStartTime": "2011-01-22T23:59:59"
+          },
+          "participants": [
+            {
+              "@id": "nist:Participants/00179/AR2013.003979",
+              "roleName": "A1_ppt_theme_thing_transported",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00456/AR2013.003979",
+                  "ta2entity": "nist:Entities/00631/EE2013.000394",
+                  "provenance": "nist:Values/00456/AR2013.003979"
+                }
+              ]
+            },
+            {
+              "@id": "nist:Participants/00180/AR2013.000043",
+              "roleName": "A2_dir_source_initial_location",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00457/AR2013.000043",
+                  "ta2entity": "nist:Entities/00655/EE2013.000674",
+                  "provenance": "nist:Values/00457/AR2013.000043"
+                }
+              ]
+            },
+            {
+              "@id": "nist:Participants/00181/AR2013.000033",
+              "roleName": "A3_gol_destination_destination",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00458/AR2013.000033",
+                  "ta2entity": "nist:Entities/00637/EE2013.000460",
+                  "provenance": "nist:Values/00458/AR2013.000033"
+                }
+              ]
+            }
+          ],
+          "outlinks": [
+            "nist:Events/00038/VP2013.007649"
+          ]
+        },
+        {
+          "@id": "nist:Events/00038/VP2013.007649",
+          "name": "exchange_of_goods",
+          "description": "The catering company bought the contaminated lobsters in Pedernales",
+          "ta2wd_node": "wd:Q21651837",
+          "ta2wd_label": "exchange_of_goods",
+          "ta2wd_description": "transfer of equivalent goods to each other",
+          "ta1ref": "none",
+          "ta1explanation": "From Graph G.",
+          "parent": "nist:Events/00002/nist-GraphG-ce2013-root",
+          "provenance": "VP2013.007649",
+          "temporal": {
+            "latestStartTime": "2011-01-22T23:59:59",
+            "latestEndTime": "2011-01-22T23:59:59"
+          },
+          "participants": [
+            {
+              "@id": "nist:Participants/00240/AR2013.000353",
+              "roleName": "A1_ppt_theme_thing_being_traded",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00517/AR2013.000353",
+                  "ta2entity": "nist:Entities/00661/EE2013.000740",
+                  "provenance": "nist:Values/00517/AR2013.000353"
+                }
+              ]
+            },
+            {
+              "@id": "nist:Participants/00241/AR2013.000358",
+              "roleName": "AM_loc__location",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00518/AR2013.000358",
+                  "ta2entity": "nist:Entities/00676/EE2013.000905",
+                  "provenance": "nist:Values/00518/AR2013.000358"
+                }
+              ]
+            },
+            {
+              "@id": "nist:Participants/00242/AR2013.000828",
+              "roleName": "A2_com_co_agent_other_exchanger",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00519/AR2013.000828",
+                  "ta2entity": "nist:Entities/00608/EE2013.000125",
+                  "provenance": "nist:Values/00519/AR2013.000828"
+                }
+              ]
+            }
+          ],
+          "outlinks": [
+            "nist:Events/00028/VP2013.005699"
+          ]
+        },
+        {
+          "@id": "nist:Events/00028/VP2013.005699",
+          "name": "travel",
+          "description": "The contaminated lobster and other food, drinks, and ice served at the wedding were provided by the catering company at Casa de Campo",
+          "ta2wd_node": "wd:Q61509",
+          "ta2wd_label": "travel",
+          "ta2wd_description": "movement of people between geographical locations",
+          "ta1ref": "none",
+          "ta1explanation": "From Graph G.",
+          "parent": "nist:Events/00002/nist-GraphG-ce2013-root",
+          "provenance": "VP2013.005699",
+          "temporal": {
+            "latestStartTime": "2011-01-22T23:59:59",
+            "earliestEndTime": "2011-01-22T00:00:00",
+            "latestEndTime": "2011-01-22T23:59:59"
+          },
+          "participants": [
+            {
+              "@id": "nist:Participants/00200/AR2013.000828",
+              "roleName": "A0_pag_agent_transporter",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00477/AR2013.000828",
+                  "ta2entity": "nist:Entities/00608/EE2013.000125",
+                  "provenance": "nist:Values/00477/AR2013.000828"
+                }
+              ]
+            },
+            {
+              "@id": "nist:Participants/00201/AR2013.005694",
+              "roleName": "A1_ppt_theme_thing_transported",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00478/AR2013.005694",
+                  "ta2entity": "nist:Entities/00657/EE2013.000696",
+                  "provenance": "nist:Values/00478/AR2013.005694"
+                },
+                {
+                  "@id": "nist:Values/00479/AR2013.005684",
+                  "ta2entity": "nist:Entities/00647/EE2013.000575",
+                  "provenance": "nist:Values/00479/AR2013.005684"
+                },
+                {
+                  "@id": "nist:Values/00480/AR2013.005689",
+                  "ta2entity": "nist:Entities/00640/EE2013.000493",
+                  "provenance": "nist:Values/00480/AR2013.005689"
+                },
+                {
+                  "@id": "nist:Values/00482/AR2013.000353",
+                  "ta2entity": "nist:Entities/00661/EE2013.000740",
+                  "provenance": "nist:Values/00482/AR2013.000353"
+                }
+              ]
+            },
+            {
+              "@id": "nist:Participants/00204/AR2013.000023",
+              "roleName": "A3_gol_destination_destination",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00481/AR2013.000023",
+                  "ta2entity": "nist:Entities/00627/EE2013.000345",
+                  "provenance": "nist:Values/00481/AR2013.000023"
+                }
+              ]
+            }
+          ],
+          "outlinks": [
+            "nist:Events/00006/VP2013.000433"
+          ]
+        },
+        {
+          "@id": "nist:Events/00006/VP2013.000433",
+          "name": "ingestion",
+          "description": "More than 300 wedding guests, including a 30-year-old Massachusetts man and others, ate lobster contaminated with cholera at Casa de Campo",
+          "ta2wd_node": "wd:Q1663054",
+          "ta2wd_label": "ingestion",
+          "ta2wd_description": "consumption of a substance by an organism",
+          "ta1ref": "none",
+          "ta1explanation": "From Graph G.",
+          "parent": "nist:Events/00002/nist-GraphG-ce2013-root",
+          "provenance": "VP2013.000433",
+          "temporal": {
+            "earliestStartTime": "2011-01-22T00:00:00",
+            "latestStartTime": "2011-01-22T23:59:59",
+            "earliestEndTime": "2011-01-22T00:00:00",
+            "latestEndTime": "2011-01-22T23:59:59"
+          },
+          "participants": [
+            {
+              "@id": "nist:Participants/00100/AR2013.004039",
+              "roleName": "A0_pag_agent_eater",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00377/AR2013.004039",
+                  "ta2entity": "nist:Entities/00670/EE2013.000839",
+                  "provenance": "nist:Values/00377/AR2013.004039"
+                },
+                {
+                  "@id": "nist:Values/00380/AR2013.001954",
+                  "ta2entity": "nist:Entities/00607/EE2013.000114",
+                  "provenance": "nist:Values/00380/AR2013.001954"
+                },
+                {
+                  "@id": "nist:Values/00381/AR2013.002524",
+                  "ta2entity": "nist:Entities/00615/EE2013.000202",
+                  "provenance": "nist:Values/00381/AR2013.002524"
+                },
+                {
+                  "@id": "nist:Values/00382/AR2013.002694",
+                  "ta2entity": "nist:Entities/00611/EE2013.000158",
+                  "provenance": "nist:Values/00382/AR2013.002694"
+                },
+                {
+                  "@id": "nist:Values/00383/AR2013.002699",
+                  "ta2entity": "nist:Entities/00694/EE2013.001103",
+                  "provenance": "nist:Values/00383/AR2013.002699"
+                }
+              ]
+            },
+            {
+              "@id": "nist:Participants/00101/AR2013.000353",
+              "roleName": "A1_ppt_patient_entity_ingested",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00378/AR2013.000353",
+                  "ta2entity": "nist:Entities/00661/EE2013.000740",
+                  "provenance": "nist:Values/00378/AR2013.000353"
+                }
+              ]
+            },
+            {
+              "@id": "nist:Participants/00102/AR2013.000023",
+              "roleName": "AM_loc__location",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00379/AR2013.000023",
+                  "ta2entity": "nist:Entities/00627/EE2013.000345",
+                  "provenance": "nist:Values/00379/AR2013.000023"
+                }
+              ]
+            }
+          ],
+          "outlinks": [
+            "nist:Events/00017/VP2013.002204"
+          ]
+        },
+        {
+          "@id": "nist:Events/00017/VP2013.002204",
+          "name": "disease",
+          "description": "Dozens of wedding guests and others experienced cholera and other, related illnesses, but not fever or bloody stool, in Massachusetts and elsewhere",
+          "ta2wd_node": "wd:Q12136",
+          "ta2wd_label": "disease",
+          "ta2wd_description": "abnormal condition negatively affecting organisms",
+          "ta1ref": "none",
+          "ta1explanation": "From Graph G.",
+          "parent": "nist:Events/00002/nist-GraphG-ce2013-root",
+          "provenance": "VP2013.002204",
+          "temporal": {
+            "earliestStartTime": "2011-01-22T00:00:00"
+          },
+          "participants": [
+            {
+              "@id": "nist:Participants/00149/AR2013.002199",
+              "roleName": "A1_ppt__sick/ill_one",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00426/AR2013.002199",
+                  "ta2entity": "nist:Entities/00639/EE2013.000482",
+                  "provenance": "nist:Values/00426/AR2013.002199"
+                },
+                {
+                  "@id": "nist:Values/00429/AR2013.001954",
+                  "ta2entity": "nist:Entities/00607/EE2013.000114",
+                  "provenance": "nist:Values/00429/AR2013.001954"
+                },
+                {
+                  "@id": "nist:Values/00430/AR2013.002694",
+                  "ta2entity": "nist:Entities/00611/EE2013.000158",
+                  "provenance": "nist:Values/00430/AR2013.002694"
+                },
+                {
+                  "@id": "nist:Values/00431/AR2013.002699",
+                  "ta2entity": "nist:Entities/00694/EE2013.001103",
+                  "provenance": "nist:Values/00431/AR2013.002699"
+                },
+                {
+                  "@id": "nist:Values/00436/AR2013.006514",
+                  "ta2entity": "nist:Entities/00601/EE2013.000048",
+                  "provenance": "nist:Values/00436/AR2013.006514"
+                },
+                {
+                  "@id": "nist:Values/00437/AR2013.006564",
+                  "ta2entity": "nist:Entities/00603/EE2013.000070",
+                  "provenance": "nist:Values/00437/AR2013.006564"
+                },
+                {
+                  "@id": "nist:Values/00438/AR2013.006554",
+                  "ta2entity": "nist:Entities/00600/EE2013.000037",
+                  "provenance": "nist:Values/00438/AR2013.006554"
+                },
+                {
+                  "@id": "nist:Values/00442/AR2013.007114",
+                  "ta2entity": "nist:Entities/00693/EE2013.001092",
+                  "provenance": "nist:Values/00442/AR2013.007114"
+                },
+                {
+                  "@id": "nist:Values/00443/AR2013.000103",
+                  "ta2entity": "nist:Entities/00645/EE2013.000553",
+                  "provenance": "nist:Values/00443/AR2013.000103"
+                },
+                {
+                  "@id": "nist:Values/00445/AR2013.000113",
+                  "ta2entity": "nist:Entities/00651/EE2013.000630",
+                  "provenance": "nist:Values/00445/AR2013.000113"
+                },
+                {
+                  "@id": "nist:Values/00447/AR2013.002524",
+                  "ta2entity": "nist:Entities/00615/EE2013.000202",
+                  "provenance": "nist:Values/00447/AR2013.002524"
+                }
+              ]
+            },
+            {
+              "@id": "nist:Participants/00150/AR2013.002189",
+              "roleName": "A2_cau__cause_or_disease",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00427/AR2013.002189",
+                  "ta2entity": "nist:Entities/00633/EE2013.000416",
+                  "provenance": "nist:Values/00427/AR2013.002189"
+                },
+                {
+                  "@id": "nist:Values/00428/AR2013.002194",
+                  "ta2entity": "nist:Entities/00706/EE2013.001235",
+                  "provenance": "nist:Values/00428/AR2013.002194"
+                },
+                {
+                  "@id": "nist:Values/00432/AR2013.000038",
+                  "ta2entity": "nist:Entities/00630/EE2013.000383",
+                  "provenance": "nist:Values/00432/AR2013.000038"
+                },
+                {
+                  "@id": "nist:Values/00434/AR2013.002324",
+                  "ta2entity": "nist:Entities/00646/EE2013.000564",
+                  "provenance": "nist:Values/00434/AR2013.002324",
+                  "modality": "negated"
+                },
+                {
+                  "@id": "nist:Values/00435/AR2013.002329",
+                  "ta2entity": "nist:Entities/00623/EE2013.000301",
+                  "provenance": "nist:Values/00435/AR2013.002329",
+                  "modality": "negated"
+                }
+              ]
+            },
+            {
+              "@id": "nist:Participants/00156/AR2013.002034",
+              "roleName": "AM_loc__location",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00433/AR2013.002034",
+                  "ta2entity": "nist:Entities/00664/EE2013.000773",
+                  "provenance": "nist:Values/00433/AR2013.002034"
+                },
+                {
+                  "@id": "nist:Values/00439/AR2013.003724",
+                  "ta2entity": "nist:Entities/00684/EE2013.000993",
+                  "provenance": "nist:Values/00439/AR2013.003724"
+                },
+                {
+                  "@id": "nist:Values/00440/AR2013.001899",
+                  "ta2entity": "nist:Entities/00673/EE2013.000872",
+                  "provenance": "nist:Values/00440/AR2013.001899"
+                },
+                {
+                  "@id": "nist:Values/00441/AR2013.001894",
+                  "ta2entity": "nist:Entities/00624/EE2013.000312",
+                  "provenance": "nist:Values/00441/AR2013.001894"
+                },
+                {
+                  "@id": "nist:Values/00444/AR2013.000033",
+                  "ta2entity": "nist:Entities/00637/EE2013.000460",
+                  "provenance": "nist:Values/00444/AR2013.000033"
+                },
+                {
+                  "@id": "nist:Values/00446/AR2013.003764",
+                  "ta2entity": "nist:Entities/00667/EE2013.000806",
+                  "provenance": "nist:Values/00446/AR2013.003764"
+                }
+              ]
+            }
+          ],
+          "outlinks": [
+            "nist:Events/00015/VP2013.001959"
+          ]
+        },
+        {
+          "@id": "nist:Events/00015/VP2013.001959",
+          "name": "travel",
+          "description": "A 30-year-old man went to the emergency room of Massachusetts General Hospital",
+          "ta2wd_node": "wd:Q61509",
+          "ta2wd_label": "travel",
+          "ta2wd_description": "movement of people between geographical locations",
+          "ta1ref": "none",
+          "ta1explanation": "From Graph G.",
+          "parent": "nist:Events/00002/nist-GraphG-ce2013-root",
+          "provenance": "VP2013.001959",
+          "temporal": {
+            "earliestStartTime": "2011-01-25T00:00:00",
+            "latestStartTime": "2011-01-25T23:59:59",
+            "earliestEndTime": "2011-01-25T00:00:00",
+            "latestEndTime": "2011-01-25T23:59:59"
+          },
+          "participants": [
+            {
+              "@id": "nist:Participants/00143/AR2013.001954",
+              "roleName": "A1_ppt_theme_thing_transported",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00420/AR2013.001954",
+                  "ta2entity": "nist:Entities/00607/EE2013.000114",
+                  "provenance": "nist:Values/00420/AR2013.001954"
+                }
+              ]
+            },
+            {
+              "@id": "nist:Participants/00144/AR2013.001949",
+              "roleName": "A3_gol_destination_destination",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00421/AR2013.001949",
+                  "ta2entity": "nist:Entities/00641/EE2013.000504",
+                  "provenance": "nist:Values/00421/AR2013.001949"
+                }
+              ]
+            }
+          ],
+          "outlinks": [
+            "nist:Events/00016/VP2013.001999"
+          ]
+        },
+        {
+          "@id": "nist:Events/00016/VP2013.001999",
+          "name": "medical_diagnosis",
+          "description": "A Massachusetts woman and a 30-year-old man were diagnosed with cholera in Massachusetts and at Massachusetts General Hospital",
+          "ta2wd_node": "wd:Q177719",
+          "ta2wd_label": "medical_diagnosis",
+          "ta2wd_description": "process to determine or identify a disease or disorder, which would account for a person\\s symptoms and signs",
+          "ta1ref": "none",
+          "ta1explanation": "From Graph G.",
+          "parent": "nist:Events/00002/nist-GraphG-ce2013-root",
+          "provenance": "VP2013.001999",
+          "temporal": {
+            "earliestStartTime": "2011-01-25T00:00:00",
+            "latestStartTime": "2011-01-25T23:59:59",
+            "earliestEndTime": "2011-01-26T00:00:00",
+            "latestEndTime": "2011-01-26T23:59:59"
+          },
+          "participants": [
+            {
+              "@id": "nist:Participants/00145/AR2013.000038",
+              "roleName": "A2_prd_attribute_illness",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00422/AR2013.000038",
+                  "ta2entity": "nist:Entities/00630/EE2013.000383",
+                  "provenance": "nist:Values/00422/AR2013.000038"
+                }
+              ]
+            },
+            {
+              "@id": "nist:Participants/00146/AR2013.002034",
+              "roleName": "AM_loc__location",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00423/AR2013.002034",
+                  "ta2entity": "nist:Entities/00664/EE2013.000773",
+                  "provenance": "nist:Values/00423/AR2013.002034"
+                },
+                {
+                  "@id": "nist:Values/00425/AR2013.001944",
+                  "ta2entity": "nist:Entities/00665/EE2013.000784",
+                  "provenance": "nist:Values/00425/AR2013.001944"
+                }
+              ]
+            },
+            {
+              "@id": "nist:Participants/00147/AR2013.001954",
+              "roleName": "A1_ppt_theme_patient",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00424/AR2013.001954",
+                  "ta2entity": "nist:Entities/00607/EE2013.000114",
+                  "provenance": "nist:Values/00424/AR2013.001954"
+                }
+              ]
+            }
+          ],
+          "outlinks": [
+            "nist:Events/00018/VP2013.002484"
+          ]
+        },
+        {
+          "@id": "nist:Events/00018/VP2013.002484",
+          "name": "travel",
+          "description": "A 30-year-old Massachusetts man went home from Massachusetts General Hospital",
+          "ta2wd_node": "wd:Q61509",
+          "ta2wd_label": "travel",
+          "ta2wd_description": "movement of people between geographical locations",
+          "ta1ref": "none",
+          "ta1explanation": "From Graph G.",
+          "parent": "nist:Events/00002/nist-GraphG-ce2013-root",
+          "provenance": "VP2013.002484",
+          "temporal": {
+            "earliestStartTime": "2011-01-25T00:00:00",
+            "latestStartTime": "2011-01-25T23:59:59",
+            "earliestEndTime": "2011-01-25T00:00:00",
+            "latestEndTime": "2011-01-25T23:59:59"
+          },
+          "participants": [
+            {
+              "@id": "nist:Participants/00171/AR2013.001954",
+              "roleName": "A1_ppt_theme_thing_transported",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00448/AR2013.001954",
+                  "ta2entity": "nist:Entities/00607/EE2013.000114",
+                  "provenance": "nist:Values/00448/AR2013.001954"
+                }
+              ]
+            },
+            {
+              "@id": "nist:Participants/00172/AR2013.001944",
+              "roleName": "A2_dir_source_initial_location",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00449/AR2013.001944",
+                  "ta2entity": "nist:Entities/00665/EE2013.000784",
+                  "provenance": "nist:Values/00449/AR2013.001944"
+                }
+              ]
+            },
+            {
+              "@id": "nist:Participants/00173/AR2013.002519",
+              "roleName": "A3_gol_destination_destination",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00450/AR2013.002519",
+                  "ta2entity": "nist:Entities/00689/EE2013.001048",
+                  "provenance": "nist:Values/00450/AR2013.002519"
+                }
+              ]
+            }
+          ],
+          "outlinks": [
+            "nist:Events/00013/VP2013.001689"
+          ]
+        },
+        {
+          "@id": "nist:Events/00013/VP2013.001689",
+          "name": "destruction",
+          "description": "The military was going to burn uncertified meat and seafood in the Dominican Republic",
+          "ta2wd_node": "wd:Q17781833",
+          "ta2wd_label": "destruction",
+          "ta2wd_description": "damage to an object, system or an idea",
+          "ta1ref": "none",
+          "parent": "nist:Events/00002/nist-GraphG-ce2013-root",
+          "provenance": "VP2013.001689",
+          "modality": "irrealis",
+          "temporal": {
+            "earliestStartTime": "2011-02-14T00:00:00",
+            "latestStartTime": "2011-02-14T23:59:59"
+          },
+          "participants": [
+            {
+              "@id": "nist:Participants/00136/AR2013.001719",
+              "roleName": "A0_pag_agent_destroyer",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00413/AR2013.001719",
+                  "ta2entity": "nist:Entities/00686/EE2013.001015",
+                  "provenance": "nist:Values/00413/AR2013.001719"
+                }
+              ]
+            },
+            {
+              "@id": "nist:Participants/00137/AR2013.001679",
+              "roleName": "A1_ppt_patient_thing_destroyed",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00414/AR2013.001679",
+                  "ta2entity": "nist:Entities/00695/EE2013.001114",
+                  "provenance": "nist:Values/00414/AR2013.001679"
+                },
+                {
+                  "@id": "nist:Values/00416/AR2013.001684",
+                  "ta2entity": "nist:Entities/00696/EE2013.001125",
+                  "provenance": "nist:Values/00416/AR2013.001684"
+                }
+              ]
+            },
+            {
+              "@id": "nist:Participants/00138/AR2013.000033",
+              "roleName": "AM_loc__location",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00415/AR2013.000033",
+                  "ta2entity": "nist:Entities/00637/EE2013.000460",
+                  "provenance": "nist:Values/00415/AR2013.000033"
+                }
+              ]
+            }
+          ],
+          "outlinks": [
+            "nist:Events/00039/VP2013.007849"
+          ]
+        },
+        {
+          "@id": "nist:Events/00039/VP2013.007849",
+          "name": "prevention",
+          "description": "The Ministry of Health was going to prevent food contaminated with cholera from entering the Dominican Republic",
+          "ta2wd_node": "wd:Q1717246",
+          "ta2wd_label": "prevention",
+          "ta2wd_description": "causing an event or condition that would otherwise occur to not occur",
+          "ta1ref": "none",
+          "parent": "nist:Events/00002/nist-GraphG-ce2013-root",
+          "provenance": "VP2013.007849",
+          "modality": "irrealis",
+          "temporal": {
+            "earliestStartTime": "2011-02-21T00:00:00",
+            "latestStartTime": "2011-02-21T23:59:59"
+          },
+          "participants": [
+            {
+              "@id": "nist:Participants/00243/AR2013.006844",
+              "roleName": "A0_pag_agent_agent",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00520/AR2013.006844",
+                  "ta2entity": "nist:Entities/00668/EE2013.000817",
+                  "provenance": "nist:Values/00520/AR2013.006844"
+                }
+              ]
+            },
+            {
+              "@id": "nist:Participants/00244/VP2013.003959",
+              "roleName": "A1_ppt_theme_theme",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00521/VP2013.003959",
+                  "ta2entity": "nist:Events/00021/VP2013.003959",
+                  "provenance": "nist:Values/00521/VP2013.003959"
+                }
+              ]
+            },
+            {
+              "@id": "nist:Participants/00245/AR2013.000033",
+              "roleName": "AM_loc__location",
+              "entity": "kairos:NULL",
+              "values": [
+                {
+                  "@id": "nist:Values/00522/AR2013.000033",
+                  "ta2entity": "nist:Entities/00637/EE2013.000460",
+                  "provenance": "nist:Values/00522/AR2013.000033"
+                }
+              ]
+            }
+          ],
+          "outlinks": []
+        }
+      ],
+      "entities": [
+        {
+          "@id": "nist:Entities/00661/EE2013.000740",
+          "name": "Lobsters tainted with cholera",
+          "ta2wd_node": "wd:Q61864890",
+          "ta2wd_label": "lobster",
+          "ta2wd_description": "shellfish"
+        },
+        {
+          "@id": "nist:Entities/00704/EE2013.001213",
+          "name": "Vibrio cholerae",
+          "ta2wd_node": "wd:Q160821",
+          "ta2wd_label": "Vibrio cholerae",
+          "ta2wd_description": "species of bacterium"
+        },
+        {
+          "@id": "nist:Entities/00655/EE2013.000674",
+          "name": "Haiti",
+          "ta2wd_node": "wd:Q790",
+          "ta2wd_label": "Haiti",
+          "ta2wd_description": "island sovereign state in the Caribbean Sea"
+        },
+        {
+          "@id": "nist:Entities/00631/EE2013.000394",
+          "name": "Cholera-contaminated food",
+          "ta2wd_node": "wd:Q2095",
+          "ta2wd_label": "food",
+          "ta2wd_description": "any substance consumed to provide nutritional support for the body; form of energy stored in chemical"
+        },
+        {
+          "@id": "nist:Entities/00637/EE2013.000460",
+          "name": "Dominican Republic",
+          "ta2wd_node": "wd:Q786",
+          "ta2wd_label": "Dominican Republic",
+          "ta2wd_description": "island sovereign state in the Caribbean Sea"
+        },
+        {
+          "@id": "nist:Entities/00676/EE2013.000905",
+          "name": "Pedernales",
+          "ta2wd_node": "wd:Q2552137",
+          "ta2wd_label": "Pedernales",
+          "ta2wd_description": "municipality in the state of Delta Amacuro, Venezuela"
+        },
+        {
+          "@id": "nist:Entities/00608/EE2013.000125",
+          "name": "A catering company",
+          "ta2wd_node": "wd:Q777754",
+          "ta2wd_label": "catering",
+          "ta2wd_description": "commercial food service"
+        },
+        {
+          "@id": "nist:Entities/00657/EE2013.000696",
+          "name": "Ice used at the wedding",
+          "ta2wd_node": "wd:Q23392",
+          "ta2wd_label": "ice",
+          "ta2wd_description": "water frozen into the solid state"
+        },
+        {
+          "@id": "nist:Entities/00647/EE2013.000575",
+          "name": "Food served at the wedding",
+          "ta2wd_node": "wd:Q2095",
+          "ta2wd_label": "food",
+          "ta2wd_description": "any substance consumed to provide nutritional support for the body; form of energy stored in chemical"
+        },
+        {
+          "@id": "nist:Entities/00640/EE2013.000493",
+          "name": "Drinks served at the wedding",
+          "ta2wd_node": "wd:Q40050",
+          "ta2wd_label": "drink",
+          "ta2wd_description": "kind of liquid which is specifically prepared for human consumption"
+        },
+        {
+          "@id": "nist:Entities/00627/EE2013.000345",
+          "name": "Casa de Campo resort complex",
+          "ta2wd_node": "wd:Q2033262",
+          "ta2wd_label": "Casa de Campo, Dominican Republic",
+          "ta2wd_description": "seaside resort in La Romana"
+        },
+        {
+          "@id": "nist:Entities/00670/EE2013.000839",
+          "name": "More than 300 wedding guests",
+          "ta2wd_node": "wd:Q18089644",
+          "ta2wd_label": "guest",
+          "ta2wd_description": "someone who is offered hospitability"
+        },
+        {
+          "@id": "nist:Entities/00607/EE2013.000114",
+          "name": "A 30-year-old Massachusetts man",
+          "ta2wd_node": "wd:Q12722854",
+          "ta2wd_label": "sick_person",
+          "ta2wd_description": "person who is ill"
+        },
+        {
+          "@id": "nist:Entities/00615/EE2013.000202",
+          "name": "A Massachusetts woman",
+          "ta2wd_node": "wd:Q12722854",
+          "ta2wd_label": "sick_person",
+          "ta2wd_description": "person who is ill"
+        },
+        {
+          "@id": "nist:Entities/00611/EE2013.000158",
+          "name": "A father",
+          "ta2wd_node": "wd:Q12722854",
+          "ta2wd_label": "sick_person",
+          "ta2wd_description": "person who is ill"
+        },
+        {
+          "@id": "nist:Entities/00694/EE2013.001103",
+          "name": "Three children",
+          "ta2wd_node": "wd:Q12722854",
+          "ta2wd_label": "sick_person",
+          "ta2wd_description": "person who is ill"
+        },
+        {
+          "@id": "nist:Entities/00639/EE2013.000482",
+          "name": "Dozens of wedding guests",
+          "ta2wd_node": "wd:Q18089644",
+          "ta2wd_label": "guest",
+          "ta2wd_description": "someone who is offered hospitability"
+        },
+        {
+          "@id": "nist:Entities/00633/EE2013.000416",
+          "name": "Diarrhea",
+          "ta2wd_node": "wd:Q40878",
+          "ta2wd_label": "diarrhea",
+          "ta2wd_description": "loose or liquid bowel movements"
+        },
+        {
+          "@id": "nist:Entities/00706/EE2013.001235",
+          "name": "Vomiting",
+          "ta2wd_node": "wd:Q127076",
+          "ta2wd_label": "vomiting",
+          "ta2wd_description": "forcible expulsion of the contents of the stomach through the mouth"
+        },
+        {
+          "@id": "nist:Entities/00630/EE2013.000383",
+          "name": "Cholera",
+          "ta2wd_node": "wd:Q12090",
+          "ta2wd_label": "cholera",
+          "ta2wd_description": "bacterial infection of the small intestine"
+        },
+        {
+          "@id": "nist:Entities/00664/EE2013.000773",
+          "name": "Massachusetts",
+          "ta2wd_node": "wd:Q771",
+          "ta2wd_label": "Massachusetts",
+          "ta2wd_description": "state of the United States of America"
+        },
+        {
+          "@id": "nist:Entities/00646/EE2013.000564",
+          "name": "Fever",
+          "ta2wd_node": "wd:Q38933",
+          "ta2wd_label": "fever",
+          "ta2wd_description": "common medical sign characterized by elevated body temperature"
+        },
+        {
+          "@id": "nist:Entities/00623/EE2013.000301",
+          "name": "Bloody stool",
+          "ta2wd_node": "wd:Q1214063",
+          "ta2wd_label": "blood in stool",
+          "ta2wd_description": "symptom"
+        },
+        {
+          "@id": "nist:Entities/00601/EE2013.000048",
+          "name": "2 people from Spain",
+          "ta2wd_node": "wd:Q12722854",
+          "ta2wd_label": "sick_person",
+          "ta2wd_description": "person who is ill"
+        },
+        {
+          "@id": "nist:Entities/00603/EE2013.000070",
+          "name": "3 people",
+          "ta2wd_node": "wd:Q12722854",
+          "ta2wd_label": "sick_person",
+          "ta2wd_description": "person who is ill"
+        },
+        {
+          "@id": "nist:Entities/00600/EE2013.000037",
+          "name": "2 people from Boston",
+          "ta2wd_node": "wd:Q12722854",
+          "ta2wd_label": "sick_person",
+          "ta2wd_description": "person who is ill"
+        },
+        {
+          "@id": "nist:Entities/00684/EE2013.000993",
+          "name": "Spain",
+          "ta2wd_node": "wd:Q29",
+          "ta2wd_label": "Spain",
+          "ta2wd_description": "country in southwestern Europe"
+        },
+        {
+          "@id": "nist:Entities/00673/EE2013.000872",
+          "name": "New York",
+          "ta2wd_node": "wd:Q60",
+          "ta2wd_label": "New York City",
+          "ta2wd_description": "largest city in the United States"
+        },
+        {
+          "@id": "nist:Entities/00624/EE2013.000312",
+          "name": "Boston",
+          "ta2wd_node": "wd:Q100",
+          "ta2wd_label": "Boston",
+          "ta2wd_description": "city in and state capital of Massachusetts, United States"
+        },
+        {
+          "@id": "nist:Entities/00693/EE2013.001092",
+          "name": "The son of a female Casa de Campo employee",
+          "ta2wd_node": "wd:Q12722854",
+          "ta2wd_label": "sick_person",
+          "ta2wd_description": "person who is ill"
+        },
+        {
+          "@id": "nist:Entities/00645/EE2013.000553",
+          "name": "Fernando Hazoury",
+          "ta2wd_node": "wd:Q12722854",
+          "ta2wd_label": "sick_person",
+          "ta2wd_description": "person who is ill"
+        },
+        {
+          "@id": "nist:Entities/00651/EE2013.000630",
+          "name": "Guests from Mexico",
+          "ta2wd_node": "wd:Q18089644",
+          "ta2wd_label": "guest",
+          "ta2wd_description": "someone who is offered hospitability"
+        },
+        {
+          "@id": "nist:Entities/00667/EE2013.000806",
+          "name": "Mexico",
+          "ta2wd_node": "wd:Q96",
+          "ta2wd_label": "Mexico",
+          "ta2wd_description": "sovereign state in North America"
+        },
+        {
+          "@id": "nist:Entities/00641/EE2013.000504",
+          "name": "Emergency room of Massachusetts General Hospital",
+          "ta2wd_node": "wd:Q1295316",
+          "ta2wd_label": "emergency department",
+          "ta2wd_description": "medical treatment facility specializing in emergency medicine"
+        },
+        {
+          "@id": "nist:Entities/00665/EE2013.000784",
+          "name": "Massachusetts General Hospital",
+          "ta2wd_node": "wd:Q126412",
+          "ta2wd_label": "Massachusetts General Hospital",
+          "ta2wd_description": "teaching hospital in Massachusetts, United States"
+        },
+        {
+          "@id": "nist:Entities/00689/EE2013.001048",
+          "name": "The home of a 30-year-old Massachusetts man",
+          "ta2wd_node": "wd:Q7743",
+          "ta2wd_label": "home",
+          "ta2wd_description": "dwelling-place used as a permanent or semi-permanent residence"
+        },
+        {
+          "@id": "nist:Entities/00686/EE2013.001015",
+          "name": "The Dominican military",
+          "ta2wd_node": "wd:Q436714",
+          "ta2wd_label": "Armed Forces of the Dominican Republic",
+          "ta2wd_description": "combined military forces of the Dominican Republic"
+        },
+        {
+          "@id": "nist:Entities/00695/EE2013.001114",
+          "name": "Uncertified meat",
+          "ta2wd_node": "wd:Q10990",
+          "ta2wd_label": "meat",
+          "ta2wd_description": "animal flesh eaten as food"
+        },
+        {
+          "@id": "nist:Entities/00696/EE2013.001125",
+          "name": "Uncertified seafood",
+          "ta2wd_node": "wd:Q192935",
+          "ta2wd_label": "seafood",
+          "ta2wd_description": "food from the sea, e.g. fish, shrimp, crab, mussel, seaweed"
+        },
+        {
+          "@id": "nist:Entities/00668/EE2013.000817",
+          "name": "Ministry of Public Health of the Dominican Republic",
+          "ta2wd_node": "wd:Q98582748",
+          "ta2wd_label": "Ministry of Public Health",
+          "ta2wd_description": "nan"
+        },
+        {
+          "@id": "nist:Entities/00658/EE2013.000707",
+          "name": "Improperly cooked",
+          "ta2wd_node": "wd:Q101822647",
+          "ta2wd_label": "food handling",
+          "ta2wd_description": "operations in the preparation, processing, transport, storage, packaging, wrapping, exposure for sale, service, or delivery of food"
+        },
+        {
+          "@id": "nist:Entities/00659/EE2013.000718",
+          "name": "Improperly refrigerated",
+          "ta2wd_node": "wd:Q101822647",
+          "ta2wd_label": "food handling",
+          "ta2wd_description": "operations in the preparation, processing, transport, storage, packaging, wrapping, exposure for sale, service, or delivery of food"
+        }
+      ],
+      "relations": [
+        {
+          "@id": "nist:Relations/00710/RR2013.000278",
+          "name": "The Casa de Campo resort complex was located in the Dominican Republic",
+          "relationSubject": "nist:Entities/00627/EE2013.000345",
+          "relationSubject_prov": "AR2013.000023",
+          "wd_node": "P276",
+          "wd_label": "location",
+          "wd_description": "location of the object, structure or event. In the case of an administrative entity as containing item use P131. For statistical entities use P8138. In the case of a geographic entity use P706. Use P7153 for locations associated with the object.",
+          "relationObject": "nist:Entities/00676/EE2013.000905",
+          "relationObject_prov": "AR2013.000358",
+          "relationProvenance": "nist:Relations/00710/RR2013.000278",
+          "ta1ref": "none"
+        },
+        {
+          "@id": "nist:Relations/00712/RR2013.000538",
+          "name": "Pedernales was near Haiti",
+          "relationSubject": "nist:Entities/00676/EE2013.000905",
+          "relationSubject_prov": "AR2013.000358",
+          "wd_node": "P276",
+          "wd_label": "location",
+          "wd_description": "location of the object, structure or event. In the case of an administrative entity as containing item use P131. For statistical entities use P8138. In the case of a geographic entity use P706. Use P7153 for locations associated with the object.",
+          "relationObject": "nist:Entities/00655/EE2013.000674",
+          "relationObject_prov": "AR2013.000043",
+          "relationProvenance": "nist:Relations/00712/RR2013.000538",
+          "ta1ref": "none"
+        },
+        {
+          "@id": "nist:Relations/00718/RR2013.006959",
+          "name": "The contaminated lobsters were not properly cooked",
+          "relationSubject": "nist:Entities/00661/EE2013.000740",
+          "relationSubject_prov": "AR2013.000353",
+          "wd_node": "P1552",
+          "wd_label": "has quality",
+          "wd_description": "the entity has an inherent or distinguishing non-material characteristic",
+          "relationObject": "nist:Entities/00658/EE2013.000707",
+          "relationObject_prov": "AR2013.006954",
+          "relationProvenance": "nist:Relations/00718/RR2013.006959",
+          "ta1ref": "none"
+        },
+        {
+          "@id": "nist:Relations/00719/RR2013.006999",
+          "name": "The contaminated lobsters were not properly refrigerated",
+          "relationSubject": "nist:Entities/00661/EE2013.000740",
+          "relationSubject_prov": "AR2013.000353",
+          "wd_node": "P1552",
+          "wd_label": "has quality",
+          "wd_description": "the entity has an inherent or distinguishing non-material characteristic",
+          "relationObject": "nist:Entities/00659/EE2013.000718",
+          "relationObject_prov": "AR2013.006994",
+          "relationProvenance": "nist:Relations/00719/RR2013.006999",
+          "ta1ref": "none"
+        }
+      ]
+    }
+  ]
+}

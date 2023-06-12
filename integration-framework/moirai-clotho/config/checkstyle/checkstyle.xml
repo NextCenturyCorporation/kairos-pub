@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.2//EN"
+        "http://www.puppycrawl.com/dtds/configuration_1_2.dtd">
+<!-- This file was adapted from the spring-boot-parent project's checkstyle config at https://github.com/spring-projects/spring-boot -->
+<module name="Checker">
+    <!-- Root Checks -->
+    <module name="NewlineAtEndOfFileCheck">
+        <property name="lineSeparator" value="system"/>
+    </module>
+
+    <!--Supressions-->
+    <module name="SuppressionFilter">
+        <property name="file" value="${samedir}/suppressions.xml"/>
+    </module>
+
+    <module name="SuppressWarningsFilter"/>
+
+    <!-- TreeWalker Checks -->
+    <module name="com.puppycrawl.tools.checkstyle.TreeWalker">
+        <property name="fileExtensions" value="java, xml, properties"/>
+        <property name="tabWidth" value="4"/>
+
+        <!-- Annotations -->
+        <module name="AnnotationUseStyleCheck">
+            <property name="elementStyle" value="ignore"/>
+            <property name="trailingArrayComma" value="never"/>
+        </module>
+        <module name="MissingDeprecatedCheck"/>
+        <module name="MissingOverrideCheck"/>
+        <module name="PackageAnnotationCheck"/>
+        <module name="AnnotationLocationCheck">
+            <property name="allowSamelineMultipleAnnotations" value="true"/>
+            <property name="allowSamelineSingleParameterlessAnnotation" value="true"/>
+            <property name="allowSamelineParameterizedAnnotation" value="true"/>
+        </module>
+
+        <!-- Block Checks -->
+        <module name="AvoidNestedBlocksCheck"/>
+        <module name="EmptyBlockCheck">
+            <property name="option" value="text"/>
+        </module>
+        <module name="LeftCurlyCheck"/>
+        <module name="NeedBracesCheck"/>
+        <module name="RightCurlyCheck">
+            <property name="option" value="same"/>
+        </module>
+
+        <!-- Class Design -->
+        <module name="MethodLength">
+            <property name="max" value="60"/>
+        </module>
+        <module name="FinalClassCheck"/>
+        <module name="InterfaceIsTypeCheck"/>
+        <module name="HideUtilityClassConstructorCheck"/>
+        <module name="MutableExceptionCheck"/>
+        <module name="InnerTypeLastCheck"/>
+        <module name="OneTopLevelClassCheck"/>
+
+        <!-- Coding -->
+        <module name="CovariantEqualsCheck"/>
+        <module name="EmptyStatementCheck"/>
+        <module name="EqualsHashCodeCheck"/>
+        <module name="InnerAssignmentCheck"/>
+        <module name="SimplifyBooleanExpressionCheck"/>
+        <module name="SimplifyBooleanReturnCheck"/>
+        <module name="StringLiteralEqualityCheck"/>
+        <module name="NestedForDepthCheck">
+            <property name="max" value="3"/>
+        </module>
+        <module name="NestedIfDepthCheck">
+            <property name="max" value="3"/>
+        </module>
+        <module name="NestedTryDepthCheck">
+            <property name="max" value="3"/>
+        </module>
+        <module name="MethodLength">
+            <property name="max" value="60"/>
+        </module>
+        <module name="MultipleVariableDeclarationsCheck"/>
+        <module name="RequireThisCheck">
+            <property name="checkMethods" value="false"/>
+            <property name="validateOnlyOverlapping" value="false"/>
+        </module>
+        <module name="OneStatementPerLineCheck"/>
+
+        <!-- Imports -->
+        <module name="AvoidStarImportCheck"/>
+        <module name="AvoidStaticImportCheck">
+            <property name="excludes"
+                      value="io.restassured.RestAssured.*, org.assertj.core.api.Assertions.*, org.junit.Assert.*, org.junit.Assume.*, org.junit.internal.matchers.ThrowableMessageMatcher.*, org.hamcrest.CoreMatchers.*, org.hamcrest.Matchers.*, org.springframework.boot.configurationprocessor.ConfigurationMetadataMatchers.*, org.springframework.boot.configurationprocessor.TestCompiler.*, org.springframework.boot.test.autoconfigure.AutoConfigurationImportedCondition.*, org.mockito.Mockito.*, org.mockito.BDDMockito.*, org.mockito.ArgumentMatchers.*, org.mockito.Matchers.*, org.springframework.restdocs.hypermedia.HypermediaDocumentation.*, org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.*, org.springframework.restdocs.operation.preprocess.Preprocessors.*, org.springframework.restdocs.restassured3.operation.preprocess.RestAssuredPreprocessors.*, org.springframework.restdocs.restassured3.RestAssuredRestDocumentation.*, org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*, org.springframework.test.web.servlet.result.MockMvcResultMatchers.*, org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.*, org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.*, org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo, org.springframework.test.web.client.ExpectedCount.*, org.springframework.test.web.client.match.MockRestRequestMatchers.*, org.springframework.test.web.client.response.MockRestResponseCreators.*"/>
+        </module>
+
+        <module name="RedundantImportCheck"/>
+        <module name="UnusedImportsCheck">
+            <property name="processJavadoc" value="true"/>
+        </module>
+
+        <module name="ImportOrderCheck">
+            <property name="groups" value="java,/^javax?\./,*,org.springframework"/>
+            <property name="ordered" value="true"/>
+            <!--            <property name="separated" value="true"/>-->
+            <property name="option" value="bottom"/>
+            <property name="sortStaticImportsAlphabetically" value="true"/>
+        </module>
+
+        <!-- Javadoc Comments -->
+        <module name="JavadocTypeCheck">
+            <property name="scope" value="package"/>
+            <property name="authorFormat" value=".+\s.+"/>
+        </module>
+        <!--         <module name="JavadocMethodCheck">
+                    <property name="allowMissingJavadoc" value="true"/>
+                </module> -->
+        <module name="JavadocVariableCheck">
+            <property name="scope" value="public"/>
+        </module>
+        <module name="JavadocStyleCheck">
+            <property name="checkEmptyJavadoc" value="true"/>
+        </module>
+        <module name="NonEmptyAtclauseDescriptionCheck"/>
+        <module name="JavadocTagContinuationIndentationCheck">
+            <property name="offset" value="0"/>
+        </module>
+        <module name="AtclauseOrderCheck">
+            <property name="target" value="CLASS_DEF, INTERFACE_DEF, ENUM_DEF"/>
+            <property name="tagOrder" value="@param, @author, @since, @see, @version, @serial, @deprecated"/>
+        </module>
+        <module name="AtclauseOrderCheck">
+            <property name="target" value="METHOD_DEF, CTOR_DEF, VARIABLE_DEF"/>
+            <property name="tagOrder" value="@param, @return, @throws, @since, @deprecated, @see"/>
+        </module>
+
+        <!-- Miscellaneous -->
+        <module name="CommentsIndentationCheck">
+            <property name="tokens" value="BLOCK_COMMENT_BEGIN"/>
+        </module>
+        <module name="UpperEllCheck"/>
+        <!--<module name="ArrayTypeStyleCheck" />-->
+        <module name="OuterTypeFilenameCheck"/>
+
+        <!-- Modifiers -->
+        <module name="RedundantModifierCheck"/>
+
+        <!-- Regexp -->
+        <module name="RegexpSinglelineJavaCheck">
+            <property name="format" value="^ * + *\t"/>
+            <property name="message"
+                      value="Line has leading tab characters; indentation should be performed with spaces only."/>
+            <property name="ignoreComments" value="true"/>
+        </module>
+        <module name="RegexpSinglelineJavaCheck">
+            <property name="maximum" value="0"/>
+            <property name="format" value="org\.mockito\.Mockito\.(when|doThrow|doAnswer)"/>
+            <property name="message"
+                      value="Please use BDDMockito imports."/>
+            <property name="ignoreComments" value="true"/>
+        </module>
+        <module name="RegexpSinglelineJavaCheck">
+            <property name="maximum" value="0"/>
+            <property name="format" value="org\.junit\.Assert\.assert"/>
+            <property name="message"
+                      value="Please use AssertJ imports."/>
+            <property name="ignoreComments" value="true"/>
+        </module>
+
+        <!-- Whitespace -->
+        <module name="GenericWhitespaceCheck"/>
+        <module name="MethodParamPadCheck"/>
+        <module name="NoWhitespaceAfterCheck">
+            <property name="tokens" value="BNOT, DEC, DOT, INC, LNOT, UNARY_MINUS, UNARY_PLUS, ARRAY_DECLARATOR"/>
+        </module>
+        <module name="NoWhitespaceBeforeCheck"/>
+        <module name="ParenPadCheck"/>
+        <module name="TypecastParenPad">
+          <property name="option" value="nospace"/>
+        </module>
+        <module name="WhitespaceAfterCheck"/>
+        <module name="WhitespaceAroundCheck"/>
+
+        <module name="SuppressWarningsHolder"/>
+    </module>
+</module>

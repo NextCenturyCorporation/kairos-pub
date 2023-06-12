@@ -1,0 +1,8 @@
+{
+  "invokerPackage": "com.ncc.kairos.moirai.clotho",
+  "apiPackage": "com.ncc.kairos.moirai.clotho.api",
+  "modelPackage": "com.ncc.kairos.moirai.clotho.model",
+  "sourceFolder": "",
+  "generateSupportingFiles": "false",
+  "interfaceOnly": true
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "annotIndexId": "LDC_KAIROS_rel_001",
+    "atId": "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Relations/Evaluate.Belief.CommittedBelief",
+    "name": "Evaluate.Belief.CommittedBelief",
+    "template": "<arg1> believes with certainty that <arg2> is true",
+    "description": "Explicit mention of an entity believing with certainty that an event or information object is true",
+    "argOne": "Holder",
+    "argOneOutputValue": "rel001arg01holder",
+    "argOneTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/PER",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/ORG",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/GPE",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/SID"
+    ],
+    "argTwo": "BeliefTarget",
+    "argTwoOutputValue": "rel001arg02belieftarget",
+    "argTwoTypeConstraints": [
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/EVENT",
+      "https://kairos-sdf.s3.amazonaws.com/context/kairos/Primitives/Entities/INF"
+    ]
+  }
+]

@@ -1,0 +1,91 @@
+{
+  "@context": [
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v2.3.jsonld",
+    {
+      "caci_ta2": "https://caci.com/kairos/ta2/"
+    }
+  ],
+  "@id": "caci_ta2:Submissions/TA2/template",
+  "sdfVersion": "2.3",
+  "version": "template",
+  "ceID": "ce1001",
+  "task2": false,
+  "comment": [
+    "This is a template for creating SDF snippets for use in KsfExampleValidationTests.testSnippets().",
+    "Expected warnings: 0"
+  ],
+  "instances": [
+    {
+      "@id": "caci_ta2:Instances/00001/",
+      "ta1ref": "SC10001",
+      "name": "Template name",
+      "description": "Template description",
+      "confidence": 1,
+      "foobar": "asdf",
+      "events": [
+        {
+          "@id": "caci_ta2:Events/00001/",
+          "ta1ref": "EV00000",
+          "name": "template event name",
+          "description": "template event description",
+          "parent": "kairos:NULL",
+          "isTopLevel": true,
+          "wd_node": "wd:Q12335479",
+          "wd_label": "template",
+          "wd_description": "A pattern entity for making or processing things of the same shape",
+          "confidence": 1,
+          "provenance": "caci_ta2:Provenance/00001/",
+          "participants": {
+            "@id": "caci_ta2:Participants/00001/",
+            "roleName": "A0-template",
+            "entity": "caci_ta2:Entities/00001/",
+              "values": {
+                "@id": "caci_ta2:Values/00001/",
+                "ta2entity": "caci_ta2:Entities/00002/",
+                "provenance": "caci_ta2:Provenance/00001/",
+                "confidence": 1
+              }
+          }
+        }
+      ],
+      "entities": [
+        {
+          "@id": "caci_ta2:Entities/00001/",
+          "name": "Template TA1 entity",
+          "wd_node": "wd:Q12335479",
+          "wd_label": "template",
+          "wd_description": "A pattern entity for making or processing things of the same shape"
+        },
+        {
+          "@id": "caci_ta2:Entities/00002/",
+          "name": "Template TA2 entity",
+          "ta2wd_node": "wd:Q12335479",
+          "ta2wd_label": "template",
+          "ta2wd_description": "A pattern entity for making or processing things of the same shape"
+        }
+      ],
+      "relations": [
+        {
+          "@id": "caci_ta2:Relations/00001/",
+          "ta1ref": "RE00000",
+          "name": "template relation",
+          "relationSubject": "caci_ta2:Events/00001/",
+          "wd_node": "wd:Q930933",
+          "wd_label": "relation ",
+          "wd_description": "general relation between different objects or individuals",
+          "relationObject": "caci_ta2:Entities/00001/"
+        }
+      ]
+    }
+  ],
+  "provenanceData": [
+    {
+      "provenanceID": "caci_ta2:Provenance/00001/",
+      "childID": "L0C04GM35",
+      "parentIDs": "L0C04GM2E",
+      "mediaType": "text/plain",
+      "offset": 0,
+      "length": 8
+    }
+  ]
+}

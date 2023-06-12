@@ -1,0 +1,564 @@
+SDF Event Viewer (verbose output)
+Possible Times Square IED Attack
+ceID: ce1002
+Confidence: 1.0
+
+Event hierarchy (order does not consider outlinks):
+AND
+Prep [00001]
+	OR
+	Travel [00002], instantiated
+	Study [00003], instantiated
+	Contact [00004], predicted
+	Travel [00005], predicted
+	Unrest [00036], instantiated
+Bomb [00006]
+	AND
+	Make [00007]
+		AND
+		Acquire [00008]
+			OR
+			Buy [00009], instantiated, repeatable
+			Buy [00010], instantiated, repeatable
+			Find [00011], predicted, repeatable
+			Steal [00012], instantiated, repeatable
+			Rent [00013], predicted, repeatable
+		Mix [00014], instantiated
+		Assemble [00015], predicted
+		Put [00016], instantiated
+	Place [00017], instantiated
+		AND
+		Transport [00018], instantiated
+		Place [00019], instantiated
+		Load [00037], instantiated
+Detonate [00020], predicted
+Damage [00021]
+	OR
+	Destroy [00022], predicted
+	Injure [00023], predicted
+	Die [00024], predicted
+Consequence [00025]
+	XOR
+	Escape [00026], predicted
+	Justice [00027]
+		AND
+		Capture [00028], predicted
+		Indict [00029], predicted
+		Try [00030], predicted
+		Judgment [00031]
+			XOR
+			Exonerate [00032], predicted
+			Convict [00033]
+				AND
+				Convict [00034], predicted
+				Imprison [00035], predicted
+Contact [00038], instantiated
+Contact [00039], instantiated
+
+Event List (topologically sorted):
+1. [00001] "Prep" (from schema with confidence 1.0)
+	Qnodes: [None]
+	Parent: "IED Attack" [00000]
+	Children (OR): "Travel" [00002], "Study" [00003], "Contact" [00004], "Travel" [00005], "Unrest" [00036]
+	Roles:
+		A0-Agent (attacker [00019] instantiated as "Tom" [00001] with confidence 1.0)
+	Order:
+		Before: 00006
+2. [00002] "Travel" (instantiated from schema with confidence 1.0)
+	Qnodes: [wd:Q61509], Qlabels: [travel], Qdescriptions: [movement of people between geographical locations]
+	Parent: "Prep" [00001]
+	Roles:
+		A0-Agent (attacker [00019] instantiated as "Tom" [00001] with confidence 1.0)
+		A1-Vehicle (vehicle [00020] instantiated as "plane" [00002] with confidence 1.0)
+		A2-Location (domestic location [00021] instantiated as "New York City" [00003] with confidence 1.0)
+		A3-Location (foreign location [00022] instantiated as "Baghdad" [00004] with confidence 1.0)
+	URL (first): https://www.rome2rio.com/s/New-York/Baghdad
+	Temporals:
+		Earliest start time: 2010-06-01T00:00:00
+		Latest start time: 2011-01-31T00:00:00
+	Order:
+		Before: 00003
+3. [00006] "Bomb" (from schema with confidence 1.0)
+	Qnodes: [None]
+	Parent: "IED Attack" [00000]
+	Children (AND): "Make" [00007], "Place" [00017]
+	Roles:
+		A0-Agent (attacker [00019] instantiated as "Tom" [00001] with confidence 1.0, "Dick" [00007] with confidence 0.5, "Harry" [00008] with confidence 0.7)
+		A1-Object (IED [00037] instantiated as "bomb" [00009] with confidence 1.0)
+		A2-Receptacle (container [00025] instantiated as "backpack" [00010] with confidence 1.0)
+	Order:
+		Before: 00020
+		Before: 00038
+4. [00007] "Make" (from schema with confidence 1.0)
+	Qnodes: [None]
+	Parent: "Bomb" [00006]
+	Children (AND): "Acquire" [00008], "Mix" [00014], "Assemble" [00015], "Put" [00016]
+	Roles:
+		A0-Agent (attacker [00019] instantiated as "Tom" [00001] with confidence 1.0, "Dick" [00007] with confidence 1.0)
+		A1-Product (IED [00037] instantiated as "bomb" [00009] with confidence 1.0)
+		A2-Receptacle (container [00025] instantiated as "backpack" [00010] with confidence 1.0)
+		A3-Location (location [00026] instantiated as "Bronx" [00038] with confidence 1.0)
+	Order:
+		Before: 00017
+5. [00008] "Acquire" (from schema with confidence 1.0)
+	Qnodes: [None]
+	Parent: "Make" [00007]
+	Children (OR): "Buy" [00009], "Buy" [00010], "Find" [00011], "Steal" [00012], "Rent" [00013]
+	Roles:
+		A0-Agent (attacker [00019] instantiated as "Tom" [00001] with confidence 1.0, "Dick" [00007] with confidence 1.0)
+		A1-Object (component [00028] instantiated as "fertilizer" [00011] with confidence 1.0, "acetone" [00014] with confidence 1.0, "smokeless powder" [00039] with confidence 1.0)
+		A2-Location (location [00026] instantiated as "Brooklyn" [00013] with confidence 1.0, "Bronx" [00038] with confidence 1.0)
+	Order:
+		Before: 00014
+6. [00009] "Buy" (instantiated from schema with confidence 1.0)
+	Qnodes: [wd:Q1369832], Qlabels: [purchasing], Qdescriptions: [acquisition of goods or services by fiduciary exchange]
+	Parent: "Acquire" [00008]
+	Roles:
+		A0-Agent (purchaser [00027] instantiated as "Tom" [00001] with confidence 1.0)
+		A1-Object (component [00028] instantiated as "fertilizer" [00011] with confidence 1.0)
+		A2-Vendor (merchant [00029] instantiated as "Home Depot" [00012] with confidence 1.0)
+		A3-Location (location [00026] instantiated as "Brooklyn" [00013] with confidence 1.0)
+	URL (first): https://www.dhs.gov/see-something-say-something/recognize-the-signs
+	Temporals:
+		Earliest start time: 2010-08-10T00:00:00
+	Order:
+		Before: 00012
+7. [00010] "Buy" (instantiated from schema with confidence 1.0)
+	Qnodes: [wd:Q1369832], Qlabels: [purchasing], Qdescriptions: [acquisition of goods or services by fiduciary exchange]
+	Parent: "Acquire" [00008]
+	Roles:
+		A0-Agent (purchaser [00027] instantiated as "Tom" [00001] with confidence 1.0)
+		A1-Object (component [00028] instantiated as "smokeless powder" [00039] with confidence 1.0)
+		A2-Vendor (merchant [00029] instantiated as "Brooklyn Ammoworks" [00040] with confidence 1.0)
+		A3-Location (location [00026] instantiated as "Brooklyn" [00013] with confidence 1.0)
+	URL (first): https://www.dhs.gov/see-something-say-something/recognize-the-signs
+	Temporals:
+		Absolute time: 2010-08-01T00:00:00
+	Order:
+		Before: 00012
+8. [00011] "Find" (predicted from schema with confidence 0.3)
+	Qnodes: [wd:Q37112258], Qlabels: [finding], Qdescriptions: [process of locating or identifying something]
+	Parent: "Acquire" [00008]
+	Roles:
+		A0-Agent (finder [00041] predicted as "Tom" [00001] with confidence 1.0, "Dick" [00007] with confidence 1.0)
+		A1-Object (component [00028])
+		A2-Location (location [00026] predicted as "Brooklyn" [00013] with confidence 0.5, "Bronx" [00038] with confidence 0.5)
+	Predicted: confidence of 0.3, provenance of "Buy" [Event 00009], "Buy" [Event 00010], "Steal" [Event 00012], "Tom" [Entity 00001], "Dick" [Entity 00007]
+9. [00012] "Steal" (instantiated from schema with confidence 1.0)
+	Qnodes: [wd:Q2727213], Qlabels: [theft], Qdescriptions: [act of taking another's property without permission or consent]
+	Parent: "Acquire" [00008]
+	Roles:
+		A0-Agent (thief [00030] instantiated as "Dick" [00007] with confidence 1.0)
+		A1-Object (stolen object [00031] instantiated as "acetone" [00014] with confidence 1.0)
+		A2-Location (location [00034] instantiated as "home" [00015] with confidence 1.0)
+		A2-Location (location [00026] instantiated as "Bronx" [00038] with confidence 1.0)
+	URL (first): https://youtu.be/S64raEGx9zU
+10. [00013] "Rent" (predicted from schema with confidence 0.3)
+	Qnodes: [wd:Q157171], Qlabels: [renting], Qdescriptions: [agreement where a payment is made for the temporary use of a good, service or property owned by another]
+	Parent: "Acquire" [00008]
+	Roles:
+		A0-Agent (renter [00042] predicted as "Tom" [00001] with confidence 1.0, "Dick" [00007] with confidence 1.0)
+		A1-Object (component [00028])
+		A2-Location (location [00026] predicted as "Brooklyn" [00013] with confidence 0.5, "Bronx" [00038] with confidence 0.5)
+	Predicted: confidence of 0.3, provenance of "Buy" [Event 00009], "Buy" [Event 00010], "Steal" [Event 00012], "Tom" [Entity 00001], "Dick" [Entity 00007]
+11. [00014] "Mix" (instantiated from schema with confidence 0.3)
+	Qnodes: [wd:Q379697], Qlabels: [mixing], Qdescriptions: [process of mechanically manipulating a heterogeneous mixture to make it more homogeneous]
+	Parent: "Make" [00007]
+	Roles:
+		A0-Agent (mixer [00043] instantiated as "Dick" [00007] with confidence 1.0)
+		A1-Object (component [00028] instantiated as "fertilizer" [00011] with confidence 1.0, "acetone" [00014] with confidence 1.0)
+		A2-Product (mixture [00033] instantiated as "mixture" [00016] with confidence 1.0)
+		A3-Location (location [00026] instantiated as "home" [00015] with confidence 0.5, "Bronx" [00038] with confidence 0.5)
+	URL (first): https://www.dhs.gov/xlibrary/assets/prep_ied_fact_sheet.pdf
+	Order:
+		Before: 00015
+12. [00015] "Assemble" (predicted from schema with confidence 0.5)
+	Qnodes: [wd:Q3625549], Qlabels: [assembly], Qdescriptions: [act of combining components in manufacturing]
+	Parent: "Make" [00007]
+	Roles:
+		A0-Agent (attacker [00019] predicted as "Dick" [00007] with confidence 0.9)
+		A1-Object (component [00028] predicted as "mixture" [00016] with confidence 0.9, "smokeless powder" [00039] with confidence 0.7)
+		A2-Product (IED [00037] predicted as "bomb" [00009] with confidence 0.9)
+		A3-Location (location [00026] predicted as "Brooklyn" [00013] with confidence 0.4, "Bronx" [00038] with confidence 0.8)
+	Order:
+		Before: 00016
+	Predicted: confidence of 0.5, provenance of "Mix" [Event 00014], "Put" [Event 00016], "Dick" [Entity 00007]
+13. [00016] "Put" (instantiated from schema with confidence 1.0)
+	Qnodes: [wd:Q69990763], Qlabels: [insertion], Qdescriptions: [putting one physical object inside another]
+	Parent: "Make" [00007]
+	Roles:
+		A0-Agent (attacker [00019] instantiated as "Dick" [00007] with confidence 1.0)
+		A1-Object (IED [00037] instantiated as "bomb" [00009] with confidence 1.0)
+		A2-Container (container [00025] instantiated as "backpack" [00010] with confidence 1.0)
+		A3-Location (location [00026] instantiated as "Bronx" [00038] with confidence 0.5)
+	URL (first): https://www.cfr.org/global-conflict-tracker/conflict/political-instability-iraq
+14. [00017] "Place" (instantiated from schema with confidence 1.0)
+	Qnodes: [None]
+	Parent: "Bomb" [00006]
+	Children (AND): "Transport" [00018], "Place" [00019], "Load" [00037]
+	Roles:
+		A0-Agent (attacker [00019] instantiated as "Dick" [00007] with confidence 1.0, "Harry" [00008] with confidence 1.0)
+		A1-Object (container [00025] instantiated as "backpack" [00010] with confidence 1.0)
+		A2-Location (attack site [00044] instantiated as "Times Square, NYC" [00017] with confidence 1.0)
+	URL (first): https://www.dhs.gov/xlibrary/assets/prep_ied_fact_sheet.pdf
+15. [00020] "Detonate" (predicted from schema with confidence 0.7)
+	Qnodes: [wd:Q786054], Qlabels: [detonation], Qdescriptions: [supersonic combustion of an explosive material]
+	Parent: "IED Attack" [00000]
+	Roles:
+		A0-Agent (attacker [00019] predicted as "Tom" [00001] with confidence 0.8, "Dick" [00007] with confidence 0.5, "Harry" [00008] with confidence 0.6)
+		A1-Explosive (IED [00037] predicted as "bomb" [00009] with confidence 1.0)
+		A2-Location (attack site [00044] predicted as "Times Square, NYC" [00017] with confidence 0.9)
+	Order:
+		Before: 00021
+	Predicted: confidence of 0.7, provenance of "Prep" [Event 00001], "Acquire" [Event 00008], "Put" [Event 00016], "Place" [Event 00017]
+16. [00021] "Damage" (from schema with confidence 0.7)
+	Qnodes: [None]
+	Parent: "IED Attack" [00000]
+	Children (OR): "Destroy" [00022], "Injure" [00023], "Die" [00024]
+	Roles:
+		A0-Agent (IED [00037] instantiated as "bomb" [00009] with confidence 1.0)
+		A1-Target (victim [00045])
+		A2-Location (attack site [00044] instantiated as "Times Square, NYC" [00017] with confidence 0.9)
+	Relations:
+		"Destroy" [partial coincidence] [wd:Q65560376] "Injure"
+		"Damage" [contains] [wdt:P4330] "Destroy"
+		"Damage" [contains] [wdt:P4330] "Injure"
+		"Damage" [contains] [wdt:P4330] "Die"
+	Order:
+		Before: 00025
+17. [00022] "Destroy" (predicted from schema with confidence 0.7)
+	Qnodes: [wd:Q17781833], Qlabels: [destruction], Qdescriptions: [concept of damage to an object, system or an idea]
+	Parent: "Damage" [00021]
+	Roles:
+		A0-Agent (IED [00037] predicted as "bomb" [00009] with confidence 1.0)
+		A1-Target (destroyed object [00046])
+		A2-Location (attack site [00044] predicted as "Times Square, NYC" [00017] with confidence 0.9)
+	Predicted: confidence of 0.7, provenance of "Destroy" [Event 00022]
+18. [00023] "Injure" (predicted from schema with confidence 0.7)
+	Qnodes: [wd:Q193078], Qlabels: [injury], Qdescriptions: [physiological wound caused by an external source]
+	Parent: "Damage" [00021]
+	Roles:
+		A0-Agent (IED [00037] predicted as "bomb" [00009] with confidence 1.0)
+		A1-Target (victim [00045])
+		A2-Location (attack site [00044] predicted as "Times Square, NYC" [00017] with confidence 0.9)
+	Predicted: confidence of 0.7, provenance of "Injure" [Event 00023]
+19. [00024] "Die" (predicted from schema with confidence 0.7)
+	Qnodes: [wd:Q844482], Qlabels: [killing], Qdescriptions: [act of killing a living being]
+	Parent: "Damage" [00021]
+	Roles:
+		A0-Agent (IED [00037] predicted as "bomb" [00009] with confidence 1.0)
+		A1-Target (victim [00045])
+		A2-Location (attack site [00044] predicted as "Times Square, NYC" [00017] with confidence 0.9)
+	Predicted: confidence of 0.7, provenance of "Die" [Event 00024]
+20. [00025] "Consequence" (from schema with confidence 0.7)
+	Qnodes: [None]
+	Parent: "IED Attack" [00000]
+	Children (XOR): "Escape" [00026], "Justice" [00027]
+	Roles:
+		A0-Agent (attacker [00019] instantiated as "Tom" [00001] with confidence 0.8, "Dick" [00007] with confidence 0.5, "Harry" [00008] with confidence 0.6)
+		A1-Location (attack site [00044] instantiated as "Times Square, NYC" [00017] with confidence 0.9)
+		A1-Location (capture location [00047])
+	Relations:
+		"capture location" [near] [wd:Q21818619] "attack site"
+21. [00026] "Escape" (predicted from schema with confidence 0.4)
+	Qnodes: [wd:Q50388354], Qlabels: [escape], Qdescriptions: [break free from confinement or control]
+	Parent: "Consequence" [00025]
+	Roles:
+		A0-Agent (attacker [00019] predicted as "Tom" [00001] with confidence 0.8, "Dick" [00007] with confidence 0.5, "Harry" [00008] with confidence 0.6)
+		A1-Location (attack site [00044] predicted as "Times Square, NYC" [00017] with confidence 0.9)
+	Predicted: confidence of 0.4, provenance of "Escape" [Event 00026]
+22. [00027] "Justice" (from schema with confidence 0.7)
+	Qnodes: [None]
+	Parent: "Consequence" [00025]
+	Children (AND): "Capture" [00028], "Indict" [00029], "Try" [00030], "Judgment" [00031]
+	Roles:
+		A0-Agent (attacker [00019] instantiated as "Tom" [00001] with confidence 0.8, "Dick" [00007] with confidence 0.5, "Harry" [00008] with confidence 0.6)
+		A1-Location (capture location [00047])
+		A1-Location (court [00049])
+		A1-Location (prison [00050])
+23. [00028] "Capture" (predicted from schema with confidence 0.6)
+	Qnodes: [wd:Q17768966], Qlabels: [capture], Qdescriptions: [action of taking something by physical or legal force]
+	Parent: "Justice" [00027]
+	Roles:
+		A0-Agent (attacker [00019] predicted as "Tom" [00001] with confidence 0.8, "Dick" [00007] with confidence 0.5, "Harry" [00008] with confidence 0.6)
+		A1-Location (capture location [00047])
+	Order:
+		Before: 00029
+	Predicted: confidence of 0.6, provenance of "Capture" [Event 00028]
+24. [00029] "Indict" (predicted from schema with confidence 0.6)
+	Qnodes: [wd:Q329525], Qlabels: [criminal charge], Qdescriptions: [formal accusation of wrongdoing in common law]
+	Parent: "Justice" [00027]
+	Roles:
+		A0-Agent (attacker [00019] predicted as "Tom" [00001] with confidence 0.8, "Dick" [00007] with confidence 0.5, "Harry" [00008] with confidence 0.6)
+	Order:
+		Before: 00030
+	Predicted: confidence of 0.6, provenance of "Indict" [Event 00029]
+25. [00030] "Try" (predicted from schema with confidence 0.6)
+	Qnodes: [wd:Q8016240], Qlabels: [trial], Qdescriptions: [coming together of parties to a dispute, to present information in a tribunal]
+	Parent: "Justice" [00027]
+	Roles:
+		A0-Agent (attacker [00019] predicted as "Tom" [00001] with confidence 0.8, "Dick" [00007] with confidence 0.5, "Harry" [00008] with confidence 0.6)
+		A1-Location (court [00049])
+	Order:
+		Before: 00031
+	Predicted: confidence of 0.6, provenance of "Try" [Event 00030]
+26. [00031] "Judgment" (from schema with confidence 0.7)
+	Qnodes: [None]
+	Parent: "Justice" [00027]
+	Children (XOR): "Exonerate" [00032], "Convict" [00033]
+	Roles:
+		A0-Agent (attacker [00019] instantiated as "Tom" [00001] with confidence 0.8, "Dick" [00007] with confidence 0.5, "Harry" [00008] with confidence 0.6)
+		A1-Location (court [00049])
+27. [00032] "Exonerate" (predicted from schema with confidence 0.3)
+	Qnodes: [wd:Q1454723], Qlabels: [acquittal], Qdescriptions: [legal result of a verdict of not guilty]
+	Parent: "Judgment" [00031]
+	Roles:
+		A0-Agent (attacker [00019] predicted as "Tom" [00001] with confidence 0.8, "Dick" [00007] with confidence 0.5, "Harry" [00008] with confidence 0.6)
+	Predicted: confidence of 0.3, provenance of "Exonerate" [Event 00032]
+28. [00033] "Convict" (from schema with confidence 0.7)
+	Qnodes: [None]
+	Parent: "Judgment" [00031]
+	Children (AND): "Convict" [00034], "Imprison" [00035]
+	Roles:
+		A0-Agent (attacker [00019] instantiated as "Tom" [00001] with confidence 0.8, "Dick" [00007] with confidence 0.5, "Harry" [00008] with confidence 0.6)
+29. [00034] "Convict" (predicted from schema with confidence 0.7)
+	Qnodes: [wd:Q2916183], Qlabels: [conviction], Qdescriptions: [verdict that results when a court of law finds a defendant guilty of a crime]
+	Parent: "Convict" [00033]
+	Roles:
+		A0-Agent (attacker [00019] predicted as "Tom" [00001] with confidence 0.8, "Dick" [00007] with confidence 0.5, "Harry" [00008] with confidence 0.6)
+	Order:
+		Before: 00035
+	Predicted: confidence of 0.7, provenance of "Convict" [Event 00034]
+30. [00035] "Imprison" (predicted from schema with confidence 0.7)
+	Qnodes: [wd:Q853735], Qlabels: [incarceration], Qdescriptions: [detention of a person]
+	Parent: "Convict" [00033]
+	Roles:
+		A0-Agent (attacker [00019] predicted as "Tom" [00001] with confidence 0.8, "Dick" [00007] with confidence 0.5, "Harry" [00008] with confidence 0.6)
+		A1-Location (prison [00050])
+	Predicted: confidence of 0.7, provenance of "Imprison" [Event 00035]
+31. [00036] "Unrest" (instantiated from docs with confidence 0.7)
+	Qnodes: [wd:Q7897387], Qlabels: [unrest], Qdescriptions: [sociopolitical turbulence and discontent, may involve riots]
+	Parent: "Prep" [00001]
+	Roles:
+		A1-Location ("Baghdad" [00004] with confidence 1.0)
+	URL (first): https://www.cfr.org/global-conflict-tracker/conflict/political-instability-iraq
+	Temporals:
+		Earliest start time: 2010-01-01T00:00:00
+		Latest start time: 2010-12-31T00:00:00
+	Order:
+		Before: 00003
+32. [00003] "Study" (instantiated from schema with confidence 1.0)
+	Qnodes: [wd:Q1782301], Qlabels: [study], Qdescriptions: [examining written materials for the purpose of learning]
+	Parent: "Prep" [00001]
+	Roles:
+		A0-Agent (attacker [00019] instantiated as "Tom" [00001] with confidence 1.0)
+		A1-School (school [00023] instantiated as "X-school" [00005] with confidence 1.0)
+		A2-Topic (subject matter [00024] instantiated as "bomb-making" [00006] with confidence 1.0)
+		A3-Location (foreign location [00022] instantiated as "Baghdad" [00004] with confidence 1.0)
+	URL (first): https://cco.ndu.edu/PRISM/PRISM-Volume-6-no-2/Article/839011/right-wing-extremism-and-terrorism-in-europe-current-developments-and-issues-fo/
+	Order:
+		Before: 00004
+33. [00004] "Contact" (predicted from schema with confidence 1.0)
+	Qnodes: [wd:Q21075777], Qlabels: [contact], Qdescriptions: [personal connection between two or more people]
+	Parent: "Prep" [00001]
+	Roles:
+		A0-Agent (attacker [00019] predicted as "Tom" [00001] with confidence 1.0)
+		A1-Participant (co-conspirator [00036] predicted as "Dick" [00007] with confidence 0.8, "Harry" [00008] with confidence 0.8)
+		A2-Instrument (device [00048])
+		A3-Topic (subject matter [00024] predicted as "bomb-making" [00006] with confidence 1.0)
+	Order:
+		Before: 00005
+	Predicted: confidence of 1.0, provenance of Relation [00001], Relation [00002]
+34. [00005] "Travel" (predicted from schema with confidence 1.0)
+	Qnodes: [wd:Q61509], Qlabels: [travel], Qdescriptions: [movement of people between geographical locations]
+	Parent: "Prep" [00001]
+	Roles:
+		A0-Agent (attacker [00019] predicted as "Tom" [00001] with confidence 1.0)
+		A1-Vehicle (vehicle [00020] predicted as "plane" [00051] with confidence 1.0)
+		A2-Location (foreign location [00022] predicted as "Baghdad" [00004] with confidence 1.0)
+		A3-Location (domestic location [00021] predicted as "New York City" [00003] with confidence 1.0)
+	Predicted: confidence of 1.0, provenance of "Travel" [Event 00005]
+35. [00037] "Load" (instantiated from docs with confidence 1.0)
+	Qnodes: [wd:Q69466762], Qlabels: [loading], Qdescriptions: [lifting a load up or putting it into something]
+	Parent: "Place" [00017]
+	Roles:
+		A0-Agent (attacker [00019] instantiated as "Harry" [00008] with confidence 1.0)
+		A1-Container (container [00025] instantiated as "backpack" [00010] with confidence 1.0)
+		A2-Vehicle (vehicle [00020] instantiated as "truck" [00018] with confidence 1.0)
+		A3-Location (location [00026] instantiated as "Bronx" [00038] with confidence 1.0)
+	URL (first): https://www.dhs.gov/xlibrary/assets/prep_ied_fact_sheet.pdf
+	Order:
+		Before: 00018
+36. [00018] "Transport" (instantiated from schema with confidence 1.0)
+	Qnodes: [wd:Q7590], Qlabels: [transport], Qdescriptions: [human-directed movement of things or people between locations]
+	Parent: "Place" [00017]
+	Roles:
+		A0-Agent (attacker [00019] instantiated as "Dick" [00007] with confidence 1.0, "Harry" [00008] with confidence 1.0)
+		A1-Container (container [00025] instantiated as "backpack" [00010] with confidence 1.0)
+		A2-Vehicle (vehicle [00020] instantiated as "truck" [00018] with confidence 1.0)
+		A3-Origin (location [00026] instantiated as "Bronx" [00038] with confidence 0.5)
+		A3-Destination (attack site [00044] instantiated as "Times Square, NYC" [00017] with confidence 1.0)
+	URL (first): https://www.cfr.org/global-conflict-tracker/conflict/political-instability-iraq
+	Order:
+		Before: 00019
+37. [00019] "Place" (instantiated from schema with confidence 1.0)
+	Qnodes: [wd:Q69990763], Qlabels: [insertion], Qdescriptions: [putting one physical object inside another]
+	Parent: "Place" [00017]
+	Roles:
+		A0-Agent (attacker [00019] instantiated as "Harry" [00008] with confidence 1.0)
+		A1-Container (container [00025] instantiated as "backpack" [00010] with confidence 1.0)
+		A2-Location (attack site [00044] instantiated as "Times Square, NYC" [00017] with confidence 1.0)
+	URL (first): https://www.dhs.gov/xlibrary/assets/prep_ied_fact_sheet.pdf
+38. [00038] "Contact" (instantiated from docs with confidence 0.9)
+	Qnodes: [wd:Q21075777], Qlabels: [contact], Qdescriptions: [personal connection between two or more people]
+	Parent: "IED Attack" [00000]
+	Roles:
+		A0-Agent (attacker [00019] instantiated as "Tom" [00001] with confidence 1.0)
+		A1-Participant (co-conspirator [00036] instantiated as "Dick" [00007] with confidence 0.8)
+		A2-Instrument (device [00048])
+		A3-Topic (subject matter [00024])
+	URL (first): https://www.cfr.org/global-conflict-tracker/conflict/political-instability-iraq
+39. [00039] "Contact" (instantiated from docs with confidence 0.7)
+	Qnodes: [wd:Q21075777], Qlabels: [contact], Qdescriptions: [personal connection between two or more people]
+	Parent: "IED Attack" [00000]
+	Roles:
+		A0-Agent (attacker [00019] instantiated as "Tom" [00001] with confidence 1.0)
+		A1-Participant (co-conspirator [00036] instantiated as "Harry" [00008] with confidence 1.0)
+		A2-Instrument (device [00048])
+		A3-Topic (subject matter [00024])
+	URL (first): https://www.cfr.org/global-conflict-tracker/conflict/political-instability-iraq
+
+TA1 Entities (variables):
+[00019] "attacker", qnode [wd:Q31924059], qlabel: [attacker], qdescription: [entity which initiates an armed attack upon another entity]
+	referred to by "Prep" [00001], "Travel" [00002], "Bomb" [00006], "Make" [00007], "Acquire" [00008], "Assemble" [00015], "Put" [00016], "Place" [00017], "Detonate" [00020], "Consequence" [00025], "Escape" [00026], "Justice" [00027], "Capture" [00028], "Indict" [00029], "Try" [00030], "Judgment" [00031], "Exonerate" [00032], "Convict" [00033], "Convict" [00034], "Imprison" [00035], "Study" [00003], "Contact" [00004], "Travel" [00005], "Load" [00037], "Transport" [00018], "Place" [00019], "Contact" [00038], "Contact" [00039]
+[00020] "vehicle", qnode [wd:Q42889], qlabel: [vehicle], qdescription: [mobile machine that transports people, animals or cargo whether it has an engine or not, such as a bike, a car, another land vehicle (including wheeled and tracked vehicles), an aircraft or a watercraft]
+	referred to by "Travel" [00002], "Travel" [00005], "Load" [00037], "Transport" [00018]
+[00021] "domestic location", qnode [wd:Q2221906], qlabel: [geographic location], qdescription: [point or an area on something's surface or elsewhere]
+	referred to by "Travel" [00002], "Travel" [00005]
+[00022] "foreign location", qnode [wd:Q2221906], qlabel: [geographic location], qdescription: [point or an area on something's surface or elsewhere]
+	referred to by "Travel" [00002], "Study" [00003], "Travel" [00005]
+[00023] "school", qnode [wd:Q3914], qlabel: [school], qdescription: [institution for the education of students by teachers]
+	referred to by "Study" [00003]
+[00024] "subject matter", qnode [wd:Q27891660], qlabel: [topic of a work], qdescription: []
+	referred to by "Study" [00003], "Contact" [00004], "Contact" [00038], "Contact" [00039]
+[00025] "container", qnode [wd:Q987767], qlabel: [container], qdescription: [any receptacle for holding a product used in storage, packaging, and shipping]
+	referred to by "Bomb" [00006], "Make" [00007], "Put" [00016], "Place" [00017], "Load" [00037], "Transport" [00018], "Place" [00019]
+[00026] "location", qnode [wd:Q2221906], qlabel: [geographic location], qdescription: [point or an area on something's surface or elsewhere]
+	referred to by "Make" [00007], "Acquire" [00008], "Buy" [00009], "Buy" [00010], "Find" [00011], "Steal" [00012], "Rent" [00013], "Mix" [00014], "Assemble" [00015], "Put" [00016], "Load" [00037], "Transport" [00018]
+[00027] "purchaser", qnode [wd:Q1308239], qlabel: [buyer], qdescription: [person acquiring a benefit in exchange for money]
+	referred to by "Buy" [00009], "Buy" [00010]
+[00028] "component", qnode [wd:Q1310239], qlabel: [component], qdescription: [smaller, self-contained part of technical entity consisting of components]
+	referred to by "Acquire" [00008], "Buy" [00009], "Buy" [00010], "Find" [00011], "Rent" [00013], "Mix" [00014], "Assemble" [00015]
+[00029] "merchant", qnode [wd:Q215536], qlabel: [merchant], qdescription: [businessperson who trades in commodities that were produced by others]
+	referred to by "Buy" [00009], "Buy" [00010]
+[00030] "thief", qnode [wd:Q3562775], qlabel: [thief], qdescription: [person who carries out thefts]
+	referred to by "Steal" [00012]
+[00031] "stolen object", qnode [wd:Q114050918], qlabel: [stolen property], qdescription: []
+	referred to by "Steal" [00012]
+[00032] "theft location", qnode [wd:Q2221906], qlabel: [geographic location], qdescription: [point or an area on something's surface or elsewhere]
+[00033] "mixture", qnode [wd:Q169336], qlabel: [mixture], qdescription: [substance formed when two or more constituents are physically combined together]
+	referred to by "Mix" [00014]
+[00034] "location", qnode [wd:Q2221906], qlabel: [geographic location], qdescription: [point or an area on something's surface or elsewhere]
+	referred to by "Steal" [00012]
+[00036] "co-conspirator", qnode [wd:Q706884], qlabel: [accomplice], qdescription: [person who actively participates in the commission of a crime, even if they take no part in the actual criminal offense, with the other perpetrators]
+	referred to by "Contact" [00004], "Contact" [00038], "Contact" [00039]
+[00037] "IED", qnode [wd:Q1249453], qlabel: [improvised explosive device], qdescription: [homemade bomb]
+	referred to by "Bomb" [00006], "Make" [00007], "Assemble" [00015], "Put" [00016], "Detonate" [00020], "Damage" [00021], "Destroy" [00022], "Injure" [00023], "Die" [00024]
+[00041] "finder", qnode [wd:Q215627], qlabel: [person], qdescription: [being that has certain capacities or attributes constituting personhood (avoid use with P31; use Q5 for humans)]
+	referred to by "Find" [00011]
+[00042] "renter", qnode [wd:Q45574934], qlabel: [lessee], qdescription: [person or entity that holds the lease of a property]
+	referred to by "Rent" [00013]
+[00043] "mixer", qnode [wd:Q215627], qlabel: [person], qdescription: [being that has certain capacities or attributes constituting personhood (avoid use with P31; use Q5 for humans)]
+	referred to by "Mix" [00014]
+[00044] "attack site", qnode [wd:Q2221906], qlabel: [geographic location], qdescription: [point or an area on something's surface or elsewhere]
+	referred to by "Place" [00017], "Detonate" [00020], "Damage" [00021], "Destroy" [00022], "Injure" [00023], "Die" [00024], "Consequence" [00025], "Escape" [00026], "Transport" [00018], "Place" [00019]
+[00045] "victim", qnode [wd:Q1851760], qlabel: [victim], qdescription: [person who suffers as a result of a crime or other event]
+	referred to by "Damage" [00021], "Injure" [00023], "Die" [00024]
+[00046] "destroyed object", qnode [wd:Q19860854], qlabel: [destroyed building or structure], qdescription: [building or structure that has been demolished or destroyed]
+	referred to by "Destroy" [00022]
+[00047] "capture location", qnode [wd:Q2221906], qlabel: [geographic location], qdescription: [point or an area on something's surface or elsewhere]
+	referred to by "Consequence" [00025], "Justice" [00027], "Capture" [00028]
+[00048] "device", qnode [wd:Q2858615], qlabel: [electronic machine], qdescription: [electric device where the main functionality is provided by electronic circuits]
+	referred to by "Contact" [00004], "Contact" [00038], "Contact" [00039]
+[00049] "court", qnode [wd:Q41487], qlabel: [court], qdescription: [judicial institution with the authority to resolve legal disputes]
+	referred to by "Justice" [00027], "Try" [00030], "Judgment" [00031]
+[00050] "prison", qnode [wd:Q40357], qlabel: [prison], qdescription: [place in which people legally are physically confined and usually deprived of a range of personal freedoms]
+	referred to by "Justice" [00027], "Imprison" [00035]
+
+TA2 Entities (extracted/predicted):
+[00001] "Tom", qnode [wd:Q24229398], qlabel: [agent], qdescription: [distinct and identifiable entity capable of performing actions]
+	extracted in "Prep" [00001], "Travel" [00002], "Bomb" [00006], "Make" [00007], "Acquire" [00008], "Buy" [00009], "Buy" [00010], "Consequence" [00025], "Justice" [00027], "Judgment" [00031], "Convict" [00033], "Study" [00003], "Contact" [00038], "Contact" [00039]
+	predicted in "Find" [00011], "Rent" [00013], "Detonate" [00020], "Escape" [00026], "Capture" [00028], "Indict" [00029], "Try" [00030], "Exonerate" [00032], "Convict" [00034], "Imprison" [00035], "Contact" [00004], "Travel" [00005]
+[00002] "plane", qnode [wd:Q197], qlabel: [airplane], qdescription: [powered fixed-wing aircraft]
+	extracted in "Travel" [00002]
+[00003] "New York City", qnode [wd:Q60], qlabel: [New York City], qdescription: [most populous city in the United States of America]
+	extracted in "Travel" [00002]
+	predicted in "Travel" [00005]
+[00004] "Baghdad", qnode [wd:Q1530], qlabel: [Baghdad], qdescription: [capital city of Iraq]
+	extracted in "Travel" [00002], "Unrest" [00036], "Study" [00003]
+	predicted in "Travel" [00005]
+[00005] "X-school", qnode [wd:Q3914], qlabel: [school], qdescription: [institution for the education of students by teachers]
+	extracted in "Study" [00003]
+[00006] "bomb-making", qnode [wd:Q4940397], qlabel: [Bomb-making instructions on the internet], qdescription: [sharing of bomb production methods on the Internet]
+	extracted in "Study" [00003]
+	predicted in "Contact" [00004]
+[00007] "Dick", qnode [wd:Q706884], qlabel: [accomplice], qdescription: [person who actively participates in the commission of a crime, even if they take no part in the actual criminal offense, with the other perpetrators]
+	extracted in "Bomb" [00006], "Make" [00007], "Acquire" [00008], "Steal" [00012], "Mix" [00014], "Put" [00016], "Place" [00017], "Consequence" [00025], "Justice" [00027], "Judgment" [00031], "Convict" [00033], "Transport" [00018], "Contact" [00038]
+	predicted in "Find" [00011], "Rent" [00013], "Assemble" [00015], "Detonate" [00020], "Escape" [00026], "Capture" [00028], "Indict" [00029], "Try" [00030], "Exonerate" [00032], "Convict" [00034], "Imprison" [00035], "Contact" [00004]
+[00008] "Harry", qnode [wd:Q706884], qlabel: [accomplice], qdescription: [person who actively participates in the commission of a crime, even if they take no part in the actual criminal offense, with the other perpetrators]
+	extracted in "Bomb" [00006], "Place" [00017], "Consequence" [00025], "Justice" [00027], "Judgment" [00031], "Convict" [00033], "Load" [00037], "Transport" [00018], "Place" [00019], "Contact" [00039]
+	predicted in "Detonate" [00020], "Escape" [00026], "Capture" [00028], "Indict" [00029], "Try" [00030], "Exonerate" [00032], "Convict" [00034], "Imprison" [00035], "Contact" [00004]
+[00009] "bomb", qnode [wd:Q1249453], qlabel: [improvised explosive device], qdescription: [homemade bomb]
+	extracted in "Bomb" [00006], "Make" [00007], "Put" [00016], "Damage" [00021]
+	predicted in "Assemble" [00015], "Detonate" [00020], "Destroy" [00022], "Injure" [00023], "Die" [00024]
+[00010] "backpack", qnode [wd:Q5843], qlabel: [backpack], qdescription: [bag carried on one's back]
+	extracted in "Bomb" [00006], "Make" [00007], "Put" [00016], "Place" [00017], "Load" [00037], "Transport" [00018], "Place" [00019]
+[00011] "fertilizer", qnode [wd:Q83323], qlabel: [fertilizer], qdescription: [material of natural or synthetic origin (other than liming materials) applied to soils or to plants to supply essential nutrients]
+	extracted in "Acquire" [00008], "Buy" [00009], "Mix" [00014]
+[00012] "Home Depot", qnode [wd:Q12140], qlabel: [medication], qdescription: [substance used to diagnose, cure, treat, or prevent disease]
+	extracted in "Buy" [00009]
+[00013] "Brooklyn", qnode [wd:Q18419], qlabel: [Brooklyn], qdescription: [borough of New York City, New York, United States]
+	extracted in "Acquire" [00008], "Buy" [00009], "Buy" [00010]
+	predicted in "Find" [00011], "Rent" [00013], "Assemble" [00015]
+[00014] "acetone", qnode [wd:Q49546], qlabel: [acetone], qdescription: [chemical compound]
+	extracted in "Acquire" [00008], "Steal" [00012], "Mix" [00014]
+[00015] "home", qnode [wd:Q7743, wd:Q699405], qlabel: [home, residence], qdescription: [dwelling-place used as a permanent or semi-permanent residence, self-contained unit of accommodation (house, apartment, mobile home, houseboat or other structure) used as a home]
+	extracted in "Steal" [00012], "Mix" [00014]
+[00016] "mixture", qnode [wd:Q169336], qlabel: [mixture], qdescription: [substance formed when two or more constituents are physically combined together]
+	extracted in "Mix" [00014]
+	predicted in "Assemble" [00015]
+[00017] "Times Square, NYC", qnode [wd:Q11259], qlabel: [Times Square], qdescription: [neighborhood and square in Manhattan, New York City, United States]
+	extracted in "Place" [00017], "Damage" [00021], "Consequence" [00025], "Transport" [00018], "Place" [00019]
+	predicted in "Detonate" [00020], "Destroy" [00022], "Injure" [00023], "Die" [00024], "Escape" [00026]
+[00018] "truck", qnode [wd:Q43193], qlabel: [truck], qdescription: [commercial or utilitarian large motor vehicle]
+	extracted in "Load" [00037], "Transport" [00018]
+[00038] "Bronx", qnode [wd:Q18426], qlabel: [The Bronx], qdescription: [borough of New York City, United States]
+	extracted in "Make" [00007], "Acquire" [00008], "Steal" [00012], "Mix" [00014], "Put" [00016], "Load" [00037], "Transport" [00018]
+	predicted in "Find" [00011], "Rent" [00013], "Assemble" [00015]
+[00039] "smokeless powder", qnode [wd:Q901722], qlabel: [smokeless powder], qdescription: [propellant used in firearms and artillery]
+	extracted in "Acquire" [00008], "Buy" [00010]
+	predicted in "Assemble" [00015]
+[00040] "Brooklyn Ammoworks", qnode [wd:Q57334497], qlabel: [retail outlet], qdescription: [individual store which sells goods to consumers]
+	extracted in "Buy" [00010]
+[00051] "plane", qnode [wd:Q197], qlabel: [airplane], qdescription: [powered fixed-wing aircraft]
+	predicted in "Travel" [00005]
+
+Top-level relations:
+[00001] "attacker is friends with co-conspirators" (from schema)
+	"Tom" [friendship] [wd:Q491] "Dick", instantiated with confidence 0.8
+[00002] "attacker is friends with co-conspirators" (from schema)
+	"Tom" [friendship] [wd:Q491] "Harry", instantiated with confidence 0.8
+[00003] "Attacker resides in the foreign location." (from schema)
+	"attacker" [residence] [wdt:P551] "foreign location", with modality [hedged]
+[00004] "attacker is often the same as the purchaser" (from schema)
+	"Tom" [approximately equal to] [wd:Q26161438] "purchaser", instantiated with confidence 0.8
+[00005] "attacker is often the same as the renter" (from schema)
+	"attacker" [approximately equal to] [wd:Q26161438] "renter"
+[00006] "attacker is often be the same as the finder" (from schema)
+	"attacker" [approximately equal to] [wd:Q26161438] "finder"
+[00007] "attacker is often the same as the mixer" (from schema)
+	"Dick" [approximately equal to] [wd:Q26161438] "mixer", instantiated with confidence 0.9
+[00008] "Tom resides in the Bronx." (from docs)
+	"Tom" [residence] [wdt:P551] "Bronx", instantiated with confidence 1.0
+[00009] "Dick resides in the Bronx." (from docs)
+	"Dick" [residence] [wdt:P551] "Bronx", instantiated with confidence 0.9

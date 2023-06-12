@@ -1,0 +1,2 @@
+This file is here temporarily so that git can tract the src/main/swagger/templates folder.
+Once we start adding templates this file can be deleted.

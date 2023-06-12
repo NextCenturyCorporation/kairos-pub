@@ -1,0 +1,334 @@
+SDF Event Viewer (verbose output)
+https://caci.com/kairos/ta1/Submissions/TA1/12345
+
+Event hierarchy (order does not consider outlinks):
+Pathogen progression [00001]
+	AND
+	Come into being [00002], importance 0.3, optional
+	Replicate [00003]
+	Spread [00004]
+		AND
+		Escape body [00005], optional
+		Infect [00006]
+		Live in body [00007]
+		Continue [00008]
+			XOR
+			Spread [00004]
+			Decrease in society [00009]
+Patient progression [00010]
+	AND
+	Travel [00011], importance 0.3, optional
+	Contract disease [00012], importance 0.5, optional
+	Get sick [00013]
+	Diagnosis [00014]
+	Treatment [00015]
+	Compliance [00016], importance 0.1, optional
+	Get medication [00017]
+	Continue [00018]
+		XOR
+		Improvement [00020]
+		Death [00019]
+Epidemiologist response [00021]
+	AND
+	Learn [00022], importance 0.3, optional
+	Investigate [00023], importance 0.3, optional, repeatable
+	Announce [00024]
+	Research [00025], importance 0.5, optional
+	Research [00026], importance 0.4
+	Educate [00027], importance 0.7, optional
+		AND
+		Educate [00028], importance 0.8
+		Educate [00029], importance 0.4, optional
+		Educate [00030], importance 0.8
+Health worker response [00031]
+Authority response [00032]
+
+Event List:
+[00001] "Pathogen progression"
+	Qnodes: [None]
+	Children (AND): "Come into being" [00002], "Replicate" [00003], "Spread" [00004]
+	Roles:
+		A0-Agent (Pathogen [00001])
+		A1-Patient (Patient [00003])
+		A2-Environment (Society [00002])
+	Relations:
+		"Patient" [position held] [wdt:P39] "Society"
+		"Come into being" [before] [wd:Q79030196] "Replicate"
+		"Replicate" [before] [wd:Q79030196] "Spread"
+[00002] "Come into being"
+	Qnodes: [wd:Q468777], Qlabels: [existence], Qdescriptions: [ability of an entity to interact with physical or mental reality]
+	Parents: "Pathogen progression" [00001]
+	TA1 explanation: Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.
+	Roles:
+		A0-Agent (Pathogen [00001])
+[00003] "Replicate"
+	Qnodes: [wd:Q23013246], Qlabels: [copy], Qdescriptions: [duplicate of information or an artifact based on an instance of that information or artifact]
+	Parents: "Pathogen progression" [00001]
+	TA1 explanation: Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.
+	Roles:
+		A0-Agent (Pathogen [00001])
+[00004] "Spread"
+	Qnodes: [None]
+	Parents: "Pathogen progression" [00001], "Continue" [00008]
+	Children (AND): "Escape body" [00005], "Infect" [00006], "Live in body" [00007], "Continue" [00008]
+	Roles:
+		A0-Agent (Pathogen [00001])
+		A1-Patient (Patient [00003])
+	Relations:
+		"Escape body" [before] [wd:Q79030196] "Infect"
+		"Infect" [before] [wd:Q79030196] "Live in body"
+		"Live in body" [before] [wd:Q79030196] "Continue"
+[00005] "Escape body"
+	Qnodes: [wd:Q19279529, wd:Q1430466], Qlabels: [go, escape], Qdescriptions: [to move from a place to another, response to distress]
+	Parents: "Spread" [00004]
+	TA1 explanation: Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.
+	Roles:
+		A0-Agent (Pathogen [00001])
+		A1-Patient (Patient [00003])
+[00006] "Infect"
+	Qnodes: [wd:Q166231], Qlabels: [infection], Qdescriptions: [invasion of and multiplication in a host by disease-causing pathogens or organisms, and the reaction of host tissues]
+	Parents: "Spread" [00004]
+	TA1 explanation: Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.
+	Roles:
+		A1-gol_thing_becoming_infected (Patient [00003])
+		A2-ppt_infectant (Pathogen [00001])
+[00007] "Live in body"
+	Qnodes: [wd:Q3], Qlabels: [life], Qdescriptions: [matter capable of extracting energy from the environment for replication]
+	Parents: "Spread" [00004]
+	TA1 explanation: Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.
+	Roles:
+		A0-Agent (Pathogen [00001])
+		A1-Patient (Patient [00003])
+[00008] "Continue"
+	Qnodes: [None]
+	Parents: "Spread" [00004]
+	Children (XOR): "Spread" [00004], "Decrease in society" [00009]
+	Roles:
+		A0-Agent (Pathogen [00001])
+		X1-Location (Society [00002])
+[00009] "Decrease in society"
+	Qnodes: [wd:Q47496130], Qlabels: [reduction], Qdescriptions: [decrease in a quantity]
+	Parents: "Continue" [00008]
+	TA1 explanation: Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.
+	Roles:
+		A0-Agent (Pathogen [00001])
+		X1-Location (Society [00002])
+[00010] "Patient progression"
+	Qnodes: [None]
+	Children (AND): "Travel" [00011], "Contract disease" [00012], "Get sick" [00013], "Diagnosis" [00014], "Treatment" [00015], "Compliance" [00016], "Get medication" [00017], "Continue" [00018]
+	Roles:
+		A0-Agent (Patient [00004])
+	Relations:
+		"Travel" [before] [wd:Q79030196] "Contract disease"
+		"Contract disease" [before] [wd:Q79030196] "Get sick"
+		"Get sick" [before] [wd:Q79030196] "Diagnosis"
+		"Diagnosis" [before] [wd:Q79030196] "Treatment"
+		"Treatment" [before] [wd:Q79030196] "Compliance"
+		"Compliance" [before] [wd:Q79030196] "Get medication"
+		"Get medication" [before] [wd:Q79030196] "Continue"
+[00011] "Travel"
+	Qnodes: [wd:Q61509], Qlabels: [travel], Qdescriptions: [movement of people between geographical locations]
+	Parents: "Patient progression" [00010]
+	TA1 explanation: Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.
+	Roles:
+		A0-pag_agent_mover (Patient [00004])
+		A2-GOL_X_destination (Contaminant Location [00018])
+[00012] "Contract disease"
+	Qnodes: [wd:Q166231], Qlabels: [infection], Qdescriptions: [invasion of and multiplication in a host by disease-causing pathogens or organisms, and the reaction of host tissues]
+	Parents: "Patient progression" [00010]
+	TA1 explanation: Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.
+	Roles:
+		A1-gol_thing_becoming_infected (Patient [00004])
+		A2-ppt_infectant (Pathogen [00006])
+[00013] "Get sick"
+	Qnodes: [wd:Q12136], Qlabels: [disease], Qdescriptions: [abnormal condition negatively affecting organisms]
+	Parents: "Patient progression" [00010]
+	TA1 explanation: Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.
+	Roles:
+		A1-ppt_X_sick/ill_one (Patient [00004])
+[00014] "Diagnosis"
+	Qnodes: [wd:Q177719], Qlabels: [medical diagnosis], Qdescriptions: [process to determine or identify a disease or disorder, which would account for a person's symptoms and signs]
+	Parents: "Patient progression" [00010]
+	TA1 explanation: Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.
+	Roles:
+		A0-pag_agent_doctor (Medical Professional [00005])
+		A1-ppt_theme_patient (Patient [00004])
+[00015] "Treatment"
+	Qnodes: [wd:Q179661], Qlabels: [treatment], Qdescriptions: [attempted medical remediation of a health problem, usually following a diagnosis]
+	Parents: "Patient progression" [00010]
+	TA1 explanation: Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.
+	Roles:
+		A0-pag_X_doctor (Medical Professional [00005])
+		A1-ppt_X_patient (Patient [00004])
+[00016] "Compliance"
+	Qnodes: [wd:Q1399332, wd:Q67004728], Qlabels: [compliance, treatment adherence and compliance], Qdescriptions: [submission to a request, extent to which the patient follows prescribed treatment responsibly, in the broader sense including both medication and appointments]
+	Parents: "Patient progression" [00010]
+	TA1 explanation: Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.
+	Roles:
+		A0-pag_X_complier (Patient [00004])
+[00017] "Get medication"
+	Qnodes: [wd:Q192995], Qlabels: [vaccination], Qdescriptions: [administration of a vaccine to protect against disease]
+	Parents: "Patient progression" [00010]
+	TA1 explanation: Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.
+	Roles:
+		A0-pag_X_inoculator (Medical Professional [00005])
+		A1-ppt_X_patient_inoculated (Patient [00004])
+		A2-ppt_X_inoculated_against (Pathogen [00006])
+[00018] "Continue"
+	Qnodes: [None]
+	Parents: "Patient progression" [00010]
+	Children (XOR): "Improvement" [00020], "Death" [00019]
+	Roles:
+		A1-Patient (Patient [00004])
+[00019] "Death"
+	Qnodes: [wd:Q4], Qlabels: [death], Qdescriptions: [permanent cessation of vital functions]
+	Parents: "Continue" [00018]
+	TA1 explanation: Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.
+	Roles:
+		A1-ppt_the deceased (Patient [00004])
+[00020] "Improvement"
+	Qnodes: [wd:Q1595418], Qlabels: [remedy], Qdescriptions: [substance or procedure that ends a medical condition]
+	Parents: "Continue" [00018]
+	TA1 explanation: Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.
+	Roles:
+		A1-dir_Source_patient (Patient [00004])
+[00021] "Epidemiologist response"
+	Qnodes: [None]
+	Children (AND): "Learn" [00022], "Investigate" [00023], "Announce" [00024], "Research" [00025], "Research" [00026], "Educate" [00027]
+	Roles:
+		A0-Agent (Epidemiologist [00008])
+		A1-Disease (Disease [00009])
+	Relations:
+		"Learn" [before] [wd:Q79030196] "Investigate"
+		"Investigate" [before] [wd:Q79030196] "Announce"
+		"Announce" [before] [wd:Q79030196] "Research"
+		"Research" [before] [wd:Q79030196] "Research"
+		"Research" [before] [wd:Q79030196] "Educate"
+[00022] "Learn"
+	Qnodes: [wd:Q12772819], Qlabels: [discovery], Qdescriptions: [act of detecting something new]
+	Parents: "Epidemiologist response" [00021]
+	TA1 explanation: Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.
+	Roles:
+		A0-Agent (Epidemiologist [00008])
+		A1-Disease (Disease [00009])
+[00023] "Investigate"
+	Qnodes: [wd:Q1298668], Qlabels: [research project], Qdescriptions: [project of one or more scientists or an institute or a scientific society]
+	Parents: "Epidemiologist response" [00021]
+	TA1 explanation: Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.
+	Roles:
+		A0-Agent (Epidemiologist [00008])
+		A1-Cluster (Cluster [00010])
+[00024] "Announce"
+	Qnodes: [wd:Q52947181], Qlabels: [public statement], Qdescriptions: [statement made for a public audience]
+	Parents: "Epidemiologist response" [00021]
+	TA1 explanation: Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.
+	Roles:
+		A0-pag_agent_announcer (Epidemiologist [00008])
+		A2-gol_recipient_hearer (Public [00012])
+[00025] "Research"
+	Qnodes: [wd:Q2752427], Qlabels: [medical research], Qdescriptions: [research involving fundamental scientific principles that may apply to a preclinical understanding – to clinical research, which involves studies of people who may be subjects in clinical trials]
+	Parents: "Epidemiologist response" [00021]
+	TA1 explanation: Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.
+	Roles:
+		A0-Agent (Epidemiologist [00008])
+		A1-Disease (Pathogen [00011])
+[00026] "Research"
+	Qnodes: [wd:Q2752427], Qlabels: [medical research], Qdescriptions: [research involving fundamental scientific principles that may apply to a preclinical understanding – to clinical research, which involves studies of people who may be subjects in clinical trials]
+	Parents: "Epidemiologist response" [00021]
+	TA1 explanation: Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.
+	Roles:
+		A0-Agent (Epidemiologist [00008])
+		A0-Antidote (Antidote [00013])
+[00027] "Educate"
+	Qnodes: [wd:Q8434], Qlabels: [education], Qdescriptions: [transmission of knowledge and skills]
+	Parents: "Epidemiologist response" [00021]
+	Children (AND): "Educate" [00028], "Educate" [00029], "Educate" [00030]
+	Roles:
+		A0-pag_agent_teacher (Epidemiologist [00008])
+		A1-PPT_topic_subject (Disease [00009])
+		A2-gol_recipient_student (Healthcare Sector [00014])
+		A2-gol_recipient_student (Pharmaceutical Manufacturers [00015])
+		A2-gol_recipient_student (Government Authority [00016])
+[00028] "Educate"
+	Qnodes: [wd:Q8434], Qlabels: [education], Qdescriptions: [transmission of knowledge and skills]
+	Parents: "Educate" [00027]
+	TA1 explanation: Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.
+	Roles:
+		A0-pag_agent_teacher (Epidemiologist [00008])
+		A1-PPT_topic_subject (Disease [00009])
+		A2-gol_recipient_student (Healthcare Sector [00014])
+[00029] "Educate"
+	Qnodes: [wd:Q8434], Qlabels: [education], Qdescriptions: [transmission of knowledge and skills]
+	Parents: "Educate" [00027]
+	TA1 explanation: Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.
+	Roles:
+		A0-pag_agent_teacher (Epidemiologist [00008])
+		A1-PPT_topic_subject (Disease [00009])
+		A2-gol_recipient_student (Pharmaceutical Manufacturers [00015])
+[00030] "Educate"
+	Qnodes: [wd:Q8434], Qlabels: [education], Qdescriptions: [transmission of knowledge and skills]
+	Parents: "Educate" [00027]
+	TA1 explanation: Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.
+	Roles:
+		A0-pag_agent_teacher (Epidemiologist [00008])
+		A1-PPT_topic_subject (Disease [00009])
+		A2-gol_recipient_student (Government Authority [00016])
+[00031] "Health worker response"
+	Qnodes: [wd:foobar], Qlabels: [foobar], Qdescriptions: [foobar]
+	TA1 explanation: Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.
+	Roles:
+		A0-pag_agent_doctor (Medical Professional [00005])
+[00032] "Authority response"
+	Qnodes: [wd:foobar], Qlabels: [foobar], Qdescriptions: [foobar]
+	TA1 explanation: Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.
+	Roles:
+		A0-Agent (Government Authority [00016])
+
+TA1 Entities (variables):
+[00001] "Pathogen", qnode [wd:Q170065], qlabel: [pathogen], qdescription: [biological entity that causes disease in its host, which is typically an infectious microorganism or agent, such as a virus, bacterium, protozoan, prion, viroid, or fungus]
+	referred to by "Pathogen progression" [00001], "Come into being" [00002], "Replicate" [00003], "Spread" [00004], "Escape body" [00005], "Infect" [00006], "Live in body" [00007], "Continue" [00008], "Decrease in society" [00009]
+[00002] "Society", qnode [wd:Q8425], qlabel: [society], qdescription: [group of people related to each other through persistent relations]
+	referred to by "Pathogen progression" [00001], "Continue" [00008], "Decrease in society" [00009]
+[00003] "Patient", qnode [wd:Q181600], qlabel: [patient], qdescription: [person who takes a medical treatment or is subject of a case study]
+	referred to by "Pathogen progression" [00001], "Spread" [00004], "Escape body" [00005], "Infect" [00006], "Live in body" [00007]
+[00004] "Patient", qnode [wd:Q181600], qlabel: [patient], qdescription: [person who takes a medical treatment or is subject of a case study]
+	referred to by "Patient progression" [00010], "Travel" [00011], "Contract disease" [00012], "Get sick" [00013], "Diagnosis" [00014], "Treatment" [00015], "Compliance" [00016], "Get medication" [00017], "Continue" [00018], "Death" [00019], "Improvement" [00020]
+[00005] "Medical Professional", qnode [wd:Q11974939], qlabel: [health professional], qdescription: [individual who provides medical treatments and health advice]
+	referred to by "Diagnosis" [00014], "Treatment" [00015], "Get medication" [00017], "Health worker response" [00031]
+[00006] "Pathogen", qnode [wd:Q170065], qlabel: [pathogen], qdescription: [biological entity that causes disease in its host, which is typically an infectious microorganism or agent, such as a virus, bacterium, protozoan, prion, viroid, or fungus]
+	referred to by "Contract disease" [00012], "Get medication" [00017]
+[00007] "Medication", qnode [wd:Q12140], qlabel: [medication], qdescription: [substance used to diagnose, cure, treat, or prevent disease]
+[00008] "Epidemiologist", qnode [wd:Q13416803], qlabel: [epidemiologist], qdescription: [researcher on how diseases are spread]
+	referred to by "Epidemiologist response" [00021], "Learn" [00022], "Investigate" [00023], "Announce" [00024], "Research" [00025], "Research" [00026], "Educate" [00027], "Educate" [00028], "Educate" [00029], "Educate" [00030]
+[00009] "Disease", qnode [wd:Q12136], qlabel: [disease], qdescription: [abnormal condition negatively affecting organisms]
+	referred to by "Epidemiologist response" [00021], "Learn" [00022], "Educate" [00027], "Educate" [00028], "Educate" [00029], "Educate" [00030]
+[00010] "Cluster", qnode [wd:Q21157127], qlabel: [cluster], qdescription: [collection of entities that are physically or conceptually close to each other]
+	referred to by "Investigate" [00023]
+[00011] "Pathogen", qnode [wd:Q170065], qlabel: [pathogen], qdescription: [biological entity that causes disease in its host, which is typically an infectious microorganism or agent, such as a virus, bacterium, protozoan, prion, viroid, or fungus]
+	referred to by "Research" [00025]
+[00012] "Public", qnode [wd:Q2388316], qlabel: [public], qdescription: [grouping of individual people]
+	referred to by "Announce" [00024]
+[00013] "Antidote", qnode [wd:Q194168], qlabel: [antidote], qdescription: [substance that can counteract a form of poisoning]
+	referred to by "Research" [00026]
+[00014] "Healthcare Sector", qnode [wd:Q31207], qlabel: [health care], qdescription: [prevention of disease and promotion of wellbeing]
+	referred to by "Educate" [00027], "Educate" [00028]
+[00015] "Pharmaceutical Manufacturers", qnode [wd:Q507443], qlabel: [pharmaceutical industry], qdescription: [develops, produces, and markets drugs or pharmaceuticals licensed for use as medications]
+	referred to by "Educate" [00027], "Educate" [00029]
+[00016] "Government Authority", qnode [wd:Q2659904], qlabel: [government organization], qdescription: [organization administrated by a government authority or agency]
+	referred to by "Educate" [00027], "Educate" [00030], "Authority response" [00032]
+[00018] "Contaminant Location", qnode [wd:Q2221906], qlabel: [geographic location], qdescription: [point or an area on something's surface or elsewhere]
+	referred to by "Travel" [00011]
+
+Top-level relations:
+[00019] "pathogen from pathogen-progression schema has an equivalence relation to the pathogen in the patient-progression schema"
+	"Pathogen" [approximately equal to] [wd:Q26161438] "Pathogen"
+[00020] "pathogen from pathogen-progression schema has an equivalence relation to the pathogen in the epidemiologist response schema"
+	"Pathogen" [approximately equal to] [wd:Q26161438] "Pathogen"
+[00021] "patient from pathogen-progression schema has an equivalence relation to the patient in the patient-progression schema"
+	"Patient" [approximately equal to] [wd:Q26161438] "Patient"
+[00022] "<Unnamed>"
+	"Infect" [approximately equal to] [wd:Q26161438] "Contract disease"
+[00023] "The pathogen progression schema overlaps the other schemas."
+	"Pathogen progression" [partial coincidence] [wd:Q65560376] "Patient progression"
+[00024] "'Live in body' event from the pathogen-progression schema has an equivalence relation to the 'Patient gets sick' event from the patient-progression schema"
+	"Live in body" [approximately equal to] [wd:Q26161438] "Get sick"

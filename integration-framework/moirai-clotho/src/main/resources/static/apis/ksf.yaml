@@ -1,0 +1,101 @@
+openapi: 3.0.0
+info:
+  title: Moirai Clotho API
+  description: This is the API for validating and converting SDF JSON-LD data.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: "2.3"
+tags:
+  - name: SDF
+    description: SDF
+paths:
+  /json-ld/ksf/validate:
+    post:
+      tags:
+        - SDF
+      summary: evaluate SDF (JSON-LD) requests for any syntactic errors and warnings
+      description: evaluate SDF (JSON-LD) requests for any syntactic errors and warnings
+      operationId: validateKsfRequest
+      parameters:
+        - name: failOnUnknown
+          in: query
+          description: Fail on unknown keywords/properties, or known properties in unexpected places
+          required: false
+          schema:
+            type: boolean
+        - name: warnOnProvenanceMismatch
+          in: query
+          description: Warn if childID is not from the current corpus, or if mediaType doesn't match childID
+          required: false
+          schema:
+            type: boolean
+      requestBody:
+        description: SDF submission to validate
+        required: true
+        content:
+          application/ld+json:
+            schema:
+              $ref: './openapi.yaml#/components/schemas/jsonLdMap'
+      responses:
+        '200':
+          description: The input was successfully validated.  Note that there may be validation errors/warnings.
+          content:
+            application/json:
+              schema:
+                $ref: './openapi.yaml#/components/schemas/errorLog'
+        '400':
+          description: The input could not be validated due to invalid JSON-LD, unsupported context version, unknown keywords/properties, or other problems with the input.
+          content:
+            application/json:
+              schema:
+                $ref: './openapi.yaml#/components/schemas/errorLog'
+        '500':
+          description: an exception occurred on the server
+          content:
+            application/json:
+              schema:
+                $ref: './openapi.yaml#/components/schemas/errorLog'
+  /json-ld/ksf/sdf-viewer:
+    post:
+      tags:
+        - SDF
+      summary: generate a textual view of valid SDF output
+      operationId: generateSDFView
+      parameters:
+        - name: verbose
+          in: query
+          description: Show full output, including un-instantiated events/relations, TA2 temporal relations, hierarchical node details, and unused entities
+          required: false
+          schema:
+            type: boolean
+      requestBody:
+        description: SDF submission
+        required: true
+        content:
+          application/ld+json:
+            schema:
+              $ref: './openapi.yaml#/components/schemas/jsonLdMap'
+      responses:
+        200:
+          description: SDF view was successfully generated for the input.
+          content:
+            text/plain:
+              schema:
+                type: string
+        400:
+          description: SDF view could not be generated, likely because the input was invalid.
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  type: string
+        500:
+          description: an error occurred
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  type: string

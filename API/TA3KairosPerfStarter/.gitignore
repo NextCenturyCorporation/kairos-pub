@@ -1,0 +1,8 @@
+
+.classpath
+.project
+.settings/
+/bin/
+### Gradle template
+.gradle
+/build/

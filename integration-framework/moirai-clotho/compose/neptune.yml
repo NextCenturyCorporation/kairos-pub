@@ -1,0 +1,19 @@
+version: '3'
+services:
+  clotho:
+    image: openjdk:11
+    volumes:
+      - ../build/libs:/jars
+      - ../build/resources/main:/resources
+    ports:
+      - "8008:8008"
+      - "8182:8182"
+    environment:
+      DB_TYPE: "Neptune"
+      DB_URI:  ${NEPTUNE_DB_URI}
+      DB_PORT: "8182"
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      SERVICE_REGION: us-east-1
+    working_dir: "/jars/"
+    command: "/bin/bash -c 'java -jar $$(ls moirai-clotho*.jar)'"

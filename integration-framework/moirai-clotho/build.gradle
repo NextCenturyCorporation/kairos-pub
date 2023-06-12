@@ -1,0 +1,235 @@
+plugins {
+    id 'org.springframework.boot' version '2.7.11'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+    id 'org.hidetake.swagger.generator' version '2.18.2'
+    id "org.sonarqube" version "3.0"
+}
+
+apply from: 'common.gradle' //Common tasks and function shared between the projects
+
+defaultTasks 'clean', 'swaggerClean', 'generateSwaggerCodeMoiraiClotho', 'generateSwaggerCodeMoiraiClothoKSF', 'setJarVersion', 'build'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'checkstyle'
+apply plugin: 'jacoco'
+apply plugin: 'org.sonarqube'
+
+repositories {
+    mavenCentral()
+    //maven { url 'https://repo.spring.io/release' }
+}
+
+sourceCompatibility = "$sourceCompatibility"
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java',
+                       'src/generated/java']
+        }
+        resources {
+            srcDirs = ['src/main/resources',
+                       'src/generated/resources']
+        }
+    }
+    test {
+        java {
+            srcDirs = ['src/test/java']
+        }
+        resources {
+            srcDirs = ['src/test/resources']
+        }
+    }
+}
+
+sonarqube {
+    properties {
+          property "sonar.projectKey", "$artifactId"
+          property "sonar.projectName", "$artifactId"
+          property "sonar.host.url", "$sonarqubeUrl"
+          property "sonar.login", "191e196b8161b6ad274e4a2d7256e8cd2ae5b22c"
+          property "sonar.java.source", "11"
+          property "sonar.exclusions", "**/generated/**/*,**/resources/**/*"
+          property "sonar.java.binaries", "build/classes"
+          property "sonar.java.checkstyle.reportPaths", "build/reports/checkstyle/main.xml,build/reports/checkstyle/test.xml"
+          property "sonar.java.jacoco.reportPaths", "build/reports/jacoco"
+    }
+}
+
+dependencies {
+    // log4j override
+    implementation('org.apache.logging.log4j:log4j') {
+        version {
+            strictly '2.20.0'
+        }
+    }
+
+    // aws
+    implementation('com.amazonaws:aws-java-sdk-neptune:1.12.121')
+    implementation('com.amazonaws:amazon-neptune-sigv4-signer:2.4.0')
+    implementation('com.amazonaws:amazon-neptune-gremlin-java-sigv4:2.4.0')
+    
+    implementation('org.eclipse.rdf4j:rdf4j-storage:4.2.3') 
+    implementation 'org.eclipse.rdf4j:rdf4j-sparqlbuilder:4.2.3'
+    
+    // spring
+    implementation('org.springframework.boot:spring-boot-starter-data-rest') 
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa') 
+    implementation "javax.validation:validation-api:$javaxValidationVersion"
+
+    // swagger
+    swaggerCodegen 'org.openapitools:openapi-generator-cli:3.3.4'
+    swaggerUI 'org.webjars:swagger-ui:3.25.5'
+    implementation "io.springfox:springfox-swagger2:2.9.2"
+    implementation("com.h2database:h2:2.1.214")
+
+    // Json-LD
+    // JSONLD-JAVA is pulled in by tinkerpop's gremlin dependencies.  This is
+    // suitable for JSON-LD 1.0 activities.
+    // The newer JSON-LD 1.1 library is titanium and is explicitly included below.
+    implementation "com.github.jsonld-java:jsonld-java:0.13.4"
+    implementation "com.apicatalog:titanium-json-ld:1.1.0"
+    implementation "org.glassfish:jakarta.json:2.0.1"
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jakarta-jsonp:2.12.4"
+    constraints {
+        implementation('com.fasterxml.jackson.datatype:jackkson-core:2.12.4') {
+            because 'various neptune and tinkerpop libraries pull in various older versions before jakarta-jsonp support'
+        }
+        implementation('com.fasterxml.jackson.datatype:jackson-databind:2.12.4') {
+            because 'various neptune and tinkerpop libraries pull in various older versions before jakarta-jsonp support'
+        }
+        implementation('com.fasterxml.jackson.datatype:jackson-annotations:2.12.4') {
+            because 'various neptune and tinkerpop libraries pull in various older versions before jakarta-jsonp support'
+        }
+    }
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.12.4"
+
+    // Tinkerpop
+    implementation "org.apache.tinkerpop:gremlin-core:3.4.10"
+    implementation "org.apache.tinkerpop:gremlin-driver:3.4.10"
+    implementation "org.apache.tinkerpop:sparql-gremlin:3.4.10"
+    implementation "com.steelbridgelabs.oss:neo4j-gremlin-bolt:0.3.1"
+    implementation "com.orientechnologies:orientdb-gremlin:3.1.0-M3"
+    implementation "org.neo4j.driver:neo4j-java-driver:1.7.1"
+    implementation "org.janusgraph:janusgraph-core:0.4.0"
+    implementation "org.janusgraph:janusgraph-cql:0.4.0"
+    implementation "io.dropwizard.metrics:metrics-core:3.2.2"
+
+    // Graph package
+    implementation "org.jgrapht:jgrapht-core:1.5.1"
+
+    // Java
+    implementation "com.google.code.gson:gson:2.8.2"
+
+    // Testing
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    testImplementation('org.mockito:mockito-core:3.7.7')
+    testImplementation('org.mockito:mockito-inline:3.7.7')
+}
+
+jar {
+	enabled = false
+}
+
+configurations.implementation {
+    exclude group: 'log4j', module: 'log4j'
+}
+
+task setGitHooks {
+    doLast {
+        String user = runCommand("whoami")
+        if (!user.equals("gitlab-runner") && !user.equals("ubuntu")) {
+            runCommandIgnoringErrors("git config --unset-all core.hookspath")
+            runCommand("git config --add core.hooksPath config/githooks/")
+        }
+    }
+}
+build.dependsOn(setGitHooks)
+
+task removeGitHooks {
+    doLast {
+        runCommand("git config --unset-all core.hookspath")
+    }
+}
+task swaggerClean(type: Delete) {
+    doFirst {
+        delete 'src/generated'
+    }
+}
+clean.dependsOn(swaggerClean)
+
+swaggerSources {
+    moiraiClotho {
+        inputFile = file('src/main/resources/static/apis/openapi.yaml')
+        code {
+            language = 'spring'
+            components = ['models', 'apis']
+            outputDir = file('src/generated/java')
+            configFile = file('src/main/resources/config.json')
+            templateDir = file('src/main/swagger/templates')
+        }
+    }
+    moiraiClothoKSF {
+        inputFile = file('src/main/resources/static/apis/ksf.yaml')
+        code {
+            language = 'spring'
+            components = ['models', 'apis']
+            outputDir = file('src/generated/java')
+            configFile = file('src/main/resources/config.json')
+            templateDir = file('src/main/swagger/templates')
+            wipeOutputDir = false
+        }
+    }
+    pythonApi {
+        inputFile = file('src/main/resources/static/apis/openapi.yaml')
+        code {
+            language = 'python'
+            outputDir = file('clotho-api/python')
+            templateDir = file('src/main/swagger/templates/python')
+        }
+    }
+    validationApi {
+        inputFile = file('src/main/resources/static/apis/openapi.yaml')
+        code {
+            language = 'python'
+            outputDir = file('validation-api/python')
+            templateDir = file('src/main/swagger/templates/python')
+        }
+    }
+}
+
+checkstyle {
+    configFile = file("${project.projectDir}/config/checkstyle/checkstyle.xml")
+    configProperties = [samedir: "${project.projectDir}/config/checkstyle"]
+    ignoreFailures = true
+    sourceSets = [sourceSets.main, sourceSets.test]
+    toolVersion = 10.3
+}
+
+test {
+    useJUnitPlatform()
+    outputs.upToDateWhen { false }
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    reports {
+        xml.required = true
+        html.required = true
+    }
+}
+
+// Setup explicit dependencies for the compilation, style checker, and generated files.
+// Gradle 7 prefers explicit dependencies.
+compileJava.dependsOn generateSwaggerCodeMoiraiClotho
+checkstyleMain.dependsOn generateSwaggerCodeMoiraiClotho
+jacocoTestReport.dependsOn generateSwaggerCodeMoiraiClotho
+
+compileJava.dependsOn generateSwaggerCodeMoiraiClothoKSF
+checkstyleMain.dependsOn generateSwaggerCodeMoiraiClothoKSF
+jacocoTestReport.dependsOn generateSwaggerCodeMoiraiClothoKSF
+

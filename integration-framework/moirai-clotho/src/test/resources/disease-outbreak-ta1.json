@@ -1,0 +1,1179 @@
+{
+  "@context": [
+    "https://kairos-sdf.s3.amazonaws.com/context/kairos-v2.3.jsonld",
+    {
+      "caci_ta1": "https://caci.com/kairos/ta1/",
+      "my_key": "caci_ta1:my_key",
+      "giant_bitstring": "caci_ta1:giant_bitstring"
+    }
+  ],
+  "@id": "caci_ta1:Submissions/TA1/12345",
+  "sdfVersion": "2.3",
+  "version": "caci-12.01.2022",
+  "ta2": false,
+  "comment": [
+    "Example provides representation of E. Hovy's Event Complex schema layout for a disease outbreak.",
+    "This is the TA1 example."
+  ],
+  "events": [
+    {
+      "@id": "caci_ta1:Events/00001/pathogen-progression",
+      "name": "Pathogen progression",
+      "description": "Schema for the progression of a pathogen",
+      "goal": "Optional freeform string, playground for TA1s",
+      "privateData": {
+        "comment": "Performers can place any keys/values they wish here.  Note that TA2 will need to remove it from their SDF output.",
+        "my_key": "my value",
+        "giant_bitstring": "s3://kairos-sdf.s3.amazonaws.com/privateData/caci/ec-bitstring.gz"
+      },
+      "participants": [
+        {
+          "@id": "caci_ta1:Participants/00001/pathogen-progression",
+          "comment": "Please consult guidance from the KAIROS Ontology Working Group regarding how to form roleNames.",
+          "roleName": "A0-Agent",
+          "entity": "caci_ta1:Entities/00001/pathogen"
+        },
+        {
+          "@id": "caci_ta1:Participants/00002/pathogen-progression",
+          "roleName": "A1-Patient",
+          "entity": "caci_ta1:Entities/00003/patient"
+        },
+        {
+          "@id": "caci_ta1:Participants/00003/pathogen-progression",
+          "roleName": "A2-Environment",
+          "comment": "participants can optionally take a wd_node to clarify the role of the argument in the event.",
+          "wd_node": "wd:Q2249676",
+          "wd_label": "environment",
+          "wd_description": "surrounding of an organism or population",
+          "entity": "caci_ta1:Entities/00002/society"
+        }
+      ],
+      "children_gate": "and",
+      "children": [
+        {
+          "child": "caci_ta1:Events/00002/pathogen-come-into-being",
+          "comment": "Semantics of optional and importance is defined by TA1.",
+          "optional": true,
+          "importance": 0.3
+        },
+        {
+          "child": "caci_ta1:Events/00003/pathogen-replicate"
+        },
+        {
+          "child": "caci_ta1:Events/00004/pathogen-spread"
+        }
+      ],
+      "relations": [
+        {
+          "@id": "caci_ta1:Relations/00001/pathogen-progression",
+          "comment": "Note that relation triples (with wd_nodes taken from Wikidata) can be defined in any event node.  By convention, relations place in an event should only define relations between child event nodes and/or the node where the relation is defined. This is a silly yet illustrative example.",
+          "name": "patient is a member of society",
+          "relationSubject": "caci_ta1:Entities/00003/patient",
+          "wd_node": "wdt:P39",
+          "wd_label": "position held",
+          "wd_description": "subject currently or formerly holds the object position or public office",
+          "relationObject": "caci_ta1:Entities/00002/society"
+        },
+        {
+          "@id": "caci_ta1:Relations/00002/",
+          "name": "Come into being before Replicate",
+          "relationSubject": "caci_ta1:Events/00002/pathogen-come-into-being",
+          "wd_node": "wd:Q79030196",
+          "wd_label": "before",
+          "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
+          "relationObject": "caci_ta1:Events/00003/pathogen-replicate"
+        },
+        {
+          "@id": "caci_ta1:Relations/00003/",
+          "name": "Replicate before Spread",
+          "relationSubject": "caci_ta1:Events/00003/pathogen-replicate",
+          "wd_node": "wd:Q79030196",
+          "wd_label": "before",
+          "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
+          "relationObject": "caci_ta1:Events/00004/pathogen-spread"
+        }
+      ]
+    },
+    {
+      "@id": "caci_ta1:Events/00002/pathogen-come-into-being",
+      "name": "Come into being",
+      "description": "Event type in which a pathogen comes into being",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
+      "wd_node": "wd:Q468777",
+      "wd_label": "existence",
+      "wd_description": "ability of an entity to interact with physical or mental reality",
+      "participants": [
+        {
+          "@id": "caci_ta1:Participants/00004/come-into-being",
+          "roleName": "A0-Agent",
+          "entity": "caci_ta1:Entities/00001/pathogen"
+        }
+      ]
+    },
+    {
+      "@id": "caci_ta1:Events/00003/pathogen-replicate",
+      "name": "Replicate",
+      "description": "Event type in which a pathogen replicates",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
+      "wd_node": "wd:Q23013246",
+      "wd_label": "copy",
+      "wd_description": "duplicate of information or an artifact based on an instance of that information or artifact",
+      "participants": [
+        {
+          "@id": "caci_ta1:Participants/00005/pathogen-replicate",
+          "roleName": "A0-Agent",
+          "entity": "caci_ta1:Entities/00001/pathogen"
+        }
+      ]
+    },
+    {
+      "@id": "caci_ta1:Events/00004/pathogen-spread",
+      "name": "Spread",
+      "description": "Schema in which a pathogen propagates/spreads",
+      "participants": [
+        {
+          "@id": "caci_ta1:Participants/00006/pathogen-spread",
+          "roleName": "A0-Agent",
+          "entity": "caci_ta1:Entities/00001/pathogen"
+        },
+        {
+          "@id": "caci_ta1:Participants/00007/pathogen-spread",
+          "roleName": "A1-Patient",
+          "entity": "caci_ta1:Entities/00003/patient"
+        }
+      ],
+      "children_gate": "and",
+      "children": [
+        {
+          "child": "caci_ta1:Events/00005/pathogen-escape",
+          "optional": true
+        },
+        {
+          "child": "caci_ta1:Events/00006/pathogen-infect-patient"
+        },
+        {
+          "child": "caci_ta1:Events/00007/pathogen-live-in-body"
+        },
+        {
+          "child": "caci_ta1:Events/00008/pathogen-continue"
+        }
+      ],
+      "relations": [
+        {
+          "@id": "caci_ta1:Relations/00004/",
+          "name": "Escape before Infect",
+          "relationSubject": "caci_ta1:Events/00005/pathogen-escape",
+          "wd_node": "wd:Q79030196",
+          "wd_label": "before",
+          "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
+          "relationObject": "caci_ta1:Events/00006/pathogen-infect-patient"
+        },
+        {
+          "@id": "caci_ta1:Relations/00005/",
+          "name": "Infect before Live in Body",
+          "relationSubject": "caci_ta1:Events/00006/pathogen-infect-patient",
+          "wd_node": "wd:Q79030196",
+          "wd_label": "before",
+          "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
+          "relationObject": "caci_ta1:Events/00007/pathogen-live-in-body"
+        },
+        {
+          "@id": "caci_ta1:Relations/00006/",
+          "name": "Live in Body before Continue",
+          "relationSubject": "caci_ta1:Events/00007/pathogen-live-in-body",
+          "wd_node": "wd:Q79030196",
+          "wd_label": "before",
+          "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
+          "relationObject": "caci_ta1:Events/00008/pathogen-continue"
+        }
+      ]
+    },
+    {
+      "@id": "caci_ta1:Events/00005/pathogen-escape",
+      "name": "Escape body",
+      "description": "Event type in which a pathogen escapes from a body or reservoir",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
+      "comment": "Union of escape (response to distress) and go (to move from a place to another that is further away)",
+      "wd_node": [
+        "wd:Q19279529",
+        "wd:Q1430466"
+      ],
+      "wd_label": [
+        "go",
+        "escape"
+      ],
+      "wd_description": [
+        "to move from a place to another",
+        "response to distress"
+      ],
+      "participants": [
+        {
+          "@id": "caci_ta1:Participants/00008/pathogen-escape",
+          "roleName": "A0-Agent",
+          "entity": "caci_ta1:Entities/00001/pathogen"
+        },
+        {
+          "@id": "caci_ta1:Participants/00009/pathogen-escape",
+          "roleName": "A1-Patient",
+          "entity": "caci_ta1:Entities/00003/patient"
+        }
+      ]
+    },
+    {
+      "@id": "caci_ta1:Events/00006/pathogen-infect-patient",
+      "name": "Infect",
+      "description": "Event type in which a pathogen infects a patient",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
+      "wd_node": "wd:Q166231",
+      "wd_label": "infection",
+      "wd_description": "invasion of and multiplication in a host by disease-causing pathogens or organisms, and the reaction of host tissues",
+      "participants": [
+        {
+          "@id": "caci_ta1:Participants/00010/pathogen-infect-patient",
+          "roleName": "A1-gol_thing_becoming_infected",
+          "entity": "caci_ta1:Entities/00003/patient"
+        },
+        {
+          "@id": "caci_ta1:Participants/00011/pathogen-infect-patient",
+          "roleName": "A2-ppt_infectant",
+          "entity": "caci_ta1:Entities/00001/pathogen"
+        }
+      ]
+    },
+    {
+      "@id": "caci_ta1:Events/00007/pathogen-live-in-body",
+      "name": "Live in body",
+      "description": "Event type in which a pathogen lives in the body of a patient",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
+      "wd_node": "wd:Q3",
+      "wd_label": "life",
+      "wd_description": "matter capable of extracting energy from the environment for replication",
+      "goal": "Just a reminder that you can define goals in any event node",
+      "participants": [
+        {
+          "@id": "caci_ta1:Participants/00012/pathogen-live-in-body",
+          "roleName": "A0-Agent",
+          "entity": "caci_ta1:Entities/00001/pathogen"
+        },
+        {
+          "@id": "caci_ta1:Participants/00013/pathogen-live-in-body",
+          "roleName": "A1-Patient",
+          "entity": "caci_ta1:Entities/00003/patient"
+        }
+      ]
+    },
+    {
+      "@id": "caci_ta1:Events/00008/pathogen-continue",
+      "name": "Continue",
+      "description": "Schema in which further spreading or a decrease in the prevalence of a pathogen occurs",
+      "participants": [
+        {
+          "@id": "caci_ta1:Participants/00014/pathogen-continue",
+          "roleName": "A0-Agent",
+          "entity": "caci_ta1:Entities/00001/pathogen"
+        },
+        {
+          "@id": "caci_ta1:Participants/00015/pathogen-continue",
+          "roleName": "X1-Location",
+          "entity": "caci_ta1:Entities/00002/society"
+        }
+      ],
+      "children_gate": "xor",
+      "children": [
+        {
+          "child": "caci_ta1:Events/00004/pathogen-spread"
+        },
+        {
+          "child": "caci_ta1:Events/00009/pathogen-decrease"
+        }
+      ]
+    },
+    {
+      "@id": "caci_ta1:Events/00009/pathogen-decrease",
+      "name": "Decrease in society",
+      "description": "Event type in which a pathogen decreases in society",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
+      "wd_node": "wd:Q47496130",
+      "wd_label": "reduction",
+      "wd_description": "decrease in a quantity",
+      "participants": [
+        {
+          "@id": "caci_ta1:Participants/00016/pathogen-decrease",
+          "roleName": "A0-Agent",
+          "entity": "caci_ta1:Entities/00001/pathogen"
+        },
+        {
+          "@id": "caci_ta1:Participants/00017/pathogen-decrease",
+          "roleName": "X1-Location",
+          "entity": "caci_ta1:Entities/00002/society"
+        }
+      ]
+    },
+    {
+      "@id": "caci_ta1:Events/00010/patient-progression",
+      "name": "Patient progression",
+      "description": "Schema for the progression of a patient",
+      "participants": [
+        {
+          "@id": "caci_ta1:Participants/00018/patient-progression",
+          "roleName": "A0-Agent",
+          "entity": "caci_ta1:Entities/00004/patient-1"
+        }
+      ],
+      "children_gate": "and",
+      "children": [
+        {
+          "child": "caci_ta1:Events/00011/patient-travels-to-contaminant",
+          "optional": true,
+          "importance": 0.3
+        },
+        {
+          "child": "caci_ta1:Events/00012/patient-contract-disease",
+          "optional": true,
+          "importance": 0.5
+        },
+        {
+          "child": "caci_ta1:Events/00013/patient-get-sick"
+        },
+        {
+          "child": "caci_ta1:Events/00014/patient-diagnosed"
+        },
+        {
+          "child": "caci_ta1:Events/00015/patient-be-treated"
+        },
+        {
+          "child": "caci_ta1:Events/00016/patient-change-life-pattern",
+          "optional": true,
+          "importance": 0.1
+        },
+        {
+          "child": "caci_ta1:Events/00017/patient-get-meds"
+        },
+        {
+          "child": "caci_ta1:Events/00018/patient-continue"
+        }
+      ],
+      "relations": [
+        {
+          "@id": "caci_ta1:Relations/00007/",
+          "name": "Travel before Contract disease",
+          "relationSubject": "caci_ta1:Events/00011/patient-travels-to-contaminant",
+          "wd_node": "wd:Q79030196",
+          "wd_label": "before",
+          "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
+          "relationObject": "caci_ta1:Events/00012/patient-contract-disease"
+        },
+        {
+          "@id": "caci_ta1:Relations/00008/",
+          "name": "Contract disease before Get sick",
+          "relationSubject": "caci_ta1:Events/00012/patient-contract-disease",
+          "wd_node": "wd:Q79030196",
+          "wd_label": "before",
+          "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
+          "relationObject": "caci_ta1:Events/00013/patient-get-sick"
+        },
+        {
+          "@id": "caci_ta1:Relations/00009/",
+          "name": "Get sick before Diagnosis",
+          "relationSubject": "caci_ta1:Events/00013/patient-get-sick",
+          "wd_node": "wd:Q79030196",
+          "wd_label": "before",
+          "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
+          "relationObject": "caci_ta1:Events/00014/patient-diagnosed"
+        },
+        {
+          "@id": "caci_ta1:Relations/00010/",
+          "name": "Diagnosis before Treatment",
+          "relationSubject": "caci_ta1:Events/00014/patient-diagnosed",
+          "wd_node": "wd:Q79030196",
+          "wd_label": "before",
+          "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
+          "relationObject": "caci_ta1:Events/00015/patient-be-treated"
+        },
+        {
+          "@id": "caci_ta1:Relations/00011/",
+          "name": "Treatment before Compliance",
+          "relationSubject": "caci_ta1:Events/00015/patient-be-treated",
+          "wd_node": "wd:Q79030196",
+          "wd_label": "before",
+          "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
+          "relationObject": "caci_ta1:Events/00016/patient-change-life-pattern"
+        },
+        {
+          "@id": "caci_ta1:Relations/00012/",
+          "name": "Compliance before Get medication",
+          "relationSubject": "caci_ta1:Events/00016/patient-change-life-pattern",
+          "wd_node": "wd:Q79030196",
+          "wd_label": "before",
+          "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
+          "relationObject": "caci_ta1:Events/00017/patient-get-meds"
+        },
+        {
+          "@id": "caci_ta1:Relations/00013/",
+          "name": "Get medication before Continue",
+          "relationSubject": "caci_ta1:Events/00017/patient-get-meds",
+          "wd_node": "wd:Q79030196",
+          "wd_label": "before",
+          "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
+          "relationObject": "caci_ta1:Events/00018/patient-continue"
+        }
+      ]
+    },
+    {
+      "@id": "caci_ta1:Events/00011/patient-travels-to-contaminant",
+      "name": "Travel",
+      "description": "Event type in which patient(s) travel to contaminated location/facility",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
+      "wd_node": "wd:Q61509",
+      "wd_label": "travel",
+      "wd_description": "movement of people between geographical locations",
+      "participants": [
+        {
+          "@id": "caci_ta1:Participants/00019/patient-travels-to-contaminant",
+          "roleName": "A0-pag_agent_mover",
+          "entity": "caci_ta1:Entities/00004/patient-1"
+        },
+        {
+          "@id": "caci_ta1:Participants/00020/patient-travels-to-contaminant",
+          "roleName": "A2-GOL_X_destination",
+          "entity": "caci_ta1:Entities/00018/location"
+        }
+      ]
+    },
+    {
+      "@id": "caci_ta1:Events/00012/patient-contract-disease",
+      "name": "Contract disease",
+      "description": "Event type in which patient(s) contract(s) disease",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
+      "wd_node": "wd:Q166231",
+      "wd_label": "infection",
+      "wd_description": "invasion of and multiplication in a host by disease-causing pathogens or organisms, and the reaction of host tissues",
+      "participants": [
+        {
+          "@id": "caci_ta1:Participants/00021/patient-contract-disease",
+          "roleName": "A1-gol_thing_becoming_infected",
+          "entity": "caci_ta1:Entities/00004/patient-1"
+        },
+        {
+          "@id": "caci_ta1:Participants/00022/patient-contract-disease",
+          "roleName": "A2-ppt_infectant",
+          "entity": "caci_ta1:Entities/00006/pathogen-1"
+        }
+      ]
+    },
+    {
+      "@id": "caci_ta1:Events/00013/patient-get-sick",
+      "name": "Get sick",
+      "description": "Event type in which patient(s) get(s) sick",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
+      "wd_node": "wd:Q12136",
+      "wd_label": "disease",
+      "wd_description": "abnormal condition negatively affecting organisms",
+      "participants": [
+        {
+          "@id": "caci_ta1:Participants/00023/patient-get-sick",
+          "roleName": "A1-ppt_X_sick/ill_one",
+          "entity": "caci_ta1:Entities/00004/patient-1"
+        }
+      ]
+    },
+    {
+      "@id": "caci_ta1:Events/00014/patient-diagnosed",
+      "name": "Diagnosis",
+      "description": "Event type in which patient(s) get(s) diagnosed",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
+      "wd_node": "wd:Q177719",
+      "wd_label": "medical diagnosis",
+      "wd_description": "process to determine or identify a disease or disorder, which would account for a person's symptoms and signs",
+      "participants": [
+        {
+          "@id": "caci_ta1:Participants/00024/patient-diagnosed",
+          "roleName": "A0-pag_agent_doctor",
+          "entity": "caci_ta1:Entities/00005/medical-professional"
+        },
+        {
+          "@id": "caci_ta1:Participants/00025/patient-diagnosed",
+          "roleName": "A1-ppt_theme_patient",
+          "entity": "caci_ta1:Entities/00004/patient-1"
+        }
+      ]
+    },
+    {
+      "@id": "caci_ta1:Events/00015/patient-be-treated",
+      "name": "Treatment",
+      "description": "Event type in which patient(s) is/are treated",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
+      "wd_node": "wd:Q179661",
+      "wd_label": "treatment",
+      "wd_description": "attempted medical remediation of a health problem, usually following a diagnosis",
+      "participants": [
+        {
+          "@id": "caci_ta1:Participants/00026/patient-be-treated",
+          "roleName": "A0-pag_X_doctor",
+          "entity": "caci_ta1:Entities/00005/medical-professional"
+        },
+        {
+          "@id": "caci_ta1:Participants/00027/patient-be-treated",
+          "roleName": "A1-ppt_X_patient",
+          "entity": "caci_ta1:Entities/00004/patient-1"
+        }
+      ]
+    },
+    {
+      "@id": "caci_ta1:Events/00016/patient-change-life-pattern",
+      "name": "Compliance",
+      "description": "Event type in which life pattern changes",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
+      "comment": "Multiple wd_nodes should be specified as lists, not as \"wd:Q1399332 | wd:Q67004728\"",
+      "wd_node": [
+        "wd:Q1399332",
+        "wd:Q67004728"
+      ],
+      "wd_label": [
+        "compliance",
+        "treatment adherence and compliance"
+      ],
+      "wd_description": [
+        "submission to a request",
+        "extent to which the patient follows prescribed treatment responsibly, in the broader sense including both medication and appointments"
+      ],
+      "participants": [
+        {
+          "@id": "caci_ta1:Participants/00028/patient-change-life-pattern",
+          "roleName": "A0-pag_X_complier",
+          "entity": "caci_ta1:Entities/00004/patient-1"
+        }
+      ]
+    },
+    {
+      "@id": "caci_ta1:Events/00017/patient-get-meds",
+      "name": "Get medication",
+      "description": "Event type in which patient(s) receive(s) vaccine or other medication",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
+      "comment": "vaccination (innoculation) is different from treatment with medications",
+      "wd_node": "wd:Q192995",
+      "wd_label": "vaccination",
+      "wd_description": "administration of a vaccine to protect against disease",
+      "participants": [
+        {
+          "@id": "caci_ta1:Participants/00029/patient-get-meds",
+          "roleName": "A0-pag_X_inoculator",
+          "entity": "caci_ta1:Entities/00005/medical-professional"
+        },
+        {
+          "@id": "caci_ta1:Participants/00030/patient-get-meds",
+          "roleName": "A1-ppt_X_patient_inoculated",
+          "entity": "caci_ta1:Entities/00004/patient-1"
+        },
+        {
+          "@id": "caci_ta1:Participants/00031/patient-get-meds",
+          "roleName": "A2-ppt_X_inoculated_against",
+          "entity": "caci_ta1:Entities/00006/pathogen-1"
+        }
+      ]
+    },
+    {
+      "@id": "caci_ta1:Events/00018/patient-continue",
+      "name": "Continue",
+      "description": "Schema for the continuation of an illness in patient(s), improvement or death",
+      "participants": [
+        {
+          "@id": "caci_ta1:Participants/00032/patient-continue",
+          "roleName": "A1-Patient",
+          "entity": "caci_ta1:Entities/00004/patient-1"
+        }
+      ],
+      "children_gate": "xor",
+      "children": [
+        {
+          "child": "caci_ta1:Events/00020/patient-improve"
+        },
+        {
+          "child": "caci_ta1:Events/00019/patient-die"
+        }
+      ]
+    },
+    {
+      "@id": "caci_ta1:Events/00019/patient-die",
+      "name": "Death",
+      "description": "Event type in which patient(s) die(s)",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
+      "wd_node": "wd:Q4",
+      "wd_label": "death",
+      "wd_description": "permanent cessation of vital functions",
+      "participants": [
+        {
+          "@id": "caci_ta1:Participants/00033/patient-die",
+          "roleName": "A1-ppt_the deceased",
+          "entity": "caci_ta1:Entities/00004/patient-1"
+        }
+      ]
+    },
+    {
+      "@id": "caci_ta1:Events/00020/patient-improve",
+      "name": "Improvement",
+      "description": "Event type in which patient's condition improves",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
+      "wd_node": "wd:Q1595418",
+      "wd_label": "remedy",
+      "wd_description": "substance or procedure that ends a medical condition",
+      "participants": [
+        {
+          "@id": "caci_ta1:Participants/00034/patient-improve",
+          "roleName": "A1-dir_Source_patient",
+          "entity": "caci_ta1:Entities/00004/patient-1"
+        }
+      ]
+    },
+    {
+      "@id": "caci_ta1:Events/00021/epidemiologist-response",
+      "name": "Epidemiologist response",
+      "description": "Schema in which an epidemiologist responds to an outbreak",
+      "participants": [
+        {
+          "@id": "caci_ta1:Participants/00035/epidemiologist-response",
+          "roleName": "A0-Agent",
+          "entity": "caci_ta1:Entities/00008/epidemiologist"
+        },
+        {
+          "@id": "caci_ta1:Participants/00036/epidemiologist-response",
+          "roleName": "A1-Disease",
+          "entity": "caci_ta1:Entities/00009/disease"
+        }
+      ],
+      "children_gate": "and",
+      "children": [
+        {
+          "child": "caci_ta1:Events/00022/learn-about-disease",
+          "optional": true,
+          "importance": 0.3
+        },
+        {
+          "child": "caci_ta1:Events/00023/investigate-cluster",
+          "optional": true,
+          "importance": 0.3,
+          "comment": "Instantiations of repeatable events need to be expanded by TA2 as distinct events at instantiation time.",
+          "repeatable": true
+        },
+        {
+          "child": "caci_ta1:Events/00024/announce-outbreak"
+        },
+        {
+          "child": "caci_ta1:Events/00025/investigate-origin-propagation",
+          "optional": true,
+          "importance": 0.5
+        },
+        {
+          "child": "caci_ta1:Events/00026/research-antidote",
+          "importance": 0.4
+        },
+        {
+          "child": "caci_ta1:Events/00027/epidemiologist-educate",
+          "optional": true,
+          "importance": 0.7
+        }
+      ],
+      "relations": [
+        {
+          "@id": "caci_ta1:Relations/00014/",
+          "name": "Learn before Investigate",
+          "relationSubject": "caci_ta1:Events/00022/learn-about-disease",
+          "wd_node": "wd:Q79030196",
+          "wd_label": "before",
+          "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
+          "relationObject": "caci_ta1:Events/00023/investigate-cluster"
+        },
+        {
+          "@id": "caci_ta1:Relations/00015/",
+          "name": "Investigate before Announce",
+          "relationSubject": "caci_ta1:Events/00023/investigate-cluster",
+          "wd_node": "wd:Q79030196",
+          "wd_label": "before",
+          "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
+          "relationObject": "caci_ta1:Events/00024/announce-outbreak"
+        },
+        {
+          "@id": "caci_ta1:Relations/00016/",
+          "name": "Announce before Research",
+          "relationSubject": "caci_ta1:Events/00024/announce-outbreak",
+          "wd_node": "wd:Q79030196",
+          "wd_label": "before",
+          "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
+          "relationObject": "caci_ta1:Events/00025/investigate-origin-propagation"
+        },
+        {
+          "@id": "caci_ta1:Relations/00017/",
+          "name": "Research before Research",
+          "relationSubject": "caci_ta1:Events/00025/investigate-origin-propagation",
+          "wd_node": "wd:Q79030196",
+          "wd_label": "before",
+          "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
+          "relationObject": "caci_ta1:Events/00026/research-antidote"
+        },
+        {
+          "@id": "caci_ta1:Relations/00018/",
+          "name": "Research before Educate",
+          "relationSubject": "caci_ta1:Events/00026/research-antidote",
+          "wd_node": "wd:Q79030196",
+          "wd_label": "before",
+          "wd_description": "qualifies something (inception or end of a thing, event, or date) as happening previously to another thing",
+          "relationObject": "caci_ta1:Events/00027/epidemiologist-educate"
+        }
+      ]
+    },
+    {
+      "@id": "caci_ta1:Events/00022/learn-about-disease",
+      "name": "Learn",
+      "description": "Event type in which epidemiologists learn about a disease",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
+      "wd_node": "wd:Q12772819",
+      "wd_label": "discovery",
+      "wd_description": "act of detecting something new",
+      "participants": [
+        {
+          "@id": "caci_ta1:Participants/00037/learn-about-disease",
+          "roleName": "A0-Agent",
+          "entity": "caci_ta1:Entities/00008/epidemiologist"
+        },
+        {
+          "@id": "caci_ta1:Participants/00038/learn-about-disease",
+          "roleName": "A1-Disease",
+          "entity": "caci_ta1:Entities/00009/disease"
+        }
+      ]
+    },
+    {
+      "@id": "caci_ta1:Events/00023/investigate-cluster",
+      "name": "Investigate",
+      "description": "Event type in which epidemiologists investigate clusters",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
+      "wd_node": "wd:Q1298668",
+      "wd_label": "research project",
+      "wd_description": "project of one or more scientists or an institute or a scientific society",
+      "participants": [
+        {
+          "@id": "caci_ta1:Participants/00039/investigate-cluster",
+          "roleName": "A0-Agent",
+          "entity": "caci_ta1:Entities/00008/epidemiologist"
+        },
+        {
+          "@id": "caci_ta1:Participants/00040/investigate-cluster",
+          "roleName": "A1-Cluster",
+          "entity": "caci_ta1:Entities/00010/cluster"
+        }
+      ]
+    },
+    {
+      "@id": "caci_ta1:Events/00024/announce-outbreak",
+      "name": "Announce",
+      "description": "Event type in which epidemiologists announce outbreak",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
+      "wd_node": "wd:Q52947181",
+      "wd_label": "public statement",
+      "wd_description": "statement made for a public audience",
+      "participants": [
+        {
+          "@id": "caci_ta1:Participants/00041/announce-outbreak",
+          "roleName": "A0-pag_agent_announcer",
+          "entity": "caci_ta1:Entities/00008/epidemiologist"
+        },
+        {
+          "@id": "caci_ta1:Participants/00042/announce-outbreak",
+          "roleName": "A2-gol_recipient_hearer",
+          "entity": "caci_ta1:Entities/00012/public"
+        }
+      ]
+    },
+    {
+      "@id": "caci_ta1:Events/00025/investigate-origin-propagation",
+      "name": "Research",
+      "description": "Event type in which epidemiologists investigate the origins and propagation of a disease",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
+      "wd_node": "wd:Q2752427",
+      "wd_label": "medical research",
+      "wd_description": "research involving fundamental scientific principles that may apply to a preclinical understanding – to clinical research, which involves studies of people who may be subjects in clinical trials",
+      "participants": [
+        {
+          "@id": "caci_ta1:Participants/00043/investigate-origin-propagation",
+          "roleName": "A0-Agent",
+          "entity": "caci_ta1:Entities/00008/epidemiologist"
+        },
+        {
+          "@id": "caci_ta1:Participants/00044/investigate-origin-propagation",
+          "roleName": "A1-Disease",
+          "entity": "caci_ta1:Entities/00011/pathogen-2"
+        }
+      ]
+    },
+    {
+      "@id": "caci_ta1:Events/00026/research-antidote",
+      "name": "Research",
+      "description": "Event type in which epidemiologists research vaccines and other antidotes for a disease",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
+      "comment": "WD does not distinguish investigation of the origin from vaccine or treatment research",
+      "wd_node": "wd:Q2752427",
+      "wd_label": "medical research",
+      "wd_description": "research involving fundamental scientific principles that may apply to a preclinical understanding – to clinical research, which involves studies of people who may be subjects in clinical trials",
+      "participants": [
+        {
+          "@id": "caci_ta1:Participants/00045/research-antidote",
+          "roleName": "A0-Agent",
+          "entity": "caci_ta1:Entities/00008/epidemiologist"
+        },
+        {
+          "@id": "caci_ta1:Participants/00046/research-antidote",
+          "roleName": "A0-Antidote",
+          "entity": "caci_ta1:Entities/00013/antidote"
+        }
+      ]
+    },
+    {
+      "@id": "caci_ta1:Events/00027/epidemiologist-educate",
+      "name": "Educate",
+      "description": "Schema in which epidemiologists carry out their educational mission",
+      "wd_node": "wd:Q8434",
+      "wd_label": "education",
+      "wd_description": "transmission of knowledge and skills",
+      "participants": [
+        {
+          "@id": "caci_ta1:Participants/00047/epidemiologist-educate",
+          "roleName": "A0-pag_agent_teacher",
+          "entity": "caci_ta1:Entities/00008/epidemiologist"
+        },
+        {
+          "@id": "caci_ta1:Participants/00048/epidemiologist-educate",
+          "roleName": "A1-PPT_topic_subject",
+          "entity": "caci_ta1:Entities/00009/disease"
+        },
+        {
+          "@id": "caci_ta1:Participants/00049/epidemiologist-educate",
+          "comment": "Multiple participants can share the same role, but they must link to different entities.",
+          "roleName": "A2-gol_recipient_student",
+          "entity": "caci_ta1:Entities/00014/healthcare-sector"
+        },
+        {
+          "@id": "caci_ta1:Participants/00050/epidemiologist-educate",
+          "roleName": "A2-gol_recipient_student",
+          "entity": "caci_ta1:Entities/00015/manufacturer"
+        },
+        {
+          "@id": "caci_ta1:Participants/00051/epidemiologist-educate",
+          "roleName": "A2-gol_recipient_student",
+          "entity": "caci_ta1:Entities/00016/authority"
+        }
+      ],
+      "children_gate": "and",
+      "children": [
+        {
+          "child": "caci_ta1:Events/00028/educate-healthcare",
+          "importance": 0.8
+        },
+        {
+          "child": "caci_ta1:Events/00029/educate-manufacturer",
+          "importance": 0.4,
+          "optional": true
+        },
+        {
+          "child": "caci_ta1:Events/00030/educate-authority",
+          "importance": 0.8
+        }
+      ]
+    },
+    {
+      "@id": "caci_ta1:Events/00028/educate-healthcare",
+      "name": "Educate",
+      "description": "Event types in which epidemiologists educate healthcare workers",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
+      "wd_node": "wd:Q8434",
+      "wd_label": "education",
+      "wd_description": "transmission of knowledge and skills",
+      "participants": [
+        {
+          "@id": "caci_ta1:Participants/00052/educate-healthcare",
+          "roleName": "A0-pag_agent_teacher",
+          "entity": "caci_ta1:Entities/00008/epidemiologist"
+        },
+        {
+          "@id": "caci_ta1:Participants/00053/educate-healthcare",
+          "roleName": "A1-PPT_topic_subject",
+          "entity": "caci_ta1:Entities/00009/disease"
+        },
+        {
+          "@id": "caci_ta1:Participants/00054/educate-healthcare",
+          "roleName": "A2-gol_recipient_student",
+          "entity": "caci_ta1:Entities/00014/healthcare-sector"
+        }
+      ]
+    },
+    {
+      "@id": "caci_ta1:Events/00029/educate-manufacturer",
+      "name": "Educate",
+      "description": "Event type in which epidemiologists educate pharmaceutical manufacturers",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
+      "wd_node": "wd:Q8434",
+      "wd_label": "education",
+      "wd_description": "transmission of knowledge and skills",
+      "participants": [
+        {
+          "@id": "caci_ta1:Participants/00055/educate-manufacturer",
+          "roleName": "A0-pag_agent_teacher",
+          "entity": "caci_ta1:Entities/00008/epidemiologist"
+        },
+        {
+          "@id": "caci_ta1:Participants/00056/educate-manufacturer",
+          "roleName": "A1-PPT_topic_subject",
+          "entity": "caci_ta1:Entities/00009/disease"
+        },
+        {
+          "@id": "caci_ta1:Participants/00057/educate-manufacturer",
+          "roleName": "A2-gol_recipient_student",
+          "entity": "caci_ta1:Entities/00015/manufacturer"
+        }
+      ]
+    },
+    {
+      "@id": "caci_ta1:Events/00030/educate-authority",
+      "name": "Educate",
+      "description": "Event type in which epidemiologists educate government authorities",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
+      "wd_node": "wd:Q8434",
+      "wd_label": "education",
+      "wd_description": "transmission of knowledge and skills",
+      "participants": [
+        {
+          "@id": "caci_ta1:Participants/00058/educate-authority",
+          "roleName": "A0-pag_agent_teacher",
+          "entity": "caci_ta1:Entities/00008/epidemiologist"
+        },
+        {
+          "@id": "caci_ta1:Participants/00059/educate-authority",
+          "roleName": "A1-PPT_topic_subject",
+          "entity": "caci_ta1:Entities/00009/disease"
+        },
+        {
+          "@id": "caci_ta1:Participants/00060/educate-authority",
+          "roleName": "A2-gol_recipient_student",
+          "entity": "caci_ta1:Entities/00016/authority"
+        }
+      ]
+    },
+    {
+      "@id": "caci_ta1:Events/00031/healthworker-response",
+      "name": "Health worker response",
+      "description": "Schema for the response of a health worker to a health crisis",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
+      "comment": "Content not filled in",
+      "wd_node": "wd:foobar",
+      "wd_label": "foobar",
+      "wd_description": "foobar",
+      "participants": {
+        "@id": "caci_ta1:Participants/00061/",
+        "roleName": "A0-pag_agent_doctor",
+        "entity": "caci_ta1:Entities/00005/medical-professional"
+      }
+    },
+    {
+      "@id": "caci_ta1:Events/00032/authority-response",
+      "name": "Authority response",
+      "description": "Schema for the response of an authority to a health crisis",
+      "ta1explanation": "Optional justification of the event, preferably grounded in the schema source, to inform TA2 but not propagated in their output.",
+      "comment": "Content not filled in",
+      "wd_node": "wd:foobar",
+      "wd_label": "foobar",
+      "wd_description": "foobar",
+      "participants": {
+        "@id": "caci_ta1:Participants/00062/",
+        "roleName": "A0-Agent",
+        "entity": "caci_ta1:Entities/00016/authority"
+      }
+    }
+  ],
+  "entities": [
+    {
+      "@id": "caci_ta1:Entities/00001/pathogen",
+      "name": "Pathogen",
+      "wd_node": "wd:Q170065",
+      "wd_label": "pathogen",
+      "wd_description": "biological entity that causes disease in its host, which is typically an infectious microorganism or agent, such as a virus, bacterium, protozoan, prion, viroid, or fungus",
+      "centrality": 0.9
+    },
+    {
+      "@id": "caci_ta1:Entities/00002/society",
+      "name": "Society",
+      "wd_node": "wd:Q8425",
+      "wd_label": "society",
+      "wd_description": "group of people related to each other through persistent relations"
+    },
+    {
+      "@id": "caci_ta1:Entities/00003/patient",
+      "name": "Patient",
+      "wd_node": "wd:Q181600",
+      "wd_label": "patient",
+      "wd_description": "person who takes a medical treatment or is subject of a case study",
+      "centrality": 1
+    },
+    {
+      "@id": "caci_ta1:Entities/00004/patient-1",
+      "name": "Patient",
+      "wd_node": "wd:Q181600",
+      "wd_label": "patient",
+      "wd_description": "person who takes a medical treatment or is subject of a case study"
+    },
+    {
+      "@id": "caci_ta1:Entities/00005/medical-professional",
+      "name": "Medical Professional",
+      "wd_node": "wd:Q11974939",
+      "wd_label": "health professional",
+      "wd_description": "individual who provides medical treatments and health advice",
+      "centrality": 0.9
+    },
+    {
+      "@id": "caci_ta1:Entities/00006/pathogen-1",
+      "name": "Pathogen",
+      "wd_node": "wd:Q170065",
+      "wd_label": "pathogen",
+      "wd_description": "biological entity that causes disease in its host, which is typically an infectious microorganism or agent, such as a virus, bacterium, protozoan, prion, viroid, or fungus"
+    },
+    {
+      "@id": "caci_ta1:Entities/00007/medication",
+      "name": "Medication",
+      "wd_node": "wd:Q12140",
+      "wd_label": "medication",
+      "wd_description": "substance used to diagnose, cure, treat, or prevent disease"
+    },
+    {
+      "@id": "caci_ta1:Entities/00008/epidemiologist",
+      "name": "Epidemiologist",
+      "wd_node": "wd:Q13416803",
+      "wd_label": "epidemiologist",
+      "wd_description": "researcher on how diseases are spread",
+      "centrality": 0.8
+    },
+    {
+      "@id": "caci_ta1:Entities/00009/disease",
+      "name": "Disease",
+      "wd_node": "wd:Q12136",
+      "wd_label": "disease",
+      "wd_description": "abnormal condition negatively affecting organisms"
+    },
+    {
+      "@id": "caci_ta1:Entities/00010/cluster",
+      "name": "Cluster",
+      "wd_node": "wd:Q21157127",
+      "wd_label": "cluster",
+      "wd_description": "collection of entities that are physically or conceptually close to each other"
+    },
+    {
+      "@id": "caci_ta1:Entities/00011/pathogen-2",
+      "name": "Pathogen",
+      "wd_node": "wd:Q170065",
+      "wd_label": "pathogen",
+      "wd_description": "biological entity that causes disease in its host, which is typically an infectious microorganism or agent, such as a virus, bacterium, protozoan, prion, viroid, or fungus"
+    },
+    {
+      "@id": "caci_ta1:Entities/00012/public",
+      "name": "Public",
+      "wd_node": "wd:Q2388316",
+      "wd_label": "public",
+      "wd_description": "grouping of individual people"
+    },
+    {
+      "@id": "caci_ta1:Entities/00013/antidote",
+      "name": "Antidote",
+      "wd_node": "wd:Q194168",
+      "wd_label": "antidote",
+      "wd_description": "substance that can counteract a form of poisoning"
+    },
+    {
+      "@id": "caci_ta1:Entities/00014/healthcare-sector",
+      "name": "Healthcare Sector",
+      "wd_node": "wd:Q31207",
+      "wd_label": "health care",
+      "wd_description": "prevention of disease and promotion of wellbeing"
+    },
+    {
+      "@id": "caci_ta1:Entities/00015/manufacturer",
+      "name": "Pharmaceutical Manufacturers",
+      "wd_node": "wd:Q507443",
+      "wd_label": "pharmaceutical industry",
+      "wd_description": "develops, produces, and markets drugs or pharmaceuticals licensed for use as medications"
+    },
+    {
+      "@id": "caci_ta1:Entities/00016/authority",
+      "name": "Government Authority",
+      "wd_node": "wd:Q2659904",
+      "wd_label": "government organization",
+      "wd_description": "organization administrated by a government authority or agency"
+    },
+    {
+      "@id": "caci_ta1:Entities/00018/location",
+      "name": "Contaminant Location",
+      "wd_node": "wd:Q2221906",
+      "wd_label": "geographic location",
+      "wd_description": "point or an area on something's surface or elsewhere"
+    }
+  ],
+  "relations": [
+    {
+      "@id": "caci_ta1:Relations/00019/",
+      "name": "pathogen from pathogen-progression schema has an equivalence relation to the pathogen in the patient-progression schema",
+      "relationSubject": "caci_ta1:Entities/00001/pathogen",
+      "wd_node": "wd:Q26161438",
+      "wd_label": "approximately equal to",
+      "wd_description": "closeness in value, meaning or effect; relation in which difference can be neglected for practical purposes",
+      "relationObject": "caci_ta1:Entities/00006/pathogen-1"
+    },
+    {
+      "@id": "caci_ta1:Relations/00020/",
+      "name": "pathogen from pathogen-progression schema has an equivalence relation to the pathogen in the epidemiologist response schema",
+      "relationSubject": "caci_ta1:Entities/00001/pathogen",
+      "wd_node": "wd:Q26161438",
+      "wd_label": "approximately equal to",
+      "wd_description": "closeness in value, meaning or effect; relation in which difference can be neglected for practical purposes",
+      "relationObject": "caci_ta1:Entities/00011/pathogen-2"
+    },
+    {
+      "@id": "caci_ta1:Relations/00021/",
+      "name": "patient from pathogen-progression schema has an equivalence relation to the patient in the patient-progression schema",
+      "relationSubject": "caci_ta1:Entities/00003/patient",
+      "wd_node": "wd:Q26161438",
+      "wd_label": "approximately equal to",
+      "wd_description": "closeness in value, meaning or effect; relation in which difference can be neglected for practical purposes",
+      "relationObject": "caci_ta1:Entities/00004/patient-1",
+      "centrality": 0.9
+    },
+    {
+      "@id": "caci_ta1:Relations/00022/",
+      "comment": "relation names (labels) are helpful to human assessors, but are not required at this point.",
+      "relationSubject": "caci_ta1:Events/00006/pathogen-infect-patient",
+      "wd_node": "wd:Q26161438",
+      "wd_label": "approximately equal to",
+      "wd_description": "closeness in value, meaning or effect; relation in which difference can be neglected for practical purposes",
+      "relationObject": "caci_ta1:Events/00012/patient-contract-disease"
+    },
+    {
+      "@id": "caci_ta1:Relations/00023/",
+      "name": "The pathogen progression schema overlaps the other schemas.",
+      "comment": "Temporal relations must be taken from a subset of Wikidata temporal relations (see the SDF documentation).",
+      "relationSubject": "caci_ta1:Events/00001/pathogen-progression",
+      "wd_node": "wd:Q65560376",
+      "wd_label": "partial coincidence",
+      "wd_description": "general phenomenon where distinct entities (such as regions of space, events, or sequences) overlap in extent",
+      "relationObject": [
+        "caci_ta1:Events/00010/patient-progression",
+        "caci_ta1:Events/00031/healthworker-response",
+        "caci_ta1:Events/00021/epidemiologist-response",
+        "caci_ta1:Events/00032/authority-response"
+      ]
+    },
+    {
+      "@id": "caci_ta1:Relations/00024/",
+      "name": "'Live in body' event from the pathogen-progression schema has an equivalence relation to the 'Patient gets sick' event from the patient-progression schema",
+      "relationSubject": "caci_ta1:Events/00007/pathogen-live-in-body",
+      "wd_node": "wd:Q26161438",
+      "wd_label": "approximately equal to",
+      "wd_description": "closeness in value, meaning or effect; relation in which difference can be neglected for practical purposes",
+      "relationObject": "caci_ta1:Events/00013/patient-get-sick"
+    }
+  ]
+}

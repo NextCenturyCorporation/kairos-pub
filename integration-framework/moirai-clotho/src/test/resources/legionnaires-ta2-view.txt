@@ -1,0 +1,414 @@
+SDF Event Viewer (verbose output)
+Instance #1: Legionnaire's Disease outbreak
+ceID: ce1002
+Confidence: 0.8
+
+Event hierarchy (order does not consider outlinks):
+AND
+Pathogen progression [00001], instantiated
+	AND
+	Come into being [00002], predicted
+	Replicate [00003], predicted
+	Spread [00004], predicted, repeatable
+		AND
+		Escape [00005], predicted
+		Patient exposed to pathogen [00006], instantiated
+		The pathogen lived in the patient's body [00007], instantiated
+		Continue [00008], predicted
+			XOR
+			Decrease in society [00009], predicted
+Patient progression [00010], instantiated
+	AND
+	The patient traveled to the location of the contaminant [00011], instantiated
+	Contract disease [00012], predicted
+	The patient gets sick [00013], instantiated
+	Diagnosis [00014], predicted
+	Treatment [00015], predicted
+	Compliance [00016], predicted
+	Patients get medication [00017], instantiated
+	Continue [00018], instantiated
+		XOR
+		The patient dies [00019], instantiated
+Epidemiologist response [00021], predicted
+	AND
+	Learn [00022], predicted
+	Investigate [00023], predicted, repeatable
+	Announce [00024], predicted
+	Research [00025], predicted
+	Research [00026], instantiated
+	Educate [00027], predicted
+		AND
+		Educate [00028], predicted
+		Educate [00029], predicted
+		Educate [00030], predicted
+	Publish results [00031], instantiated
+Health worker response [00032], predicted
+
+Event List (topologically sorted):
+1. [00001] "Pathogen progression" (instantiated from schema with confidence 0.9)
+	Qnodes: [None]
+	Parent: "Disease Outbreak" [00000]
+	Children (AND): "Come into being" [00002], "Replicate" [00003], "Spread" [00004]
+	Roles:
+		A0-Agent (Pathogen [00001] instantiated as "Legionella pneumophila" [00002] with confidence 0.7)
+		A1-Patient (Patient [00005] instantiated as "Ray Brennan" [00006] with confidence 0.9)
+		A2-Environment (Society [00003] instantiated as "American society" [00004] with confidence 0.5 and modality [generic])
+	Relations:
+		"Ray Brennan" [position held] [wdt:P39] "American society", instantiated with confidence 1.0
+2. [00002] "Come into being" (predicted from schema with confidence 0.25)
+	Qnodes: [wd:Q468777], Qlabels: [existence], Qdescriptions: [ability of an entity to interact with physical or mental reality]
+	Parent: "Pathogen progression" [00001]
+	Roles:
+		A0-Agent (Pathogen [00001] predicted as "Legionella pneumophila" [00002] with confidence 0.9)
+	Order:
+		Before: 00003
+	Predicted: confidence of 0.25, provenance of "Come into being" [Event 00002], "Legionella pneumophila" [Entity 00002]
+3. [00003] "Replicate" (predicted from schema with confidence 0.25)
+	Qnodes: [wd:Q23013246], Qlabels: [copy], Qdescriptions: [duplicate of information or an artifact based on an instance of that information or artifact]
+	Parent: "Pathogen progression" [00001]
+	Roles:
+		A0-Agent (Pathogen [00001] predicted as "Legionella pneumophila" [00002] with confidence 0.9)
+	Order:
+		Before: 00004
+	Predicted: confidence of 0.25, provenance of "Replicate" [Event 00003], "Legionella pneumophila" [Entity 00002]
+4. [00004] "Spread" (predicted from schema with confidence 0.85)
+	Qnodes: [None]
+	Parent: "Pathogen progression" [00001]
+	Children (AND): "Escape" [00005], "Patient exposed to pathogen" [00006], "The pathogen lived in the patient's body" [00007], "Continue" [00008]
+	Roles:
+		A0-Agent (Pathogen [00001] predicted as "Legionella pneumophila" [00002] with confidence 0.9)
+		A1-Patient (Patient [00005] predicted as "Ray Brennan" [00006] with confidence 0.9)
+	Predicted: confidence of 0.85, provenance of "Patient exposed to pathogen" [Event 00006], "The pathogen lived in the patient's body" [Event 00007]
+5. [00005] "Escape" (predicted from schema with confidence 0.25)
+	Qnodes: [wd:Q19279529, wd:Q1430466], Qlabels: [go, escape], Qdescriptions: [to move from a place to another, response to distress]
+	Parent: "Spread" [00004]
+	Roles:
+		A0-Agent (Pathogen [00001] predicted as "Legionella pneumophila" [00002] with confidence 0.9)
+		A1-Patient (Patient [00005] predicted as "Ray Brennan" [00006] with confidence 0.9)
+	Order:
+		Before: 00006
+	Predicted: confidence of 0.25, provenance of "Escape" [Event 00005], "Legionella pneumophila" [Entity 00002], "Ray Brennan" [Entity 00006]
+6. [00006] "Patient exposed to pathogen" (instantiated from schema with confidence 0.9)
+	Qnodes: [wd:Q166231], Qlabels: [infection], Qdescriptions: [invasion of and multiplication in a host by disease-causing pathogens or organisms, and the reaction of host tissues]
+	Parent: "Spread" [00004]
+	Roles:
+		A1-gol_thing_becoming_infected (Patient [00005] instantiated as "Ray Brennan" [00006] with confidence 0.9)
+		A2-ppt_infectant (Pathogen [00001] instantiated as "Legionella pneumophila" [00002] with confidence 0.9)
+		X1-Place ("Philadelphia, PA" [00024] with confidence 0.9)
+	Temporals:
+		Duration: P4D
+		Earliest start time: 1976-07-21T00:00:00
+		Earliest end time: 1976-07-23T23:59:59
+		Latest start time: 1976-07-23T00:00:00
+		Latest end time: 1976-07-23T23:59:59
+	Order:
+		Before: 00007
+	Modality: [hedged, negated, generic, irrealis]
+7. [00007] "The pathogen lived in the patient's body" (instantiated from schema with confidence 0.8)
+	Qnodes: [wd:Q3], Qlabels: [life], Qdescriptions: [matter capable of extracting energy from the environment for replication]
+	Parent: "Spread" [00004]
+	Roles:
+		A0-Agent (Pathogen [00001] instantiated as "Legionella pneumophila" [00002] with confidence 0.9)
+		A1-Patient (Patient [00005] instantiated as "Ray Brennan" [00006] with confidence 0.9)
+	Order:
+		Before: 00008
+8. [00008] "Continue" (predicted from schema with confidence 1.0)
+	Qnodes: [None]
+	Parent: "Spread" [00004]
+	Children (XOR): "Decrease in society" [00009]
+	Roles:
+		A0-Agent (Pathogen [00001] predicted as "Legionella pneumophila" [00002] with confidence 0.9)
+		A1-Patient (Society [00003] predicted as "American society" [00004] with confidence 0.5 and modality [generic])
+	Predicted: confidence of 1.0, provenance of "Spread" [Event 00004]
+9. [00009] "Decrease in society" (predicted from schema with confidence 0.8)
+	Qnodes: [wd:Q47496130], Qlabels: [reduction], Qdescriptions: [decrease in a quantity]
+	Parent: "Continue" [00008]
+	Roles:
+		A0-Agent (Pathogen [00001] predicted as "Legionella pneumophila" [00002] with confidence 0.9)
+		X1-Location (Society [00003])
+	Predicted: confidence of 0.8, provenance of "The patient dies" [Event 00019], "Legionella pneumophila" [Entity 00002]
+10. [00010] "Patient progression" (instantiated from schema with confidence 1.0)
+	Qnodes: [None]
+	Parent: "Disease Outbreak" [00000]
+	Children (AND): "The patient traveled to the location of the contaminant" [00011], "Contract disease" [00012], "The patient gets sick" [00013], "Diagnosis" [00014], "Treatment" [00015], "Compliance" [00016], "Patients get medication" [00017], "Continue" [00018]
+	Roles:
+		A0-Agent (Patient [00009] instantiated as "Ray Brennan" [00006] with confidence 0.9)
+11. [00011] "The patient traveled to the location of the contaminant" (instantiated from schema with confidence 0.5)
+	Qnodes: [wd:Q61509], Qlabels: [travel], Qdescriptions: [movement of people between geographical locations]
+	Parent: "Patient progression" [00010]
+	Roles:
+		A0-pag_agent_mover (Patient [00009] instantiated as "Ray Brennan" [00006] with confidence 0.9)
+		A2-GOL_X_destination (Contaminant Location [00023] instantiated as "Philadelphia, PA" [00024] with confidence 0.8)
+	Order:
+		Before: 00012
+12. [00012] "Contract disease" (predicted from schema with confidence 0.7)
+	Qnodes: [wd:Q166231], Qlabels: [infection], Qdescriptions: [invasion of and multiplication in a host by disease-causing pathogens or organisms, and the reaction of host tissues]
+	Parent: "Patient progression" [00010]
+	Roles:
+		A1-gol_thing_becoming_infected (Patient [00009] predicted as "Ray Brennan" [00006] with confidence 0.9)
+		A2-ppt_infectant (Pathogen [00011])
+	Order:
+		Before: 00013
+	Predicted: confidence of 0.7, provenance of "The patient gets sick" [Event 00013], Relation [00027], "Ray Brennan" [Entity 00006]
+13. [00013] "The patient gets sick" (instantiated from schema with confidence 0.8)
+	Qnodes: [wd:Q12136], Qlabels: [disease], Qdescriptions: [abnormal condition negatively affecting organisms]
+	Parent: "Patient progression" [00010]
+	Roles:
+		A1-ppt_X_sick/ill_one (Patient [00009] instantiated as "Ray Brennan" [00006] with confidence 0.9)
+	Order:
+		Before: 00014
+14. [00014] "Diagnosis" (predicted from schema with confidence 0.8)
+	Qnodes: [wd:Q177719], Qlabels: [medical diagnosis], Qdescriptions: [process to determine or identify a disease or disorder, which would account for a person's symptoms and signs]
+	Parent: "Patient progression" [00010]
+	Roles:
+		A0-pag_agent_doctor (Medical Professional [00010])
+		A1-ppt_theme_patient (Patient [00009] predicted as "Ray Brennan" [00006] with confidence 0.9, "Joe Smith" [00007] with confidence 0.4)
+	Order:
+		Before: 00015
+	Predicted: confidence of 0.8, provenance of "The patient gets sick" [Event 00013], "Treatment" [Event 00015], "Patients get medication" [Event 00017], Relation [00027], "Ray Brennan" [Entity 00006]
+15. [00015] "Treatment" (predicted from schema with confidence 0.8)
+	Qnodes: [wd:Q179661], Qlabels: [treatment], Qdescriptions: [attempted medical remediation of a health problem, usually following a diagnosis]
+	Parent: "Patient progression" [00010]
+	Roles:
+		A0-pag_X_doctor (Medical Professional [00010])
+		A1-ppt_X_patient (Patient [00009] predicted as "Ray Brennan" [00006] with confidence 0.9)
+	Order:
+		Before: 00016
+	Predicted: confidence of 0.8, provenance of "The patient gets sick" [Event 00013], "Patients get medication" [Event 00017], Relation [00027], "Ray Brennan" [Entity 00006]
+16. [00016] "Compliance" (predicted from schema with confidence 0.25)
+	Qnodes: [wd:Q1399332, wd:Q67004728], Qlabels: [compliance, treatment adherence and compliance], Qdescriptions: [submission to a request, extent to which the patient follows prescribed treatment responsibly, in the broader sense including both medication and appointments]
+	Parent: "Patient progression" [00010]
+	Roles:
+		A0-pag_X_complier (Patient [00009] predicted as "Ray Brennan" [00006] with confidence 0.9)
+	Order:
+		Before: 00017
+	Predicted: confidence of 0.25, provenance of "Compliance" [Event 00016], "Ray Brennan" [Entity 00006]
+17. [00017] "Patients get medication" (instantiated from schema with confidence 0.7)
+	Qnodes: [wd:Q192995], Qlabels: [vaccination], Qdescriptions: [administration of a vaccine to protect against disease]
+	Parent: "Patient progression" [00010]
+	Roles:
+		A0-pag_X_inoculator (Medical Professional [00010])
+		A1-ppt_X_patient_inoculated (Patient [00009] instantiated as "Ray Brennan" [00006] with confidence 0.9)
+		A2-ppt_X_inoculated_against (Pathogen [00011] instantiated as "Legionella pneumophila" [00002] with confidence 0.9)
+	Order:
+		Before: 00018
+18. [00018] "Continue" (instantiated from schema with confidence 1.0)
+	Qnodes: [None]
+	Parent: "Patient progression" [00010]
+	Children (XOR): "The patient dies" [00019]
+	Roles:
+		A1-Patient (Patient [00009] instantiated as "Ray Brennan" [00006] with confidence 0.9)
+19. [00019] "The patient dies" (instantiated from schema with confidence 1.0)
+	Qnodes: [wd:Q4], Qlabels: [death], Qdescriptions: [permanent cessation of vital functions]
+	Parent: "Continue" [00018]
+	Roles:
+		A1-ppt_the_deceased (Patient [00009] instantiated as "Ray Brennan" [00006] with confidence 0.9)
+20. [00021] "Epidemiologist response" (predicted from schema with confidence 1.0)
+	Qnodes: [None]
+	Parent: "Disease Outbreak" [00000]
+	Children (AND): "Learn" [00022], "Investigate" [00023], "Announce" [00024], "Research" [00025], "Research" [00026], "Educate" [00027], "Publish results" [00031]
+	Roles:
+		A0-Agent (Epidemiologist [00013] predicted as "Pennsylvania Department of Health" [00025] with confidence 0.7)
+		A1-Disease (Disease [00014])
+	Predicted: confidence of 1.0, provenance of "Learn" [Event 00022], "Investigate" [Event 00023], "Announce" [Event 00024], "Research" [Event 00025], "Research" [Event 00026], "Educate" [Event 00027], "Publish results" [Event 00031]
+21. [00022] "Learn" (predicted from schema with confidence 0.25)
+	Qnodes: [wd:Q12772819], Qlabels: [discovery], Qdescriptions: [act of detecting something new]
+	Parent: "Epidemiologist response" [00021]
+	Roles:
+		A0-Agent (Epidemiologist [00013] predicted as "Pennsylvania Department of Health" [00025] with confidence 0.7)
+		A1-Disease (Disease [00014])
+	Order:
+		Before: 00023
+	Predicted: confidence of 0.25, provenance of "Learn" [Event 00022], "Pennsylvania Department of Health" [Entity 00025]
+22. [00023] "Investigate" (predicted from schema with confidence 0.25)
+	Qnodes: [wd:Q1298668], Qlabels: [research project], Qdescriptions: [project of one or more scientists or an institute or a scientific society]
+	Parent: "Epidemiologist response" [00021]
+	Roles:
+		A0-Agent (Epidemiologist [00013] predicted as "Pennsylvania Department of Health" [00025] with confidence 0.7)
+		A1-Cluster (Cluster [00015])
+	Order:
+		Before: 00024
+	Predicted: confidence of 0.25, provenance of "Investigate" [Event 00023], "Pennsylvania Department of Health" [Entity 00025]
+23. [00024] "Announce" (predicted from schema with confidence 0.25)
+	Qnodes: [wd:Q52947181], Qlabels: [public statement], Qdescriptions: [statement made for a public audience]
+	Parent: "Epidemiologist response" [00021]
+	Roles:
+		A0-pag_agent_announcer (Epidemiologist [00013] predicted as "Pennsylvania Department of Health" [00025] with confidence 0.7)
+		A2-gol_recipient_hearer (Public [00017])
+	Order:
+		Before: 00025
+	Predicted: confidence of 0.25, provenance of "Announce" [Event 00024], "Pennsylvania Department of Health" [Entity 00025]
+24. [00025] "Research" (predicted from schema with confidence 0.25)
+	Qnodes: [wd:Q2752427], Qlabels: [medical research], Qdescriptions: [research involving fundamental scientific principles that may apply to a preclinical understanding – to clinical research, which involves studies of people who may be subjects in clinical trials]
+	Parent: "Epidemiologist response" [00021]
+	Roles:
+		A0-Agent (Epidemiologist [00013] predicted as "Pennsylvania Department of Health" [00025] with confidence 0.7)
+		A1-Disease (Pathogen [00016])
+	Order:
+		Before: 00026
+	Predicted: confidence of 0.25, provenance of "Research" [Event 00025], "Pennsylvania Department of Health" [Entity 00025]
+25. [00026] "Research" (instantiated from schema with confidence 0.5)
+	Qnodes: [wd:Q2752427], Qlabels: [medical research], Qdescriptions: [research involving fundamental scientific principles that may apply to a preclinical understanding – to clinical research, which involves studies of people who may be subjects in clinical trials]
+	Parent: "Epidemiologist response" [00021]
+	Roles:
+		A0-Agent (Epidemiologist [00013] instantiated as "Pennsylvania Department of Health" [00025] with confidence 0.7)
+		A1-Antidote (Antidote [00018])
+	Order:
+		Before: 00027
+26. [00027] "Educate" (predicted from schema with confidence 1.0)
+	Qnodes: [wd:Q8434], Qlabels: [education], Qdescriptions: [transmission of knowledge and skills]
+	Parent: "Epidemiologist response" [00021]
+	Children (AND): "Educate" [00028], "Educate" [00029], "Educate" [00030]
+	Roles:
+		A0-pag_agent_teacher (Epidemiologist [00013] predicted as "Pennsylvania Department of Health" [00025] with confidence 0.7)
+		A1-PPT_topic_subject (Disease [00014])
+		A2-gol_recipient_student (Healthcare Sector [00019])
+		A2-gol_recipient_student (Pharmaceutical Manufacturers [00020])
+		A2-gol_recipient_student (Government Authority [00021])
+	Order:
+		Before: 00031
+	Predicted: confidence of 1.0, provenance of "Educate" [Event 00028], "Educate" [Event 00029], "Educate" [Event 00030]
+27. [00028] "Educate" (predicted from schema with confidence 0.25)
+	Qnodes: [wd:Q8434], Qlabels: [education], Qdescriptions: [transmission of knowledge and skills]
+	Parent: "Educate" [00027]
+	Roles:
+		A0-pag_agent_teacher (Epidemiologist [00013] predicted as "Pennsylvania Department of Health" [00025] with confidence 0.7)
+		A1-PPT_topic_subject (Disease [00014])
+		A2-gol_recipient_student (Healthcare Sector [00019])
+	Predicted: confidence of 0.25, provenance of "Educate" [Event 00028], "Pennsylvania Department of Health" [Entity 00025]
+28. [00029] "Educate" (predicted from schema with confidence 0.25)
+	Qnodes: [wd:Q8434], Qlabels: [education], Qdescriptions: [transmission of knowledge and skills]
+	Parent: "Educate" [00027]
+	Roles:
+		A0-pag_agent_teacher (Epidemiologist [00013] predicted as "Pennsylvania Department of Health" [00025] with confidence 0.7)
+		A1-PPT_topic_subject (Disease [00014])
+		A2-gol_recipient_student (Pharmaceutical Manufacturers [00020])
+	Predicted: confidence of 0.25, provenance of "Educate" [Event 00029], "Pennsylvania Department of Health" [Entity 00025]
+29. [00030] "Educate" (predicted from schema with confidence 0.25)
+	Qnodes: [wd:Q8434], Qlabels: [education], Qdescriptions: [transmission of knowledge and skills]
+	Parent: "Educate" [00027]
+	Roles:
+		A0-pag_agent_teacher (Epidemiologist [00013] predicted as "Pennsylvania Department of Health" [00025] with confidence 0.7)
+		A1-PPT_topic_subject (Disease [00014])
+		A2-gol_recipient_student (Government Authority [00021])
+	Predicted: confidence of 0.25, provenance of "Educate" [Event 00030], "Pennsylvania Department of Health" [Entity 00025]
+30. [00031] "Publish results" (instantiated from docs with confidence 0.9)
+	Qnodes: [wd:Q52947181], Qlabels: [public statement], Qdescriptions: [statement made for a public audience]
+	Parent: "Epidemiologist response" [00021]
+	Roles:
+		A0-Agent (Epidemiologist [00013] instantiated as "Pennsylvania Department of Health" [00025] with confidence 0.7)
+		A1-Findings ("Research Findings" [00022] with confidence 0.7)
+31. [00032] "Health worker response" (predicted from schema with confidence 0.0)
+	Qnodes: [wd:foobar], Qlabels: [foobar], Qdescriptions: [foobar]
+	Parent: "Disease Outbreak" [00000]
+	Roles:
+		A0-Agent (Medical Professional [00010])
+	Predicted: confidence of 0.0, provenance of "Health worker response" [Event 00032]
+
+TA1 Entities (variables):
+[00001] "Pathogen", qnode [wd:Q170065], qlabel: [pathogen], qdescription: [biological entity that causes disease in its host, which is typically an infectious microorganism or agent, such as a virus, bacterium, protozoan, prion, viroid, or fungus]
+	referred to by "Pathogen progression" [00001], "Come into being" [00002], "Replicate" [00003], "Spread" [00004], "Escape" [00005], "Patient exposed to pathogen" [00006], "The pathogen lived in the patient's body" [00007], "Continue" [00008], "Decrease in society" [00009]
+[00003] "Society", qnode [wd:Q8425], qlabel: [society], qdescription: [group of people related to each other through persistent relations]
+	referred to by "Pathogen progression" [00001], "Continue" [00008], "Decrease in society" [00009]
+[00005] "Patient", qnode [wd:Q181600], qlabel: [patient], qdescription: [person who takes a medical treatment or is subject of a case study]
+	referred to by "Pathogen progression" [00001], "Spread" [00004], "Escape" [00005], "Patient exposed to pathogen" [00006], "The pathogen lived in the patient's body" [00007]
+[00009] "Patient", qnode [wd:Q181600], qlabel: [patient], qdescription: [person who takes a medical treatment or is subject of a case study]
+	referred to by "Patient progression" [00010], "The patient traveled to the location of the contaminant" [00011], "Contract disease" [00012], "The patient gets sick" [00013], "Diagnosis" [00014], "Treatment" [00015], "Compliance" [00016], "Patients get medication" [00017], "Continue" [00018], "The patient dies" [00019]
+[00010] "Medical Professional", qnode [wd:Q11974939], qlabel: [health professional], qdescription: [individual who provides medical treatments and health advice]
+	referred to by "Diagnosis" [00014], "Treatment" [00015], "Patients get medication" [00017], "Health worker response" [00032]
+[00011] "Pathogen", qnode [wd:Q170065], qlabel: [pathogen], qdescription: [biological entity that causes disease in its host, which is typically an infectious microorganism or agent, such as a virus, bacterium, protozoan, prion, viroid, or fungus]
+	referred to by "Contract disease" [00012], "Patients get medication" [00017]
+[00012] "Medication", qnode [wd:Q12140], qlabel: [medication], qdescription: [substance used to diagnose, cure, treat, or prevent disease]
+[00013] "Epidemiologist", qnode [wd:Q13416803], qlabel: [epidemiologist], qdescription: [researcher on how diseases are spread]
+	referred to by "Epidemiologist response" [00021], "Learn" [00022], "Investigate" [00023], "Announce" [00024], "Research" [00025], "Research" [00026], "Educate" [00027], "Educate" [00028], "Educate" [00029], "Educate" [00030], "Publish results" [00031]
+[00014] "Disease", qnode [wd:Q12136], qlabel: [disease], qdescription: [abnormal condition negatively affecting organisms]
+	referred to by "Epidemiologist response" [00021], "Learn" [00022], "Educate" [00027], "Educate" [00028], "Educate" [00029], "Educate" [00030]
+[00015] "Cluster", qnode [wd:Q21157127], qlabel: [cluster], qdescription: [collection of entities that are physically or conceptually close to each other]
+	referred to by "Investigate" [00023]
+[00016] "Pathogen", qnode [wd:Q170065], qlabel: [pathogen], qdescription: [biological entity that causes disease in its host, which is typically an infectious microorganism or agent, such as a virus, bacterium, protozoan, prion, viroid, or fungus]
+	referred to by "Research" [00025]
+[00017] "Public", qnode [wd:Q2388316], qlabel: [public], qdescription: [grouping of individual people]
+	referred to by "Announce" [00024]
+[00018] "Antidote", qnode [wd:Q194168], qlabel: [antidote], qdescription: [substance that can counteract a form of poisoning]
+	referred to by "Research" [00026]
+[00019] "Healthcare Sector", qnode [wd:Q31207], qlabel: [health care], qdescription: [prevention of disease and promotion of wellbeing]
+	referred to by "Educate" [00027], "Educate" [00028]
+[00020] "Pharmaceutical Manufacturers", qnode [wd:Q507443], qlabel: [pharmaceutical industry], qdescription: [develops, produces, and markets drugs or pharmaceuticals licensed for use as medications]
+	referred to by "Educate" [00027], "Educate" [00029]
+[00021] "Government Authority", qnode [wd:Q2659904], qlabel: [government organization], qdescription: [organization administrated by a government authority or agency]
+	referred to by "Educate" [00027], "Educate" [00030]
+[00023] "Contaminant Location", qnode [wd:Q2221906], qlabel: [geographic location], qdescription: [point or an area on something's surface or elsewhere]
+	referred to by "The patient traveled to the location of the contaminant" [00011]
+
+TA2 Entities (extracted/predicted):
+[00002] "Legionella pneumophila", qnode [wd:Q147885], qlabel: [Legionella pneumophila], qdescription: [species of bacterium]
+	extracted in "Pathogen progression" [00001], "Patient exposed to pathogen" [00006], "The pathogen lived in the patient's body" [00007], "Patients get medication" [00017]
+	predicted in "Come into being" [00002], "Replicate" [00003], "Spread" [00004], "Escape" [00005], "Continue" [00008], "Decrease in society" [00009]
+[00004] "American society", qnode [wd:Q30], qlabel: [United States of America], qdescription: [country in North America]
+	extracted in "Pathogen progression" [00001]
+	predicted in "Continue" [00008]
+[00006] "Ray Brennan", qnode [wd:Q14886050, wd:Q181600], qlabel: [terrorist, patient], qdescription: [person who practises terrorism, person who takes a medical treatment or is subject of a case study]
+	extracted in "Pathogen progression" [00001], "Patient exposed to pathogen" [00006], "The pathogen lived in the patient's body" [00007], "Patient progression" [00010], "The patient traveled to the location of the contaminant" [00011], "The patient gets sick" [00013], "Patients get medication" [00017], "Continue" [00018], "The patient dies" [00019]
+	predicted in "Spread" [00004], "Escape" [00005], "Contract disease" [00012], "Diagnosis" [00014], "Treatment" [00015], "Compliance" [00016]
+[00007] "Joe Smith", qnode [wd:Q181600], qlabel: [patient], qdescription: [person who takes a medical treatment or is subject of a case study]
+	predicted in "Diagnosis" [00014]
+[00008] "200 mg Advil", qnode [wd:Q16240691], qlabel: [Advil], qdescription: [nonsteroidal anti-inflammatory drug (Ibuprofen)]
+[00022] "Research Findings", qnode [wd:Q107296061], qlabel: [study result], qdescription: [all outcomes of a research project]
+	extracted in "Publish results" [00031]
+[00024] "Philadelphia, PA", qnode [wd:Q1345], qlabel: [Philadelphia], qdescription: [largest city in Pennsylvania, United States]
+	extracted in "Patient exposed to pathogen" [00006], "The patient traveled to the location of the contaminant" [00011]
+[00025] "Pennsylvania Department of Health", qnode [wd:Q7163712], qlabel: [Pennsylvania Department of Health], qdescription: []
+	extracted in "Research" [00026], "Publish results" [00031]
+	predicted in "Epidemiologist response" [00021], "Learn" [00022], "Investigate" [00023], "Announce" [00024], "Research" [00025], "Educate" [00027], "Educate" [00028], "Educate" [00029], "Educate" [00030]
+
+Top-level relations:
+[00022] "pathogen from pathogen-progression schema has an equivalence relation to the pathogen in the patient-progression schema" (from schema)
+	"Pathogen" [approximately equal to] [wd:Q26161438] "Pathogen"
+[00023] "pathogen from pathogen-progression schema has an equivalence relation to the pathogen in the epidemiologist response schema" (from schema)
+	"Pathogen" [approximately equal to] [wd:Q26161438] "Pathogen"
+[00024] "patient from pathogen-progression schema has an equivalence relation to the patient in the patient-progression schema" (from schema)
+	"Patient" [approximately equal to] [wd:Q26161438] "Patient"
+[00025] "<Unnamed>" (from schema)
+	"Patient exposed to pathogen" [approximately equal to] [wd:Q26161438] "Contract disease", instantiated with confidence 0.8
+[00026] "'Live in body' event from the pathogen-progression schema has an equivalence relation to the 'Patient gets sick' event from the patient-progression schema" (from schema)
+	"The pathogen lived in the patient's body" [approximately equal to] [wd:Q26161438] "The patient gets sick", instantiated with confidence 0.8
+[00027] "Patient resided in location of contaminant." (from docs)
+	"Ray Brennan" [residence] [wdt:P551] "Philadelphia, PA", with modality [hedged], instantiated with confidence 0.7
+
+
+==============
+
+Instance #2: Disease outbreak (variant)
+ceID: ce1002
+Confidence: 0.8
+
+Event hierarchy (order does not consider outlinks):
+AND
+Pathogen progression [00001], predicted
+Patient progression [00002], predicted
+
+Event List (topologically sorted):
+1. [00001] "Pathogen progression" (predicted from schema with confidence 1.0)
+	Qnodes: [wd:foobar], Qlabels: [foobar], Qdescriptions: [foobar]
+	Parent: "Disease Outbreak" [00000]
+	Roles:
+		A0-Agent (foobar [00001])
+	Order:
+		Before: 00002
+	Predicted: confidence of 1.0, provenance of "Pathogen progression" [Event 00001]
+2. [00002] "Patient progression" (predicted from schema with confidence 1.0)
+	Qnodes: [wd:foobar], Qlabels: [foobar], Qdescriptions: [foobar]
+	Parent: "Disease Outbreak" [00000]
+	Roles:
+		A0-Agent (foobar [00001])
+	Predicted: confidence of 1.0, provenance of "Patient progression" [Event 00002]
+
+TA1 Entities (variables):
+[00001] "foobar", qnode [wd:foobar], qlabel: [foobar], qdescription: [foobar]
+	referred to by "Pathogen progression" [00001], "Patient progression" [00002]
+
+TA2 Entities (extracted/predicted):
+None
+
+Top-level relations:
+None

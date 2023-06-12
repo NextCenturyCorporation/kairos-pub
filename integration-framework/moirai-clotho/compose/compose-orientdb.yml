@@ -1,0 +1,25 @@
+version: '3'
+services:
+  orientdb:
+    image: orientdb:latest
+    ports:
+      - "2424:2424"
+      - "2480:2480"
+    environment:
+      ORIENTDB_ROOT_PASSWORD: "root"
+    entrypoint: '/bin/bash -c "./bin/console.sh create database plocal:databases/kairos admin admin plocal graph && server.sh"'
+  clotho:
+    image: openjdk
+    volumes:
+      - ../build/libs:/jars
+    depends_on:
+      - orientdb
+    links:
+      - "orientdb"
+    ports:
+      - "8008:8008"
+    environment:
+      DB_TYPE: "OrientDB"
+      DB_URI: "remote:orientdb:2424/kairos"
+    working_dir: "/jars/"
+    command: "/bin/bash -c 'java -jar $$(ls moirai-clotho*.jar)'"

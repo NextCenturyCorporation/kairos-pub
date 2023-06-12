@@ -1,0 +1,232 @@
+import java.text.SimpleDateFormat
+
+// This file contains a set of tasks and methods shared between the zeus, ui, and clotho projects
+// It expects the following to be set in the gradle.properties file
+// * dockerRepositoryName - this will most likely be the project name
+
+//Exported Methods
+ext.getDockerImageName = {
+    "${getEcrUri()}/${dockerRepositoryName}"
+}
+
+ext.getGenesisImageName = {
+    "${getEcrUri()}/genesis:${dockerRepositoryName}"
+}
+
+ext.getEcrUri = {
+    runCommand("aws ecr get-login --no-include-email --region us-east-1").split(" ").last().split("/").last()
+}
+
+ext.runCommand = { String str ->
+    println "[runCommand]: ${str}"
+    String[] tstr = str.tokenize()
+    runCommandArr(tstr)
+}
+
+ext.runCommandIgnoringErrors = { String str ->
+    println "[runCommand]: ${str}"
+    String[] tstr = str.tokenize()
+    runCommandIgnoringErrorsArr(tstr)
+}
+
+ext.incrementVersion = { String previous ->
+    int idx = previous.lastIndexOf(".")
+    String base = previous.substring(0,idx+1)
+    int patch = previous.substring(idx+1).toInteger() + 1
+    return "$base$patch"
+}
+
+ext.getECRVersion = {
+    String images = runCommand("aws ecr describe-images --repository-name $dockerRepositoryName --image-ids imageTag=latest");
+    def parsedJson = new groovy.json.JsonSlurper().parseText(images);
+    return parsedJson["imageDetails"]["imageTags"][0].findAll() {it != "latest"}[0]
+}
+
+
+ext.getJarVersion = {
+    def propertyReader = new PropertyReader("src/generated/resources/version.properties")
+    return propertyReader.version
+}
+
+// This task is called by defaulttasks so that it always runs during build
+// if run locally on master this checks ecr for the latest version x.x.x
+// If run locally on a different branch the version is <git branch>
+// If we run on gitlab we assume the gitlab-ci.yaml has passed in a buildVersion to use
+// If we have buildVersion that means we are not on master and the version would be <git branch>
+// If we don't have buildVersion that means we are on master and this checks ecr for the latest version x.x.x and increments it by 1
+task setJarVersion() {
+    description 'Stores the version in the src/generated/resources/version.properties'
+    doLast {
+        def propertyReader = new PropertyReader("src/generated/resources/version.properties")
+        if (runCommand("whoami").equals("gitlab-runner")) {
+            if ( project.hasProperty("buildVersion") ) {
+                propertyReader.version(buildVersion)
+            } else {
+                String buildVersion = incrementVersion(getECRVersion())
+                propertyReader.version(buildVersion)
+            }
+        } else {
+            String branch = runCommand("git branch --show-current")
+            if (branch.toLowerCase().equals("master")) {
+                propertyReader.version(getECRVersion())
+            } else if (branch.toLowerCase().equals("development")) {
+                def date = new Date()
+                def sdf = new SimpleDateFormat("MM/dd/yyyy")
+                propertyReader.version("dev release - " + sdf.format(date))
+            } else {
+//                String sha = runCommand("git rev-parse --short HEAD")
+                propertyReader.version("$branch")
+            }
+        }
+        def date = new Date()
+        def sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss")
+        propertyReader.build_time(sdf.format(date))
+    }
+}
+
+task ECRLogin {
+    description 'Logs Docker into the ECR repo'
+    doLast {
+        String loginCommand = runCommand("aws ecr get-login --no-include-email --region us-east-1")
+        println runCommand(loginCommand)
+    }
+}
+
+task ECRLogout {
+    description 'Logs Docker out of the ECR repo'
+    doLast {
+        println runCommand("docker logout ${getEcrUri()}")
+    }
+}
+
+task buildDockerImage(dependsOn: ECRLogin) {
+    description 'Builds the Docker image.'
+    doLast {
+        // Concatenate the name and tag
+        String local_name_and_tag = dockerRepositoryName + ":local"
+
+        // Build Dockerfile Image
+        String cacheCommand = project.hasProperty("no-cache") ? "--no-cache " : ""
+        println runCommand("docker build ${cacheCommand}-t $local_name_and_tag -f $dockerFilename .")
+
+        // Cleans any dangling images from the build
+        // -f stand for force. Skips the prompt for confirmation
+        println runCommand("docker system prune -f")
+
+
+        if (project.hasProperty("skip-test")) {
+            println "Skipping Docker tests."
+        } else {
+            println runCommand("./runDockerTests.sh $local_name_and_tag")
+        }
+    }
+}
+buildDockerImage.finalizedBy ECRLogout
+
+task pushDockerImage(dependsOn: ECRLogin) {
+    description 'Pushes the Docker image to the ECR repo.'
+    doLast {
+        // Concatenate the name and tag
+        String local_name_and_tag = dockerRepositoryName + ":local"
+
+        // Set base values for naming the image, then concat
+        String image_name = project.hasProperty("image-name") ?  project.getProperty("image-name") : getDockerImageName()
+        String image_tag = project.hasProperty("tag") ? project.getProperty("tag") : getJarVersion()
+        String image_name_and_tag = image_name + ":" + image_tag.toLowerCase()
+
+        // Main image
+        println "[pushDockerImage]: image_name_and_tag: $image_name_and_tag"
+        println runCommand("docker tag $local_name_and_tag $image_name_and_tag")
+        println runCommand("docker push $image_name_and_tag")
+
+        // Push as Latest
+        Boolean tag_latest = project.hasProperty("tag-latest") ? true : false
+        if (tag_latest) {
+            String image_name_latest = image_name + ":latest"
+            println "[pushDockerImage]: image_name_latest: $image_name_latest"
+            println runCommand("docker tag $local_name_and_tag $image_name_latest")
+            println runCommand("docker push $image_name_latest")
+        }
+
+        // Push to genesis
+        Boolean tag_genesis = project.hasProperty("tag-genesis") ? true : false
+        if (tag_genesis) {
+            String image_name_genesis = getGenesisImageName() + "-latest"
+            println "[pushDockerImage]: image_name_genesis: $image_name_genesis"
+            println runCommand("docker tag $local_name_and_tag $image_name_genesis")
+            println runCommand("docker push $image_name_genesis")
+        }
+    }
+}
+pushDockerImage.finalizedBy ECRLogout
+
+//Local Methods
+String runCommandArr(String... args)  {
+    def proc = args.execute()
+    proc.waitFor()
+    String input = proc.in.readLines().join("\n")
+    String errors = "[runCommand ERROR]: "+proc.err.readLines().join("\n[ERROR]: ")
+
+    if (proc.exitValue() != 0) {
+        println input
+        println errors
+        throw new Error("Exit value: "+proc.exitValue()+"\n Error: "+errors);
+    }
+    "$input"
+}
+
+String runCommandIgnoringErrorsArr(String... args) {
+    def proc = args.execute()
+    proc.waitFor()
+    String input = proc.in.readLines().join("\n")
+    String errors = "[runCommand ERROR]: "+proc.err.readLines().join("\n[ERROR]: ")
+
+    if (proc.exitValue() != 0) {
+        println input
+        println errors
+    }
+    "$input"
+}
+
+//Property reader
+class PropertyReader {
+
+    String filePath
+
+    PropertyReader(String filePath) {
+        this.filePath = filePath
+        File propsFile = new File(filePath)
+        if (!propsFile.exists()) {
+            this.ensurePath(propsFile.getParentFile())
+            propsFile.createNewFile()
+        }
+    }
+
+    def ensurePath(File path) {
+        if (path.getPath().contains("/") == true && path.getPath().length() > 1) {
+            ensurePath(path.getParentFile())
+        }
+        path.mkdirs()
+    }
+
+    def propertyMissing(String name) {
+        Properties props = new Properties()
+        File propsFile = new File(filePath)
+        propsFile.withInputStream {
+            props.load it
+        }
+        props."$name"
+    }
+
+    def methodMissing(String name, args) {
+        Properties props = new Properties()
+        File propsFile = new File(filePath)
+
+        props.load propsFile.newDataInputStream()
+        props.setProperty name, args.toString() - '[' - ']'
+        props.store propsFile.newWriter(), null
+    }
+
+
+}
+

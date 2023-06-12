@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE suppressions PUBLIC
+        "-//Puppy Crawl//DTD Suppressions 1.2//EN"
+        "http://checkstyle.sourceforge.net/dtds/suppressions_1_2.dtd">
+
+<!--The below suppression serves as an example of how to suppress warnings throughout CFS when/if the need arises.-->
+<suppressions>
+    <suppress checks="MethodLength" files=".*.java"/>
+    <suppress checks="HideUtilityClassConstructor" files=".*.java"/>
+    <suppress checks="RequireThis" files=".*.java"/>
+    <suppress checks="[a-zA-Z0-9]*" files="[/\\]src[/\\]generated[/\\]"/>
+    <suppress checks="ImportOrder" files=".*.java"/>
+    <suppress checks="AvoidStarImport" files=".*.java"/>
+    <suppress checks="AvoidStarImport" files=".*.java"/>
+    <suppress checks="AvoidStaticImport" files=".*.java"/>
+</suppressions>
+

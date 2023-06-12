@@ -1,0 +1,12 @@
+version: '3'
+services:
+  clotho:
+    image: openjdk:11
+    volumes:
+      - ../build/libs:/jars
+    ports:
+      - "8008:8008"
+    environment:
+      DB_TYPE: "Validation"
+    working_dir: "/jars/"
+    command: "/bin/bash -c 'java -jar $$(ls moirai-clotho*.jar)'"

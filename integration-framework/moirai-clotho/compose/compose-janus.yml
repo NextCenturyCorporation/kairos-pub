@@ -1,0 +1,23 @@
+version: '3'
+services:
+  database:
+    image: janusgraph/janusgraph:latest
+    ports:
+      - "8182:8182"
+    environment:
+      gremlinserver.channelizer: org.apache.tinkerpop.gremlin.server.channel.HttpChannelizer
+  clotho:
+    image: openjdk
+    volumes:
+      - ./build/libs:/jars
+    depends_on:
+      - database
+    links:
+      - "database"
+    ports:
+      - "8008:8008"
+    environment:
+      DB_TYPE: "JanusGraph"
+      DB_URI: "database"
+    working_dir: "/jars/"
+    command: "/bin/bash -c 'java -jar $$(ls moirai-clotho*.jar)'"

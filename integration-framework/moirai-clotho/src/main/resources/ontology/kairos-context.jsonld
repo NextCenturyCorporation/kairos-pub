@@ -1,0 +1,243 @@
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "kairos": "https://kairos-sdf.s3.amazonaws.com/context/kairos/",
+    "wd": "https://www.wikidata.org/entity/",
+    "wdt": "https://www.wikidata.org/prop/direct/",
+    "dwd": "https://dwd.isi.edu/browser/",
+    "sdfVersion": "kairos:sdfVersion",
+    "ta2": {
+      "@id": "kairos:ta2",
+      "@type": "xsd:boolean"
+    },
+    "task2": {
+      "@id": "kairos:task2",
+      "@type": "xsd:boolean"
+    },
+    "ceID": "kairos:ceID",
+    "instances": "kairos:instances",
+    "version": "schema:version",
+    "events": {
+      "@id": "kairos:events",
+      "@container": "@list"
+    },
+    "achieves": "kairos:achieves",
+    "requires": "kairos:requires",
+    "name": "schema:name",
+    "description": "schema:description",
+    "goal": "kairos:goal",
+    "instanceOf": {
+      "@id": "kairos:instanceOf",
+      "@type": "@id"
+    },
+    "comment": {
+      "@id": "kairos:comment",
+      "@container": "@list"
+    },
+    "provenanceID": {
+      "@id": "kairos:provenanceID",
+      "@type": "@id"
+    },
+    "provenance": {
+      "@id": "kairos:provenance",
+      "@type": "@id",
+      "@container": "@list"
+    },
+    "aka": "kairos:aka",
+    "reference": {
+      "@id": "kairos:reference",
+      "@type": "@id"
+    },
+    "ta1explanation": "kairos:ta1explanation",
+    "minDuration": {
+      "@id": "kairos:minDuration",
+      "@type": "xsd:duration"
+    },
+    "maxDuration": {
+      "@id": "kairos:maxDuration",
+      "@type": "xsd:duration"
+    },
+    "temporal": {
+      "@id": "kairos:temporal",
+      "@container": "@list"
+    },
+    "duration": {
+      "@id": "kairos:duration",
+      "@type": "xsd:duration"
+    },
+    "earliestStartTime": {
+      "@id": "kairos:earliestStartTime",
+      "@type": "xsd:dateTime"
+    },
+    "latestStartTime": {
+      "@id": "kairos:latestStartTime",
+      "@type": "xsd:dateTime"
+    },
+    "earliestEndTime": {
+      "@id": "kairos:earliestEndTime",
+      "@type": "xsd:dateTime"
+    },
+    "latestEndTime": {
+      "@id": "kairos:latestEndTime",
+      "@type": "xsd:dateTime"
+    },
+    "absoluteTime": {
+      "@id": "kairos:absoluteTime",
+      "@type": "xsd:dateTime"
+    },
+    "ta1ref": "kairos:ta1ref",
+    "NULL": "kairos:NULL",
+    "modality": "kairos:modality",
+    "child": {
+      "@id": "kairos:child",
+      "@type": "@id"
+    },
+    "children": {
+      "@id": "kairos:children",
+      "@container": "@list"
+    },
+    "parent": {
+      "@id": "kairos:parent",
+      "@type": "@id"
+    },
+    "outlinks": {
+      "@id": "kairos:outlinks",
+      "@type": "@id",
+      "@container": "@list"
+    },
+    "subgroup_events": {
+      "@id": "kairos:subgroup_events",
+      "@type": "@id",
+      "@container": "@list"
+    },
+    "isTopLevel": {
+      "@id": "kairos:isTopLevel",
+      "@type": "xsd:boolean"
+    },
+    "origName": "kairos:origName",
+    "origDescription": "kairos:origDescription",
+    "optional": {
+      "@id": "kairos:optional",
+      "@type": "xsd:boolean"
+    },
+    "centrality": {
+      "@id": "kairos:centrality",
+      "@type": "xsd:float"
+    },
+    "importance": {
+      "@id": "kairos:importance",
+      "@type": "xsd:float"
+    },
+    "repeatable": {
+      "@id": "kairos:repeatable",
+      "@type": "xsd:boolean"
+    },
+    "children_gate": "kairos:children_gate",
+    "wd_node": {
+      "@id": "kairos:wd_node",
+      "@type": "@id",
+      "@container": "@list"
+    },
+    "wd_label": {
+      "@id": "kairos:wd_label",
+      "@container": "@list"
+    },
+    "wd_description": {
+      "@id": "kairos:wd_description",
+      "@container": "@list"
+    },
+    "participants": {
+      "@id": "kairos:participants",
+      "@container": "@list"
+    },
+    "roleName": "kairos:roleName",
+    "entity": {
+      "@id": "kairos:entity",
+      "@type": "@id"
+    },
+    "values": "kairos:values",
+    "ta2entity": {
+      "@id": "kairos:ta2entity",
+      "@type": "@id"
+    },
+    "predictionProvenance": {
+      "@id": "kairos:predictionProvenance",
+      "@type": "@id",
+      "@container": "@list"
+    },
+    "entities": "kairos:entities",
+    "relations": "kairos:relations",
+    "relationSubject": {
+      "@id": "kairos:relationSubject",
+      "@type": "@id"
+    },
+    "relationSubject_prov": {
+      "@id": "kairos:relationSubject_prov",
+      "@type": "@id",
+      "@container": "@list"
+    },
+    "relationProvenance": {
+      "@id": "kairos:relationProvenance",
+      "@type": "@id",
+      "@container": "@list"
+    },
+    "relationObject": {
+      "@id": "kairos:relationObject",
+      "@type": "@id"
+    },
+    "relationObject_prov": {
+      "@type": "@id",
+      "@id": "kairos:relationObject_prov",
+      "@container": "@list"
+    },
+    "ta2wd_node": {
+      "@id": "kairos:ta2wd_node",
+      "@type": "@id",
+      "@container": "@list"
+    },
+    "ta2wd_label": {
+      "@id": "kairos:ta2wd_label",
+      "@container": "@list"
+    },
+    "ta2wd_description": {
+      "@id": "kairos:ta2wd_description",
+      "@container": "@list"
+    },
+    "confidence": {
+      "@id": "kairos:confidence",
+      "@type": "xsd:float",
+      "@container": "@list"
+    },
+    "provenanceData": "kairos:provenanceData",
+    "sourceURL": "kairos:sourceURL",
+    "mediaType": "kairos:mediaType",
+    "childID": "kairos:childID",
+    "parentIDs": "kairos:parentIDs",
+    "offset": {
+      "@id": "kairos:offset",
+      "@type": "xsd:integer"
+    },
+    "length": {
+      "@id": "kairos:length",
+      "@type": "xsd:integer"
+    },
+    "boundingBox": {
+      "@id": "kairos:boundingBox",
+      "@type": "xsd:integer",
+      "@container": "@list"
+    },
+    "keyframes": {
+      "@id": "kairos:keyframes",
+      "@type": "xsd:integer"
+    },
+    "startTime": {
+      "@id": "kairos:startTime",
+      "@type": "xsd:float"
+    },
+    "endTime": {
+      "@id": "kairos:endTime",
+      "@type": "xsd:float"
+    }
+  }
+}
