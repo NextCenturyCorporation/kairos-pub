@@ -1,0 +1,8 @@
+{
+  "invokerPackage" : "com.ncc.kairos.moirai.zeus",
+  "apiPackage" : "com.ncc.kairos.moirai.zeus.api",
+  "modelPackage" : "com.ncc.kairos.moirai.zeus.model",
+  "sourceFolder" : "",
+  "generateSupportingFiles" : "false",
+  "interfaceOnly" : true
+}

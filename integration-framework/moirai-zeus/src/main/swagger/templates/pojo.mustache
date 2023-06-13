@@ -1,0 +1,192 @@
+/**
+ * {{#description}}{{.}}{{/description}}{{^description}}{{classname}}{{/description}}
+ */{{#description}}
+    @ApiModel(description = "{{{description}}}"){{/description}}
+{{>generatedAnnotation}}{{#discriminator}}{{>typeInfoAnnotation}}{{/discriminator}}{{>xmlAnnotation}}
+public class {{classname}} {{#parent}}extends {{{parent}}}{{/parent}}{{^parent}}{{#hateoas}}extends ResourceSupport {{/hateoas}}{{/parent}} {{#serializableModel}}implements Serializable{{/serializableModel}} {
+{{#serializableModel}}
+  private static final long serialVersionUID = 1L;
+
+{{/serializableModel}}
+  {{#vars}}
+  {{#vendorExtensions.x-staticConst}}
+    public static final {{{constValue}}};
+  {{/vendorExtensions.x-staticConst}}
+  {{#vendorExtensions.x-jpaColOverride}}
+    @Column({{{overrideValue}}})
+  {{/vendorExtensions.x-jpaColOverride}}
+    {{#vendorExtensions.x-jpaIdField}}
+      @Id
+    {{/vendorExtensions.x-jpaIdField}}
+    {{#vendorExtensions.x-generatedId}}
+      @GeneratedValue(generator = "UUID")
+      	@GenericGenerator(
+      		name = "UUID",
+      		strategy = "org.hibernate.id.UUIDGenerator"
+      	)
+
+    {{/vendorExtensions.x-generatedId}}
+    {{#vendorExtensions.x-joinTable}}
+      @JoinTable({{{joinValue}}})
+    {{/vendorExtensions.x-joinTable}}
+    {{#vendorExtensions.x-jpaElementCollection}}
+      @ElementCollection
+    {{/vendorExtensions.x-jpaElementCollection}}
+    {{#vendorExtensions.x-lazyManyToMany}}
+      @ManyToMany(fetch = FetchType.LAZY
+      {{#vendorExtensions.x-cascade-all}}, cascade = CascadeType.ALL{{/vendorExtensions.x-cascade-all}}
+      {{#vendorExtensions.x-cascade-all-safe}}, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}{{/vendorExtensions.x-cascade-all-safe}})
+    {{/vendorExtensions.x-lazyManyToMany}}
+    {{#vendorExtensions.x-lazyManyToOne}}
+        @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+        @ManyToOne(fetch = FetchType.LAZY
+      {{#vendorExtensions.x-cascade-all}}, cascade = CascadeType.ALL{{/vendorExtensions.x-cascade-all}}
+      {{#vendorExtensions.x-cascade-all-safe}}, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}{{/vendorExtensions.x-cascade-all-safe}})
+    {{/vendorExtensions.x-lazyManyToOne}}
+    {{#vendorExtensions.x-lazyOneToMany}}
+      @OneToMany(fetch = FetchType.LAZY{{#vendorExtensions.x-cascade-all}}, cascade = CascadeType.ALL{{/vendorExtensions.x-cascade-all}})
+    {{/vendorExtensions.x-lazyOneToMany}}
+    {{#vendorExtensions.x-lazyOneToOne}}
+      @OneToOne(fetch = FetchType.LAZY{{#vendorExtensions.x-cascade-all}}, cascade = CascadeType.ALL{{/vendorExtensions.x-cascade-all}})
+    {{/vendorExtensions.x-lazyOneToOne}}
+    {{#vendorExtensions.x-lazyManyToManyMapping}}
+      @ManyToMany(mappedBy="{{{mapValue}}}"{{#vendorExtensions.x-cascade-all}}, cascade = CascadeType.ALL{{/vendorExtensions.x-cascade-all}})
+    {{/vendorExtensions.x-lazyManyToManyMapping}}
+    {{#vendorExtensions.x-lazyOneToOneMapping}}
+      @OneToOne(mappedBy="{{{mapValue}}}"{{#vendorExtensions.x-cascade-all}}, cascade = CascadeType.ALL{{/vendorExtensions.x-cascade-all}})
+    {{/vendorExtensions.x-lazyOneToOneMapping}}
+    {{#vendorExtensions.x-lazyManyToOneMapping}}
+      @ManyToOne(mappedBy="{{{mapValue}}}"{{#vendorExtensions.x-cascade-all}}, cascade = CascadeType.ALL{{/vendorExtensions.x-cascade-all}})
+    {{/vendorExtensions.x-lazyManyToOneMapping}}
+    {{#vendorExtensions.x-lazyOneToManyMapping}}
+      @OneToMany(mappedBy="{{{mapValue}}}"{{#vendorExtensions.x-cascade-all}}, cascade = CascadeType.ALL{{/vendorExtensions.x-cascade-all}})
+    {{/vendorExtensions.x-lazyOneToManyMapping}}
+    {{#vendorExtensions.x-jpaTransient}}
+      @Transient
+    {{/vendorExtensions.x-jpaTransient}}
+    {{#isEnum}}
+    {{^isContainer}}
+{{>enumClass}}
+    {{/isContainer}}
+    {{#isContainer}}
+    {{#mostInnerItems}}
+{{>enumClass}}
+    {{/mostInnerItems}}
+    {{/isContainer}}
+    {{/isEnum}}
+  {{#jackson}}
+  @JsonProperty("{{baseName}}"){{#withXml}}
+  @JacksonXmlProperty({{#isXmlAttribute}}isAttribute = true, {{/isXmlAttribute}}{{#xmlNamespace}}namespace="{{xmlNamespace}}", {{/xmlNamespace}}localName = "{{#xmlName}}{{xmlName}}{{/xmlName}}{{^xmlName}}{{baseName}}{{/xmlName}}"){{/withXml}}
+  {{/jackson}}
+  {{#gson}}
+  @SerializedName("{{baseName}}")
+  {{/gson}}
+  {{#isContainer}}
+  {{#useBeanValidation}}@Valid{{/useBeanValidation}}
+  private {{{datatypeWithEnum}}} {{name}}{{#required}} = {{{defaultValue}}}{{/required}}{{^required}} = null{{/required}};
+  {{/isContainer}}
+  {{^isContainer}}
+  private {{{datatypeWithEnum}}} {{name}}{{#defaultValue}} = {{{.}}}{{/defaultValue}};
+  {{/isContainer}}
+
+  {{/vars}}
+  {{#vars}}
+  public {{classname}} {{name}}({{{datatypeWithEnum}}} {{name}}) {
+    this.{{name}} = {{name}};
+    return this;
+  }
+  {{#isListContainer}}
+
+  public {{classname}} add{{nameInCamelCase}}Item({{{items.datatypeWithEnum}}} {{name}}Item) {
+    {{^required}}
+    if (this.{{name}} == null) {
+      this.{{name}} = {{{defaultValue}}};
+    }
+    {{/required}}
+    this.{{name}}.add({{name}}Item);
+    return this;
+  }
+  {{/isListContainer}}
+  {{#isMapContainer}}
+
+  public {{classname}} put{{nameInCamelCase}}Item(String key, {{{items.datatypeWithEnum}}} {{name}}Item) {
+    {{^required}}
+    if (this.{{name}} == null) {
+      this.{{name}} = {{{defaultValue}}};
+    }
+    {{/required}}
+    this.{{name}}.put(key, {{name}}Item);
+    return this;
+  }
+  {{/isMapContainer}}
+
+  /**
+  {{#description}}
+   * {{{description}}}
+  {{/description}}
+  {{^description}}
+   * Get {{name}}
+  {{/description}}
+  {{#minimum}}
+   * minimum: {{minimum}}
+  {{/minimum}}
+  {{#maximum}}
+   * maximum: {{maximum}}
+  {{/maximum}}
+   * @return {{name}}
+  */
+ {{#vendorExtensions.extraAnnotation}}
+  {{{vendorExtensions.extraAnnotation}}}
+  {{/vendorExtensions.extraAnnotation}}
+  @ApiModelProperty({{#example}}example = "{{{example}}}", {{/example}}{{#required}}required = {{required}}, {{/required}}{{#isReadOnly}}readOnly = {{{isReadOnly}}}, {{/isReadOnly}}value = "{{{description}}}")
+{{#useBeanValidation}}{{>beanValidation}}{{/useBeanValidation}}  public {{{datatypeWithEnum}}} {{getter}}() {
+    return {{name}};
+  }
+
+  public void {{setter}}({{{datatypeWithEnum}}} {{name}}) {
+    this.{{name}} = {{name}};
+  }
+
+  {{/vars}}
+
+  @Override
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }{{#hasVars}}
+    {{classname}} {{classVarName}} = ({{classname}}) o;
+    return {{#vars}}Objects.equals(this.{{name}}, {{classVarName}}.{{name}}){{#hasMore}} &&
+        {{/hasMore}}{{/vars}}{{#parent}} &&
+        super.equals(o){{/parent}};{{/hasVars}}{{^hasVars}}
+    return true;{{/hasVars}}
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash({{#vars}}{{name}}{{#hasMore}}, {{/hasMore}}{{/vars}}{{#parent}}{{#hasVars}}, {{/hasVars}}super.hashCode(){{/parent}});
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class {{classname}} {\n");
+    {{#parent}}sb.append("    ").append(toIndentedString(super.toString())).append("\n");{{/parent}}
+    {{#vars}}sb.append("    {{name}}: ").append(toIndentedString({{name}})).append("\n");
+    {{/vars}}sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}

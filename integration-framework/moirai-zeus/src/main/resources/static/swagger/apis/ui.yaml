@@ -1,0 +1,190 @@
+openapi: 3.0.0
+info:
+  title: Moirai Zeus Ui API
+  description: This is the API for ui controls,
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+tags:
+  - name: UI
+    description: Endpoints for ui feature management.
+security:
+  - bearerAuth: []
+paths:
+  /ui/activefeatureflag:
+    get:
+      tags:
+        - UI
+      summary: Gets feature flags for ui
+      description: retrieve feature flags
+      operationId: getActiveFeatureFlags
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/featureFlag'
+  /ui/featureflag:
+    get:
+      tags:
+        - UI
+      summary: Gets feature flags for ui
+      description: retrieve feature flags
+      operationId: getFeatureFlags
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/featureFlag'
+    post:
+      tags:
+        - UI
+      summary: creates new feature flag
+      description: create new feature flag
+      operationId: newFeatureFlag
+      requestBody:
+        description: new feature flag
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/featureFlag'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        409:
+          description: CONFLICT
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+    delete:
+      tags:
+        - UI
+      summary: deletes feature flag
+      description: delete existing feature flag
+      operationId: deleteFeatureFlag
+      requestBody:
+        description: feature flag to delete
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/featureFlag'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        404:
+          description: NOT_FOUND
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /ui/featureFlag/{id}:
+    put:
+      tags:
+        - UI
+      summary: Updates a featureFlag
+      operationId: updateFeatureFlag
+      parameters:
+        - name: id
+          in: path
+          description: file id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update the featureFlag given the id
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/featureFlag'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    stringResponse:
+      type: object
+      properties:
+        value:
+          type: string
+          example: "Success"
+    featureFlag:
+      type: object
+      x-jpaEntity: true
+      required:
+        - id
+        - name
+        - enabled
+      properties:
+        id:
+          type: string
+          example:
+          x-jpaIdField: true
+          x-generatedId: true
+        name:
+          type: string
+          example: "flagName"
+        enabled:
+          type: boolean
+        overrides:
+          type: array
+          items:
+            $ref: '#/components/schemas/featureFlagOverride'
+          x-lazyOneToMany: true
+          x-joinTable:
+            joinValue: name = "feature_flag_feature_flag_override",
+              joinColumns = { @JoinColumn(name = "feature_flag_id") },
+              inverseJoinColumns = { @JoinColumn(name = "feature_flag_override_id") }
+    featureFlagOverride:
+      type: object
+      x-jpaEntity: true
+      required:
+        - id
+        - name
+        - override
+      properties:
+        id:
+          type: string
+          example:
+          x-jpaIdField: true
+          x-generatedId: true
+        name:
+          type: string
+          example: "flagName"
+        override:
+          type: boolean
+        authority:
+          type: string
+        startDate:
+          type: string
+          format: date-time
+          example: "2020-01-01T17:32:28Z"
+        endDate:
+          type: string
+          format: date-time
+          example: "2020-01-01T17:32:28Z"

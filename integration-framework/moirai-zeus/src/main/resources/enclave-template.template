@@ -1,0 +1,12 @@
+{
+    "evaluator" : "{EVALUATOR}",
+    "experiment" : {
+        "name" : "{EXPERIMENT_NAME}",
+        "commissiondate" : "{COMMISSION_DATE}",
+        "kickoffdate" : "{KICK_OFF_DATE}"
+    },
+
+    "performers" : [
+        {DOCKER_IMAGES}
+    ]
+}

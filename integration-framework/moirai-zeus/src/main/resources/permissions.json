@@ -1,0 +1,73 @@
+
+    [
+        {
+            "id" : "",
+            "description" : "Enables user to log in as another without credentials.",
+            "name" : "ASSUME-USER"  
+        },
+        {
+            "id" : "",
+            "description" : "Provision a clotho machine.",
+            "name" : "CLOTHO-PROVISION"  
+        },
+        {
+            "id" : "",
+            "name" : "CLOTHO-TERMINATE",
+            "description" : "Destroys a currently running clotho machine."
+        },
+        {
+            "id" : "",
+            "name" : "DOCKER-CREATE-REGISTRY",
+            "description" : "Create a Docker Registry."
+        },
+        {
+            "id" : "",
+            "name" : "DOCKER-RESET-REGISTRY-PASSWORD",
+            "description" : "Reset the Teams Docker password."
+        },
+        {
+            "id" : "",
+            "name" : "DOCKER-UPLOAD-DELETE",
+            "description" : "Delete a upload within team registry."
+        },
+        {
+            "id" : "",
+            "name" : "ENCLAVE-CREATE",
+            "description" : "Create an enclave for running experiments."
+        },
+        {
+            "id" : "",
+            "name" : "ENCLAVE-TERMINATE",
+            "description" : "Destroys an enclave."
+        },
+        {
+            "id" : "",
+            "name" : "ADMIN",
+            "description" : "Adminstrative"
+        },
+        {
+            "id" : "",
+            "name" : "FILE-DELETE",
+            "description" : "Delete files"
+        },
+        {
+            "id" : "",
+            "name" : "FILE-READ",
+            "description" : "Read files"
+        },
+        {
+            "id" : "",
+            "name" : "FILE-WRITE",
+            "description" : "Upload files"
+        },
+        {
+            "id" : "",
+            "name" : "FILE-DOWNLOAD",
+            "description" : "Download files"
+        },
+        {
+            "id": "",
+            "name" : "CREATE-SUB-ACCOUNT",
+            "description" : "Allows user to create sub account for team."
+        }
+    ]

@@ -1,0 +1,337 @@
+plugins {
+    id 'java'
+    id 'jacoco'
+    id 'org.springframework.boot' version '2.7.0'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'org.hidetake.swagger.generator' version '2.18.2'
+    id 'groovy-base'
+    id 'org.sonarqube' version '3.0'
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'checkstyle'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'jacoco'
+apply plugin: 'org.sonarqube'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.spring.io/release' }
+}
+
+sourceCompatibility = 1.11
+
+sourceSets {
+    main{
+        java {
+            srcDirs = ['src/main/java',
+                       generatedApiDirectory + '/java']
+        }
+        resources {
+            srcDirs = ['src/main/resources',
+                       generatedApiDirectory + '/resources']
+        }
+    }
+    test {
+        java {
+            srcDirs = ['src/test/java']
+        }
+        resources {
+            srcDirs = ['src/test/resources']
+        }
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+    }
+}
+
+sonarqube {
+    properties {
+          property "sonar.projectKey", "$artifactId"
+          property "sonar.projectName", "$artifactId"
+          property "sonar.host.url", "$sonarqubeUrl"
+          property "sonar.login", "191e196b8161b6ad274e4a2d7256e8cd2ae5b22c"
+          property "sonar.sources", "src"
+          property "sonar.java.source", "11"
+          property "sonar.exclusions", "**/generated/**/*,**/resources/**/*,**/test/**/*"
+          property "sonar.java.binaries", "build/classes"
+          property "sonar.java.checkstyle.reportPaths", "build/reports/checkstyle/main.xml,build/reports/checkstyle/test.xml"
+          property "sonar.java.jacoco.reportPaths", "build/reports/jacoco"
+    }
+}
+
+dependencies {
+
+    implementation 'org.codehaus.jackson:jackson-core-asl:1.9.13'
+    implementation 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
+    implementation 'org.codehaus.jackson:jackson-core-lgpl:1.9.13'
+
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.12.1'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.12.1'
+
+    implementation('org.apache.logging.log4j:log4j-api') {
+        version {
+            strictly '2.20.0'
+        }
+    }
+    
+    //spring
+    implementation ('org.springframework.boot:spring-boot-starter-web')
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    implementation 'org.springframework.boot:spring-boot-starter-mail:2.0.1.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
+
+    implementation 'org.springframework.security:spring-security-web'
+    implementation 'org.springframework.security:spring-security-config'
+
+    //swagger
+    swaggerCodegen 'org.openapitools:openapi-generator-cli:3.3.4'
+    swaggerUI 'org.webjars:swagger-ui:3.32.5'
+    implementation "io.springfox:springfox-swagger2:2.9.2"
+
+    //databases
+    implementation "mysql:mysql-connector-java"
+    testImplementation("org.hibernate:hibernate-entitymanager:5.2.9.Final")
+
+    //aws
+    implementation 'com.amazonaws:aws-java-sdk:1.12.199'
+    
+    // Java
+    implementation("com.google.code.gson:gson:2.8.2") { changing = true }
+
+    testRuntimeOnly 'com.h2database:h2'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+
+    //single dependency libraries
+    implementation 'org.modelmapper:modelmapper:2.3.0'
+    implementation 'org.apache.commons:commons-lang3:3.10'
+
+    // JSON Processing
+    implementation 'org.json:json:20220924'
+}
+
+defaultTasks 'clean', 'build', 'buildDockerImage'
+
+task setGitHooks {
+    doLast {
+        runCommandIgnoringErrors("git config --unset-all core.hookspath")
+        runCommand("git config --add core.hooksPath config/githooks/")
+    }
+}
+build.dependsOn(setGitHooks)
+
+task removeGitHooks {
+    doLast {
+        runCommand("git config --unset-all core.hookspath")
+    }
+}
+
+// The following are at least relatively unique to the zeus project
+task swaggerClean(type: Delete) {
+    doFirst {
+        delete generatedApiDirectory
+    }
+}
+generateSwaggerCode.dependsOn(swaggerClean)
+generateSwaggerCode.mustRunAfter(swaggerClean)
+compileJava.dependsOn(generateSwaggerCode)
+
+swaggerSources {
+    moiraiZeus {
+        inputFile = file("$apiDirectory/openapi.yaml")
+        code {
+            language = 'spring'
+            components = ['models','apis']
+            outputDir = file (generatedApiDirectory + '/java')
+            configFile = file ('src/main/resources/config.json')
+            templateDir = file('src/main/swagger/templates')
+            wipeOutputDir = false
+        }
+    }
+    moiraiZeusFiles {
+        inputFile = file("$apiDirectory/files.yaml")
+        code {
+            language = 'spring'
+            components = ['models','apis']
+            outputDir = file (generatedApiDirectory + '/java')
+            configFile = file ('src/main/resources/config.json')
+            templateDir = file('src/main/swagger/templates')
+            wipeOutputDir = false
+        }
+    }
+    moiraiZeusUi {
+        inputFile = file("$apiDirectory/ui.yaml")
+        code {
+            language = 'spring'
+            components = ['models','apis']
+            outputDir = file (generatedApiDirectory + '/java')
+            configFile = file ('src/main/resources/config.json')
+            templateDir = file('src/main/swagger/templates')
+            wipeOutputDir = false
+        }
+    }
+    moiraiZeusEvaluation {
+        inputFile = file("$apiDirectory/evaluation.yaml")
+        code {
+            language = 'spring'
+            components = ['models','apis']
+            outputDir = file (generatedApiDirectory + '/java')
+            configFile = file ('src/main/resources/config.json')
+            templateDir = file('src/main/swagger/templates')
+            wipeOutputDir = false
+        }
+    }
+}
+
+checkstyle {
+    configFile = file("${project.projectDir}/config/checkstyle/checkstyle.xml")
+    configProperties = [samedir: "${project.projectDir}/config/checkstyle"]
+    ignoreFailures = true
+    sourceSets = [sourceSets.main, sourceSets.test]
+    toolVersion = 8.28
+}
+
+test {
+    useJUnitPlatform()
+    outputs.upToDateWhen { false }
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    reports {
+        xml.required = true
+    }
+}
+
+// Everything after this should most likely be kept in sync with the other gradle projects.
+// At some point they will be broken out and kept in a central place to be referenced.
+task ECRLogin {
+    description 'Logs Docker into the ECR repo'
+    doLast {
+        String loginPassword = runCommand("aws ecr get-login-password --region us-east-1")
+        println runCommand("docker login --username AWS --password $loginPassword $dockerRegistryId")
+    }
+}
+
+task ECRLogout {
+    description 'Logs Docker out of the ECR repo'
+    doLast {
+        println runCommand("docker logout $dockerRegistryId")
+    }
+}
+
+task buildDockerImage(dependsOn: ECRLogin) {
+    description 'Builds the Docker image.'
+    doLast {
+        // Concatenate the name and tag
+        String local_name_and_tag = dockerRepositoryName + ":" + version
+
+        // Build Dockerfile Image
+        String cacheCommand = project.hasProperty("no-cache") ? "--no-cache " : ""
+        println runCommand("docker build ${cacheCommand}-t $local_name_and_tag -f $dockerFilename .")
+
+        // Cleans any dangling images from the build
+        // -f stand for force. Skips the prompt for confirmation
+        println runCommand("docker container prune -f")
+        println runCommand("docker builder prune -f")
+
+        if (project.hasProperty("skip-test")) {
+            println "Skipping Docker tests."
+        } else {
+            println runCommand("./runDockerTests.sh $local_name_and_tag")
+        }
+    }
+}
+buildDockerImage.finalizedBy ECRLogout
+
+task pushDockerImage(dependsOn: ECRLogin) {
+    description 'Pushes the Docker image to the ECR repo.'
+    doLast {
+        // Concatenate the name and tag
+        String local_name_and_tag = dockerRepositoryName + ":" + version
+
+        // Set base values for naming the image, then concat
+        String image_name = project.hasProperty("image-name") ? project.getProperty("image-name") : getDockerImageName()
+        String image_tag = project.hasProperty("tag") ? project.getProperty("tag").toLowerCase() : "$version"
+        String image_name_and_tag = image_name + ":" + image_tag
+
+        // Main image
+        println "[pushDockerImage]: image_name_and_tag: $image_name_and_tag"
+        println runCommand("docker tag $local_name_and_tag $image_name_and_tag")
+        println runCommand("docker push $image_name_and_tag")
+
+        // Push as Latest
+        Boolean tag_latest = project.hasProperty("tag-latest") ? true : false
+        if (tag_latest) {
+            String image_name_latest = image_name + ":latest"
+            println "[pushDockerImage]: image_name_latest: $image_name_latest"
+            println runCommand("docker tag $local_name_and_tag $image_name_latest")
+            println runCommand("docker push $image_name_latest")
+        }
+
+        // Push to genesis
+        Boolean tag_genesis = project.hasProperty("tag-genesis") ? true : false
+        if (tag_genesis) {
+            String image_name_genesis = getGenesisImageName() + "-latest"
+            println "[pushDockerImage]: image_name_genesis: $image_name_genesis"
+            println runCommand("docker tag $local_name_and_tag $image_name_genesis")
+            println runCommand("docker push $image_name_genesis")
+        }
+    }
+}
+
+pushDockerImage.finalizedBy ECRLogout
+
+String getDockerImageName() {
+    "$dockerRegistryId/$dockerRepositoryName"
+}
+
+String getGenesisImageName() {
+    "$dockerRegistryId/genesis:$dockerRepositoryName"
+}
+
+String runCommand(String str) {
+    println "[runCommand]: ${str}"
+    String[] tstr = str.tokenize()
+    runCommand(tstr)
+}
+
+String runCommand(String... args) {
+    def proc = args.execute()
+    proc.waitFor()
+    String input = proc.in.readLines().join("\n")
+    String errors = "[runCommand ERROR]: "+proc.err.readLines().join("\n[ERROR]: ")
+
+    if (proc.exitValue() != 0) {
+        println input
+        println errors
+        throw new Error("Exit value: "+proc.exitValue()+"\n Error: "+errors);
+    }
+    "$input"
+}
+
+String runCommandIgnoringErrors(String str) {
+    println "[runCommand]: ${str}"
+    String[] tstr = str.tokenize()
+    runCommandIgnoringErrors(tstr)
+}
+
+String runCommandIgnoringErrors(String... args) {
+    def proc = args.execute()
+    proc.waitFor()
+    String input = proc.in.readLines().join("\n")
+    String errors = "[runCommand ERROR]: "+proc.err.readLines().join("\n[ERROR]: ")
+
+    if (proc.exitValue() != 0) {
+        println input
+        println errors
+    }
+    "$input"
+}

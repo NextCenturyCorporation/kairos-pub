@@ -1,0 +1,2333 @@
+openapi: 3.0.0
+info:
+  title: Moirai Zeus API
+  description: This is the API for the Zeus(Ta3) system's access to the subprojects (e.g. Clotho),
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+tags:
+  - name: Users
+    description: Users represents the endpoints for creating and managing user accounts.
+  - name: TA1
+    description: TA1 represents the endpoints that our TA1 performers have access to.
+  - name: TA2
+    description: TA2 represents the endpoints that our TA2 performers have access to.
+  - name: Admin
+    description: Admin represents the endpoints that Administrators have access to.
+  - name: Security
+    description: Security represents endpoints dealing with authorizations.
+  - name: Content
+    description: represents endpoints for providing generic information to be displayed in the UI.
+security:
+  - bearerAuth: []
+paths:
+  /security/auth/renewal:
+    post:
+      tags:
+        - Security
+      summary: Takes an authentication token and returns a new one
+      description: updates Authentication Token
+      operationId: requestAuthTokenRenewal
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /settings/zeus:
+    delete:
+      tags:
+        - Settings
+      summary: deletes setting
+      description: deletes a zeus setting given an id
+      operationId: deleteZeusSetting
+      parameters:
+        - name: id
+          in: query
+          description: setting id to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: deletion affirmation
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        404:
+          description: Not found
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+    get:
+      tags:
+        - Settings
+      summary: Return Zeus setting values of a given setting name
+      description: Return Zeus setting of a given name
+      operationId: getZeusSetting
+      parameters:
+        - name: id
+          in: query
+          description: Name of setting to retrieve
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/zeusSetting'
+        404:
+          description: Not found
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+    post:
+      tags:
+        - Settings
+      summary: Takes Zeus setting and saves it.
+      description: authenticates user
+      operationId: postZeusSettings
+      requestBody:
+        description: Post Zeus Settign
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/zeusSetting'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /settings/zeus/all:
+    get:
+      tags:
+        - Settings
+      summary: Return all Zeus settings
+      description: Return all Zeus settings
+      operationId: getZeusSettings
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/zeusSetting'
+  /users/authenticate:
+    post:
+      tags:
+        - Users
+      summary: Takes username and password and provides authentication.
+      description: authenticates user
+      operationId: authenticate
+      requestBody:
+        description: Authenticate user with password
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/zeusLoginRequest'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Invalid credentials.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /users/account:
+    get:
+      tags:
+        - Users
+      summary: Checks for a jwt token. If so, returns the account.
+      description: Gets user information.
+      operationId: getUserAccount
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/jwtUser'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Invalid credentials.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /users/registration:
+    post:
+      tags:
+        - Users
+      summary: Registers new user given username and password.
+      description: Register user
+      operationId: register
+      requestBody:
+        description: Registers user with password
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/registrationDto'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        409:
+          description: Conflict. Account name taken.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /users/settings:
+    put:
+      tags:
+       - Users
+      summary: Updates a subset of fields in the jwtUser object known as Settings
+      operationId: updateUserSettings
+      requestBody:
+        description: Change a user's settings
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/settingsDto'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Invalid username or password
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        409:
+          description: Conflict. Account name taken.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /users/forgotUsername:
+    post:
+      tags:
+        - Users
+      summary: Takes an email and to that email send the coresponding username.
+      description: forgot username
+      operationId: forgotUsername
+      requestBody:
+        description: The email address of the user.
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/stringRequest'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        204:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /users/forgotPassword:
+    post:
+      tags:
+        - Users
+      summary: Takes a username and emailed the associated account a access code.
+      description: forgot password
+      operationId: forgotPassword
+      requestBody:
+        description: The username address of the account.
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/stringRequest'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        204:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /users/resetPassword:
+    post:
+      tags:
+        - Users
+      summary: Takes an accessCode and grants a jwt to resetPassword for the associated account.
+      description: reset password
+      operationId: resetPassword
+      requestBody:
+        description: The accessCode.
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/stringRequest'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Unauthorized.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /users/setPassword:
+    post:
+      tags:
+        - Users
+      summary: Takes the new password and checks the jwt for access to set the password.
+      description: set password
+      operationId: setPassword
+      requestBody:
+        description: The newpassword.
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/stringRequest'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Unauthorized.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /users/contactrequest:
+    get:
+      tags:
+        - Users
+      summary: Allows admin to view contact request on status
+      description: List Contact Requests for a given status
+      operationId: listContactRequestsByStatus
+      parameters:
+        - name: status
+          in: query
+          description: Contents to retrieve by status
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/contactRequest'
+        404:
+          description: Not found
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Invalid credentials.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /users/contact:
+    post:
+      tags:
+        - Users
+      summary: Sends contact request to admins
+      description: Contact request
+      operationId: addContactRequest
+      requestBody:
+        description: Contact information
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/contactRequestDto'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /users/registerNewTeamMember:
+    post:
+      tags:
+        - Users
+      summary: Creates User account for existing team
+      description: Creates User account for existing team
+      operationId: registerUserToTeam
+      requestBody:
+        description: Registers user with password
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/registrationDto'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        409:
+          description: Conflict. Account name taken.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /services/list:
+    get:
+      tags:
+        - Services
+      summary: Get services created by user accounts.
+      description: get service by parameter list
+      operationId: listServices
+      parameters:
+        - name: name
+          in: query
+          description: name value for service
+          schema:
+            type: string
+            example: Service Name
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/service'
+        404:
+          description: Not found
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Invalid credentials.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /services:
+    put:
+      tags:
+        - Services
+      summary: Updates an instance of a service
+      description: updates service
+      operationId: updateServiceInstance
+      requestBody:
+        description: updates service with updated details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/service'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+    delete:
+      tags:
+        - Services
+      summary: Terminates an instance of a service
+      description: termninates service
+      operationId: terminateServiceInstance
+      requestBody:
+        description: Terminates service with the selected parameters
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/service'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Unauthorized.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        409:
+          description: An existing provision for this user already exists
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /services/clotho:
+    post:
+      tags:
+        - Services
+      summary: Provisions an instance of Clotho with a user selected database
+      description: Initialize Clotho with a user selected database
+      operationId: provisionClotho
+      requestBody:
+        description: Launches Terraform with the selected parameters
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/clothoServiceDto'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Unauthorized.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        409:
+          description: An existing provision for this user already exists
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+    delete:
+      tags:
+        - Services
+      summary: Terminates an instance of Clotho with a user selected database
+      description: termninates Clotho with a user selected database
+      operationId: terminateClothoInstance
+      requestBody:
+        description: Terminates clotho with the selected parameters
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/service'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Unauthorized.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        409:
+          description: An existing provision for this user already exists
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /services/docker/registry/password/reset:
+    post:
+      tags:
+        - Docker
+      summary: Resets the Docker registry password for the logged in user
+      description: Reset the Docker registry password
+      operationId: resetDockerRegistryPassword
+      requestBody:
+        description: Password to reset password to
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/stringRequest'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Unauthorized
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /services/docker/registry/refresh:
+    post:
+      tags:
+        - Docker
+      summary: Forces the zeus to update the docker registry
+      operationId: refreshDockerRegistry
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Unauthorized
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        404:
+          description: Not Found
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /services/docker/registry/restore:
+    post:
+      tags:
+        - Docker
+      summary: Recreate the docker registries basd on info in the DB.
+      operationId: restoreDockerRegistry
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Unauthorized
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /services/docker/registry:
+    get:
+      tags:
+        - Docker
+      summary: Retrieves the loged in user's Docker registry.
+      description: retrieve docker registry
+      operationId: getDockerRegistry
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/dockerRegistry'
+        401:
+          description: Unauthorized
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        404:
+          description: Not Found
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+    post:
+      tags:
+        - Docker
+      summary: Provisions a Private Docker registry for a performer
+      description: Provisions a Private Docker registry for a performer
+      operationId: createDockerRegistry
+      requestBody:
+        description: Connects to a Flask service that creates a private Docker registry.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/stringRequest'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Unauthorized.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        409:
+          description: An existing provision for this user already exists
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+    delete:
+      tags:
+        - Docker
+      summary: Destroys Docker uploads
+      description: Destroys Docker upload
+      operationId: destroyDockerUploads
+      parameters:
+        - name: id
+          in: query
+          description: DockerUpload id of DockerUpload to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Unauthorized.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /services/docker/registry/list:
+    get:
+      tags:
+        - Docker
+      summary: Retrieves a docker registry for the username.
+      description: get docker registry for user
+      operationId: getDockerRegistryForUser
+      parameters:
+        - name: username
+          in: query
+          description: UserName
+          schema:
+            type: string
+            example: Performer Name
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/dockerRegistry'
+        401:
+          description: Unauthorized
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        404:
+          description: Not Found
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /admin/assumeUser:
+    post:
+      tags:
+        - Admin
+      summary: Logs the admin in as the user.
+      description: A logged in admin can use this endpoint to assume the login of the desired user.
+      operationId: assumeUser
+      requestBody:
+        description: Desired Username
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/stringRequest'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Unauthorized.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /admin/activateDeactivateAccounts:
+    put:
+      tags:
+        - Admin
+      summary: DeActivates or Activates a Users Account
+      description: Deactivates or activates a users account
+      operationId: toggleAccountActivation
+      parameters:
+        - name: userName
+          in: query
+          description: User to flip Account Active flag
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Unauthorized
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /admin/listRoles:
+    get:
+      tags:
+        - Admin
+      summary: Returns JwtRole list
+      description: Returns all Roles stored for displaying and updating.
+      operationId: listRoles
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/jwtRole'
+        401:
+          description: Unauthorized
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /admin/deleteDockerRegistry:
+    delete:
+      tags:
+        - Admin
+      summary: Takes a user and updates their teamname across the schema
+      description: creates or updates existing users team
+      operationId: deleteTeamRegistry
+      parameters:
+        - name: teamName
+          in: query
+          description: teamName to assign to user
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        404:
+          description: Not Found. Registry was not found.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /admin/updateUsersTeam:
+    put:
+      tags:
+        - Admin
+      summary: Takes a user and updates their teamname across the schema
+      description: creates or updates existing users team
+      operationId: updateTeamName
+      parameters:
+        - name: teamName
+          in: query
+          description: teamName to assign to user
+          schema:
+            type: string
+      requestBody:
+        description: user to save
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/jwtUser'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Unauthorized
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        409:
+          description: Conflict
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /admin/mergeTeam:
+    put:
+      tags:
+        - Admin
+      summary: Migrates teamname across the schema
+      description: creates or updates existing users team
+      operationId: mergeTeam
+      parameters:
+        - name: teamName
+          in: query
+          description: teamName to assign to user
+          schema:
+            type: string
+      requestBody:
+        description: user to save
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/jwtUser'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Unauthorized
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        409:
+          description: Conflict
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /admin/createOrUpdateRole:
+    post:
+      tags:
+        - Admin
+      summary: Takes a user and updates their Roles.
+      description: creates or updates existing Roles
+      operationId: createOrUpdateRole
+      requestBody:
+        description: roles to save
+        content:
+          'application/json':
+            schema:
+              items:
+                $ref: '#/components/schemas/jwtRole'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Unauthorized
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        409:
+          description: Conflict
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /admin/updateUserAccount:
+    put:
+      tags:
+        - Admin
+      summary: Takes a username and Role list.
+      description: Assigns a Users account with Roles passed
+      operationId: updateUserAccount
+      requestBody:
+        description: JwtUser to update
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/userDataDto'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Unauthorized
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /admin/deleteRoles:
+    delete:
+      tags:
+        - Admin
+      summary: Delete a Role.
+      description: deletes a Role and removes that role from all users assigned to it
+      operationId: deleteRoles
+      requestBody:
+        description: roles to delete
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/jwtRole'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Unauthorized
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        404:
+          description: Role Not Found
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        409:
+          description: Conflict, the role may have been modified after you selected it for deletion.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /admin/listUsers:
+    get:
+      tags:
+        - Admin
+      summary: Retrieves a list of users and their permissions.
+      description: list users
+      operationId: listUsers
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/jwtUser'
+        401:
+          description: Unauthorized
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /admin/listPermissions:
+    get:
+      tags:
+        - Admin
+      summary: Retrieves a list of permissions.
+      description: list permissions
+      operationId: listPermissions
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/jwtPermission'
+        401:
+          description: Unauthorized
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /admin/provisionGitLab:
+    post:
+      tags:
+        - Admin
+      summary: Provisions Gitlab and Gitlab runner for project needs
+      description: Provisions Gitlab and Gitlab runner for project needs
+      operationId: provisionGitlab
+      requestBody:
+        description: Launches Terraform with the selected parameters
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/gitLabRequest'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Unauthorized.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+    delete:
+      tags:
+        - Admin
+      summary: Destroys GitLab and Gitlab runner for project needs
+      description: Destroys Gitlab and Gitlab runner for project needs
+      operationId: destroyGitlab
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Unauthorized.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /admin/provisionEnclaveInfrastructure:
+    post:
+      tags:
+        - Admin
+      summary: Provisions Enclace Infrastructure for project needs
+      description: Provisions Enclace Infrastructure for project needs
+      operationId: provisionEnclaveInfrastructure
+      requestBody:
+        description: Launches Terraform with the selected parameters
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/stringRequest'
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Unauthorized.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+    delete:
+      tags:
+        - Admin
+      summary: Destroys Enclave Infrastructure for project teardown
+      description: Destroys Enclave Infrastructure for project teardown
+      operationId: destroyEnclaveInfrastructure
+      responses:
+        200:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        401:
+          description: Unauthorized.
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /content/dropdowns/{key}:
+    get:
+      tags:
+        - Content
+      summary: retrieves dropdown Content
+      description: retrieves dropdown content
+      operationId: retrieveDropdownByKey
+      parameters:
+        - name: key
+          in: path
+          description: Contents to retrieve by key
+          required: true
+          schema:
+            type: string
+        - name: selectOne
+          in: query
+          description: Provides a Select one option
+          required: true
+          schema:
+            type: boolean
+      responses:
+        200:
+          description: Experiment to save
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/dropdownDao'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        404:
+          description: Not found
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /support/faqs:
+    delete:
+      tags:
+        - Support
+      summary: delete multiple faqs
+      description: delete multiple faqs
+      operationId: deleteFaqsByIdList
+      parameters:
+        - name: idList
+          in: query
+          description: FAQ id of FAQ to delete
+          required: true
+          schema:
+            items:
+              type: string
+      responses:
+        200:
+          description: deletion affirmation
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        404:
+          description: Not found
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /support/faq/{id}:
+    delete:
+      tags:
+        - Support
+      summary: saves question/answer object
+      description: saves question/answer object
+      operationId: deleteFaq
+      parameters:
+        - name: id
+          in: path
+          description: FAQ id of FAQ to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: okay
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        404:
+          description: Not found
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+    get:
+      tags:
+        - Support
+      summary: retrieves FAQ by ID
+      description: retrieves FAQ by ID
+      operationId: retrieveFaq
+      parameters:
+        - name: id
+          in: path
+          description: FAQ id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: faq to save
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/faq'
+        404:
+          description: Not found
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+    put:
+      tags:
+        - Support
+      summary: updates a FAQ by ID
+      description: updates a FAQ by ID
+      operationId: updateFaqById
+      parameters:
+        - name: id
+          in: path
+          description: FAQ id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: FAQ to update to
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/faq'
+      responses:
+        200:
+          description: affirmation of successful update
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        404:
+          description: Not found
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /support/faq/categories:
+    get:
+      tags:
+        - Support
+      summary: retrieve categories useable for FAQs
+      description: retrieve categories useable for FAQs
+      operationId: retrieveFaqCategories
+      responses:
+        200:
+          description: okay
+          content:
+            'application/json':
+              schema:
+                items:
+                  $ref: '#/components/schemas/faqCategory'
+    post:
+      tags:
+        - Support
+      summary: submits categories useable for FAQs
+      description: submits categories useable for FAQs
+      operationId: submitFaqCategories
+      requestBody:
+        description: category object to save
+        content:
+          'application/json':
+            schema:
+              items:
+                $ref: '#/components/schemas/faqCategory'
+      responses:
+        200:
+          description: okay
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+  /support/faq/category/{id}:
+    get:
+      tags:
+        - Support
+      summary: retrieve category useable for FAQs
+      description: retrieve category useable for FAQs
+      operationId: retrieveFaqCategory
+      parameters:
+        - name: id
+          in: path
+          description: cateogory id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: category object
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/faqCategory'
+        404:
+          description: Not found
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+    delete:
+      tags:
+        - Support
+      summary: delete category useable for FAQs
+      description: delete category useable for FAQs
+      operationId: deleteFaqCategory
+      parameters:
+        - name: id
+          in: path
+          description: cateogory id to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: deletion affirmation
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        404:
+          description: Not found
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+    put:
+      tags:
+        - Support
+      summary: updates a FAQ category by ID
+      description: updates a FAQ category by ID
+      operationId: updateFaqCategoryById
+      parameters:
+        - name: id
+          in: path
+          description: FAQ category id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: FAQ category to update to
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/faqCategory'
+      responses:
+        200:
+          description: affirmation of successful update
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        400:
+          description: Bad request. Invalid input, object invalid
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+        404:
+          description: Not found
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/stringResponse'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    jobRequest:
+      type: object
+      x-jpaEntity: true
+      required:
+        - requestType
+        - extraInformation
+        - status
+        - attempt
+        - attemptLimit
+      properties:
+        id:
+          type: string
+          example:
+          x-jpaIdField: true
+          x-generatedId: true
+        requestType:
+          type: string
+          example: 'serviceRequest'
+        extraInformation:
+          type: string
+          example: 'serviceRequest'
+        status:
+          type: string
+          example: 'Failed'
+        attempt:
+          type: integer
+        attemptLimit:
+          type: integer
+    zeusSetting:
+      type: object
+      x-jpaEntity: true
+      required:
+        - name
+        - value
+      properties:
+        id:
+          type: string
+          x-jpaIdField: true
+          x-generatedId: true
+          x-read-only: true
+        name:
+          type: string
+        value:
+          type: string
+    dockerRegistry:
+      type: object
+      x-jpaEntity: true
+      required:
+        - owner
+        - endpoint
+      properties:
+        id:
+          type: string
+          x-jpaIdField: true
+          x-generatedId: true
+          x-read-only: true
+        owner:
+          type: string
+        endpoint:
+          type: string
+        password:
+          type: string
+        dockerimagelist:
+          type: array
+          items:
+            $ref: '#/components/schemas/dockerUpload'
+          x-lazyOneToMany: true
+          x-cascade-all: true
+    dockerUpload:
+      type: object
+      x-jpaEntity: true
+      required:
+        - registry
+        - repo
+        - tag
+        - dockerimagelocation
+        - lastModified
+      properties:
+        id:
+          type: string
+          x-jpaIdField: true
+          x-generatedId: true
+          x-read-only: true
+        registry:
+          type: string
+          example: "Performer 1"
+        repo:
+          type: string
+          example: "Image 1"
+        tag:
+          type: string
+        lastModified:
+          type: string
+          format: date-time
+          example: "2020-01-01"
+        digest:
+          type: string
+        size:
+          type: integer
+        dockerimagelocation:
+          type: string
+          example: "s3://kairos-service-artifacts/connectors/next_century/service_a/connector.py"
+    gitLabRequest:
+      type: object
+      required:
+        - prop1
+      properties:
+        prop1:
+          type: string
+        prop2:
+          type: string
+    zeusLoginRequest:
+      type: object
+      required:
+        - username
+        - password
+      properties:
+        username:
+          type: string
+          example: "moirai_group"
+        password:
+          type: string
+          example: "AVerySecurePassword"
+    registrationDto:
+      type: object
+      required:
+        - username
+        - password
+        - teamName
+        - performerGroup
+        - emailAddress
+      properties:
+        username:
+          type: string
+          example: "persongroup"
+        password:
+          type: string
+        teamName:
+          type: string
+          example: "Next Century"
+        performerGroup:
+          type: string
+          example: "TA1"
+        emailAddress:
+          type: string
+          example: "generic.email@host.com"
+        timezone:
+          type: string
+          example: "GMT-05:00"
+    faqCategory:
+      type: object
+      x-jpaEntity: true
+      required:
+        - categoryName
+        - listOrder
+      properties:
+        id:
+          type: string
+          x-jpaIdField: true
+          x-generatedId: true
+          x-read-only: true
+        listOrder:
+          type: number
+        categoryName:
+          type: string
+          example: "category A"
+        faqs:
+          type: array
+          items:
+            $ref: '#/components/schemas/faq'
+          x-lazyOneToMany: true
+          x-joinTable:
+            joinValue: name = "faq_faq_category",
+              joinColumns = { @JoinColumn(name = "faq_category_id") },
+              inverseJoinColumns= { @JoinColumn(name = "faq_id") }
+          x-cascade-all: true
+    faqLink:
+      type: object
+      x-jpaEntity: true
+      required:
+        - name
+        - href
+        - text
+        - faqId
+      properties:
+        id:
+          type: string
+          x-jpaIdField: true
+          x-generatedId: true
+          x-read-only: true
+        name:
+          type: string
+          example: "HTML_Link_1"
+        href:
+          type: string
+          example: "http://moirai-ui.com/services"
+        text:
+          type: string
+          example: "Services"
+        faqId:
+          type: string
+    faq:
+      type: object
+      x-jpaEntity: true
+      required:
+        - question
+        - answer
+        - faqCategory
+        - listOrder
+      properties:
+        id:
+          type: string
+          x-jpaIdField: true
+          x-generatedId: true
+        listOrder:
+          type: number
+        question:
+          type: string
+          example: "How do you spell Moirai?"
+        answer:
+          x-jpaColOverride:
+            overrideValue: length= 510
+          type: string
+          example: "Yes"
+    clothoServiceDto:
+      type: object
+      required:
+        - name
+        - details
+        - databaseType
+      properties:
+        name:
+          type: string
+          example: service10
+        databaseType:
+          type: string
+          enum:
+            - Neo4j
+            - JanusGraph
+            - OrientDB
+        details:
+          type: string
+          example: service that will help me perform tasks A, B, and C
+    settingsDto:
+      type: object
+      required:
+        - id
+        - username
+        - password
+        - teamName
+        - performerGroup
+        - emailAddress
+      properties:
+        id:
+          type: string
+        username:
+          type: string
+          example: "persongroup"
+        currentPassword:
+          type: string
+        password:
+          type: string
+        teamName:
+          type: string
+          example: "Next Century"
+        performerGroup:
+          type: string
+          example: "TA1"
+        emailAddress:
+          type: string
+          example: "generic.email@host.com"
+        timezone:
+          type: string
+          example: "GMT-05:00"
+        profilePictureURL:
+          type: string
+        darkMode:
+          type: boolean
+          example: true
+    userDataDto:
+      type: object
+      required:
+        - id
+        - username
+        - performerGroup
+        - emailAddress
+        - active
+      properties:
+        id:
+          type: string
+        username:
+          type: string
+          example: "persongroup"
+        performerGroup:
+          type: string
+          example: "TA1"
+        emailAddress:
+          type: string
+          example: "generic.email@host.com"
+        active:
+          type: boolean
+          example: true
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/jwtRole'
+    jwtUser:
+      x-jpaEntity: true
+      type: object
+      required:
+        - username
+        - password
+        - emailAddress
+        - teamName
+        - performerGroup
+      properties:
+        id:
+          type: string
+          example:
+          x-jpaIdField: true
+          x-generatedId: true
+        active:
+          type: boolean
+          x-jpaColOverride:
+            overrideValue: "columnDefinition = \"tinyint(1) default 1\""
+        username:
+          type: string
+          example: "moirai_group"
+        password:
+          type: string
+          example: "AVerySecurePassword"
+        passwordExpiration:
+          type: string
+          format: date
+          example: "2020-01-01"
+        teamName:
+          type: string
+          example: "Next Century"
+        performerGroup:
+          type: string
+          example: "TA1"
+        emailAddress:
+          type: string
+          example: "generic.email@host.com"
+        profilePictureURL:
+          type: string
+        darkMode:
+          type: boolean
+          example: true
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/jwtRole'
+          x-lazyManyToMany: true
+          x-joinTable:
+            joinValue: name = "jwt_user_jwt_role",
+              joinColumns = { @JoinColumn(name = "jwt_user_id") },
+              inverseJoinColumns = { @JoinColumn(name = "jwt_role_id") }
+        timezone:
+          type: string
+          example: "GMT-05:00"
+        services:
+          type: array
+          items:
+            $ref: '#/components/schemas/service'
+          x-lazyOneToMany: true
+          x-jsonIgnoreProperty:
+            propertyKey: missions
+          x-cascade-all: true
+    stringResponse:
+      type: object
+      properties:
+        value:
+          type: string
+          example: "Success"
+    stringRequest:
+      type: object
+      properties:
+        value:
+          type: string
+          example: "Sample_text"
+    jwtPermission:
+      type: object
+      x-jpaEntity: true
+      required:
+        - id
+        - name
+        - description
+      properties:
+        id:
+          type: string
+          example:
+          x-jpaIdField: true
+          x-generatedId: true
+        name:
+          type: string
+          example: "can_provision_graph_db"
+        description:
+          type: string
+          example: "Has access to the provisioning service for graph databases."
+    jwtRole:
+      type: object
+      x-jpaEntity: true
+      required:
+        - id
+        - name
+        - description
+      properties:
+        id:
+          type: string
+          example:
+          x-jpaIdField: true
+          x-generatedId: true
+        name:
+          type: string
+          example: "admin"
+        description:
+          type: string
+          example: "Administrative User"
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/jwtPermission'
+          x-lazyManyToMany: true
+          x-jsonIgnoreProperty:
+            propertyKey: missions
+          x-joinTable:
+            joinValue: name = "jwt_permission_jwt_role",
+              joinColumns = { @JoinColumn(name = "jwt_role_id") },
+              inverseJoinColumns = { @JoinColumn(name = "jwt_permission_id") }
+    service:
+      type: object
+      x-jpaEntity: true
+      required:
+        - name
+      properties:
+        id:
+          type: string
+          example:
+          x-jpaIdField: true
+          x-generatedId: true
+        name:
+          type: string
+          example: "service1"
+        type:
+          type: string
+          example: "clotho"
+        subtype:
+          type: string
+          example: "Neo4j"
+        status:
+          type: string
+        dateReceived:
+          type: string
+          format: date
+          example: "2020-01-01"
+        teamName:
+          type: string
+        access:
+          type: string
+          example: "Private"
+        details:
+          type: string
+        error:
+          type: string
+          example: "Error Msg"
+          x-jpaTransient: true
+        awsInstances:
+          type: array
+          items:
+            $ref: '#/components/schemas/serviceAwsInstance'
+          x-lazyOneToMany: true
+          x-jsonIgnoreProperty:
+            propertyKey: missions
+          x-joinTable:
+            joinValue: name = "service_service_aws_instance",
+              joinColumns = { @JoinColumn(name = "service_id") },
+              inverseJoinColumns = { @JoinColumn(name = "service_aws_instance_id") }
+          x-cascade-all: true
+        endpoints:
+          type: array
+          items:
+            $ref: '#/components/schemas/serviceEndpoint'
+          x-lazyOneToMany: true
+          x-jsonIgnoreProperty:
+            propertyKey: missions
+          x-joinTable:
+            joinValue: name = "service_service_endpoint",
+              joinColumns = { @JoinColumn(name = "service_id") },
+              inverseJoinColumns = { @JoinColumn(name = "service_endpoint_id") }
+          x-cascade-all: true
+        downloads:
+          type: array
+          items:
+            $ref: '#/components/schemas/serviceDownload'
+          x-lazyOneToMany: true
+          x-jsonIgnoreProperty:
+            propertyKey: missions
+          x-joinTable:
+            joinValue: name = "service_service_download",
+              joinColumns = { @JoinColumn(name = "service_id") },
+              inverseJoinColumns = { @JoinColumn(name = "service_download_id") }
+          x-cascade-all: true
+    serviceAwsInstance:
+      type: object
+      x-jpaEntity: true
+      required:
+        - instanceId
+      properties:
+        id:
+          type: string
+          x-jpaIdField: true
+          x-generatedId: true
+        instanceId:
+          type: string
+          example: "i-011d626d652684d5a4"
+    serviceEndpoint:
+      type: object
+      x-jpaEntity: true
+      required:
+        - uri
+        - name
+      properties:
+        id:
+          type: string
+          x-jpaIdField: true
+          x-generatedId: true
+        name:
+          type: string
+          example: "Clotho Endpoint"
+        uri:
+          type: string
+          example: "ec2-18-232-154-122.compute-1.amazonaws.com:8008"
+    serviceDownload:
+      type: object
+      x-jpaEntity: true
+      required:
+        - uri
+        - name
+      properties:
+        id:
+          type: string
+          x-jpaIdField: true
+          x-generatedId: true
+        name:
+          type: string
+          example: "Python Connector"
+        uri:
+          type: string
+          example: "s3://kairos-service-artifacts/connectors/next_century/service_a/connector.py"
+    contactRequestDto:
+      type: object
+      x-jpaEntity: false
+      required:
+        - email
+        - topic
+        - message
+      properties:
+        requestor:
+          type: string
+          example: "generic.email@host.com"
+        topic:
+          type: string
+          example: "Services"
+        message:
+          type: string
+          example: "Sending you a message as a test."
+    contactRequest:
+      type: object
+      x-jpaEntity: true
+      required:
+        - requestor
+        - topic
+        - datetime
+        - status
+      properties:
+        id:
+          type: string
+          example:
+          x-jpaIdField: true
+          x-generatedId: true
+        requestor:
+          type: string
+          example: "someone@email.com"
+        topic:
+          type: string
+          example: "Access"
+        datetime:
+          type: string
+          format: date-time
+          example: "12449123"
+        status:
+          type: string
+          example: "open"
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/contactRequestMessage'
+          x-lazyOneToMany: true
+          x-cascade-all: true
+    contactRequestMessage:
+      type: object
+      x-jpaEntity: true
+      required:
+        - messageId
+        - datetime
+        - sender
+        - text
+      properties:
+        id:
+          type: string
+          example:
+          x-jpaIdField: true
+          x-generatedId: true
+        datetime:
+          type: string
+          format: date-time
+          example: "12449123"
+        sender:
+          type: string
+          example: "someone@email.com"
+        text:
+          type: string
+          example: "This is the message"
+    nodeTypeResponse:
+      type: object
+      x-jpaEntity: false
+      properties:
+        cpuTypes:
+          type: array
+          items:
+            type: string
+        gpuTypes:
+          type: array
+          items:
+            type: string
+    clusterInfo:
+      type: object
+      x-jpaEntity: false
+      properties:
+        cpu:
+          type: object
+          $ref: '#/components/schemas/cpu'
+        gpu:
+          type: object
+          $ref: '#/components/schemas/gpu'
+    cpu:
+      type: object
+      x-jpaEntity: false
+      properties:
+        desired:
+          type: integer
+        type:
+          type: string
+    gpu:
+      type: object
+      x-jpaEntity: false
+      properties:
+        desired:
+          type: integer
+        type:
+          type: string
+    performerInfo:
+      type: object
+      x-jpaEntity: false
+      properties:
+        performername:
+          type: string
+        schemalibraries:
+          type: array
+          items: 
+            type: string
+        dockerimageconfig:
+          type: object
+          $ref: '#/components/schemas/dockerimageconfig'
+        serviceconfig:
+          type: object
+          $ref: '#/components/schemas/serviceconfig'
+    dockerimageconfig:
+      type: object
+      x-jpaEntity: false
+      properties:
+        manifestlocation:
+          type: string
+    serviceconfig:
+      type: object
+      x-jpaEntity: false
+      properties:
+        port:
+          type: string
+    dropdownDao:
+        type: object
+        x-jpaEntity: true
+        required:
+          - id
+          - lookupId
+          - value
+          - display
+        properties:
+          id:
+            type: string
+            example: ""
+            x-jpaIdField: true
+            x-generatedId: true
+          lookupId:
+            type: string
+            example: "admin.experiment.type"
+          value:
+            type: string
+            example: "dropDown Value"
+          display:
+            type: string
+            example: "Display Value"
+            x-jpaColOverride:
+              overrideValue: length= 510
+          displayOrder:
+            type: integer

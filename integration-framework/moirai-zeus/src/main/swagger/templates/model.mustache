@@ -1,0 +1,77 @@
+package {{package}};
+
+import java.util.Objects;
+{{#imports}}import {{import}};
+{{/imports}}
+{{#serializableModel}}
+import java.io.Serializable;
+{{/serializableModel}}
+{{#useBeanValidation}}
+import javax.validation.Valid;
+import javax.validation.constraints.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Convert;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Index;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Transient;
+import javax.persistence.Table;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.id.UUIDGenerator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+{{/useBeanValidation}}
+{{#performBeanValidation}}
+import org.hibernate.validator.constraints.*;
+{{/performBeanValidation}}
+{{#vendorExtensions.x-jpa}}
+
+{{/vendorExtensions.x-jpa}}
+{{#jackson}}
+{{#withXml}}
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+{{/withXml}}
+{{/jackson}}
+{{#withXml}}
+import javax.xml.bind.annotation.*;
+{{/withXml}}
+{{^parent}}
+{{#hateoas}}
+import org.springframework.hateoas.ResourceSupport;
+{{/hateoas}}
+{{/parent}}
+
+{{#models}}
+{{#model}}
+{{#vendorExtensions.x-jpaEntity}}
+@Entity
+{{#vendorExtensions.x-jpaTableOverride}}
+@Table(name="{{{jpaTableOverrideValue}}}")
+{{/vendorExtensions.x-jpaTableOverride}}
+{{#vendorExtensions.x-jpaInheritanceOverride}}
+@Inheritance({{{jpaInheritanceOverrideValue}}})
+{{/vendorExtensions.x-jpaInheritanceOverride}}
+{{/vendorExtensions.x-jpaEntity}}
+{{#isEnum}}
+{{>enumOuterClass}}
+{{/isEnum}}
+{{^isEnum}}
+{{>pojo}}
+{{/isEnum}}
+{{/model}}
+{{/models}}
