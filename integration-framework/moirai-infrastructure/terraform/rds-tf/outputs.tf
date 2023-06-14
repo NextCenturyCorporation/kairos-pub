@@ -18,10 +18,11 @@ output "db_user" {
 
 output "db_secret" {
     description = "secret"
+    sensitive = true
     value = aws_db_instance.default.password
 }
 
 output "rds_database_name" {
     description = "databasen ame"
-    value = aws_db_instance.default.name
+    value = aws_db_instance.default.db_name
 }

@@ -18,12 +18,13 @@ output "db_user" {
 
 output "db_secret" {
     description = "secret"
+    sensitive = true
     value = aws_db_instance.development.password
 }
 
 output "rds_database_name" {
     description = "databasen name"
-    value = aws_db_instance.development.name
+    value = aws_db_instance.development.db_name
 }
 
 output "rds_database_test_name" {
