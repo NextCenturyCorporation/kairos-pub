@@ -1,0 +1,9 @@
+**/.terraform
+**/*.tfstate
+
+#Don't check in pem files
+**/*.pem
+.DS_Store
+
+**/kubeconfig_*
+**/secure_vars.yml

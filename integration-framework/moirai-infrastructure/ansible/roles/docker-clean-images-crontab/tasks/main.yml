@@ -1,0 +1,15 @@
+---
+
+- name: add docker clean to crontab
+  vars:
+    job_command: "0 0 * * * docker-clean run"
+  import_role:
+    name: crontab-schedule
+
+- name: add docker prune to crontab
+  vars:
+    job_command: "0 0 * * * docker system prune -a"
+  import_role: 
+    name: crontab-schedule
+
+...

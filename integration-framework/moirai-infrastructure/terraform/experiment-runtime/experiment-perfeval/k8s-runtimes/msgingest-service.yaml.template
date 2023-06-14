@@ -1,0 +1,69 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{evaluator}}-{{experiment}}-ingest
+  labels:
+    app: {{evaluator}}-{{experiment}}
+spec:
+  clusterIP: None
+  selector:
+    app: {{evaluator}}-{{experiment}}
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{evaluator}}-{{experiment}}-ingest-statefulset
+spec:
+  serviceName: "{{evaluator}}-{{experiment}}-ingest"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{evaluator}}-{{experiment}}
+  podManagementPolicy: Parallel
+  template:
+    metadata:
+      labels:
+        app: {{evaluator}}-{{experiment}}
+    spec:
+      nodeSelector:
+        kairosnodetype: {{experiment}}-framework
+      containers:
+      - image: 130602597458.dkr.ecr.us-east-1.amazonaws.com/kairos-runtimes:msgingest-1.0 
+        name: {{evaluator}}-{{experiment}}-msgingest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 10007
+        env:
+          - name: JAVA_OPTS
+            value: " -Xmx4096M"
+          - name: EVALUATOR
+            value: "{{evaluator}}"
+          - name: EXPERIMENT
+            value: "{{experiment}}"
+          - name: KAFKABROKERS
+            value: "{{kafkabrokers}}"
+          - name: KAIROSPERFORMER
+            value: "{{kairosperformerexists}}"
+          - name: AIDAPERFORMER
+            value: "{{aidaperformerexists}}"
+        volumeMounts:
+        - name: {{evaluator}}-{{experiment}}-store
+          mountPath: /data/{{evaluator}}-{{experiment}}-store
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - {{evaluator}}-{{experiment}}
+            topologyKey: "kubernetes.io/hostname"
+  volumeClaimTemplates:
+  - metadata:
+      name: {{evaluator}}-{{experiment}}-store
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 25Gi

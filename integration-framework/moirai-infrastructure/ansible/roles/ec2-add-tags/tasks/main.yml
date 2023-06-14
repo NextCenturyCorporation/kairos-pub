@@ -1,0 +1,17 @@
+---
+
+- debug: msg="{{ hostvars[item]['ansible_facts']}}" 
+  with_items:
+    - "{{ groups[ec2_tags] }}"
+
+- debug: msg="{{ec2_resource}}"
+
+- name: Create new tags for ec2 instance
+  ec2_tag:
+    region: "{{ ec2_region }}"
+    tags: "{{ ec2_additional_tags }}"
+    resource: "{{ ec2_resource }}"
+    state: "{{ ec2_state }}"
+    purge_tags: "{{ ec2_purge_tags }}"
+    validate_certs: "{{ ec2_validate_certs }}"
+  with_items: "{{ groups[ec2_tags] }}"

@@ -1,0 +1,45 @@
+{
+    "programName": "Kairos",
+    "environment": "q9",
+    "experimentConfigurations": [
+        {
+            "evaluator": "C",
+            "cluster": {
+                "cpu": {
+                    "desired": 2,
+                    "type": "m5.xlarge"
+                },
+                "gpu": {
+                    "desired": 1,
+                    "type": "p3.2xlarge"
+                }
+            },
+            "experiment": {
+                "name": "quizlet9-task1-abridged-ibm",
+                "commissiondate": "02/03/2022",
+                "type": "task1",
+                "tasklocation": "s3://kairos-experiment-data/quizlet9/experiment-input/task1/abridged/",
+                "kickoffdate": "02/03/2022",
+                "evaluationdataset": "quizlet9"
+            },
+            "performers": [
+                {
+                    "performername": "ibm",
+                    "schemalibraries": [
+                        "cmu",
+                        "ibm",
+                        "isi",
+                        "resin",
+                        "sbu"
+                    ],
+                    "dockerimageconfig": {
+                        "manifestlocation": "s3://kairos-experiment-data/quizlet9/experiment-input/docker-compose/ibm/docker-compose10.yml"
+                    },
+                    "serviceconfig": {
+                        "port": "10100"
+                    }
+                }
+            ]
+        }
+    ]
+}

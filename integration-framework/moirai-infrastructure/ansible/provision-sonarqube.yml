@@ -1,0 +1,29 @@
+#!/usr/bin/env ansible-playbook -i inventory
+
+---
+- name: Wait for systems to come up
+  hosts: localhost
+  connection: local
+  gather_facts: true
+  roles:
+    - {role: wait-for-ec2,
+        tags_to_check: ["tag_Name_SonarQube"]}
+
+- name: Configure the instances with common requirements
+  hosts:
+    - "tag_Name_SonarQube"
+  gather_facts: true
+  remote_user: bitnami
+  become: true
+  roles:
+    - python3-pip
+    - pip3-docker
+    - python3-default
+    - docker-ce
+    - { role: docker-user, username: "bitnami" }
+    - aws-ssm
+    - awscli
+    - { role: ssl-cert, ec2_cname: "sonarqube"}
+    - bitnami-sonarqube
+
+...

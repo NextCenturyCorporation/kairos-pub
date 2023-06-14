@@ -1,0 +1,32 @@
+---
+- name: Template bitnami apache config
+  template:
+    src: bitnami.conf
+    dest: "{{ conf_location }}"
+
+- name: Template bitnami apache ssl config
+  template:
+    src: bitnami-ssl.conf
+    dest: "{{ ssl_conf_location }}"
+
+- name: Template bitnami apache config
+  template:
+    src: sonarqube-vhost.conf
+    dest: "{{ vhost_conf_location }}"
+
+- name: Template bitnami apache ssl config
+  template:
+    src: sonarqube-https-vhost.conf
+    dest: "{{ vhost_https_conf_location }}"
+
+- name: Restart apache
+  shell: /opt/bitnami/ctlscript.sh stop apache
+  become: yes
+
+- name:
+  pause:
+    minutes: 1
+
+- name: Restart apache
+  shell: /opt/bitnami/ctlscript.sh start apache
+  become: yes

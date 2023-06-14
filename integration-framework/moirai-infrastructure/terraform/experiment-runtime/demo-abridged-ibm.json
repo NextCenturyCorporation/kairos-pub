@@ -1,0 +1,28 @@
+{
+    "experiment": {
+        "name": "demo-task1-abridged-ibm",
+        "type": "task2",
+        "tasklocation": "s3://kairos-experiment-data/phase2mid/experiment-input/task2/abridged/",
+        "evaluationdataset": "demo"
+    },
+    "cluster": {
+        "cpu": {
+            "desired": 1,
+            "type": "m5.xlarge"
+        },
+        "gpu": {
+            "desired": 1,
+            "type": "p3.2xlarge"
+        }
+    },
+    "manifests": [
+        {
+            "performername": "cmu",
+            "schemalibraries": [
+                "s3://kairos-experiment-data/phase2mid/experiment-input/ta_1/cmu/"
+            ],
+            "uri": "s3://kairos-experiment-data/phase2mid/experiment-input/docker-compose/cmu/docker-compose-5.yml",
+            "service_port": "10100"
+        }
+    ]
+}

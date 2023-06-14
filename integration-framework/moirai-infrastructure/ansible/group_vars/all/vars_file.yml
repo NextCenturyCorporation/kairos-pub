@@ -1,0 +1,15 @@
+---
+aws_region: us-east-1
+aws_profile: kairos
+project: 'kairos'
+
+amazon_ami: 'ami-04b9e92b5572fa0d1' # UBUNTU 18
+
+aws_key_type: 'rsa'
+aws_key_pair: "moirai-machine"
+ansible_ssh_private_key_file: '{{ playbook_dir }}/../key-pairs/{{ aws_key_pair }}.pem'
+
+s3_bucket_private_keys: "{{ project }}-safe"
+s3_bucket_terraform_states: "{{ project }}-tf-state"
+
+# cert_email: <<email to use for generating certs>>

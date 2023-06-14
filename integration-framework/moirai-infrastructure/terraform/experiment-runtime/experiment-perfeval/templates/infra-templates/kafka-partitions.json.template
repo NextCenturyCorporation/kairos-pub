@@ -1,0 +1,9 @@
+{
+"partitions": [
+    {
+        "topic": "{{TOPIC_NAME}}",
+        "partition": {{PARTITION}},
+        "offset": -1
+    }
+]
+}

@@ -1,0 +1,18 @@
+{
+    "efsId": ${efsId},
+    "region": ${region},
+    "perfevalclustername": "${perfevalclustername}",
+    "perfevalclusterarn": "${perfevalclusterarn}",
+    "submissioningestclustername": "${submissioningestclustername}",
+    "submissioningestclusterarn": "${submissioningestclusterarn}",
+    "mskclusterarn": "${mskclusterarn}",
+    "kafkabrokers": "${kafkabrokers}",
+    "aws": {
+        "accesskey": "${awsaccesskey}",
+        "secretaccesskey":"${awssecretaccesskey}",
+    },
+    "nifi":{
+        "dnsname":"${nifi_dnsname}",
+        "port": "${nifi_port}",
+    }
+}

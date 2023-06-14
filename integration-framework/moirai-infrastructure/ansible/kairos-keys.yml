@@ -1,0 +1,12 @@
+#!/usr/bin/env ansible-playbook -i inventory
+
+---
+- name: Pull keys for ec2 access
+  hosts: localhost
+  gather_facts: false
+  connection: local
+  vars:
+    profile: "{{ aws_profile }}"
+  roles:
+    - { role: ec2_key_pair}
+...

@@ -1,0 +1,90 @@
+import java.text.SimpleDateFormat
+import java.util.UUID
+import org.apache.nifi.components.state.*
+
+StateManager sm = context.stateManager
+def oldState = new HashMap<String, String>()
+oldState.putAll(sm.getState(Scope.LOCAL).toMap())
+
+if (oldState.one_shot) {
+  // prevent provenance
+  // println('Preventing provenance')
+  return
+} else {
+  def flowFile = session.create()
+
+  def inputmessage =
+   '''
+   {
+      "id": "#id#",
+      "runId": "#runId#",
+      "sender": "#sender#",
+      "time": "#now#",
+      "contentUri": "#contentUri#",
+      "content": {"data": "Example source document content here."}
+   }
+   '''
+
+ def inputmessageNoCURI =
+   '''
+   {
+      "id": "#id#",
+      "runId": "#runId#",
+      "sender": "#sender#",
+      "time": "#now#",
+      "content": {"data": "Example source document content here."}
+   }
+   '''
+
+
+  String runId
+  String contentUri
+
+  try {
+    runId = context.getProperty('runId')?.evaluateAttributeExpressions()?.value
+  }
+  catch (e) {
+    log.error('Param runId not provided', e)
+    println('Param runId not provided!!')
+    return
+  }
+
+  try {
+    contentUri = context.getProperty('contentUri')?.evaluateAttributeExpressions()?.value
+  }
+  catch (e) {
+    log.error('Param contentUri not provided', e)
+    println('Param contentUri not provided!!')
+  }
+
+  def message = (contentUri != null) ? inputmessage : inputmessageNoCURI
+
+
+  def sender = 'kairos'
+  message = message.replace('#sender#', sender)
+
+  def date = new Date()
+  def sdf = new SimpleDateFormat('MM/dd/yyyy HH:mm:ss')
+  def now = sdf.format(date)
+  message = message.replace('#now#', now)
+
+  def messageId = UUID.randomUUID().toString()
+  message = message.replace('#id#', messageId)
+
+  message = message.replace('#runId#', runId)
+
+  if(contentUri != null) {
+    message = message.replace('#contentUri#', contentUri)
+  }
+  
+  println('Sending - ' + message)
+
+  flowFile = session.write(flowFile, { outputStream ->
+    outputStream.write(message.bytes)
+    } as OutputStreamCallback)
+
+  session.transfer(flowFile, REL_SUCCESS)
+  oldState.one_shot = 'true'
+  sm.setState(oldState, Scope.LOCAL)
+}
+

@@ -1,0 +1,14 @@
+
+
+---
+- name: Ensure docker for user gitlab-runner
+  become: true
+  user:
+    name: "{{ username }}"
+    groups: docker
+    append: true
+
+- service:
+    name: docker
+    state: restarted
+    enabled: yes

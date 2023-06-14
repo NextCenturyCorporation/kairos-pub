@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: {{evaluator}}-{{experiment}}-erroregress
+  name: {{evaluator}}-{{experiment}}-erroregress
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: {{evaluator}}-{{experiment}}-erroregress
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: {{evaluator}}-{{experiment}}-erroregress
+    spec:
+      nodeSelector:
+        kairosnodetype: framework
+      containers:
+      - image: 130602597458.dkr.ecr.us-east-1.amazonaws.com/kairos-runtimes:erroregress-1.0
+        name: {{evaluator}}-{{experiment}}-erroregress
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 10007
+        env: 
+          - name: JAVA_OPTS
+            value: " -Xmx4096M"
+          - name: EVALUATOR
+            value: "{{evaluator}}"
+          - name: EXPERIMENT
+            value: "{{experiment}}"
+          - name: KAFKABROKERS
+            value: "{{kafkabrokers}}"
+        resources:
+        #  requests:
+        #    memory: "150Mi"
+        #    cpu: "250m"
+        #  limits:
+        #    memory: "8192Mi"
+        #    cpu: "2"
+        
+        #readinessProbe:
+        #  httpGet:
+        #    path: /ready
+        #    port: 10007
+        #    scheme: HTTP
+        #  initialDelaySeconds: 10 # how long to wait before checking
+        #  periodSeconds: 3 # how long to wait between checks
+        #  successThreshold: 1 # how many successes to hit before accepting
+        #  failureThreshold: 15 # how many failures to accept before failing
+        #  timeoutSeconds: 1 # how long to wait for a response
+        #livenessProbe:
+        #  httpGet:
+        #    path: /alive
+        #    port: 10007
+        #    scheme: HTTP
+        #  initialDelaySeconds: 3 # how long to wait before checking
+        #  periodSeconds: 30 # how long to wait between checks
+      restartPolicy: Always
+status: {}

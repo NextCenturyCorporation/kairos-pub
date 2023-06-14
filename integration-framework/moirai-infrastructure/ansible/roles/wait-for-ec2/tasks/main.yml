@@ -1,0 +1,38 @@
+---
+- name: Debug tags_to_check
+  debug: msg="tags={{tags_to_check}}"
+
+- name: Debug Groups
+  debug: msg="groups={{groups}}"
+
+- name: Convert to list of hosts
+  shell: python3 -c "print([x for t in {{tags_to_check}} for x in {{groups}}[t]])"
+  register: hosts_to_check
+  until: "hosts_to_check.stdout != ''"
+  retries: 10
+  delay: 10
+
+- name: Debug hosts to check
+  debug: msg="host={{ item }}"
+  with_items:
+    - "{{hosts_to_check['stdout']}}"
+  
+- name: Register hosts to check
+  add_host:
+    name: "{{ item }}"
+    groups: "ssh_check"
+  with_items:
+    - "{{hosts_to_check['stdout']}}"
+  
+- name: Wait for instances to listen on SSH
+  wait_for:
+    state: started
+    host: '{{ item }}'
+    port: 22
+  when: item != ''
+  with_items: '{{ groups["ssh_check"] }}'
+
+- name: Add DNS to known_hosts
+  local_action: command sh -c 'ssh-keyscan -t {{ key_type }} {{ item }} >> $HOME/.ssh/known_hosts'
+  when: item != ''
+  with_items: '{{ groups["ssh_check"] }}'

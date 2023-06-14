@@ -1,0 +1,5 @@
+---
+- name: install and setup docker clean
+  shell: "curl -s {{ install_uri }} | tee /usr/local/bin/docker-clean > /dev/null && chmod +x /usr/local/bin/docker-clean" 
+
+...

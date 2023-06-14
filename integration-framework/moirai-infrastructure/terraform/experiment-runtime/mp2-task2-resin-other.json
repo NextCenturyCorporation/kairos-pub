@@ -1,0 +1,43 @@
+{
+    "programName": "Kairos",
+    "environment": "q9",
+    "experimentConfigurations": [
+        {
+            "evaluator": "C",
+            "cluster": {
+                "cpu": {
+                    "desired": 1,
+                    "type": "m5.xlarge"
+                },
+                "gpu": {
+                    "desired": 0,
+                    "type": "p3.8xlarge"
+                }
+            },
+            "experiment": {
+                "name": "mp2-task2-other-resin",
+                "type": "task2",
+                "tasklocation": "s3://kairos-experiment-data/phase2mid/experiment-input/task2/other/",
+                "evaluationdataset": "phase2mid"
+            },
+            "performers": [
+                {
+                    "performername": "resin",
+                    "schemalibraries": [
+                        "cmu",
+                        "ibm",
+                        "isi",
+                        "resin",
+                        "sbu"
+                    ],
+                    "dockerimageconfig": {
+                        "manifestlocation": "s3://kairos-experiment-data/phase2mid/experiment-input/docker-compose/resin/docker-compose-task2-2.yml"
+                    },
+                    "serviceconfig": {
+                        "port": "10100"
+                    }
+                }
+            ]
+        }
+    ]
+}

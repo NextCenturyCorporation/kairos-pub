@@ -1,0 +1,5 @@
+---
+container_name: orientdb
+database_name: kairos
+orientdb_root_password: "{{ db_password }}"
+network_name: bridge

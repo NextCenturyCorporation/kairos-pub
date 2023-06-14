@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+   name: experimentstatus-ingress
+   annotations:
+     kubernetes.io/ingress.class: "alb"
+     alb.ingress.kubernetes.io/scheme: "internet-facing"
+     alb.ingress.kubernetes.io/target-type: "ip"         
+   labels: 
+     io.kompose.service: kairos-experimentstatus 
+spec:
+  rules:
+    - http:
+        paths: 
+          - path: /kairos/experimentstatus
+            backend: 
+              serviceName: kairos-experimentstatus 
+              servicePort: 80

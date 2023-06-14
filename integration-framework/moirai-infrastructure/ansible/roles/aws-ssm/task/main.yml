@@ -1,0 +1,6 @@
+- name: Installing the amazon SSM Agent... 
+  become: yes
+  become_method: sudo
+  roles:
+    - amazon-ssm-agent
+    

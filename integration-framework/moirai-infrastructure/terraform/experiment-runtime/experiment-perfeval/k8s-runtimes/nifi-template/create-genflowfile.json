@@ -1,0 +1,31 @@
+{
+        "revision": {
+	    "version": 0
+	},    
+	"component": {
+	    "name": "{{message-generator}}",
+	    "type": "org.apache.nifi.processors.standard.GenerateFlowFile",
+	    "bundle": {
+		    "group": "org.apache.nifi",
+		    "artifact": "nifi-standard-nar",
+		    "version" : ""
+		},
+	    "config": {
+		"properties": {
+			"File Size": "0B",
+			"Batch Size": "1",
+			"Data Format": "Text",
+			"Unique FlowFiles": "false",
+			"generate-ff-custom-text": "Hello Keshav",
+			"character-set": "UTF-8",
+			"mime-type": null
+		},
+		"schedulingStrategy" : "CRON_DRIVEN",
+		"schedulingPeriod" : "~"
+	    },
+	    "relationships": [{
+		    "name": "success",
+		    "autoTerminate": true
+		}]
+	}
+}

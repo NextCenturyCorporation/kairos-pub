@@ -1,0 +1,29 @@
+{
+    "experiment": {
+        "name": "Demo-task1abridged-Moirai-2022-08-16",
+        "type": "task1abridged",
+        "tasklocation": "s3://kairos-performer-data/development/performerdata/demo/task/task1abridged",
+        "evaluationdataset": "Demo"
+    },
+    "cluster": {
+        "cpu": {
+            "desired": 1,
+            "type": "m5.xlarge"
+        },
+        "gpu": {
+            "desired": 1,
+            "type": "p3.2xlarge"
+        }
+    },
+    "manifests": [
+        {
+            "performername": "moirai",
+            "schemalibraries": [
+                "s3://kairos-performer-data/development/performerdata/demo/schemas/moirai",
+                "s3://kairos-experiment-data/phase1/experiment-input/ta_1/ibm/"
+            ],
+            "uri": "s3://kairos-performer-data/development/performerdata/demo/docker-compose/moirai/docker-compose2.yml",
+            "service_port": "10100"
+        }
+    ]
+}

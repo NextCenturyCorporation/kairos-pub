@@ -1,0 +1,64 @@
+apiVersion: extensions/v1beta1
+kind: Service
+apiVersion: v1
+metadata:
+  name: nifi-service
+spec:
+  selector:
+    app: nifi
+  ports:
+  - protocol: TCP
+    targetPort: 8080
+    port: 8080
+    name: ui
+  - protocol: TCP
+    targetPort: 9088
+    port: 9088
+    name: node-protocol-port
+  - protocol: TCP
+    targetPort: 8888
+    port: 8888
+    name: s2s
+  type: LoadBalancer
+---
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: nifi
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nifi
+  template:
+    metadata:
+      labels:
+        app: nifi
+    spec:
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
+      containers:
+      - name: nifi-container
+        image: sunmanregistry.azurecr.io/nifi:latest
+        ports:
+        - containerPort: 8080
+          name: http
+        - containerPort: 22
+          name: ssh
+        resources:
+          requests:
+            cpu: ".5"
+            memory: "6Gi"
+          limits:
+            cpu: "1"
+        env:
+        - name: VERSION
+          value: "1.9"
+        - name: NIFI_CLUSTER_IS_NODE
+          value: "true"
+        - name: NIFI_CLUSTER_NODE_PROTOCOL_PORT
+          value: "9088"
+        - name: NIFI_ELECTION_MAX_CANDIDATES
+          value: "1"
+        - name: NIFI_ZK_CONNECT_STRING
+          value: "zk-0.zk-hs.default.svc.cluster.local:2181,zk-1.zk-hs.default.svc.cluster.local:2181,zk-2.zk-hs.default.svc.cluster.local:2181"

@@ -1,0 +1,24 @@
+---
+- name: Stopping currently running "{{ container_name }}" container
+  docker_container:
+    name: "{{ container_name }}"
+    image: "{{ image_name }}:{{ image_tag }}"
+    state: absent
+
+- name: Starting "{{ container_name }}" container
+  docker_container:
+    name: "{{ container_name }}"
+    image: "{{ image_name }}:{{ image_tag }}"
+    network_mode: "{{ network_name }}"
+    state: started
+    published_ports: "{{ ports }}"
+    entrypoint: "{{ entrypoint }}"
+    command: "{{ command }}"
+    env: "{{ env }}"
+    volumes: "{{ volumes }}"
+    restart_policy: "{{ restart }}"
+
+- name: Wait for "{{ container_name }}" to start
+  pause:
+    minutes: "{{ pause_time }}"
+...

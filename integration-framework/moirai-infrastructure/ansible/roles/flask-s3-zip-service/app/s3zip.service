@@ -1,0 +1,11 @@
+[Unit]
+Description=Flask Service
+
+[Service]
+WorkingDirectory=/home/ubuntu/
+ExecStart=/home/ubuntu/s3zip.py
+Restart=always
+User=ubuntu
+
+[Install]
+WantedBy=multi-user.target

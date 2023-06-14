@@ -1,0 +1,23 @@
+#!/usr/bin/env ansible-playbook -i inventory
+
+---
+- name: Wait for systems to come up
+  hosts: localhost
+  connection: local
+  gather_facts: true
+  roles:
+    - {role: wait-for-ec2,
+        tags_to_check: ["tag_Name_elastic"]}
+
+- name: Configure the instances with common requirements
+  hosts:
+    - "tag_Name_elastic"
+  gather_facts: true
+  remote_user: ubuntu
+  become: true
+  roles:
+    - docker
+    - pip3-docker
+    - aws-ssm
+    - awscli
+    - docker-clean

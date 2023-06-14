@@ -1,0 +1,8 @@
+server_name: sonarqube.kairos.nextcentury.com
+conf_location: "/opt/bitnami/apache2/conf/bitnami/bitnami.conf"
+ssl_conf_location: "/opt/bitnami/apache2/conf/bitnami/bitnami-ssl.conf"
+vhost_conf_location: "/opt/bitnami/apache2/conf/vhosts/sonarqube-vhost.conf"
+vhost_https_conf_location: "/opt/bitnami/apache2/conf/vhosts/sonarqube-https-vhost.conf"
+cert_location: "/certs/live/sonarqube.kairos.nextcentury.com/cert.pem"
+key_location: "/certs/live/sonarqube.kairos.nextcentury.com/privkey.pem"
+chain_location: "/certs/live/sonarqube.kairos.nextcentury.com/fullchain.pem"

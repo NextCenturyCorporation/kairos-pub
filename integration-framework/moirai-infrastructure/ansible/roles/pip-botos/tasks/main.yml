@@ -1,0 +1,10 @@
+---
+- name: Install boto
+  pip:
+    name: boto
+    state: latest
+
+- name: Install boto3
+  pip:
+    name: boto3
+    state: latest   

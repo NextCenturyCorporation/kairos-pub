@@ -1,0 +1,48 @@
+---
+
+- name: Stopping currently running "{{ container_name }}" container
+  docker_container:
+    name: "{{ container_name }}"
+    image: "nginx"
+    state: absent
+
+- name: Starting "nginx" container
+  docker_container:
+    name: "{{ container_name }}"
+    image: "nginx"
+    network_mode: "{{ network_name }}"
+    state: started
+    published_ports: "{{ ports }}"
+    restart_policy: "always"
+    volumes:
+      - /certs:/certs
+
+- name: copy production nginx conf to server
+  copy:
+    src: files/nginx-prod.conf
+    dest: ~/nginx.conf
+  when: conf_version == "production"
+
+- name: copy test nginx conf to server
+  copy:
+    src: files/nginx-test.conf
+    dest: ~/nginx.conf
+  when: conf_version == "test"
+
+- name: copy docker nginx conf to server
+  copy:
+    src: files/nginx-docker.conf
+    dest: ~/nginx.conf
+  when: conf_version == "docker"
+
+- name: copy shared nginx conf to server
+  copy:
+    src: files/nginx-shared.conf
+    dest: ~/nginx.conf
+  when: conf_version == "shared"
+
+- name: copy nginx into container
+  command: docker cp ~/nginx.conf "{{ container_name }}":/etc/nginx/nginx.conf
+
+- name: reload nginx server
+  command: docker exec "{{ container_name }}" nginx -s reload

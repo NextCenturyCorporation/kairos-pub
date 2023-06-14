@@ -1,0 +1,34 @@
+- name: install flask with pip
+  pip: 
+    name: flask
+    state: latest
+
+- name: install gitlab api
+  pip: 
+    name: python-gitlab
+    state: latest
+
+- name: copy s3zip to server
+  copy:
+    src: app/s3zip.py
+    dest: /home/ubuntu/s3zip.py
+
+- name: change permission
+  shell: "chmod +x /home/ubuntu/s3zip.py"
+  
+- name: copy service script
+  copy:
+    src: app/s3zip.service
+    dest: /etc/systemd/system/s3zip.service
+
+- name: change permission
+  shell: "chmod +x /etc/systemd/system/s3zip.service"
+
+- name: Reload Systemctl 
+  shell: "systemctl daemon-reload"
+
+- name: Add s3zip.service to autostart
+  shell: "systemctl enable s3zip.service"
+
+- name: Run Flask Service
+  shell: "systemctl start s3zip"

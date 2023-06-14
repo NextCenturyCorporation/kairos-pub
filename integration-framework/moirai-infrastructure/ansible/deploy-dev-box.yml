@@ -1,0 +1,22 @@
+---
+- name: Configure the instances with common requirements
+  hosts: localhost
+  gather_facts: true
+  remote_user: local
+  become: true
+  roles:
+    - docker
+    - docker-clean
+    - docker-clean-images-crontab
+    - aws-ssm
+    - awscli
+    - pip3-docker
+    - pip-botos
+- name: set facts
+  hosts: localhost
+  gather_facts: true
+  remote_user: local
+  become: true
+  tasks:
+    - set_fact:
+        container_network_name: "nginx-network"

@@ -1,0 +1,28 @@
+
+---
+- name: Wait for systems to come up
+  hosts: localhost
+  connection: local
+  gather_facts: true
+  roles:
+    - {role: wait-for-ec2,
+        tags_to_check: ["tag_Name_GitlabRunner"]}
+
+- name: Configure the instances with common requirements
+  hosts: "tag_Name_GitlabRunner"
+  gather_facts: true
+  remote_user: ubuntu
+  become: true
+  roles:
+    - { role: docker-user, username: "gitlab-runner" } 
+    - awscli
+    - nodejs16
+
+- name: Reboot the runner
+  hosts: "tag_Name_GitlabRunner"
+  gather_facts: true
+  remote_user: ubuntu
+  become: true
+  tasks:
+    - reboot:
+      

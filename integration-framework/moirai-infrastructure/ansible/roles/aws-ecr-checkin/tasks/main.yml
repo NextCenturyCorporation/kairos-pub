@@ -1,0 +1,33 @@
+---
+- shell: "aws ecr describe-repositories --repository-name={{ repo_name }} --region us-east-1"
+  register: repository_info
+- set_fact:
+    ecr_json: "{{ repository_info.stdout|from_json }}"
+- set_fact:
+    repo_uri: "{{ ecr_json.repositories[0].repositoryUri }}"
+- set_fact:
+    ecr_uri: "{{ repo_uri.split('/')[0] }}"
+- debug:
+    var: repo_uri
+
+- set_fact:
+    aws_profile_string: "--profile {{ aws_profile }}"
+    when: aws_profile != ''
+
+- name: Authenticate with AWS CLI
+  shell: aws ecr get-login-password --region us-east-1 {{ aws_profile_string }} | docker login --username AWS --password-stdin {{ ecr_uri }}
+  args:
+    executable: /bin/bash
+
+- name: Tagging {{ local_name }}:{{ local_tag }} as {{ repo_uri }}:{{ repo_tag }}
+  shell: "docker tag {{ local_name }}:{{ local_tag }} {{ repo_uri }}:{{ repo_tag }}"
+
+- name: Sending {{ repo_uri }}:{{ repo_tag }} image from ECR
+  shell: docker push {{ repo_uri }}:{{ repo_tag }}
+
+- name: Loggin out of ecr
+  shell: docker logout {{ ecr_uri }}
+
+- name: Removing ecr specific version of the image
+  shell: "docker rmi {{ repo_uri }}:{{ repo_tag }}"
+...

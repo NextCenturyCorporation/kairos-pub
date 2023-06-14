@@ -1,0 +1,15 @@
+#!/usr/bin/env ansible-playbook -i inventory
+
+---
+- name: Setup s3 bucket for terraform state
+  hosts: localhost
+  gather_facts: false
+  connection: local
+  vars:
+    profile: "{{ aws_profile }}"
+  roles:
+    - { role: s3_bucket, bucket_name: "{{ s3_bucket_terraform_states }}" } 
+    - { role: s3_bucket, bucket_name: "{{ s3_bucket_private_keys }}" }
+    - { role: s3_bucket, bucket_name: "kairos-performer-data" }
+    - { role: s3_bucket, bucket_name: "kairos-experiment-data" }
+...

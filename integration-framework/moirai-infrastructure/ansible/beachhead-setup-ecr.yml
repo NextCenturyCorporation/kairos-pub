@@ -1,0 +1,23 @@
+
+---
+- name: Wait for systems to come up
+  hosts: localhost
+  connection: local
+  gather_facts: true
+  roles:
+    - { role: aws-ecr-checkout, aws_profile: kairos, repo_name: zeus, repo_tag: latest, local_name: zeus, local_tag: temp}
+    - { role: aws-ecr-checkin, aws_profile: kairos, repo_name: genesis, repo_tag: zeus-latest, local_name: zeus, local_tag: temp}
+    - { role: aws-ecr-checkout, aws_profile: kairos, repo_name: clotho, repo_tag: latest, local_name: clotho, local_tag: temp}
+    - { role: aws-ecr-checkin, aws_profile: kairos, repo_name: genesis, repo_tag: clotho-latest, local_name: clotho, local_tag: temp}
+    - { role: aws-ecr-checkout, aws_profile: kairos, repo_name: ui, repo_tag: latest, local_name: ui, local_tag: temp}
+    - { role: aws-ecr-checkin, aws_profile: kairos, repo_name: genesis, repo_tag: ui-latest, local_name: ui, local_tag: temp}
+
+- name: Clean up
+  hosts: localhost
+  connection: local
+  gather_facts: true
+  tasks:
+    - shell: docker rmi zeus:temp
+    - shell: docker rmi clotho:temp
+    - shell: docker rmi ui:temp
+...

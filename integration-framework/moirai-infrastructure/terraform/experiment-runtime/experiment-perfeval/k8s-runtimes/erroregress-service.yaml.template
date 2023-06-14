@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: {{evaluator}}-{{experiment}}-erroregress
+  name: {{evaluator}}-{{experiment}}-erroregress
+spec:
+  ports:
+  - name: "80"
+    port: 80
+    targetPort: 10007
+  selector:
+    io.kompose.service: {{evaluator}}-{{experiment}}-erroregress
+  type: ClusterIP 
+status:
+  loadBalancer: {}
+

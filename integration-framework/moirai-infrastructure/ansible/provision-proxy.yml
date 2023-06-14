@@ -1,0 +1,28 @@
+#!/usr/bin/env ansible-playbook -i inventory
+
+---
+- name: Configure the instances with common requirements
+  hosts: localhost
+  gather_facts: true
+  remote_user: local
+  become: true
+  roles:
+    - docker
+    - pip3-docker
+    - docker-clean
+    - docker-clean-images-crontab
+    - aws-ssm
+    - awscli
+
+- name: Create network
+  gather_facts: true
+  hosts: localhost
+  remote_user: local
+  become: true
+  roles:
+    # Retrieve images from ECR via AWS-CLI
+    - { role: ssl-cert, ec2_cname: "neptune"}
+    - { role: docker-network, network_name: proxy_net}
+    - { role: neptune-proxy, network_name: proxy_net}
+
+...

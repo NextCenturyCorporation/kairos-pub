@@ -1,0 +1,9 @@
+{
+    "component": {
+	    "position": {
+		    "x": 0.0,
+		    "y": 0.0
+		},
+	    "label": "{{text}}"
+	}
+}

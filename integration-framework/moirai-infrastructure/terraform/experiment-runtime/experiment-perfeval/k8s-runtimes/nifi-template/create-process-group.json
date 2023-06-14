@@ -1,0 +1,8 @@
+{
+   "revision": {
+	    "version": 0
+    },
+    "component": {
+	    "name": "{{processgroupname}}"
+    }
+}

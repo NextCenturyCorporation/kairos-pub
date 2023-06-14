@@ -1,0 +1,2 @@
+ec2_cname: ""
+ec2_fqdn: "{{ec2_cname}}.kairos.nextcentury.com"

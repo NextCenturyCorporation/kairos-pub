@@ -1,0 +1,5 @@
+profile: "default"
+region: "us-east-1"
+bucket_name: "default_test"
+policy_name: "policy_{{ bucket_name }}"
+policy_file: "{{ policy_name }}.json"

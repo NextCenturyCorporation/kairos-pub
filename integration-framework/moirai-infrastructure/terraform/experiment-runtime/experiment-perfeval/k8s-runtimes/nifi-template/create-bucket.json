@@ -1,0 +1,12 @@
+{
+    "name": "{{bucketname}}",
+    "description": "{{experimentname}}",
+    "permissions": {
+	    "canRead": true,
+	    "canWrite": true,
+	    "canDelete": true
+	}
+}
+
+
+

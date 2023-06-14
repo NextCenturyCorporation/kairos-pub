@@ -1,0 +1,43 @@
+{
+    "programName": "Kairos",
+    "environment": "q9",
+    "experimentConfigurations": [
+        {
+            "evaluator": "C",
+            "cluster": {
+                "cpu": {
+                    "desired": 1,
+                    "type": "m5.xlarge"
+                },
+                "gpu": {
+                    "desired": 1,
+                    "type": "p3.2xlarge"
+                }
+            },
+            "experiment": {
+                "name": "mp2-task2-abridged-cmu",
+                "type": "task2",
+                "tasklocation": "s3://kairos-experiment-data/phase2mid/experiment-input/task2/abridged/",
+                "evaluationdataset": "phase2mid"
+            },
+            "performers": [
+                {
+                    "performername": "cmu",
+                    "schemalibraries": [
+                        "cmu",
+                        "ibm",
+                        "isi",
+                        "resin",
+                        "sbu"
+                    ],
+                    "dockerimageconfig": {
+                        "manifestlocation": "s3://kairos-experiment-data/phase2mid/experiment-input/docker-compose/cmu/docker-compose-5.yml"
+                    },
+                    "serviceconfig": {
+                        "port": "10100"
+                    }
+                }
+            ]
+        }
+    ]
+}

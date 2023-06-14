@@ -1,0 +1,25 @@
+- name: create a new ec2 key pair, returns generated private key
+  ec2_key:
+    name: "{{ key_pair_name }}"
+    force: false
+  register: created_key_pair
+
+- name: copy ec2Key to local
+  copy: content="{{ created_key_pair.key.private_key }}" dest="../key-pairs/{{ key_pair_name }}.pem" mode=0400
+  when: created_key_pair.changed
+
+- name: Push ec2Key to s3
+  aws_s3:
+    bucket: "{{ s3_bucket_private_keys }}"
+    src: "../key-pairs/{{ key_pair_name }}.pem"
+    object: "/keys/{{ key_pair_name }}.pem"
+    mode: put
+  when: created_key_pair.changed
+
+- name: Get ec2key from s3
+  aws_s3:
+    bucket: "{{ s3_bucket_private_keys }}"
+    object: "/keys/{{ key_pair_name }}.pem"
+    dest: "../key-pairs/{{ key_pair_name }}.pem"
+    mode: get
+  when: created_key_pair.changed == false

@@ -1,0 +1,6 @@
+---
+- name: Create docker network
+  docker_network:
+          name: "{{ network_name }}"
+          state: present
+...

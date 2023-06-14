@@ -1,0 +1,8 @@
+---
+container_name: neo4j
+auth: none  #neo4j/test
+network_http_port: "7474"
+container_http_port: "7474"
+network_bolt_port: "7687"
+container_bolt_port: "7687"
+...

@@ -1,0 +1,5 @@
+aws_profile: ''
+repo_tag: 'latest'
+local_name: "{{ repo_name }}"
+local_tag: "{{ repo_tag }}"
+profile_string: ''

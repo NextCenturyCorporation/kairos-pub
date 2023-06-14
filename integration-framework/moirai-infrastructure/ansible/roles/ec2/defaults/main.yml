@@ -1,0 +1,18 @@
+
+key_pair: '{{ aws_key_pair }}'
+key_type: '{{ aws_key_type }}'
+ami: '{{ amazon_ami }}'
+instance_tags:
+  Name: 'new_instance'
+count_tags: '{{ instance_tags }}'
+instance_type: "t2.small"
+provider_name: ""
+resource_name: ""
+database_type: "{{ database }}"
+
+instance_profile_name: ""
+count: 1
+region: '{{ aws_region}}'
+
+root_volume_size: "10"
+docker_volume_size: "10"

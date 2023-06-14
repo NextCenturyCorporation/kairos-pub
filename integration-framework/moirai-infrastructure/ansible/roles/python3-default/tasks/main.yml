@@ -1,0 +1,10 @@
+
+
+---
+- name: Update and upgrade apt packages
+  become: true
+  shell: update-alternatives --install /usr/bin/python python /usr/bin/python2 1
+
+- name: Update and upgrade apt packages
+  become: true
+  shell: update-alternatives --install /usr/bin/python python /usr/bin/python3 2

@@ -1,0 +1,62 @@
+
+---
+
+- name: Pull docker containers
+  gather_facts: true
+  hosts: localhost
+  remote_user: local
+  become: true
+  roles:
+    - { role: aws-ecr-checkout, aws_profile: null, repo_name: genesis, repo_tag: zeus-latest, local_name: zeus, local_tag: latest}
+    - { role: aws-ecr-checkout, aws_profile: null, repo_name: genesis, repo_tag: ui-latest, local_name: ui, local_tag: latest}
+
+- name: Start Containers
+  gather_facts: true
+  hosts: localhost
+  remote_user: local
+  become: true
+  vars:
+    network_name: beach_net
+    rds_address_env: "{{ lookup('env','rds_address') }}"
+    rds_port_env: "{{ lookup('env','rds_port') }}"
+    rds_db_name_env: "{{ lookup('env','rds_database_name') }}"
+    rds_connector: "jdbc:mysql://{{ rds_address_env }}:{{ rds_port_env }}/{{ rds_db_name_env }}"
+    aws_region: "us-east-1"
+    env: {
+      SPRING_DATASOURCE_URL: "{{ rds_connector }}",
+      SPRING_DATASOURCE_USERNAME: "{{ lookup('env','rds_username') }}",
+      SPRING_DATASOURCE_PASSWORD: "{{ lookup('env','rds_secret') }}",
+      AWS_REGION: "{{ aws_region }}",
+      ANSIBLE_HOST_KEY_CHECKING: "false",
+      AWS_ACCESS_KEY_ID: "{{ lookup('env','aws_access_key') }}",
+      AWS_SECRET_ACCESS_KEY: "{{ lookup('env','aws_secret_key') }}",
+      ENVIRONMENT_TIER: "{{ lookup('env','environment_tier_zeus') }}",
+      MAIL_USERNAME: "{{ lookup('env','mail_username') }}",
+      MAIL_PASSWORD: "{{ lookup('env','mail_password') }}",
+      SG_AWS_ID_ENV: "{{ lookup('env','sg_aws_id') }}",
+      SUBNET_ID_ENV: "{{ lookup('env','subnet_id') }}"
+    }
+  roles:
+    # Start application
+    - role: bounce-container
+      restart: "always"
+      container_name: "zeus-latest"
+      image_name: "zeus"
+      ports:
+        - "8000:8000"
+      pause_time: 2
+      volumes:
+        - /home/ubuntu/moirai-infrastructure/:/usr/src/moirai-infrastructure/
+        - /home/ubuntu/moirai-infrastructure/ansible:/usr/src/ansible
+        - /home/ubuntu/moirai-infrastructure/key-pairs:/usr/src/key-pairs
+        - /home/ubuntu/.aws:/root/.aws
+    - role: bounce-container
+      restart: "always"
+      container_name: "ui-latest"
+      image_name: "ui"
+      ports:
+        - "all"
+    # Must run after ui bounce container
+    - {role: kairos-proxy, conf_version: production}
+    - role: flask-prod-deploy-service
+...

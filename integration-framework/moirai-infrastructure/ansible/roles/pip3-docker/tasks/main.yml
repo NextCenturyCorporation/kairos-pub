@@ -1,0 +1,6 @@
+---
+- name: pip3 install docker
+  pip:
+    name: docker
+    state: present   
+    executable: pip3

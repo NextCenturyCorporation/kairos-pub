@@ -1,0 +1,19 @@
+#!/bin/bash
+#set -x
+
+rep=$(curl -D/dev/stdout -o/dev/null -s -f -v --max-time 5 "${httpUrl}")
+statusCode="$?"
+restartCmd="docker restart ${container_name}"
+echo "command: $rep"
+echo "Status: $statusCode"
+
+if [ "$statusCode" -eq 0 ]
+  then
+    echo "All Good"
+  else
+    echo "Something went wrong"
+    $restartCmd
+fi
+exit "$statusCode"
+
+

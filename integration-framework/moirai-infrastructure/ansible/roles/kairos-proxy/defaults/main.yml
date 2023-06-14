@@ -1,0 +1,9 @@
+---
+container_name: 'kairos-nginx'
+network_name: 'nginx-network'
+ports: 
+  - '80:80'
+  - '443:443'
+
+...
+    

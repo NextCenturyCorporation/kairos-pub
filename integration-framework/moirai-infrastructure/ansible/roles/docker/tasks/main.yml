@@ -1,0 +1,77 @@
+
+
+---
+
+- name: Update and upgrade apt packages
+  become: true
+  apt:
+    update_cache: yes
+    upgrade: yes
+    cache_valid_time: 86400
+  when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
+
+# - name: Install Aptitude
+#   apt:
+#     name: aptitude
+#     state: present
+#   when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
+
+- name: Update and upgrade apt packages
+  become: true
+  yum:
+    upgrade: yes
+    update_cache: yes
+    cache_valid_time: 86400
+  when: ansible_distribution == "CentOS"
+
+- name: copy service script
+  copy:
+    src: service/docker.service
+    dest: /etc/systemd/system/docker.service
+
+- name: change permission
+  shell: "chmod +x /etc/systemd/system/docker.service"
+
+- name: Reload Systemctl 
+  shell: "systemctl daemon-reload"
+
+- name: Add docker.service to autostart
+  shell: "systemctl enable docker.service"
+
+- name: Ensure docker is installed and running
+  yum:
+    name: docker
+  when: ansible_distribution == "CentOS"
+
+- name: Ensure docker is installed and running
+  apt:
+    name: docker.io
+  when: ansible_distribution == "Ubuntu"
+
+- name: Ensure docker is installed and running
+  apt:
+    name: docker-ce
+  when: ansible_distribution == "Debian"
+
+- name: Ensure docker is installed and running
+  apt:
+    name: docker-ce-cli
+  when: ansible_distribution == "Debian"
+
+- name: Ensure docker is installed and running
+  apt:
+    name: containerd.io
+  when: ansible_distribution == "Debian"
+
+- name: Ensure docker for user ubuntu
+  become: true
+  user:
+    name: "ubuntu"
+    groups: docker
+    append: true
+  when: ansible_distribution == "Ubuntu"
+
+- service:
+    name: docker
+    state: started
+    enabled: yes

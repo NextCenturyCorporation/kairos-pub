@@ -1,0 +1,12 @@
+---
+image_tag: 'latest'
+container_name: "{{ image_name }}-{{ image_tag }}"
+ports: null
+network_name: bridge
+entrypoint: null
+command: null
+env: null
+volumes: null
+pause_time: 0
+restart: no
+...

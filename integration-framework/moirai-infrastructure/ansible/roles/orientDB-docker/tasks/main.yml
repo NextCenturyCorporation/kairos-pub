@@ -1,0 +1,28 @@
+---
+
+- name: Start orientdb container
+  docker_container:
+    name: "{{ container_name }}"
+    image: orientdb:latest
+    network_mode: "{{ network_name }}"
+    published_ports:
+    - "2480:2480"
+    - "2424:2424"
+    env:
+      ORIENTDB_ROOT_PASSWORD: "{{ orientdb_root_password }}"
+
+- name: Test if database exists
+  command: "docker exec {{ container_name }} /bin/bash -c \"ls -l databases/{{database_name}} >> /dev/null && echo $?\""
+  register: database_exists
+  ignore_errors: yes
+
+- name: Setup orientdb database
+  command: "docker exec {{ container_name }} ./bin/console.sh create database plocal:databases/{{database_name}} admin admin plocal graph"
+  when: database_exists.rc != 0
+
+- name: Specify database access uri
+  set_fact:
+    db_uri: "remote:{{ container_name }}:2424/{{ database_name }}"
+    db_ui_port: "2424"
+    cacheable: yes
+...

@@ -1,0 +1,101 @@
+#!/usr/bin/env ansible-playbook -i inventory
+
+---
+- name: check command variables
+  hosts: localhost
+  gather_facts: true
+  connection: local
+  tasks:
+  - fail:
+      msg: "msg={{ resource_name }}"
+    when: resource_name is not defined
+  - fail:
+      msg: "msg={{ performer_name }}"
+    when: performer_name is not defined
+
+- name: Provision the instances for the kairos cluster (from scratch)
+  hosts: localhost
+  gather_facts: true
+  connection: local
+  vars:
+    instance_type: "{{ aws_instance_type | default('t2.small') }}"
+    instance_profile_name: "clotho_access_profile"
+    project_type: "clotho"
+    instance_tags:
+      Project: "{{ project_type }}"
+      Name: "clotho_{{ performer_name|lower }}_{{ resource_name|lower }}"
+      PerformerName: "{{ performer_name|lower }}"
+      ResourceName: "{{ resource_name|lower }}"
+      DatabaseType: "{{ database_type|lower }}"
+  roles:
+    - {role: ec2,
+        state: running,
+        wait: true,
+        aws_sg_id: "{{ lookup('env','SG_AWS_ID_ENV') }}",
+        aws_subnet_id: "{{ lookup('env','SUBNET_ID_ENV') }}",
+        count: 1}
+  tasks:
+    - meta: refresh_inventory
+
+- name: Wait for systems to come up
+  hosts: localhost
+  connection: local
+  gather_facts: true
+  roles:
+    - {role: wait-for-ec2,
+        tags_to_check: ["tag_Name_clotho_{{ performer_name|lower }}_{{ resource_name|lower }}"]}
+
+- name: Configure the instances with common requirements
+  hosts:
+    - "tag_Name_clotho_{{ performer_name|lower }}_{{ resource_name|lower }}"
+  gather_facts: true
+  remote_user: ubuntu
+  become: true
+  roles:
+    - docker
+    - pip3-docker
+    - docker-clean
+    - docker-clean-images-crontab
+    - aws-ssm
+    - awscli
+
+#db_type: This can be Neo4j, OrientDB, or JanusGraph
+- name: Add Clotho
+  gather_facts: true
+  hosts: 
+    - "tag_Name_clotho_{{ performer_name|lower }}_{{ resource_name|lower }}"
+  remote_user: ubuntu
+  become: true
+  vars:
+    network_name: clotho_net
+    db_type: "{{ database }}"
+  roles:
+    # Create custom docker network for containers to communicate
+    - role: docker-network
+    # Start chosen database instance
+    - role: moirai-db-docker
+    # Retrieve Clotho image from ECR via AWS-CLI
+    - role: aws-ecr-checkout
+      repo_name: clotho
+      repo_tag: latest
+      aws_profile: ''
+    # Start Clotho app
+    - role: clotho-container
+      connection_port: 8008
+      internal_connection_port: 8008
+ 
+
+- name: Add new EC2 tags for connection information
+  hosts: localhost
+  connection: local
+  gather_facts: true
+  vars:
+    ec2_tags: "tag_Name_clotho_{{ performer_name|lower }}_{{ resource_name|lower }}"
+    ec2_additional_tags:
+      ClothoEndpoint: "{{ item }}:{{ hostvars[item]['ansible_facts']['clotho_connector_port'] }}"
+      DatabaseEndpoint: "{{ item }}:{{ hostvars[item]['ansible_facts']['db_ui_port'] }}"
+    ec2_region: "{{ aws_region }}"
+  roles:
+    - {role: ec2-add-tags,
+        ec2_state: present,
+        ec2_resource: "{{ hostvars['localhost']['ansible_facts']['first_instance'] }}"}

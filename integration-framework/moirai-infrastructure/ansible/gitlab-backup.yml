@@ -1,0 +1,9 @@
+
+---
+- name: Create backup of gitlab state
+  hosts: "tag_Name_Gitlab"
+  gather_facts: true
+  remote_user: ubuntu
+  become: true
+  tasks:
+    - shell: /usr/bin/gitlab-backup create

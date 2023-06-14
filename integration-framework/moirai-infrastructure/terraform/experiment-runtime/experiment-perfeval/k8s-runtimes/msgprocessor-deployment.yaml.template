@@ -1,0 +1,107 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: {{evaluator}}-{{experiment}}-{{performer}}-msgprocessor
+  name: {{evaluator}}-{{experiment}}-{{performer}}-msgprocessor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: {{evaluator}}-{{experiment}}-{{performer}}-msgprocessor
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: {{evaluator}}-{{experiment}}-{{performer}}-msgprocessor
+    spec:
+      nodeSelector:
+        kairosnodetype: {{experiment}}-framework
+
+      initContainers:
+      - image: 130602597458.dkr.ecr.us-east-1.amazonaws.com/kairos-runtimes:kairos-s3uploader-1.0
+        name: {{fqexperimentname}}-createinputfolder
+        imagePullPolicy: Always
+        args:
+        - /bin/sh
+        - -c
+        - /scripts/kairos-msgprocessor-init.sh {{experimentperformerpath}} {{experiment}}
+        volumeMounts:
+          - mountPath: "{{kairosfsmountpath}}"
+            name: kairosfs
+          - mountPath: /scripts
+            name: kairos-msgprocessor-init-script
+
+      containers:
+      - image: 130602597458.dkr.ecr.us-east-1.amazonaws.com/kairos-runtimes:msgprocessor-1.0
+        readinessProbe:
+        name: msgprocessor
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 10007
+        env: 
+          - name: JAVA_OPTS
+            value: " -Xmx4096M"
+          - name: EVALUATOR
+            value: "{{evaluator}}"
+          - name: EXPERIMENT
+            value: "{{experiment}}"
+          - name: PERFORMER_NAME
+            value: "{{performer}}"
+          - name: SERVICE_NAME
+            value: "{{servicename}}"
+          - name: PORT
+            value: "{{port}}"
+          - name: ENTRYPOINTPATHSPEC
+            value: "{{entrypointpathspec}}"
+          - name: READINESSCHECKPATHSPEC
+            value: "{{readinesscheckpathspec}}"
+          - name: LIVENESSCHECKPATHSPEC
+            value: "{{livenesscheckpathspec}}"
+          - name: ESDOMAIN_ENDPOINT
+            value: "{{esdomainendpoint}}"
+          - name: KAFKABROKERS
+            value: "{{kafkabrokers}}"
+          - name: KAIROS_LIB
+            value: "{{kairosfsmountpath}}"
+          - name: START_TIME_ID
+            value: "{{start_time_id}}"
+        resources:
+          #requests:
+          #  memory: "150Mi"
+          #  cpu: "250m"
+          #limits:
+          #  memory: "8192Mi"
+          #  cpu: "2"
+        volumeMounts:
+        - mountPath: "{{kairosfsmountpath}}"
+          name: kairosfs
+        - mountPath: /scripts
+          name: kairos-msgprocessor-init-script
+      volumes:
+        - name: kairosfs
+          persistentVolumeClaim:
+            claimName: kairosfilesystem
+        - name: kairos-msgprocessor-init-script
+          configMap:
+            name: kairos-msgprocessor-init-script
+            defaultMode: 0744
+
+      restartPolicy: Always
+status: {}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: kairosfilesystem
+spec:
+  storageClassName: efs-sc
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Gi
+---

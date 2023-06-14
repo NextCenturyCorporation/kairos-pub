@@ -1,0 +1,26 @@
+---
+
+- name: Starting "nginx" container
+  docker_container:
+    name: "{{ container_name }}"
+    image: "nginx"
+    network_mode: "{{ network_name }}"
+    state: started
+    published_ports: "{{ ports }}"
+    restart_policy: "always"
+    volumes:
+      - /etc/ssl/certs/:/letsencrypt/certs
+      - /certs:/certs
+
+- name: copy nginx conf to server
+  copy:
+    src: files/nginx.conf
+    dest: ~/nginx.conf
+
+- name: copy nginx into container
+  command: docker cp ~/nginx.conf "{{ container_name}}":/etc/nginx/nginx.conf
+
+- name: reload nginx server
+  command: docker exec "{{ container_name }}" nginx -s reload
+
+...

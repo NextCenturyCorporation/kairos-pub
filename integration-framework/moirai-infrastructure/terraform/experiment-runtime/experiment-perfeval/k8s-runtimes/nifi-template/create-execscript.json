@@ -1,0 +1,28 @@
+{
+        "revision": {
+	    "version": 0
+	},    
+	"component": {
+	    "name": "{{message-generator}}",
+	    "type": "org.apache.nifi.processors.script.ExecuteScript",
+	    "bundle": {
+		    "group": "org.apache.nifi",
+		    "artifact": "nifi-scripting-nar",
+		    "version" : ""
+		},
+	    "config": {
+		"properties": {
+			"Script Engine": "Groovy",
+			"Script File": "/tmp/one-input-message.script",
+			"program": "valueProgram",
+			"environment": "valueEnvironment",
+			"evaluator": "valueEvaluator",
+			"experiment": "valueExperiment",
+			"runId": "valueRunId"
+		},
+		"autoTerminatedRelationships" : [ "failure" ],
+		"executionNode" : "PRIMARY"
+	    }
+	}
+}
+

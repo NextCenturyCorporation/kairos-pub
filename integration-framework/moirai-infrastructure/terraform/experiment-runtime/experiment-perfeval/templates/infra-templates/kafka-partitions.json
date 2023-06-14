@@ -1,0 +1,9 @@
+{
+"partitions": [
+    {
+        "topic": "nist-resin-input-topic",
+        "partition": 2,
+        "offset": -1
+    }
+]
+}

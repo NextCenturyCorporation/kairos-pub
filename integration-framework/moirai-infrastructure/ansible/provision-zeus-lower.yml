@@ -1,0 +1,23 @@
+
+---
+- name: Configure the instances with common requirements
+  hosts: localhost
+  gather_facts: true
+  remote_user: local
+  become: true
+  roles:
+    - docker
+    - awscli
+    - pip3-docker
+    - pip-botos
+
+- name: Create network and pull docker containers
+  gather_facts: true
+  hosts: localhost
+  remote_user: local
+  become: true
+  roles:
+    - { role: ssl-cert, ec2_cname: "ui.test"}
+    - { role: ssl-cert, ec2_cname: "zeus.test"}
+    - { role: docker-network, network_name: "nginx-network"}
+...

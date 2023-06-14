@@ -1,0 +1,21 @@
+- name: Template a file to /etc/files.conf
+  template:
+    src: my_bucket_policy.json
+    dest: "{{ policy_file }}"
+
+- name: create S3 bucket
+  s3_bucket:
+    name: "{{ bucket_name }}"
+    profile: "{{ profile }}"
+    policy: "{{ lookup( 'file', policy_file )}}"
+    state: present
+    region: "{{ region }}"
+    versioning: no
+    tags:
+      name: "{{ bucket_name }}"
+      type: example
+
+- name: removing local policy.json
+  file:
+    state: absent
+    path: "{{ policy_file }}"

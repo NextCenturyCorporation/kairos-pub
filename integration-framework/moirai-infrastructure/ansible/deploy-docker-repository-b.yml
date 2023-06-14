@@ -1,0 +1,9 @@
+---
+
+- name: Start Containers
+  gather_facts: true
+  hosts: localhost
+  remote_user: local
+  become: true
+  roles:
+    - {role: kairos-proxy, conf_version: docker}

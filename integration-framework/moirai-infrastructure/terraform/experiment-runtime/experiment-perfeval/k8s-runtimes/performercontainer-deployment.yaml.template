@@ -1,0 +1,132 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: {{fqexperimentname}}-service-impl
+  name: {{fqexperimentname}}-service-impl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: {{fqexperimentname}}-service-impl
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: {{fqexperimentname}}-service-impl
+    spec:
+      nodeSelector:
+        kairosnodetype: {{experiment}}-framework
+      imagePullSecrets:
+        - name: {{imagepullsecret}}
+
+
+      initContainers:
+      - image: 130602597458.dkr.ecr.us-east-1.amazonaws.com/kairos-runtimes:kairos-s3uploader-1.0 
+        name: {{fqexperimentname}}-schemalibs
+        imagePullPolicy: Always
+        args:
+        - /bin/sh
+        - -c
+        - /scripts/performercontainer-schemalibs.sh {{experimentperformerpath}} {{evaluator}} {{experiment}} {{performer}} {{evaluationdataset}} {{schemalibraries}}
+        volumeMounts:
+        - mountPath: "{{kairosfsmountpath}}"
+          name: kairosfs
+        - mountPath: /scripts
+          name: performercontainer-schemalibcopier-script 
+
+      - image: 130602597458.dkr.ecr.us-east-1.amazonaws.com/kairos-runtimes:kairos-s3uploader-1.0
+        name: nist-expk-performera-taskinput
+        imagePullPolicy: Always
+        args:
+        - /bin/sh
+        - -c
+        - /scripts/performercontainer-taskinput.sh {{experimentperformerpath}} {{evaluator}} {{experiment}} {{performer}} {{tasktype}} {{evaluationdataset}}
+        volumeMounts:
+        - mountPath: "/var/kairosfs"
+          name: kairosfs
+        - mountPath: /scripts
+          name: performercontainer-inputcopier-script
+
+      restartPolicy: OnFailure
+      volumes:
+        - name: kairosfs
+          persistentVolumeClaim:
+            claimName: kairosfilesystem
+        - name: performercontainer-schemalibcopier-script 
+          configMap:
+            name: performercontainer-schemalibcopier-script
+            defaultMode: 0744
+        - name: performercontainer-inputcopier-script
+          configMap:
+            name: performercontainer-inputcopier-script
+            defaultMode: 0744
+
+
+      containers:
+      - image: {{imagespec}}
+        name: testperformercontainer
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 10100
+        
+        readinessProbe:
+          httpGet:
+            path: /kairos/ready
+            port: 10100
+          initialDelaySeconds: 5 
+          failureThreshold: 1
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /kairos/alive
+            port: 10100
+          initialDelaySeconds: 5 
+          failureThreshold: 1
+          periodSeconds: 10
+        startupProbe:
+          httpGet:
+            path: /kairos/alive
+            port: 10100
+          initialDelaySeconds: 10 
+          failureThreshold: 30
+          periodSeconds: 10
+
+        env: 
+          - name: JAVA_OPTS
+            value: " -Xmx4096M"
+          - name: EVALUATOR
+            value: "{{evaluator}}"
+          - name: EXPERIMENT
+            value: "{{experiment}}"
+          - name: PERFORMER_NAME
+            value: "{{performer}}"
+          - name: SUBMISSION_URL
+            value: "{{submissionurl}}"
+          - name: KAIROS_LIB
+            value: "{{kairosfsmountpath}}"
+          
+          {{extraparams}}
+
+        resources:
+        volumeMounts:
+        - mountPath: "{{kairosfsmountpath}}"
+          name: kairosfs
+      volumes:
+        - name: kairosfs
+          persistentVolumeClaim:
+            claimName: kairosfilesystem
+        - name: performercontainer-schemalibcopier-script
+          configMap:
+            name: performercontainer-schemalibcopier-script
+            defaultMode: 0744
+        - name: performercontainer-inputcopier-script
+          configMap:
+            name: performercontainer-inputcopier-script
+            defaultMode: 0744
+
+      restartPolicy: Always
+status: {}

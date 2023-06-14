@@ -1,0 +1,48 @@
+---
+- name: Configure the instances with common requirements
+  hosts: localhost
+  gather_facts: true
+  remote_user: local
+  become: true
+  roles:
+    - docker
+    - docker-clean
+    # - docker-clean-images-crontab
+    - aws-ssm
+    - awscli
+    - pip3-docker
+    - pip-botos
+
+- name: set facts
+  hosts: localhost
+  gather_facts: true
+  remote_user: local
+  become: true
+  tasks:
+    - set_fact:
+        container_network_name: "nginx-network"
+
+- name: obtain all information for a single ACM certificate
+  gather_facts: true
+  hosts: localhost
+  remote_user: local
+  become: true
+  roles:
+    - {role: flask-docker-registry-service}
+    - {role: ssl-cert, ec2_cname: docker}
+
+- name: Create docker network
+  gather_facts: true
+  hosts: localhost
+  remote_user: local
+  become: true
+  roles:
+    - { role: docker-network, network_name: "{{ container_network_name }}"}
+
+- name: Start Containers
+  gather_facts: true
+  hosts: localhost
+  remote_user: local
+  become: true
+  roles:
+    - {role: kairos-proxy, conf_version: docker}

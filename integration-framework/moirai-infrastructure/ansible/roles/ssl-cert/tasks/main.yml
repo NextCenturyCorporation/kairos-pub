@@ -1,0 +1,57 @@
+---
+- name: add docker apt key from keyserver
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: add docker repository
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic edge"
+    state: present
+    update_cache: yes
+
+- name: install apt packages
+  apt:
+    name: ['ca-certificates']
+    state: present
+
+- name: create a docker container to generate certificates
+  docker_container:
+    name: certbot-certs
+    image: certbot/dns-route53
+    command:
+        - "certonly -n --agree-tos"
+        - "--email {{ cert_email }}"
+        - "--dns-route53"
+        - "-d {{ ec2_fqdn }}"
+        - "-d *.{{ ec2_fqdn }}"
+        - "--server https://acme-v02.api.letsencrypt.org/directory"
+    state: present
+    volumes:
+      - /certs:/etc/letsencrypt
+  register: certbot_certs_container_status
+
+- name: start docker container for creating certificates
+  docker_container:
+    name: certbot-certs
+    state: started
+
+- name: create a docker container to renew certificates
+  docker_container:
+    name: certbot-renew
+    image: certbot/dns-route53
+    command:
+      - "renew"
+    state: present
+    volumes:
+      - /certs:/etc/letsencrypt
+
+- name: create a cron entry to start certbot renew
+  cron:
+    name: "renew certificates"
+    minute: "00"
+    job: "docker start certbot-renew"
+
+- name:
+  pause:
+    minutes: 2

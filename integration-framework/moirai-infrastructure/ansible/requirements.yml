@@ -1,0 +1,3 @@
+roles:
+  - name: amazon-ssm-agent 
+    src: "git+https://github.com/cisagov/ansible-role-amazon-ssm-agent"

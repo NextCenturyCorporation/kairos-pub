@@ -1,0 +1,9 @@
+---
+
+- name: obtain all information for a single ACM certificate
+  gather_facts: true
+  hosts: localhost
+  remote_user: local
+  become: true
+  roles:
+    - {role: ssl-cert, ec2_cname: docker}

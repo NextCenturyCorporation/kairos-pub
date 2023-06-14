@@ -1,0 +1,15 @@
+---
+- name: run janusgraph container
+  docker_container:
+    name: test_ansible_janusgraph
+    image: janusgraph/janusgraph:latest
+    network_mode: test_network
+    published_ports:
+    - "8182:8182"
+    env:
+      GREMLIN_REMOTE_HOSTS: janusgraph
+      JANUS_PROPS_TEMPLATE: cassandra-es
+- name: Copy the gremlin-server.yaml file to the docker image.
+  shell: docker cp ./roles/janusGraph-docker/templates/gremlin-server.yaml test_ansible_janusgraph:/etc/opt/janusgraph
+- name: Copy the janusgraph.properties file to the docker image.
+  shell: docker cp ./roles/janusGraph-docker/templates/janusgraph.properties test_ansible_janusgraph:/etc/opt/janusgraph

@@ -1,0 +1,34 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: kairos-experimentmonitor
+  namespace: kairos-experimentstatus
+spec:
+  schedule: "*/5 * * * *"
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: experimentstatus-kubectl
+
+          nodeSelector:
+            kairosnodetype: framework
+          
+          containers:
+          - image: 130602597458.dkr.ecr.us-east-1.amazonaws.com/kairos-runtimes:experiment-monitor-1.0
+            name: kairos-experimentmonitor
+            env:
+              - name: PROGRAM
+                value: {{program}}
+              - name: ENVIRONMENT
+                value: {{environment}} 
+              - name: NIFI-URL
+                value: {{nifiurl}}
+              - name: NIFI-PORT
+                value: "{{nifiport}}"
+            imagePullPolicy: Always
+          restartPolicy: OnFailure
+

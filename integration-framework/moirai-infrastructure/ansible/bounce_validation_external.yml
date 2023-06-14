@@ -1,0 +1,44 @@
+#!/usr/bin/env ansible-playbook -i inventory
+
+---
+- name: Wait for systems to come up
+  hosts: localhost
+  connection: local
+  gather_facts: true
+  roles:
+    - {role: wait-for-ec2,
+        tags_to_check: ["tag_Name_Validation_External"]}
+
+- name: Add Clotho
+  gather_facts: true
+  hosts: 
+    - "tag_Name_Validation_External"
+  remote_user: ubuntu
+  become: true
+  vars:
+    db_type: "Validation"
+    clotho_tag: "latest"
+    network_name: 'nginx-network'
+    NEPTUNE_DB_URI: ""
+  roles:
+    - role: aws-ecr-checkout
+      repo_name: clotho 
+      repo_tag: "{{ clotho_tag|lower }}"
+      aws_profile: ''
+    # Start Clotho app
+    - role: bounce-container
+      container_name: validation
+      image_name: clotho
+      image_tag: "{{ clotho_tag|lower }}"
+      restart: "always"
+      ports:
+        - "8008"
+      env: {
+        DB_TYPE: "{{ db_type }}",
+        DB_URI: "{{ NEPTUNE_DB_URI }}",
+        DB_PORT: "8182",
+        AWS_ACCESS_KEY_ID: "{{ lookup('env','aws_access_key') }}",
+        AWS_SECRET_ACCESS_KEY: "{{ lookup('env','aws_secret_key') }}",
+        SERVICE_REGION: "us-east-1"
+      }
+    - { role: kairos-proxy, conf_version: shared }

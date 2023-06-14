@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.18.0 (06a2e56)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: kafdrop
+  name: kafdrop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: kafdrop 
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: kafdrop
+    spec:
+      nodeSelector:
+        kairosnodetype: framework
+      containers:
+      - env:
+        - name: KAFKA_BROKERCONNECT
+          value: ${broker_endpoint}
+        image: obsidiandynamics/kafdrop
+        name: kafdrop
+        ports:
+        - containerPort: 9000
+        resources: {}
+      restartPolicy: Always
+status: {}
+

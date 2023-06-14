@@ -1,0 +1,24 @@
+{
+        "Versions" : {
+                "python" : "3",
+                "yq" : "4.4.1",
+                "java" : {
+                        "jdk": "openjdk",
+                        "version" : "11"
+                },
+                "kafka" : "2.12-2.8.0",
+                "awscli" : "v2",
+                "kubectl" : {
+                        "version": "1.19.6",
+                        "date" : "2021-01-05"
+                },
+                "helm": "3",
+                "alb-ingress-controller": "1.1.8",
+                "kompose" : "1.22.0",
+                "nifi" : {
+                        "cluster" : "1.11.4",
+                        "standalone" : "1.13.2"
+                }
+        }
+}
+

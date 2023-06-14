@@ -1,0 +1,35 @@
+- name: install flask with pip
+  pip: 
+    name: flask
+    state: latest
+    extra_args: --ignore-installed
+
+- name: install gitlab api
+  pip: 
+    name: python-gitlab
+    state: latest
+
+- name: copy service to server
+  copy:
+    src: app/service.py
+    dest: /home/ubuntu/service.py
+
+- name: change permission
+  shell: "chmod +x  /home/ubuntu/service.py"
+  
+- name: copy service script
+  copy:
+    src: app/flask.service
+    dest: /etc/systemd/system/flask.service
+
+- name: change permission
+  shell: "chmod +x /etc/systemd/system/flask.service"
+
+- name: Reload Systemctl 
+  shell: "systemctl daemon-reload"
+
+- name: Add flask.service to autostart
+  shell: "systemctl enable flask.service"
+
+- name: Run Flask Service
+  shell: "systemctl start flask"

@@ -1,0 +1,9 @@
+---
+ec2_region: "region"
+ec2_resource: "i-xxxxxxxxxxx"
+ec2_tags:
+  name: ""
+ec2_state: "present"
+ec2_purge_tags: false
+ec2_validate_certs: true
+ec2_instance_items: []

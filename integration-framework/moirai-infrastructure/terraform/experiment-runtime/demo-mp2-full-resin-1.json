@@ -1,0 +1,28 @@
+{
+    "experiment": {
+        "name": "mp2-task1-full-resin",
+        "type": "task1",
+        "tasklocation": "s3://kairos-experiment-data/phase2mid/experiment-input/task1/full/",
+        "evaluationdataset": "phase2mid"
+    },
+    "cluster": {
+        "cpu": {
+            "desired": 1,
+            "type": "m5.xlarge"
+        },
+        "gpu": {
+            "desired": 0,
+            "type": "p3.2xlarge"
+        }
+    },
+    "manifests": [
+        {
+            "performername": "resin",
+            "schemalibraries": [
+                "s3://kairos-experiment-data/phase2mid/experiment-input/ta_1/resin/"
+            ],
+            "uri": "s3://kairos-experiment-data/phase2mid/experiment-input/docker-compose/resin/docker-compose.yml",
+            "service_port": "10100"
+        }
+    ]
+}

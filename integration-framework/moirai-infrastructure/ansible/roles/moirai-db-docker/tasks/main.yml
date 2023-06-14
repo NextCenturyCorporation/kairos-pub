@@ -1,0 +1,22 @@
+---
+
+- set_fact:
+    network_name: "{{ network_name }}"
+
+- name: Start database - Neo4j
+  include_role:
+    name: neo4j-container
+  when: db_type == "Neo4j"
+
+- name: Start database - OrientDB
+  include_role:
+    name: orientDB-docker
+  when: db_type == "OrientDB"
+
+- name: Start database - Janusgraph
+  include_role:
+    name: janusGraph-docker
+  when: db_type == "Janusgraph"
+
+...
+

@@ -1,0 +1,20 @@
+{
+    "revision": {
+            "version": 0
+        },
+    "component": {
+	     "name": "success",
+	     "source" : {
+		     "id": "~",
+		     "groupId": "~",
+		     "type": "PROCESSOR"
+	     },
+	     "destination" : {
+                     "id": "~",
+		     "groupId": "~",
+                     "type": "PROCESSOR"
+		},
+		"selectedRelationships" : [ "success" ]
+    }
+}
+

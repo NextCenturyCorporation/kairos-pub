@@ -1,0 +1,19 @@
+---
+- name: Start Clotho application
+  docker_container:
+          name: "{{ container_name }}"
+          image: "{{ image }}"
+          network_mode: "{{ network_name }}"
+          restart_policy: "always"
+          published_ports:
+                  - "0.0.0.0:{{ connection_port }}:{{ internal_connection_port }}"
+          env:
+                  DB_TYPE: "{{ db_type }}"
+                  DB_URI: "{{ db_uri }}"
+
+
+- name: Create ec2 Facts
+  set_fact:
+          clotho_connector_port: "{{ connection_port }}"
+          cacheable: yes
+...

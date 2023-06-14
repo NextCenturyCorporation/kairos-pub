@@ -1,0 +1,19 @@
+---
+- name: Add node repository to yum
+  shell: curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+  when: ansible_distribution == "CentOS"
+
+- name: Add node repository to apt
+  shell: curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+  when: ansible_distribution == "Ubuntu"
+
+- name: Ensure nodejs is installed with yum
+  yum:
+    name: nodejs
+    state: latest
+  when: ansible_distribution == "CentOS"
+
+- name: Ensure nodejs is installed with apt
+  apt:
+    name: nodejs
+  when: ansible_distribution == "Ubuntu"

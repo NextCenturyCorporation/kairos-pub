@@ -1,0 +1,22 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+
+service: kairosserverless
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: python3.8
+  timeout: 900
+  lambdaHashingVersion: 20201221
+  iam:
+    role: 'arn:aws:iam::130602597458:role/serverless_role'
+functions:
+  ecrCleanup:
+    handler: handler.clean
+    events:
+      - schedule: rate(24 hours)

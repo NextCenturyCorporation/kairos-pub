@@ -1,0 +1,15 @@
+---
+
+- name: get current crontab
+  shell: crontab -l >/home/ubuntu/currentTab
+  ignore_errors: yes
+
+- name: copy job command to file if not already there
+  shell: grep -qxF '{{job_command}}' /home/ubuntu/currentTab || echo '{{job_command}}' >> /home/ubuntu/currentTab
+
+- name: register new crontab file
+  shell: crontab /home/ubuntu/currentTab
+
+- name: cleanup
+  shell: rm /home/ubuntu/currentTab
+...

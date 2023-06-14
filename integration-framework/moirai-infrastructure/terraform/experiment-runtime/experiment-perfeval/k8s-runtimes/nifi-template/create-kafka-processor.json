@@ -1,0 +1,25 @@
+{
+        "revision": {
+		"version": 0
+	},    
+	"component": {
+		"name": "{{kafkapublisher}}",
+		"type": "org.apache.nifi.processors.kafka.pubsub.PublishKafka_2_0",
+		"bundle": {
+			"group": "org.apache.nifi",
+			"artifact": "nifi-kafka-2-0-nar",
+			"version": ""
+		},
+		"config": {
+			"properties": {
+				"bootstrap.servers": "{{kafkabrokers}}",
+				"topic" : "{{experimentinputtopic}}",
+				"acks" : "all"
+			},
+			"executionNode" : "PRIMARY",
+			"autoTerminatedRelationships" : [
+				"success", "failure"
+			]
+		}
+	}
+}

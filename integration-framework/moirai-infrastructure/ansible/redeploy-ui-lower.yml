@@ -1,0 +1,54 @@
+---
+- name: set facts
+  hosts: localhost
+  gather_facts: true
+  remote_user: local
+  become: true
+  tasks:
+    - set_fact:
+        zeus_tag: "{{ zeus_tag | default('latest') }}"
+    - set_fact:
+        zeus_tag_formatted: "{{ zeus_tag | replace('_','')  | lower}}"
+    - set_fact:
+        ui_tag: "{{ ui_tag | default('latest') }}"
+    - set_fact:
+        ui_tag_formatted: "{{ ui_tag | replace('_','') | lower}}"
+    - set_fact:
+        zeus_image_name: "zeus"
+    - set_fact:
+        ui_image_name: "ui"
+    - set_fact:
+        container_network_name: "nginx-network"
+    - set_fact:
+        zeus_container_name: "{{ zeus_image_name }}-{{ zeus_tag_formatted }}"
+
+- name: Create network and pull docker containers
+  gather_facts: true
+  hosts: localhost
+  remote_user: local
+  become: true
+  roles:
+    # Retrieve images from ECR via AWS-CLI
+    - { role: docker-network, network_name: "{{ container_network_name }}"}
+    - { role: aws-ecr-checkout, aws_profile: null, repo_name: ui, repo_tag: "{{ ui_tag }}", local_name: "{{ ui_image_name }}", local_tag: "{{ ui_tag_formatted }}"}
+
+- name: Start Containers
+  gather_facts: true
+  hosts: localhost
+  remote_user: local
+  become: true
+  vars:
+    network_name: "{{ container_network_name }}"
+    aws_region: "us-east-1"
+  roles:
+    - role: bounce-container
+      restart: "always"
+      container_name: "{{ ui_image_name }}-{{ ui_tag_formatted }}"
+      image_name: "{{ ui_image_name }}"
+      image_tag: "{{ ui_tag_formatted }}"
+      ports:
+        - "all"
+      env: {
+        ZEUS_LOCATION: "http://{{ zeus_container_name }}:8000/"
+      }      
+...

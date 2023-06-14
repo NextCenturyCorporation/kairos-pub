@@ -1,0 +1,24 @@
+
+---
+- name: Configure the instances with common requirements
+  hosts: localhost
+  gather_facts: true
+  remote_user: local
+  become: true
+  roles:
+    - aws-ssm
+    - awscli
+    - docker
+    - docker-clean
+    - docker-clean-images-crontab
+    - pip3-docker
+
+- name: Create network and setup ssl
+  gather_facts: true
+  hosts: localhost
+  remote_user: local
+  become: true
+  roles:
+    - { role: docker-network, network_name: beach_net}
+    - { role: ssl-cert, ec2_cname: "zeus"}
+...
