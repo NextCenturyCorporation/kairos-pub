@@ -1,0 +1,11 @@
+# Ignore Gradle project-specific cache directory
+.gradle
+.idea
+
+# Ignore Gradle build output directory
+build
+/KairosK8sMsgProcessor.jar
+/AidaK8sMsgProcessor.jar
+/bin/
+/ExperimentMonitor.jar
+/ExperimentStatus.jar
