@@ -6,4 +6,6 @@ locals {
 
   machine_key_pair_name = local.env.machine_key_pair_name
   machine_key_pair_file = "${local.project_root}/key-pairs/${local.machine_key_pair_name}.pem"
+  aws_access_key = ""
+  aws_secret_key = ""
 }

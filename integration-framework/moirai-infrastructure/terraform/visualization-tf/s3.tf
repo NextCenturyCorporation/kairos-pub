@@ -1,6 +1,6 @@
 
 data "aws_s3_bucket" "visualization" {
-    bucket = "kairos-visualization"
+    bucket = local.s3_bucket
 }
 
 data "aws_iam_policy_document" "allow_cloudfront" {

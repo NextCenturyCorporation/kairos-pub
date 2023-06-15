@@ -10,8 +10,8 @@ data "template_file" "create_enclave" {
     submissioningestclusterarn  = "data.aws_eks_cluster.submission_ingest.arn",
     mskclusterarn               = local.env.kafka.arn,
     kafkabrokers                = join(",", local.env.kafka.endpoints),
-    awsaccesskey                = "AKIAR42EFPRJBN3NPYPI",
-    awssecretaccesskey          = "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",
+    awsaccesskey                = local.aws_access_key,
+    awssecretaccesskey          = local.aws_secret_key,
     nifi_dnsname                = "",
     # nifi_dnsname                = aws_route53_record.nifi_standalone.fqdn,
     nifi_port = 8080

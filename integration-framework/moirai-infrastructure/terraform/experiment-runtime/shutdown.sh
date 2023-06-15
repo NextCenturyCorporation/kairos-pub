@@ -12,7 +12,7 @@ terraform destroy --auto-approve
 cd $SOURCE_DIR/experiment-perfeval
 terraform destroy --auto-approve
 
-# cd $SOURCE_DIR/experiment-env
-# terraform destroy --auto-approve
+cd $SOURCE_DIR/experiment-env
+terraform destroy --auto-approve
 
 cd $curdir

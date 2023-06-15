@@ -5,10 +5,10 @@ resource "aws_db_instance" "development" {
   allocated_storage       = 20
   max_allocated_storage   = 100
   tags                    = { Name = "rds-aws-lower-tier-db" }
-  db_name                    = var.rds_database_name_dev
+  db_name                 = var.rds_database_name_dev
   username                = var.rds_username
   password                = var.db_secret_lower_tier
-  parameter_group_name    =  "terraform-lower-mysql-8"
+  parameter_group_name    = "terraform-lower-mysql-8"
   port                    = 3306
   skip_final_snapshot     = true
   publicly_accessible     = true

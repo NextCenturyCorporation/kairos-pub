@@ -9,7 +9,7 @@ resource "aws_cloudfront_distribution" "visualization" {
     max_ttl                = "0"
     min_ttl                = "0"
     smooth_streaming       = "false"
-    target_origin_id       = "kairos-visualization.s3.us-east-1.amazonaws.com"
+    target_origin_id       = local.target_origin
     viewer_protocol_policy = "redirect-to-https"
   }
 
@@ -21,9 +21,9 @@ resource "aws_cloudfront_distribution" "visualization" {
   origin {
     connection_attempts      = "3"
     connection_timeout       = "10"
-    domain_name              = "kairos-visualization.s3.us-east-1.amazonaws.com"
+    domain_name              = local.target_origin
     origin_access_control_id = "E2NUD9G5U9AEZN"
-    origin_id                = "kairos-visualization.s3.us-east-1.amazonaws.com"
+    origin_id                = local.target_origin
   }
 
   aliases = [

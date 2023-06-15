@@ -19,7 +19,8 @@ locals {
   # instance_profile  = data.terraform_remote_state.environment.outputs.clotho_iam_profile
   zone_id           = "Z2EP09JXG7OUE8"
 
-  s3_bucket = "kairos-validation"
+  s3_bucket = "kairos-visualization"
   fqdn = "${var.visualization_hostname}.kairos.nextcentury.com"
   s3_origin_id = "myS3Origin"
+  target_origin = replace(data.aws_s3_bucket.visualization.bucket_domain_name, ".s3.", ".s3.${data.aws_s3_bucket.visualization.region}.")
 }

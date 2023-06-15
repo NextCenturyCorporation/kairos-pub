@@ -18,4 +18,9 @@ resource "aws_security_group" "gitlab-services_securitygroup" {
     protocol    = -1
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+  tags = {
+    Name      = "gitlab_sg"
+    CreatedBy = "terraform"
+  }
 }

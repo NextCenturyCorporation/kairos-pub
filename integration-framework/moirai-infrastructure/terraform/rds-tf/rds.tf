@@ -5,7 +5,7 @@ resource "aws_db_instance" "default" {
   allocated_storage       = 20
   max_allocated_storage   = 100
   tags                    = { Name = "rds-aws-db" }
-  db_name                    = var.rds_database_name
+  db_name                 = var.rds_database_name
   username                = var.rds_username
   password                = var.db_secret
   parameter_group_name    = "terraform-prod-mysql-8"
