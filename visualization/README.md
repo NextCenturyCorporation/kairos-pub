@@ -3,7 +3,7 @@
 The KAIROS SDF Visualizer is a standalone tool extracted from the MOIRAI UI.  It visualizes TA2 SDF v2.3.
 Please note that it will only visualize the first `instance` in the SDF you upload.
 
-This is a standalone prototype meant for internal use.  Please see the `LICENSE.md` file for licensing information.
+This is a standalone prototype meant for internal use.  Please see the `LICENSE.md` file in the project root directory for licensing information.
 
 ## Project setup
 
